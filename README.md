@@ -1,6 +1,6 @@
 # Tcl 脚本解释器
 
-MoonBit 本地候选版 0.1.0。分组、变量/命令替换、set/incr/expr/if/while。
+MoonBit 本地候选版 0.2.0。分组、变量/命令替换、set/incr/expr/if/while。
 
 ## 快速试用
 
@@ -30,7 +30,7 @@ MoonBit 工具链与 Node.js 安装好后，在此目录运行：
 
 ## 当前边界
 
-整数表达式和 set/incr/puts/expr/if/while；不含 proc、命名空间、数组变量、列表命令、文件/进程/网络 I/O；32 位整数，不是完整 Tcl 8.x。
+整数表达式和 set/incr/puts/expr/if/while；不含命名空间、数组变量、列表命令、文件/进程/网络 I/O；32 位整数，不是完整 Tcl 8.x。
 
 ## 来源与许可证
 
@@ -43,3 +43,24 @@ MoonBit 工具链与 Node.js 安装好后，在此目录运行：
 保留候选：先补边界和上游兼容范围，再决定是否申报。
 
 所有文件仅在本地，未创建远程仓库、上传、发布包或提交比赛。
+
+## 独立仓库工作流
+
+本目录是该项目后续开发的唯一主仓库，旧批次目录及 ZIP 为历史审查快照。没有 Git remote，没有共享构建目录，没有上级 moon.work。
+
+真实 CLI 支持输入参数、文件和标准输入：
+
+```powershell
+node tools/cli.mjs --help
+node tools/cli.mjs --file sample.txt --json
+```
+
+需要安装 MoonBit 后传 `-MoonPath` 或将 moon 加入 PATH；不依赖工作区之外的私有脚本。详见 [TESTING.md](TESTING.md) 和 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+## 本轮功能升级
+
+增加固定参数 proc、局部变量、共享输出、递归与 return。
+
+无默认/可变参数、命名空间、列表命令、数组变量或外部 I/O；整数为 32 位。
+
+[可执行 API 示例](README.mbt.md)会随测试运行；[功能边界](FEATURES.md)和[测试说明](TESTING.md)用于独立审查。网页与 CLI 展示示例入口，新 API 的完整使用见可执行示例。

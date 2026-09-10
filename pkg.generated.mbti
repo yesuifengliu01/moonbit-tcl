@@ -10,11 +10,13 @@ import {
 // Errors
 pub suberror TclError {
   Invalid(String)
+  Return(String)
 } derive(@debug.Debug)
 
 // Types and methods
 pub struct Interpreter {
   vars : Map[String, String]
+  procs : Map[String, (Array[String], String)]
   output : Array[String]
   mut budget : Int
 } derive(@debug.Debug)

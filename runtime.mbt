@@ -1,18 +1,20 @@
 ///|
 pub suberror TclError {
   Invalid(String)
+  Return(String)
 } derive(Debug)
 
 ///|
 pub struct Interpreter {
   vars : Map[String, String]
+  procs : Map[String, (Array[String], String)]
   output : Array[String]
   mut budget : Int
 } derive(Debug)
 
 ///|
 pub fn Interpreter::new() -> Interpreter {
-  { vars: Map([]), output: [], budget: 10000, }
+  { vars: Map([]), procs: Map([]), output: [], budget: 10000, }
 }
 
 ///|
@@ -312,7 +314,67 @@ fn Interpreter::command(
       }
       ""
     }
-    _ => raise Invalid("unsupported command " + args[0])
+    "proc" => {
+      if n != 4 {
+        raise Invalid("proc name parameters body")
+      }
+      if ["set", "incr", "expr", "puts", "if", "while", "proc", "return"].contains(
+          args[1],
+        ) {
+        raise Invalid("cannot override builtin in this subset")
+      }
+      let parameters = args[2]
+        .split(" ")
+        .flat_map(x => x.split("\t"))
+        .filter(x => !x.is_empty())
+        .map(x => x.to_owned())
+        .collect()
+      let seen : Map[String, Bool] = Map([])
+      for param in parameters {
+        if param.is_empty() ||
+          !param.to_array().iter().all(namechar) ||
+          seen.contains(param) {
+          raise Invalid("invalid or duplicate procedure parameter")
+        }
+        seen[param] = true
+      }
+      self.procs[args[1]] = (parameters, args[3])
+      ""
+    }
+    "return" => {
+      if n > 2 {
+        raise Invalid("return arity")
+      }
+      raise Return(if n == 2 { args[1] } else { "" })
+    }
+    _ => {
+      let (parameters, body) = match self.procs.get(args[0]) {
+        Some(p) => p
+        None => raise Invalid("unsupported command " + args[0])
+      }
+      if parameters.length() != n - 1 {
+        raise Invalid("procedure arity")
+      }
+      let vars = Map([])
+      for i in 0..<parameters.length() {
+        vars[parameters[i]] = args[i + 1]
+      }
+      let child = Interpreter::{
+        vars,
+        procs: self.procs,
+        output: self.output,
+        budget: self.budget,
+      }
+      let result = child.execute(body, depth + 1) catch {
+        Return(v) => v
+        Invalid(message) => {
+          self.budget = child.budget
+          raise Invalid(message)
+        }
+      }
+      self.budget = child.budget
+      result
+    }
   }
 }
 
@@ -429,5 +491,8 @@ pub fn Interpreter::eval(
     raise Invalid("budget range")
   }
   self.budget = budget
-  self.execute(source, 0)
+  self.execute(source, 0) catch {
+    Return(v) => v
+    Invalid(message) => raise Invalid(message)
+  }
 }
