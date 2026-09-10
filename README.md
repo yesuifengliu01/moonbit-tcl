@@ -1,66 +1,48 @@
-# Tcl 脚本解释器
+# MoonBit Tcl
 
-MoonBit 本地候选版 0.2.0。分组、变量/命令替换、set/incr/expr/if/while。
+Tcl 8.6 脚本解释器，0.3.0。本地独立候选，目标继续追平成熟项目，当前尚非完整 Tcl 替代。
 
-## 快速试用
+## 已实现的实际脚本路径
 
-已附真实 MoonBit 编译的浏览器引擎。需要 Python 3：
+- 变量与命令替换、花括号/引号分组、整数表达式、set/incr/puts/if。
+- proc 局部作用域、递归、默认参数、args 可变参数、return；可替换已有命令。
+- list、llength、lindex（嵌套和 end 索引）、lappend、join、split、concat、lrange、lreverse、lrepeat。
+- while/for/foreach，foreach 支持多组变量和列表、末组补空；break/continue；catch 和 error 的基本形式。
+- parse_list/format_list 公开 API；列表不执行变量或命令替换，列表解析使用追加缓冲处理长元素。
+
+## 运行和验证
 
 ```powershell
 ./start-review.ps1
-```
-
-浏览器打开 http://127.0.0.1:8792/web/ 。也可以从第二批合集审查页直接运行。
-
-## 构建与测试
-
-MoonBit 工具链与 Node.js 安装好后，在此目录运行：
-
-```powershell
+node tools/cli.mjs --file sample.txt --json
 ./verify.ps1
-# 或指定编译器
+# 编译器不在 PATH 时
 ./verify.ps1 -MoonPath C:/path/to/moon/bin/moon.exe
 ```
 
-脚本检查源码、在 Wasm-GC 和 JS 跑测试、构建浏览器引擎并运行示例。直接执行命令行示例：`moon run cmd/main`。`pkg.generated.mbti` 是生成的公共 API。
+网页调用真实编译的 MoonBit 引擎，sample.txt 是默认参数、foreach 和列表的可直接运行示例。构建需 MoonBit，命令行需 Node.js，审查网页需 Python 3。公开 API 见 pkg.generated.mbti；[可执行文档](README.mbt.md)随测试运行。
 
-## 已实现范围
-
-分组、变量/命令替换、set/incr/expr/if/while。示例输入与调用逻辑见 `cmd/main/main.mbt`；网页允许修改输入并执行实际编译代码。
-
-## 当前边界
-
-整数表达式和 set/incr/puts/expr/if/while；不含命名空间、数组变量、列表命令、文件/进程/网络 I/O；32 位整数，不是完整 Tcl 8.x。
-
-## 来源与许可证
-
-按[公开规格/参考项目](https://www.tcl-lang.org/man/tcl8.6/TclCmd/Tcl.htm)重新实现，没有复制上游代码或大规模词库。源码采用 MIT；原始测试输入为本地新编写。Tcl 的独立对照测试由系统 Tcl 8.6.15 计算结果，测试不依赖 Tcl 运行时。
-
-[查重](DUPLICATION.md)只描述本轮检索证据。`localreview` 是本地命名空间，正式发布前需替换为申请人的命名空间。
-
-## 下一步
-
-保留候选：先补边界和上游兼容范围，再决定是否申报。
-
-所有文件仅在本地，未创建远程仓库、上传、发布包或提交比赛。
-
-## 独立仓库工作流
-
-本目录是该项目后续开发的唯一主仓库，旧批次目录及 ZIP 为历史审查快照。没有 Git remote，没有共享构建目录，没有上级 moon.work。
-
-真实 CLI 支持输入参数、文件和标准输入：
+## 独立 Tcl 对照
 
 ```powershell
-node tools/cli.mjs --help
-node tools/cli.mjs --file sample.txt --json
+python tools/generate_list_oracle.py
+moon fmt
+moon test --target wasm-gc
+moon test --target js
 ```
 
-需要安装 MoonBit 后传 `-MoonPath` 或将 moon 加入 PATH；不依赖工作区之外的私有脚本。详见 [TESTING.md](TESTING.md) 和 [CONTRIBUTING.md](CONTRIBUTING.md)。
+Python 须含 tkinter（Linux 通常安装 python3-tk），oracle 要求 Tcl 8.6。本机为 8.6.15，使用 Tcl 解释器而非 Tk GUI，不需要图形窗口。新增 248 个原始场景由系统 Tcl 计算预期值，覆盖规范列表引用、嵌套列表、转义、错误、循环、默认/可变参数及重复形参行为。已有整数表达式对照用例仍保留。
 
-## 本轮功能升级
+对照揭示并修正了 concat 内部空白保留、零参数 lappend 的字符串表示、脚本与列表花括号的反斜杠换行差异等行为。它不是整个 Tcl 测试集通过的证明。
 
-增加固定参数 proc、局部变量、共享输出、递归与 return。
+## 当前差距与限制
 
-无默认/可变参数、命名空间、列表命令、数组变量或外部 I/O；整数为 32 位。
+未实现命名空间、数组变量、global/upvar、dict/完整字符串命令、文件/进程/网络 I/O、完整 expr 运算与 Tcl 大整数；整数仍为 32 位。if 尚未支持完整 elseif/then 形式；catch/error/return 的高级选项不全。Unicode 的非 BMP 原始字符和转义在全部命令上的 Tcl 8.x UTF-16 一致性仍需系统验证，不能声称完全兼容。
 
-[可执行 API 示例](README.mbt.md)会随测试运行；[功能边界](FEATURES.md)和[测试说明](TESTING.md)用于独立审查。网页与 CLI 展示示例入口，新 API 的完整使用见可执行示例。
+脚本上限 100000 个 UTF-16 单元，嵌套 64 层，命令预算可配置（最大 1000000）；列表输入/结果限 1000000 单元、元素数 100000；变量/命令替换结果与累计打印输出同样限 1000000 单元，过程调用共享打印额度。列表数据中的脚本元字符保持数据语义。长列表与预算耗尽有回归用例。
+
+## 来源与仓库
+
+根据 [Tcl list](https://www.tcl-lang.org/man/tcl8.6/TclCmd/list.htm)、[proc](https://www.tcl-lang.org/man/tcl8.6/TclCmd/proc.htm)、[foreach](https://www.tcl-lang.org/man/tcl8.6/TclCmd/foreach.htm) 文档和系统 Tcl 的独立行为重新实现，没有复制上游代码。原创代码 MIT。完整边界见 FEATURES.md，测试流程见 TESTING.md，历史查重见 DUPLICATION.md。
+
+独立 Git 仓库和构建目录，没有 remote，未上传或发布。CI 文件包含列表 oracle 再生，但远端 CI 未运行。本地最新证据见 evidence/current-validation.json；旧日期证据仅为历史快照。

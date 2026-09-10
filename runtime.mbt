@@ -2,19 +2,28 @@
 pub suberror TclError {
   Invalid(String)
   Return(String)
+  Break
+  Continue
 } derive(Debug)
 
 ///|
 pub struct Interpreter {
   vars : Map[String, String]
-  procs : Map[String, (Array[String], String)]
+  procs : Map[String, (Array[(String, String?)], String)]
   output : Array[String]
+  output_size : Array[Int]
   mut budget : Int
 } derive(Debug)
 
 ///|
 pub fn Interpreter::new() -> Interpreter {
-  { vars: Map([]), procs: Map([]), output: [], budget: 10000, }
+  {
+    vars: Map([]),
+    procs: Map([]),
+    output: [],
+    output_size: [0],
+    budget: 10000,
+  }
 }
 
 ///|
@@ -44,6 +53,9 @@ fn Interpreter::substitute(
   let mut i = start
   let mut out = ""
   while i < cs.length() {
+    if out.length() > 1000000 {
+      raise Invalid("substitution result size limit")
+    }
     let c = cs[i]
     if c == stop {
       return (out, i + 1)
@@ -100,18 +112,9 @@ fn Interpreter::substitute(
       }
       out += self.execute(script, depth + 1)
     } else if c == '\\' {
-      i += 1
-      if i >= cs.length() {
-        raise Invalid("trailing escape")
-      }
-      out += match cs[i] {
-        'n' => "\n"
-        't' => "\t"
-        'r' => "\r"
-        '\n' => " "
-        _ => cs[i].to_string()
-      }
-      i += 1
+      let (value, next) = backslash(cs, i)
+      out += value
+      i = next
     } else {
       out += c.to_string()
       i += 1
@@ -119,6 +122,9 @@ fn Interpreter::substitute(
   }
   if stop != '\u0000' {
     raise Invalid("missing quote")
+  }
+  if out.length() > 1000000 {
+    raise Invalid("substitution result size limit")
   }
   (out, i)
 }
@@ -254,7 +260,22 @@ fn Interpreter::command(
     raise Invalid("execution budget")
   }
   let n = args.length()
+  if self.procs.contains(args[0]) {
+    return self.invoke_procedure(args, depth)
+  }
   match args[0] {
+    "list"
+    | "llength"
+    | "lindex"
+    | "lappend"
+    | "join"
+    | "split"
+    | "concat"
+    | "lrange"
+    | "lreverse"
+    | "lrepeat" => self.list_command(args)
+    "while" | "for" | "foreach" | "break" | "continue" | "catch" | "error" =>
+      self.control_command(args, depth)
     "set" =>
       if n == 2 {
         match self.vars.get(args[1]) {
@@ -286,6 +307,11 @@ fn Interpreter::command(
       if n != 2 {
         raise Invalid("puts arity")
       }
+      let size = args[1].length() + (if self.output.is_empty() { 0 } else { 1 })
+      if size > 1000000 - self.output_size[0] {
+        raise Invalid("printed output size limit")
+      }
+      self.output_size[0] += size
       self.output.push(args[1])
       ""
     }
@@ -301,42 +327,19 @@ fn Interpreter::command(
         ""
       }
     }
-    "while" => {
-      if n != 3 {
-        raise Invalid("while arity")
-      }
-      while self.math(args[1], depth) != 0 {
-        self.budget -= 1
-        if self.budget < 0 {
-          raise Invalid("execution budget")
-        }
-        ignore(self.execute(args[2], depth + 1))
-      }
-      ""
-    }
     "proc" => {
       if n != 4 {
         raise Invalid("proc name parameters body")
       }
-      if ["set", "incr", "expr", "puts", "if", "while", "proc", "return"].contains(
-          args[1],
-        ) {
-        raise Invalid("cannot override builtin in this subset")
-      }
-      let parameters = args[2]
-        .split(" ")
-        .flat_map(x => x.split("\t"))
-        .filter(x => !x.is_empty())
-        .map(x => x.to_owned())
-        .collect()
-      let seen : Map[String, Bool] = Map([])
-      for param in parameters {
-        if param.is_empty() ||
-          !param.to_array().iter().all(namechar) ||
-          seen.contains(param) {
-          raise Invalid("invalid or duplicate procedure parameter")
+      let parameters = []
+      for spec in parse_list(args[2]) {
+        let parts = parse_list(spec)
+        if parts.length() < 1 || parts.length() > 2 {
+          raise Invalid("invalid procedure parameter specifier")
         }
-        seen[param] = true
+        parameters.push(
+          (parts[0], if parts.length() == 2 { Some(parts[1]) } else { None }),
+        )
       }
       self.procs[args[1]] = (parameters, args[3])
       ""
@@ -347,34 +350,7 @@ fn Interpreter::command(
       }
       raise Return(if n == 2 { args[1] } else { "" })
     }
-    _ => {
-      let (parameters, body) = match self.procs.get(args[0]) {
-        Some(p) => p
-        None => raise Invalid("unsupported command " + args[0])
-      }
-      if parameters.length() != n - 1 {
-        raise Invalid("procedure arity")
-      }
-      let vars = Map([])
-      for i in 0..<parameters.length() {
-        vars[parameters[i]] = args[i + 1]
-      }
-      let child = Interpreter::{
-        vars,
-        procs: self.procs,
-        output: self.output,
-        budget: self.budget,
-      }
-      let result = child.execute(body, depth + 1) catch {
-        Return(v) => v
-        Invalid(message) => {
-          self.budget = child.budget
-          raise Invalid(message)
-        }
-      }
-      self.budget = child.budget
-      result
-    }
+    _ => raise Invalid("unsupported command " + args[0])
   }
 }
 
@@ -419,8 +395,14 @@ fn Interpreter::execute(
         let x = cs[i]
         i += 1
         if x == '\\' && i < cs.length() {
-          out += x.to_string() + cs[i].to_string()
-          i += 1
+          if cs[i] == '\n' {
+            let (value, next) = backslash(cs, i - 1)
+            out += value
+            i = next
+          } else {
+            out += x.to_string() + cs[i].to_string()
+            i += 1
+          }
           continue
         }
         if x == '{' {
@@ -494,5 +476,7 @@ pub fn Interpreter::eval(
   self.execute(source, 0) catch {
     Return(v) => v
     Invalid(message) => raise Invalid(message)
+    Break => raise Invalid("invoked break outside of a loop")
+    Continue => raise Invalid("invoked continue outside of a loop")
   }
 }

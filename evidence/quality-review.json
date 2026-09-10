@@ -1,24 +1,25 @@
 {
   "project": "moonbit-tcl",
-  "timestamp": "2026-09-10T10:40:58.181947+00:00",
+  "version": "0.3.0",
+  "timestamp": "2026-09-10T11:49:38.088223+00:00",
   "exit_code": 0,
   "backend_test_counts": [
     [
-      "12",
-      "12",
+      "264",
+      "264",
       "0"
     ],
     [
-      "12",
-      "12",
+      "264",
+      "264",
       "0"
     ]
   ],
-  "scope": "Local Windows verify.ps1; remote CI and full upstream conformance not run",
+  "scope": "Local Windows verify.ps1; system Tcl 8.6.15 differential scenarios; remote CI not run",
   "coverage": {
-    "covered": 218,
-    "total": 260,
-    "measurement": "MoonBit instrumentation points, not upstream feature coverage"
+    "covered": 558,
+    "total": 636,
+    "measurement": "MoonBit instrumentation points"
   },
   "robustness": {
     "project": "tcl",
@@ -30,18 +31,19 @@
   },
   "benchmark": {
     "project": "tcl",
-    "utc": "2026-09-10T10:40:57.931Z",
+    "utc": "2026-09-10T11:48:13.229Z",
     "runtime": "v24.11.0",
     "platform": "win32",
     "cpu": "Intel(R) Core(TM) i7-14700HX",
-    "input_utf8_bytes": 114,
+    "input_utf8_bytes": 250,
     "samples": 30,
     "warmup": 5,
-    "median_ms": 0.2284000000000006,
-    "p95_ms": 0.5698000000000008,
-    "max_ms": 1.0685000000000002,
+    "median_ms": 0.16369999999999862,
+    "p95_ms": 0.4356000000000009,
+    "max_ms": 0.7117000000000004,
     "scope": "JS warm execution of documented example; no cross-project or upstream performance claim"
   },
-  "remote_ci": "not run",
-  "network_interoperability": "not run"
+  "new_independent_tcl_cases": 248,
+  "oracle": "Tcl 8.6.15 via Python tkinter",
+  "remote_ci": "not run"
 }

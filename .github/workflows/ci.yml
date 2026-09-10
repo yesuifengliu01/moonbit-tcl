@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install independent Tcl oracle
+        run: sudo apt-get update && sudo apt-get install -y python3-tk
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -14,6 +16,7 @@ jobs:
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - run: moon version --all
       - run: moon fmt && moon info && git diff --exit-code
+      - run: /usr/bin/python3 tools/generate_list_oracle.py && moon fmt && git diff --exit-code
       - run: moon check --deny-warn
       - run: moon test --target wasm-gc --deny-warn
       - run: moon test --target js --deny-warn

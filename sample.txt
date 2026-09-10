@@ -1,6 +1,11 @@
-proc fact {n} {
- if {$n <= 1} {return 1}
- expr {$n * [fact [expr {$n - 1}]]}
+proc summarize {values {scale 2}} {
+ set out {}
+ foreach value $values {
+  if {$value < 0} {continue}
+  lappend out [expr {$value * $scale}]
+ }
+ return $out
 }
-puts "factorial(6)=[fact 6]"
-fact 6
+set result [summarize {1 -2 3 5} 3]
+puts [join $result {, }]
+list $result [llength $result]

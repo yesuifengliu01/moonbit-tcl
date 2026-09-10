@@ -6,18 +6,24 @@ import {
 }
 
 // Values
+pub fn format_list(Array[String]) -> String raise TclError
+
+pub fn parse_list(String) -> Array[String] raise TclError
 
 // Errors
 pub suberror TclError {
   Invalid(String)
   Return(String)
+  Break
+  Continue
 } derive(@debug.Debug)
 
 // Types and methods
 pub struct Interpreter {
   vars : Map[String, String]
-  procs : Map[String, (Array[String], String)]
+  procs : Map[String, (Array[(String, String?)], String)]
   output : Array[String]
+  output_size : Array[Int]
   mut budget : Int
 } derive(@debug.Debug)
 pub fn Interpreter::eval(Self, String, budget? : Int) -> String raise TclError
