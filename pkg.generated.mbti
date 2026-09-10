@@ -1,0 +1,27 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "localreview/tcl"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+pub suberror TclError {
+  Invalid(String)
+} derive(@debug.Debug)
+
+// Types and methods
+pub struct Interpreter {
+  vars : Map[String, String]
+  output : Array[String]
+  mut budget : Int
+} derive(@debug.Debug)
+pub fn Interpreter::eval(Self, String, budget? : Int) -> String raise TclError
+pub fn Interpreter::new() -> Self
+pub fn Interpreter::printed(Self) -> String
+
+// Type aliases
+
+// Traits

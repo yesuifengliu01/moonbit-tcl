@@ -1,0 +1,5 @@
+import {
+  "localreview/tcl" @lib,
+}
+
+pkgtype(kind: "executable")

@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-10",
+  "registry": {
+    "topic": "tcl",
+    "url": "https://mooncakes.io/api/v0/search?kw=tcl&limit=30",
+    "results": [
+      {
+        "name": "moonbit-community/sqlparser",
+        "description": "Extensible SQL Lexer and Parser in MoonBit",
+        "repository": "https://github.com/moonbit-community/sqlparser"
+      }
+    ]
+  },
+  "github": {
+    "topic": "tcl",
+    "query": "tcl language:MoonBit",
+    "url": "https://api.github.com/search/repositories?q=tcl+language%3AMoonBit&per_page=30",
+    "total_count": 0,
+    "results": []
+  },
+  "scope": "keyword package metadata + public repository search; not full code, private repos, or contest registration list"
+}

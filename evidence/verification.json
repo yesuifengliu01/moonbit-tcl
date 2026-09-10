@@ -1,0 +1,49 @@
+{
+  "project": "tcl",
+  "checks": [
+    {
+      "command": "moon fmt",
+      "exit_code": 0,
+      "output": "Finished. moon: ran 9 tasks, now up to date\n",
+      "utc": "2026-09-10T06:02:01.706212+00:00"
+    },
+    {
+      "command": "moon info",
+      "exit_code": 0,
+      "output": "Finished. moon: ran 2 tasks, now up to date\n",
+      "utc": "2026-09-10T06:02:01.954057+00:00"
+    },
+    {
+      "command": "moon check --deny-warn",
+      "exit_code": 0,
+      "output": "Finished. moon: ran 2 tasks, now up to date\n",
+      "utc": "2026-09-10T06:02:03.220182+00:00"
+    },
+    {
+      "command": "moon test --target wasm-gc --deny-warn",
+      "exit_code": 0,
+      "output": "Total tests: 9, passed: 9, failed: 0.\n",
+      "utc": "2026-09-10T06:02:04.630711+00:00"
+    },
+    {
+      "command": "moon test --target js --deny-warn",
+      "exit_code": 0,
+      "output": "Total tests: 9, passed: 9, failed: 0.\n",
+      "utc": "2026-09-10T06:02:05.033793+00:00"
+    },
+    {
+      "command": "moon build --target js --deny-warn",
+      "exit_code": 0,
+      "output": "Finished. moon: no work to do\n",
+      "utc": "2026-09-10T06:02:06.496614+00:00"
+    },
+    {
+      "command": "moon run cmd/main",
+      "exit_code": 0,
+      "output": "Result: 15\nOutput:\nsum=15\n",
+      "utc": "2026-09-10T06:02:06.745034+00:00"
+    }
+  ],
+  "demo": "Result: 15\nOutput:\nsum=15",
+  "source_lines": 467
+}
