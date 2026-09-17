@@ -1,0 +1,16 @@
+{
+  "reference": "System Tcl 8.6.15",
+  "example": "examples/substitution.tcl",
+  "actual": {
+    "ok": true,
+    "result": "8",
+    "output": "Hello MoonBit, request 1.\nHello MoonBit, request 2.\nliteral [incr count], current 2\nbeforeafterVALUE\nstop:\ncomplete before append: 0\ncomplete after append: 1\n"
+  },
+  "expected": {
+    "ok": true,
+    "result": "8",
+    "output": "Hello MoonBit, request 1.\nHello MoonBit, request 2.\nliteral [incr count], current 2\nbeforeafterVALUE\nstop:\ncomplete before append: 0\ncomplete after append: 1\n"
+  },
+  "matched": true,
+  "engineSHA256": "38345fc6951e14eda6692bd0065849abbd737df26160a3a283b388c4dc9b210f"
+}

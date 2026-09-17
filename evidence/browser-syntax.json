@@ -1,0 +1,71 @@
+{
+  "engineSHA256": "38345fc6951e14eda6692bd0065849abbd737df26160a3a283b388c4dc9b210f",
+  "browser": "Codex In-app Browser",
+  "url": "http://127.0.0.1:16037/web/",
+  "version": "0.8.0",
+  "checks": 14,
+  "passed": 14,
+  "method": "Live CUA UI inputs and Run/Reset controls, fresh accessibility snapshots and result/error/output DOM text checks. Observations transcribed from tool returns.",
+  "scope": "Final engine only. One test-input quoting mistake was corrected before validating multiline append; no implementation change was needed. No rerun of mobile layout, import/download, cancellation or timeout in this milestone.",
+  "cleanup": "Temporary tab closed and loopback server stopped.",
+  "rows": [
+    {
+      "name": "default-example",
+      "result": "1208925819614629174706176",
+      "output": "tea: 20\ncoffee: 24\n"
+    },
+    {
+      "name": "template",
+      "result": "1:1"
+    },
+    {
+      "name": "continued",
+      "result": "2:2"
+    },
+    {
+      "name": "break",
+      "result": "prefix 2"
+    },
+    {
+      "name": "continue",
+      "result": "beforeafter3 3"
+    },
+    {
+      "name": "nested-options",
+      "result": "[incr x] VALUE"
+    },
+    {
+      "name": "whole-variable-return",
+      "result": "beforecustomafter"
+    },
+    {
+      "name": "incomplete",
+      "result": "0"
+    },
+    {
+      "name": "multiline-complete",
+      "result": "1 9"
+    },
+    {
+      "name": "no-execution",
+      "result": "1 0"
+    },
+    {
+      "name": "error-side-effect",
+      "error": "Invalid(\"bad\")",
+      "output": "before\n"
+    },
+    {
+      "name": "recovery",
+      "result": "10 11:11"
+    },
+    {
+      "name": "reset",
+      "result": "0 0 0.8.0"
+    },
+    {
+      "name": "console",
+      "entries": []
+    }
+  ]
+}

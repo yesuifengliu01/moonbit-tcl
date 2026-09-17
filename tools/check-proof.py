@@ -3,7 +3,7 @@ from pathlib import Path
 import subprocess,hashlib,json,sys
 root=Path(__file__).resolve().parents[1]
 def git(*args):return subprocess.check_output(['git',*args],cwd=root)
-manifest_name=next(name for name in ['completion-upgrade.json','namespace-upgrade.json','performance-upgrade.json','semantic-upgrade.json'] if (root/'evidence'/name).exists())
+manifest_name=next(name for name in ['syntax-upgrade.json','completion-upgrade.json','namespace-upgrade.json','performance-upgrade.json','semantic-upgrade.json'] if (root/'evidence'/name).exists())
 manifest=json.loads((root/'evidence'/manifest_name).read_text(encoding='utf-8'))
 revision='' if '--index' in sys.argv else 'HEAD'
 count=0

@@ -1,0 +1,6 @@
+{
+  "checks": 24,
+  "passed": 24,
+  "engineSHA256": "38345fc6951e14eda6692bd0065849abbd737df26160a3a283b388c4dc9b210f",
+  "scope": "Persistent module sessions, real JSONL CLI and the actual web Worker module with a Node message adapter; substitution flags, exceptional completion, persistent side effects and no-execution completeness checks; separate browser evidence required."
+}

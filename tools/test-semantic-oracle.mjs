@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {evaluate} from '../web/engine.mjs';
 const suite=process.argv[2]||'semantic';
-if(!['semantic','cache','namespace','completion'].includes(suite))throw new Error('suite must be semantic, cache, namespace or completion');
+if(!['semantic','cache','namespace','completion','syntax'].includes(suite))throw new Error('suite must be semantic, cache, namespace, completion or syntax');
 const reference=JSON.parse(fs.readFileSync(new URL('../evidence/'+suite+'-reference.json',import.meta.url),'utf8'));
 const rows=reference.rows.map(row=>{
  const actual=JSON.parse(evaluate(row.source));
@@ -11,7 +11,7 @@ const rows=reference.rows.map(row=>{
 });
 const report={reference:reference.reference,cases:rows.length,matched:rows.filter(r=>r.matched).length,
  engineSHA256:createHash('sha256').update(fs.readFileSync(new URL('../web/engine.mjs',import.meta.url))).digest('hex'),
- completionScope:reference.completionScope,
+ completionScope:reference.completionScope,syntaxScope:reference.syntaxScope,
  comparison:'Exact result and standard-output strings on success; rejection only on expected errors.',rows};
 fs.writeFileSync(new URL('../evidence/'+suite+'-comparison.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({cases:report.cases,matched:report.matched}));

@@ -26,7 +26,21 @@ struct ScriptParser {
   mut line : Int
   mut command_start : Int
   mut command_line : Int
+  mut trailing_continuation : Bool
 } derive(Debug)
+
+///|
+fn ScriptParser::new(source : String) -> ScriptParser {
+  {
+    chars: source.to_array(),
+    pos: 0,
+    line_pos: 0,
+    line: 1,
+    command_start: 0,
+    command_line: 1,
+    trailing_continuation: false,
+  }
+}
 
 ///|
 fn ScriptParser::peek(self : ScriptParser, offset? : Int = 0) -> Char {
@@ -201,6 +215,7 @@ fn ScriptParser::word(
     self.pos < self.chars.length() &&
     !list_space(self.peek()) &&
     self.peek() != ';' &&
+    !(self.peek() == '\\' && self.peek(offset=1) == '\n') &&
     (!bracket || self.peek() != ']') {
     raise Invalid("extra characters after grouped word")
   }
@@ -231,6 +246,9 @@ fn ScriptParser::script(
       return commands
     }
     if c == '\\' && self.peek(offset=1) == '\n' {
+      if self.pos + 2 == self.chars.length() {
+        self.trailing_continuation = true
+      }
       let (_, next) = backslash(self.chars, self.pos)
       self.pos = next
       continue
@@ -249,8 +267,13 @@ fn ScriptParser::script(
     } else if c == '#' && words.is_empty() {
       while self.pos < self.chars.length() && self.peek() != '\n' {
         if self.peek() == '\\' && self.peek(offset=1) == '\n' {
+          if self.pos + 2 == self.chars.length() {
+            self.trailing_continuation = true
+          }
           let (_, next) = backslash(self.chars, self.pos)
           self.pos = next
+        } else if self.peek() == '\\' && self.pos + 1 < self.chars.length() {
+          self.pos += 2
         } else {
           self.pos += 1
         }

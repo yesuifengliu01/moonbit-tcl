@@ -3,7 +3,7 @@ from pathlib import Path
 import tkinter,json,runpy,sys
 root=Path(__file__).resolve().parents[1]
 suite=sys.argv[1] if len(sys.argv)>1 else 'semantic'
-if suite not in {'semantic','cache','namespace','completion'}:raise SystemExit('suite must be semantic, cache, namespace or completion')
+if suite not in {'semantic','cache','namespace','completion','syntax'}:raise SystemExit('suite must be semantic, cache, namespace, completion or syntax')
 cases=runpy.run_path(str(root/f'tools/{suite}-cases.py'))['cases']
 rows=[]
 for case in cases:
@@ -26,6 +26,7 @@ record={'reference':'System Tcl 8.6.15 through Python tkinter','cases':len(rows)
  'adapter':'Only puts is replaced to collect standard output; expression, variable, collection and procedure semantics use the native Tcl implementation. Errors retain messages but compare rejection, not text.',
  'rows':rows}
 if suite=='completion':record['completionScope']='Matrix helpers normalize generated diagnostic fields and error text; selected metadata, locations and native messages/codes compare directly. See TESTING.md.'
+if suite=='syntax':record['syntaxScope']='Substitution fixtures compare status, normalized error result, side effects and selected completion options. Completeness fixtures compare exact booleans; other successes compare exact values/stdout. Not complete error-message or upstream-suite coverage.'
 (root/f'evidence/{suite}-reference.json').write_text(json.dumps(record,ensure_ascii=True,indent=2)+'\n',encoding='utf-8',newline='\n')
 print('Generated',len(rows),'independent system Tcl cases')
 def lit(text):

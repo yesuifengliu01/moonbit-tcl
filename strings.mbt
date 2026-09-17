@@ -445,6 +445,12 @@ fn Interpreter::info_command(
     raise Invalid("info arity")
   }
   match args[1] {
+    "complete" => {
+      if n != 3 {
+        raise Invalid("info complete arity")
+      }
+      boolean_text(is_complete(args[2]))
+    }
     "exists" => {
       if n != 3 {
         raise Invalid("info exists arity")
@@ -566,7 +572,7 @@ fn Interpreter::info_command(
       if n != 2 {
         raise Invalid("info patchlevel arity")
       }
-      "0.6.0"
+      "0.8.0"
     }
     "tclversion" => {
       if n != 2 {

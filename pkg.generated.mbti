@@ -9,6 +9,8 @@ import {
 // Values
 pub fn format_list(Array[String]) -> String raise TclError
 
+pub fn is_complete(String) -> Bool raise TclError
+
 pub fn parse_list(String) -> Array[String] raise TclError
 
 // Errors

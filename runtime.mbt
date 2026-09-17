@@ -332,20 +332,7 @@ fn Interpreter::command(
       }
       self.execute(args[1:].to_owned().join(" "), depth + 1, discard_result~)
     }
-    "subst" => {
-      if n != 2 {
-        raise Invalid("subst options not implemented")
-      }
-      let parser = ScriptParser::{
-        chars: args[1].to_array(),
-        pos: 0,
-        line_pos: 0,
-        line: 1,
-        command_start: 0,
-        command_line: 1,
-      }
-      self.expand_parts(parser.parts('\u0000', false, 0), depth + 1)
-    }
+    "subst" => self.subst_command(args, depth)
     "rename" => {
       if n != 3 {
         raise Invalid("rename arity")

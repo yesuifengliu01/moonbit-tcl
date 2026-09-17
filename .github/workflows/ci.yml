@@ -32,6 +32,8 @@ jobs:
       - run: node tools/test-semantic-oracle.mjs cache
       - run: node tools/test-semantic-oracle.mjs namespace
       - run: node tools/test-semantic-oracle.mjs completion
+      - run: node tools/test-semantic-oracle.mjs syntax
+      - run: node tools/test-syntax.mjs
       - run: node tools/test-completions.mjs
       - run: node tools/test-namespaces.mjs
       - run: node tools/test-sessions.mjs
