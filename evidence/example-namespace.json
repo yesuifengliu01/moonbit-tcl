@@ -1,0 +1,15 @@
+{
+  "reference": "System Tcl 8.6.15",
+  "expected": {
+    "ok": true,
+    "result": "::ledger::add",
+    "output": "tea: 20\ncoffee: 24\n"
+  },
+  "actual": {
+    "ok": true,
+    "result": "::ledger::add",
+    "output": "tea: 20\ncoffee: 24\n"
+  },
+  "matched": true,
+  "engineSHA256": "d2c36870b98fababb73ef303d4e0967725d335d6dddbec995876692a086b86a9"
+}

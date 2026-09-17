@@ -34,6 +34,10 @@ try {
   if ($LASTEXITCODE -ne 0) {throw 'Tcl semantic differential failed'}
   node tools/test-semantic-oracle.mjs cache
   if ($LASTEXITCODE -ne 0) {throw 'Tcl cache/object differential failed'}
+  node tools/test-semantic-oracle.mjs namespace
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl namespace differential failed'}
+  node tools/test-namespaces.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl namespace hosts failed'}
   node tools/test-sessions.mjs
   if ($LASTEXITCODE -ne 0) {throw 'Persistent session host tests failed'}
   python tools/test-http.py

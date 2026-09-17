@@ -32,7 +32,13 @@ pub struct CacheStats {
 
 type Cell derive(@debug.Debug)
 
+type Command derive(@debug.Debug)
+
+type CommandBody derive(@debug.Debug)
+
 type DictObject derive(@debug.Debug)
+
+type Ensemble derive(@debug.Debug)
 
 type Expr derive(@debug.Debug)
 

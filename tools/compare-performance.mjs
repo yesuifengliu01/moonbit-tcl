@@ -5,7 +5,9 @@ import {execFileSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import os from 'node:os';
 import * as current from '../web/engine.mjs';
-const baselineCommit='8c161948071003589cb203f1032e152ee26a1810';
+const baselineCommit=process.argv[3]||'8c161948071003589cb203f1032e152ee26a1810';
+const outputName=process.argv[4]||'performance-comparison.json';
+if(!/^[a-z0-9-]+\.json$/.test(outputName))throw new Error('Output must be an evidence JSON basename');
 const baselinePath=process.argv[2];
 if(!baselinePath)throw new Error('Pass a local baseline-engine.mjs extracted from '+baselineCommit);
 const sha=data=>createHash('sha256').update(data).digest('hex');
@@ -31,5 +33,5 @@ for(const row of reference.rows){
  rows.push({name:row.name,baselineMedianMs:med(samples[0]),currentMedianMs:med(samples[1]),baselineP95Ms:samples[0][28],currentP95Ms:samples[1][28],speedup:med(samples[0])/med(samples[1]),systemTclMedianMs:row.sessionMedianMs,systemTclRatio:med(samples[1])/row.sessionMedianMs,resultMatched:true});
 }
 const report={baselineCommit,baselineEngineSHA256:expected,currentEngineSHA256:sha(fs.readFileSync(new URL('../web/engine.mjs',import.meta.url))),runtime:process.version,cpu:os.cpus()[0].model,warmups:20,measurements:30,rows,scope:'Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim.'};
-fs.writeFileSync(new URL('../evidence/performance-comparison.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
+fs.writeFileSync(new URL('../evidence/'+outputName,import.meta.url),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(rows));

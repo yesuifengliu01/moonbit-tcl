@@ -1,0 +1,58 @@
+{
+  "engineSHA256": "d2c36870b98fababb73ef303d4e0967725d335d6dddbec995876692a086b86a9",
+  "browser": "Codex In-app Browser",
+  "url": "http://127.0.0.1:16035/web/",
+  "version": "0.6.0",
+  "checks": 11,
+  "passed": 11,
+  "method": "Live CUA UI inputs and Run/Reset controls, fresh accessibility snapshots plus result/error/output DOM text checks. Observations transcribed from the tool return.",
+  "scope": "Final engine only. Earlier intermediate-engine runs are excluded. No rerun of mobile layout, import/download, cancellation or timeout in this milestone.",
+  "cleanup": "Temporary tab closed and loopback server stopped.",
+  "rows": [
+    {
+      "name": "default-example",
+      "result": "1208925819614629174706176",
+      "output": "tea: 20\ncoffee: 24\n"
+    },
+    {
+      "name": "imports",
+      "result": "2 5"
+    },
+    {
+      "name": "redefine-rename",
+      "result": "11 15 ::Counter::add"
+    },
+    {
+      "name": "path-forget",
+      "result": "1 21"
+    },
+    {
+      "name": "delete-safe-forward",
+      "result": "1 {} {fixed {a b} {$x} {[error no]}}"
+    },
+    {
+      "name": "unknown-self-delete",
+      "error": "Invalid(\"unknown handler deleted its ensemble\")"
+    },
+    {
+      "name": "unknown-reparse",
+      "result": "A B"
+    },
+    {
+      "name": "recursive-bound",
+      "error": "Invalid(\"command recursion limit\")"
+    },
+    {
+      "name": "recovery",
+      "result": "fixed {after error}"
+    },
+    {
+      "name": "reset",
+      "result": "0 0"
+    },
+    {
+      "name": "console",
+      "entries": []
+    }
+  ]
+}

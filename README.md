@@ -1,8 +1,16 @@
 # MoonBit Tcl
 
-Tcl 8.6 脚本解释器，0.5.0。本地独立实现，仍在追平成熟项目的完整行为。
+Tcl 8.6 脚本解释器，0.6.0。本地独立实现，仍在追平成熟项目的完整行为。
 
-## 本轮性能与语义改进
+## 本轮命名空间与库命令
+
+新增 namespace export/import/forget/origin/path/upvar/unknown，以及 ensemble create/configure/exists。命令表统一管理内置命令、过程、导入和 ensemble：重命名保留导入引用，重定义更新已有导入，删除连带清理多级导入；强制导入检测环。搜索路径按当前命名空间、路径、全局顺序查询，路径目标删除后不会因同名重建而自动恢复。
+
+Ensemble 支持动态导出列表、显式 subcommands、map 命令前缀、唯一缩写、parameters、unknown 回退和运行时配置；转发参数不重新进行脚本替换，也不增加过程调用帧。inscope 的附加参数按列表元素传递。提供 auto_import 回调接入点，但尚未提供 Tcl 自带自动加载库或包/文件加载机制。
+
+独立系统 Tcl 8.6.15 的 312 个新增程序包括 96 条各 12 步状态变更轨迹；另有五个公开 API 回归，验证跨调用缓存、导入环、递归限额、命令数上限和配置失败后的恢复。示例见 examples/namespaces.tcl。完整结果和源码指纹见 evidence/namespace-upgrade.json。 JS/WasmGC 各 1651 项、20 项新宿主检查通过。七组与 0.5.0 交替测量的热会话耗时约为旧版的 0.70–1.04 倍；当前仍比系统 Tcl 慢约 2.9–7.4 倍，仅代表本机小负载（evidence/namespace-performance.json）。
+
+## 0.5.0 性能与语义改进（历史测量）
 
 脚本和表达式解析结果现在按会话缓存。脚本逐条解析，缓存保留解析错误发生的位置；运行时仍重新读取变量和查找命令，因此重定义、重命名、递归和命名空间切换不复用过期值。两类缓存各最多 256 项，总源文本额度 393216 UTF-16 单元，超过额度即淘汰；缓存命中不减少执行预算。
 
@@ -56,8 +64,8 @@ moon fmt
 
 ## 边界
 
-仍缺 namespace import/export/path、包加载、regexp/regsub、switch、format/scan、trace、source/open/file/exec/socket、事件循环、完整 catch/return/error 选项等。string 字符类别目前主要覆盖 ASCII；非 BMP 字符在全部命令上的 Tcl 8.x UTF-16 行为未完成。已有部分集合对象缓存与解析缓存，仍缺完整 Tcl 对象系统、字节码和成熟性能证明。不能将有限场景通过等同于完整 Tcl 兼容。
+仍缺运行中命名空间删除的完整延迟销毁语义、全局命名空间删除、Tcl 自带自动加载库、包加载、regexp/regsub、switch、format/scan、trace、source/open/file/exec/socket、事件循环、完整 catch/return/error 选项等。string 字符类别目前主要覆盖 ASCII；非 BMP 字符在全部命令上的 Tcl 8.x UTF-16 行为未完成。已有部分集合对象缓存与解析缓存，仍缺完整 Tcl 对象系统、字节码和成熟性能证明。不能将有限场景通过等同于完整 Tcl 兼容。
 
-脚本最多 100000 UTF-16 单元；解析/执行嵌套 64 层；命令及替换共享预算，API 最大 1000000，网页/新会话接口使用 100000。字符串、变量值、列表结果及单次输出限 1000000 单元；整数 16384 位；数组 10000 元素；glob 动态规划最多 1000000 单元。网页 Worker 另有 5 秒终止机制。持久会话的累计内存尚无统一配额，因此不适合作为不可信多租户沙箱。
+脚本最多 100000 UTF-16 单元；解析/执行嵌套 64 层；命令及替换共享预算，API 最大 1000000，网页/新会话接口使用 100000。字符串、变量值、列表结果及单次输出限 1000000 单元；整数 16384 位；命令表最多 10000 项（含内置命令）；数组 10000 元素；glob 动态规划最多 1000000 单元。网页 Worker 另有 5 秒终止机制。持久会话的累计内存尚无统一配额，因此不适合作为不可信多租户沙箱。
 
-根据 [Tcl expr](https://www.tcl-lang.org/man/tcl8.6/TclCmd/expr.htm)、[namespace](https://www.tcl-lang.org/man/tcl8.6/TclCmd/namespace.htm)、[dict](https://www.tcl-lang.org/man/tcl8.6/TclCmd/dict.htm) 文档和系统解释器行为原创实现，没有复制上游源码。MIT 许可。详见 FEATURES.md、TESTING.md 与 evidence/performance-upgrade.json。独立 Git 仓库，无 remote，未上传、发布或提交比赛。
+根据 [Tcl expr](https://www.tcl-lang.org/man/tcl8.6/TclCmd/expr.htm)、[namespace](https://www.tcl-lang.org/man/tcl8.6/TclCmd/namespace.htm)、[dict](https://www.tcl-lang.org/man/tcl8.6/TclCmd/dict.htm) 文档和系统解释器行为原创实现，没有复制上游源码。MIT 许可。详见 FEATURES.md、TESTING.md 与 evidence/namespace-upgrade.json。独立 Git 仓库，无 remote，未上传、发布或提交比赛。

@@ -17,11 +17,19 @@ pub struct Interpreter {
 
 ///|
 pub fn Interpreter::new() -> Interpreter {
+  let commands : Map[String, Command] = Map([])
+  for name in builtin_names() {
+    let key = "::" + name
+    commands[key] = { name: key, body: Native(name), }
+  }
   {
     state: {
       globals: Map([]),
       aliases: Map([]),
-      procedures: Map([]),
+      commands,
+      exports: Map([]),
+      namespace_paths: Map([]),
+      unknown_handlers: Map([]),
       namespaces: Map([("::", true)]),
       cache: ParseCache::new(),
     },
@@ -83,11 +91,6 @@ fn builtin_names() -> Array[String] {
 }
 
 ///|
-fn builtin_name(name : String) -> Bool {
-  builtin_names().contains(name)
-}
-
-///|
 fn Interpreter::command(
   self : Interpreter,
   input : Array[String],
@@ -95,15 +98,52 @@ fn Interpreter::command(
   discard_result? : Bool = false,
 ) -> String raise TclError {
   self.tick()
-  if self.find_procedure(input[0]) is Some(key) {
-    return self.invoke_procedure([key] + input[1:].to_owned(), depth)
+  if depth > 64 {
+    raise Invalid("command recursion limit")
   }
-  let args = if input[0].has_prefix("::") {
-    let args = input.copy()
-    args[0] = args[0][2:].to_owned()
-    args
-  } else {
+  let command = match self.find_command(input[0]) {
+    Some(command) => command.origin()
+    None => {
+      let local_handler = self.state.unknown_handlers
+        .get(self.frame.namespace_name)
+        .unwrap_or("")
+      let global_handler = self.state.unknown_handlers
+        .get("::")
+        .unwrap_or("::unknown")
+      let handler = if !local_handler.is_empty() {
+        local_handler
+      } else if !global_handler.is_empty() {
+        global_handler
+      } else {
+        "::unknown"
+      }
+      let words = parse_list(handler)
+      if words.is_empty() ||
+        (words[0] == "::unknown" && self.find_command("::unknown") is None) {
+        raise Invalid("unsupported command " + input[0])
+      }
+      return self.command(words + input, depth + 1, discard_result~)
+    }
+  }
+  let name = match command.body {
+    Script(definition) => return self.invoke_procedure(definition, input, depth)
+    EnsembleCommand(ensemble) =>
+      return self.invoke_ensemble(
+        command,
+        ensemble,
+        input,
+        depth,
+        discard_result~,
+      )
+    Native(name) => name
+    Imported(_) => raise Invalid("invalid command import")
+  }
+  let args = if input[0] == name {
     input
+  } else {
+    let args = input.copy()
+    args[0] = name
+    args
   }
   let n = args.length()
   match args[0] {
@@ -254,8 +294,8 @@ fn Interpreter::command(
       if n != 4 {
         raise Invalid("proc name parameters body")
       }
-      let key = qualified_name(self.frame.namespace_name, args[1])
-      let owner = namespace_parent(key)
+      let key = command_name(self.frame.namespace_name, args[1])
+      let owner = command_parent(key)
       if !self.state.namespaces.contains(owner) {
         raise Invalid("procedure namespace missing")
       }
@@ -269,11 +309,10 @@ fn Interpreter::command(
           (parts[0], if parts.length() == 2 { Some(parts[1]) } else { None }),
         )
       }
-      self.state.procedures[key] = {
-        parameters,
-        body: args[3],
-        namespace_name: owner,
-      }
+      self.define_command(
+        key,
+        Script({ parameters, body: args[3], namespace_name: owner, }),
+      )
       ""
     }
     "return" => {
@@ -299,28 +338,7 @@ fn Interpreter::command(
       if n != 3 {
         raise Invalid("rename arity")
       }
-      let key = self.find_procedure(args[1]).unwrap_or("")
-      if key.is_empty() {
-        raise Invalid("only user procedures can be renamed")
-      }
-      let definition = self.state.procedures.get(key).unwrap()
-      if !args[2].is_empty() {
-        let target = qualified_name(self.frame.namespace_name, args[2])
-        if self.state.procedures.contains(target) {
-          raise Invalid("target command exists")
-        }
-        let destination = namespace_parent(target)
-        if !self.state.namespaces.contains(destination) {
-          raise Invalid("target namespace does not exist")
-        }
-        self.state.procedures[target] = {
-          parameters: definition.parameters,
-          body: definition.body,
-          namespace_name: destination,
-        }
-      }
-      self.state.procedures.remove(key)
-      ""
+      self.rename_command(args[1], args[2])
     }
     _ => raise Invalid("unsupported command " + args[0])
   }

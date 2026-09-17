@@ -30,6 +30,8 @@ jobs:
       - run: node tools/test-cli.mjs
       - run: node tools/test-semantic-oracle.mjs
       - run: node tools/test-semantic-oracle.mjs cache
+      - run: node tools/test-semantic-oracle.mjs namespace
+      - run: node tools/test-namespaces.mjs
       - run: node tools/test-sessions.mjs
       - run: python3 tools/test-http.py
       - run: node tools/semantic-stress.mjs

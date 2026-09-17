@@ -294,8 +294,8 @@ fn Interpreter::math_function(
   args : Array[String],
   depth : Int,
 ) -> String raise TclError {
-  if self.find_procedure("tcl::mathfunc::" + name) is Some(key) {
-    return self.invoke_procedure([key] + args, depth)
+  if self.find_command("tcl::mathfunc::" + name) is Some(command) {
+    return self.command([command.name] + args, depth)
   }
   if name == "bool" {
     if args.length() != 1 {

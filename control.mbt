@@ -9,13 +9,10 @@ fn Interpreter::tick(self : Interpreter) -> Unit raise TclError {
 ///|
 fn Interpreter::invoke_procedure(
   self : Interpreter,
+  definition : Procedure,
   args : Array[String],
   depth : Int,
 ) -> String raise TclError {
-  let definition = match self.state.procedures.get(args[0]) {
-    Some(p) => p
-    None => raise Invalid("procedure missing")
-  }
   let parameters = definition.parameters
   let body = definition.body
   let variadic = !parameters.is_empty() &&

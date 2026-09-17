@@ -507,28 +507,27 @@ fn Interpreter::info_command(
       if n > 3 {
         raise Invalid("info commands arity")
       }
-      let values = if args[1] == "commands" { builtin_names() } else { [] }
-      for key, _ in self.state.procedures {
-        if namespace_parent(key) == self.frame.namespace_name {
-          values.push(namespace_tail(key))
-        }
-      }
-      values.sort()
       format_list(
-        if n == 3 {
-          values.filter(key => glob_match(args[2], key, false))
-        } else {
-          values
-        },
+        self.command_names(
+          if n == 3 {
+            args[2]
+          } else {
+            "*"
+          },
+          args[1] == "procs",
+        ),
       )
     }
     "body" | "args" | "default" => {
       if n != (if args[1] == "default" { 5 } else { 3 }) {
         raise Invalid("info procedure arity")
       }
-      let key = self.find_procedure(args[2]).unwrap_or("")
-      let definition = match self.state.procedures.get(key) {
-        Some(p) => p
+      let definition = match self.find_command(args[2]) {
+        Some(command) =>
+          match command.origin().body {
+            Script(p) => p
+            _ => raise Invalid("not a procedure")
+          }
         None => raise Invalid("unknown procedure")
       }
       if args[1] == "body" {
@@ -561,7 +560,7 @@ fn Interpreter::info_command(
       if n != 2 {
         raise Invalid("info patchlevel arity")
       }
-      "0.5.0"
+      "0.6.0"
     }
     "tclversion" => {
       if n != 2 {

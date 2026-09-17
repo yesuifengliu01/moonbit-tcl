@@ -38,7 +38,10 @@ struct Procedure {
 struct State {
   globals : Map[String, Cell]
   aliases : Map[String, Binding]
-  procedures : Map[String, Procedure]
+  commands : Map[String, Command]
+  exports : Map[String, Array[String]]
+  namespace_paths : Map[String, Array[String]]
+  unknown_handlers : Map[String, String]
   namespaces : Map[String, Bool]
   cache : ParseCache
 } derive(Debug)
@@ -308,19 +311,6 @@ fn Interpreter::unset_var(
 }
 
 ///|
-fn Interpreter::find_procedure(self : Interpreter, name : String) -> String? {
-  let key = qualified_name(self.frame.namespace_name, name)
-  if self.state.procedures.contains(key) {
-    Some(key)
-  } else if !name.has_prefix("::") &&
-    self.state.procedures.contains(qualified_name("::", name)) {
-    Some(qualified_name("::", name))
-  } else {
-    None
-  }
-}
-
-///|
 fn Interpreter::with_frame(self : Interpreter, frame : Frame) -> Interpreter {
   { ..self, frame, }
 }
@@ -356,8 +346,94 @@ fn Interpreter::namespace_command(
   if args.length() < 2 {
     raise Invalid("namespace arity")
   }
+  let args = args.copy()
+  args[1] = select_keyword(args[1], [
+    "children", "code", "current", "delete", "ensemble", "eval", "exists", "export",
+    "forget", "import", "inscope", "origin", "parent", "path", "qualifiers", "tail",
+    "unknown", "upvar", "which",
+  ])
   let n = args.length()
   match args[1] {
+    "export" => {
+      let clear = n > 2 && args[2] == "-clear"
+      let patterns = if clear {
+        []
+      } else {
+        self.state.exports.get(self.frame.namespace_name).unwrap_or([])
+      }
+      self.state.exports[self.frame.namespace_name] = patterns
+      let start = if clear { 3 } else { 2 }
+      if n == 2 {
+        return format_list(patterns)
+      }
+      for pattern in args[start:] {
+        if pattern.contains("::") {
+          raise Invalid("export pattern must not contain namespace")
+        }
+        if !patterns.contains(pattern) {
+          patterns.push(pattern)
+        }
+      }
+      ""
+    }
+    "import" => self.namespace_import(args, depth)
+    "forget" => self.namespace_forget(args)
+    "origin" => {
+      if n != 3 {
+        raise Invalid("namespace origin arity")
+      }
+      match self.find_command(args[2]) {
+        Some(command) => command.origin().name
+        None => raise Invalid("unknown command")
+      }
+    }
+    "path" => {
+      if n > 3 {
+        raise Invalid("namespace path arity")
+      }
+      if n == 2 {
+        return format_list(
+          self.state.namespace_paths
+          .get(self.frame.namespace_name)
+          .unwrap_or([]),
+        )
+      }
+      let path = []
+      for name in parse_list(args[2]) {
+        let space = self.namespace_target(name)
+        path.push(space)
+      }
+      self.state.namespace_paths[self.frame.namespace_name] = path
+      ""
+    }
+    "unknown" => {
+      if n > 3 {
+        raise Invalid("namespace unknown arity")
+      }
+      if n == 3 {
+        self.state.unknown_handlers[self.frame.namespace_name] = args[2]
+      }
+      let handler = self.state.unknown_handlers
+        .get(self.frame.namespace_name)
+        .unwrap_or("")
+      if handler.is_empty() && self.frame.namespace_name == "::" {
+        "::unknown"
+      } else {
+        handler
+      }
+    }
+    "upvar" => {
+      if n < 3 || n % 2 != 1 {
+        raise Invalid("namespace upvar arity")
+      }
+      let space = self.namespace_target(args[2])
+      for i = 3; i < n; i = i + 2 {
+        let binding = self.binding(command_name(space, args[i]), true).unwrap()
+        self.link_variable(args[i + 1], binding)
+      }
+      ""
+    }
+    "ensemble" => self.ensemble_command(args)
     "current" => {
       if n != 2 {
         raise Invalid("namespace current arity")
@@ -387,11 +463,19 @@ fn Interpreter::namespace_command(
         procedure: false,
         parent: Some(self.frame),
       }
-      self.with_frame(frame).execute(args[3:].to_owned().join(" "), depth + 1)
+      let script = if args[1] == "inscope" && n > 4 {
+        args[3] + " " + format_list(args[4:].to_owned())
+      } else {
+        args[3:].to_owned().join(" ")
+      }
+      self.with_frame(frame).execute(script, depth + 1)
     }
     "exists" => {
       if n != 3 {
         raise Invalid("namespace exists arity")
+      }
+      if args[2].is_empty() && self.frame.namespace_name != "::" {
+        return "0"
       }
       boolean_text(
         self.state.namespaces.contains(
@@ -404,7 +488,7 @@ fn Interpreter::namespace_command(
         raise Invalid("namespace parent arity")
       }
       let target = if n == 3 {
-        qualified_name(self.frame.namespace_name, args[2])
+        self.namespace_target(args[2])
       } else {
         self.frame.namespace_name
       }
@@ -436,7 +520,7 @@ fn Interpreter::namespace_command(
         raise Invalid("namespace children arity")
       }
       let target = if n >= 3 {
-        qualified_name(self.frame.namespace_name, args[2])
+        self.namespace_target(args[2])
       } else {
         self.frame.namespace_name
       }
@@ -485,20 +569,12 @@ fn Interpreter::namespace_command(
           ""
         }
       } else {
-        self
-        .find_procedure(name)
-        .unwrap_or(
-          if builtin_name(name) {
-            qualified_name("::", name)
-          } else {
-            ""
-          },
-        )
+        self.find_command(name).map(c => c.name).unwrap_or("")
       }
     }
     "delete" => {
       for name in args[2:] {
-        let target = qualified_name(self.frame.namespace_name, name)
+        let target = self.namespace_target(name)
         if target == "::" {
           raise Invalid("root namespace deletion not supported")
         }
@@ -518,9 +594,35 @@ fn Interpreter::namespace_command(
             self.state.globals.remove(key)
           }
         }
-        for key in self.state.procedures.keys().to_array() {
-          if key.has_prefix(target + "::") {
-            self.state.procedures.remove(key)
+        for command in self.state.commands.values().to_array() {
+          let linked = match command.body {
+            EnsembleCommand(ensemble) =>
+              ensemble.namespace_name == target ||
+              ensemble.namespace_name.has_prefix(target + "::")
+            _ => false
+          }
+          if linked || command.name.has_prefix(target + "::") {
+            self.delete_command(command)
+          }
+        }
+        for key in self.state.exports.keys().to_array() {
+          if key == target || key.has_prefix(target + "::") {
+            self.state.exports.remove(key)
+          }
+        }
+        for key in self.state.unknown_handlers.keys().to_array() {
+          if key == target || key.has_prefix(target + "::") {
+            self.state.unknown_handlers.remove(key)
+          }
+        }
+        for key in self.state.namespace_paths.keys().to_array() {
+          if key == target || key.has_prefix(target + "::") {
+            self.state.namespace_paths.remove(key)
+          } else {
+            self.state.namespace_paths[key] = self.state.namespace_paths[key].filter(s => {
+                s != target && !s.has_prefix(target + "::")
+              },
+            )
           }
         }
         for key in self.state.aliases.keys().to_array() {
@@ -535,7 +637,19 @@ fn Interpreter::namespace_command(
       if n != 3 {
         raise Invalid("namespace code arity")
       }
-      format_list(["::namespace", "inscope", self.frame.namespace_name, args[2]])
+      let words = parse_list(args[2]) catch { _ => [] }
+      if words.length() == 4 &&
+        words[0] == "::namespace" &&
+        words[1] == "inscope" {
+        args[2]
+      } else {
+        format_list([
+          "::namespace",
+          "inscope",
+          self.frame.namespace_name,
+          args[2],
+        ])
+      }
     }
     _ => raise Invalid("unsupported namespace subcommand")
   }
@@ -631,4 +745,19 @@ fn Interpreter::scope_command(
     }
     _ => raise Invalid("unsupported scope command")
   }
+}
+
+///|
+fn Interpreter::namespace_target(
+  self : Interpreter,
+  name : String,
+) -> String raise TclError {
+  if name.is_empty() && self.frame.namespace_name != "::" {
+    raise Invalid("empty namespace name")
+  }
+  let target = qualified_name(self.frame.namespace_name, name)
+  if !self.state.namespaces.contains(target) {
+    raise Invalid("unknown namespace")
+  }
+  target
 }
