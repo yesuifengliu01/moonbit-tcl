@@ -1,0 +1,142 @@
+{
+  "scope": "Diagnostic profiles at intermediate stages, not final benchmark timing. Different iteration counts; compare costs as shares, not raw durations.",
+  "findings": [
+    "Repeated expression parsing in baseline",
+    "String.code_units allocated a fresh array in the first fast path; replaced with direct unit lookup",
+    "Collection materialization dominated growing list/dict workloads"
+  ],
+  "profiles": [
+    {
+      "profile": "baseline.cpuprofile",
+      "iterations": 160,
+      "top": [
+        {
+          "function": "_M0MP211localreview3tcl12ScriptParser10expression",
+          "percent": 14.949727812833968
+        },
+        {
+          "function": "_M0MPB7JSArray4push",
+          "percent": 12.769857960444957
+        },
+        {
+          "function": "(garbage collector)",
+          "percent": 7.035547076077253
+        },
+        {
+          "function": "_M0MPC16bigint6BigInt11bit__length",
+          "percent": 4.491934617499791
+        },
+        {
+          "function": "_M0MPB4Iter4foldGcRPB5ArrayGcEE",
+          "percent": 3.7098546922263047
+        },
+        {
+          "function": "_M0FP211localreview3tcl14quote__element",
+          "percent": 3.68063799040274
+        },
+        {
+          "function": "_M0MPC16bigint6BigInt17js__parse__string",
+          "percent": 3.4541818936954574
+        },
+        {
+          "function": "_M0MPC16string6String9to__array",
+          "percent": 3.3480047738384693
+        },
+        {
+          "function": "_M0FP211localreview3tcl5whole",
+          "percent": 3.2561694291466994
+        },
+        {
+          "function": "_M0FP211localreview3tcl15qualified__name",
+          "percent": 2.779531994287815
+        },
+        {
+          "function": "_M0FP211localreview3tcl11parse__list",
+          "percent": 2.5772010026446983
+        },
+        {
+          "function": "_M0FP211localreview3tcl12format__list",
+          "percent": 2.451297277541873
+        },
+        {
+          "function": "_M0MP211localreview3tcl11Interpreter7binding",
+          "percent": 2.2938309840457083
+        },
+        {
+          "function": "_M0MPC16string6String11has__prefix",
+          "percent": 2.2653073791632132
+        },
+        {
+          "function": "",
+          "percent": 2.246727049627607
+        }
+      ]
+    },
+    {
+      "profile": "current.cpuprofile",
+      "iterations": 1000,
+      "top": [
+        {
+          "function": "$make_array_len_and_init",
+          "percent": 15.302756803865435
+        },
+        {
+          "function": "_M0MP211localreview3tcl11Interpreter7binding",
+          "percent": 6.0771348904652776
+        },
+        {
+          "function": "_M0MP211localreview3tcl11Interpreter15command_2einner",
+          "percent": 4.883413739078185
+        },
+        {
+          "function": "_M0FP211localreview3tcl14small__decimal",
+          "percent": 4.722643631641543
+        },
+        {
+          "function": "_M0MP211localreview3tcl11Interpreter25execute__commands_2einner",
+          "percent": 4.5151694976275545
+        },
+        {
+          "function": "_M0MPB3Map3getGsRP211localreview3tcl4CellE",
+          "percent": 4.337614742680925
+        },
+        {
+          "function": "(garbage collector)",
+          "percent": 4.2620093408053155
+        },
+        {
+          "function": "_M0MPC16string6String8contains",
+          "percent": 4.158570226120983
+        },
+        {
+          "function": "_M0MPB7JSArray4push",
+          "percent": 3.413192832260291
+        },
+        {
+          "function": "_M0MP211localreview3tcl11Interpreter13expand__parts",
+          "percent": 3.1225155121427988
+        },
+        {
+          "function": "_M0MPC16bigint6BigInt11bit__length",
+          "percent": 3.0308703435638575
+        },
+        {
+          "function": "_M0FP211localreview3tcl15variable__parts",
+          "percent": 2.9690700659716103
+        },
+        {
+          "function": "_M0MP211localreview3tcl11Interpreter15execute_2einner",
+          "percent": 2.9118383906601877
+        },
+        {
+          "function": "_M0MP211localreview3tcl11Interpreter15find__procedure",
+          "percent": 2.870323700369213
+        },
+        {
+          "function": "_M0MP211localreview3tcl11Interpreter15global__defined",
+          "percent": 2.1322709677739735
+        }
+      ]
+    }
+  ]
+}

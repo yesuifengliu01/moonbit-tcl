@@ -9,6 +9,8 @@ workloads=[
  ('bigint-150','set x 1; for {set i 0} {$i < 150} {incr i} {set x [expr {$x * 3 + 1}]}; set x'),
  ('alias-200','proc bump {name} {upvar 1 $name x; incr x}; set x 0; for {set i 0} {$i < 200} {incr i} {bump x}; set x'),
  ('sort-200','set xs {}; for {set i 200} {$i > 0} {incr i -1} {lappend xs $i}; lindex [lsort -integer $xs] end'),
+ ('dictionary-1000','set d {}; for {set i 0} {$i < 1000} {incr i} {dict set d $i [expr {$i*$i}]}; dict get $d 999'),
+ ('sort-1000','set xs {}; for {set i 1000} {$i > 0} {incr i -1} {lappend xs $i}; lindex [lsort -integer $xs] end'),
 ]
 rows=[]
 for name,source in workloads:

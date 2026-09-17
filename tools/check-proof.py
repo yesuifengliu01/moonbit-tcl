@@ -3,7 +3,8 @@ from pathlib import Path
 import subprocess,hashlib,json,sys
 root=Path(__file__).resolve().parents[1]
 def git(*args):return subprocess.check_output(['git',*args],cwd=root)
-manifest=json.loads((root/'evidence/semantic-upgrade.json').read_text(encoding='utf-8'))
+manifest_name='performance-upgrade.json' if (root/'evidence/performance-upgrade.json').exists() else 'semantic-upgrade.json'
+manifest=json.loads((root/'evidence'/manifest_name).read_text(encoding='utf-8'))
 revision='' if '--index' in sys.argv else 'HEAD'
 count=0
 for group in ['sourceGitBlobSHA256','evidenceGitBlobSHA256']:

@@ -22,7 +22,19 @@ pub suberror TclError {
 // Types and methods
 type Binding derive(@debug.Debug)
 
+pub struct CacheStats {
+  scripts : Int
+  expressions : Int
+  source_units : Int
+  script_hits : Int
+  expression_hits : Int
+} derive(@debug.Debug)
+
 type Cell derive(@debug.Debug)
+
+type DictObject derive(@debug.Debug)
+
+type Expr derive(@debug.Debug)
 
 type Frame derive(@debug.Debug)
 
@@ -33,17 +45,31 @@ pub struct Interpreter {
   output_size : Array[Int]
   budget : @ref.Ref[Int]
 } derive(@debug.Debug)
+pub fn Interpreter::cache_stats(Self) -> CacheStats
+pub fn Interpreter::clear_cache(Self) -> Unit
 pub fn Interpreter::clear_output(Self) -> Unit
 pub fn Interpreter::eval(Self, String, budget? : Int) -> String raise TclError
 pub fn Interpreter::new() -> Self
 pub fn Interpreter::output_text(Self) -> String
 pub fn Interpreter::printed(Self) -> String
 
+type ListObject derive(@debug.Debug)
+
+type ParseCache derive(@debug.Debug)
+
+type Part derive(@debug.Debug)
+
 type Procedure derive(@debug.Debug)
+
+type ScriptParser derive(@debug.Debug)
+
+type ScriptProgram derive(@debug.Debug)
 
 type State derive(@debug.Debug)
 
 type VariableValue derive(@debug.Debug)
+
+type Word derive(@debug.Debug)
 
 // Type aliases
 

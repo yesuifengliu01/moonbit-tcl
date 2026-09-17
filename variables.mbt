@@ -1,6 +1,8 @@
 ///|
 enum VariableValue {
   Scalar(String)
+  Sequence(ListObject)
+  Mapping(DictObject)
   Elements(Map[String, String])
 } derive(Debug)
 
@@ -38,10 +40,17 @@ struct State {
   aliases : Map[String, Binding]
   procedures : Map[String, Procedure]
   namespaces : Map[String, Bool]
+  cache : ParseCache
 } derive(Debug)
 
 ///|
 fn qualified_name(prefix : String, name : String) -> String {
+  if !name.is_empty() && !name.contains("::") {
+    return if prefix == "::" { "::" + name } else { prefix + "::" + name }
+  }
+  if name.has_prefix("::") && !name.contains(":::") && !name.has_suffix("::") {
+    return name
+  }
   let value = if name.has_prefix("::") { name } else { prefix + "::" + name }
   let chars = value.to_array()
   let out = StringBuilder()
@@ -63,6 +72,10 @@ fn qualified_name(prefix : String, name : String) -> String {
 
 ///|
 fn namespace_parent(name : String) -> String {
+  if name.has_prefix("::") && !name.contains(":::") && !name.has_suffix("::") {
+    let index = name.rev_find("::").unwrap_or(0)
+    return if index == 0 { "::" } else { name[:index].to_owned() }
+  }
   let parts = name.split("::").filter(s => !s.is_empty()).to_array()
   if parts.length() < 2 {
     "::"
@@ -78,16 +91,8 @@ fn namespace_tail(name : String) -> String {
 
 ///|
 fn variable_parts(name : String) -> (String, String?) {
-  let chars = name.to_array()
-  let mut at = 0
-  while at < chars.length() && chars[at] != '(' {
-    at += 1
-  }
-  if at < chars.length() && name.has_suffix(")") {
-    (
-      String::from_array(chars[:at]),
-      Some(String::from_array(chars[at + 1:chars.length() - 1])),
-    )
+  if name.has_suffix(")") && name.find("(") is Some(at) {
+    (name[:at].to_owned(), Some(name[at + 1:name.length() - 1].to_owned()))
   } else {
     (name, None)
   }
@@ -129,7 +134,8 @@ fn Interpreter::binding(
     })
   }
   let mut key = qualified_name(self.frame.namespace_name, base)
-  if !base.contains("::") &&
+  if self.frame.namespace_name != "::" &&
+    !base.contains("::") &&
     !self.global_defined(key) &&
     self.global_defined("::" + base) {
     key = "::" + base
@@ -198,9 +204,11 @@ fn Interpreter::link_variable(
 fn Binding::read(self : Binding) -> String? raise TclError {
   match (self.cell.value, self.index) {
     (Some(Scalar(value)), None) => Some(value)
+    (Some(Sequence(value)), None) => Some(value.text())
+    (Some(Mapping(value)), None) => Some(value.text())
     (Some(Elements(values)), Some(index)) => values.get(index)
     (Some(Elements(_)), None) => raise Invalid("variable is array")
-    (Some(Scalar(_)), Some(_)) => raise Invalid("variable is not an array")
+    (Some(_), Some(_)) => raise Invalid("variable is not an array")
     _ => None
   }
 }
@@ -246,7 +254,8 @@ fn Interpreter::set_var(
     }
     Some(index) => {
       let values = match binding.cell.value {
-        Some(Scalar(_)) => raise Invalid("variable is not an array")
+        Some(Scalar(_)) | Some(Sequence(_)) | Some(Mapping(_)) =>
+          raise Invalid("variable is not an array")
         Some(Elements(values)) => values
         None => {
           let values = Map([])
@@ -358,6 +367,9 @@ fn Interpreter::namespace_command(
     "eval" | "inscope" => {
       if n < 4 {
         raise Invalid("namespace eval arity")
+      }
+      if args[2].is_empty() && self.frame.namespace_name != "::" {
+        raise Invalid("empty namespace name")
       }
       let target = qualified_name(self.frame.namespace_name, args[2])
       if args[1] == "inscope" && !self.state.namespaces.contains(target) {

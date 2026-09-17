@@ -39,7 +39,8 @@ fn Interpreter::array_command(
         raise Invalid("array set expects pairs")
       }
       let binding = binding.unwrap()
-      if binding.index is Some(_) || binding.cell.value is Some(Scalar(_)) {
+      if binding.index is Some(_) ||
+        (binding.cell.value is Some(_) && values is None) {
         raise Invalid("variable is not array")
       }
       let values = match values {
@@ -219,10 +220,20 @@ fn Interpreter::dict_command(
   self : Interpreter,
   args : Array[String],
   depth : Int,
+  discard_result? : Bool = false,
+  object_path? : Bool = true,
 ) -> String raise TclError {
   let n = args.length()
   if n < 2 {
     raise Invalid("dict arity")
+  }
+  if object_path &&
+    (
+      (args[1] == "set" && n == 5) ||
+      (args[1] == "incr" && (n == 4 || n == 5)) ||
+      (["append", "lappend"].contains(args[1]) && n >= 4)
+    ) {
+    return self.update_dictionary(args, depth, discard_result)
   }
   match args[1] {
     "create" => dictionary_text(dictionary(format_list(args[2:].to_owned())))
@@ -331,10 +342,18 @@ fn Interpreter::dict_command(
       let current = dictionary_get(previous, [args[3]]) catch { _ => "" }
       let value = if args[1] == "incr" {
         let exists = dictionary(previous).iter().any(p => p.0 == args[3])
-        Whole(
-          whole(if exists { current } else { "0" }) +
-          whole(if n == 5 { args[4] } else { "1" }),
-        ).text()
+        integer_add(
+          if exists {
+            current
+          } else {
+            "0"
+          },
+          if n == 5 {
+            args[4]
+          } else {
+            "1"
+          },
+        )
       } else if args[1] == "append" {
         current + args[4:].to_owned().join("")
       } else {

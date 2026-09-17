@@ -1,0 +1,52 @@
+{
+  "version": "0.5.0",
+  "checks": 8,
+  "passed": 8,
+  "method": "Live Codex browser CUA against the actual Worker and compiled engine; transcribed DOM observations",
+  "engineSHA256": "041cf17dc7443b1e381152e6db6c6a671894a55c3f88a8f872af418756a274d3",
+  "rows": [
+    {
+      "case": "example",
+      "result": "1208925819614629174706176",
+      "output": "tea: 20\ncoffee: 24\n",
+      "passed": true
+    },
+    {
+      "case": "collections-copy",
+      "result": "1000 1001 998 1000",
+      "passed": true
+    },
+    {
+      "case": "redefinition",
+      "result": "after",
+      "passed": true
+    },
+    {
+      "case": "first-partial-error",
+      "error": "Invalid(\"missing close-brace\")",
+      "passed": true
+    },
+    {
+      "case": "cached-partial-error",
+      "error": "Invalid(\"missing close-brace\")",
+      "passed": true
+    },
+    {
+      "case": "side-effects-retained",
+      "result": "2",
+      "passed": true
+    },
+    {
+      "case": "reset",
+      "result": "0",
+      "passed": true
+    },
+    {
+      "case": "console",
+      "logs": [],
+      "passed": true
+    }
+  ],
+  "temporaryTabClosed": true,
+  "serverStopped": true
+}

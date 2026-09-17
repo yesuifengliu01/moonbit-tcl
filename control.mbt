@@ -89,7 +89,7 @@ fn Interpreter::loop_body(
   depth : Int,
 ) -> Int raise TclError {
   try {
-    ignore(self.execute(source, depth + 1))
+    ignore(self.execute(source, depth + 1, discard_result=true))
     0
   } catch {
     Break => 2
@@ -156,7 +156,7 @@ fn Interpreter::control_command(
       if n != 5 {
         raise Invalid("for arity")
       }
-      ignore(self.execute(args[1], depth + 1))
+      ignore(self.execute(args[1], depth + 1, discard_result=true))
       while self.math(args[2], depth) != 0 {
         self.tick()
         if self.loop_body(args[4], depth) == 2 {

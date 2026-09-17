@@ -198,7 +198,7 @@ fn Interpreter::extended_list_command(
         let result = if command is Some(script) {
           integer(self.command(parse_list(script) + [a, b], depth + 1))
         } else if mode == "-integer" {
-          whole(a).compare(whole(b))
+          integer_compare(a, b)
         } else if mode == "-real" {
           let a = match number(a) {
             Some(n) => n.double()

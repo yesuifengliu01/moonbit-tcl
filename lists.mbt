@@ -274,6 +274,7 @@ fn list_index(text : String, length : Int) -> Int raise TclError {
 fn Interpreter::list_command(
   self : Interpreter,
   args : Array[String],
+  discard_result? : Bool = false,
 ) -> String raise TclError {
   let n = args.length()
   match args[0] {
@@ -311,13 +312,7 @@ fn Interpreter::list_command(
         self.set_var(args[1], value)
         return value
       }
-      let values = parse_list(self.get_var(args[1]).unwrap_or(""))
-      for item in args[2:] {
-        values.push(item)
-      }
-      let result = format_list(values)
-      self.set_var(args[1], result)
-      result
+      self.append_list(args[1], args[2:].to_owned(), discard_result)
     }
     "join" => {
       if n != 2 && n != 3 {

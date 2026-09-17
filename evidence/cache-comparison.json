@@ -1,0 +1,4429 @@
+{
+  "reference": "System Tcl 8.6.15 through Python tkinter",
+  "cases": 340,
+  "matched": 340,
+  "engineSHA256": "041cf17dc7443b1e381152e6db6c6a671894a55c3f88a8f872af418756a274d3",
+  "comparison": "Exact result and standard-output strings on success; rejection only on expected errors.",
+  "rows": [
+    {
+      "name": "cache-expr-variable",
+      "source": "set x 1; set out {}; foreach x {1 2 3} {lappend out [expr {$x+3}]}; set out",
+      "result": "4 5 6",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "4 5 6",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dynamic-command",
+      "source": "proc p {} {return old}; set code p; set out [eval $code]; proc p {} {return new}; list $out [eval $code]",
+      "result": "old new",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "old new",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-rename-command",
+      "source": "proc p {} {return old}; set code p; eval $code; rename p q; proc p {} {return new}; list [eval $code] [q]",
+      "result": "new old",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "new old",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-namespace-context",
+      "source": "namespace eval a {variable x 1; proc p {} {variable x; incr x}}; namespace eval b {variable x 5; proc p {} {variable x; incr x}}; set code {p}; list [namespace eval a $code] [namespace eval b $code] [namespace eval a $code]",
+      "result": "2 6 3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2 6 3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-recursive-cache",
+      "source": "proc f {n} {if {$n<2} {return $n}; expr {[f [expr {$n-1}]]+[f [expr {$n-2}]]}}; f 10",
+      "result": "55",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "55",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-recursive-mutate",
+      "source": "proc p {n} {global x; incr x; if {$n>0} {p [expr {$n-1}]}; return $x}; set x 0; list [p 4] [p 2]",
+      "result": "5 8",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "5 8",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-parse-error-repeat",
+      "source": "set code \"incr x; set y \\{\"; set x 0; list [catch {eval $code}] [catch {eval $code}] $x",
+      "result": "1 1 2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1 1 2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-early-return-invalid",
+      "source": "set code \"return yes; set y \\{\"; list [catch {eval $code} result] $result [catch {eval $code} result] $result",
+      "result": "2 yes 2 yes",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2 yes 2 yes",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-lazy-variable-change",
+      "source": "set x 0; set out {}; foreach flag {0 1 0 1} {lappend out [expr {$flag && [incr x]}]}; list $out $x",
+      "result": "{0 1 0 1} 2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "{0 1 0 1} 2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-command-replacement",
+      "source": "set code {set x 3}; eval $code; proc set args {return changed}; eval $code",
+      "result": "changed",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "changed",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-list-copy",
+      "source": "set xs {}; for {set i 0} {$i<5} {incr i} {lappend xs $i}; set copy $xs; lappend xs X; list $copy $xs",
+      "result": "{0 1 2 3 4} {0 1 2 3 4 X}",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "{0 1 2 3 4} {0 1 2 3 4 X}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-list-alias",
+      "source": "set xs {}; upvar #0 xs ys; for {set i 0} {$i<5} {incr i} {lappend ys $i}; list $xs $ys",
+      "result": "{0 1 2 3 4} {0 1 2 3 4}",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "{0 1 2 3 4} {0 1 2 3 4}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-list-alias-unset",
+      "source": "set xs {}; upvar #0 xs ys; foreach i {1 2} {lappend ys $i}; unset xs; lappend ys 3; list $xs $ys",
+      "result": "3 3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "3 3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-list-self",
+      "source": "set xs {a}; foreach i {1 2} {lappend xs $xs}; set xs",
+      "result": "a a {a a}",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "a a {a a}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-list-to-dict",
+      "source": "set x {}; foreach item {a 1 b 2} {lappend x $item}; dict incr x a; list $x [dict get $x b]",
+      "result": "{a 2 b 2} 2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "{a 2 b 2} 2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-to-list",
+      "source": "dict set x a 1; foreach item {b 2} {lappend x $item}; set x",
+      "result": "a 1 b 2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "a 1 b 2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-list-set-invalidate",
+      "source": "set x {}; foreach i {1 2} {lappend x $i}; set x {new}; foreach i {3 4} {lappend x $i}; set x",
+      "result": "new 3 4",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "new 3 4",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-copy",
+      "source": "set d {}; foreach i {a b c} {dict set d $i $i}; set copy $d; dict set d a changed; list $copy $d",
+      "result": "{a a b b c c} {a changed b b c c}",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "{a a b b c c} {a changed b b c c}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-alias",
+      "source": "set d {}; upvar #0 d e; foreach i {a b c} {dict set e $i $i}; list $d $e",
+      "result": "{a a b b c c} {a a b b c c}",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "{a a b b c c} {a a b b c c}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-replace",
+      "source": "set d {}; foreach i {a b c} {dict set d $i $i}; set d {x 2}; dict incr d x; set d",
+      "result": "x 3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "x 3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-self",
+      "source": "set d {}; dict set d x 1; foreach i {y z} {dict set d $i $d}; set d",
+      "result": "x 1 y {x 1} z {x 1 y {x 1}}",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "x 1 y {x 1} z {x 1 y {x 1}}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-nested-fallback",
+      "source": "set d {}; foreach i {a b c} {dict set d $i 1}; dict set d a x 2; dict set d b 3; set d",
+      "result": "missing value to go with key",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"missing dictionary value\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-with-cache",
+      "source": "set d {}; foreach i {a b c} {dict set d $i 1}; dict with d {incr a; unset b}; dict incr d c; set d",
+      "result": "a 2 c 2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "a 2 c 2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-update-error",
+      "source": "set d {}; foreach i {a b c} {dict set d $i 1}; catch {dict update d a x {incr x; error bad}}; dict set d z 3; set d",
+      "result": "a 2 b 1 c 1 z 3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "a 2 b 1 c 1 z 3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-array-list",
+      "source": "array set a {}; foreach i {1 2 3} {lappend a(x) $i}; set a(x)",
+      "result": "1 2 3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1 2 3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-array-dict",
+      "source": "array set a {}; foreach i {a b c} {dict set a(x) $i 1}; dict incr a(x) a; set a(x)",
+      "result": "a 2 b 1 c 1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "a 2 b 1 c 1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-list-array-collision",
+      "source": "foreach i {1 2} {lappend x $i}; array set x {}",
+      "result": "can't array set \"x\": variable isn't array",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"variable is not array\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-array-collision",
+      "source": "foreach i {a b} {dict set x $i 1}; set x(0) 4",
+      "result": "can't set \"x(0)\": variable isn't array",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"variable is not an array\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-loop-if-result",
+      "source": "set xs {}; foreach x {0 1 2} {if {$x>0} {lappend xs $x}}; set xs",
+      "result": "1 2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1 2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-lmap-result",
+      "source": "set xs {}; lmap x {1 2 3} {lappend xs $x}",
+      "result": "1 {1 2} {1 2 3}",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1 {1 2} {1 2 3}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-catch-result",
+      "source": "set xs {}; foreach x {1 2} {lappend xs $x}; list [catch {lappend xs 3} result] $result $xs",
+      "result": "0 {1 2 3} {1 2 3}",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0 {1 2 3} {1 2 3}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-proc-result",
+      "source": "proc p {} {set xs {}; foreach x {1 2} {lappend xs $x}; lappend xs 3}; p",
+      "result": "1 2 3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1 2 3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-empty-namespace",
+      "source": "namespace eval n {variable x 3; namespace eval {} {namespace current}}",
+      "result": "can't create namespace \"\": only global namespace can have empty name",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"empty namespace name\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-duplicates",
+      "source": "set d {a 1 b 2 a 3}; dict append d a; set d",
+      "result": "a 3 b 2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "a 3 b 2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-list-whitespace",
+      "source": "set x { a   b }; foreach item {c d} {lappend x $item}; set x",
+      "result": "a b c d",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "a b c d",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dict-zero-append",
+      "source": "set d { a 1   b 2 }; dict append d a; set d",
+      "result": "a 1 b 2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "a 1 b 2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-increment-prefix",
+      "source": "set x 010; for {set i 0} {$i<3} {incr i} {incr x}; set x",
+      "result": "11",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "11",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-dynamic-script-eviction",
+      "source": "set out 0; for {set i 0} {$i<300} {incr i} {eval [list set x $i]; incr out}; list $x $out",
+      "result": "299 300",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "299 300",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "cache-empty-tail-comments",
+      "source": "set code \"set x 3; # tail\\n\"; list [eval $code] [eval $code]",
+      "result": "3 3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "3 3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-+--3",
+      "source": "expr {-999999999 + -3}",
+      "result": "-1000000002",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000002",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999----3",
+      "source": "expr {-999999999 - -3}",
+      "result": "-999999996",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999996",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-*--3",
+      "source": "expr {-999999999 * -3}",
+      "result": "2999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-/--3",
+      "source": "expr {-999999999 / -3}",
+      "result": "333333333",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "333333333",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-%--3",
+      "source": "expr {-999999999 % -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-&--3",
+      "source": "expr {-999999999 & -3}",
+      "result": "-999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-|--3",
+      "source": "expr {-999999999 | -3}",
+      "result": "-3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-^--3",
+      "source": "expr {-999999999 ^ -3}",
+      "result": "999999996",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999996",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-==--3",
+      "source": "expr {-999999999 == -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-<--3",
+      "source": "expr {-999999999 < -3}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-**--3",
+      "source": "expr {-999999999 ** -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-+-0",
+      "source": "expr {-999999999 + 0}",
+      "result": "-999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999---0",
+      "source": "expr {-999999999 - 0}",
+      "result": "-999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-*-0",
+      "source": "expr {-999999999 * 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-/-0",
+      "source": "expr {-999999999 / 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-%-0",
+      "source": "expr {-999999999 % 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-&-0",
+      "source": "expr {-999999999 & 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-|-0",
+      "source": "expr {-999999999 | 0}",
+      "result": "-999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-^-0",
+      "source": "expr {-999999999 ^ 0}",
+      "result": "-999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-==-0",
+      "source": "expr {-999999999 == 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-<-0",
+      "source": "expr {-999999999 < 0}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-**-0",
+      "source": "expr {-999999999 ** 0}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-+-3",
+      "source": "expr {-999999999 + 3}",
+      "result": "-999999996",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999996",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999---3",
+      "source": "expr {-999999999 - 3}",
+      "result": "-1000000002",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000002",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-*-3",
+      "source": "expr {-999999999 * 3}",
+      "result": "-2999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-/-3",
+      "source": "expr {-999999999 / 3}",
+      "result": "-333333333",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-333333333",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-%-3",
+      "source": "expr {-999999999 % 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-&-3",
+      "source": "expr {-999999999 & 3}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-|-3",
+      "source": "expr {-999999999 | 3}",
+      "result": "-999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-^-3",
+      "source": "expr {-999999999 ^ 3}",
+      "result": "-999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-==-3",
+      "source": "expr {-999999999 == 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-<-3",
+      "source": "expr {-999999999 < 3}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-**-3",
+      "source": "expr {-999999999 ** 3}",
+      "result": "-999999997000000002999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999997000000002999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-+-999999999",
+      "source": "expr {-999999999 + 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999---999999999",
+      "source": "expr {-999999999 - 999999999}",
+      "result": "-1999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-*-999999999",
+      "source": "expr {-999999999 * 999999999}",
+      "result": "-999999998000000001",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999998000000001",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-/-999999999",
+      "source": "expr {-999999999 / 999999999}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-%-999999999",
+      "source": "expr {-999999999 % 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-&-999999999",
+      "source": "expr {-999999999 & 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-|-999999999",
+      "source": "expr {-999999999 | 999999999}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-^-999999999",
+      "source": "expr {-999999999 ^ 999999999}",
+      "result": "-2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-==-999999999",
+      "source": "expr {-999999999 == 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--999999999-<-999999999",
+      "source": "expr {-999999999 < 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-+--3",
+      "source": "expr {999999999 + -3}",
+      "result": "999999996",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999996",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999----3",
+      "source": "expr {999999999 - -3}",
+      "result": "1000000002",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000002",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-*--3",
+      "source": "expr {999999999 * -3}",
+      "result": "-2999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-/--3",
+      "source": "expr {999999999 / -3}",
+      "result": "-333333333",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-333333333",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-%--3",
+      "source": "expr {999999999 % -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-&--3",
+      "source": "expr {999999999 & -3}",
+      "result": "999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-|--3",
+      "source": "expr {999999999 | -3}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-^--3",
+      "source": "expr {999999999 ^ -3}",
+      "result": "-999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-==--3",
+      "source": "expr {999999999 == -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-<--3",
+      "source": "expr {999999999 < -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-**--3",
+      "source": "expr {999999999 ** -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-+-0",
+      "source": "expr {999999999 + 0}",
+      "result": "999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999---0",
+      "source": "expr {999999999 - 0}",
+      "result": "999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-*-0",
+      "source": "expr {999999999 * 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-/-0",
+      "source": "expr {999999999 / 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-%-0",
+      "source": "expr {999999999 % 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-&-0",
+      "source": "expr {999999999 & 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-|-0",
+      "source": "expr {999999999 | 0}",
+      "result": "999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-^-0",
+      "source": "expr {999999999 ^ 0}",
+      "result": "999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-==-0",
+      "source": "expr {999999999 == 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-<-0",
+      "source": "expr {999999999 < 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-**-0",
+      "source": "expr {999999999 ** 0}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-+-3",
+      "source": "expr {999999999 + 3}",
+      "result": "1000000002",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000002",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999---3",
+      "source": "expr {999999999 - 3}",
+      "result": "999999996",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999996",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-*-3",
+      "source": "expr {999999999 * 3}",
+      "result": "2999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-/-3",
+      "source": "expr {999999999 / 3}",
+      "result": "333333333",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "333333333",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-%-3",
+      "source": "expr {999999999 % 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-&-3",
+      "source": "expr {999999999 & 3}",
+      "result": "3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-|-3",
+      "source": "expr {999999999 | 3}",
+      "result": "999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-^-3",
+      "source": "expr {999999999 ^ 3}",
+      "result": "999999996",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999996",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-==-3",
+      "source": "expr {999999999 == 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-<-3",
+      "source": "expr {999999999 < 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-**-3",
+      "source": "expr {999999999 ** 3}",
+      "result": "999999997000000002999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999997000000002999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-+-999999999",
+      "source": "expr {999999999 + 999999999}",
+      "result": "1999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999---999999999",
+      "source": "expr {999999999 - 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-*-999999999",
+      "source": "expr {999999999 * 999999999}",
+      "result": "999999998000000001",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999998000000001",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-/-999999999",
+      "source": "expr {999999999 / 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-%-999999999",
+      "source": "expr {999999999 % 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-&-999999999",
+      "source": "expr {999999999 & 999999999}",
+      "result": "999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-|-999999999",
+      "source": "expr {999999999 | 999999999}",
+      "result": "999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-^-999999999",
+      "source": "expr {999999999 ^ 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-==-999999999",
+      "source": "expr {999999999 == 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999999-<-999999999",
+      "source": "expr {999999999 < 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-+--3",
+      "source": "expr {1000000000 + -3}",
+      "result": "999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000----3",
+      "source": "expr {1000000000 - -3}",
+      "result": "1000000003",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000003",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-*--3",
+      "source": "expr {1000000000 * -3}",
+      "result": "-3000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-3000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-/--3",
+      "source": "expr {1000000000 / -3}",
+      "result": "-333333334",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-333333334",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-%--3",
+      "source": "expr {1000000000 % -3}",
+      "result": "-2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-&--3",
+      "source": "expr {1000000000 & -3}",
+      "result": "1000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-|--3",
+      "source": "expr {1000000000 | -3}",
+      "result": "-3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-^--3",
+      "source": "expr {1000000000 ^ -3}",
+      "result": "-1000000003",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000003",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-==--3",
+      "source": "expr {1000000000 == -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-<--3",
+      "source": "expr {1000000000 < -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-**--3",
+      "source": "expr {1000000000 ** -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-+-0",
+      "source": "expr {1000000000 + 0}",
+      "result": "1000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000---0",
+      "source": "expr {1000000000 - 0}",
+      "result": "1000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-*-0",
+      "source": "expr {1000000000 * 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-/-0",
+      "source": "expr {1000000000 / 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-%-0",
+      "source": "expr {1000000000 % 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-&-0",
+      "source": "expr {1000000000 & 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-|-0",
+      "source": "expr {1000000000 | 0}",
+      "result": "1000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-^-0",
+      "source": "expr {1000000000 ^ 0}",
+      "result": "1000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-==-0",
+      "source": "expr {1000000000 == 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-<-0",
+      "source": "expr {1000000000 < 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-**-0",
+      "source": "expr {1000000000 ** 0}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-+-3",
+      "source": "expr {1000000000 + 3}",
+      "result": "1000000003",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000003",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000---3",
+      "source": "expr {1000000000 - 3}",
+      "result": "999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-*-3",
+      "source": "expr {1000000000 * 3}",
+      "result": "3000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "3000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-/-3",
+      "source": "expr {1000000000 / 3}",
+      "result": "333333333",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "333333333",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-%-3",
+      "source": "expr {1000000000 % 3}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-&-3",
+      "source": "expr {1000000000 & 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-|-3",
+      "source": "expr {1000000000 | 3}",
+      "result": "1000000003",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000003",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-^-3",
+      "source": "expr {1000000000 ^ 3}",
+      "result": "1000000003",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000003",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-==-3",
+      "source": "expr {1000000000 == 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-<-3",
+      "source": "expr {1000000000 < 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-**-3",
+      "source": "expr {1000000000 ** 3}",
+      "result": "1000000000000000000000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000000000000000000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-+-999999999",
+      "source": "expr {1000000000 + 999999999}",
+      "result": "1999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000---999999999",
+      "source": "expr {1000000000 - 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-*-999999999",
+      "source": "expr {1000000000 * 999999999}",
+      "result": "999999999000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-/-999999999",
+      "source": "expr {1000000000 / 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-%-999999999",
+      "source": "expr {1000000000 % 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-&-999999999",
+      "source": "expr {1000000000 & 999999999}",
+      "result": "999999488",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999488",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-|-999999999",
+      "source": "expr {1000000000 | 999999999}",
+      "result": "1000000511",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000511",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-^-999999999",
+      "source": "expr {1000000000 ^ 999999999}",
+      "result": "1023",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1023",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-==-999999999",
+      "source": "expr {1000000000 == 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-1000000000-<-999999999",
+      "source": "expr {1000000000 < 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-+--3",
+      "source": "expr {-1000000000 + -3}",
+      "result": "-1000000003",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000003",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000----3",
+      "source": "expr {-1000000000 - -3}",
+      "result": "-999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-*--3",
+      "source": "expr {-1000000000 * -3}",
+      "result": "3000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "3000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-/--3",
+      "source": "expr {-1000000000 / -3}",
+      "result": "333333333",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "333333333",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-%--3",
+      "source": "expr {-1000000000 % -3}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-&--3",
+      "source": "expr {-1000000000 & -3}",
+      "result": "-1000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-|--3",
+      "source": "expr {-1000000000 | -3}",
+      "result": "-3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-^--3",
+      "source": "expr {-1000000000 ^ -3}",
+      "result": "999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-==--3",
+      "source": "expr {-1000000000 == -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-<--3",
+      "source": "expr {-1000000000 < -3}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-**--3",
+      "source": "expr {-1000000000 ** -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-+-0",
+      "source": "expr {-1000000000 + 0}",
+      "result": "-1000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000---0",
+      "source": "expr {-1000000000 - 0}",
+      "result": "-1000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-*-0",
+      "source": "expr {-1000000000 * 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-/-0",
+      "source": "expr {-1000000000 / 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-%-0",
+      "source": "expr {-1000000000 % 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-&-0",
+      "source": "expr {-1000000000 & 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-|-0",
+      "source": "expr {-1000000000 | 0}",
+      "result": "-1000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-^-0",
+      "source": "expr {-1000000000 ^ 0}",
+      "result": "-1000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-==-0",
+      "source": "expr {-1000000000 == 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-<-0",
+      "source": "expr {-1000000000 < 0}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-**-0",
+      "source": "expr {-1000000000 ** 0}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-+-3",
+      "source": "expr {-1000000000 + 3}",
+      "result": "-999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000---3",
+      "source": "expr {-1000000000 - 3}",
+      "result": "-1000000003",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000003",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-*-3",
+      "source": "expr {-1000000000 * 3}",
+      "result": "-3000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-3000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-/-3",
+      "source": "expr {-1000000000 / 3}",
+      "result": "-333333334",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-333333334",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-%-3",
+      "source": "expr {-1000000000 % 3}",
+      "result": "2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-&-3",
+      "source": "expr {-1000000000 & 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-|-3",
+      "source": "expr {-1000000000 | 3}",
+      "result": "-999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-^-3",
+      "source": "expr {-1000000000 ^ 3}",
+      "result": "-999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-==-3",
+      "source": "expr {-1000000000 == 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-<-3",
+      "source": "expr {-1000000000 < 3}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-**-3",
+      "source": "expr {-1000000000 ** 3}",
+      "result": "-1000000000000000000000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1000000000000000000000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-+-999999999",
+      "source": "expr {-1000000000 + 999999999}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000---999999999",
+      "source": "expr {-1000000000 - 999999999}",
+      "result": "-1999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-*-999999999",
+      "source": "expr {-1000000000 * 999999999}",
+      "result": "-999999999000000000",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999999000000000",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-/-999999999",
+      "source": "expr {-1000000000 / 999999999}",
+      "result": "-2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-%-999999999",
+      "source": "expr {-1000000000 % 999999999}",
+      "result": "999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-&-999999999",
+      "source": "expr {-1000000000 & 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-|-999999999",
+      "source": "expr {-1000000000 | 999999999}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-^-999999999",
+      "source": "expr {-1000000000 ^ 999999999}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-==-999999999",
+      "source": "expr {-1000000000 == 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--1000000000-<-999999999",
+      "source": "expr {-1000000000 < 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-+--3",
+      "source": "expr {2147483647 + -3}",
+      "result": "2147483644",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483644",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647----3",
+      "source": "expr {2147483647 - -3}",
+      "result": "2147483650",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483650",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-*--3",
+      "source": "expr {2147483647 * -3}",
+      "result": "-6442450941",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-6442450941",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-/--3",
+      "source": "expr {2147483647 / -3}",
+      "result": "-715827883",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-715827883",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-%--3",
+      "source": "expr {2147483647 % -3}",
+      "result": "-2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-&--3",
+      "source": "expr {2147483647 & -3}",
+      "result": "2147483645",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483645",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-|--3",
+      "source": "expr {2147483647 | -3}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-^--3",
+      "source": "expr {2147483647 ^ -3}",
+      "result": "-2147483646",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483646",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-==--3",
+      "source": "expr {2147483647 == -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-<--3",
+      "source": "expr {2147483647 < -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-**--3",
+      "source": "expr {2147483647 ** -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-+-0",
+      "source": "expr {2147483647 + 0}",
+      "result": "2147483647",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483647",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647---0",
+      "source": "expr {2147483647 - 0}",
+      "result": "2147483647",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483647",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-*-0",
+      "source": "expr {2147483647 * 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-/-0",
+      "source": "expr {2147483647 / 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-%-0",
+      "source": "expr {2147483647 % 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-&-0",
+      "source": "expr {2147483647 & 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-|-0",
+      "source": "expr {2147483647 | 0}",
+      "result": "2147483647",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483647",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-^-0",
+      "source": "expr {2147483647 ^ 0}",
+      "result": "2147483647",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483647",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-==-0",
+      "source": "expr {2147483647 == 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-<-0",
+      "source": "expr {2147483647 < 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-**-0",
+      "source": "expr {2147483647 ** 0}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-+-3",
+      "source": "expr {2147483647 + 3}",
+      "result": "2147483650",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483650",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647---3",
+      "source": "expr {2147483647 - 3}",
+      "result": "2147483644",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483644",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-*-3",
+      "source": "expr {2147483647 * 3}",
+      "result": "6442450941",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "6442450941",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-/-3",
+      "source": "expr {2147483647 / 3}",
+      "result": "715827882",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "715827882",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-%-3",
+      "source": "expr {2147483647 % 3}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-&-3",
+      "source": "expr {2147483647 & 3}",
+      "result": "3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-|-3",
+      "source": "expr {2147483647 | 3}",
+      "result": "2147483647",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483647",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-^-3",
+      "source": "expr {2147483647 ^ 3}",
+      "result": "2147483644",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483644",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-==-3",
+      "source": "expr {2147483647 == 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-<-3",
+      "source": "expr {2147483647 < 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-**-3",
+      "source": "expr {2147483647 ** 3}",
+      "result": "9903520300447984150353281023",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "9903520300447984150353281023",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-+-999999999",
+      "source": "expr {2147483647 + 999999999}",
+      "result": "3147483646",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "3147483646",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647---999999999",
+      "source": "expr {2147483647 - 999999999}",
+      "result": "1147483648",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1147483648",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-*-999999999",
+      "source": "expr {2147483647 * 999999999}",
+      "result": "2147483644852516353",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483644852516353",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-/-999999999",
+      "source": "expr {2147483647 / 999999999}",
+      "result": "2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-%-999999999",
+      "source": "expr {2147483647 % 999999999}",
+      "result": "147483649",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "147483649",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-&-999999999",
+      "source": "expr {2147483647 & 999999999}",
+      "result": "999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-|-999999999",
+      "source": "expr {2147483647 | 999999999}",
+      "result": "2147483647",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483647",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-^-999999999",
+      "source": "expr {2147483647 ^ 999999999}",
+      "result": "1147483648",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1147483648",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-==-999999999",
+      "source": "expr {2147483647 == 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-2147483647-<-999999999",
+      "source": "expr {2147483647 < 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-+--3",
+      "source": "expr {-2147483648 + -3}",
+      "result": "-2147483651",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483651",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648----3",
+      "source": "expr {-2147483648 - -3}",
+      "result": "-2147483645",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483645",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-*--3",
+      "source": "expr {-2147483648 * -3}",
+      "result": "6442450944",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "6442450944",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-/--3",
+      "source": "expr {-2147483648 / -3}",
+      "result": "715827882",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "715827882",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-%--3",
+      "source": "expr {-2147483648 % -3}",
+      "result": "-2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-&--3",
+      "source": "expr {-2147483648 & -3}",
+      "result": "-2147483648",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483648",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-|--3",
+      "source": "expr {-2147483648 | -3}",
+      "result": "-3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-^--3",
+      "source": "expr {-2147483648 ^ -3}",
+      "result": "2147483645",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2147483645",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-==--3",
+      "source": "expr {-2147483648 == -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-<--3",
+      "source": "expr {-2147483648 < -3}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-**--3",
+      "source": "expr {-2147483648 ** -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-+-0",
+      "source": "expr {-2147483648 + 0}",
+      "result": "-2147483648",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483648",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648---0",
+      "source": "expr {-2147483648 - 0}",
+      "result": "-2147483648",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483648",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-*-0",
+      "source": "expr {-2147483648 * 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-/-0",
+      "source": "expr {-2147483648 / 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-%-0",
+      "source": "expr {-2147483648 % 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-&-0",
+      "source": "expr {-2147483648 & 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-|-0",
+      "source": "expr {-2147483648 | 0}",
+      "result": "-2147483648",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483648",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-^-0",
+      "source": "expr {-2147483648 ^ 0}",
+      "result": "-2147483648",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483648",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-==-0",
+      "source": "expr {-2147483648 == 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-<-0",
+      "source": "expr {-2147483648 < 0}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-**-0",
+      "source": "expr {-2147483648 ** 0}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-+-3",
+      "source": "expr {-2147483648 + 3}",
+      "result": "-2147483645",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483645",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648---3",
+      "source": "expr {-2147483648 - 3}",
+      "result": "-2147483651",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483651",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-*-3",
+      "source": "expr {-2147483648 * 3}",
+      "result": "-6442450944",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-6442450944",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-/-3",
+      "source": "expr {-2147483648 / 3}",
+      "result": "-715827883",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-715827883",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-%-3",
+      "source": "expr {-2147483648 % 3}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-&-3",
+      "source": "expr {-2147483648 & 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-|-3",
+      "source": "expr {-2147483648 | 3}",
+      "result": "-2147483645",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483645",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-^-3",
+      "source": "expr {-2147483648 ^ 3}",
+      "result": "-2147483645",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483645",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-==-3",
+      "source": "expr {-2147483648 == 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-<-3",
+      "source": "expr {-2147483648 < 3}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-**-3",
+      "source": "expr {-2147483648 ** 3}",
+      "result": "-9903520314283042199192993792",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-9903520314283042199192993792",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-+-999999999",
+      "source": "expr {-2147483648 + 999999999}",
+      "result": "-1147483649",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1147483649",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648---999999999",
+      "source": "expr {-2147483648 - 999999999}",
+      "result": "-3147483647",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-3147483647",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-*-999999999",
+      "source": "expr {-2147483648 * 999999999}",
+      "result": "-2147483645852516352",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2147483645852516352",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-/-999999999",
+      "source": "expr {-2147483648 / 999999999}",
+      "result": "-3",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-%-999999999",
+      "source": "expr {-2147483648 % 999999999}",
+      "result": "852516349",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "852516349",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-&-999999999",
+      "source": "expr {-2147483648 & 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-|-999999999",
+      "source": "expr {-2147483648 | 999999999}",
+      "result": "-1147483649",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1147483649",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-^-999999999",
+      "source": "expr {-2147483648 ^ 999999999}",
+      "result": "-1147483649",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1147483649",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-==-999999999",
+      "source": "expr {-2147483648 == 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small--2147483648-<-999999999",
+      "source": "expr {-2147483648 < 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-+--3",
+      "source": "expr {999999998 + -3}",
+      "result": "999999995",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999995",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998----3",
+      "source": "expr {999999998 - -3}",
+      "result": "1000000001",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000001",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-*--3",
+      "source": "expr {999999998 * -3}",
+      "result": "-2999999994",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-2999999994",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-/--3",
+      "source": "expr {999999998 / -3}",
+      "result": "-333333333",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-333333333",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-%--3",
+      "source": "expr {999999998 % -3}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-&--3",
+      "source": "expr {999999998 & -3}",
+      "result": "999999996",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999996",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-|--3",
+      "source": "expr {999999998 | -3}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-^--3",
+      "source": "expr {999999998 ^ -3}",
+      "result": "-999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-==--3",
+      "source": "expr {999999998 == -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-<--3",
+      "source": "expr {999999998 < -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-**--3",
+      "source": "expr {999999998 ** -3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-+-0",
+      "source": "expr {999999998 + 0}",
+      "result": "999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998---0",
+      "source": "expr {999999998 - 0}",
+      "result": "999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-*-0",
+      "source": "expr {999999998 * 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-/-0",
+      "source": "expr {999999998 / 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-%-0",
+      "source": "expr {999999998 % 0}",
+      "result": "divide by zero",
+      "output": "",
+      "error": true,
+      "actual": {
+        "ok": false,
+        "error": "Invalid(\"divide by zero\")",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-&-0",
+      "source": "expr {999999998 & 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-|-0",
+      "source": "expr {999999998 | 0}",
+      "result": "999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-^-0",
+      "source": "expr {999999998 ^ 0}",
+      "result": "999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-==-0",
+      "source": "expr {999999998 == 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-<-0",
+      "source": "expr {999999998 < 0}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-**-0",
+      "source": "expr {999999998 ** 0}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-+-3",
+      "source": "expr {999999998 + 3}",
+      "result": "1000000001",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1000000001",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998---3",
+      "source": "expr {999999998 - 3}",
+      "result": "999999995",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999995",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-*-3",
+      "source": "expr {999999998 * 3}",
+      "result": "2999999994",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2999999994",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-/-3",
+      "source": "expr {999999998 / 3}",
+      "result": "333333332",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "333333332",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-%-3",
+      "source": "expr {999999998 % 3}",
+      "result": "2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-&-3",
+      "source": "expr {999999998 & 3}",
+      "result": "2",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-|-3",
+      "source": "expr {999999998 | 3}",
+      "result": "999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-^-3",
+      "source": "expr {999999998 ^ 3}",
+      "result": "999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-==-3",
+      "source": "expr {999999998 == 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-<-3",
+      "source": "expr {999999998 < 3}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-**-3",
+      "source": "expr {999999998 ** 3}",
+      "result": "999999994000000011999999992",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999994000000011999999992",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-+-999999999",
+      "source": "expr {999999998 + 999999999}",
+      "result": "1999999997",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1999999997",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998---999999999",
+      "source": "expr {999999998 - 999999999}",
+      "result": "-1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "-1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-*-999999999",
+      "source": "expr {999999998 * 999999999}",
+      "result": "999999997000000002",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999997000000002",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-/-999999999",
+      "source": "expr {999999998 / 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-%-999999999",
+      "source": "expr {999999998 % 999999999}",
+      "result": "999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-&-999999999",
+      "source": "expr {999999998 & 999999999}",
+      "result": "999999998",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999998",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-|-999999999",
+      "source": "expr {999999998 | 999999999}",
+      "result": "999999999",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "999999999",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-^-999999999",
+      "source": "expr {999999998 ^ 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-==-999999999",
+      "source": "expr {999999998 == 999999999}",
+      "result": "0",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "small-999999998-<-999999999",
+      "source": "expr {999999998 < 999999999}",
+      "result": "1",
+      "output": "",
+      "error": false,
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    }
+  ]
+}

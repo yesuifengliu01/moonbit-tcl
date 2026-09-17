@@ -1,21 +1,21 @@
 ///|
-priv enum Part {
+enum Part {
   Text(String)
   Variable(String, Array[Part]?)
   Command(Array[Array[Word]])
-}
+} derive(Debug)
 
 ///|
-priv struct Word {
+struct Word {
   parts : Array[Part]
   expand : Bool
-}
+} derive(Debug)
 
 ///|
-priv struct ScriptParser {
+struct ScriptParser {
   chars : Array[Char]
   mut pos : Int
-}
+} derive(Debug)
 
 ///|
 fn ScriptParser::peek(self : ScriptParser, offset? : Int = 0) -> Char {
@@ -270,7 +270,8 @@ fn Interpreter::expand_parts(
   if depth > 64 {
     raise Invalid("substitution depth")
   }
-  let out = StringBuilder()
+  let mut first = ""
+  let mut out : StringBuilder? = None
   let mut length = 0
   for part in parts {
     self.tick()
@@ -285,13 +286,29 @@ fn Interpreter::expand_parts(
       }
       Command(commands) => self.execute_commands(commands, depth + 1)
     }
+    let previous = length
     length += value.length()
     if length > 1000000 {
       raise Invalid("substitution result size limit")
     }
-    out.write_string(value)
+    if previous == 0 {
+      first = value
+    } else if !value.is_empty() {
+      match out {
+        Some(builder) => builder.write_string(value)
+        None => {
+          let builder = StringBuilder()
+          builder.write_string(first)
+          builder.write_string(value)
+          out = Some(builder)
+        }
+      }
+    }
   }
-  out.to_string()
+  match out {
+    Some(builder) => builder.to_string()
+    None => first
+  }
 }
 
 ///|
@@ -299,6 +316,7 @@ fn Interpreter::execute_commands(
   self : Interpreter,
   commands : Array[Array[Word]],
   depth : Int,
+  discard_result? : Bool = false,
 ) -> String raise TclError {
   if depth > 64 {
     raise Invalid("execution nesting limit")
@@ -320,7 +338,7 @@ fn Interpreter::execute_commands(
       }
     }
     if !args.is_empty() {
-      result = self.command(args, depth)
+      result = self.command(args, depth, discard_result~)
     }
     if result.length() > 1000000 {
       raise Invalid("command result size limit")
@@ -334,17 +352,44 @@ fn Interpreter::execute(
   self : Interpreter,
   source : String,
   depth : Int,
+  discard_result? : Bool = false,
 ) -> String raise TclError {
   if source.length() > 100000 {
     raise Invalid("script size limit")
   }
-  let parser = ScriptParser::{ chars: source.to_array(), pos: 0, }
+  let program = self.cached_script(source)
   let mut result = ""
-  while parser.pos < parser.chars.length() {
-    let commands = parser.script(false, 0, one=true)
-    if !commands.is_empty() {
-      result = self.execute_commands(commands, depth)
+  let mut index = 0
+  while true {
+    if index == program.commands.length() {
+      if program.failure is Some(message) {
+        raise Invalid(message)
+      }
+      if program.parser.pos == program.parser.chars.length() {
+        break
+      }
+      try {
+        let commands = program.parser.script(false, 0, one=true)
+        for command in commands {
+          program.commands.push(command)
+        }
+      } catch {
+        Invalid(message) => {
+          program.failure = Some(message)
+          raise Invalid(message)
+        }
+        error => raise error
+      }
+      if index == program.commands.length() {
+        continue
+      }
     }
+    result = self.execute_commands(
+      [program.commands[index]],
+      depth,
+      discard_result~,
+    )
+    index += 1
   }
   result
 }

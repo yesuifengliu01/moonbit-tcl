@@ -1,11 +1,15 @@
 ///|
 priv enum Number {
+  Small(Int)
   Whole(@bigint.BigInt)
   Real(Double)
 }
 
 ///|
 fn whole(text : String) -> @bigint.BigInt raise TclError {
+  if small_decimal(text) is Some(value) {
+    return @bigint.BigInt::from_int(value)
+  }
   let text = text.trim().to_owned()
   if text.length() > 5000 {
     raise Invalid("integer size limit")
@@ -45,6 +49,9 @@ fn whole(text : String) -> @bigint.BigInt raise TclError {
 
 ///|
 fn number(text : String) -> Number? {
+  if small_decimal(text) is Some(value) {
+    return Some(Small(value))
+  }
   if (Some(whole(text)) catch { _ => None }) is Some(value) {
     return Some(Whole(value))
   }
@@ -73,6 +80,7 @@ fn number(text : String) -> Number? {
 ///|
 fn Number::double(self : Number) -> Double {
   match self {
+    Small(x) => x.to_double()
     Real(x) => x
     Whole(x) =>
       @strconv.parse_double(x.to_string()) catch {
@@ -84,6 +92,7 @@ fn Number::double(self : Number) -> Double {
 ///|
 fn Number::text(self : Number) -> String raise TclError {
   match self {
+    Small(x) => x.to_string()
     Whole(value) => {
       if value.bit_length() > 16384 {
         raise Invalid("integer bit limit")
@@ -147,6 +156,13 @@ fn numeric_binary(
   }
   let a = number(left)
   let b = number(right)
+  if (a, b) is (Some(Small(x)), Some(Small(y))) {
+    if small_operation(operator, x, y) is Some(result) {
+      return result
+    }
+  }
+  let a = a.map(Number::promote)
+  let b = b.map(Number::promote)
   if ["==", "!=", "<", ">", "<=", ">="].contains(operator) {
     let comparison = match (a, b) {
       (Some(Whole(a)), Some(Whole(b))) => a.compare(b)
@@ -342,7 +358,12 @@ fn float_text(value : Double) -> String raise TclError {
 
 ///|
 fn numeric_divide(left : String, right : String) -> String raise TclError {
-  match (number(left), number(right)) {
+  let a = number(left)
+  let b = number(right)
+  if (a, b) is (Some(Small(x)), Some(Small(y))) {
+    return small_operation("/", x, y).unwrap()
+  }
+  match (a.map(Number::promote), b.map(Number::promote)) {
     (Some(Whole(x)), Some(Whole(y))) => {
       if y == 0N {
         raise Invalid("divide by zero")
@@ -353,4 +374,95 @@ fn numeric_divide(left : String, right : String) -> String raise TclError {
     }
     _ => numeric_binary("/", left, right)
   }
+}
+
+///|
+// A conservative decimal fast path. Leading-zero, base-prefixed, whitespace,
+// and larger operands continue through the full Tcl integer parser.
+fn small_decimal(text : String) -> Int? {
+  let length = text.length()
+  if length == 0 || length > 10 {
+    return None
+  }
+  let initial = text.get(0).unwrap().to_int()
+  let negative = initial == 45
+  let start = if negative || initial == 43 { 1 } else { 0 }
+  if length == start || length - start > 9 {
+    return None
+  }
+  if length - start > 1 && text.get(start).unwrap().to_int() == 48 {
+    return None
+  }
+  let mut value = 0
+  for i in start..<length {
+    let digit = text.get(i).unwrap().to_int() - 48
+    if digit < 0 || digit > 9 {
+      return None
+    }
+    value = value * 10 + digit
+  }
+  Some(if negative { -value } else { value })
+}
+
+///|
+fn Number::promote(self : Number) -> Number {
+  match self {
+    Small(x) => Whole(@bigint.BigInt::from_int(x))
+    other => other
+  }
+}
+
+///|
+fn small_operation(
+  operator : String,
+  x : Int,
+  y : Int,
+) -> String? raise TclError {
+  // Nine decimal digits fit exactly in Int64 even after multiplication.
+  let a = x.to_int64()
+  let b = y.to_int64()
+  let result = match operator {
+    "+" => (a + b).to_string()
+    "-" => (a - b).to_string()
+    "*" => (a * b).to_string()
+    "/" | "%" => {
+      if y == 0 {
+        raise Invalid("divide by zero")
+      }
+      let q = a / b
+      let r = a % b
+      if operator == "/" {
+        (if r != 0L && (x < 0) != (y < 0) { q - 1L } else { q }).to_string()
+      } else {
+        (if r != 0L && (r < 0L) != (y < 0) { r + b } else { r }).to_string()
+      }
+    }
+    "&" => (x & y).to_string()
+    "|" => (x | y).to_string()
+    "^" => (x ^ y).to_string()
+    "==" => boolean_text(x == y)
+    "!=" => boolean_text(x != y)
+    "<" => boolean_text(x < y)
+    ">" => boolean_text(x > y)
+    "<=" => boolean_text(x <= y)
+    ">=" => boolean_text(x >= y)
+    _ => return None
+  }
+  Some(result)
+}
+
+///|
+fn integer_add(left : String, right : String) -> String raise TclError {
+  if (small_decimal(left), small_decimal(right)) is (Some(x), Some(y)) {
+    return (x.to_int64() + y.to_int64()).to_string()
+  }
+  Whole(whole(left) + whole(right)).text()
+}
+
+///|
+fn integer_compare(left : String, right : String) -> Int raise TclError {
+  if (small_decimal(left), small_decimal(right)) is (Some(x), Some(y)) {
+    return x.compare(y)
+  }
+  whole(left).compare(whole(right))
 }

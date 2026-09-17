@@ -23,6 +23,7 @@ pub fn Interpreter::new() -> Interpreter {
       aliases: Map([]),
       procedures: Map([]),
       namespaces: Map([("::", true)]),
+      cache: ParseCache::new(),
     },
     frame: {
       vars: Map([]),
@@ -59,6 +60,9 @@ pub fn Interpreter::clear_output(self : Interpreter) -> Unit {
 
 ///|
 fn integer(s : String) -> Int raise TclError {
+  if small_decimal(s) is Some(value) {
+    return value
+  }
   let n = whole(s)
   if n < -2147483648N || n > 2147483647N {
     raise Invalid("bounded integer required")
@@ -88,14 +92,18 @@ fn Interpreter::command(
   self : Interpreter,
   input : Array[String],
   depth : Int,
+  discard_result? : Bool = false,
 ) -> String raise TclError {
   self.tick()
   if self.find_procedure(input[0]) is Some(key) {
     return self.invoke_procedure([key] + input[1:].to_owned(), depth)
   }
-  let args = input.copy()
-  if args[0].has_prefix("::") {
+  let args = if input[0].has_prefix("::") {
+    let args = input.copy()
     args[0] = args[0][2:].to_owned()
+    args
+  } else {
+    input
   }
   let n = args.length()
   match args[0] {
@@ -108,7 +116,7 @@ fn Interpreter::command(
     | "concat"
     | "lrange"
     | "lreverse"
-    | "lrepeat" => self.list_command(args)
+    | "lrepeat" => self.list_command(args, discard_result~)
     "lset" | "linsert" | "lreplace" | "lsearch" | "lsort" =>
       self.extended_list_command(args, depth)
     "while"
@@ -123,7 +131,7 @@ fn Interpreter::command(
     "global" | "variable" | "upvar" | "uplevel" =>
       self.scope_command(args, depth)
     "array" => self.array_command(args)
-    "dict" => self.dict_command(args, depth)
+    "dict" => self.dict_command(args, depth, discard_result~)
     "string" => self.string_command(args)
     "info" => self.info_command(args)
     "set" =>
@@ -157,9 +165,14 @@ fn Interpreter::command(
       if n != 2 && n != 3 {
         raise Invalid("incr arity")
       }
-      let value = whole(self.get_var(args[1]).unwrap_or("0")) +
-        whole(if n == 3 { args[2] } else { "1" })
-      let text = Whole(value).text()
+      let text = integer_add(
+        self.get_var(args[1]).unwrap_or("0"),
+        if n == 3 {
+          args[2]
+        } else {
+          "1"
+        },
+      )
       self.set_var(args[1], text)
       text
     }
@@ -218,7 +231,7 @@ fn Interpreter::command(
         let body = args[i]
         i += 1
         if boolean(self.expression_value(expression, depth)) {
-          return self.execute(body, depth + 1)
+          return self.execute(body, depth + 1, discard_result~)
         }
         if i == n {
           return ""
@@ -233,7 +246,7 @@ fn Interpreter::command(
         if i != n - 1 {
           raise Invalid("if malformed else")
         }
-        return self.execute(args[i], depth + 1)
+        return self.execute(args[i], depth + 1, discard_result~)
       }
       raise Invalid("if arity")
     }
@@ -273,7 +286,7 @@ fn Interpreter::command(
       if n < 2 {
         raise Invalid("eval arity")
       }
-      self.execute(args[1:].to_owned().join(" "), depth + 1)
+      self.execute(args[1:].to_owned().join(" "), depth + 1, discard_result~)
     }
     "subst" => {
       if n != 2 {

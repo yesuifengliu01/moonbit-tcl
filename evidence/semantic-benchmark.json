@@ -5,58 +5,80 @@
   "rows": [
     {
       "name": "dictionary-100",
-      "medianMs": 5.49485,
-      "p95Ms": 7.4488999999999805,
-      "referenceMedianMs": 7.9487000000000005,
-      "medianRatio": 0.6912891416206423,
-      "sessionMedianMs": 4.24339999999998,
-      "sessionP95Ms": 4.906099999999981,
-      "referenceSessionMedianMs": 0.0843,
-      "sessionMedianRatio": 50.3368920521943
+      "medianMs": 0.8628,
+      "p95Ms": 1.480400000000003,
+      "referenceMedianMs": 7.26455,
+      "medianRatio": 0.11876854037758705,
+      "sessionMedianMs": 0.7209999999999965,
+      "sessionP95Ms": 0.9284999999999997,
+      "referenceSessionMedianMs": 0.0807,
+      "sessionMedianRatio": 8.934324659231681
     },
     {
       "name": "array-300",
-      "medianMs": 6.34099999999998,
-      "p95Ms": 7.015800000000013,
-      "referenceMedianMs": 7.761150000000001,
-      "medianRatio": 0.8170180965449682,
-      "sessionMedianMs": 5.266050000000007,
-      "sessionP95Ms": 5.850599999999986,
-      "referenceSessionMedianMs": 0.1496,
-      "sessionMedianRatio": 35.200868983957264
+      "medianMs": 1.2920499999999961,
+      "p95Ms": 1.6561000000000092,
+      "referenceMedianMs": 7.6375,
+      "medianRatio": 0.16917184942716806,
+      "sessionMedianMs": 0.8395499999999885,
+      "sessionP95Ms": 1.2789999999999964,
+      "referenceSessionMedianMs": 0.14575,
+      "sessionMedianRatio": 5.760205831903867
     },
     {
       "name": "bigint-150",
-      "medianMs": 3.731650000000002,
-      "p95Ms": 4.3916000000000395,
-      "referenceMedianMs": 7.9086,
-      "medianRatio": 0.47184710315352935,
-      "sessionMedianMs": 3.1966500000000337,
-      "sessionP95Ms": 3.3584999999999354,
-      "referenceSessionMedianMs": 0.1221,
-      "sessionMedianRatio": 26.180589680589957
+      "medianMs": 0.8319999999999936,
+      "p95Ms": 1.0796999999999741,
+      "referenceMedianMs": 7.68215,
+      "medianRatio": 0.10830301413015804,
+      "sessionMedianMs": 0.7650000000000006,
+      "sessionP95Ms": 0.9387000000000114,
+      "referenceSessionMedianMs": 0.1053,
+      "sessionMedianRatio": 7.26495726495727
     },
     {
       "name": "alias-200",
-      "medianMs": 3.570099999999968,
-      "p95Ms": 3.9149999999999636,
-      "referenceMedianMs": 7.48735,
-      "medianRatio": 0.4768175656273539,
-      "sessionMedianMs": 3.1951500000000124,
-      "sessionP95Ms": 3.901299999999992,
-      "referenceSessionMedianMs": 0.11055,
-      "sessionMedianRatio": 28.90230664857542
+      "medianMs": 0.8314000000000163,
+      "p95Ms": 1.1757000000000062,
+      "referenceMedianMs": 7.520899999999999,
+      "medianRatio": 0.11054528048505052,
+      "sessionMedianMs": 0.6742500000000007,
+      "sessionP95Ms": 0.9578999999999951,
+      "referenceSessionMedianMs": 0.10255,
+      "sessionMedianRatio": 6.574841540711854
     },
     {
       "name": "sort-200",
-      "medianMs": 6.273500000000013,
-      "p95Ms": 7.0271000000000186,
-      "referenceMedianMs": 7.801349999999999,
-      "medianRatio": 0.8041556910022001,
-      "sessionMedianMs": 6.005949999999984,
-      "sessionP95Ms": 6.4809999999999945,
-      "referenceSessionMedianMs": 0.1036,
-      "sessionMedianRatio": 57.9724903474902
+      "medianMs": 0.7373000000000047,
+      "p95Ms": 1.183999999999969,
+      "referenceMedianMs": 7.4821,
+      "medianRatio": 0.09854185322302625,
+      "sessionMedianMs": 0.5386500000000183,
+      "sessionP95Ms": 0.8328000000000202,
+      "referenceSessionMedianMs": 0.10475,
+      "sessionMedianRatio": 5.1422434367543515
+    },
+    {
+      "name": "dictionary-1000",
+      "medianMs": 3.5822000000000287,
+      "p95Ms": 4.494799999999998,
+      "referenceMedianMs": 8.20175,
+      "medianRatio": 0.43676044746548337,
+      "sessionMedianMs": 3.0889999999999986,
+      "sessionP95Ms": 4.0575999999999794,
+      "referenceSessionMedianMs": 0.77715,
+      "sessionMedianRatio": 3.974779643569451
+    },
+    {
+      "name": "sort-1000",
+      "medianMs": 2.068950000000001,
+      "p95Ms": 2.2778999999999314,
+      "referenceMedianMs": 7.9939,
+      "medianRatio": 0.25881609727417165,
+      "sessionMedianMs": 1.917449999999974,
+      "sessionP95Ms": 2.1228999999999587,
+      "referenceSessionMedianMs": 0.51415,
+      "sessionMedianRatio": 3.7293591364387315
     }
   ]
 }

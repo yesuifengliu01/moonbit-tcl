@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "cycles": [
+    {
+      "cycle": 1,
+      "files": 68,
+      "changed": []
+    },
+    {
+      "cycle": 2,
+      "files": 68,
+      "changed": []
+    }
+  ],
+  "normalization": "CRLF to LF for source text, matching Git policy"
+}

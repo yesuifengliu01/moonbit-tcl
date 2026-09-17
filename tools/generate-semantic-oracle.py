@@ -1,8 +1,10 @@
 """Run original programs on the system Tcl core; capture stdout at puts."""
 from pathlib import Path
-import tkinter,json,runpy
+import tkinter,json,runpy,sys
 root=Path(__file__).resolve().parents[1]
-cases=runpy.run_path(str(root/'tools/semantic-cases.py'))['cases']
+suite=sys.argv[1] if len(sys.argv)>1 else 'semantic'
+if suite not in {'semantic','cache'}:raise SystemExit('suite must be semantic or cache')
+cases=runpy.run_path(str(root/f'tools/{suite}-cases.py'))['cases']
 rows=[]
 for case in cases:
     t=tkinter.Tcl()
@@ -23,17 +25,17 @@ for case in cases:
 record={'reference':'System Tcl 8.6.15 through Python tkinter','cases':len(rows),
  'adapter':'Only puts is replaced to collect standard output; expression, variable, collection and procedure semantics use the native Tcl implementation. Errors retain messages but compare rejection, not text.',
  'rows':rows}
-(root/'evidence/semantic-reference.json').write_text(json.dumps(record,ensure_ascii=True,indent=2)+'\n',encoding='utf-8',newline='\n')
+(root/f'evidence/{suite}-reference.json').write_text(json.dumps(record,ensure_ascii=True,indent=2)+'\n',encoding='utf-8',newline='\n')
 print('Generated',len(rows),'independent system Tcl cases')
 def lit(text):
     return json.dumps(text,ensure_ascii=False)
 lines=['// Original programs, expected results evaluated by Tcl 8.6.15. Do not hand-edit.']
 for row in rows:
-    lines+=['///|',f'test {lit("Tcl semantic "+row["name"])} {{',' let t=@tcl.Interpreter::new()']
+    lines+=['///|',f'test {lit("Tcl "+suite+" "+row["name"])} {{',' let t=@tcl.Interpreter::new()']
     call=f't.eval({lit(row["source"])},budget=100000)'
     if row['error']:
         lines+=[f' assert_true(try{{ignore({call});false}}catch{{_=>true}})']
     else:
         lines+=[f' assert_eq({call},{lit(row["result"])})',f' assert_eq(t.output_text(),{lit(row["output"])})']
     lines+=['}']
-(root/'semantic_oracle_test.mbt').write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='\n')
+(root/f'{suite}_oracle_test.mbt').write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='\n')

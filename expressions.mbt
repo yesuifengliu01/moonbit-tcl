@@ -1,12 +1,12 @@
 ///|
-priv enum Expr {
+enum Expr {
   Value(String)
   Substitute(Array[Part])
   Unary(String, Expr)
   Binary(String, Expr, Expr)
   Conditional(Expr, Expr, Expr)
   Function(String, Array[Expr])
-}
+} derive(Debug)
 
 ///|
 fn ScriptParser::expr_space(self : ScriptParser) -> Unit {
@@ -229,6 +229,7 @@ fn Interpreter::eval_expr(
         None => raise Invalid("expected numeric operand")
       }
       match n {
+        Small(x) => (if op == "-" { -x } else { x }).to_string()
         Whole(x) => Whole(if op == "-" { -x } else { x }).text()
         Real(x) => Real(if op == "-" { -x } else { x }).text()
       }
@@ -265,12 +266,7 @@ fn Interpreter::expression_value(
   source : String,
   depth : Int,
 ) -> String raise TclError {
-  let parser = ScriptParser::{ chars: source.to_array(), pos: 0, }
-  let expr = parser.expression(1, 0)
-  parser.expr_space()
-  if parser.pos != parser.chars.length() {
-    raise Invalid("trailing expression token")
-  }
+  let expr = self.cached_expression(source)
   let value = self.eval_expr(expr, depth + 1)
   match number(value) {
     Some(n) => n.text()
@@ -337,12 +333,14 @@ fn Interpreter::math_function(
   let y = if two { values[1].double() } else { 0.0 }
   if name == "abs" {
     return match values[0] {
+      Small(n) => n.abs().to_string()
       Whole(n) => Whole(if n < 0N { -n } else { n }).text()
       Real(n) => Real(n.abs()).text()
     }
   }
   if ["int", "wide", "entier", "round"].contains(name) {
     let n = match values[0] {
+      Small(n) => @bigint.BigInt::from_int(n)
       Whole(n) => n
       Real(_) => {
         if x.is_inf() || x.is_nan() {

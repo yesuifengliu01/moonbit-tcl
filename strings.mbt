@@ -561,7 +561,7 @@ fn Interpreter::info_command(
       if n != 2 {
         raise Invalid("info patchlevel arity")
       }
-      "0.4.0"
+      "0.5.0"
     }
     "tclversion" => {
       if n != 2 {
