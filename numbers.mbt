@@ -101,7 +101,12 @@ fn Number::text(self : Number) -> String raise TclError {
     }
     Real(value) => {
       if value.is_nan() {
-        raise Invalid("domain error: argument not in valid range")
+        raise Signal(
+          completion_error(
+            "domain error: argument not in valid range",
+            errorcode="ARITH DOMAIN {domain error: argument not in valid range}",
+          ),
+        )
       }
       if value.is_inf() {
         return if value < 0.0 { "-Inf" } else { "Inf" }
@@ -192,7 +197,7 @@ fn numeric_binary(
           0
         }
       }
-      _ => left.compare(right)
+      _ => tcl_string_compare(left, right)
     }
     return boolean_text(
       match operator {
@@ -220,7 +225,12 @@ fn numeric_binary(
       }
       "%" => {
         if y == 0N {
-          raise Invalid("divide by zero")
+          raise Signal(
+            completion_error(
+              "divide by zero",
+              errorcode="ARITH DIVZERO {divide by zero}",
+            ),
+          )
         }
         let r = x % y
         if r != 0N && (r < 0N) != (y < 0N) {
@@ -232,7 +242,12 @@ fn numeric_binary(
       "**" =>
         if y < 0N {
           if x == 0N {
-            raise Invalid("exponentiation of zero by negative power")
+            raise Signal(
+              completion_error(
+                "exponentiation of zero by negative power",
+                errorcode="ARITH DOMAIN {exponentiation of zero by negative power}",
+              ),
+            )
           }
           if x == 1N {
             1N
@@ -366,7 +381,12 @@ fn numeric_divide(left : String, right : String) -> String raise TclError {
   match (a.map(Number::promote), b.map(Number::promote)) {
     (Some(Whole(x)), Some(Whole(y))) => {
       if y == 0N {
-        raise Invalid("divide by zero")
+        raise Signal(
+          completion_error(
+            "divide by zero",
+            errorcode="ARITH DIVZERO {divide by zero}",
+          ),
+        )
       }
       let q = x / y
       let r = x % y
@@ -427,7 +447,12 @@ fn small_operation(
     "*" => (a * b).to_string()
     "/" | "%" => {
       if y == 0 {
-        raise Invalid("divide by zero")
+        raise Signal(
+          completion_error(
+            "divide by zero",
+            errorcode="ARITH DIVZERO {divide by zero}",
+          ),
+        )
       }
       let q = a / b
       let r = a % b

@@ -249,6 +249,7 @@ fn Interpreter::invoke_ensemble(
       depth + 1,
     ) catch {
       Invalid(message) => raise Invalid(message)
+      Signal(result) if result.actual_code() == 1 => raise Signal(result)
       _ => raise Invalid("invalid completion from ensemble unknown handler")
     }
     let still_live = match self.state.commands.get(command.name) {

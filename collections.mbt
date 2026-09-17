@@ -387,8 +387,9 @@ fn Interpreter::dict_command(
         } catch {
           Continue => continue
           Break => break
-          Return(v) => raise Return(v)
-          Invalid(v) => raise Invalid(v)
+          Signal(result) if result.actual_code() == 4 => continue
+          Signal(result) if result.actual_code() == 3 => break
+          error => raise error
         }
       }
       if args[1] == "map" {
@@ -424,8 +425,9 @@ fn Interpreter::dict_command(
           boolean(self.execute(args[5], depth + 1)) catch {
             Continue => continue
             Break => break
-            Return(v) => raise Return(v)
-            Invalid(v) => raise Invalid(v)
+            Signal(result) if result.actual_code() == 4 => continue
+            Signal(result) if result.actual_code() == 3 => break
+            error => raise error
           }
         } else {
           raise Invalid("dict filter mode")

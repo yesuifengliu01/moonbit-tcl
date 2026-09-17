@@ -1,4 +1,4 @@
-# Tcl 兼容矩阵（0.6.0）
+# Tcl 兼容矩阵（0.7.0）
 
 | 能力 | 本轮实现 | 仍需追平 |
 |---|---|---|
@@ -11,9 +11,9 @@
 | dict | 构造、get/set/unset、incr/append/lappend、for/map/filter/update/with | 全部写回异常边界、嵌套/数组对象缓存和代表性性能 |
 | string | length/index/range、比较/查找、大小写、trim、repeat/reverse/replace、match/map/is 子集 | Unicode 完整分类及 UTF-16 一致性、failindex、全部选项 |
 | list | 原有十命令 + lset/linsert/lreplace/lsearch/lsort/lmap | 字典排序、regexp/sorted 搜索、索引/stride 完整选项 |
-| 控制与异常 | if/then/elseif/else、for/foreach/while、break/continue、catch/return/error 基本形式 | options 字典、return -level/-code、try/finally、switch |
+| 控制与异常 | if/then/elseif/else、for/foreach/while、break/continue、catch options、return -level/-code/-options、自定义码、try/on/trap/finally、throw、-during | 完整错误码/诊断栈、subst 异常替换、switch |
 | 工具和会话 | JSON 行 CLI、独立模块会话、真实 Worker 网页、导入/下载/清空/取消/超时 | Tcl 文件/网络/进程/事件 I/O、包/扩展生态、累计内存治理 |
 | 性能与缓存 | 有界脚本/表达式缓存、普通整数快速路径、标量列表/字典延迟序列化 | 完整对象系统、字节码、嵌套/数组对象与累计内存治理；0.5.0 七组热会话仍慢约 4.0–6.9 倍（历史测量） |
-| 证据 | 312 命名空间 + 340 缓存 + 726 语义 + 248 原有系统 Tcl 场景，两个编译后端，真实宿主验证 | 全量上游测试、跨操作系统、代表性性能和应用迁移 |
+| 证据 | 321 异常 + 312 命名空间 + 340 缓存 + 726 语义 + 248 原有系统 Tcl 场景，两个编译后端，真实宿主验证 | 全量上游测试、跨操作系统、代表性性能和应用迁移 |
 
 上述实现是可执行子集，不是全量上游通过声明；20 项追平目标继续保持活动状态。

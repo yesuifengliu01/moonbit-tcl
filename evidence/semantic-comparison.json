@@ -2,7 +2,7 @@
   "reference": "System Tcl 8.6.15 through Python tkinter",
   "cases": 726,
   "matched": 726,
-  "engineSHA256": "d2c36870b98fababb73ef303d4e0967725d335d6dddbec995876692a086b86a9",
+  "engineSHA256": "d53c626a6f0b8a40a4113b3d8e2eab0597a5cc2164c011e7a591ae8e57aa3c1a",
   "comparison": "Exact result and standard-output strings on success; rejection only on expected errors.",
   "rows": [
     {
@@ -5681,7 +5681,7 @@
       "error": true,
       "actual": {
         "ok": false,
-        "error": "Invalid(\"undefined variable x\")",
+        "error": "Invalid(\"can't read \\\"x\\\": no such variable\")",
         "output": ""
       },
       "matched": true
@@ -6656,7 +6656,7 @@
       "error": true,
       "actual": {
         "ok": false,
-        "error": "Invalid(\"undefined variable a\")",
+        "error": "Invalid(\"can't read \\\"a\\\": no such variable\")",
         "output": ""
       },
       "matched": true
@@ -6682,7 +6682,7 @@
       "error": true,
       "actual": {
         "ok": false,
-        "error": "Invalid(\"unsupported command a\")",
+        "error": "Invalid(\"invalid command name \\\"a\\\"\")",
         "output": ""
       },
       "matched": true
@@ -6695,7 +6695,7 @@
       "error": true,
       "actual": {
         "ok": false,
-        "error": "Invalid(\"undefined variable d\")",
+        "error": "Invalid(\"can't read \\\"d\\\": no such variable\")",
         "output": ""
       },
       "matched": true

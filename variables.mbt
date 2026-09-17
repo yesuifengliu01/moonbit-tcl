@@ -43,6 +43,8 @@ struct State {
   namespace_paths : Map[String, Array[String]]
   unknown_handlers : Map[String, String]
   namespaces : Map[String, Bool]
+  return_options : Ref[Array[(String, String)]]
+  error_stack : Ref[String]
   cache : ParseCache
 } derive(Debug)
 
@@ -232,10 +234,61 @@ fn Interpreter::read_var(
   self : Interpreter,
   name : String,
 ) -> String raise TclError {
-  match self.get_var(name) {
-    Some(value) => value
-    None => raise Invalid("undefined variable " + name)
+  let binding = self.binding(name, false)
+  let (reason, code) = match binding {
+    None => ("no such variable", "")
+    Some(binding) =>
+      match (binding.cell.value, binding.index) {
+        (Some(Elements(_)), None) => ("variable is array", "TCL READ VARNAME")
+        (Some(Elements(values)), Some(index)) =>
+          match values.get(index) {
+            Some(value) => return value
+            None =>
+              (
+                if binding.linked && variable_parts(name).1 is None {
+                  "no such variable"
+                } else {
+                  "no such element in array"
+                },
+                "TCL READ VARNAME",
+              )
+          }
+        (Some(_), Some(_)) =>
+          (
+            "variable isn't array",
+            if binding.linked {
+              "TCL LOOKUP VARNAME"
+            } else {
+              ""
+            },
+          )
+        _ =>
+          match binding.read() {
+            Some(value) => return value
+            None =>
+              (
+                "no such variable",
+                if binding.linked && variable_parts(name).1 is Some(_) {
+                  "TCL LOOKUP VARNAME"
+                } else if binding.linked ||
+                  (binding.cell.declared && binding.index is None) {
+                  "TCL READ VARNAME"
+                } else {
+                  ""
+                },
+              )
+          }
+      }
   }
+  let code = if code.is_empty() {
+    let (base, _) = variable_parts(name)
+    format_list(["TCL", "LOOKUP", "VARNAME", base])
+  } else {
+    code
+  }
+  raise Signal(
+    completion_error("can't read \"" + name + "\": " + reason, errorcode=code),
+  )
 }
 
 ///|

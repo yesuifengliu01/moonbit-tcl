@@ -17,6 +17,7 @@ pub suberror TclError {
   Return(String)
   Break
   Continue
+  Signal(Completion)
 } derive(@debug.Debug)
 
 // Types and methods
@@ -36,13 +37,23 @@ type Command derive(@debug.Debug)
 
 type CommandBody derive(@debug.Debug)
 
+type Completion derive(@debug.Debug)
+
 type DictObject derive(@debug.Debug)
 
 type Ensemble derive(@debug.Debug)
 
+pub struct Evaluation {
+  code : Int
+  result : String
+  options : String
+} derive(@debug.Debug)
+
 type Expr derive(@debug.Debug)
 
 type Frame derive(@debug.Debug)
+
+type Handler derive(@debug.Debug)
 
 pub struct Interpreter {
   state : State
@@ -55,6 +66,7 @@ pub fn Interpreter::cache_stats(Self) -> CacheStats
 pub fn Interpreter::clear_cache(Self) -> Unit
 pub fn Interpreter::clear_output(Self) -> Unit
 pub fn Interpreter::eval(Self, String, budget? : Int) -> String raise TclError
+pub fn Interpreter::eval_catch(Self, String, budget? : Int) -> Evaluation raise TclError
 pub fn Interpreter::new() -> Self
 pub fn Interpreter::output_text(Self) -> String
 pub fn Interpreter::printed(Self) -> String
@@ -62,6 +74,8 @@ pub fn Interpreter::printed(Self) -> String
 type ListObject derive(@debug.Debug)
 
 type ParseCache derive(@debug.Debug)
+
+type ParsedCommand derive(@debug.Debug)
 
 type Part derive(@debug.Debug)
 

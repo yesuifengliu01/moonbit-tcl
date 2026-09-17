@@ -4,6 +4,7 @@ pub suberror TclError {
   Return(String)
   Break
   Continue
+  Signal(Completion)
 } derive(Debug)
 
 ///|
@@ -32,6 +33,8 @@ pub fn Interpreter::new() -> Interpreter {
       unknown_handlers: Map([]),
       namespaces: Map([("::", true)]),
       cache: ParseCache::new(),
+      return_options: Ref([]),
+      error_stack: Ref(""),
     },
     frame: {
       vars: Map([]),
@@ -86,7 +89,7 @@ fn builtin_names() -> Array[String] {
     "lrepeat", "lset", "linsert", "lreplace", "lsearch", "lsort", "while", "for",
     "foreach", "lmap", "break", "continue", "catch", "error", "namespace", "global",
     "variable", "upvar", "uplevel", "array", "dict", "string", "info", "eval", "subst",
-    "rename",
+    "rename", "try", "throw",
   ]
 }
 
@@ -120,7 +123,12 @@ fn Interpreter::command(
       let words = parse_list(handler)
       if words.is_empty() ||
         (words[0] == "::unknown" && self.find_command("::unknown") is None) {
-        raise Invalid("unsupported command " + input[0])
+        raise Signal(
+          completion_error(
+            "invalid command name \"" + input[0] + "\"",
+            errorcode=format_list(["TCL", "LOOKUP", "COMMAND", input[0]]),
+          ),
+        )
       }
       return self.command(words + input, depth + 1, discard_result~)
     }
@@ -166,7 +174,9 @@ fn Interpreter::command(
     | "break"
     | "continue"
     | "catch"
-    | "error" => self.control_command(args, depth)
+    | "error"
+    | "try"
+    | "throw" => self.control_command(args, depth)
     "namespace" => self.namespace_command(args, depth)
     "global" | "variable" | "upvar" | "uplevel" =>
       self.scope_command(args, depth)
@@ -315,12 +325,7 @@ fn Interpreter::command(
       )
       ""
     }
-    "return" => {
-      if n > 2 {
-        raise Invalid("return options not implemented")
-      }
-      raise Return(if n == 2 { args[1] } else { "" })
-    }
+    "return" => self.return_command(args)
     "eval" => {
       if n < 2 {
         raise Invalid("eval arity")
@@ -331,7 +336,14 @@ fn Interpreter::command(
       if n != 2 {
         raise Invalid("subst options not implemented")
       }
-      let parser = ScriptParser::{ chars: args[1].to_array(), pos: 0, }
+      let parser = ScriptParser::{
+        chars: args[1].to_array(),
+        pos: 0,
+        line_pos: 0,
+        line: 1,
+        command_start: 0,
+        command_line: 1,
+      }
       self.expand_parts(parser.parts('\u0000', false, 0), depth + 1)
     }
     "rename" => {
@@ -354,10 +366,23 @@ pub fn Interpreter::eval(
     raise Invalid("budget range")
   }
   self.budget.val = budget
-  self.execute(source, 0) catch {
-    Return(value) => value
-    Invalid(message) => raise Invalid(message)
-    Break => raise Invalid("invoked break outside of a loop")
-    Continue => raise Invalid("invoked continue outside of a loop")
+  let result = self.capture(source, 0)
+  let result = if result.level != 0 {
+    { ..result, level: result.level - 1, }
+  } else {
+    result
+  }
+  match result.actual_code() {
+    0 => {
+      self.state.return_options.val = result.options
+      result.value
+    }
+    1 => {
+      self.record_error(result)
+      raise Invalid(result.value)
+    }
+    3 => raise Invalid("invoked break outside of a loop")
+    4 => raise Invalid("invoked continue outside of a loop")
+    code => raise Invalid("command returned bad code: " + code.to_string())
   }
 }

@@ -219,7 +219,7 @@ fn Interpreter::extended_list_command(
             0
           }
         } else {
-          a.compare(b)
+          tcl_string_compare(a, b)
         }
         let sign = if result < 0 { -1 } else if result > 0 { 1 } else { 0 }
         if reverse {

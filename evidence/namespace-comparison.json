@@ -2,7 +2,7 @@
   "reference": "System Tcl 8.6.15 through Python tkinter",
   "cases": 312,
   "matched": 312,
-  "engineSHA256": "d2c36870b98fababb73ef303d4e0967725d335d6dddbec995876692a086b86a9",
+  "engineSHA256": "d53c626a6f0b8a40a4113b3d8e2eab0597a5cc2164c011e7a591ae8e57aa3c1a",
   "comparison": "Exact result and standard-output strings on success; rejection only on expected errors.",
   "rows": [
     {
@@ -689,7 +689,7 @@
       "error": true,
       "actual": {
         "ok": false,
-        "error": "Invalid(\"unsupported command list\")",
+        "error": "Invalid(\"invalid command name \\\"list\\\"\")",
         "output": ""
       },
       "matched": true
@@ -1924,7 +1924,7 @@
       "error": true,
       "actual": {
         "ok": false,
-        "error": "Invalid(\"unsupported command pq\")",
+        "error": "Invalid(\"invalid command name \\\"pq\\\"\")",
         "output": ""
       },
       "matched": true
@@ -2431,7 +2431,7 @@
       "error": true,
       "actual": {
         "ok": false,
-        "error": "Invalid(\"unsupported command ::a::p\")",
+        "error": "Invalid(\"invalid command name \\\"::a::p\\\"\")",
         "output": ""
       },
       "matched": true
@@ -2444,7 +2444,7 @@
       "error": true,
       "actual": {
         "ok": false,
-        "error": "Invalid(\"unsupported command ::missing\")",
+        "error": "Invalid(\"invalid command name \\\"::missing\\\"\")",
         "output": ""
       },
       "matched": true

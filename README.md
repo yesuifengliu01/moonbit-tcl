@@ -1,8 +1,18 @@
 # MoonBit Tcl
 
-Tcl 8.6 脚本解释器，0.6.0。本地独立实现，仍在追平成熟项目的完整行为。
+Tcl 8.6 脚本解释器，0.7.0。本地独立实现，仍在追平成熟项目的完整行为。
 
-## 本轮命名空间与库命令
+## 本轮异常与清理语义
+
+实现 catch 的结果/选项变量、return 的 -code/-level/-options 和自定义选项、error 的显式诊断、throw，以及 try 的 on/trap/finally。返回层级在过程边界逐层消耗；循环识别 break/continue；清理块在正常、异常和返回路径执行，清理失败通过 -during 保留原异常选项。trap 按错误类型列表前缀匹配，支持处理器贯穿。修复 string compare、lsort 和表达式非数值比较的 UTF-16 字典序。
+
+公开 API 新增 eval_catch(source, budget?)，返回 Evaluation { code, result, options }，相当于直接 catch 脚本，不消耗顶层 return 层级；eval 保留原有字符串/错误接口并消耗一层。无效预算仍抛出 API 错误。选项是 Tcl 字典文本，可用 parse_list 读取。新增 Signal(Completion) 错误变体供内部传播，已有 eval 调用仍将脚本错误转为 Invalid；对 TclError 做穷尽匹配的调用方需要兼容新增变体。
+
+新增 321 个系统 Tcl 8.6.15 对照程序及 7 个公开 API 回归。矩阵验证返回层级、错误类型、自定义选项、循环、处理器及清理副作用；生成诊断在矩阵中被剔除，错误正文被归一化，另有明确的诊断/位置/常见错误正文逐字检查。自动错误堆栈采用命令与过程帧表示，不是 Tcl 字节码堆栈的完整复刻；写变量等许多错误码仍未覆盖。示例见 examples/completions.tcl，当前验证、性能和指纹见 evidence/completion-upgrade.json。
+
+完整本地验证：JS/WasmGC 各 1979 项通过，34 项新增宿主、20 项命名空间宿主、29 项会话、11 项 HTTP、17 项资源与 307 个异常输入检查通过。七组同进程交替测量中新版耗时为 0.6.0 的约 0.98–1.06 倍，仍比系统 Tcl 慢约 4.1–6.7 倍；仅代表本机小负载（evidence/completion-performance.json）。
+
+## 0.6.0 命名空间与库命令（历史测量）
 
 新增 namespace export/import/forget/origin/path/upvar/unknown，以及 ensemble create/configure/exists。命令表统一管理内置命令、过程、导入和 ensemble：重命名保留导入引用，重定义更新已有导入，删除连带清理多级导入；强制导入检测环。搜索路径按当前命名空间、路径、全局顺序查询，路径目标删除后不会因同名重建而自动恢复。
 
@@ -25,7 +35,7 @@ Ensemble 支持动态导出列表、显式 subcommands、map 命令前缀、唯�
 - 延迟求值的表达式树：&&、||、?: 短路，整数/浮点运算、位运算、幂、比较、eq/ne、in/ni 和常用数学函数。整数最大 16384 位；整数与浮点比较保留大整数精度；浮点转整数直接还原 IEEE 754 数值。
 - proc 默认/可变参数、递归、命名空间内过程解析、namespace eval/inscope/code、global/variable/upvar/uplevel；数组及元素别名、删除后重建。
 - array set/get/names/size/exists/unset；dict 构造、嵌套路径、修改、迭代、过滤、update/with 写回。
-- 常用 string 查询/转换/匹配/映射，以及 lset/linsert/lreplace/lsearch/lsort/lmap；if/then/elseif/else、for/foreach/while 和基本异常控制。
+- 常用 string 查询/转换/匹配/映射，以及 lset/linsert/lreplace/lsearch/lsort/lmap；if/then/elseif/else、for/foreach/while 和结构化异常控制。
 - 持久会话工作台：连续运行保留变量和过程，返回值与标准输出分栏；支持脚本导入/下载、清空会话、取消和 5 秒超时。普通脚本错误保留此前修改，取消/超时会清空整个会话。
 
 ## 使用
@@ -50,12 +60,14 @@ node tools/cli.mjs --input 'expr {2**80}' --eval-json
 
 ## 独立证据
 
-保留 248 项列表/过程/控制和 726 项语义场景，本轮新增 340 项缓存/集合/小整数原始程序，由本机 Tcl 8.6.15 计算预期值。成功场景逐字比较返回值与 stdout，预期失败场景比较是否拒绝，不宣称错误消息兼容。预期值同时生成 MoonBit 公共 API 测试，在 JS 与 WasmGC 上运行。
+保留 248 项列表/过程/控制和 726 项语义场景，另有 340 项缓存/集合/小整数原始程序及 312 项命名空间程序，由本机 Tcl 8.6.15 计算预期值。成功场景逐字比较返回值与 stdout，预期失败场景比较是否拒绝，不宣称错误消息兼容。预期值同时生成 MoonBit 公共 API 测试，在 JS 与 WasmGC 上运行。
 
 ```powershell
 python tools/generate_list_oracle.py
 python tools/generate-semantic-oracle.py
 python tools/generate-semantic-oracle.py cache
+python tools/generate-semantic-oracle.py namespace
+python tools/generate-semantic-oracle.py completion
 moon fmt
 ./verify.ps1
 ```
@@ -64,8 +76,8 @@ moon fmt
 
 ## 边界
 
-仍缺运行中命名空间删除的完整延迟销毁语义、全局命名空间删除、Tcl 自带自动加载库、包加载、regexp/regsub、switch、format/scan、trace、source/open/file/exec/socket、事件循环、完整 catch/return/error 选项等。string 字符类别目前主要覆盖 ASCII；非 BMP 字符在全部命令上的 Tcl 8.x UTF-16 行为未完成。已有部分集合对象缓存与解析缓存，仍缺完整 Tcl 对象系统、字节码和成熟性能证明。不能将有限场景通过等同于完整 Tcl 兼容。
+仍缺运行中命名空间删除的完整延迟销毁语义、全局命名空间删除、Tcl 自带自动加载库、包加载、regexp/regsub、switch、format/scan、trace、source/open/file/exec/socket、事件循环、全量错误码/诊断堆栈与 subst 异常替换等。string 字符类别目前主要覆盖 ASCII；非 BMP 字符在全部命令上的 Tcl 8.x UTF-16 行为未完成。已有部分集合对象缓存与解析缓存，仍缺完整 Tcl 对象系统、字节码和成熟性能证明。不能将有限场景通过等同于完整 Tcl 兼容。
 
 脚本最多 100000 UTF-16 单元；解析/执行嵌套 64 层；命令及替换共享预算，API 最大 1000000，网页/新会话接口使用 100000。字符串、变量值、列表结果及单次输出限 1000000 单元；整数 16384 位；命令表最多 10000 项（含内置命令）；数组 10000 元素；glob 动态规划最多 1000000 单元。网页 Worker 另有 5 秒终止机制。持久会话的累计内存尚无统一配额，因此不适合作为不可信多租户沙箱。
 
-根据 [Tcl expr](https://www.tcl-lang.org/man/tcl8.6/TclCmd/expr.htm)、[namespace](https://www.tcl-lang.org/man/tcl8.6/TclCmd/namespace.htm)、[dict](https://www.tcl-lang.org/man/tcl8.6/TclCmd/dict.htm) 文档和系统解释器行为原创实现，没有复制上游源码。MIT 许可。详见 FEATURES.md、TESTING.md 与 evidence/namespace-upgrade.json。独立 Git 仓库，无 remote，未上传、发布或提交比赛。
+根据 [Tcl return](https://www.tcl-lang.org/man/tcl8.6/TclCmd/return.htm)、[try](https://www.tcl-lang.org/man/tcl8.6/TclCmd/try.htm)、[catch](https://www.tcl-lang.org/man/tcl8.6/TclCmd/catch.htm)、[expr](https://www.tcl-lang.org/man/tcl8.6/TclCmd/expr.htm)、[namespace](https://www.tcl-lang.org/man/tcl8.6/TclCmd/namespace.htm)、[dict](https://www.tcl-lang.org/man/tcl8.6/TclCmd/dict.htm) 文档和系统解释器行为原创实现，没有复制上游源码。MIT 许可。详见 FEATURES.md、TESTING.md 与 evidence/completion-upgrade.json。独立 Git 仓库，无 remote，未上传、发布或提交比赛。

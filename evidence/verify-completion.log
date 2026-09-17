@@ -1,0 +1,40 @@
+Finished. moon: ran 3 tasks, now up to date
+Finished. moon: ran 2 tasks, now up to date
+Finished. moon: ran 2 tasks, now up to date
+Total tests: 1979, passed: 1979, failed: 0.
+Total tests: 1979, passed: 1979, failed: 0.
+Finished. moon: ran 2 tasks, now up to date
+Result: 15
+Output:
+sum=15
+tcl: independent browser engine passed
+tcl: CLI input/file/stdin/error/exit-status checks passed
+{"cases":726,"matched":726}
+{"cases":340,"matched":340}
+{"cases":312,"matched":312}
+{"cases":321,"matched":321}
+{"checks":34,"passed":34,"engineSHA256":"d53c626a6f0b8a40a4113b3d8e2eab0597a5cc2164c011e7a591ae8e57aa3c1a","scope":"Persistent module sessions, real JSONL CLI and the actual web Worker module with a Node message adapter; completion options, trap/finally, rethrow, loop control, top-level return and recovery; separate browser evidence required."}
+{"checks":20,"passed":20,"engineSHA256":"d53c626a6f0b8a40a4113b3d8e2eab0597a5cc2164c011e7a591ae8e57aa3c1a","scope":"Persistent module sessions, real JSONL CLI and the actual web Worker module with a Node message adapter; separate browser evidence required."}
+{"sessionChecks":29,"passed":29}
+127.0.0.1 - - [18/Sep/2026 07:12:26] "GET /web/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Sep/2026 07:12:26] "GET /web/worker.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Sep/2026 07:12:26] "GET /web/engine.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Sep/2026 07:12:26] code 404, message Not Found
+127.0.0.1 - - [18/Sep/2026 07:12:26] "GET /.git/config HTTP/1.1" 404 -
+127.0.0.1 - - [18/Sep/2026 07:12:26] code 404, message Not Found
+127.0.0.1 - - [18/Sep/2026 07:12:26] "GET /_build/ HTTP/1.1" 404 -
+127.0.0.1 - - [18/Sep/2026 07:12:26] code 404, message Not Found
+127.0.0.1 - - [18/Sep/2026 07:12:26] "GET /tools/ HTTP/1.1" 404 -
+127.0.0.1 - - [18/Sep/2026 07:12:26] "POST /download.tcl HTTP/1.1" 200 -
+127.0.0.1 - - [18/Sep/2026 07:12:26] code 415, message Unsupported Media Type
+127.0.0.1 - - [18/Sep/2026 07:12:26] "POST /download.tcl HTTP/1.1" 415 -
+127.0.0.1 - - [18/Sep/2026 07:12:26] code 400, message Bad Request
+127.0.0.1 - - [18/Sep/2026 07:12:26] "POST /download.tcl HTTP/1.1" 400 -
+127.0.0.1 - - [18/Sep/2026 07:12:26] code 413, message Content Too Large
+127.0.0.1 - - [18/Sep/2026 07:12:26] "POST /download.tcl HTTP/1.1" 413 -
+127.0.0.1 - - [18/Sep/2026 07:12:26] code 404, message Not Found
+127.0.0.1 - - [18/Sep/2026 07:12:26] "POST /other HTTP/1.1" 404 -
+HTTP checks passed: 11
+{"stressChecks":17,"passed":17}
+tcl: 307 bounded inputs, no uncaught runtime failure
+{"project":"tcl","utc":"2026-09-17T23:12:28.190Z","runtime":"v24.11.0","platform":"win32","cpu":"Intel(R) Core(TM) i7-14700HX","input_utf8_bytes":282,"samples":30,"warmup":5,"median_ms":0.3515000000000015,"p95_ms":0.8932000000000002,"max_ms":1.2209000000000003,"scope":"JS warm execution of documented example; no cross-project or upstream performance claim"}

@@ -5,7 +5,7 @@ pub fn run(input : String) -> String {
     let result = t.eval(input)
     "Result: " + result + "\nOutput:\n" + t.printed()
   } catch {
-    e => "ERROR: " + Repr(e).to_string()
+    e => "ERROR: " + host_error(e)
   }
 }
 
@@ -29,9 +29,20 @@ fn evaluate_interpreter(t : @lib.Interpreter, input : String) -> String {
     error =>
       Json::object({
         "ok": Json::boolean(false),
-        "error": Json::string(Repr(error).to_string()),
+        "error": Json::string(host_error(error)),
         "output": Json::string(t.output_text()),
       }).stringify()
+  }
+}
+
+///|
+// Debug's string formatter can panic on isolated UTF-16 surrogate units.
+// Preserve script messages with the code-unit-aware JSON string serializer.
+fn host_error(error : @lib.TclError) -> String {
+  match error {
+    @lib.Invalid(message) =>
+      "Invalid(" + Json::string(message).stringify() + ")"
+    other => Repr(other).to_string()
   }
 }
 

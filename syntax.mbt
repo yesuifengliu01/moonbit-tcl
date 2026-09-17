@@ -2,7 +2,7 @@
 enum Part {
   Text(String)
   Variable(String, Array[Part]?)
-  Command(Array[Array[Word]])
+  Command(Array[ParsedCommand])
 } derive(Debug)
 
 ///|
@@ -12,9 +12,20 @@ struct Word {
 } derive(Debug)
 
 ///|
+struct ParsedCommand {
+  words : Array[Word]
+  source : String
+  line : Int
+} derive(Debug)
+
+///|
 struct ScriptParser {
   chars : Array[Char]
   mut pos : Int
+  mut line_pos : Int
+  mut line : Int
+  mut command_start : Int
+  mut command_line : Int
 } derive(Debug)
 
 ///|
@@ -202,18 +213,20 @@ fn ScriptParser::script(
   bracket : Bool,
   depth : Int,
   one? : Bool = false,
-) -> Array[Array[Word]] raise TclError {
+) -> Array[ParsedCommand] raise TclError {
   if depth > 64 {
     raise Invalid("script nesting limit")
   }
   let commands = []
   let mut words = []
+  let mut start = self.pos
+  let mut line = self.source_line()
   while self.pos < self.chars.length() {
     let c = self.peek()
     if c == ']' && bracket {
       self.pos += 1
       if !words.is_empty() {
-        commands.push(words)
+        commands.push(self.parsed_command(words, start, line, self.pos - 1))
       }
       return commands
     }
@@ -225,7 +238,7 @@ fn ScriptParser::script(
     if c == ';' || c == '\n' {
       self.pos += 1
       if !words.is_empty() {
-        commands.push(words)
+        commands.push(self.parsed_command(words, start, line, self.pos - 1))
         words = []
       }
       if one && !commands.is_empty() {
@@ -243,6 +256,12 @@ fn ScriptParser::script(
         }
       }
     } else {
+      if words.is_empty() {
+        start = self.pos
+        line = self.source_line()
+        self.command_start = start
+        self.command_line = line
+      }
       words.push(self.word(depth, bracket))
       if words.length() > 4096 {
         raise Invalid("command argument limit")
@@ -256,7 +275,7 @@ fn ScriptParser::script(
     raise Invalid("missing close-bracket")
   }
   if !words.is_empty() {
-    commands.push(words)
+    commands.push(self.parsed_command(words, start, line, self.pos))
   }
   commands
 }
@@ -314,7 +333,7 @@ fn Interpreter::expand_parts(
 ///|
 fn Interpreter::execute_commands(
   self : Interpreter,
-  commands : Array[Array[Word]],
+  commands : Array[ParsedCommand],
   depth : Int,
   discard_result? : Bool = false,
 ) -> String raise TclError {
@@ -322,26 +341,33 @@ fn Interpreter::execute_commands(
     raise Invalid("execution nesting limit")
   }
   let mut result = ""
-  for words in commands {
+  for parsed in commands {
     let args = []
-    for word in words {
-      let value = self.expand_parts(word.parts, depth + 1)
-      if word.expand {
-        for item in parse_list(value) {
-          args.push(item)
+    try {
+      for word in parsed.words {
+        let value = self.expand_parts(word.parts, depth + 1)
+        if word.expand {
+          for item in parse_list(value) {
+            args.push(item)
+          }
+        } else {
+          args.push(value)
         }
-      } else {
-        args.push(value)
+        if args.length() > 4096 {
+          raise Invalid("expanded argument limit")
+        }
       }
-      if args.length() > 4096 {
-        raise Invalid("expanded argument limit")
+      if !args.is_empty() {
+        result = self.command(args, depth, discard_result~)
       }
-    }
-    if !args.is_empty() {
-      result = self.command(args, depth, discard_result~)
-    }
-    if result.length() > 1000000 {
-      raise Invalid("command result size limit")
+      if result.length() > 1000000 {
+        raise Invalid("command result size limit")
+      }
+    } catch {
+      error =>
+        raise Signal(
+          self.annotate_error(outcome(error), parsed.source, parsed.line, args),
+        )
     }
   }
   result
@@ -363,7 +389,16 @@ fn Interpreter::execute(
   while true {
     if index == program.commands.length() {
       if program.failure is Some(message) {
-        raise Invalid(message)
+        raise Signal(
+          self.annotate_error(
+            completion_error(message),
+            String::from_array(
+              program.parser.chars[program.parser.command_start:],
+            ),
+            program.parser.command_line,
+            [],
+          ),
+        )
       }
       if program.parser.pos == program.parser.chars.length() {
         break
@@ -376,7 +411,16 @@ fn Interpreter::execute(
       } catch {
         Invalid(message) => {
           program.failure = Some(message)
-          raise Invalid(message)
+          raise Signal(
+            self.annotate_error(
+              completion_error(message),
+              String::from_array(
+                program.parser.chars[program.parser.command_start:],
+              ),
+              program.parser.command_line,
+              [],
+            ),
+          )
         }
         error => raise error
       }
@@ -392,4 +436,30 @@ fn Interpreter::execute(
     index += 1
   }
   result
+}
+
+///|
+fn ScriptParser::source_line(self : ScriptParser) -> Int {
+  while self.line_pos < self.pos {
+    if self.chars[self.line_pos] == '\n' {
+      self.line += 1
+    }
+    self.line_pos += 1
+  }
+  self.line
+}
+
+///|
+fn ScriptParser::parsed_command(
+  self : ScriptParser,
+  words : Array[Word],
+  start : Int,
+  line : Int,
+  end : Int,
+) -> ParsedCommand {
+  {
+    words,
+    source: String::from_array(self.chars[start:end]).trim_end().to_owned(),
+    line,
+  }
 }

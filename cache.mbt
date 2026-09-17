@@ -1,7 +1,7 @@
 ///|
 struct ScriptProgram {
   parser : ScriptParser
-  commands : Array[Array[Word]]
+  commands : Array[ParsedCommand]
   mut failure : String?
 } derive(Debug)
 
@@ -77,7 +77,14 @@ fn Interpreter::cached_script(
     cache.script_units = 0
   }
   let program = ScriptProgram::{
-    parser: { chars: source.to_array(), pos: 0, },
+    parser: {
+      chars: source.to_array(),
+      pos: 0,
+      line_pos: 0,
+      line: 1,
+      command_start: 0,
+      command_line: 1,
+    },
     commands: [],
     failure: None,
   }
@@ -100,7 +107,14 @@ fn Interpreter::cached_expression(
     }
     return expr
   }
-  let parser = ScriptParser::{ chars: source.to_array(), pos: 0, }
+  let parser = ScriptParser::{
+    chars: source.to_array(),
+    pos: 0,
+    line_pos: 0,
+    line: 1,
+    command_start: 0,
+    command_line: 1,
+  }
   let expr = parser.expression(1, 0)
   parser.expr_space()
   if parser.pos != parser.chars.length() {

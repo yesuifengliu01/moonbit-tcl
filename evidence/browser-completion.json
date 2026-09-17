@@ -1,0 +1,59 @@
+{
+  "engineSHA256": "d53c626a6f0b8a40a4113b3d8e2eab0597a5cc2164c011e7a591ae8e57aa3c1a",
+  "browser": "Codex In-app Browser",
+  "url": "http://127.0.0.1:16036/web/",
+  "version": "0.7.0",
+  "checks": 11,
+  "passed": 11,
+  "method": "Live CUA UI inputs and Run/Reset controls, fresh accessibility snapshots plus result/error/output DOM text checks. Observations transcribed from tool returns.",
+  "scope": "Final engine only; version badge corrected and checked. No rerun of mobile layout, import/download, cancellation or timeout in this milestone.",
+  "cleanup": "Temporary tab closed and loopback server stopped.",
+  "rows": [
+    {
+      "name": "default-example",
+      "result": "1208925819614629174706176",
+      "output": "tea: 20\ncoffee: 24\n"
+    },
+    {
+      "name": "trap-finally",
+      "result": "recovered {{APP RETRY detail} cleaned}"
+    },
+    {
+      "name": "return-levels",
+      "result": "result 2 1 kept"
+    },
+    {
+      "name": "finally-during",
+      "result": "b FINAL FIRST"
+    },
+    {
+      "name": "loop-cleanup",
+      "result": "1 clean"
+    },
+    {
+      "name": "native-trap",
+      "result": "yes"
+    },
+    {
+      "name": "top-return",
+      "result": "top"
+    },
+    {
+      "name": "uncaught-output-cleanup",
+      "error": "Invalid(\"uncaught\")",
+      "output": "before\n"
+    },
+    {
+      "name": "recovery",
+      "result": "yes yes 1"
+    },
+    {
+      "name": "reset",
+      "result": "0 0"
+    },
+    {
+      "name": "console",
+      "entries": []
+    }
+  ]
+}

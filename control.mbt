@@ -71,10 +71,44 @@ fn Interpreter::invoke_procedure(
     parent: Some(self.frame),
   })
   child.execute(body, depth + 1) catch {
-    Return(value) => value
-    Break => raise Invalid("invoked break outside of a loop")
-    Continue => raise Invalid("invoked continue outside of a loop")
-    Invalid(message) => raise Invalid(message)
+    error => {
+      let result = outcome(error)
+      if result.level != 0 {
+        self.propagate({ ..result, level: result.level - 1, })
+      } else if result.code == 3 || result.code == 4 {
+        let options = result.options.copy()
+        option_set(options, "-errorcode", "TCL RESULT UNEXPECTED")
+        raise Signal(
+          completion(
+            1,
+            "invoked " +
+            (if result.code == 3 { "break" } else { "continue" }) +
+            " outside of a loop",
+            options~,
+          ),
+        )
+      } else if result.code == 1 {
+        let options = result.options.copy()
+        let line = option_get(options, "-errorline").unwrap_or("1")
+        let info = option_get(options, "-errorinfo").unwrap_or(result.value)
+        option_set(
+          options,
+          "-errorinfo",
+          info + "\n    (procedure \"" + args[0] + "\" line " + line + ")",
+        )
+        let stack = option_get(options, "-errorstack").unwrap_or("")
+        option_set(
+          options,
+          "-errorstack",
+          stack +
+          (if stack.is_empty() { "" } else { " " }) +
+          format_list(["CALL", format_list(args)]),
+        )
+        raise Signal({ ..result, options, })
+      } else {
+        raise Signal(result)
+      }
+    }
   }
 }
 
@@ -91,8 +125,9 @@ fn Interpreter::loop_body(
   } catch {
     Break => 2
     Continue => 1
-    Return(v) => raise Return(v)
-    Invalid(v) => raise Invalid(v)
+    Signal(result) if result.actual_code() == 3 => 2
+    Signal(result) if result.actual_code() == 4 => 1
+    error => raise error
   }
 }
 
@@ -116,27 +151,10 @@ fn Interpreter::control_command(
       }
       raise Continue
     }
-    "error" => {
-      if n != 2 {
-        raise Invalid("error arity")
-      }
-      raise Invalid(args[1])
-    }
-    "catch" => {
-      if n != 2 && n != 3 {
-        raise Invalid("catch arity")
-      }
-      let (code, result) = (0, self.execute(args[1], depth + 1)) catch {
-        Invalid(v) => (1, v)
-        Return(v) => (2, v)
-        Break => (3, "")
-        Continue => (4, "")
-      }
-      if n == 3 {
-        self.set_var(args[2], result)
-      }
-      code.to_string()
-    }
+    "error" | "throw" => self.error_command(args)
+    "return" => self.return_command(args)
+    "catch" => self.catch_command(args, depth)
+    "try" => self.try_command(args, depth)
     "while" => {
       if n != 3 {
         raise Invalid("while arity")
@@ -209,8 +227,9 @@ fn Interpreter::control_command(
           collected.push(self.execute(args[n - 1], depth + 1)) catch {
             Continue => continue
             Break => break
-            Return(v) => raise Return(v)
-            Invalid(v) => raise Invalid(v)
+            Signal(result) if result.actual_code() == 4 => continue
+            Signal(result) if result.actual_code() == 3 => break
+            error => raise error
           }
         } else if self.loop_body(args[n - 1], depth) == 2 {
           break
@@ -219,6 +238,7 @@ fn Interpreter::control_command(
       if args[0] == "lmap" {
         format_list(collected)
       } else {
+        self.state.return_options.val = []
         ""
       }
     }

@@ -152,7 +152,7 @@ fn Interpreter::string_command(
         Some(v) if v >= 0 => b[:v.min(b.length())].to_owned()
         _ => b
       }
-      let cmp = a.compare(b)
+      let cmp = tcl_string_compare(a, b)
       if op == "equal" {
         boolean_text(cmp == 0)
       } else if cmp < 0 {
@@ -556,6 +556,12 @@ fn Interpreter::info_command(
       }
       level.to_string()
     }
+    "errorstack" => {
+      if n != 2 && !(n == 3 && args[2].is_empty()) {
+        raise Invalid("info errorstack arity or unsupported interpreter")
+      }
+      self.state.error_stack.val
+    }
     "patchlevel" => {
       if n != 2 {
         raise Invalid("info patchlevel arity")
@@ -570,4 +576,20 @@ fn Interpreter::info_command(
     }
     _ => raise Invalid("unsupported info subcommand")
   }
+}
+
+///|
+// MoonBit String.compare is shortlex. Tcl uses lexicographic UTF-16 units.
+fn tcl_string_compare(a : String, b : String) -> Int {
+  for i in 0..<a.length().min(b.length()) {
+    let x = a.get(i).unwrap()
+    let y = b.get(i).unwrap()
+    if x < y {
+      return -1
+    }
+    if x > y {
+      return 1
+    }
+  }
+  a.length().compare(b.length())
 }
