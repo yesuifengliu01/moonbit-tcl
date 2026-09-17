@@ -1,0 +1,109 @@
+{
+  "checks": 18,
+  "passed": 18,
+  "method": "Live Codex browser CUA actions and DOM/screenshot observations; transcribed results",
+  "rows": [
+    {
+      "case": "example",
+      "result": "1208925819614629174706176",
+      "output": "tea: 20\ncoffee: 24\n",
+      "passed": true
+    },
+    {
+      "case": "persistent",
+      "result": "22",
+      "passed": true
+    },
+    {
+      "case": "error-output",
+      "output": "before\n",
+      "error": "Invalid(\"bad\")",
+      "passed": true
+    },
+    {
+      "case": "recover",
+      "result": "9",
+      "passed": true
+    },
+    {
+      "case": "reset",
+      "result": "0",
+      "passed": true
+    },
+    {
+      "case": "cancel",
+      "status": "已停止执行并清空会话。",
+      "passed": true
+    },
+    {
+      "case": "after-cancel",
+      "result": "0",
+      "passed": true
+    },
+    {
+      "case": "timeout",
+      "status": "超过 5 秒，执行已终止并清空会话。",
+      "passed": true
+    },
+    {
+      "case": "after-timeout",
+      "result": "0",
+      "passed": true
+    },
+    {
+      "case": "import",
+      "result": "1208925819614629174706176",
+      "passed": true
+    },
+    {
+      "case": "import-distinct-script",
+      "result": "32",
+      "output": "imported-ok\n",
+      "passed": true
+    },
+    {
+      "case": "http-download",
+      "event": true,
+      "file": "C:/Users/uiwcv/Downloads/script.tcl",
+      "passed": true
+    },
+    {
+      "case": "pre-download-state",
+      "result": "42",
+      "passed": true
+    },
+    {
+      "case": "after-download-state",
+      "result": "43",
+      "passed": true
+    },
+    {
+      "case": "download-reimport",
+      "result": "42",
+      "passed": true
+    },
+    {
+      "case": "keyboard-run",
+      "result": "43",
+      "passed": true
+    },
+    {
+      "case": "mobile",
+      "width": 390,
+      "bodyWidth": 375,
+      "documentWidth": 375,
+      "passed": true
+    },
+    {
+      "case": "console",
+      "logs": [],
+      "passed": true
+    }
+  ],
+  "repair": "Downloads changed to loopback HTTP attachments after blob/data downloads failed in the embedded browser. Removing beforeunload termination preserves the Worker after an attachment response.",
+  "finalState": {
+    "temporaryTabClosed": true,
+    "viewportReset": true,
+    "loopbackServerStopped": true
+  }
+}

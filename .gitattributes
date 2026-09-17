@@ -2,3 +2,4 @@
 *.png -text
 *.jpg -text
 *.wasm -text
+evidence/browser-download.tcl -text -diff

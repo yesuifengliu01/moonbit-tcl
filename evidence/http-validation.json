@@ -1,0 +1,17 @@
+{
+  "checks": 11,
+  "passed": 11,
+  "rows": [
+    "/web/",
+    "/web/worker.mjs",
+    "/web/engine.mjs",
+    "blocked /.git/config",
+    "blocked /_build/",
+    "blocked /tools/",
+    "download UTF-8 exact bytes",
+    "download MIME rejection",
+    "download fields rejection",
+    "download size rejection",
+    "unknown endpoint"
+  ]
+}

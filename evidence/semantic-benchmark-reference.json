@@ -1,0 +1,67 @@
+{
+  "reference": "System Tcl 8.6.15",
+  "warmups": 5,
+  "measurements": 20,
+  "scope": "Includes fresh interpreter creation. Python/Tcl and Node/MoonBit have different host overheads; local comparisons are not cross-platform performance parity.",
+  "provenance": [
+    {
+      "path": "C:\\Users\\uiwcv\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\_tkinter.pyd",
+      "sha256": "b7bc5c036699510968ff5040a392de8fe612fa66dad01fbb5d66df56db554a8f"
+    },
+    {
+      "path": "C:\\Users\\uiwcv\\AppData\\Local\\Python\\pythoncore-3.14-64\\tcl\\tcl8.6\\init.tcl",
+      "sha256": "acacce15658dd7ce8f69b1e3d3a94770a22972a8e906eb3b61cd06f0ecd5db59"
+    },
+    {
+      "path": "C:\\Users\\uiwcv\\AppData\\Local\\Python\\pythoncore-3.14-64\\DLLs\\tcl86t.dll",
+      "sha256": "2ef3a547ba6aed3b366cd1dbac63a7f1886dac9602417b5abbe6f51ffc57e8c1"
+    }
+  ],
+  "rows": [
+    {
+      "name": "dictionary-100",
+      "source": "set d {}; for {set i 0} {$i < 100} {incr i} {dict set d $i [expr {$i*$i}]}; dict get $d 99",
+      "result": "9801",
+      "medianMs": 7.9487000000000005,
+      "p95Ms": 9.1538,
+      "sessionMedianMs": 0.0843,
+      "sessionP95Ms": 0.1008
+    },
+    {
+      "name": "array-300",
+      "source": "array set a {}; for {set i 0} {$i < 300} {incr i} {set a($i) [expr {$i*3}]}; list [array size a] $a(299)",
+      "result": "300 897",
+      "medianMs": 7.761150000000001,
+      "p95Ms": 8.5726,
+      "sessionMedianMs": 0.1496,
+      "sessionP95Ms": 0.2102
+    },
+    {
+      "name": "bigint-150",
+      "source": "set x 1; for {set i 0} {$i < 150} {incr i} {set x [expr {$x * 3 + 1}]}; set x",
+      "result": "554982727552690459387051173677544966279709650584584460722776607952622373",
+      "medianMs": 7.9086,
+      "p95Ms": 8.8061,
+      "sessionMedianMs": 0.1221,
+      "sessionP95Ms": 0.1757
+    },
+    {
+      "name": "alias-200",
+      "source": "proc bump {name} {upvar 1 $name x; incr x}; set x 0; for {set i 0} {$i < 200} {incr i} {bump x}; set x",
+      "result": "200",
+      "medianMs": 7.48735,
+      "p95Ms": 8.2872,
+      "sessionMedianMs": 0.11055,
+      "sessionP95Ms": 0.2
+    },
+    {
+      "name": "sort-200",
+      "source": "set xs {}; for {set i 200} {$i > 0} {incr i -1} {lappend xs $i}; lindex [lsort -integer $xs] end",
+      "result": "200",
+      "medianMs": 7.801349999999999,
+      "p95Ms": 8.2479,
+      "sessionMedianMs": 0.1036,
+      "sessionP95Ms": 0.1735
+    }
+  ]
+}

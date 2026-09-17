@@ -1,7 +1,7 @@
 ///|
 fn Interpreter::tick(self : Interpreter) -> Unit raise TclError {
-  self.budget -= 1
-  if self.budget < 0 {
+  self.budget.val -= 1
+  if self.budget.val < 0 {
     raise Invalid("execution budget")
   }
 }
@@ -12,10 +12,12 @@ fn Interpreter::invoke_procedure(
   args : Array[String],
   depth : Int,
 ) -> String raise TclError {
-  let (parameters, body) = match self.procs.get(args[0]) {
+  let definition = match self.state.procedures.get(args[0]) {
     Some(p) => p
     None => raise Invalid("procedure missing")
   }
+  let parameters = definition.parameters
+  let body = definition.body
   let variadic = !parameters.is_empty() &&
     parameters[parameters.length() - 1].0 == "args"
   let fixed = parameters.length() - (if variadic { 1 } else { 0 })
@@ -57,16 +59,20 @@ fn Interpreter::invoke_procedure(
       },
     )
   }
-  let child = Interpreter::{
-    vars,
-    procs: self.procs,
-    output: self.output,
-    output_size: self.output_size,
-    budget: self.budget,
+  let bindings : Map[String, Binding] = Map([])
+  for name, value in vars {
+    bindings[name] = {
+      cell: { value: Some(Scalar(value)), declared: false, },
+      index: None,
+      linked: false,
+    }
   }
-  defer {
-    self.budget = child.budget
-  }
+  let child = self.with_frame({
+    vars: bindings,
+    namespace_name: definition.namespace_name,
+    procedure: true,
+    parent: Some(self.frame),
+  })
   child.execute(body, depth + 1) catch {
     Return(value) => value
     Break => raise Invalid("invoked break outside of a loop")
@@ -130,7 +136,7 @@ fn Interpreter::control_command(
         Continue => (4, "")
       }
       if n == 3 {
-        self.vars[args[2]] = result
+        self.set_var(args[2], result)
       }
       code.to_string()
     }
@@ -167,7 +173,8 @@ fn Interpreter::control_command(
       }
       ""
     }
-    "foreach" => {
+    "foreach" | "lmap" => {
+      let collected = []
       if n < 4 || n % 2 != 0 {
         raise Invalid("foreach arity")
       }
@@ -191,18 +198,32 @@ fn Interpreter::control_command(
         for (names, values) in groups {
           for j in 0..<names.length() {
             let at = iteration * names.length() + j
-            self.vars[names[j]] = if at < values.length() {
-              values[at]
-            } else {
-              ""
-            }
+            self.set_var(
+              names[j],
+              if at < values.length() {
+                values[at]
+              } else {
+                ""
+              },
+            )
           }
         }
-        if self.loop_body(args[n - 1], depth) == 2 {
+        if args[0] == "lmap" {
+          collected.push(self.execute(args[n - 1], depth + 1)) catch {
+            Continue => continue
+            Break => break
+            Return(v) => raise Return(v)
+            Invalid(v) => raise Invalid(v)
+          }
+        } else if self.loop_body(args[n - 1], depth) == 2 {
           break
         }
       }
-      ""
+      if args[0] == "lmap" {
+        format_list(collected)
+      } else {
+        ""
+      }
     }
     _ => raise Invalid("unsupported control command")
   }

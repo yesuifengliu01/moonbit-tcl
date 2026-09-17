@@ -1,0 +1,5 @@
+{
+  "checks": 29,
+  "passed": 29,
+  "scope": "Independent module sessions, real JSON-lines CLI, actual browser Worker module through Node message adapter"
+}

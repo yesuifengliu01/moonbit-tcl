@@ -1,0 +1,76 @@
+{
+  "cases": 17,
+  "passed": 17,
+  "milliseconds": 328.64680000000004,
+  "scope": "Bounded resource rejection and recovery cases; not a multi-tenant isolation guarantee",
+  "rows": [
+    {
+      "name": "integer-power",
+      "passed": true
+    },
+    {
+      "name": "integer-shift",
+      "passed": true
+    },
+    {
+      "name": "negative-shift",
+      "passed": true
+    },
+    {
+      "name": "string-growth",
+      "passed": true
+    },
+    {
+      "name": "nested-growth",
+      "passed": true
+    },
+    {
+      "name": "array-value-growth",
+      "passed": true
+    },
+    {
+      "name": "dictionary-growth",
+      "passed": true
+    },
+    {
+      "name": "glob-work",
+      "passed": true
+    },
+    {
+      "name": "execution-budget",
+      "passed": true
+    },
+    {
+      "name": "recursive-procedure",
+      "passed": true
+    },
+    {
+      "name": "expression-depth",
+      "passed": true
+    },
+    {
+      "name": "script-size",
+      "passed": true
+    },
+    {
+      "name": "signed-input",
+      "passed": true
+    },
+    {
+      "name": "precise-comparison",
+      "passed": true
+    },
+    {
+      "name": "lazy-rejection",
+      "passed": true
+    },
+    {
+      "name": "alias-lifetime",
+      "passed": true
+    },
+    {
+      "name": "writeback-error",
+      "passed": true
+    }
+  ]
+}

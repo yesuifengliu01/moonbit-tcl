@@ -30,6 +30,14 @@ try {
   if ($LASTEXITCODE -ne 0) {throw 'browser engine test failed'}
   node tools/test-cli.mjs
   if ($LASTEXITCODE -ne 0) {throw 'CLI test failed'}
+  node tools/test-semantic-oracle.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl semantic differential failed'}
+  node tools/test-sessions.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'Persistent session host tests failed'}
+  python tools/test-http.py
+  if ($LASTEXITCODE -ne 0) {throw 'Local HTTP host tests failed'}
+  node tools/semantic-stress.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'Semantic resource tests failed'}
   node tools/robustness.mjs
   if ($LASTEXITCODE -ne 0) {throw 'robustness failed'}
   node tools/benchmark.mjs

@@ -306,17 +306,17 @@ fn Interpreter::list_command(
         raise Invalid("lappend arity")
       }
       if n == 2 {
-        let value = self.vars.get(args[1]).unwrap_or("")
+        let value = self.get_var(args[1]).unwrap_or("")
         ignore(parse_list(value))
-        self.vars[args[1]] = value
+        self.set_var(args[1], value)
         return value
       }
-      let values = parse_list(self.vars.get(args[1]).unwrap_or(""))
+      let values = parse_list(self.get_var(args[1]).unwrap_or(""))
       for item in args[2:] {
         values.push(item)
       }
       let result = format_list(values)
-      self.vars[args[1]] = result
+      self.set_var(args[1], result)
       result
     }
     "join" => {

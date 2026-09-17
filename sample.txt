@@ -1,11 +1,14 @@
-proc summarize {values {scale 2}} {
- set out {}
- foreach value $values {
-  if {$value < 0} {continue}
-  lappend out [expr {$value * $scale}]
+namespace eval ledger {
+ variable totals {}
+ proc add {name amount} {
+  variable totals
+  dict incr totals $name $amount
  }
- return $out
 }
-set result [summarize {1 -2 3 5} 3]
-puts [join $result {, }]
-list $result [llength $result]
+foreach {name amount} {tea 12 coffee 24 tea 8} {
+ ledger::add $name $amount
+}
+dict for {name total} $::ledger::totals {
+ puts "$name: $total"
+}
+expr {2**80}

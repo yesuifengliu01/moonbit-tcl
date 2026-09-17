@@ -3,6 +3,7 @@ package "localreview/tcl"
 
 import {
   "moonbitlang/core/debug",
+  "moonbitlang/core/ref",
 }
 
 // Values
@@ -19,16 +20,30 @@ pub suberror TclError {
 } derive(@debug.Debug)
 
 // Types and methods
+type Binding derive(@debug.Debug)
+
+type Cell derive(@debug.Debug)
+
+type Frame derive(@debug.Debug)
+
 pub struct Interpreter {
-  vars : Map[String, String]
-  procs : Map[String, (Array[(String, String?)], String)]
+  state : State
+  frame : Frame
   output : Array[String]
   output_size : Array[Int]
-  mut budget : Int
+  budget : @ref.Ref[Int]
 } derive(@debug.Debug)
+pub fn Interpreter::clear_output(Self) -> Unit
 pub fn Interpreter::eval(Self, String, budget? : Int) -> String raise TclError
 pub fn Interpreter::new() -> Self
+pub fn Interpreter::output_text(Self) -> String
 pub fn Interpreter::printed(Self) -> String
+
+type Procedure derive(@debug.Debug)
+
+type State derive(@debug.Debug)
+
+type VariableValue derive(@debug.Debug)
 
 // Type aliases
 

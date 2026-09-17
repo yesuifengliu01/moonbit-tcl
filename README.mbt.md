@@ -59,7 +59,7 @@ test "procedure errors and depth budgets" {
 }
 ```
 
-限制：命名空间、完整列表/字符串命令、数组变量或外部 I/O 尚未完成；整数为 32 位。
+限制：namespace 导入/导出、完整列表/字符串命令与外部 I/O 尚未完成；整数运算限 16384 位。详见 FEATURES.md。
 
 ## 过程、列表和通用循环
 

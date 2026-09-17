@@ -3,6 +3,7 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 from functools import partial
 import argparse
+from urllib.parse import parse_qs
 
 class Handler(SimpleHTTPRequestHandler):
     extensions_map = {**SimpleHTTPRequestHandler.extensions_map,
@@ -22,6 +23,35 @@ class Handler(SimpleHTTPRequestHandler):
     def list_directory(self, path):
         self.send_error(404)
         return None
+
+    def do_POST(self):
+        if self.path != '/download.tcl':
+            self.send_error(404)
+            return
+        try:
+            length = int(self.headers.get('Content-Length', '0'))
+            if not 0 < length <= 2097152:
+                self.send_error(413)
+                return
+            if self.headers.get('Content-Type','').split(';')[0] != 'application/x-www-form-urlencoded':
+                self.send_error(415)
+                return
+            fields = parse_qs(self.rfile.read(length).decode('utf-8'), keep_blank_values=True, strict_parsing=True, max_num_fields=1)
+            if set(fields) != {'source'} or len(fields['source']) != 1:
+                raise ValueError('source required')
+            data = fields['source'][0].encode('utf-8')
+            if len(data) > 400000:
+                self.send_error(413)
+                return
+        except (ValueError, UnicodeError):
+            self.send_error(400)
+            return
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/octet-stream')
+        self.send_header('Content-Disposition', 'attachment; filename="script.tcl"')
+        self.send_header('Content-Length', str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
 
     def end_headers(self):
         self.send_header('Cache-Control', 'no-store')
