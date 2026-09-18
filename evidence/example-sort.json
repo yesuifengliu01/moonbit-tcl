@@ -1,0 +1,13 @@
+{
+  "source": "examples/sort.tcl",
+  "reference": "Windows Tcl 8.6.15",
+  "result": "{juice 7} {tea 12} {coffee 34}",
+  "output": "rack1 {tea 7} rack2 {tea 12} rack10 {coffee 34}\n4 5 2 3 0 1\nlatest 1 middle 2\n",
+  "actual": {
+    "ok": true,
+    "result": "{juice 7} {tea 12} {coffee 34}",
+    "output": "rack1 {tea 7} rack2 {tea 12} rack10 {coffee 34}\n4 5 2 3 0 1\nlatest 1 middle 2\n"
+  },
+  "matched": true,
+  "engineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa"
+}

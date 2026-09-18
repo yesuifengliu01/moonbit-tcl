@@ -1,0 +1,6 @@
+{
+  "checks": 48,
+  "passed": 48,
+  "engineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+  "scope": "Persistent exported sessions, real JSONL CLI, and actual web Worker through a Node adapter. Group sorting and original indices, nested paths, stable uniqueness, numeric conversion, comparator order/case/completion/reentrancy, failure recovery and reset. Browser acceptance is separate."
+}

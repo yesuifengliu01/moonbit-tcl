@@ -1,0 +1,705 @@
+{
+  "project": "moonbit-tcl",
+  "version": "0.15.0",
+  "localDate": "2026-09-18",
+  "createdUTC": "2026-09-18T11:56:00.670850+00:00",
+  "baseCommit": "3f2fdcb0aa47239c16189250224ecea84c0cd2b7",
+  "engineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+  "scope": "Complete the lsort option families, grouped sorting, original indices, nested selection, merge-time uniqueness and comparator completion/order/reentrancy semantics. Align private collection-list diagnostic parsing. Full 20-project parity remains incomplete.",
+  "verified": {
+    "jsTests": 11178,
+    "wasmGCTests": 11178,
+    "newPublicAPIRegressions": 8,
+    "sortNativeProbes": 1951,
+    "sortExactSuccesses": 1813,
+    "sortExpectedRejections": 136,
+    "sortKnownDifferences": 2,
+    "sortNativeTimeouts": 0,
+    "sortGroupedBackendTests": 49,
+    "sortHostChecks": 48,
+    "browserChecks": 20,
+    "resourceChecks": 17,
+    "httpChecks": 11,
+    "malformedInputs": 307,
+    "generationCycles": 2,
+    "generationFiles": 172,
+    "publicAPISignaturesUnchanged": true,
+    "exampleIndependentMatched": true,
+    "comparisons": {
+      "semantic": {
+        "cases": 726,
+        "matched": 726,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "cache": {
+        "cases": 340,
+        "matched": 340,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "namespace": {
+        "cases": 312,
+        "matched": 312,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "completion": {
+        "cases": 321,
+        "matched": 321,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "syntax": {
+        "cases": 1019,
+        "matched": 1019,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "unicode": {
+        "cases": 1866,
+        "matched": 1866,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "conversion": {
+        "cases": 4970,
+        "matched": 4969,
+        "knownDifferences": 1,
+        "unexpectedDifferences": 0
+      },
+      "value": {
+        "cases": 855,
+        "matched": 855,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "switch": {
+        "cases": 5828,
+        "matched": 5828,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "regexp": {
+        "cases": 6299,
+        "matched": 6291,
+        "knownDifferences": 8,
+        "unexpectedDifferences": 0
+      },
+      "search": {
+        "cases": 3307,
+        "matched": 3307,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "sort": {
+        "cases": 1951,
+        "matched": 1949,
+        "knownDifferences": 2,
+        "unexpectedDifferences": 0
+      }
+    },
+    "hostChecks": {
+      "sort-hosts.json": 48,
+      "search-hosts.json": 44,
+      "regexp-hosts.json": 48,
+      "switch-hosts.json": 34,
+      "value-hosts.json": 30,
+      "conversion-hosts.json": 36,
+      "unicode-hosts.json": 30,
+      "syntax-hosts.json": 24,
+      "completion-hosts.json": 34,
+      "namespace-hosts.json": 20,
+      "browser-sort.json": 20
+    }
+  },
+  "reference": {
+    "runtime": "Windows Tcl 8.6.15 via tkinter; only puts redirected",
+    "implementationReferences": [
+      "https://github.com/tcltk/tcl/blob/core-8-6-15/generic/tclCmdIL.c",
+      "https://github.com/tcltk/tcl/blob/core-8-6-15/generic/tclUtil.c"
+    ],
+    "comparison": "1951 completed original native programs: 1813 exact success/result-output matches and 136 expected rejections, plus two explicitly recorded mismatches in raw truncated UTF-8 diagnostic bytes. Selected diagnostics and completion metadata wrapped in catch compare exact strings. Zero unexplained differences and zero excluded native probes. Full error stacks, upstream suites and all object representations are not covered.",
+    "nativeLimitReport": "evidence/sort-reference-limits.json",
+    "knownSortDifferences": [
+      {
+        "name": "byte-limited-diagnostic-1929",
+        "source": "catch {lsort \"{x}aaaaaaaaaaaaaaaaa\ud83d\ude00Z\"} r o;list $r [dict get $o -errorcode]",
+        "knownDifference": {
+          "id": "list-diagnostic-raw-utf8-17",
+          "referenceResult": "{list element in braces followed by \"aaaaaaaaaaaaaaaaa\udcf0\udc9f\" instead of space} {TCL VALUE LIST JUNK}",
+          "localResult": "{list element in braces followed by \"aaaaaaaaaaaaaaaaa\" instead of space} {TCL VALUE LIST JUNK}",
+          "reason": "Native diagnostic retains an invalid raw UTF-8 prefix of a supplementary character. Local text values preserve complete Unicode characters; raw object bytes remain a broader tracked gap, not a compatibility pass."
+        },
+        "result": "{list element in braces followed by \"aaaaaaaaaaaaaaaaa\udcf0\udc9f\" instead of space} {TCL VALUE LIST JUNK}",
+        "output": "",
+        "error": false,
+        "actual": {
+          "ok": true,
+          "result": "{list element in braces followed by \"aaaaaaaaaaaaaaaaa\" instead of space} {TCL VALUE LIST JUNK}",
+          "output": ""
+        },
+        "matched": false,
+        "knownDifferenceExpected": true,
+        "unexpected": false
+      },
+      {
+        "name": "byte-limited-diagnostic-1930",
+        "source": "catch {lsort \"{x}aaaaaaaaaaaaaaaaaa\ud83d\ude00Z\"} r o;list $r [dict get $o -errorcode]",
+        "knownDifference": {
+          "id": "list-diagnostic-raw-utf8-18",
+          "referenceResult": "{list element in braces followed by \"aaaaaaaaaaaaaaaaaa\udcf0\" instead of space} {TCL VALUE LIST JUNK}",
+          "localResult": "{list element in braces followed by \"aaaaaaaaaaaaaaaaaa\" instead of space} {TCL VALUE LIST JUNK}",
+          "reason": "Native diagnostic retains an invalid raw UTF-8 prefix of a supplementary character. Local text values preserve complete Unicode characters; raw object bytes remain a broader tracked gap, not a compatibility pass."
+        },
+        "result": "{list element in braces followed by \"aaaaaaaaaaaaaaaaaa\udcf0\" instead of space} {TCL VALUE LIST JUNK}",
+        "output": "",
+        "error": false,
+        "actual": {
+          "ok": true,
+          "result": "{list element in braces followed by \"aaaaaaaaaaaaaaaaaa\" instead of space} {TCL VALUE LIST JUNK}",
+          "output": ""
+        },
+        "matched": false,
+        "knownDifferenceExpected": true,
+        "unexpected": false
+      }
+    ],
+    "inheritedKnownDifferences": {
+      "regexpBytecodePrefixCases": 8,
+      "conversionRawByteCases": 1
+    },
+    "switchNativeTimeouts": 35,
+    "previousUnicodeNativeLimitReport": "evidence/unicode-reference-limits.json",
+    "previousUnicodeProbesRerun": false,
+    "upstreamFullSuiteRun": false
+  },
+  "performance": {
+    "baselineCommit": "3f2fdcb0aa47239c16189250224ecea84c0cd2b7",
+    "files": [
+      "evidence/sort-general-performance.json",
+      "evidence/sort-conversion-performance.json",
+      "evidence/sort-search-performance.json"
+    ],
+    "generalRows": [
+      {
+        "name": "dictionary-100",
+        "currentOverBaselineMedian": 1.2810085400569673,
+        "currentOverBaselineRange": [
+          1.2004280363830824,
+          1.3762435336250631
+        ],
+        "baselineMedianMs": 0.4981999999999971,
+        "currentMedianMs": 0.6299999999999955,
+        "systemTclRatio": 6.303151575787847,
+        "allResultsMatched": true
+      },
+      {
+        "name": "array-300",
+        "currentOverBaselineMedian": 0.974720490749004,
+        "currentOverBaselineRange": [
+          0.9435714285714689,
+          1.054390851781306
+        ],
+        "baselineMedianMs": 0.9799999999999898,
+        "currentMedianMs": 0.9247000000000298,
+        "systemTclRatio": 4.874538745387611,
+        "allResultsMatched": true
+      },
+      {
+        "name": "bigint-150",
+        "currentOverBaselineMedian": 0.9294088910600364,
+        "currentOverBaselineRange": [
+          0.8609647021242098,
+          1.1836200122239517
+        ],
+        "baselineMedianMs": 0.6141000000000076,
+        "currentMedianMs": 0.5964000000000169,
+        "systemTclRatio": 4.482525366403735,
+        "allResultsMatched": true
+      },
+      {
+        "name": "alias-200",
+        "currentOverBaselineMedian": 0.9880118534482996,
+        "currentOverBaselineRange": [
+          0.9846657477602914,
+          1.1050816968970536
+        ],
+        "baselineMedianMs": 0.7424000000000319,
+        "currentMedianMs": 0.7392000000000394,
+        "systemTclRatio": 5.535005615874499,
+        "allResultsMatched": true
+      },
+      {
+        "name": "sort-200",
+        "currentOverBaselineMedian": 1.1589739332558648,
+        "currentOverBaselineRange": [
+          1.120422801057038,
+          1.2623935454953674
+        ],
+        "baselineMedianMs": 0.5438499999999635,
+        "currentMedianMs": 0.6469999999999914,
+        "systemTclRatio": 4.923896499238898,
+        "allResultsMatched": true
+      },
+      {
+        "name": "dictionary-1000",
+        "currentOverBaselineMedian": 0.9831442209875542,
+        "currentOverBaselineRange": [
+          0.9792837555320081,
+          1.0603730528822461
+        ],
+        "baselineMedianMs": 3.194749999999999,
+        "currentMedianMs": 3.206250000000068,
+        "systemTclRatio": 3.1327861644438597,
+        "allResultsMatched": true
+      },
+      {
+        "name": "sort-1000",
+        "currentOverBaselineMedian": 1.044488188976374,
+        "currentOverBaselineRange": [
+          1.0017739145859708,
+          1.0616574379103116
+        ],
+        "baselineMedianMs": 2.2073499999999058,
+        "currentMedianMs": 2.2719999999999345,
+        "systemTclRatio": 3.464735036217971,
+        "allResultsMatched": true
+      }
+    ],
+    "conversionRows": [
+      {
+        "name": "format-receipt-100",
+        "currentOverBaselineMedian": 1.0266887021343893,
+        "currentOverBaselineRange": [
+          0.9764623467600454,
+          1.126530760565433
+        ],
+        "baselineMedianMs": 1.427500000000009,
+        "currentMedianMs": 1.5500500000000272,
+        "systemTclRatio": 8.458663028649534,
+        "allResultsMatched": true
+      },
+      {
+        "name": "scan-record-100",
+        "currentOverBaselineMedian": 1.0275983558426571,
+        "currentOverBaselineRange": [
+          1.0046748437861974,
+          1.0810568741603424
+        ],
+        "baselineMedianMs": 1.0048499999999763,
+        "currentMedianMs": 1.0500000000000114,
+        "systemTclRatio": 8.376545672118159,
+        "allResultsMatched": true
+      },
+      {
+        "name": "format-exact-100",
+        "currentOverBaselineMedian": 0.9165360501566426,
+        "currentOverBaselineRange": [
+          0.8662526647511972,
+          1.0357528623892753
+        ],
+        "baselineMedianMs": 0.5104000000000042,
+        "currentMedianMs": 0.4794499999999857,
+        "systemTclRatio": 9.08909952606608,
+        "allResultsMatched": true
+      }
+    ],
+    "collectionRows": [
+      {
+        "name": "search-exact-500",
+        "currentOverBaselineMedian": 1.0490438695162756,
+        "currentOverBaselineRange": [
+          0.902722926626672,
+          1.1879804332633976
+        ],
+        "baselineMedianMs": 0.224049999999977,
+        "currentMedianMs": 0.23314999999999486,
+        "systemTclRatio": 59.78205128204997,
+        "allResultsMatched": true
+      },
+      {
+        "name": "search-glob-300",
+        "currentOverBaselineMedian": 1.0278576166259246,
+        "currentOverBaselineRange": [
+          0.8720604099244587,
+          1.0924897367786834
+        ],
+        "baselineMedianMs": 0.20959999999999468,
+        "currentMedianMs": 0.21324999999998795,
+        "systemTclRatio": 48.46590909090635,
+        "allResultsMatched": true
+      },
+      {
+        "name": "sort-ascii-200",
+        "currentOverBaselineMedian": 1.0147742248734506,
+        "currentOverBaselineRange": [
+          0.9752724795640437,
+          1.1460948146023295
+        ],
+        "baselineMedianMs": 0.7128499999999747,
+        "currentMedianMs": 0.7315000000000111,
+        "systemTclRatio": 5.414507772020808,
+        "allResultsMatched": true
+      },
+      {
+        "name": "search-sorted-500",
+        "currentOverBaselineMedian": 1.0377469263710726,
+        "currentOverBaselineRange": [
+          0.9239539557829954,
+          1.0875803858520368
+        ],
+        "baselineMedianMs": 1.2900999999999954,
+        "currentMedianMs": 1.3372999999999706,
+        "systemTclRatio": 3.9228512760339416,
+        "allResultsMatched": true
+      },
+      {
+        "name": "search-regexp-100",
+        "currentOverBaselineMedian": 1.0024475524474679,
+        "currentOverBaselineRange": [
+          0.9817635076147614,
+          1.087548221174411
+        ],
+        "baselineMedianMs": 0.46659999999997126,
+        "currentMedianMs": 0.4763500000000249,
+        "systemTclRatio": 15.618032786886063,
+        "allResultsMatched": true
+      },
+      {
+        "name": "array-regexp-100",
+        "currentOverBaselineMedian": 1.0175963197240074,
+        "currentOverBaselineRange": [
+          1.0099721209521118,
+          1.1856520742610166
+        ],
+        "baselineMedianMs": 0.4347500000000082,
+        "currentMedianMs": 0.44335000000000946,
+        "systemTclRatio": 4.1786050895382605,
+        "allResultsMatched": true
+      },
+      {
+        "name": "sort-dictionary-200",
+        "currentOverBaselineMedian": 0.9371060748289567,
+        "currentOverBaselineRange": [
+          0.8885058995094411,
+          0.9740055139819139
+        ],
+        "baselineMedianMs": 0.7543000000000575,
+        "currentMedianMs": 0.6988000000000056,
+        "systemTclRatio": 2.822294022617147,
+        "allResultsMatched": true
+      },
+      {
+        "name": "search-nested-100",
+        "currentOverBaselineMedian": 1.0247030878857228,
+        "currentOverBaselineRange": [
+          0.866769349249283,
+          1.1209109730851472
+        ],
+        "baselineMedianMs": 0.10525000000001228,
+        "currentMedianMs": 0.1078499999999849,
+        "systemTclRatio": 13.152439024388402,
+        "allResultsMatched": true
+      }
+    ],
+    "sortingWorkloadsFile": "evidence/sort-workloads.json",
+    "sortingRows": [
+      {
+        "name": "sort-integer-1000",
+        "source": "set v {};for {set i 1000} {$i>0} {incr i -1} {lappend v $i};lindex [lsort -integer $v] end",
+        "result": "1000",
+        "nativeMedianMs": 0.5899,
+        "currentMedianMs": 2.5999499999999927,
+        "currentP95Ms": 4.180099999999982,
+        "systemTclRatio": 4.4074419393117354,
+        "resultMatched": true
+      },
+      {
+        "name": "sort-stride-200",
+        "source": "set v {};for {set i 200} {$i>0} {incr i -1} {lappend v rack$i $i};lindex [lsort -stride 2 -index 1 -integer $v] end",
+        "result": "200",
+        "nativeMedianMs": 0.1544,
+        "currentMedianMs": 0.6288000000000125,
+        "currentP95Ms": 1.284700000000015,
+        "systemTclRatio": 4.072538860103707,
+        "resultMatched": true
+      },
+      {
+        "name": "sort-indices-500",
+        "source": "set v {};for {set i 500} {$i>0} {incr i -1} {lappend v $i};lindex [lsort -integer -indices $v] end",
+        "result": "0",
+        "nativeMedianMs": 0.3406,
+        "currentMedianMs": 1.2108499999999651,
+        "currentP95Ms": 1.4786999999999466,
+        "systemTclRatio": 3.5550499119200385,
+        "resultMatched": true
+      },
+      {
+        "name": "sort-nested-100",
+        "source": "set v {};for {set i 100} {$i>0} {incr i -1} {lappend v [list rack$i [list value $i]]};lindex [lsort -integer -index {1 1} $v] 0",
+        "result": "rack1 {value 1}",
+        "nativeMedianMs": 0.10565,
+        "currentMedianMs": 0.49544999999997685,
+        "currentP95Ms": 0.9889999999999759,
+        "systemTclRatio": 4.689540937056099,
+        "resultMatched": true
+      },
+      {
+        "name": "sort-command-100",
+        "source": "proc cmp {a b} {expr {$a-$b}};set v {};for {set i 100} {$i>0} {incr i -1} {lappend v $i};lindex [lsort -command cmp $v] end",
+        "result": "100",
+        "nativeMedianMs": 0.1205,
+        "currentMedianMs": 0.9466500000000053,
+        "currentP95Ms": 1.23539999999997,
+        "systemTclRatio": 7.8560165975104175,
+        "resultMatched": true
+      },
+      {
+        "name": "sort-unique-200",
+        "source": "set v {};for {set i 200} {$i>0} {incr i -1} {lappend v row$i [expr {$i%10}]};llength [lsort -stride 2 -index 1 -integer -unique $v]",
+        "result": "20",
+        "nativeMedianMs": 0.1654,
+        "currentMedianMs": 0.7785499999999956,
+        "currentP95Ms": 1.2182999999999993,
+        "systemTclRatio": 4.707073760580385,
+        "resultMatched": true
+      }
+    ],
+    "assessment": "Three fixed five-process campaigns retain all rounds over 18 existing workloads. Short dictionary median ratio 1.281 and short integer sort 1.159; other 16 workloads 0.917-1.049. Six separately timed new sorting workloads remain 3.56-7.86 times native. No significance, peak-memory, application or cross-platform acceptance; performance parity remains open."
+  },
+  "limits": {
+    "compiledPatternUTF16Units": 4096,
+    "captures": 64,
+    "parserDepth": 64,
+    "regexpEvaluationDepth": 128,
+    "regexpStatesPerArray": 16384,
+    "globPatternUnits": 4096,
+    "globSubjectUnits": 100000,
+    "globProduct": 1000000,
+    "usesInterpreterInstructionBudget": true,
+    "algorithm": "No-capture simple regexps inherit bounded glob matching; other regexps enumerate candidate states and may remain exponential. No cumulative memory quota. UTF-16/scalar and object-type distinctions are covered only by recorded cases. Collection diagnostic truncation preserves whole characters and cannot reproduce partial raw UTF-8 bytes."
+  },
+  "remaining": [
+    "complete lsort diagnostics, object representations/reentrancy edge cases and upstream sorting suites; array cursor/statistics/subcommand abbreviations",
+    "native regexp bytecode-only prefixes, complete syntax/compilation/diagnostics, compile caching and non-exponential matching",
+    "short dictionary and integer-sort regressions; representative performance, cumulative memory and upstream full suites",
+    "complete values/raw byte representations, I/O/packages/events, cross-platform and long-running integration"
+  ],
+  "browserScope": "Stride grouping, original indices, nested selection, unique groups, wide values, empty/singleton validation, comparator order/case/precedence/completion, reentrant snapshots, precision, error output, recovery and reset. Import/download, cancel/timeout, mobile layout and console-log inspection were not rerun.",
+  "localOnly": true,
+  "otherRepositoriesRetested": false,
+  "archivesUpdated": false,
+  "sourceGitBlobSHA256": {
+    ".gitattributes": "4d03324fd57c757cc2b195010f56a85bededcc3bcff5124c79c5f8c23e51efed",
+    ".github/workflows/ci.yml": "f460a340ddf70a9507def055b404fa1e190eeeee14d20cf4e76f2a06109ae9f4",
+    ".gitignore": "3d9dc44b0aac4db3956c0de5cf053d34927f4b4105058932d2dc9a6ffcb58a03",
+    "CONTRIBUTING.md": "e066713924ff8db789960bf03122a64cea6904cf4dc7666b9747802f3b50d491",
+    "DUPLICATION.md": "e60d38bc20862962083412f5ab77d8a32eb0da1d81fbfeb710f25d03b54ff5fc",
+    "FEATURES.md": "078326cd37af1fb714c77f8e12bab606f399d5ee4e3687aab14ff1da03332c60",
+    "LICENSE": "a2ae469f92ac7fd70592f338c7c43657c7e9510be802cfb3db880fff11df3807",
+    "MANIFEST.sha256.json.baseline": "099e1f899d32e652cb090c42cdb18476ba1b0cfb3aa841881d5f826ea7234d9a",
+    "README.mbt.md": "f955b3dea01ba9b1b8f044aacad7d52f22b3565b78693592401e5a4c0d2e7031",
+    "README.md": "e840d8916f3e0c3bfc00ad6ff8b51d1c053dabd3f039a47d44dbdbc0a7580473",
+    "ROADMAP.md": "e495392377ae4cc26802eeccd94ed08346eede5280e1f7066dbc2bbd35261932",
+    "TESTING.md": "c0058d818e64ca2c3bb248299ad1e6d9ab9fd373aab814768c778bc03496cdf4",
+    "cache.mbt": "30af848d19e254a3cb0516ef056f03c8c5cfc307da8dcebf21622a6e5f9f62df",
+    "cache_oracle_test.mbt": "b79827cd0f29baf46201a2a0d744798851616169783729d8e35accaf7b7474e7",
+    "cache_test.mbt": "8c2f4a90cce9257b27a4e74db915bbd567923da69b45b816d77b0a72375c1a69",
+    "cmd/main/main.mbt": "93b7ef777a0c79d66905adb25061984b741d9117056b1067ce081ca2167eab18",
+    "cmd/main/moon.pkg": "fb05267e7d953ce6350d13856c4f3e04305e3bcdfd094615c9ecc675f0886c43",
+    "cmd/main/pkg.generated.mbti": "fe6280b0e28de534bdb4e7829991557f24929f3f7ea652bfcc56249ff6529ff1",
+    "cmd/web/main.mbt": "39d936968553ef6ccfbd12ed7d8fb3067be533781f10e11e1872a866ad658cfd",
+    "cmd/web/moon.pkg": "d3f0b49ad95dcd82154319a049f5d4d188117d50a5831eebf60bf809b6633bfc",
+    "collections.mbt": "3523c5475ecc4846ebfc553bd0f5ee890e5a260dc66aa776abbde359f75eca74",
+    "commands.mbt": "adc718e03b4af185576aa66bf5a2c62d489d0bc18f5b7409369f38ed62061839",
+    "completion.mbt": "b08f16da9535e03db096448285aae509e55c7f8fde6a86a6dfbebb9ca00313e3",
+    "completion_oracle_test.mbt": "75e35f8e0ff8c9037a2b213e33f81bf71528da4f9a24a2ab0d0a9b88a03aa94d",
+    "completion_test.mbt": "702cc4d99fc559da05264e6cf3dbf00085038a5905d9e841b2a7ce8346e43bb7",
+    "control.mbt": "741c1ef3920d3e2f7a2f5a8c987850649a98fcccce418c063351861b5995bd18",
+    "conversion_oracle_test.mbt": "5ea8299b83f7413e932daeeeb075fead757ad32cd42d72bcc4e91633c5960992",
+    "conversion_test.mbt": "d92db502d8179875ad1a52294aa33385c5703113ef971e32e8209501806a27c4",
+    "core_test.mbt": "a23e50ec1bfc5fd99a024dbf0d3eb5acb38438d746699fb4dbcf0f5beef47a2a",
+    "ensembles.mbt": "fc87916da1bb9caecac15c23c340e88c536a276218ea7c89702f2a0787102c14",
+    "examples/completions.tcl": "4979edbdc0b0e8c4f9b95477d73b31c89ca83dee86bd07c7c9fcb7de862e6104",
+    "examples/conversion.tcl": "99a21a1a06288edf6a2e6afbc015299d552b291b6a4373b1016a345e45e71fab",
+    "examples/namespaces.tcl": "479acee7e94b97d6d382133999228ab33af5830b38ae57381a9bc71d5ac4a5b9",
+    "examples/regexp.tcl": "46ec569bb07d19b98466ead87c4cb128bc20839aa0e566e10d650fb1321874f6",
+    "examples/search.tcl": "a7f8dc24a9455041a6bcac95ac55e55f85c651028f2760d7ee750d557ffbfb87",
+    "examples/sort.tcl": "623c564872af978471dc5573f0d94c61a4afbd1afa18376cdac772be1c03fc9b",
+    "examples/substitution.tcl": "0685962d2dcf1987403a162a39328ddf543bcbcdc1235dc6c106524a8d0cf656",
+    "examples/switch.tcl": "85646aa51c2d781a34891b7e0e0a5e394d74d524466f4973964be80f7f21f9e2",
+    "examples/unicode.tcl": "af9af4d9956475429e83bed8c8bdac3692f8e82c77e0bb5ef23698c9399aa174",
+    "examples/values.tcl": "5d97841f26a123d4cb045d585fa3f8bec4c4c5329faa87b5eec3539e002feb06",
+    "expressions.mbt": "34bf9b94bc3e37adacdc533447bd126082426712e4f8cc52a2cfa702d6a16ca8",
+    "format.mbt": "33df3f043c66866054f78369b948e2499067a4786e3fba8384685b1a62771a82",
+    "format_real.mbt": "b42334e084321f60f9472ed71f05ed8b1b29ee2a6e662c0abc5a0c94976a6446",
+    "list_extensions.mbt": "17dc891f557b10af2c030ad27b537b646b45cf79b01c7520997727e5d8eb8127",
+    "list_limits_test.mbt": "7bdcf5b435a944a8027584193c28111259e03bcb60ba56afa80fa580d6518a82",
+    "list_oracle_test.mbt": "b732479b958e5233b98822f7ff7bf1ec746f2919a577cef1eab0b6764d215cc7",
+    "lists.mbt": "a7c599ee1c47eac598dbc914ea972ecbcba208d39635606dc5460d71e1b77d36",
+    "moon.mod": "9c81ee78687501b44320da7183c2d2d7f4e7b299b0499da47071cc85e2a69d34",
+    "moon.pkg": "7583a76298c81eb35005ed059d791d0810d14449990a68211fde158b6728e509",
+    "namespace_oracle_test.mbt": "e92672048f6cae053ef0ca61749b45953c91c158c60b2b27dcdc69032de2b4ec",
+    "namespace_test.mbt": "e4ebff880ad4076323513aa4f38d516bb167a0177c6725f60dcdc66415d4fefc",
+    "numbers.mbt": "9345ff493006c7c65944ccabfb097e159a07883dddc435f4ed1f4e71b989f0e2",
+    "objects.mbt": "15970565fade43817493b8daa13437c7701aeecb37885858f6716e0f67e021c7",
+    "oracle_test.mbt": "8c35589044b79b68a2ae71de90063a90d2550734e78d993f2a50a44e2ea6b48c",
+    "pkg.generated.mbti": "b0e86ed70351eab6854c2d3285126578570287aa08ade5853ddac43863fc2ae6",
+    "regexp.mbt": "8648714c1a9aa14ae6948e37d1ca989b2cb95f5716032d8d8a12f7962d750510",
+    "regexp_about.mbt": "58266e84c716fa0cc23ef375dab0d1fc294ade9d638dd2803358ef8cf227a41c",
+    "regexp_commands.mbt": "7ad53554e6d6be7821b38b53147d9cbfdfb611feda0cf6fcbba66a068fa01d05",
+    "regexp_match.mbt": "5af7f792828b33ac6fac95752d04a06b9a1697289b6f456603edc5435524f9e6",
+    "regexp_oracle_test.mbt": "b5842711d454676057ab105d04b8c048370d2828c3f957ca17dc9f0c5407566c",
+    "regexp_test.mbt": "726623c0bb71ebeb4a999873a321e424c2c7083b52f7e5bbbdeaca5d85a17740",
+    "runtime.mbt": "ba97e1a109b27ee7050be6870ec1f07ac000b0792e51d37dbfd5e4acd6ef43e8",
+    "sample.txt": "f30809bfe24e441c6bfb61f15d9787e4fde1cff2e2951e7c69d0b35927ded1d5",
+    "scan.mbt": "6f2e76edd1e938dc2dfb026571b3c4378bd25add62d6d7d13be285150a991f0d",
+    "search.mbt": "ee962879170a9859e0a465c5482e582f581c0ce3dec3d59d53423e8c194aff1a",
+    "search_oracle_test.mbt": "7c051524a38320d261377c98b45872e67990f673a7da630105bb10c1fd33387c",
+    "search_test.mbt": "e79eaafb738ea326e4dfae1b7fab0427480d7c5980d7f762ad48ee3ee5f4d89c",
+    "semantic_oracle_test.mbt": "dd5c6adfd0bbd138adfead2034af9ea48fd36b92187085312c93ced32506161d",
+    "sort.mbt": "c62bb70da053b8ccb83b3215ea3b9cccae68d4fb50d3718e7769bc25181fbe66",
+    "sort_oracle_test.mbt": "484e8439dcbba255adbe502f25783b62de9952824480803607096bb092a8d742",
+    "sort_test.mbt": "aa187f266cee9808b509d57ddc5849ddb209b7a9aac399f238bd5843998995d9",
+    "start-review.ps1": "b81e1ec128093b2011996812e138f4d0dbd403d2f65789dbcc17102af30ba416",
+    "string_classes.mbt": "519c3761a76f85ed157eb7e5eb4e9556869a6c52c28d98b67d13548114f11823",
+    "strings.mbt": "d46b15983d503d64bd5337d4865225b541d3dc88014c7c7751bcd8f7975e1a4d",
+    "substitution.mbt": "4b81fc92b1646d01218e6b7d17729ebe4bf56f1f6b1f1ef466144d7d8641c5f0",
+    "switch.mbt": "470fea5c38cfc4e91b27569e308a83623de23149a3c0be52e46c400499363abf",
+    "switch_oracle_test.mbt": "9c794476cc6614c95d1f7327c6d25b78aedbda5e02d1197ee3b5a095b86460b3",
+    "switch_test.mbt": "ac801f6e990cb3a50de6679de724f88275aa48a133e582e3125cdd4a3313fd14",
+    "syntax.mbt": "ded09c7a8fc5017e162b03fb8cf70a2e3e120be4341165d8e2540b8e4c87a793",
+    "syntax_oracle_test.mbt": "0be27370b24ee86a8e6019084a7be8d728615e2df19c95d7a3e97864939346f9",
+    "syntax_test.mbt": "e9a93c2ae39bc675afb386d96235431f4eed6356507a32862f3774e7b35131f1",
+    "tools/audit-unicode.py": "48bef538b5aa46689595c46a056c2fdadaada8111c5192dda812a99fc499cb80",
+    "tools/benchmark-conversion.py": "78f8bed111fdea4ef5f2abc5aa6cc72bd80d76efff314fb1b78ca907a38b3c55",
+    "tools/benchmark-regexp.py": "d370c02c69409373f988f18939373da84e19d8667e5a59181ccbe203b2e9c941",
+    "tools/benchmark-search.py": "b8b8f58aabcfd9abb6087ee963a82da74b30bb949ef8bd9ebb5cc53483f3e258",
+    "tools/benchmark-semantic.mjs": "bc4ce49be8a2f30012458ce7566d012eb5e703f722c3b0d6a1aa2cbe735dd4ee",
+    "tools/benchmark-semantic.py": "d00f312efaef9f59075ef8d1952d7c1d8c7e129d24c4a62f73109c95491c4358",
+    "tools/benchmark-sort.py": "6f2b13da19fd36f5028980eaff22a9fbe20099603d1c0c209b6ed25b11e5ca6f",
+    "tools/benchmark-switch.py": "1a3a5867d998f52bfb28df7f6d6bbf7a0f9975a08308e94d4c59a06ea1bef98a",
+    "tools/benchmark.mjs": "53ac611536ba7cb3732017d22976ff8f38dbd9e7aa579c2469eab75b0cdc7216",
+    "tools/cache-cases.py": "590fe0d00e88221581cccb9cda709d4a589cd033d23e1bb5b620d42676a46d3a",
+    "tools/check-generation.py": "609fe2bab672f93fb6b65e1b8f27871bc6d0f63f163b836bdbe7b472fe0b634d",
+    "tools/check-proof.py": "f35f56a7d2139d9f186063600da1987809a22c8e000cd40baba6079df3fcdd2a",
+    "tools/cli.mjs": "d3a1d6db5468af0d656d850dc6ff11fc628e7865c127a2fae2e03378488c4cd0",
+    "tools/compare-performance.mjs": "ade321e8b04dcaf656ac831dba4ec1aad27d3228bc7b97ee3ae1130681e69e24",
+    "tools/completion-cases.py": "d028274f5accd238ac6616a175fa63bc43d9ef11589a18452e23ec8b7f30c6e5",
+    "tools/conversion-cases.py": "d4286efecffa196b59298fdec592c4e0fa789fad0ac06aa6f4394c4fae87ed66",
+    "tools/generate-semantic-oracle.py": "343ebc30b291ed6f3d1ea20a71b33c5963772fbf6e0aeb05bedaa35e6b3c7fe7",
+    "tools/generate-unicode.py": "c61a5c387bf5991caca03005d7572c46db36fc54731f28226740c55946f777f1",
+    "tools/generate_list_oracle.py": "e6ab86dbebf6750d7f40ec207ffd6de120f46e47198c5f07b32684a49dd30ce6",
+    "tools/invalid-input.txt": "51c2ec0c89654a56d1c7cf4326886482fc2f4e8dcd77ad998a5933cea21bce8b",
+    "tools/namespace-cases.py": "dc050aa1f1747e9d7699eea83feb2e2e3cdc82dd3583478a8dbd87a72bafce8e",
+    "tools/probe-regexp-start.py": "4867a790abdc860350f5e079f1e6a4cc91be59394581e3febcbd1fac43a80748",
+    "tools/probe-unicode-reference.py": "ffbf0c5304cd878359d22455a73cbb879fa5341595a253ffdd7348e6ac212e7b",
+    "tools/profile-conversion.mjs": "a175e48bc053a1c1096dd6987763651c51e47cc40865360858a72221cfd80efb",
+    "tools/profile-runtime.mjs": "ad27d5bfac6ea1eca7ca7d2c2e504deaa84d19a3ab2068e008af5d9d88629b0f",
+    "tools/regexp-cases.py": "14ea340605541bcbcbd1b87d41283527dcf92f755de80b7fb4a8767652c9b045",
+    "tools/regexp-host-cases.json": "a7fa1cd23666f6d66ac450196f42ebf2a18cbf02394f7d80be2cf9ef28c764ad",
+    "tools/repeat-performance.py": "ef73157072e953e9661cb15966bb8ffcc621aeb355c49de487c193ad7d64f6b1",
+    "tools/robustness.mjs": "24964a078897dccc448ba3d5db4c08f6446d38008424987bf26b4b6f042a21d6",
+    "tools/search-cases.py": "c1a45e8fc5082eb255d0aecd74006f3b3fb0e4027c395539c0ea0330ef4da99c",
+    "tools/search-host-cases.json": "82127bc77e0feba71217c011418907291602fb47b0a357f8675cab0d84101bda",
+    "tools/semantic-cases.py": "708334e35cf039307a8fde22f4a758c6f343da09ff860462eeeedcff472daa7b",
+    "tools/semantic-stress.mjs": "19e83364465bd2b4b616f6db52bd55b274f672d8e02fc208d1ce6e77330d0914",
+    "tools/serve.py": "06046d6c07e65ac199fbefdeaf19e9b32c1ec0557955c19c1bc7fe07cee34681",
+    "tools/sort-cases.py": "2877e506f8f5ee572ac962df5439d8264dbc6952023657e717589a3b100c91cb",
+    "tools/sort-host-cases.json": "6541aed15a0cc804240e10f380175296aac1734cc76d235cc6c2a6a5df68315f",
+    "tools/switch-cases.py": "1874e0cf179893b7bdd4a49619d225d72aee8df4c8814c0b7645485bfe3a041a",
+    "tools/switch-reference.py": "321c2a106fc34908e013bb529c5d4f41bb5f813e1b1c6b49626488a4cc055428",
+    "tools/syntax-cases.py": "ce1302938514318176cb758ccfd8cacb4edeb64e66962b399b713fba804f67d2",
+    "tools/test-cli.mjs": "b1acaf8992e16d37e1527fd60beeea275ce0df574a9622ab3b44d86dcaf08b03",
+    "tools/test-completions.mjs": "02bc33910f7e35454719877a59fb9a704917f2c070b46253fb6819159bac88a7",
+    "tools/test-conversion.mjs": "da778d621da5c649b4cfc6255e2bf4d251dd35ecbc398c45822a87cc2b90296a",
+    "tools/test-demo.mjs": "02ec6337b9c72c299450db6f0d2b024fd4fd96193d17e5cd501c3a8e6eb87188",
+    "tools/test-http.py": "af52804ebd506ce54417ae307c9c2841ab91db46c6a8ea1b21737d1701ca079e",
+    "tools/test-namespaces.mjs": "b3cae9ece8b2a61b9b3930e31dd5b9723171d09d5a3008388e8b3b1887c6cf7b",
+    "tools/test-regexp.mjs": "88e3b1420dac4b57e30a5553b4e1a6f723b03e5d80c12c838a14f6713427368a",
+    "tools/test-search.mjs": "012d88483b3dd8a31c1b43b8221c17b4d17126e2580c2b6b5fc241f24d948165",
+    "tools/test-semantic-oracle.mjs": "a9f60cceb5fd13f413bbcd4fe528aa185c8bba82e8701cc3432e5863df9230e0",
+    "tools/test-sessions.mjs": "d69fd2c4bcd5b6a0e75bd4dfe0598e4bf5b219f87fe5ea0ba622b520fa4adfa0",
+    "tools/test-sort.mjs": "7702b108a35b760068fd8d45575f515b1592ff3ad11b8ffd683ddc89c4d32a2a",
+    "tools/test-switch.mjs": "9bc12e98bca5fb6fa6f21c3c26bea434a028cd853cf5d8b413c9724db5acda65",
+    "tools/test-syntax.mjs": "4670c232f372473ba92a53d67e59411bd0147d2d903ba2875c851056580eccaa",
+    "tools/test-unicode.mjs": "0ca92b1213c42292259e9bccbad79048e7a3211f55b137d543fefa59dcae9879",
+    "tools/test-values.mjs": "85ee178617fcf7c0bde57af3efcb3568ec23c953f86e2436e3e9900f97224e23",
+    "tools/unicode-cases.py": "4e740b14c0f3f837214a313d2519c591d703e2c681e1af6e50e53b91e055012a",
+    "tools/value-cases.py": "65cd535a6e90f80ff6bf801b12362a9fa626d21a1af9e90d741533d096a9971d",
+    "try.mbt": "36aa8ef131d9cd6bba7782c24691cdc87f04ac679333c61edcb6e194341b7e23",
+    "unicode.mbt": "d438c8c5a2ce01359675651cfe21ae37dcbb9235e0d7a2afeee472c5fbc056cc",
+    "unicode_data.mbt": "f51ff6d44450d5e18f0b9c5bda661076b814f9da9ef86cfd612059c82ee2f330",
+    "unicode_oracle_test.mbt": "c0b1052d653287eada44b82ca903186bf1d3968a9f2b4365f5e70e243257dd8d",
+    "unicode_test.mbt": "92dae9926d6ab96711d8842aff685e028b11007e5e25a2316e07f1128f9358ed",
+    "value_oracle_test.mbt": "1e61e9f536888056ea7e33e007e94716bde109d874b5b048342eef5cfaa2c8b0",
+    "value_test.mbt": "b2a4f6e0ec1ff9ba15c2c33a662cdd14e94b2a9fff2ee1211996fe70badd7269",
+    "values.mbt": "6a6e96be9fcda3f69585c9ff4267bf83ddcee31c4c74164f15ee8161168ab385",
+    "variables.mbt": "841605e0775415897efb93c6cd526fad813488da2b08f17607f1436f2c33703c",
+    "vendor/ucd-16.0.0/LICENSE.txt": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+    "vendor/ucd-16.0.0/SOURCE.json": "a4a69210cf52fb8ecc22f41f422766b310521572cca7a9211e1d43024aa7b004",
+    "vendor/ucd-16.0.0/UnicodeData.txt": "ff58e5823bd095166564a006e47d111130813dcf8bf234ef79fa51a870edb48f",
+    "verify.ps1": "d700cb2c0814025f73a10f2b35547a8c91a6e3d004db8c811fec830e83f1bbd4",
+    "web/app.mjs": "fc5c5b7cb6709373d625dacd614f369a486ecbe251eadd8140e6ead85dac8ba5",
+    "web/config.mjs": "b639220f732c87681aaadf4022b256aec8257910e59397a93302b1f411432c02",
+    "web/engine.mjs": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+    "web/index.html": "82e92ba0dad381aec5670fe8584c508d8662116347d819003262b74236ed2356",
+    "web/worker.mjs": "280f6f11bf2c623721d2b2075b1fdb2f37fb918a198eaa8689325701bf072358"
+  },
+  "evidenceGitBlobSHA256": {
+    "evidence/semantic-reference.json": "3345cfb5b04a9176e59790e8357dd7e0356ad88fef50329b78810ffe9cd6492c",
+    "evidence/semantic-comparison.json": "6062fdfb532e6fab56212d364e60499f9f23b3016be974b13cb0b0d1cd95217b",
+    "evidence/cache-reference.json": "5f00a5d10be827bb5b379a248b9b0e2cf284ca999de8b4b7afdef5652d34a017",
+    "evidence/cache-comparison.json": "6cc75ad55571a7a713a6499c3e1f7b6e9020024c9182fc9f76d229c6d9f11baf",
+    "evidence/namespace-reference.json": "5748684b58c69154ec80905c580d6eb5f7c39fa2225066c55c6c844bd7a634fb",
+    "evidence/namespace-comparison.json": "84a248cf9ce35d837935cd3bc370e062ee2784b0eec410c1e0f7833676c4b7d6",
+    "evidence/completion-reference.json": "81fae54e0e153507c50fedbd57f2a0dd9aea2fd9ae5fa9a8db23439f9ef4bf80",
+    "evidence/completion-comparison.json": "25f7f8c7d95ad84d49c7d79a97e852c3a70c7e994d01046079d66b0bdfc9e524",
+    "evidence/syntax-reference.json": "d273f3ac673f9171b8c3471f35ab6e8cfdf1b0fd1cfb65746e9a97c1612fa089",
+    "evidence/syntax-comparison.json": "bb24a5857a07fc74e42714ed3fe130c4eaa04446528ccc58876ecff75713e168",
+    "evidence/unicode-reference.json": "53f87642cdfd5b1e7cf0ceedb770b058f3b85f81f8e143860a3fa94af17ae28f",
+    "evidence/unicode-comparison.json": "707f71535515b363f48b170c8a9619d59e17dd07d2e8d225bbc395ea06ad2b34",
+    "evidence/conversion-reference.json": "6e19e9b2a58c27ab59b2ed03197c636134afdad09bca707c560b8a0268064ebb",
+    "evidence/conversion-comparison.json": "2e9828c01933aeb18d210718e0097cc4feb2fb859e931263a9f454232feea32d",
+    "evidence/value-reference.json": "0a38af21378f60753ee99e050793265feb56505fda43834ebd723d7ec537fc63",
+    "evidence/value-comparison.json": "4d58a6bdbdfed452aaee6959a2693eddd62c0e9dd233540c199bc9e215197cdc",
+    "evidence/switch-reference.json": "47322b11bb87231edb4ef8b4f62a6c2a5b2e8b6f8c19700b656673c0c7baaf0c",
+    "evidence/switch-comparison.json": "515ca6d4ecc2e7f8ca0f9c801472d1c24658e6593f2d36b1b26c83e74f87876c",
+    "evidence/regexp-reference.json": "b14276809c77aeeb0e861fb0139efd9f915c784341e6ba586460a74128b56b9c",
+    "evidence/regexp-comparison.json": "46e6d67a00e661dcb010b57adc97b6fdfc29a140ff92183d1e72fb7810fde56e",
+    "evidence/search-reference.json": "317e2614609acf5ee526acd6a69f5df4202bc495e00a0370973a1e9b8672711b",
+    "evidence/search-comparison.json": "50013d5ece0c70c8181edff2ebd5d01065b934d1bdaeca082e1a30be3437a344",
+    "evidence/sort-reference.json": "51bc65a740a69dddcff89c3f3b61bcbf39aea379c630e2c9bd81c1acec35ba8a",
+    "evidence/sort-comparison.json": "cdc0456e11539b92918ee8911119b0a5186b736a24e9c00707cb116283da1d3d",
+    "evidence/sort-hosts.json": "fe748f72cbfd32ed4d91f1a9e8b4052d0d80943e42cc07cc8a00ffc050ce7828",
+    "evidence/search-hosts.json": "a9d22ee7faab235913f51e0949627905592e0d213098b0048a3944581b8f5894",
+    "evidence/regexp-hosts.json": "b36ea3562d4c7a91db61730bdfd3a94219c2372a1b6809c5e36c7f7daf58e57b",
+    "evidence/switch-hosts.json": "d0dc6c7ddfa4d70b62dee82769f89dc5d0d9b85e5c18349372b9d8bddfecceba",
+    "evidence/value-hosts.json": "426172a1743e578b3ab1537a0566e12bc68eaa691eeb35080d930253343276fc",
+    "evidence/conversion-hosts.json": "0f70eb924af1ea06374785a4e9e8b6adb4422a77627d2608026bf36ed4b88a15",
+    "evidence/unicode-hosts.json": "9b9cd55c7f3ade5d2fd9d8bc14780d33ce389bbca3bdf2f9c125ddd404e8300c",
+    "evidence/syntax-hosts.json": "a1049220b2a141ab82e799b436f18e28aebde21b6bc8219a3bbbb79560de28d6",
+    "evidence/completion-hosts.json": "7573041fbcda0ca74722d03768b318d3ac22120fd3616e08ee5f556017254d35",
+    "evidence/namespace-hosts.json": "652e877354671ee9fc144c6d5333788f3c25c4fbe40a6343891ba058fb8c4001",
+    "evidence/browser-sort.json": "d303b9bd954302c9ead7e9037bb2958156938f81103d01d4e0f1fe89de17fac8",
+    "evidence/sort-general-performance.json": "2436953beb22d42adb957b6230b6ac4f158659bdcac9590626a6d26c38c62b44",
+    "evidence/sort-conversion-performance.json": "83ea3e52154b896b11c469fa4101d4d05f57d2ce805d5f7f281f4d45636d1a00",
+    "evidence/sort-search-performance.json": "00416e99966fe549a65ef17dcab18ce7a45ab19a1d3975a6350030014996ee98",
+    "evidence/sort-workloads.json": "d12f39f043e994f65818bc82ced59e963d5f0d179f0ed2fd4ca4b03bb761cc89",
+    "evidence/sort-conversion-workloads.json": "5738e8bc6c8a19a8c284800188d657a2020f43134d8428fef5bfe0c71842e9bd",
+    "evidence/sort-search-workloads.json": "20b688ed08cd72a4e088a549f7c11b64a08f864f46986a98048cb36f59cef57f",
+    "evidence/semantic-benchmark-reference.json": "705e7d4bf1485f95add91da12f463aea37a7a1b4cfc1be2f5beb07fdd64f338d",
+    "evidence/generation-sort.json": "eb5192efbcbf112a2c1b04f9782cb0e90d60f59796238777539b33dfafdbfb59",
+    "evidence/generation-sort.log": "86d1c36ba029059e817e85aa8b57e27396aa3ae2734f7cd5513a95555e1ec5bd",
+    "evidence/verify-sort.log": "cfd1cbd499f7ca4fd1b08174dfcd3a33cde32abb1a6212c044e6cebbd45266a3",
+    "evidence/example-sort.json": "54dbe4b32ab034cda051577538eca88a541ffa2acb5be9cfb954511fa44ed396",
+    "evidence/semantic-stress.json": "3d4b6d324affe3cfdd93cd798606569edb360893be9e6fad573e88453bc824d7",
+    "evidence/switch-reference-limits.json": "7953125988b28332e45e5ec8b5bdab06437a67fc0387c55cb8dc9c4d913c91e5",
+    "evidence/regexp-reference-limits.json": "430bd25ab7de2b75be6437a79ea992cade43163d1da91ea0a5d2c1b596412fdd",
+    "evidence/search-reference-limits.json": "66449afb36684e40d183bf9aee44da8a239af1d0e5df426a357c83979bc246af",
+    "evidence/sort-reference-limits.json": "068e94ccec7a32b0d9cab8842003b0d610e2553ef35999fda108f9b8d03ac0af",
+    "evidence/regexp-start-reference.json": "675e572375d6a76938b5f0dcfab4f06d79ff7d4194fbb1bd7c651d1ba03940c5",
+    "evidence/unicode-reference-limits.json": "5adf27219b39d17d419aa8c506b7fecaf785476ca855b11068bde3d481343843"
+  }
+}

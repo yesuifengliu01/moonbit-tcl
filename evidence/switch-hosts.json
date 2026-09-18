@@ -1,6 +1,6 @@
 {
   "checks": 34,
   "passed": 34,
-  "engineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+  "engineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
   "scope": "Persistent module sessions, real JSONL CLI and actual web Worker module with a Node message adapter; exact/glob/regexp dispatch, captures and inclusive indices, no-match/default write semantics, greedy alternation, backreferences/lookahead, procedure completion, typed body values, fallthrough without compiling skipped patterns, structured regex errors, recovery and reset. Separate browser evidence required."
 }

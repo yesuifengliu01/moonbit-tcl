@@ -1,0 +1,70 @@
+{
+  "runtime": "v24.11.0",
+  "rows": [
+    {
+      "name": "sort-integer-1000",
+      "source": "set v {};for {set i 1000} {$i>0} {incr i -1} {lappend v $i};lindex [lsort -integer $v] end",
+      "result": "1000",
+      "nativeMedianMs": 0.5899,
+      "currentMedianMs": 2.5999499999999927,
+      "currentP95Ms": 4.180099999999982,
+      "systemTclRatio": 4.4074419393117354,
+      "resultMatched": true
+    },
+    {
+      "name": "sort-stride-200",
+      "source": "set v {};for {set i 200} {$i>0} {incr i -1} {lappend v rack$i $i};lindex [lsort -stride 2 -index 1 -integer $v] end",
+      "result": "200",
+      "nativeMedianMs": 0.1544,
+      "currentMedianMs": 0.6288000000000125,
+      "currentP95Ms": 1.284700000000015,
+      "systemTclRatio": 4.072538860103707,
+      "resultMatched": true
+    },
+    {
+      "name": "sort-indices-500",
+      "source": "set v {};for {set i 500} {$i>0} {incr i -1} {lappend v $i};lindex [lsort -integer -indices $v] end",
+      "result": "0",
+      "nativeMedianMs": 0.3406,
+      "currentMedianMs": 1.2108499999999651,
+      "currentP95Ms": 1.4786999999999466,
+      "systemTclRatio": 3.5550499119200385,
+      "resultMatched": true
+    },
+    {
+      "name": "sort-nested-100",
+      "source": "set v {};for {set i 100} {$i>0} {incr i -1} {lappend v [list rack$i [list value $i]]};lindex [lsort -integer -index {1 1} $v] 0",
+      "result": "rack1 {value 1}",
+      "nativeMedianMs": 0.10565,
+      "currentMedianMs": 0.49544999999997685,
+      "currentP95Ms": 0.9889999999999759,
+      "systemTclRatio": 4.689540937056099,
+      "resultMatched": true
+    },
+    {
+      "name": "sort-command-100",
+      "source": "proc cmp {a b} {expr {$a-$b}};set v {};for {set i 100} {$i>0} {incr i -1} {lappend v $i};lindex [lsort -command cmp $v] end",
+      "result": "100",
+      "nativeMedianMs": 0.1205,
+      "currentMedianMs": 0.9466500000000053,
+      "currentP95Ms": 1.23539999999997,
+      "systemTclRatio": 7.8560165975104175,
+      "resultMatched": true
+    },
+    {
+      "name": "sort-unique-200",
+      "source": "set v {};for {set i 200} {$i>0} {incr i -1} {lappend v row$i [expr {$i%10}]};llength [lsort -stride 2 -index 1 -integer -unique $v]",
+      "result": "20",
+      "nativeMedianMs": 0.1654,
+      "currentMedianMs": 0.7785499999999956,
+      "currentP95Ms": 1.2182999999999993,
+      "systemTclRatio": 4.707073760580385,
+      "resultMatched": true
+    }
+  ],
+  "reference": "Windows Tcl 8.6.15",
+  "warmups": 10,
+  "measurements": 30,
+  "engineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+  "scope": "Six small warm-session sorting workloads, native and Node measured separately on one host; exact results verified. Different host adapters; no full application, peak memory or cross-platform acceptance."
+}

@@ -1,0 +1,113 @@
+{
+  "checks": 20,
+  "passed": 20,
+  "rows": [
+    {
+      "name": "stride-order",
+      "actual": "a 1 b 2 c 3",
+      "passed": true
+    },
+    {
+      "name": "original-indices",
+      "actual": "2 3 4 5 0 1",
+      "passed": true
+    },
+    {
+      "name": "nested-group",
+      "actual": "a {x 1} b {y 2} c {z 3}",
+      "passed": true
+    },
+    {
+      "name": "unique-group",
+      "actual": "c 1 b 2",
+      "passed": true
+    },
+    {
+      "name": "unique-indices",
+      "actual": "4 5 2 3",
+      "passed": true
+    },
+    {
+      "name": "wide-sort",
+      "actual": "0 2 1",
+      "passed": true
+    },
+    {
+      "name": "empty-stride",
+      "actual": "{}",
+      "passed": true
+    },
+    {
+      "name": "singleton-validation",
+      "actual": "expected integer but got \"bad\"",
+      "passed": true
+    },
+    {
+      "name": "comparison-order",
+      "actual": "{a b c d e} {{e d} {c b} {d b} {d c} {b a}}",
+      "passed": true
+    },
+    {
+      "name": "comparator-case",
+      "actual": "{A B} {A C} {B C}",
+      "passed": true
+    },
+    {
+      "name": "last-mode",
+      "actual": "1 2",
+      "passed": true
+    },
+    {
+      "name": "signed-minimum",
+      "actual": "a b",
+      "passed": true
+    },
+    {
+      "name": "completion-code",
+      "actual": "STOP 3 NONE",
+      "passed": true
+    },
+    {
+      "name": "next-index-error",
+      "actual": "element 1 missing from sublist \"z\"",
+      "passed": true
+    },
+    {
+      "name": "reentrant-snapshot",
+      "actual": "{a b c} changed",
+      "passed": true
+    },
+    {
+      "name": "numeric-preservation",
+      "actual": "1.8446744073709552e+19",
+      "passed": true
+    },
+    {
+      "name": "nested-index",
+      "actual": "{y {a 1}} {x {c 3}}",
+      "passed": true
+    },
+    {
+      "name": "error-output",
+      "actual": "before\n",
+      "passed": true,
+      "error": "Invalid(\"stride length must be at least 2\")"
+    },
+    {
+      "name": "recovery",
+      "actual": "YES {1 2 3}",
+      "passed": true
+    },
+    {
+      "name": "reset",
+      "actual": "0 0 {a b}",
+      "passed": true
+    }
+  ],
+  "engineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+  "version": "0.15.0",
+  "utc": "2026-09-18T11:40:36.214201+00:00",
+  "surface": "Actual Codex in-app browser localhost:16040/web/, tab 9, CUA accessibility actions and fresh visible results/output.",
+  "scope": "Stride grouping, original indices, nested selection, unique groups, wide values, empty/singleton validation, comparator order/case/precedence/completion, reentrant snapshots, precision, error output, recovery and reset. Import/download, cancel/timeout, mobile layout and console-log inspection were not rerun.",
+  "temporaryTabClosed": true
+}

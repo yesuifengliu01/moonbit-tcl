@@ -1,0 +1,82 @@
+[
+  [
+    "set v {c 3 a 1 b 2};lsort -stride 2 -index end -integer $v",
+    "a 1 b 2 c 3"
+  ],
+  [
+    "lsort -stride 2 -index end -integer -indices $v",
+    "2 3 4 5 0 1"
+  ],
+  [
+    "lsort -stride 2 -index {1 end} -integer {c {z 3} a {x 1} b {y 2}}",
+    "a {x 1} b {y 2} c {z 3}"
+  ],
+  [
+    "lsort -stride 2 -index 1 -integer -unique {a 1 b 2 c 1}",
+    "c 1 b 2"
+  ],
+  [
+    "lsort -stride 2 -index 1 -integer -unique -indices {a 1 b 2 c 1}",
+    "4 5 2 3"
+  ],
+  [
+    "lsort -integer -indices {18446744073709551615 0 -1}",
+    "0 2 1"
+  ],
+  [
+    "lsort -stride 2 -index 2 {}",
+    ""
+  ],
+  [
+    "catch {lsort -integer {bad}} r;set r",
+    "expected integer but got \"bad\""
+  ],
+  [
+    "proc cmp {a b} {lappend ::calls [list $a $b];string compare $a $b};set calls {};set result [lsort -command cmp {e d c b a}];list $result $calls",
+    "{a b c d e} {{e d} {c b} {d b} {d c} {b a}}"
+  ],
+  [
+    "proc cmp {a b} {lappend ::calls [list $a $b];return 0};set calls {};lsort -nocase -command cmp {A B C};set calls",
+    "{A B} {A C} {B C}"
+  ],
+  [
+    "lsort -command missing -integer {2 1}",
+    "1 2"
+  ],
+  [
+    "proc cmp {a b} {return -2147483648};lsort -decreasing -command cmp {a b}",
+    "a b"
+  ],
+  [
+    "proc cmp {a b} {return -code break STOP};catch {lsort -command cmp {a b}} r o;list $r [dict get $o -code] [dict get $o -errorcode]",
+    "STOP 3 NONE"
+  ],
+  [
+    "catch {lsort -index 1 -command cmp {{a x} {b y} z}} r;set r",
+    "element 1 missing from sublist \"z\""
+  ],
+  [
+    "proc cmp {a b} {set ::v changed;lsort -integer {3 1 2};string compare $a $b};set v {c a b};list [lsort -command cmp $v] $v",
+    "{a b c} changed"
+  ],
+  [
+    "namespace eval n {proc cmp {a b} {string compare $a $b};proc run {} {lsort -command cmp {c a b}}};n::run",
+    "a b c"
+  ],
+  [
+    "scan 18446744073709551616 %f x;set r [lsort -real [list $x 0]];format %.17g [lindex $r end]",
+    "1.8446744073709552e+19"
+  ],
+  [
+    "lsort -dictionary -unique {a01 a1 a1 A1 a10 a2}",
+    "A1 a1 a01 a2 a10"
+  ],
+  [
+    "lsort -index {1 0} {{x {c 3}} {y {a 1}}}",
+    "{y {a 1}} {x {c 3}}"
+  ],
+  [
+    "lsort -stride 2 -decreasing -index 1 -integer {x 3 y 1 z 2}",
+    "x 3 z 2 y 1"
+  ]
+]

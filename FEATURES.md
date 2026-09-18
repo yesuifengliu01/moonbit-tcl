@@ -1,4 +1,4 @@
-# Tcl 兼容矩阵（0.14.0）
+# Tcl 兼容矩阵（0.15.0）
 
 | 能力 | 本轮实现 | 仍需追平 |
 |---|---|---|
@@ -12,7 +12,7 @@
 | dict | 构造、get/set/unset、incr/append/lappend、for/map/filter/update/with | 全部写回异常边界、嵌套/数组对象缓存和代表性性能 |
 | string | cat、UTF-16 索引/替换/匹配、BMP Unicode 16 分类/简单大小写、trim/reverse/map、is 的 strict/failindex 和数字/列表失败位置 | 全部子命令/选项、原始字节表示与补充平面参考异常、完整上游 Unicode 边界 |
 | format/scan | 位置参数、宽度/精度/填充、精确浮点舍入、整数大小、扫描集合/抑制/%n、变量写入顺序 | 原始 UTF-8 截片一项已知差异、完整诊断和上游全量；固定 Windows 32/64 位配置 |
-| list | 原有十命令 + lset/linsert/lreplace/lmap；lsearch 18 个选项、regexp/sorted、嵌套索引/二分；lsort 字典排序 | lsort 嵌套索引/stride/indices 与完整选项、全部诊断和上游边界 |
+| list | 原有十命令 + lset/linsert/lreplace/lmap；lsearch 18 个选项、regexp/sorted、嵌套索引/二分；lsort 12 选项、stride/indices/嵌套索引与比较命令次序 | 原始字节诊断截片、完整对象/重入/诊断和上游边界 |
 | 控制与异常 | if/then/elseif/else、for/foreach/while、break/continue、catch options、return -level/-code/-options、自定义码、try/on/trap/finally、throw、-during | 完整错误码/诊断栈 |
 | switch | 精确/glob/regexp、nocase、贯穿/default、捕获/索引变量、调用者作用域和完成码 | 完整选项诊断/堆栈、上游全量及代表性性能 |
 | 分支正则 | 有界 MoonBit AST 匹配器、ARE/ERE/BRE、Unicode 类别、重复/前瞻/反向引用与捕获 | 静态编译选项前缀差异、完整语法边界、非指数算法和整体内存治理 |
@@ -27,4 +27,4 @@ $name 仅接受 ASCII 名称是 Tcl 8.6 的规定；Unicode 变量使用 ${名�
 
 分支正则限额：4096 UTF-16 模式单元、64 捕获/解析层、128 执行层、每状态数组 16384 项及现有执行预算。可空反向引用的 35 个原生超时探针不算兼容通过；现有路径枚举算法仍可能在复杂短输入上触及本地资源限额。
 
-0.14.0 当前验证：JS/WasmGC 各 11121 项、44 新宿主检查、3307/3307 集合原生程序一致；旧正则矩阵仍有 8 项字节码前缀差异，旧转换矩阵仍有 1 项字节差异，35 项原生 switch 超时单列。五进程计时中短字典较 0.13.0 回退约 16.5%，线性 exact/glob 搜索约 12.8%/13.4%；八项集合负载仍慢于原生约 3.8–78.9 倍。详细范围、网页和生成证明见 evidence/search-upgrade.json，历史测量不代表当前引擎。
+0.15.0 当前验证：JS/WasmGC 各 11178 项、48 新宿主、20 网页检查；1951 排序原生程序中 1949 一致、两项原始字节诊断差异、零未解释差异。原有八项正则字节码差异、一项转换字节差异、35 项 switch 原生超时仍保留。五进程计时中短字典/短整数排序较 0.14.0 回退约 28.1%/15.9%；六项排序负载仍慢于原生约 3.6–7.9 倍。当前证据见 evidence/sort-upgrade.json，历史测量不代表当前引擎。

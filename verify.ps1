@@ -52,6 +52,10 @@ try {
   if ($LASTEXITCODE -ne 0) {throw 'Tcl regexp differential failed'}
   node tools/test-semantic-oracle.mjs search
   if ($LASTEXITCODE -ne 0) {throw 'Tcl search differential failed'}
+  node tools/test-semantic-oracle.mjs sort
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl sort differential failed'}
+  node tools/test-sort.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl sort hosts failed'}
   node tools/test-search.mjs
   if ($LASTEXITCODE -ne 0) {throw 'Tcl search hosts failed'}
   node tools/test-regexp.mjs

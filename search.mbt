@@ -5,6 +5,57 @@ priv struct SearchIndex {
 }
 
 ///|
+fn TclValue::collection_list(self : TclValue) -> Array[TclValue] raise TclError {
+  match self.payload {
+    Items(_) | Pairs(_) => self.as_list()
+    _ => {
+      let values = parse_list_at(self.text, None, native_errors=true).map(
+        text_value,
+      )
+      self.payload = Items(values)
+      values.copy()
+    }
+  }
+}
+
+///|
+fn collection_list_junk(
+  chars : Array[Char],
+  start : Int,
+  kind : String,
+) -> Unit raise TclError {
+  let out = StringBuilder()
+  let mut bytes = 0
+  let mut at = start
+  while at < chars.length() && !list_space(chars[at]) {
+    let cp = chars[at].to_int()
+    let width = if cp > 65535 {
+      4
+    } else if cp >= 2048 {
+      3
+    } else if cp == 0 || cp >= 128 {
+      2
+    } else {
+      1
+    }
+    if bytes + width > 20 {
+      break
+    }
+    out.write_char(chars[at])
+    bytes += width
+    at += 1
+  }
+  switch_error(
+    "list element in " +
+    kind +
+    " followed by \"" +
+    out.to_string() +
+    "\" instead of space",
+    "TCL VALUE LIST JUNK",
+  )
+}
+
+///|
 fn collection_option(
   value : String,
   choices : Array[String],
@@ -32,7 +83,7 @@ fn collection_option(
 ///|
 fn search_indices(value : TclValue) -> Array[SearchIndex] raise TclError {
   value
-  .as_list()
+  .collection_list()
   .map(index => {
     let relative = index.text.has_prefix("end")
     let value = re_start_index(index.text, 0)
@@ -54,7 +105,7 @@ fn search_key(
 ) -> TclValue raise TclError {
   let mut value = value
   for index in indices {
-    let values = value.as_list()
+    let values = value.collection_list()
     let at = if index.relative {
       values.length() - 1 + index.value
     } else {
@@ -238,63 +289,6 @@ fn search_regexp_glob(source : String) -> String? {
     out.write_char('*')
   }
   Some(out.to_string())
-}
-
-///|
-fn dictionary_sort(
-  values : Array[TclValue],
-  compare : (TclValue, TclValue) -> Int raise TclError,
-  unique : Bool,
-) -> Array[TclValue] raise TclError {
-  let merge = fn(
-    left : Array[TclValue],
-    right : Array[TclValue],
-  ) -> Array[TclValue] raise TclError {
-    let out = []
-    let mut i = 0
-    let mut j = 0
-    while i < left.length() && j < right.length() {
-      let order = compare(left[i], right[j])
-      if order > 0 || (order == 0 && unique) {
-        if order == 0 {
-          i += 1
-        }
-        out.push(right[j])
-        j += 1
-      } else {
-        out.push(left[i])
-        i += 1
-      }
-    }
-    out + left[i:].to_owned() + right[j:].to_owned()
-  }
-  let runs : Array[Array[TclValue]?] = []
-  for value in values {
-    let mut run = [value]
-    let mut at = 0
-    while at < runs.length() {
-      match runs[at] {
-        Some(left) => {
-          run = merge(left, run)
-          runs[at] = None
-          at += 1
-        }
-        None => break
-      }
-    }
-    if at == runs.length() {
-      runs.push(Some(run))
-    } else {
-      runs[at] = Some(run)
-    }
-  }
-  let mut result = []
-  for run in runs {
-    if run is Some(left) {
-      result = merge(left, result)
-    }
-  }
-  result
 }
 
 ///|
@@ -495,7 +489,7 @@ fn Interpreter::lsearch_command(
   } else {
     None
   }
-  let values = input[n - 2].as_list()
+  let values = input[n - 2].collection_list()
   let offset = match start {
     Some(start) => re_start_index(start, values.length() - 1).max(0)
     None => 0

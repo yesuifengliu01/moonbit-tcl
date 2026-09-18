@@ -97,6 +97,7 @@ pub fn parse_list(text : String) -> Array[String] raise TclError {
 fn parse_list_at(
   text : String,
   failure : Ref[Int]?,
+  native_errors? : Bool = false,
 ) -> Array[String] raise TclError {
   if text.length() > 1000000 {
     raise Invalid("list size limit")
@@ -144,9 +145,15 @@ fn parse_list_at(
         }
       }
       if level != 0 {
+        if native_errors {
+          switch_error("unmatched open brace in list", "TCL VALUE LIST BRACE")
+        }
         raise Invalid("unmatched open brace in list")
       }
       if i < cs.length() && !list_space(cs[i]) {
+        if native_errors {
+          collection_list_junk(cs, i, "braces")
+        }
         raise Invalid("characters after braced list element")
       }
     } else if cs[i] == '"' {
@@ -169,9 +176,15 @@ fn parse_list_at(
         }
       }
       if !closed {
+        if native_errors {
+          switch_error("unmatched open quote in list", "TCL VALUE LIST QUOTE")
+        }
         raise Invalid("unmatched quote in list")
       }
       if i < cs.length() && !list_space(cs[i]) {
+        if native_errors {
+          collection_list_junk(cs, i, "quotes")
+        }
         raise Invalid("characters after quoted list element")
       }
     } else {
