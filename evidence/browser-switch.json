@@ -1,0 +1,153 @@
+{
+  "utc": "2026-09-18T08:50:38.106447+00:00",
+  "engineSHA256": "efa3789d8637fa901bfa6ae5e62ed98376adb7e31b4238772ea3d31ec4d87d72",
+  "url": "http://127.0.0.1:16040/web/",
+  "tool": "CUA in-app browser, real page controls and web Worker",
+  "checks": 13,
+  "passed": 13,
+  "versionLabel": "MOONBIT TCL 0.12.0",
+  "rows": [
+    {
+      "name": "documented classifier",
+      "source": "proc classify {line} {\n    switch -regexp -nocase -matchvar parts -- $line {\n        {^add[[:space:]]+([[:alpha:]]+)[[:space:]]+([0-9]+)$} {\n            return [list add [lindex $parts 1] [lindex $parts 2]]\n        }\n        {^list$} -\n        {^show$} {\n            return [list show]\n        }\n        default {\n            return [list invalid $line]\n        }\n    }\n}\nset totals {}\nforeach line {{ADD tea 12} {add coffee 24} {add tea 8} show unknown} {\n    set command [classify $line]\n    switch [lindex $command 0] {\n        add {dict incr totals [lindex $command 1] [lindex $command 2]}\n        show {puts $totals}\n        invalid {puts \"ignored: [lindex $command 1]\"}\n    }\n}\nswitch -glob -nocase [lindex [classify {ADD tea 1}] 0] {\n    a* {dict get $totals tea}\n    default {error \"unexpected classification\"}\n}\n",
+      "actual": {
+        "result": "20",
+        "output": "tea 20 coffee 24\nignored: unknown\n",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "retained procedure and data",
+      "source": "list [dict get $totals tea] [classify {ADD tea 1}]",
+      "actual": {
+        "result": "20 {add tea 1}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "glob nocase fallthrough",
+      "source": "switch -glob -nocase LOG/a log/* - x {list shared} default {error wrong}",
+      "actual": {
+        "result": "shared",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "captures and indices",
+      "source": "switch -regexp -matchvar m -indexvar ix xxabbbz {a(b+)} {list $m $ix}",
+      "actual": {
+        "result": "{abbb bbb} {{2 5} {3 5}}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "no-match preserves captures",
+      "source": "switch -regexp -matchvar m -indexvar ix x a {};list $m $ix",
+      "actual": {
+        "result": "{abbb bbb} {{2 5} {3 5}}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "default empties captures",
+      "source": "switch -regexp -matchvar m -indexvar ix x a {} default {};list $m $ix",
+      "actual": {
+        "result": "{} {}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "nested repetition",
+      "source": "switch -regexp -matchvar m -indexvar ix aaabbb {((.)+?)*b?} {list $m $ix}",
+      "actual": {
+        "result": "{aaabbb b b} {{0 5} {5 5} {5 5}}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "backreference and lookahead",
+      "source": "list [switch -regexp -matchvar m abab {(ab)\\1} {set m}] [switch -regexp ac {a(?!b)} {list lookahead}]",
+      "actual": {
+        "result": "{abab ab} lookahead",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "structured compile error",
+      "source": "set touched kept;catch {switch -regexp x {(} {error unreachable}} r o;list $touched [lindex [dict get $o -errorcode] 1]",
+      "actual": {
+        "result": "kept REG_EPAREN",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "body error",
+      "source": "switch -regexp abc {(a)} {puts before;set touched changed;error failed}",
+      "actual": {
+        "result": "",
+        "output": "before\n",
+        "error": "Invalid(\"failed\")"
+      },
+      "nativeCode": 1,
+      "nativeResult": "failed",
+      "passed": true
+    },
+    {
+      "name": "recovery",
+      "source": "list recovered $touched",
+      "actual": {
+        "result": "recovered changed",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "reset",
+      "actualStatus": "\u4f1a\u8bdd\u5df2\u6e05\u7a7a\u3002",
+      "passed": true
+    },
+    {
+      "name": "reset removes variables and procedures",
+      "source": "list [info exists touched] [info exists totals] [info procs classify]",
+      "actual": {
+        "result": "0 0 {}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    }
+  ],
+  "consoleLogsCollected": false,
+  "temporaryPageClosed": true,
+  "temporaryServerStopped": true,
+  "scope": "Actual rendered results, stdout, error and reset status inspected after each action. Native values checked independently afterward. Import/download, cancellation/timeout, mobile layout and browser console logs not rerun or inspected."
+}

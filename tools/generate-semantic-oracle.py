@@ -3,7 +3,7 @@ from pathlib import Path
 import tkinter,json,runpy,sys,re,gc
 root=Path(__file__).resolve().parents[1]
 suite=sys.argv[1] if len(sys.argv)>1 else 'semantic'
-if suite not in {'semantic','cache','namespace','completion','syntax','unicode','conversion','value'}:raise SystemExit('suite must be semantic, cache, namespace, completion, syntax, unicode, conversion or value')
+if suite not in {'semantic','cache','namespace','completion','syntax','unicode','conversion','value','switch'}:raise SystemExit('suite must be semantic, cache, namespace, completion, syntax, unicode, conversion, value or switch')
 cases=runpy.run_path(str(root/f'tools/{suite}-cases.py'))['cases']
 rows=[]
 def normalize_transport(text):
@@ -11,7 +11,12 @@ def normalize_transport(text):
     # byte triples. Decode only valid three-byte surrogate sequences.
     return re.sub(r'[\udced][\udca0-\udcbf][\udc80-\udcbf]',lambda m:m.group().encode('utf-8','surrogateescape').decode('utf-8','surrogatepass'),text)
 
-for case in cases:
+if suite=='switch':
+    rows,reference_limits=runpy.run_path(str(root/'tools/switch-reference.py'))['generate'](cases)
+    limits={'reference':'System Tcl 8.6.15, native evaluation in a killable worker','probes':len(cases),'completed':len(rows),'excluded':len(reference_limits),'timeoutSeconds':2,'rows':reference_limits,'scope':'Native timeouts, crashes or transport failures are not expected errors or passing comparisons. Each case has a fresh Tcl interpreter; the worker restarts after a deadline or failure.'}
+    (root/'evidence/switch-reference-limits.json').write_text(json.dumps(limits,ensure_ascii=True,indent=2)+'\n',encoding='utf-8',newline='\n')
+
+for case in ([] if suite=='switch' else cases):
     t=tkinter.Tcl()
     version=t.eval('info patchlevel')
     if version!='8.6.15':raise RuntimeError('Expected fixed Tcl 8.6.15, found '+version)
@@ -47,7 +52,20 @@ def lit(text):
         return 'String::from_array(['+', '.join('('+str(ord(c))+').unsafe_to_char()' for c in text)+'])'
     return json.dumps(text,ensure_ascii=False)
 lines=['// Original programs, expected results evaluated by Tcl 8.6.15. Do not hand-edit.']
-for row in rows:
+if suite=='switch':
+    # Keep all independent cases while avoiding the generated driver's text
+    # segment limit: case labels remain attached to each assertion.
+    lines += ['///|', 'fn check_switch_case(source : String, expected : String, output : String, rejected : Bool, label : String) -> Unit raise {',
+      ' let t = @tcl.Interpreter::new()',
+      ' if rejected { assert_true(try { ignore(t.eval(source, budget=100000)); false } catch { _ => true }, msg=label[:]) }',
+      ' else { assert_eq(t.eval(source, budget=100000), expected, msg=label); assert_eq(t.output_text(), output, msg=label) }', '}']
+    for start in range(0,len(rows),40):
+        group=rows[start:start+40]
+        lines += ['///|',f'test "Tcl switch cases {start+1} through {start+len(group)}" {{']
+        for row in group:
+            lines += [f' check_switch_case({lit(row["source"])}, {lit(row["result"])}, {lit(row["output"])}, {str(row["error"]).lower()}, {lit(row["name"])})']
+        lines += ['}']
+for row in ([] if suite=='switch' else rows):
     known=row.get('knownDifference')
     label=('Known difference local contract ' if known else 'Tcl ')+suite+' '+row['name']
     lines+=['///|',f'test {lit(label)} {{',' let t=@tcl.Interpreter::new()']

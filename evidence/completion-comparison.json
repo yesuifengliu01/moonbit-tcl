@@ -2,7 +2,7 @@
   "reference": "System Tcl 8.6.15 through Python tkinter",
   "cases": 321,
   "matched": 321,
-  "engineSHA256": "05a063d3e9ce44ce2cf90e8a82660cf302732076f314327ca241af17f12e20a5",
+  "engineSHA256": "efa3789d8637fa901bfa6ae5e62ed98376adb7e31b4238772ea3d31ec4d87d72",
   "completionScope": "Matrix helpers normalize generated diagnostic fields and error text; selected metadata, locations and native messages/codes compare directly. See TESTING.md.",
   "knownDifferences": 0,
   "unexpectedDifferences": 0,

@@ -1,0 +1,220 @@
+{
+  "reference": "System Tcl 8.6.15, native evaluation in a killable worker",
+  "probes": 5863,
+  "completed": 5828,
+  "excluded": 35,
+  "timeoutSeconds": 2,
+  "rows": [
+    {
+      "name": "regex-boundary-4493",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"a\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4494",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"b\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4496",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"ab\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4497",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"aba\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4499",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"baaa\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4500",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"ababa\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4501",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"a\\nb\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4502",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"a b\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4503",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"d\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4504",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"*\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4505",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"a^b\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4506",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"a\\$b\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4507",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"\\n\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4508",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"S\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4509",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"?\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4510",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \" 0\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4511",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"\ufffd\" \"(a*)?\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4513",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"a\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4514",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"b\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4516",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"ab\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4517",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"aba\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4519",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"baaa\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4520",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"ababa\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4521",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"a\\nb\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4522",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"a b\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4523",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"d\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4524",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"*\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4525",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"a^b\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4526",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"a\\$b\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4527",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"\\n\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4528",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"S\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4529",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"?\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4530",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \" 0\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "regex-boundary-4531",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"\ufffd\" \"(a*)*\\\\1\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    },
+    {
+      "name": "repeat-capture-regression-5809",
+      "source": "set m OLD;set ix OLD;set r [switch -regexp  -matchvar m -indexvar ix -- \"b\" \"(a)?\\\\1*\" {list matched} default {list default}];list $r $m $ix",
+      "reason": "native evaluation exceeded per-case deadline",
+      "timeoutSeconds": 2
+    }
+  ],
+  "scope": "Native timeouts, crashes or transport failures are not expected errors or passing comparisons. Each case has a fresh Tcl interpreter; the worker restarts after a deadline or failure."
+}

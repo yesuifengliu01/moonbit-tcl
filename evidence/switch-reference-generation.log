@@ -1,0 +1,41 @@
+Native switch probes: 1000
+Native switch probes: 2000
+Native switch probes: 3000
+Native switch probes: 4000
+Native timeout: regex-boundary-4493
+Native timeout: regex-boundary-4494
+Native timeout: regex-boundary-4496
+Native timeout: regex-boundary-4497
+Native timeout: regex-boundary-4499
+Native timeout: regex-boundary-4500
+Native timeout: regex-boundary-4501
+Native timeout: regex-boundary-4502
+Native timeout: regex-boundary-4503
+Native timeout: regex-boundary-4504
+Native timeout: regex-boundary-4505
+Native timeout: regex-boundary-4506
+Native timeout: regex-boundary-4507
+Native timeout: regex-boundary-4508
+Native timeout: regex-boundary-4509
+Native timeout: regex-boundary-4510
+Native timeout: regex-boundary-4511
+Native timeout: regex-boundary-4513
+Native timeout: regex-boundary-4514
+Native timeout: regex-boundary-4516
+Native timeout: regex-boundary-4517
+Native timeout: regex-boundary-4519
+Native timeout: regex-boundary-4520
+Native timeout: regex-boundary-4521
+Native timeout: regex-boundary-4522
+Native timeout: regex-boundary-4523
+Native timeout: regex-boundary-4524
+Native timeout: regex-boundary-4525
+Native timeout: regex-boundary-4526
+Native timeout: regex-boundary-4527
+Native timeout: regex-boundary-4528
+Native timeout: regex-boundary-4529
+Native timeout: regex-boundary-4530
+Native timeout: regex-boundary-4531
+Native switch probes: 5000
+Native timeout: repeat-capture-regression-5809
+Generated 5828 independent system Tcl cases

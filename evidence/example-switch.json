@@ -1,0 +1,16 @@
+{
+  "engineSHA256": "efa3789d8637fa901bfa6ae5e62ed98376adb7e31b4238772ea3d31ec4d87d72",
+  "source": "examples/switch.tcl",
+  "reference": "Windows Tcl 8.6.15; only puts redirected",
+  "expected": {
+    "result": "20",
+    "output": "tea 20 coffee 24\nignored: unknown\n"
+  },
+  "actual": {
+    "ok": true,
+    "result": "20",
+    "output": "tea 20 coffee 24\nignored: unknown\n"
+  },
+  "matched": true,
+  "cliExitCode": 0
+}

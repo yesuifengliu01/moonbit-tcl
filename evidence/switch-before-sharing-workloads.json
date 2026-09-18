@@ -1,0 +1,60 @@
+{
+  "runtime": "v24.11.0",
+  "rows": [
+    {
+      "name": "switch-exact-200",
+      "source": "set total 0;for {set i 0} {$i<200} {incr i} {switch [expr {$i%3}] {0 {incr total 1} 1 {incr total 2} default {incr total 3}}};set total",
+      "result": "399",
+      "nativeMedianMs": 0.1116,
+      "currentMedianMs": 1.0603000000000051,
+      "currentP95Ms": 1.3836000000000013,
+      "systemTclRatio": 9.500896057347715,
+      "resultMatched": true
+    },
+    {
+      "name": "switch-glob-200",
+      "source": "set total 0;for {set i 0} {$i<200} {incr i} {switch -glob -nocase {LOG/ready.txt} {*.csv {error wrong} log/* {incr total} default {error missing}}};set total",
+      "result": "200",
+      "nativeMedianMs": 0.15265,
+      "currentMedianMs": 1.2915500000000009,
+      "currentP95Ms": 1.7486999999999853,
+      "systemTclRatio": 8.460858172289557,
+      "resultMatched": true
+    },
+    {
+      "name": "switch-regexp-capture-50",
+      "source": "set total 0;for {set i 0} {$i<50} {incr i} {switch -regexp -matchvar m -indexvar ix {ADD tea 42} {^ADD ([a-z]+) ([0-9]+)$} {incr total [lindex $m 2]} default {error missing}};list $total $ix",
+      "result": "2100 {{0 9} {4 6} {8 9}}",
+      "nativeMedianMs": 0.26844999999999997,
+      "currentMedianMs": 0.8529999999999944,
+      "currentP95Ms": 1.4037999999999897,
+      "systemTclRatio": 3.1775004656360384,
+      "resultMatched": true
+    },
+    {
+      "name": "switch-regexp-backref-50",
+      "source": "set total 0;for {set i 0} {$i<50} {incr i} {switch -regexp -matchvar m {abab} {(ab)\\1} {incr total} default {error missing}};list $total $m",
+      "result": "50 {abab ab}",
+      "nativeMedianMs": 0.20005,
+      "currentMedianMs": 0.28479999999998995,
+      "currentP95Ms": 0.3814999999999884,
+      "systemTclRatio": 1.4236440889777053,
+      "resultMatched": true
+    },
+    {
+      "name": "switch-regexp-nested-50",
+      "source": "set total 0;for {set i 0} {$i<50} {incr i} {switch -regexp -matchvar m aaabbb {((.)+?)*b?} {incr total} default {error missing}};list $total $m",
+      "result": "50 {aaabbb b b}",
+      "nativeMedianMs": 0.2895,
+      "currentMedianMs": 3.323200000000014,
+      "currentP95Ms": 4.447200000000009,
+      "systemTclRatio": 11.479101899827338,
+      "resultMatched": true
+    }
+  ],
+  "reference": "Windows Tcl 8.6.15",
+  "warmups": 10,
+  "measurements": 30,
+  "engineSHA256": "fa888a9c2d076d535a9224b5f8c94e7ff67006de4d54854f208be56bb1e6ba74",
+  "scope": "Five small warm-session switch workloads, native and Node measured separately on one host; exact results verified. Different host adapters; no full application, peak memory or cross-platform acceptance."
+}
