@@ -335,12 +335,14 @@ fn float_text(value : Double) -> String raise TclError {
     }
   }
   let negative = value < 0.0
-  let raw = value.abs().to_string()
+  let raw = tcl_shortest_power(value.abs())
   let parts = raw.split("e").to_array()
   let mantissa = parts[0].to_owned()
   let decimal = mantissa.split(".").to_array()
   let mut exponent = if parts.length() == 2 {
-    integer(parts[1].to_owned())
+    @strconv.parse_int(parts[1].to_owned()) catch {
+      _ => raise Invalid("invalid decimal exponent")
+    }
   } else {
     0
   }

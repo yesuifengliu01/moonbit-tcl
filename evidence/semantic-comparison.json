@@ -2,7 +2,9 @@
   "reference": "System Tcl 8.6.15 through Python tkinter",
   "cases": 726,
   "matched": 726,
-  "engineSHA256": "24507f9d91a13db49db6ec77022edc94944df10ddf306d5a263d4184ce9dddfa",
+  "engineSHA256": "95e62fe56d39fd5fdb72218de4e238fbedd7c2f98eb29c8c0c2cb634d9dea9b9",
+  "knownDifferences": 0,
+  "unexpectedDifferences": 0,
   "comparison": "Exact result and standard-output strings on success; rejection only on expected errors.",
   "rows": [
     {
@@ -16,7 +18,8 @@
         "result": "2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0---2",
@@ -29,7 +32,8 @@
         "result": "-2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-*-2",
@@ -42,7 +46,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-/-2",
@@ -55,7 +60,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-%-2",
@@ -68,7 +74,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-==-2",
@@ -81,7 +88,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-!=-2",
@@ -94,7 +102,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-<-2",
@@ -107,7 +116,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0->=-2",
@@ -120,7 +130,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-&-2",
@@ -133,7 +144,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-|-2",
@@ -146,7 +158,8 @@
         "result": "2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-^-2",
@@ -159,7 +172,8 @@
         "result": "2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-+--3",
@@ -172,7 +186,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0----3",
@@ -185,7 +200,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-*--3",
@@ -198,7 +214,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-/--3",
@@ -211,7 +228,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-%--3",
@@ -224,7 +242,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-==--3",
@@ -237,7 +256,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-!=--3",
@@ -250,7 +270,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-<--3",
@@ -263,7 +284,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0->=--3",
@@ -276,7 +298,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-&--3",
@@ -289,7 +312,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-|--3",
@@ -302,7 +326,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-^--3",
@@ -315,7 +340,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-+-0",
@@ -328,7 +354,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0---0",
@@ -341,7 +368,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-*-0",
@@ -354,7 +382,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-/-0",
@@ -367,7 +396,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-%-0",
@@ -380,7 +410,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-==-0",
@@ -393,7 +424,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-!=-0",
@@ -406,7 +438,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-<-0",
@@ -419,7 +452,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0->=-0",
@@ -432,7 +466,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-&-0",
@@ -445,7 +480,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-|-0",
@@ -458,7 +494,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-^-0",
@@ -471,7 +508,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-+-0.5",
@@ -484,7 +522,8 @@
         "result": "0.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0---0.5",
@@ -497,7 +536,8 @@
         "result": "-0.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-*-0.5",
@@ -510,7 +550,8 @@
         "result": "0.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-/-0.5",
@@ -523,7 +564,8 @@
         "result": "0.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-%-0.5",
@@ -536,7 +578,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-==-0.5",
@@ -549,7 +592,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-!=-0.5",
@@ -562,7 +606,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-<-0.5",
@@ -575,7 +620,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0->=-0.5",
@@ -588,7 +634,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-&-0.5",
@@ -601,7 +648,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-|-0.5",
@@ -614,7 +662,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-0-^-0.5",
@@ -627,7 +676,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-+-2",
@@ -640,7 +690,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1---2",
@@ -653,7 +704,8 @@
         "result": "-1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-*-2",
@@ -666,7 +718,8 @@
         "result": "2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-/-2",
@@ -679,7 +732,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-%-2",
@@ -692,7 +746,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-==-2",
@@ -705,7 +760,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-!=-2",
@@ -718,7 +774,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-<-2",
@@ -731,7 +788,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1->=-2",
@@ -744,7 +802,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-&-2",
@@ -757,7 +816,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-|-2",
@@ -770,7 +830,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-^-2",
@@ -783,7 +844,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-+--3",
@@ -796,7 +858,8 @@
         "result": "-2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1----3",
@@ -809,7 +872,8 @@
         "result": "4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-*--3",
@@ -822,7 +886,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-/--3",
@@ -835,7 +900,8 @@
         "result": "-1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-%--3",
@@ -848,7 +914,8 @@
         "result": "-2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-==--3",
@@ -861,7 +928,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-!=--3",
@@ -874,7 +942,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-<--3",
@@ -887,7 +956,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1->=--3",
@@ -900,7 +970,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-&--3",
@@ -913,7 +984,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-|--3",
@@ -926,7 +998,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-^--3",
@@ -939,7 +1012,8 @@
         "result": "-4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-+-0",
@@ -952,7 +1026,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1---0",
@@ -965,7 +1040,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-*-0",
@@ -978,7 +1054,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-/-0",
@@ -991,7 +1068,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-%-0",
@@ -1004,7 +1082,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-==-0",
@@ -1017,7 +1096,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-!=-0",
@@ -1030,7 +1110,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-<-0",
@@ -1043,7 +1124,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1->=-0",
@@ -1056,7 +1138,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-&-0",
@@ -1069,7 +1152,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-|-0",
@@ -1082,7 +1166,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-^-0",
@@ -1095,7 +1180,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-+-0.5",
@@ -1108,7 +1194,8 @@
         "result": "1.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1---0.5",
@@ -1121,7 +1208,8 @@
         "result": "0.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-*-0.5",
@@ -1134,7 +1222,8 @@
         "result": "0.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-/-0.5",
@@ -1147,7 +1236,8 @@
         "result": "2.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-%-0.5",
@@ -1160,7 +1250,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-==-0.5",
@@ -1173,7 +1264,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-!=-0.5",
@@ -1186,7 +1278,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-<-0.5",
@@ -1199,7 +1292,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1->=-0.5",
@@ -1212,7 +1306,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-&-0.5",
@@ -1225,7 +1320,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-|-0.5",
@@ -1238,7 +1334,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-1-^-0.5",
@@ -1251,7 +1348,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-+-2",
@@ -1264,7 +1362,8 @@
         "result": "-1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3---2",
@@ -1277,7 +1376,8 @@
         "result": "-5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-*-2",
@@ -1290,7 +1390,8 @@
         "result": "-6",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-/-2",
@@ -1303,7 +1404,8 @@
         "result": "-2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-%-2",
@@ -1316,7 +1418,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-==-2",
@@ -1329,7 +1432,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-!=-2",
@@ -1342,7 +1446,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-<-2",
@@ -1355,7 +1460,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3->=-2",
@@ -1368,7 +1474,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-&-2",
@@ -1381,7 +1488,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-|-2",
@@ -1394,7 +1502,8 @@
         "result": "-1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-^-2",
@@ -1407,7 +1516,8 @@
         "result": "-1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-+--3",
@@ -1420,7 +1530,8 @@
         "result": "-6",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3----3",
@@ -1433,7 +1544,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-*--3",
@@ -1446,7 +1558,8 @@
         "result": "9",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-/--3",
@@ -1459,7 +1572,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-%--3",
@@ -1472,7 +1586,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-==--3",
@@ -1485,7 +1600,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-!=--3",
@@ -1498,7 +1614,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-<--3",
@@ -1511,7 +1628,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3->=--3",
@@ -1524,7 +1642,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-&--3",
@@ -1537,7 +1656,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-|--3",
@@ -1550,7 +1670,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-^--3",
@@ -1563,7 +1684,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-+-0",
@@ -1576,7 +1698,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3---0",
@@ -1589,7 +1712,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-*-0",
@@ -1602,7 +1726,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-/-0",
@@ -1615,7 +1740,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-%-0",
@@ -1628,7 +1754,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-==-0",
@@ -1641,7 +1768,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-!=-0",
@@ -1654,7 +1782,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-<-0",
@@ -1667,7 +1796,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3->=-0",
@@ -1680,7 +1810,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-&-0",
@@ -1693,7 +1824,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-|-0",
@@ -1706,7 +1838,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-^-0",
@@ -1719,7 +1852,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-+-0.5",
@@ -1732,7 +1866,8 @@
         "result": "-2.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3---0.5",
@@ -1745,7 +1880,8 @@
         "result": "-3.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-*-0.5",
@@ -1758,7 +1894,8 @@
         "result": "-1.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-/-0.5",
@@ -1771,7 +1908,8 @@
         "result": "-6.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-%-0.5",
@@ -1784,7 +1922,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-==-0.5",
@@ -1797,7 +1936,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-!=-0.5",
@@ -1810,7 +1950,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-<-0.5",
@@ -1823,7 +1964,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3->=-0.5",
@@ -1836,7 +1978,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-&-0.5",
@@ -1849,7 +1992,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-|-0.5",
@@ -1862,7 +2006,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric--3-^-0.5",
@@ -1875,7 +2020,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-+-2",
@@ -1888,7 +2034,8 @@
         "result": "2147483649",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647---2",
@@ -1901,7 +2048,8 @@
         "result": "2147483645",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-*-2",
@@ -1914,7 +2062,8 @@
         "result": "4294967294",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-/-2",
@@ -1927,7 +2076,8 @@
         "result": "1073741823",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-%-2",
@@ -1940,7 +2090,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-==-2",
@@ -1953,7 +2104,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-!=-2",
@@ -1966,7 +2118,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-<-2",
@@ -1979,7 +2132,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647->=-2",
@@ -1992,7 +2146,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-&-2",
@@ -2005,7 +2160,8 @@
         "result": "2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-|-2",
@@ -2018,7 +2174,8 @@
         "result": "2147483647",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-^-2",
@@ -2031,7 +2188,8 @@
         "result": "2147483645",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-+--3",
@@ -2044,7 +2202,8 @@
         "result": "2147483644",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647----3",
@@ -2057,7 +2216,8 @@
         "result": "2147483650",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-*--3",
@@ -2070,7 +2230,8 @@
         "result": "-6442450941",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-/--3",
@@ -2083,7 +2244,8 @@
         "result": "-715827883",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-%--3",
@@ -2096,7 +2258,8 @@
         "result": "-2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-==--3",
@@ -2109,7 +2272,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-!=--3",
@@ -2122,7 +2286,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-<--3",
@@ -2135,7 +2300,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647->=--3",
@@ -2148,7 +2314,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-&--3",
@@ -2161,7 +2328,8 @@
         "result": "2147483645",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-|--3",
@@ -2174,7 +2342,8 @@
         "result": "-1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-^--3",
@@ -2187,7 +2356,8 @@
         "result": "-2147483646",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-+-0",
@@ -2200,7 +2370,8 @@
         "result": "2147483647",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647---0",
@@ -2213,7 +2384,8 @@
         "result": "2147483647",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-*-0",
@@ -2226,7 +2398,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-/-0",
@@ -2239,7 +2412,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-%-0",
@@ -2252,7 +2426,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-==-0",
@@ -2265,7 +2440,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-!=-0",
@@ -2278,7 +2454,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-<-0",
@@ -2291,7 +2468,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647->=-0",
@@ -2304,7 +2482,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-&-0",
@@ -2317,7 +2496,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-|-0",
@@ -2330,7 +2510,8 @@
         "result": "2147483647",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-^-0",
@@ -2343,7 +2524,8 @@
         "result": "2147483647",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-+-0.5",
@@ -2356,7 +2538,8 @@
         "result": "2147483647.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647---0.5",
@@ -2369,7 +2552,8 @@
         "result": "2147483646.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-*-0.5",
@@ -2382,7 +2566,8 @@
         "result": "1073741823.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-/-0.5",
@@ -2395,7 +2580,8 @@
         "result": "4294967294.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-%-0.5",
@@ -2408,7 +2594,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-==-0.5",
@@ -2421,7 +2608,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-!=-0.5",
@@ -2434,7 +2622,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-<-0.5",
@@ -2447,7 +2636,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647->=-0.5",
@@ -2460,7 +2650,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-&-0.5",
@@ -2473,7 +2664,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-|-0.5",
@@ -2486,7 +2678,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2147483647-^-0.5",
@@ -2499,7 +2692,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-+-2",
@@ -2512,7 +2706,8 @@
         "result": "9007199254740995",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993---2",
@@ -2525,7 +2720,8 @@
         "result": "9007199254740991",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-*-2",
@@ -2538,7 +2734,8 @@
         "result": "18014398509481986",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-/-2",
@@ -2551,7 +2748,8 @@
         "result": "4503599627370496",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-%-2",
@@ -2564,7 +2762,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-==-2",
@@ -2577,7 +2776,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-!=-2",
@@ -2590,7 +2790,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-<-2",
@@ -2603,7 +2804,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993->=-2",
@@ -2616,7 +2818,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-&-2",
@@ -2629,7 +2832,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-|-2",
@@ -2642,7 +2846,8 @@
         "result": "9007199254740995",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-^-2",
@@ -2655,7 +2860,8 @@
         "result": "9007199254740995",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-+--3",
@@ -2668,7 +2874,8 @@
         "result": "9007199254740990",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993----3",
@@ -2681,7 +2888,8 @@
         "result": "9007199254740996",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-*--3",
@@ -2694,7 +2902,8 @@
         "result": "-27021597764222979",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-/--3",
@@ -2707,7 +2916,8 @@
         "result": "-3002399751580331",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-%--3",
@@ -2720,7 +2930,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-==--3",
@@ -2733,7 +2944,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-!=--3",
@@ -2746,7 +2958,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-<--3",
@@ -2759,7 +2972,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993->=--3",
@@ -2772,7 +2986,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-&--3",
@@ -2785,7 +3000,8 @@
         "result": "9007199254740993",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-|--3",
@@ -2798,7 +3014,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-^--3",
@@ -2811,7 +3028,8 @@
         "result": "-9007199254740996",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-+-0",
@@ -2824,7 +3042,8 @@
         "result": "9007199254740993",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993---0",
@@ -2837,7 +3056,8 @@
         "result": "9007199254740993",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-*-0",
@@ -2850,7 +3070,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-/-0",
@@ -2863,7 +3084,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-%-0",
@@ -2876,7 +3098,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-==-0",
@@ -2889,7 +3112,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-!=-0",
@@ -2902,7 +3126,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-<-0",
@@ -2915,7 +3140,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993->=-0",
@@ -2928,7 +3154,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-&-0",
@@ -2941,7 +3168,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-|-0",
@@ -2954,7 +3182,8 @@
         "result": "9007199254740993",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-^-0",
@@ -2967,7 +3196,8 @@
         "result": "9007199254740993",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-+-0.5",
@@ -2980,7 +3210,8 @@
         "result": "9007199254740992.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993---0.5",
@@ -2993,7 +3224,8 @@
         "result": "9007199254740992.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-*-0.5",
@@ -3006,7 +3238,8 @@
         "result": "4503599627370496.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-/-0.5",
@@ -3019,7 +3252,8 @@
         "result": "18014398509481984.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-%-0.5",
@@ -3032,7 +3266,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-==-0.5",
@@ -3045,7 +3280,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-!=-0.5",
@@ -3058,7 +3294,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-<-0.5",
@@ -3071,7 +3308,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993->=-0.5",
@@ -3084,7 +3322,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-&-0.5",
@@ -3097,7 +3336,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-|-0.5",
@@ -3110,7 +3350,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-9007199254740993-^-0.5",
@@ -3123,7 +3364,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-+-2",
@@ -3136,7 +3378,8 @@
         "result": "123456789012345678901234567892",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890---2",
@@ -3149,7 +3392,8 @@
         "result": "123456789012345678901234567888",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-*-2",
@@ -3162,7 +3406,8 @@
         "result": "246913578024691357802469135780",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-/-2",
@@ -3175,7 +3420,8 @@
         "result": "61728394506172839450617283945",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-%-2",
@@ -3188,7 +3434,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-==-2",
@@ -3201,7 +3448,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-!=-2",
@@ -3214,7 +3462,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-<-2",
@@ -3227,7 +3476,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890->=-2",
@@ -3240,7 +3490,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-&-2",
@@ -3253,7 +3504,8 @@
         "result": "2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-|-2",
@@ -3266,7 +3518,8 @@
         "result": "123456789012345678901234567890",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-^-2",
@@ -3279,7 +3532,8 @@
         "result": "123456789012345678901234567888",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-+--3",
@@ -3292,7 +3546,8 @@
         "result": "123456789012345678901234567887",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890----3",
@@ -3305,7 +3560,8 @@
         "result": "123456789012345678901234567893",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-*--3",
@@ -3318,7 +3574,8 @@
         "result": "-370370367037037036703703703670",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-/--3",
@@ -3331,7 +3588,8 @@
         "result": "-41152263004115226300411522630",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-%--3",
@@ -3344,7 +3602,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-==--3",
@@ -3357,7 +3616,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-!=--3",
@@ -3370,7 +3630,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-<--3",
@@ -3383,7 +3644,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890->=--3",
@@ -3396,7 +3658,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-&--3",
@@ -3409,7 +3672,8 @@
         "result": "123456789012345678901234567888",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-|--3",
@@ -3422,7 +3686,8 @@
         "result": "-1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-^--3",
@@ -3435,7 +3700,8 @@
         "result": "-123456789012345678901234567889",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-+-0",
@@ -3448,7 +3714,8 @@
         "result": "123456789012345678901234567890",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890---0",
@@ -3461,7 +3728,8 @@
         "result": "123456789012345678901234567890",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-*-0",
@@ -3474,7 +3742,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-/-0",
@@ -3487,7 +3756,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-%-0",
@@ -3500,7 +3770,8 @@
         "error": "Invalid(\"divide by zero\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-==-0",
@@ -3513,7 +3784,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-!=-0",
@@ -3526,7 +3798,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-<-0",
@@ -3539,7 +3812,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890->=-0",
@@ -3552,7 +3826,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-&-0",
@@ -3565,7 +3840,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-|-0",
@@ -3578,7 +3854,8 @@
         "result": "123456789012345678901234567890",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-^-0",
@@ -3591,7 +3868,8 @@
         "result": "123456789012345678901234567890",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-+-0.5",
@@ -3604,7 +3882,8 @@
         "result": "1.2345678901234568e+29",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890---0.5",
@@ -3617,7 +3896,8 @@
         "result": "1.2345678901234568e+29",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-*-0.5",
@@ -3630,7 +3910,8 @@
         "result": "6.172839450617284e+28",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-/-0.5",
@@ -3643,7 +3924,8 @@
         "result": "2.4691357802469136e+29",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-%-0.5",
@@ -3656,7 +3938,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-==-0.5",
@@ -3669,7 +3952,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-!=-0.5",
@@ -3682,7 +3966,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-<-0.5",
@@ -3695,7 +3980,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890->=-0.5",
@@ -3708,7 +3994,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-&-0.5",
@@ -3721,7 +4008,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-|-0.5",
@@ -3734,7 +4022,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-123456789012345678901234567890-^-0.5",
@@ -3747,7 +4036,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-+-2",
@@ -3760,7 +4050,8 @@
         "result": "4.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5---2",
@@ -3773,7 +4064,8 @@
         "result": "0.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-*-2",
@@ -3786,7 +4078,8 @@
         "result": "5.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-/-2",
@@ -3799,7 +4092,8 @@
         "result": "1.25",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-%-2",
@@ -3812,7 +4106,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-==-2",
@@ -3825,7 +4120,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-!=-2",
@@ -3838,7 +4134,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-<-2",
@@ -3851,7 +4148,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5->=-2",
@@ -3864,7 +4162,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-&-2",
@@ -3877,7 +4176,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-|-2",
@@ -3890,7 +4190,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-^-2",
@@ -3903,7 +4204,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-+--3",
@@ -3916,7 +4218,8 @@
         "result": "-0.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5----3",
@@ -3929,7 +4232,8 @@
         "result": "5.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-*--3",
@@ -3942,7 +4246,8 @@
         "result": "-7.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-/--3",
@@ -3955,7 +4260,8 @@
         "result": "-0.8333333333333334",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-%--3",
@@ -3968,7 +4274,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-==--3",
@@ -3981,7 +4288,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-!=--3",
@@ -3994,7 +4302,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-<--3",
@@ -4007,7 +4316,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5->=--3",
@@ -4020,7 +4330,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-&--3",
@@ -4033,7 +4344,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-|--3",
@@ -4046,7 +4358,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-^--3",
@@ -4059,7 +4372,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-+-0",
@@ -4072,7 +4386,8 @@
         "result": "2.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5---0",
@@ -4085,7 +4400,8 @@
         "result": "2.5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-*-0",
@@ -4098,7 +4414,8 @@
         "result": "0.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-/-0",
@@ -4111,7 +4428,8 @@
         "result": "Inf",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-%-0",
@@ -4124,7 +4442,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-==-0",
@@ -4137,7 +4456,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-!=-0",
@@ -4150,7 +4470,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-<-0",
@@ -4163,7 +4484,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5->=-0",
@@ -4176,7 +4498,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-&-0",
@@ -4189,7 +4512,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-|-0",
@@ -4202,7 +4526,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-^-0",
@@ -4215,7 +4540,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-+-0.5",
@@ -4228,7 +4554,8 @@
         "result": "3.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5---0.5",
@@ -4241,7 +4568,8 @@
         "result": "2.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-*-0.5",
@@ -4254,7 +4582,8 @@
         "result": "1.25",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-/-0.5",
@@ -4267,7 +4596,8 @@
         "result": "5.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-%-0.5",
@@ -4280,7 +4610,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-==-0.5",
@@ -4293,7 +4624,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-!=-0.5",
@@ -4306,7 +4638,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-<-0.5",
@@ -4319,7 +4652,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5->=-0.5",
@@ -4332,7 +4666,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-&-0.5",
@@ -4345,7 +4680,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-|-0.5",
@@ -4358,7 +4694,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "numeric-2.5-^-0.5",
@@ -4371,7 +4708,8 @@
         "error": "Invalid(\"integer operand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-0",
@@ -4384,7 +4722,8 @@
         "result": "32",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-1",
@@ -4397,7 +4736,8 @@
         "result": "12",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-2",
@@ -4410,7 +4750,8 @@
         "result": "8",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-3",
@@ -4423,7 +4764,8 @@
         "error": "Invalid(\"invalid bareword 08\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-4",
@@ -4436,7 +4778,8 @@
         "result": "8.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-5",
@@ -4449,7 +4792,8 @@
         "result": "512",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-6",
@@ -4462,7 +4806,8 @@
         "result": "4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-7",
@@ -4475,7 +4820,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-8",
@@ -4488,7 +4834,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-9",
@@ -4501,7 +4848,8 @@
         "result": "-1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-10",
@@ -4514,7 +4862,8 @@
         "error": "Invalid(\"exponentiation of zero by negative power\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-11",
@@ -4527,7 +4876,8 @@
         "result": "14233598694204363376410106750713200640",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-12",
@@ -4540,7 +4890,8 @@
         "result": "-385802465663580247",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-13",
@@ -4553,7 +4904,8 @@
         "result": "-12345678901234567891",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-14",
@@ -4566,7 +4918,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-15",
@@ -4579,7 +4932,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-16",
@@ -4592,7 +4946,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-17",
@@ -4605,7 +4960,8 @@
         "result": "2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-18",
@@ -4618,7 +4974,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-19",
@@ -4631,7 +4988,8 @@
         "result": "2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-20",
@@ -4644,7 +5002,8 @@
         "error": "Invalid(\"invalid bareword bareword\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-21",
@@ -4657,7 +5016,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-22",
@@ -4670,7 +5030,8 @@
         "result": "true",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-23",
@@ -4683,7 +5044,8 @@
         "result": "on",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-24",
@@ -4696,7 +5058,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-25",
@@ -4709,7 +5072,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-26",
@@ -4722,7 +5086,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-27",
@@ -4735,7 +5100,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-28",
@@ -4748,7 +5114,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-29",
@@ -4761,7 +5128,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-30",
@@ -4774,7 +5142,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-31",
@@ -4787,7 +5156,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-32",
@@ -4800,7 +5170,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-33",
@@ -4813,7 +5184,8 @@
         "result": "abc",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-34",
@@ -4826,7 +5198,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-35",
@@ -4839,7 +5212,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-36",
@@ -4852,7 +5226,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-37",
@@ -4865,7 +5240,8 @@
         "error": "Invalid(\"domain error: argument not in valid range\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-38",
@@ -4878,7 +5254,8 @@
         "result": "Inf",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-39",
@@ -4891,7 +5268,8 @@
         "error": "Invalid(\"domain error: argument not in valid range\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-40",
@@ -4904,7 +5282,8 @@
         "result": "12345678901234567890",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-41",
@@ -4917,7 +5296,8 @@
         "result": "3.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-42",
@@ -4930,7 +5310,8 @@
         "result": "-3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-43",
@@ -4943,7 +5324,8 @@
         "result": "10000000000000000905969664",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-44",
@@ -4956,7 +5338,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-45",
@@ -4969,7 +5352,8 @@
         "result": "-2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-46",
@@ -4982,7 +5366,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-47",
@@ -4995,7 +5380,8 @@
         "result": "-1.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-48",
@@ -5008,7 +5394,8 @@
         "result": "-2.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-49",
@@ -5021,7 +5408,8 @@
         "result": "2.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-50",
@@ -5034,7 +5422,8 @@
         "error": "Invalid(\"domain error: argument not in valid range\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-51",
@@ -5047,7 +5436,8 @@
         "result": "8.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-52",
@@ -5060,7 +5450,8 @@
         "result": "0.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-53",
@@ -5073,7 +5464,8 @@
         "result": "1.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-54",
@@ -5086,7 +5478,8 @@
         "result": "0.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-55",
@@ -5099,7 +5492,8 @@
         "result": "5.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-56",
@@ -5112,7 +5506,8 @@
         "result": "0.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-57",
@@ -5125,7 +5520,8 @@
         "result": "1.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-58",
@@ -5138,7 +5534,8 @@
         "result": "2.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-59",
@@ -5151,7 +5548,8 @@
         "result": "-1.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-60",
@@ -5164,7 +5562,8 @@
         "result": "-2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-61",
@@ -5177,7 +5576,8 @@
         "result": "12345678901234567890",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-62",
@@ -5190,7 +5590,8 @@
         "error": "Invalid(\"math function arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-63",
@@ -5203,7 +5604,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-64",
@@ -5216,7 +5618,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-65",
@@ -5229,7 +5632,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-66",
@@ -5242,7 +5646,8 @@
         "error": "Invalid(\"cannot convert non-finite integer\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-67",
@@ -5255,7 +5660,8 @@
         "error": "Invalid(\"domain error: argument not in valid range\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lazy-side-effects",
@@ -5268,7 +5674,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "eager-unbraced-expr",
@@ -5281,7 +5688,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "no-injected-expression",
@@ -5294,7 +5702,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "variable-braced",
@@ -5307,7 +5716,8 @@
         "result": "4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "variable-empty",
@@ -5320,7 +5730,8 @@
         "result": "empty",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "variable-array-braced",
@@ -5333,7 +5744,8 @@
         "result": "4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "array-index-variable",
@@ -5346,7 +5758,8 @@
         "result": "7",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "array-index-command",
@@ -5359,7 +5772,8 @@
         "result": "8",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "literal-brackets",
@@ -5372,7 +5786,8 @@
         "result": "a\\]b \\]",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "nested-brackets",
@@ -5385,7 +5800,8 @@
         "result": "]",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expansion-variable",
@@ -5398,7 +5814,8 @@
         "result": "start 1 {2 3} end",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expansion-braced",
@@ -5411,7 +5828,8 @@
         "result": "1 {2 3} 4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "if-then",
@@ -5424,7 +5842,8 @@
         "result": "yes",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "if-elseif",
@@ -5437,7 +5856,8 @@
         "result": "yes",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "if-implicit-else",
@@ -5450,7 +5870,8 @@
         "result": "yes",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "namespace-variable",
@@ -5463,7 +5884,8 @@
         "result": "3 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "namespace-lexical",
@@ -5476,7 +5898,8 @@
         "result": "yes",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "namespace-fallback",
@@ -5489,7 +5912,8 @@
         "result": "2 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "namespace-qualified",
@@ -5502,7 +5926,8 @@
         "result": "4 5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "namespace-metadata",
@@ -5515,7 +5940,8 @@
         "result": "::a b a 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "namespace-delete",
@@ -5528,7 +5954,8 @@
         "result": "0 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "namespace-code",
@@ -5541,7 +5968,8 @@
         "result": "4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "global-link",
@@ -5554,7 +5982,8 @@
         "result": "4 4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "global-qualified",
@@ -5567,7 +5996,8 @@
         "result": "3 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "upvar-scalar",
@@ -5580,7 +6010,8 @@
         "result": "5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "upvar-array",
@@ -5593,7 +6024,8 @@
         "result": "4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "upvar-element",
@@ -5606,7 +6038,8 @@
         "result": "5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "upvar-recreate",
@@ -5619,7 +6052,8 @@
         "result": "7",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "upvar-root",
@@ -5632,7 +6066,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "uplevel-relative",
@@ -5645,7 +6080,8 @@
         "result": "4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "uplevel-root",
@@ -5658,7 +6094,8 @@
         "result": "3 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "proc-introspection",
@@ -5671,7 +6108,8 @@
         "result": "{a b args} 1 2 {return $a}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "rename-namespace",
@@ -5684,7 +6122,8 @@
         "error": "Invalid(\"can't read \\\"x\\\": no such variable\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "array-empty",
@@ -5697,7 +6136,8 @@
         "result": "1 0 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "array-values",
@@ -5710,7 +6150,8 @@
         "result": "2 {x y} 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "array-collision",
@@ -5723,7 +6164,8 @@
         "error": "Invalid(\"variable is not array\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "array-unset",
@@ -5736,7 +6178,8 @@
         "result": "y 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "array-exact",
@@ -5749,7 +6192,8 @@
         "result": "*",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "array-missing",
@@ -5762,7 +6206,8 @@
         "result": "0 0 {} {}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "incr-big",
@@ -5775,7 +6220,8 @@
         "result": "9223372036854775808",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "stdout",
@@ -5788,7 +6234,8 @@
         "result": "done",
         "output": "helloworld\nlast\n"
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lmap-control",
@@ -5801,7 +6248,8 @@
         "result": "2 6 8",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lset-nested",
@@ -5814,7 +6262,8 @@
         "result": "{a b} {X d}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lset-append",
@@ -5827,7 +6276,8 @@
         "result": "a b c",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lset-root",
@@ -5840,7 +6290,8 @@
         "result": "c",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "linsert-end",
@@ -5853,7 +6304,8 @@
         "result": "a b c X",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "linsert-before-last",
@@ -5866,7 +6318,8 @@
         "result": "a b X c",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lreplace-insert",
@@ -5879,7 +6332,8 @@
         "result": "a X b c",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lreplace-beyond",
@@ -5892,7 +6346,8 @@
         "result": "a b X",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lsearch-all",
@@ -5905,7 +6360,8 @@
         "result": "b c",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lsearch-start",
@@ -5918,7 +6374,8 @@
         "result": "2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lsort-big",
@@ -5931,7 +6388,8 @@
         "result": "-1 9007199254740992 9007199254740993",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lsort-index",
@@ -5944,7 +6402,8 @@
         "result": "{b 1} {c 2} {a 3}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lsort-unique",
@@ -5957,7 +6416,8 @@
         "result": "A b c",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lsort-command",
@@ -5970,7 +6430,8 @@
         "result": "4 3 2 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-create",
@@ -5983,7 +6444,8 @@
         "result": "a 3 b 2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-nested-get",
@@ -5996,7 +6458,8 @@
         "result": "4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-exists",
@@ -6009,7 +6472,8 @@
         "result": "1 0 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-invalid",
@@ -6022,7 +6486,8 @@
         "error": "Invalid(\"missing dictionary value\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-keys-values",
@@ -6035,7 +6500,8 @@
         "result": "{x y} {1 2} 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-merge",
@@ -6048,7 +6514,8 @@
         "result": "a 3 b 2 c 4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-replace-remove",
@@ -6061,7 +6528,8 @@
         "result": "a 4 c 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-set",
@@ -6074,7 +6542,8 @@
         "result": "a {b 4 c 5}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-unset",
@@ -6087,7 +6556,8 @@
         "result": "a {c 5}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-incr",
@@ -6100,7 +6570,8 @@
         "result": "a 9223372036854775809",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-append",
@@ -6113,7 +6584,8 @@
         "result": "a xy b {{a b} c}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-for",
@@ -6126,7 +6598,8 @@
         "result": "a 1 c 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-map",
@@ -6139,7 +6612,8 @@
         "result": "ax 2 bx 4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-filter-key",
@@ -6152,7 +6626,8 @@
         "result": "aa 1 ab 2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-filter-value",
@@ -6165,7 +6640,8 @@
         "result": "a 10 c 11",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-filter-script",
@@ -6178,7 +6654,8 @@
         "result": "b 2 c 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-update",
@@ -6191,7 +6668,8 @@
         "result": "a 2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-update-error",
@@ -6204,7 +6682,8 @@
         "result": "a 2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-with",
@@ -6217,7 +6696,8 @@
         "result": "a {x 2}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-with-delete",
@@ -6230,7 +6710,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-utf16",
@@ -6243,7 +6724,8 @@
         "result": "4 😀",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-empty-search",
@@ -6256,7 +6738,8 @@
         "result": "-1 -1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-search",
@@ -6269,7 +6752,8 @@
         "result": "4 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-compare",
@@ -6282,7 +6766,8 @@
         "result": "0 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-case",
@@ -6295,7 +6780,8 @@
         "result": "AbcdEF abCDEf Hello",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-trim",
@@ -6308,7 +6794,8 @@
         "result": "{a b} abc abc",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-replace",
@@ -6321,7 +6808,8 @@
         "result": "abXYef abc",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-repeat",
@@ -6334,7 +6822,8 @@
         "result": "ababab {}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-reverse",
@@ -6347,7 +6836,8 @@
         "result": "中cba",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-glob",
@@ -6360,7 +6850,8 @@
         "result": "1 1 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-map",
@@ -6373,7 +6864,8 @@
         "result": "XYc xyc",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-0",
@@ -6386,7 +6878,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-1",
@@ -6399,7 +6892,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-2",
@@ -6412,7 +6906,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-3",
@@ -6425,7 +6920,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-4",
@@ -6438,7 +6934,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-5",
@@ -6451,7 +6948,8 @@
         "result": "1.0000000000000002e+17",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-6",
@@ -6464,7 +6962,8 @@
         "result": "-0.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-7",
@@ -6477,7 +6976,8 @@
         "error": "Invalid(\"expected boolean\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-8",
@@ -6490,7 +6990,8 @@
         "result": "0 ::n::x",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-9",
@@ -6503,7 +7004,8 @@
         "result": "::x",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-10",
@@ -6516,7 +7018,8 @@
         "result": "0 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-11",
@@ -6529,7 +7032,8 @@
         "result": "2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-12",
@@ -6542,7 +7046,8 @@
         "error": "Invalid(\"variable already exists\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-13",
@@ -6555,7 +7060,8 @@
         "error": "Invalid(\"variable already exists\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-14",
@@ -6568,7 +7074,8 @@
         "result": "2 2 2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-15",
@@ -6581,7 +7088,8 @@
         "result": "3 3 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-16",
@@ -6594,7 +7102,8 @@
         "result": "4 4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-17",
@@ -6607,7 +7116,8 @@
         "result": "a",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-18",
@@ -6620,7 +7130,8 @@
         "result": "x",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-19",
@@ -6633,7 +7144,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-20",
@@ -6646,7 +7158,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-21",
@@ -6659,7 +7172,8 @@
         "error": "Invalid(\"can't read \\\"a\\\": no such variable\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-22",
@@ -6672,7 +7186,8 @@
         "result": "x",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-23",
@@ -6685,7 +7200,8 @@
         "error": "Invalid(\"invalid command name \\\"a\\\"\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-24",
@@ -6698,7 +7214,8 @@
         "error": "Invalid(\"can't read \\\"d\\\": no such variable\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-25",
@@ -6711,7 +7228,8 @@
         "result": "z 2 a 2",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-26",
@@ -6724,7 +7242,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-27",
@@ -6737,7 +7256,8 @@
         "result": "",
         "output": "tea: 20\n"
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-28",
@@ -6750,7 +7270,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-29",
@@ -6763,7 +7284,8 @@
         "error": "Invalid(\"expected integer: --1\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-30",
@@ -6776,7 +7298,8 @@
         "error": "Invalid(\"expected integer: +-1\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1--308",
@@ -6789,7 +7312,8 @@
         "result": "1e-308",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1--308",
@@ -6802,7 +7326,8 @@
         "result": "-1e-308",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567--308",
@@ -6815,7 +7340,8 @@
         "result": "1.2345678901234567e-308",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1--100",
@@ -6828,7 +7354,8 @@
         "result": "1e-100",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1--100",
@@ -6841,7 +7368,8 @@
         "result": "-1e-100",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567--100",
@@ -6854,7 +7382,8 @@
         "result": "1.2345678901234567e-100",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1--7",
@@ -6867,7 +7396,8 @@
         "result": "1e-7",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1--7",
@@ -6880,7 +7410,8 @@
         "result": "-1e-7",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567--7",
@@ -6893,7 +7424,8 @@
         "result": "1.2345678901234566e-7",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1--6",
@@ -6906,7 +7438,8 @@
         "result": "1e-6",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1--6",
@@ -6919,7 +7452,8 @@
         "result": "-1e-6",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567--6",
@@ -6932,7 +7466,8 @@
         "result": "1.2345678901234567e-6",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1--5",
@@ -6945,7 +7480,8 @@
         "result": "1e-5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1--5",
@@ -6958,7 +7494,8 @@
         "result": "-1e-5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567--5",
@@ -6971,7 +7508,8 @@
         "result": "1.2345678901234568e-5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1--4",
@@ -6984,7 +7522,8 @@
         "result": "0.0001",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1--4",
@@ -6997,7 +7536,8 @@
         "result": "-0.0001",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567--4",
@@ -7010,7 +7550,8 @@
         "result": "0.00012345678901234567",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1--3",
@@ -7023,7 +7564,8 @@
         "result": "0.001",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1--3",
@@ -7036,7 +7578,8 @@
         "result": "-0.001",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567--3",
@@ -7049,7 +7592,8 @@
         "result": "0.0012345678901234567",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1-0",
@@ -7062,7 +7606,8 @@
         "result": "1.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1-0",
@@ -7075,7 +7620,8 @@
         "result": "-1.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567-0",
@@ -7088,7 +7634,8 @@
         "result": "1.2345678901234567",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1-15",
@@ -7101,7 +7648,8 @@
         "result": "1000000000000000.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1-15",
@@ -7114,7 +7662,8 @@
         "result": "-1000000000000000.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567-15",
@@ -7127,7 +7676,8 @@
         "result": "1234567890123456.8",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1-16",
@@ -7140,7 +7690,8 @@
         "result": "10000000000000000.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1-16",
@@ -7153,7 +7704,8 @@
         "result": "-10000000000000000.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567-16",
@@ -7166,7 +7718,8 @@
         "result": "12345678901234568.0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1-17",
@@ -7179,7 +7732,8 @@
         "result": "1e+17",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1-17",
@@ -7192,7 +7746,8 @@
         "result": "-1e+17",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567-17",
@@ -7205,7 +7760,8 @@
         "result": "1.2345678901234566e+17",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1-20",
@@ -7218,7 +7774,8 @@
         "result": "1e+20",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1-20",
@@ -7231,7 +7788,8 @@
         "result": "-1e+20",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567-20",
@@ -7244,7 +7802,8 @@
         "result": "1.2345678901234567e+20",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1-21",
@@ -7257,7 +7816,8 @@
         "result": "1e+21",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1-21",
@@ -7270,7 +7830,8 @@
         "result": "-1e+21",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567-21",
@@ -7283,7 +7844,8 @@
         "result": "1.2345678901234568e+21",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1-100",
@@ -7296,7 +7858,8 @@
         "result": "1e+100",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1-100",
@@ -7309,7 +7872,8 @@
         "result": "-1e+100",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567-100",
@@ -7322,7 +7886,8 @@
         "result": "1.2345678901234567e+100",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1-308",
@@ -7335,7 +7900,8 @@
         "result": "1e+308",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display--1-308",
@@ -7348,7 +7914,8 @@
         "result": "-1e+308",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-display-1.2345678901234567-308",
@@ -7361,7 +7928,8 @@
         "result": "1.2345678901234567e+308",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-entier-1e25",
@@ -7374,7 +7942,8 @@
         "result": "10000000000000000905969664",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-entier--1e25",
@@ -7387,7 +7956,8 @@
         "result": "-10000000000000000905969664",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-entier-1e100",
@@ -7400,7 +7970,8 @@
         "result": "10000000000000000159028911097599180468360808563945281389781327557747838772170381060813469985856815104",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-entier--1e100",
@@ -7413,7 +7984,8 @@
         "result": "-10000000000000000159028911097599180468360808563945281389781327557747838772170381060813469985856815104",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-entier-1.9999999999999998",
@@ -7426,7 +7998,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "float-entier--0.5",
@@ -7439,7 +8012,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-",
@@ -7452,7 +8026,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-0",
@@ -7465,7 +8040,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-08",
@@ -7478,7 +8054,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-1.5",
@@ -7491,7 +8068,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-true",
@@ -7504,7 +8082,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-_",
@@ -7517,7 +8096,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-abc",
@@ -7530,7 +8110,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-4294967295",
@@ -7543,7 +8124,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-4294967296",
@@ -7556,7 +8138,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-18446744073709551615",
@@ -7569,7 +8152,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-integer-18446744073709551616",
@@ -7582,7 +8166,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-",
@@ -7595,7 +8180,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-0",
@@ -7608,7 +8194,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-08",
@@ -7621,7 +8208,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-1.5",
@@ -7634,7 +8222,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-true",
@@ -7647,7 +8236,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-_",
@@ -7660,7 +8250,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-abc",
@@ -7673,7 +8264,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-4294967295",
@@ -7686,7 +8278,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-4294967296",
@@ -7699,7 +8292,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-18446744073709551615",
@@ -7712,7 +8306,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-wideinteger-18446744073709551616",
@@ -7725,7 +8320,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-",
@@ -7738,7 +8334,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-0",
@@ -7751,7 +8348,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-08",
@@ -7764,7 +8362,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-1.5",
@@ -7777,7 +8376,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-true",
@@ -7790,7 +8390,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-_",
@@ -7803,7 +8404,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-abc",
@@ -7816,7 +8418,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-4294967295",
@@ -7829,7 +8432,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-4294967296",
@@ -7842,7 +8446,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-18446744073709551615",
@@ -7855,7 +8460,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-entier-18446744073709551616",
@@ -7868,7 +8474,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-",
@@ -7881,7 +8488,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-0",
@@ -7894,7 +8502,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-08",
@@ -7907,7 +8516,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-1.5",
@@ -7920,7 +8530,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-true",
@@ -7933,7 +8544,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-_",
@@ -7946,7 +8558,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-abc",
@@ -7959,7 +8572,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-4294967295",
@@ -7972,7 +8586,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-4294967296",
@@ -7985,7 +8600,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-18446744073709551615",
@@ -7998,7 +8614,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-double-18446744073709551616",
@@ -8011,7 +8628,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-",
@@ -8024,7 +8642,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-0",
@@ -8037,7 +8656,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-08",
@@ -8050,7 +8670,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-1.5",
@@ -8063,7 +8684,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-true",
@@ -8076,7 +8698,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-_",
@@ -8089,7 +8712,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-abc",
@@ -8102,7 +8726,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-4294967295",
@@ -8115,7 +8740,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-4294967296",
@@ -8128,7 +8754,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-18446744073709551615",
@@ -8141,7 +8768,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-boolean-18446744073709551616",
@@ -8154,7 +8782,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-",
@@ -8167,7 +8796,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-0",
@@ -8180,7 +8810,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-08",
@@ -8193,7 +8824,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-1.5",
@@ -8206,7 +8838,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-true",
@@ -8219,7 +8852,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-_",
@@ -8232,7 +8866,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-abc",
@@ -8245,7 +8880,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-4294967295",
@@ -8258,7 +8894,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-4294967296",
@@ -8271,7 +8908,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-18446744073709551615",
@@ -8284,7 +8922,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-true-18446744073709551616",
@@ -8297,7 +8936,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-",
@@ -8310,7 +8950,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-0",
@@ -8323,7 +8964,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-08",
@@ -8336,7 +8978,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-1.5",
@@ -8349,7 +8992,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-true",
@@ -8362,7 +9006,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-_",
@@ -8375,7 +9020,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-abc",
@@ -8388,7 +9034,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-4294967295",
@@ -8401,7 +9048,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-4294967296",
@@ -8414,7 +9062,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-18446744073709551615",
@@ -8427,7 +9076,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-false-18446744073709551616",
@@ -8440,7 +9090,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-",
@@ -8453,7 +9104,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-0",
@@ -8466,7 +9118,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-08",
@@ -8479,7 +9132,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-1.5",
@@ -8492,7 +9146,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-true",
@@ -8505,7 +9160,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-_",
@@ -8518,7 +9174,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-abc",
@@ -8531,7 +9188,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-4294967295",
@@ -8544,7 +9202,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-4294967296",
@@ -8557,7 +9216,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-18446744073709551615",
@@ -8570,7 +9230,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-list-18446744073709551616",
@@ -8583,7 +9244,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-",
@@ -8596,7 +9258,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-0",
@@ -8609,7 +9272,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-08",
@@ -8622,7 +9286,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-1.5",
@@ -8635,7 +9300,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-true",
@@ -8648,7 +9314,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-_",
@@ -8661,7 +9328,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-abc",
@@ -8674,7 +9342,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-4294967295",
@@ -8687,7 +9356,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-4294967296",
@@ -8700,7 +9370,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-18446744073709551615",
@@ -8713,7 +9384,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-digit-18446744073709551616",
@@ -8726,7 +9398,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-",
@@ -8739,7 +9412,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-0",
@@ -8752,7 +9426,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-08",
@@ -8765,7 +9440,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-1.5",
@@ -8778,7 +9454,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-true",
@@ -8791,7 +9468,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-_",
@@ -8804,7 +9482,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-abc",
@@ -8817,7 +9496,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-4294967295",
@@ -8830,7 +9510,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-4294967296",
@@ -8843,7 +9524,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-18446744073709551615",
@@ -8856,7 +9538,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-xdigit-18446744073709551616",
@@ -8869,7 +9552,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-",
@@ -8882,7 +9566,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-0",
@@ -8895,7 +9580,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-08",
@@ -8908,7 +9594,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-1.5",
@@ -8921,7 +9608,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-true",
@@ -8934,7 +9622,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-_",
@@ -8947,7 +9636,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-abc",
@@ -8960,7 +9650,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-4294967295",
@@ -8973,7 +9664,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-4294967296",
@@ -8986,7 +9678,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-18446744073709551615",
@@ -8999,7 +9692,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-space-18446744073709551616",
@@ -9012,7 +9706,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-",
@@ -9025,7 +9720,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-0",
@@ -9038,7 +9734,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-08",
@@ -9051,7 +9748,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-1.5",
@@ -9064,7 +9762,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-true",
@@ -9077,7 +9776,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-_",
@@ -9090,7 +9790,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-abc",
@@ -9103,7 +9804,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-4294967295",
@@ -9116,7 +9818,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-4294967296",
@@ -9129,7 +9832,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-18446744073709551615",
@@ -9142,7 +9846,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-ascii-18446744073709551616",
@@ -9155,7 +9860,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-",
@@ -9168,7 +9874,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-0",
@@ -9181,7 +9888,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-08",
@@ -9194,7 +9902,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-1.5",
@@ -9207,7 +9916,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-true",
@@ -9220,7 +9930,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-_",
@@ -9233,7 +9944,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-abc",
@@ -9246,7 +9958,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-4294967295",
@@ -9259,7 +9972,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-4294967296",
@@ -9272,7 +9986,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-18446744073709551615",
@@ -9285,7 +10000,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alpha-18446744073709551616",
@@ -9298,7 +10014,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-",
@@ -9311,7 +10028,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-0",
@@ -9324,7 +10042,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-08",
@@ -9337,7 +10056,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-1.5",
@@ -9350,7 +10070,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-true",
@@ -9363,7 +10084,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-_",
@@ -9376,7 +10098,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-abc",
@@ -9389,7 +10112,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-4294967295",
@@ -9402,7 +10126,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-4294967296",
@@ -9415,7 +10140,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-18446744073709551615",
@@ -9428,7 +10154,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "string-is-alnum-18446744073709551616",
@@ -9441,7 +10168,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     }
   ]
 }

@@ -1,0 +1,112 @@
+{
+  "createdUTC": "2026-09-18T01:15:24.033801+00:00",
+  "url": "http://127.0.0.1:16039/web/",
+  "browser": "Codex In-app Browser, tab 14",
+  "engineSHA256": "95e62fe56d39fd5fdb72218de4e238fbedd7c2f98eb29c8c0c2cb634d9dea9b9",
+  "checks": 14,
+  "passed": 14,
+  "consoleWarningsErrors": [],
+  "scope": "Live CUA input/run/reset controls, visible result/output/error fields in the actual browser Worker. Recorded after assertions against expected observations. Does not rerun import/download, cancellation/timeout or mobile layout.",
+  "rows": [
+    {
+      "name": "receipt example",
+      "result": "Order 0023: ready",
+      "output": "Item        Qty    Total\napple         3     4.12\ntea           2     8.25\n",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "persistent scan variables",
+      "result": "23 ready",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "exact decimal ties",
+      "result": "2 4 2.67",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "positional dynamic width",
+      "result": "key:0007:    1.25",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "positional assignment order",
+      "result": "12",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "arbitrary integer",
+      "result": "1",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "suppressed NaN",
+      "result": "7 10",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "Unicode byte offsets",
+      "result": "20013 3 \u6587",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "partial writes",
+      "result": "12 kept",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "invalid format before writes",
+      "result": "12 kept",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "stdout before conversion error",
+      "result": "",
+      "output": "before\n",
+      "error": "Invalid(\"invalid format conversion\")",
+      "passed": true
+    },
+    {
+      "name": "recovery after error",
+      "result": "0023:ready",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "UTF16 split and rejoin",
+      "result": "1 1",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "reset clears variables",
+      "result": "0",
+      "output": "",
+      "error": "",
+      "passed": true
+    }
+  ],
+  "tabClosed": true,
+  "temporaryServerStopped": true
+}

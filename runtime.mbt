@@ -89,7 +89,7 @@ fn builtin_names() -> Array[String] {
     "lrepeat", "lset", "linsert", "lreplace", "lsearch", "lsort", "while", "for",
     "foreach", "lmap", "break", "continue", "catch", "error", "namespace", "global",
     "variable", "upvar", "uplevel", "array", "dict", "string", "info", "eval", "subst",
-    "rename", "try", "throw",
+    "rename", "try", "throw", "format", "scan",
   ]
 }
 
@@ -182,6 +182,8 @@ fn Interpreter::command(
       self.scope_command(args, depth)
     "array" => self.array_command(args)
     "dict" => self.dict_command(args, depth, discard_result~)
+    "format" => format_command(args)
+    "scan" => self.scan_command(args)
     "string" => self.string_command(args)
     "info" => self.info_command(args)
     "set" =>

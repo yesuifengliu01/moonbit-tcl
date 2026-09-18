@@ -1,8 +1,22 @@
 # MoonBit Tcl
 
-Tcl 8.6 脚本解释器，0.9.0。本地独立实现，仍在追平成熟项目的完整行为。
+Tcl 8.6 脚本解释器，0.10.0。本地独立实现，仍在追平成熟项目的完整行为。
 
-## 本轮 Unicode 与字符串边界
+## 本轮 format 与 scan
+
+format 支持整数、浮点、字符与字符串转换、位置参数、动态宽度/精度、符号/进制前缀/填充。整数采用固定 Windows Tcl 8.6.15 的 32 位默认值、h 16 位、l 64 位和 ll 大整数配置；浮点由 binary64 精确分数计算十进制舍入，包括 ties-to-even、负零、次正规数和高精度输出。
+
+scan 支持整数/浮点、字符/字符串、字符集合、%n 字节偏移、宽度、跳过赋值与位置参数。先验证完整格式，再扫描，最后按变量槽位顺序写入；保留匹配失败和写变量失败的已有副作用。format 的整数截断与 scan 的溢出钳制按原生分别实现。宽度/精度和单次格式化输出最多 1000000 UTF-16 单元，扫描最多 100000 个结果槽；大整数仍受 16384 位/5000 字符上限约束。
+
+4970 个新增原生程序中 4968 个一致、2 个明确差异，未解释差异为 0。程序包括所有 2098 个有限 binary64 正二次幂、300 个负二次幂、500 个随机有限浮点值的短文本批次，以及精度/标志/溢出/扫描状态矩阵。新增六个公共 API 回归；后端测试中两个标为 Known difference 的用例只验证本地约定，不算原生一致。
+
+两项差异保留在 conversion-reference.json 和 conversion-comparison.json：四字节 emoji 的 %1s 在原生参考中截出无效 UTF-8，而本实现保留 UTF-16 单元；原生浮点对象保留内部精度，本实现的普通标量仍存字符串，少数二次幂在显示后再次转换会损失精度。两项都尚未追平，也不构成全量 format/scan 兼容证明。错误用例仅比较拒绝，不比较完整错误正文。有效 CESU-8 代理三字节序列仅在 Python 参考传输层还原，任意无效 UTF-8 不归一化。
+
+完整验证：JS/WasmGC 各 9851 项检查通过（含两个已知差异的本地约定），36 项新增宿主、14 项真实网页及原有检查通过。七组既有负载耗时为 0.9.0 的约 0.96–1.07 倍，仍比系统 Tcl 慢约 3.9–7.2 倍。三组新负载为小票格式化、记录扫描和 80 位小数格式化，分别约慢 87、8、108 倍；精确格式化性能仍是明确缺口。
+
+示例见 examples/conversion.tcl，复现与验收范围见 TESTING.md。当前源码/证据指纹改由 evidence/conversion-upgrade.json 记录；旧版本记录继续保留为历史证据。
+
+## 0.9.0 Unicode 与字符串边界（历史测量）
 
 基于固定的 Unicode 16.0.0 数据补齐 13 类字符判定与 BMP 简单大小写映射。string is 支持 -strict、-failindex 与唯一缩写；字符类别失败位置按码位计数，列表失败位置按 UTF-16 偏移计数，数字溢出记为 -1。成功判定不修改失败变量。补齐数字前缀、整数正负范围、Inf/NaN 形式；entier 仍受既有 16384 位/5000 字符限额约束。
 
@@ -95,6 +109,7 @@ python tools/generate-semantic-oracle.py completion
 python tools/generate-semantic-oracle.py syntax
 python tools/generate-unicode.py
 python tools/generate-semantic-oracle.py unicode
+python tools/generate-semantic-oracle.py conversion
 python tools/audit-unicode.py
 moon fmt
 ./verify.ps1

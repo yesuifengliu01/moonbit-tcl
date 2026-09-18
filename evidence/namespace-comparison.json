@@ -2,7 +2,9 @@
   "reference": "System Tcl 8.6.15 through Python tkinter",
   "cases": 312,
   "matched": 312,
-  "engineSHA256": "24507f9d91a13db49db6ec77022edc94944df10ddf306d5a263d4184ce9dddfa",
+  "engineSHA256": "95e62fe56d39fd5fdb72218de4e238fbedd7c2f98eb29c8c0c2cb634d9dea9b9",
+  "knownDifferences": 0,
+  "unexpectedDifferences": 0,
   "comparison": "Exact result and standard-output strings on success; rejection only on expected errors.",
   "rows": [
     {
@@ -16,7 +18,8 @@
         "result": "-map { x {::list old} x {::list new} } -namespace ::a -parameters { a  b } -prefixes 1 -subcommands { x  y } -unknown { ::list  a }",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-map-relative-duplicates",
@@ -29,7 +32,8 @@
         "result": "x {::a::list new}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-global-custom",
@@ -42,7 +46,8 @@
         "result": "{} custom",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-root-reset",
@@ -55,7 +60,8 @@
         "result": "::unknown yes",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "export-default",
@@ -68,7 +74,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "export-duplicates",
@@ -81,7 +88,8 @@
         "result": "a b",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "export-clear",
@@ -94,7 +102,8 @@
         "result": "b c",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "export-empty-clear",
@@ -107,7 +116,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "export-partial-error",
@@ -120,7 +130,8 @@
         "result": "b",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "export-future",
@@ -133,7 +144,8 @@
         "result": "{} yes",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "export-not-private",
@@ -146,7 +158,8 @@
         "result": "12 1 p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-repeat",
@@ -159,7 +172,8 @@
         "result": "11 12 p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-force-query",
@@ -172,7 +186,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-conflict",
@@ -185,7 +200,8 @@
         "result": "1 local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-force",
@@ -198,7 +214,8 @@
         "result": "14",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-partial",
@@ -211,7 +228,8 @@
         "result": "p 11",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-no-export",
@@ -224,7 +242,8 @@
         "result": "{} 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-origin",
@@ -237,7 +256,8 @@
         "result": "13 ::a::p ::p ::a::p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-redefine-origin",
@@ -250,7 +270,8 @@
         "result": "changed ::a::p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-redefine-alias",
@@ -263,7 +284,8 @@
         "result": "replaced ::b::p 11",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-force-alias",
@@ -276,7 +298,8 @@
         "result": "replaced replaced ::b::p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-cycle",
@@ -289,7 +312,8 @@
         "result": "1 11",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-info",
@@ -302,7 +326,8 @@
         "result": "v {variable x; incr x $v} 1 1 p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-rename-original",
@@ -315,7 +340,8 @@
         "result": "11 ::a::q 1 12",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-rename-other-space",
@@ -328,7 +354,8 @@
         "result": "101 ::b::q",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-rename-alias",
@@ -341,7 +368,8 @@
         "result": "11 q ::a::p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-delete-original",
@@ -354,7 +382,8 @@
         "result": "{} {} 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-delete-middle",
@@ -367,7 +396,8 @@
         "result": "1 11",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-delete-alias",
@@ -380,7 +410,8 @@
         "result": "11",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-delete-space",
@@ -393,7 +424,8 @@
         "result": "{} 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-recreate-space",
@@ -406,7 +438,8 @@
         "result": "fresh",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "forget-simple",
@@ -419,7 +452,8 @@
         "result": "{} 11",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "forget-pattern",
@@ -432,7 +466,8 @@
         "result": "{} 11",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "forget-qualified",
@@ -445,7 +480,8 @@
         "result": "{} 11",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "forget-renamed-alias",
@@ -458,7 +494,8 @@
         "result": "{} 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "forget-renamed-original",
@@ -471,7 +508,8 @@
         "result": "p {}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "forget-no-longer-exported",
@@ -484,7 +522,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "forget-keeps-local",
@@ -497,7 +536,8 @@
         "result": "local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "forget-chain-original",
@@ -510,7 +550,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "forget-chain-immediate",
@@ -523,7 +564,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "forget-transitive",
@@ -536,7 +578,8 @@
         "result": "{} 11",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-default",
@@ -549,7 +592,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-duplicates",
@@ -562,7 +606,8 @@
         "result": "::a ::a ::",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-atomic",
@@ -575,7 +620,8 @@
         "result": "::a",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-relative",
@@ -588,7 +634,8 @@
         "result": "::a::b",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-no-inheritance",
@@ -601,7 +648,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-redefinition",
@@ -614,7 +662,8 @@
         "result": "old new",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-delete-recreate",
@@ -627,7 +676,8 @@
         "result": "{} 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-no-chaining",
@@ -640,7 +690,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-info-procs",
@@ -653,7 +704,8 @@
         "result": "p {} ::a::p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-subspace",
@@ -666,7 +718,8 @@
         "result": "A",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "path-variable-independent",
@@ -679,7 +732,8 @@
         "result": "global",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-rename",
@@ -692,7 +746,8 @@
         "error": "Invalid(\"invalid command name \\\"list\\\"\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-renamed-invoke",
@@ -705,7 +760,8 @@
         "result": "a {b c}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-rename-import",
@@ -718,7 +774,8 @@
         "result": "a-b",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-delete",
@@ -731,7 +788,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-shadow-delete",
@@ -744,7 +802,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "empty-command",
@@ -757,7 +816,8 @@
         "result": "root child ::a::",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "inscope-safe",
@@ -770,7 +830,8 @@
         "result": "{a b} {$x} {[error nope]} {; error nope}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "code-callback",
@@ -783,7 +844,8 @@
         "result": "{a b} {x;y}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "code-idempotent",
@@ -796,7 +858,8 @@
         "result": "::namespace inscope ::a p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "upvar-namespace",
@@ -809,7 +872,8 @@
         "result": "5 5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "upvar-array",
@@ -822,7 +886,8 @@
         "result": "5 5",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "upvar-missing",
@@ -835,7 +900,8 @@
         "result": "8 8",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "upvar-relative",
@@ -848,7 +914,8 @@
         "result": "4",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-default",
@@ -861,7 +928,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-custom",
@@ -874,7 +942,8 @@
         "result": "prefix missing {a b} x",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-scope",
@@ -887,7 +956,8 @@
         "result": "::a {missing x}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-reset",
@@ -900,7 +970,8 @@
         "result": "global",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-not-inherited",
@@ -913,7 +984,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-default",
@@ -926,7 +998,8 @@
         "result": "1 {two words}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-config-default",
@@ -939,7 +1012,8 @@
         "result": "-map {} -namespace ::a -parameters {} -prefixes 1 -subcommands {} -unknown {}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-dynamic",
@@ -952,7 +1026,8 @@
         "result": "P Q",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-map",
@@ -965,7 +1040,8 @@
         "result": "{prefix {a b}} 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-map-relative",
@@ -978,7 +1054,8 @@
         "result": "{fixed x} {go {::a::p fixed}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-map-duplicates",
@@ -991,7 +1068,8 @@
         "result": "{new A} {x {::list old} x {::list new}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-config-scope",
@@ -1004,7 +1082,8 @@
         "result": "::b ::a",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-prefix",
@@ -1017,7 +1096,8 @@
         "result": "{A x} {B y}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-ambiguous",
@@ -1030,7 +1110,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-exact-wins",
@@ -1043,7 +1124,8 @@
         "result": "A x",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-prefix-disable",
@@ -1056,7 +1138,8 @@
         "result": "1 x",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-subcommands",
@@ -1069,7 +1152,8 @@
         "result": "P Q 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-parameters",
@@ -1082,7 +1166,8 @@
         "result": "fixed A B C",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-prefix",
@@ -1095,7 +1180,8 @@
         "result": "fallback A {B C}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-reconfigure",
@@ -1108,7 +1194,8 @@
         "result": "fixed A",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-once",
@@ -1121,7 +1208,8 @@
         "result": "1 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-arguments",
@@ -1134,7 +1222,8 @@
         "result": "{fixed A B} {::e A missing B}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-no-frame",
@@ -1147,7 +1236,8 @@
         "result": "9",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-proc-frame",
@@ -1160,7 +1250,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-rename",
@@ -1173,7 +1264,8 @@
         "result": "::a ::a",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-delete-space",
@@ -1186,7 +1278,8 @@
         "result": "0 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-import",
@@ -1199,7 +1292,8 @@
         "result": "x 1 ::a",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-config-atomic",
@@ -1212,7 +1306,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-config-abbreviated",
@@ -1225,7 +1320,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-abnormal",
@@ -1238,7 +1334,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-nested",
@@ -1251,7 +1348,8 @@
         "result": "fixed x",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-False-False-::a ::b",
@@ -1264,7 +1362,8 @@
         "result": "1 {} missing",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-False-False-::b ::a",
@@ -1277,7 +1376,8 @@
         "result": "1 {} missing",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-False-False-:: ::a ::b",
@@ -1290,7 +1390,8 @@
         "result": "1 {} missing",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-False-True-::a ::b",
@@ -1303,7 +1404,8 @@
         "result": "0 ::p global",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-False-True-::b ::a",
@@ -1316,7 +1418,8 @@
         "result": "0 ::p global",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-False-True-:: ::a ::b",
@@ -1329,7 +1432,8 @@
         "result": "0 ::p global",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-True-False-::a ::b",
@@ -1342,7 +1446,8 @@
         "result": "0 ::b::p second",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-True-False-::b ::a",
@@ -1355,7 +1460,8 @@
         "result": "0 ::b::p second",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-True-False-:: ::a ::b",
@@ -1368,7 +1474,8 @@
         "result": "0 ::b::p second",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-True-True-::a ::b",
@@ -1381,7 +1488,8 @@
         "result": "0 ::b::p second",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-True-True-::b ::a",
@@ -1394,7 +1502,8 @@
         "result": "0 ::b::p second",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-False-True-True-:: ::a ::b",
@@ -1407,7 +1516,8 @@
         "result": "0 ::p global",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-False-False-::a ::b",
@@ -1420,7 +1530,8 @@
         "result": "0 ::a::p first",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-False-False-::b ::a",
@@ -1433,7 +1544,8 @@
         "result": "0 ::a::p first",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-False-False-:: ::a ::b",
@@ -1446,7 +1558,8 @@
         "result": "0 ::a::p first",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-False-True-::a ::b",
@@ -1459,7 +1572,8 @@
         "result": "0 ::a::p first",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-False-True-::b ::a",
@@ -1472,7 +1586,8 @@
         "result": "0 ::a::p first",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-False-True-:: ::a ::b",
@@ -1485,7 +1600,8 @@
         "result": "0 ::p global",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-True-False-::a ::b",
@@ -1498,7 +1614,8 @@
         "result": "0 ::a::p first",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-True-False-::b ::a",
@@ -1511,7 +1628,8 @@
         "result": "0 ::b::p second",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-True-False-:: ::a ::b",
@@ -1524,7 +1642,8 @@
         "result": "0 ::a::p first",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-True-True-::a ::b",
@@ -1537,7 +1656,8 @@
         "result": "0 ::a::p first",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-True-True-::b ::a",
@@ -1550,7 +1670,8 @@
         "result": "0 ::b::p second",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-False-True-True-True-:: ::a ::b",
@@ -1563,7 +1684,8 @@
         "result": "0 ::p global",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-False-False-::a ::b",
@@ -1576,7 +1698,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-False-False-::b ::a",
@@ -1589,7 +1712,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-False-False-:: ::a ::b",
@@ -1602,7 +1726,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-False-True-::a ::b",
@@ -1615,7 +1740,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-False-True-::b ::a",
@@ -1628,7 +1754,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-False-True-:: ::a ::b",
@@ -1641,7 +1768,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-True-False-::a ::b",
@@ -1654,7 +1782,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-True-False-::b ::a",
@@ -1667,7 +1796,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-True-False-:: ::a ::b",
@@ -1680,7 +1810,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-True-True-::a ::b",
@@ -1693,7 +1824,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-True-True-::b ::a",
@@ -1706,7 +1838,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-False-True-True-:: ::a ::b",
@@ -1719,7 +1852,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-False-False-::a ::b",
@@ -1732,7 +1866,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-False-False-::b ::a",
@@ -1745,7 +1880,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-False-False-:: ::a ::b",
@@ -1758,7 +1894,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-False-True-::a ::b",
@@ -1771,7 +1908,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-False-True-::b ::a",
@@ -1784,7 +1922,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-False-True-:: ::a ::b",
@@ -1797,7 +1936,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-True-False-::a ::b",
@@ -1810,7 +1950,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-True-False-::b ::a",
@@ -1823,7 +1964,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-True-False-:: ::a ::b",
@@ -1836,7 +1978,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-True-True-::a ::b",
@@ -1849,7 +1992,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-True-True-::b ::a",
@@ -1862,7 +2006,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "resolution-True-True-True-True-:: ::a ::b",
@@ -1875,7 +2020,8 @@
         "result": "0 ::c::p local",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-glob-p",
@@ -1888,7 +2034,8 @@
         "result": "p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-glob-p*",
@@ -1901,7 +2048,8 @@
         "result": "p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-glob-?",
@@ -1914,7 +2062,8 @@
         "result": "p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-glob-[pq]",
@@ -1927,7 +2076,8 @@
         "error": "Invalid(\"invalid command name \\\"pq\\\"\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-glob-z*",
@@ -1940,7 +2090,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-glob-*",
@@ -1953,7 +2104,8 @@
         "result": "p",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "import-glob-private",
@@ -1966,7 +2118,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-literal-''",
@@ -1979,7 +2132,8 @@
         "result": "fixed {}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-literal-'a b'",
@@ -1992,7 +2146,8 @@
         "result": "fixed {a b}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-literal-'$x'",
@@ -2005,7 +2160,8 @@
         "result": "fixed {$x}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-literal-'[error no]'",
@@ -2018,7 +2174,8 @@
         "result": "fixed {[error no]}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-literal-'; error no'",
@@ -2031,7 +2188,8 @@
         "result": "fixed {; error no}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-literal-'{braces}'",
@@ -2044,7 +2202,8 @@
         "result": "fixed {{braces}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-literal-'line\\nnext'",
@@ -2057,7 +2216,8 @@
         "result": "fixed {line\nnext}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-literal-'\\\\path'",
@@ -2070,7 +2230,8 @@
         "result": "fixed {\\path}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-literal-'中文'",
@@ -2083,7 +2244,8 @@
         "result": "fixed 中文",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-0",
@@ -2096,7 +2258,8 @@
         "error": "Invalid(\"import pattern requires namespace\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-1",
@@ -2109,7 +2272,8 @@
         "error": "Invalid(\"unknown namespace in command pattern\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-2",
@@ -2122,7 +2286,8 @@
         "error": "Invalid(\"cannot import from own namespace\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-3",
@@ -2135,7 +2300,8 @@
         "error": "Invalid(\"export pattern must not contain namespace\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-4",
@@ -2148,7 +2314,8 @@
         "error": "Invalid(\"cannot import from own namespace\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-5",
@@ -2161,7 +2328,8 @@
         "error": "Invalid(\"unknown namespace in command pattern\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-6",
@@ -2174,7 +2342,8 @@
         "error": "Invalid(\"unknown command\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-7",
@@ -2187,7 +2356,8 @@
         "error": "Invalid(\"namespace origin arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-8",
@@ -2200,7 +2370,8 @@
         "error": "Invalid(\"unknown namespace\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-9",
@@ -2213,7 +2384,8 @@
         "error": "Invalid(\"namespace path arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-10",
@@ -2226,7 +2398,8 @@
         "error": "Invalid(\"unknown namespace\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-11",
@@ -2239,7 +2412,8 @@
         "error": "Invalid(\"namespace upvar arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-12",
@@ -2252,7 +2426,8 @@
         "error": "Invalid(\"namespace which arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-13",
@@ -2265,7 +2440,8 @@
         "error": "Invalid(\"namespace unknown arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-14",
@@ -2278,7 +2454,8 @@
         "error": "Invalid(\"namespace ensemble arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-15",
@@ -2291,7 +2468,8 @@
         "error": "Invalid(\"namespace ensemble exists arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-16",
@@ -2304,7 +2482,8 @@
         "error": "Invalid(\"unknown ensemble\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-17",
@@ -2317,7 +2496,8 @@
         "error": "Invalid(\"ensemble command prefix must not be empty\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-18",
@@ -2330,7 +2510,8 @@
         "error": "Invalid(\"ensemble map must be dictionary\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-19",
@@ -2343,7 +2524,8 @@
         "error": "Invalid(\"expected boolean\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-20",
@@ -2356,7 +2538,8 @@
         "error": "Invalid(\"unknown or ambiguous subcommand or option\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-21",
@@ -2369,7 +2552,8 @@
         "result": "::missing::x",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-22",
@@ -2382,7 +2566,8 @@
         "error": "Invalid(\"ensemble subcommand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-23",
@@ -2395,7 +2580,8 @@
         "error": "Invalid(\"ensemble subcommand required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-24",
@@ -2408,7 +2594,8 @@
         "error": "Invalid(\"unknown or read-only ensemble option\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-25",
@@ -2421,7 +2608,8 @@
         "result": "",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-26",
@@ -2434,7 +2622,8 @@
         "error": "Invalid(\"invalid command name \\\"::a::p\\\"\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "boundary-27",
@@ -2447,7 +2636,8 @@
         "error": "Invalid(\"invalid command name \\\"::missing\\\"\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-0",
@@ -2460,7 +2650,8 @@
         "result": "{0 ::a::p} {0 original} {0 {}} {0 {}} {0 ::a::p} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 fresh} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-1",
@@ -2473,7 +2664,8 @@
         "result": "{0 {}} {0 {}} {0 original} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 original} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-2",
@@ -2486,7 +2678,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 local} {1 {}} {0 local}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-3",
@@ -2499,7 +2692,8 @@
         "result": "{1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-4",
@@ -2512,7 +2706,8 @@
         "result": "{0 original} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 original} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-5",
@@ -2525,7 +2720,8 @@
         "result": "{0 original} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 changed} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-6",
@@ -2538,7 +2734,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-7",
@@ -2551,7 +2748,8 @@
         "result": "{0 {}} {0 original} {0 {}} {0 fresh} {0 {}} {0 fresh} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 fresh} {1 {}} {1 {}} {0 fresh} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-8",
@@ -2564,7 +2762,8 @@
         "result": "{0 original} {1 {}} {0 {}} {0 {}} {0 local} {0 {}} {0 ::b::p} {0 {}} {0 {}} {0 local} {0 local} {0 local} {1 {}} {0 original} {0 local} {1 {}} {0 local}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-9",
@@ -2577,7 +2776,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-10",
@@ -2590,7 +2790,8 @@
         "result": "{0 ::a::p} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-11",
@@ -2603,7 +2804,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 ::a::p} {1 {}} {0 {}} {1 {}} {1 {}} {0 original} {0 {}} {1 {}} {0 original} {0 original} {0 original} {0 original}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-12",
@@ -2616,7 +2818,8 @@
         "result": "{0 original} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 local} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-13",
@@ -2629,7 +2832,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 ::a::p} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-14",
@@ -2642,7 +2846,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 local} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-15",
@@ -2655,7 +2860,8 @@
         "result": "{1 {}} {0 {}} {0 original} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 fresh} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-16",
@@ -2668,7 +2874,8 @@
         "result": "{0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 fresh} {1 {}} {0 fresh} {0 fresh} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-17",
@@ -2681,7 +2888,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 fresh} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-18",
@@ -2694,7 +2902,8 @@
         "result": "{0 original} {0 {}} {0 ::a::p} {0 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 fresh} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-19",
@@ -2707,7 +2916,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-20",
@@ -2720,7 +2930,8 @@
         "result": "{0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-21",
@@ -2733,7 +2944,8 @@
         "result": "{0 {}} {0 {}} {0 original} {0 original} {0 {}} {0 {}} {0 original} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 original} {0 original} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-22",
@@ -2746,7 +2958,8 @@
         "result": "{0 original} {0 {}} {1 {}} {0 local} {0 {}} {1 {}} {0 local} {0 original} {0 {}} {0 {}} {0 local} {0 {}} {1 {}} {1 {}} {0 local} {1 {}} {0 local}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-23",
@@ -2759,7 +2972,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-24",
@@ -2772,7 +2986,8 @@
         "result": "{0 original} {0 {}} {0 {}} {0 {}} {0 local} {0 {}} {1 {}} {0 {}} {0 {}} {0 original} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-25",
@@ -2785,7 +3000,8 @@
         "result": "{0 original} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 original} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 fresh} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-26",
@@ -2798,7 +3014,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 fresh} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-27",
@@ -2811,7 +3028,8 @@
         "result": "{0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-28",
@@ -2824,7 +3042,8 @@
         "result": "{0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-29",
@@ -2837,7 +3056,8 @@
         "result": "{0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 original} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 original} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-30",
@@ -2850,7 +3070,8 @@
         "result": "{1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 changed} {1 {}} {0 changed} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-31",
@@ -2863,7 +3084,8 @@
         "result": "{1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 changed} {0 {}} {0 {}} {0 {}} {1 {}} {0 ::b::p} {0 changed} {0 original} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-32",
@@ -2876,7 +3098,8 @@
         "result": "{0 original} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 fresh} {0 original} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-33",
@@ -2889,7 +3112,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 ::a::p} {0 {}} {0 original} {0 original} {1 {}} {0 original} {1 {}} {0 original}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-34",
@@ -2902,7 +3126,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 ::b::p} {0 {}} {1 {}} {0 original} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-35",
@@ -2915,7 +3140,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-36",
@@ -2928,7 +3154,8 @@
         "result": "{0 {}} {0 original} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 fresh} {1 {}} {0 fresh} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-37",
@@ -2941,7 +3168,8 @@
         "result": "{0 {}} {0 {}} {0 original} {0 original} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-38",
@@ -2954,7 +3182,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 ::a::p} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 fresh} {0 changed} {1 {}} {0 changed} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-39",
@@ -2967,7 +3196,8 @@
         "result": "{0 ::a::p} {0 original} {0 {}} {0 local} {0 ::b::p} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-40",
@@ -2980,7 +3210,8 @@
         "result": "{0 {}} {0 ::a::p} {0 {}} {0 {}} {0 ::a::p} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 local} {1 {}} {0 local}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-41",
@@ -2993,7 +3224,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-42",
@@ -3006,7 +3238,8 @@
         "result": "{0 original} {0 {}} {0 {}} {0 ::b::p} {0 {}} {0 local} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-43",
@@ -3019,7 +3252,8 @@
         "result": "{0 ::a::p} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 changed} {0 {}} {1 {}} {0 {}} {0 changed} {1 {}} {1 {}} {0 changed} {0 changed}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-44",
@@ -3032,7 +3266,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 changed} {1 {}} {0 changed} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-45",
@@ -3045,7 +3280,8 @@
         "result": "{0 original} {0 {}} {0 original} {0 {}} {0 original} {0 original} {1 {}} {0 ::a::p} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-46",
@@ -3058,7 +3294,8 @@
         "result": "{0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 fresh} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-47",
@@ -3071,7 +3308,8 @@
         "result": "{0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 changed} {0 {}} {0 {}} {0 {}} {0 changed} {0 {}} {1 {}} {1 {}} {0 changed} {0 changed} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-48",
@@ -3084,7 +3322,8 @@
         "result": "{0 original} {0 {}} {0 {}} {0 {}} {0 {}} {0 fresh} {1 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 fresh} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-49",
@@ -3097,7 +3336,8 @@
         "result": "{0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 ::b::p} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-50",
@@ -3110,7 +3350,8 @@
         "result": "{0 {}} {1 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 fresh} {0 {}} {0 {}} {1 {}} {0 fresh} {1 {}} {1 {}} {0 fresh} {0 fresh}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-51",
@@ -3123,7 +3364,8 @@
         "result": "{0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-52",
@@ -3136,7 +3378,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 fresh} {0 {}} {0 local} {0 {}} {0 ::b::p} {1 {}} {0 fresh} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-53",
@@ -3149,7 +3392,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 local} {0 {}} {1 {}} {1 {}} {0 local} {1 {}} {0 local}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-54",
@@ -3162,7 +3406,8 @@
         "result": "{0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-55",
@@ -3175,7 +3420,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-56",
@@ -3188,7 +3434,8 @@
         "result": "{0 {}} {0 {}} {0 ::a::p} {0 {}} {0 ::b::p} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 original} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-57",
@@ -3201,7 +3448,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 changed} {1 {}} {0 ::a::q} {0 changed} {0 ::a::q} {0 {}} {1 {}} {1 {}} {0 changed} {0 changed} {1 {}} {0 changed}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-58",
@@ -3214,7 +3462,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 original} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 local} {0 {}} {1 {}} {1 {}} {0 local} {1 {}} {0 local}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-59",
@@ -3227,7 +3476,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 original} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-60",
@@ -3240,7 +3490,8 @@
         "result": "{0 original} {0 ::a::p} {0 ::a::p} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-61",
@@ -3253,7 +3504,8 @@
         "result": "{0 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 changed} {0 changed} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-62",
@@ -3266,7 +3518,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 fresh} {0 {}} {0 {}} {0 fresh} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 fresh} {1 {}} {0 fresh} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-63",
@@ -3279,7 +3532,8 @@
         "result": "{0 {}} {0 ::a::p} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 original} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-64",
@@ -3292,7 +3546,8 @@
         "result": "{0 original} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-65",
@@ -3305,7 +3560,8 @@
         "result": "{0 original} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 fresh} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-66",
@@ -3318,7 +3574,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 ::a::p} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-67",
@@ -3331,7 +3588,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 original} {0 {}} {0 {}} {0 original} {0 {}} {0 {}} {0 {}} {0 {}} {0 local} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-68",
@@ -3344,7 +3602,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 changed} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-69",
@@ -3357,7 +3616,8 @@
         "result": "{0 {}} {1 {}} {0 {}} {0 local} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 local} {1 {}} {0 original} {0 local} {0 original} {0 local}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-70",
@@ -3370,7 +3630,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 changed} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-71",
@@ -3383,7 +3644,8 @@
         "result": "{0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-72",
@@ -3396,7 +3658,8 @@
         "result": "{0 ::a::p} {0 ::a::p} {0 original} {0 original} {0 {}} {0 original} {1 {}} {0 original} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-73",
@@ -3409,7 +3672,8 @@
         "result": "{0 original} {0 ::a::p} {0 ::a::p} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 local} {1 {}} {0 local}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-74",
@@ -3422,7 +3686,8 @@
         "result": "{0 ::a::p} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-75",
@@ -3435,7 +3700,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 changed} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 local} {1 {}} {0 local}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-76",
@@ -3448,7 +3714,8 @@
         "result": "{0 original} {0 original} {0 ::a::p} {0 {}} {0 original} {0 original} {0 original} {0 {}} {0 {}} {1 {}} {0 ::b::p} {0 {}} {0 changed} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-77",
@@ -3461,7 +3728,8 @@
         "result": "{0 {}} {0 {}} {0 original} {0 {}} {0 ::a::p} {0 ::a::p} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 fresh} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-78",
@@ -3474,7 +3742,8 @@
         "result": "{0 {}} {0 {}} {0 ::a::q} {0 ::a::q} {0 {}} {0 {}} {0 original} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-79",
@@ -3487,7 +3756,8 @@
         "result": "{0 original} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 changed} {0 changed} {0 changed} {1 {}} {0 changed} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-80",
@@ -3500,7 +3770,8 @@
         "result": "{0 original} {0 {}} {0 ::a::p} {0 fresh} {0 fresh} {0 {}} {0 ::a::p} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-81",
@@ -3513,7 +3784,8 @@
         "result": "{0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-82",
@@ -3526,7 +3798,8 @@
         "result": "{0 {}} {0 {}} {0 original} {0 original} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-83",
@@ -3539,7 +3812,8 @@
         "result": "{0 ::a::p} {1 {}} {0 {}} {1 {}} {0 {}} {0 original} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-84",
@@ -3552,7 +3826,8 @@
         "result": "{0 original} {0 {}} {0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-85",
@@ -3565,7 +3840,8 @@
         "result": "{0 original} {0 {}} {0 changed} {0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 changed} {0 local} {0 changed} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-86",
@@ -3578,7 +3854,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 original} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-87",
@@ -3591,7 +3868,8 @@
         "result": "{0 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-88",
@@ -3604,7 +3882,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 fresh} {0 fresh} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 fresh} {0 local} {0 fresh} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-89",
@@ -3617,7 +3896,8 @@
         "result": "{0 {}} {0 original} {0 {}} {0 fresh} {0 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-90",
@@ -3630,7 +3910,8 @@
         "result": "{0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 local} {0 {}} {0 {}} {0 {}} {0 ::b::p} {0 {}} {0 {}} {0 changed} {1 {}} {1 {}} {0 local} {0 local}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-91",
@@ -3643,7 +3924,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {0 ::b::p} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-92",
@@ -3656,7 +3938,8 @@
         "result": "{0 original} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 local} {0 original} {1 {}} {0 {}} {0 {}} {1 {}} {0 changed} {1 {}} {0 local} {0 changed} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-93",
@@ -3669,7 +3952,8 @@
         "result": "{0 {}} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 {}} {0 {}} {0 {}} {1 {}} {0 original} {1 {}} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-94",
@@ -3682,7 +3966,8 @@
         "result": "{0 original} {0 {}} {0 {}} {1 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {1 {}} {0 {}} {1 {}} {1 {}} {0 local} {1 {}} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "mutation-trace-95",
@@ -3695,7 +3980,8 @@
         "result": "{0 {}} {0 {}} {1 {}} {1 {}} {0 {}} {1 {}} {0 {}} {1 {}} {1 {}} {1 {}} {0 {}} {0 {}} {0 original} {1 {}} {1 {}} {0 original} {1 {}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "empty-exists",
@@ -3708,7 +3994,8 @@
         "result": "0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "empty-parent",
@@ -3721,7 +4008,8 @@
         "error": "Invalid(\"empty namespace name\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "empty-children",
@@ -3734,7 +4022,8 @@
         "error": "Invalid(\"empty namespace name\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "empty-path",
@@ -3747,7 +4036,8 @@
         "error": "Invalid(\"empty namespace name\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "empty-upvar",
@@ -3760,7 +4050,8 @@
         "error": "Invalid(\"empty namespace name\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "empty-delete",
@@ -3773,7 +4064,8 @@
         "error": "Invalid(\"empty namespace name\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "missing-parent",
@@ -3786,7 +4078,8 @@
         "error": "Invalid(\"unknown namespace\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "missing-children",
@@ -3799,7 +4092,8 @@
         "error": "Invalid(\"unknown namespace\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "auto-import-observed",
@@ -3812,7 +4106,8 @@
         "result": "a::*",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "auto-import-create",
@@ -3825,7 +4120,8 @@
         "result": "yes",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "auto-import-error",
@@ -3838,7 +4134,8 @@
         "error": "Invalid(\"loadfail\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "auto-import-context",
@@ -3851,7 +4148,8 @@
         "result": "::b",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "same-origin-import",
@@ -3864,7 +4162,8 @@
         "error": "Invalid(\"import command conflict\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "same-origin-reimport",
@@ -3877,7 +4176,8 @@
         "error": "Invalid(\"import command conflict\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-delete",
@@ -3890,7 +4190,8 @@
         "error": "Invalid(\"unknown handler deleted its ensemble\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-delete-space",
@@ -3903,7 +4204,8 @@
         "error": "Invalid(\"unknown handler deleted its ensemble\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-replace",
@@ -3916,7 +4218,8 @@
         "error": "Invalid(\"unknown handler deleted its ensemble\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-reconfigure-params",
@@ -3929,7 +4232,8 @@
         "result": "A B",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-reconfigure-short",
@@ -3942,7 +4246,8 @@
         "result": "fixed A",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-unknown-rename",
@@ -3955,7 +4260,8 @@
         "result": "fixed X",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-parameter-rewrite-0-A B",
@@ -3968,7 +4274,8 @@
         "result": "fixed B",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-parameter-rewrite-0-A B C D E",
@@ -3981,7 +4288,8 @@
         "result": "fixed B C D E",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-parameter-rewrite-1-A B",
@@ -3994,7 +4302,8 @@
         "result": "fixed A",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-parameter-rewrite-1-A B C D E",
@@ -4007,7 +4316,8 @@
         "result": "fixed A C D E",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-parameter-rewrite-2-A B",
@@ -4020,7 +4330,8 @@
         "result": "fixed A",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-parameter-rewrite-2-A B C D E",
@@ -4033,7 +4344,8 @@
         "result": "fixed A B D E",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-parameter-rewrite-3-A B",
@@ -4046,7 +4358,8 @@
         "result": "fixed A",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unknown-parameter-rewrite-3-A B C D E",
@@ -4059,7 +4372,8 @@
         "result": "fixed A B C E",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     }
   ]
 }

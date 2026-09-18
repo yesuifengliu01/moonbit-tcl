@@ -1,6 +1,6 @@
 {
   "checks": 34,
   "passed": 34,
-  "engineSHA256": "24507f9d91a13db49db6ec77022edc94944df10ddf306d5a263d4184ce9dddfa",
+  "engineSHA256": "95e62fe56d39fd5fdb72218de4e238fbedd7c2f98eb29c8c0c2cb634d9dea9b9",
   "scope": "Persistent module sessions, real JSONL CLI and the actual web Worker module with a Node message adapter; completion options, trap/finally, rethrow, loop control, top-level return and recovery; separate browser evidence required."
 }

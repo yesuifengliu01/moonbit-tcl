@@ -2,8 +2,10 @@
   "reference": "System Tcl 8.6.15 through Python tkinter",
   "cases": 321,
   "matched": 321,
-  "engineSHA256": "24507f9d91a13db49db6ec77022edc94944df10ddf306d5a263d4184ce9dddfa",
+  "engineSHA256": "95e62fe56d39fd5fdb72218de4e238fbedd7c2f98eb29c8c0c2cb634d9dea9b9",
   "completionScope": "Matrix helpers normalize generated diagnostic fields and error text; selected metadata, locations and native messages/codes compare directly. See TESTING.md.",
+  "knownDifferences": 0,
+  "unexpectedDifferences": 0,
   "comparison": "Exact result and standard-output strings on success; rejection only on expected errors.",
   "rows": [
     {
@@ -17,7 +19,8 @@
         "result": "0 after {-code 0 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-0-nest-1",
@@ -30,7 +33,8 @@
         "result": "0 after {-code 0 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-0-nest-2",
@@ -43,7 +47,8 @@
         "result": "0 after {-code 0 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-1-nest-0",
@@ -56,7 +61,8 @@
         "result": "2 value {-code 0 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-1-nest-1",
@@ -69,7 +75,8 @@
         "result": "0 after {-code 0 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-1-nest-2",
@@ -82,7 +89,8 @@
         "result": "0 after {-code 0 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-2-nest-0",
@@ -95,7 +103,8 @@
         "result": "2 value {-code 0 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-2-nest-1",
@@ -108,7 +117,8 @@
         "result": "2 value {-code 0 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-2-nest-2",
@@ -121,7 +131,8 @@
         "result": "0 after {-code 0 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-3-nest-0",
@@ -134,7 +145,8 @@
         "result": "2 value {-code 0 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-3-nest-1",
@@ -147,7 +159,8 @@
         "result": "2 value {-code 0 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-3-nest-2",
@@ -160,7 +173,8 @@
         "result": "2 value {-code 0 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-4-nest-0",
@@ -173,7 +187,8 @@
         "result": "2 value {-code 0 -level 4 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-4-nest-1",
@@ -186,7 +201,8 @@
         "result": "2 value {-code 0 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-ok-4-nest-2",
@@ -199,7 +215,8 @@
         "result": "2 value {-code 0 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-0-nest-0",
@@ -212,7 +229,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-0-nest-1",
@@ -225,7 +243,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-0-nest-2",
@@ -238,7 +257,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-1-nest-0",
@@ -251,7 +271,8 @@
         "result": "2 value {-code 1 -errorcode NONE -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-1-nest-1",
@@ -264,7 +285,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-1-nest-2",
@@ -277,7 +299,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-2-nest-0",
@@ -290,7 +313,8 @@
         "result": "2 value {-code 1 -errorcode NONE -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-2-nest-1",
@@ -303,7 +327,8 @@
         "result": "2 value {-code 1 -errorcode NONE -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-2-nest-2",
@@ -316,7 +341,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-3-nest-0",
@@ -329,7 +355,8 @@
         "result": "2 value {-code 1 -errorcode NONE -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-3-nest-1",
@@ -342,7 +369,8 @@
         "result": "2 value {-code 1 -errorcode NONE -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-3-nest-2",
@@ -355,7 +383,8 @@
         "result": "2 value {-code 1 -errorcode NONE -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-4-nest-0",
@@ -368,7 +397,8 @@
         "result": "2 value {-code 1 -errorcode NONE -level 4 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-4-nest-1",
@@ -381,7 +411,8 @@
         "result": "2 value {-code 1 -errorcode NONE -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-error-4-nest-2",
@@ -394,7 +425,8 @@
         "result": "2 value {-code 1 -errorcode NONE -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-0-nest-0",
@@ -407,7 +439,8 @@
         "result": "2 value {-code 0 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-0-nest-1",
@@ -420,7 +453,8 @@
         "result": "0 after {-code 0 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-0-nest-2",
@@ -433,7 +467,8 @@
         "result": "0 after {-code 0 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-1-nest-0",
@@ -446,7 +481,8 @@
         "result": "2 value {-code 0 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-1-nest-1",
@@ -459,7 +495,8 @@
         "result": "2 value {-code 0 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-1-nest-2",
@@ -472,7 +509,8 @@
         "result": "0 after {-code 0 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-2-nest-0",
@@ -485,7 +523,8 @@
         "result": "2 value {-code 0 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-2-nest-1",
@@ -498,7 +537,8 @@
         "result": "2 value {-code 0 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-2-nest-2",
@@ -511,7 +551,8 @@
         "result": "2 value {-code 0 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-3-nest-0",
@@ -524,7 +565,8 @@
         "result": "2 value {-code 0 -level 4 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-3-nest-1",
@@ -537,7 +579,8 @@
         "result": "2 value {-code 0 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-3-nest-2",
@@ -550,7 +593,8 @@
         "result": "2 value {-code 0 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-4-nest-0",
@@ -563,7 +607,8 @@
         "result": "2 value {-code 0 -level 5 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-4-nest-1",
@@ -576,7 +621,8 @@
         "result": "2 value {-code 0 -level 4 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-return-4-nest-2",
@@ -589,7 +635,8 @@
         "result": "2 value {-code 0 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-0-nest-0",
@@ -602,7 +649,8 @@
         "result": "3 value {-code 3 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-0-nest-1",
@@ -615,7 +663,8 @@
         "result": "1 <error> {-code 1 -errorcode {TCL RESULT UNEXPECTED} -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-0-nest-2",
@@ -628,7 +677,8 @@
         "result": "1 <error> {-code 1 -errorcode {TCL RESULT UNEXPECTED} -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-1-nest-0",
@@ -641,7 +691,8 @@
         "result": "2 value {-code 3 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-1-nest-1",
@@ -654,7 +705,8 @@
         "result": "3 value {-code 3 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-1-nest-2",
@@ -667,7 +719,8 @@
         "result": "1 <error> {-code 1 -errorcode {TCL RESULT UNEXPECTED} -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-2-nest-0",
@@ -680,7 +733,8 @@
         "result": "2 value {-code 3 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-2-nest-1",
@@ -693,7 +747,8 @@
         "result": "2 value {-code 3 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-2-nest-2",
@@ -706,7 +761,8 @@
         "result": "3 value {-code 3 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-3-nest-0",
@@ -719,7 +775,8 @@
         "result": "2 value {-code 3 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-3-nest-1",
@@ -732,7 +789,8 @@
         "result": "2 value {-code 3 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-3-nest-2",
@@ -745,7 +803,8 @@
         "result": "2 value {-code 3 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-4-nest-0",
@@ -758,7 +817,8 @@
         "result": "2 value {-code 3 -level 4 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-4-nest-1",
@@ -771,7 +831,8 @@
         "result": "2 value {-code 3 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-break-4-nest-2",
@@ -784,7 +845,8 @@
         "result": "2 value {-code 3 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-0-nest-0",
@@ -797,7 +859,8 @@
         "result": "4 value {-code 4 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-0-nest-1",
@@ -810,7 +873,8 @@
         "result": "1 <error> {-code 1 -errorcode {TCL RESULT UNEXPECTED} -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-0-nest-2",
@@ -823,7 +887,8 @@
         "result": "1 <error> {-code 1 -errorcode {TCL RESULT UNEXPECTED} -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-1-nest-0",
@@ -836,7 +901,8 @@
         "result": "2 value {-code 4 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-1-nest-1",
@@ -849,7 +915,8 @@
         "result": "4 value {-code 4 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-1-nest-2",
@@ -862,7 +929,8 @@
         "result": "1 <error> {-code 1 -errorcode {TCL RESULT UNEXPECTED} -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-2-nest-0",
@@ -875,7 +943,8 @@
         "result": "2 value {-code 4 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-2-nest-1",
@@ -888,7 +957,8 @@
         "result": "2 value {-code 4 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-2-nest-2",
@@ -901,7 +971,8 @@
         "result": "4 value {-code 4 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-3-nest-0",
@@ -914,7 +985,8 @@
         "result": "2 value {-code 4 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-3-nest-1",
@@ -927,7 +999,8 @@
         "result": "2 value {-code 4 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-3-nest-2",
@@ -940,7 +1013,8 @@
         "result": "2 value {-code 4 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-4-nest-0",
@@ -953,7 +1027,8 @@
         "result": "2 value {-code 4 -level 4 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-4-nest-1",
@@ -966,7 +1041,8 @@
         "result": "2 value {-code 4 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-continue-4-nest-2",
@@ -979,7 +1055,8 @@
         "result": "2 value {-code 4 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-0-nest-0",
@@ -992,7 +1069,8 @@
         "result": "7 value {-code 7 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-0-nest-1",
@@ -1005,7 +1083,8 @@
         "result": "7 value {-code 7 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-0-nest-2",
@@ -1018,7 +1097,8 @@
         "result": "7 value {-code 7 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-1-nest-0",
@@ -1031,7 +1111,8 @@
         "result": "2 value {-code 7 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-1-nest-1",
@@ -1044,7 +1125,8 @@
         "result": "7 value {-code 7 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-1-nest-2",
@@ -1057,7 +1139,8 @@
         "result": "7 value {-code 7 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-2-nest-0",
@@ -1070,7 +1153,8 @@
         "result": "2 value {-code 7 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-2-nest-1",
@@ -1083,7 +1167,8 @@
         "result": "2 value {-code 7 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-2-nest-2",
@@ -1096,7 +1181,8 @@
         "result": "7 value {-code 7 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-3-nest-0",
@@ -1109,7 +1195,8 @@
         "result": "2 value {-code 7 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-3-nest-1",
@@ -1122,7 +1209,8 @@
         "result": "2 value {-code 7 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-3-nest-2",
@@ -1135,7 +1223,8 @@
         "result": "2 value {-code 7 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-4-nest-0",
@@ -1148,7 +1237,8 @@
         "result": "2 value {-code 7 -level 4 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-4-nest-1",
@@ -1161,7 +1251,8 @@
         "result": "2 value {-code 7 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-7-4-nest-2",
@@ -1174,7 +1265,8 @@
         "result": "2 value {-code 7 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-0-nest-0",
@@ -1187,7 +1279,8 @@
         "result": "-1 value {-code -1 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-0-nest-1",
@@ -1200,7 +1293,8 @@
         "result": "-1 value {-code -1 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-0-nest-2",
@@ -1213,7 +1307,8 @@
         "result": "-1 value {-code -1 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-1-nest-0",
@@ -1226,7 +1321,8 @@
         "result": "2 value {-code -1 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-1-nest-1",
@@ -1239,7 +1335,8 @@
         "result": "-1 value {-code -1 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-1-nest-2",
@@ -1252,7 +1349,8 @@
         "result": "-1 value {-code -1 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-2-nest-0",
@@ -1265,7 +1363,8 @@
         "result": "2 value {-code -1 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-2-nest-1",
@@ -1278,7 +1377,8 @@
         "result": "2 value {-code -1 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-2-nest-2",
@@ -1291,7 +1391,8 @@
         "result": "-1 value {-code -1 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-3-nest-0",
@@ -1304,7 +1405,8 @@
         "result": "2 value {-code -1 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-3-nest-1",
@@ -1317,7 +1419,8 @@
         "result": "2 value {-code -1 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-3-nest-2",
@@ -1330,7 +1433,8 @@
         "result": "2 value {-code -1 -level 1 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-4-nest-0",
@@ -1343,7 +1447,8 @@
         "result": "2 value {-code -1 -level 4 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-4-nest-1",
@@ -1356,7 +1461,8 @@
         "result": "2 value {-code -1 -level 3 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return--1-4-nest-2",
@@ -1369,7 +1475,8 @@
         "result": "2 value {-code -1 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "plain-return",
@@ -1382,7 +1489,8 @@
         "result": "2 result {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "plain-empty-return",
@@ -1395,7 +1503,8 @@
         "result": "2 {} {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "pairs-without-result",
@@ -1408,7 +1517,8 @@
         "result": "2 {} {-code 0 -level 1 -tag payload}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "arbitrary-option-name",
@@ -1421,7 +1531,8 @@
         "result": "2 value {-code 0 -level 1 foo bar}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "double-dash-option",
@@ -1434,7 +1545,8 @@
         "result": "2 {} {-- value -code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "abbreviation-is-custom",
@@ -1447,7 +1559,8 @@
         "result": "2 result {-c error -code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "sticky-success-options",
@@ -1460,7 +1573,8 @@
         "result": "0 second {-code 0 -level 0 -tag value}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "nested-return-options",
@@ -1473,7 +1587,8 @@
         "result": "1 <error> {-code 1 -errorcode {APP FAIL} -level 0 -tag A}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "options-order",
@@ -1486,7 +1601,8 @@
         "result": "0 x {-code 0 -level 0 -tag a}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "multiple-options",
@@ -1499,7 +1615,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0 -tag new}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "duplicate-options",
@@ -1512,7 +1629,8 @@
         "result": "0 x {-code 0 -level 0 -tag new}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "unused-error-options",
@@ -1525,7 +1643,8 @@
         "result": "0 x {-code 0 -errorcode {APP OK} -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "error-default",
@@ -1538,7 +1657,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "error-explicit",
@@ -1551,7 +1671,8 @@
         "result": "1 <error> {-code 1 -errorcode {APP FAIL} -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "throw-explicit",
@@ -1564,7 +1685,8 @@
         "result": "1 <error> {-code 1 -errorcode {APP FAIL detail} -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "error-clears-options",
@@ -1577,7 +1699,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "catch-clears-options",
@@ -1590,7 +1713,8 @@
         "result": "0 2 {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "catch-empty-clears",
@@ -1603,7 +1727,8 @@
         "result": "0 2 {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "catch-result-options-same",
@@ -1616,7 +1741,8 @@
         "result": "0 {-code 0 -level 0 -tag X} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "catch-result-array",
@@ -1629,7 +1755,8 @@
         "result": "0 {X {-code 7 -level 1}} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "rethrow-error",
@@ -1642,7 +1769,8 @@
         "result": "1 <error> {-code 1 -errorcode {APP FAIL} -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "rethrow-custom",
@@ -1655,7 +1783,8 @@
         "result": "8 result {-code 8 -level 0 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "rethrow-return",
@@ -1668,7 +1797,8 @@
         "result": "2 result {-code 0 -level 2 -tag custom}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "rethrow-as-success",
@@ -1681,7 +1811,8 @@
         "result": "0 recovered {-code 0 -errorcode APP -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "if-options",
@@ -1694,7 +1825,8 @@
         "result": "0 value {-code 0 -level 0 -tag X}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "eval-options",
@@ -1707,7 +1839,8 @@
         "result": "0 value {-code 0 -level 0 -tag X}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "namespace-options",
@@ -1720,7 +1853,8 @@
         "result": "0 value {-code 0 -level 0 -tag X}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "substitution-options",
@@ -1733,7 +1867,8 @@
         "result": "0 value {-code 0 -level 0 -tag X}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "expression-options",
@@ -1746,7 +1881,8 @@
         "result": "0 5 {-code 0 -level 0 -tag X}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "while-options",
@@ -1759,7 +1895,8 @@
         "result": "0 {} {-code 0 -level 0 -tag X}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "for-options",
@@ -1772,7 +1909,8 @@
         "result": "0 {} {-code 0 -level 0 -tag X}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "foreach-options",
@@ -1785,7 +1923,8 @@
         "result": "0 {} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lmap-options",
@@ -1798,7 +1937,8 @@
         "result": "0 {1 2} {-code 0 -level 0 -tag X}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "procedure-options",
@@ -1811,7 +1951,8 @@
         "result": "0 value {-code 0 -level 0 -tag X}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-ok",
@@ -1824,7 +1965,8 @@
         "result": "0 3 {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-error",
@@ -1837,7 +1979,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-on-ok",
@@ -1850,7 +1993,8 @@
         "result": "0 {3 {-code 0 -level 0}} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-trap",
@@ -1863,7 +2007,8 @@
         "result": "0 {bad {APP FAIL detail}} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-trap-whitespace",
@@ -1876,7 +2021,8 @@
         "result": "0 recovered {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-trap-not-glob",
@@ -1889,7 +2035,8 @@
         "result": "1 <error> {-code 1 -errorcode {APP FAIL} -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-trap-empty",
@@ -1902,7 +2049,8 @@
         "result": "0 {matched bad} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-first-wins",
@@ -1915,7 +2063,8 @@
         "result": "0 first {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-fallthrough",
@@ -1928,7 +2077,8 @@
         "result": "0 {0 bad 1} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-multiple-fallthrough",
@@ -1941,7 +2091,8 @@
         "result": "0 {value 1} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-empty-variable-names",
@@ -1954,7 +2105,8 @@
         "result": "0 {untouched 1} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-handler-rethrow",
@@ -1967,7 +2119,8 @@
         "result": "1 <error> {-code 1 -during {-code 1 -errorcode {APP FAIL} -level 0} -errorcode {APP FAIL} -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-handler-return",
@@ -1980,7 +2133,8 @@
         "result": "2 second {-code 1 -errorcode NONE -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-handler-error",
@@ -1993,7 +2147,8 @@
         "result": "1 <error> {-code 1 -during {-code 1 -errorcode NONE -level 0} -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-handler-failure-finally",
@@ -2006,7 +2161,8 @@
         "result": "0 1 {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-finally-success-options",
@@ -2019,7 +2175,8 @@
         "result": "0 value {-code 0 -level 0 -tag original}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-finally-custom-options",
@@ -2032,7 +2189,8 @@
         "result": "0 3 {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-nested-during",
@@ -2045,7 +2203,8 @@
         "result": "1 <error> {-code 1 -during {-code 1 -during {-code 1 -errorcode NONE -level 0} -errorcode NONE -level 0} -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-error-global",
@@ -2058,7 +2217,8 @@
         "result": "0 {C NONE NONE} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-update-return",
@@ -2071,7 +2231,8 @@
         "result": "0 {done {x 9}} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-with-error",
@@ -2084,7 +2245,8 @@
         "result": "0 {{x 7} bad APP} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-map-continue",
@@ -2097,7 +2259,8 @@
         "result": "0 {a 2 c 6} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-for-break",
@@ -2110,7 +2273,8 @@
         "result": "0 {a b} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "dict-filter-continue",
@@ -2123,7 +2287,8 @@
         "result": "0 {a 1 c 3} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lmap-break",
@@ -2136,7 +2301,8 @@
         "result": "0 {2 4} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lmap-continue",
@@ -2149,7 +2315,8 @@
         "result": "0 {2 6} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "proc-break-loop",
@@ -2162,7 +2329,8 @@
         "result": "0 1 {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "proc-continue-loop",
@@ -2175,7 +2343,8 @@
         "result": "0 {1 2} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-finally-break-loop",
@@ -2188,7 +2357,8 @@
         "result": "0 {1 F F} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "try-finally-return-proc",
@@ -2201,7 +2371,8 @@
         "result": "0 {done clean} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "uplevel-return",
@@ -2214,7 +2385,8 @@
         "result": "0 after {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "namespace-return",
@@ -2227,7 +2399,8 @@
         "result": "0 done {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "ensemble-return",
@@ -2240,7 +2413,8 @@
         "result": "7 custom {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-ok-ok",
@@ -2253,7 +2427,8 @@
         "result": "0 body {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-ok-error",
@@ -2266,7 +2441,8 @@
         "result": "1 <error> {-code 1 -during {-code 0 -level 0} -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-ok-return",
@@ -2279,7 +2455,8 @@
         "result": "2 final {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-ok-break",
@@ -2292,7 +2469,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-ok-continue",
@@ -2305,7 +2483,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-ok-custom",
@@ -2318,7 +2497,8 @@
         "result": "7 final {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-ok-ok",
@@ -2331,7 +2511,8 @@
         "result": "0 {handled body {-code 0 -level 0}} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-ok-error",
@@ -2344,7 +2525,8 @@
         "result": "0 body {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-ok-return",
@@ -2357,7 +2539,8 @@
         "result": "0 body {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-ok-break",
@@ -2370,7 +2553,8 @@
         "result": "0 body {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-ok-continue",
@@ -2383,7 +2567,8 @@
         "result": "0 body {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-ok-7",
@@ -2396,7 +2581,8 @@
         "result": "0 body {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-error-ok",
@@ -2409,7 +2595,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-error-error",
@@ -2422,7 +2609,8 @@
         "result": "1 <error> {-code 1 -during {-code 1 -errorcode NONE -level 0} -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-error-return",
@@ -2435,7 +2623,8 @@
         "result": "2 final {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-error-break",
@@ -2448,7 +2637,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-error-continue",
@@ -2461,7 +2651,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-error-custom",
@@ -2474,7 +2665,8 @@
         "result": "7 final {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-error-ok",
@@ -2487,7 +2679,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-error-error",
@@ -2500,7 +2693,8 @@
         "result": "0 {handled body {-code 1 -errorcode NONE -level 0}} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-error-return",
@@ -2513,7 +2707,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-error-break",
@@ -2526,7 +2721,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-error-continue",
@@ -2539,7 +2735,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-error-7",
@@ -2552,7 +2749,8 @@
         "result": "1 <error> {-code 1 -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-return-ok",
@@ -2565,7 +2763,8 @@
         "result": "2 body {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-return-error",
@@ -2578,7 +2777,8 @@
         "result": "1 <error> {-code 1 -during {-code 0 -level 1} -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-return-return",
@@ -2591,7 +2791,8 @@
         "result": "2 final {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-return-break",
@@ -2604,7 +2805,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-return-continue",
@@ -2617,7 +2819,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-return-custom",
@@ -2630,7 +2833,8 @@
         "result": "7 final {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-return-ok",
@@ -2643,7 +2847,8 @@
         "result": "2 body {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-return-error",
@@ -2656,7 +2861,8 @@
         "result": "2 body {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-return-return",
@@ -2669,7 +2875,8 @@
         "result": "0 {handled body {-code 0 -level 1}} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-return-break",
@@ -2682,7 +2889,8 @@
         "result": "2 body {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-return-continue",
@@ -2695,7 +2903,8 @@
         "result": "2 body {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-return-7",
@@ -2708,7 +2917,8 @@
         "result": "2 body {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-break-ok",
@@ -2721,7 +2931,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-break-error",
@@ -2734,7 +2945,8 @@
         "result": "1 <error> {-code 1 -during {-code 3 -level 0} -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-break-return",
@@ -2747,7 +2959,8 @@
         "result": "2 final {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-break-break",
@@ -2760,7 +2973,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-break-continue",
@@ -2773,7 +2987,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-break-custom",
@@ -2786,7 +3001,8 @@
         "result": "7 final {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-break-ok",
@@ -2799,7 +3015,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-break-error",
@@ -2812,7 +3029,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-break-return",
@@ -2825,7 +3043,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-break-break",
@@ -2838,7 +3057,8 @@
         "result": "0 {handled {} {-code 3 -level 0}} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-break-continue",
@@ -2851,7 +3071,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-break-7",
@@ -2864,7 +3085,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-continue-ok",
@@ -2877,7 +3099,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-continue-error",
@@ -2890,7 +3113,8 @@
         "result": "1 <error> {-code 1 -during {-code 4 -level 0} -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-continue-return",
@@ -2903,7 +3127,8 @@
         "result": "2 final {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-continue-break",
@@ -2916,7 +3141,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-continue-continue",
@@ -2929,7 +3155,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-continue-custom",
@@ -2942,7 +3169,8 @@
         "result": "7 final {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-continue-ok",
@@ -2955,7 +3183,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-continue-error",
@@ -2968,7 +3197,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-continue-return",
@@ -2981,7 +3211,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-continue-break",
@@ -2994,7 +3225,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-continue-continue",
@@ -3007,7 +3239,8 @@
         "result": "0 {handled {} {-code 4 -level 0}} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-continue-7",
@@ -3020,7 +3253,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-custom-ok",
@@ -3033,7 +3267,8 @@
         "result": "7 body {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-custom-error",
@@ -3046,7 +3281,8 @@
         "result": "1 <error> {-code 1 -during {-code 7 -level 0} -errorcode NONE -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-custom-return",
@@ -3059,7 +3295,8 @@
         "result": "2 final {-code 0 -level 1}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-custom-break",
@@ -3072,7 +3309,8 @@
         "result": "3 {} {-code 3 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-custom-continue",
@@ -3085,7 +3323,8 @@
         "result": "4 {} {-code 4 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "finally-custom-custom",
@@ -3098,7 +3337,8 @@
         "result": "7 final {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-custom-ok",
@@ -3111,7 +3351,8 @@
         "result": "7 body {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-custom-error",
@@ -3124,7 +3365,8 @@
         "result": "7 body {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-custom-return",
@@ -3137,7 +3379,8 @@
         "result": "7 body {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-custom-break",
@@ -3150,7 +3393,8 @@
         "result": "7 body {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-custom-continue",
@@ -3163,7 +3407,8 @@
         "result": "7 body {-code 7 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-custom-7",
@@ -3176,7 +3421,8 @@
         "result": "0 {handled body {-code 7 -level 0}} {-code 0 -level 0}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "explicit-info",
@@ -3189,7 +3435,8 @@
         "result": "bad custom {APP FAIL} {} custom {APP FAIL}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "explicit-stack",
@@ -3202,7 +3449,8 @@
         "result": "custom {INNER here} {INNER here}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "return-proc-explicit-info",
@@ -3215,7 +3463,8 @@
         "result": "{custom\n    invoked from within\n\"p\"} {INNER here} 1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "simple-error-info",
@@ -3228,7 +3477,8 @@
         "result": "bad\n    while executing\n\"error bad\"",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "line-number",
@@ -3241,7 +3491,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "line-semicolon",
@@ -3254,7 +3505,8 @@
         "result": "1",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "line-comments",
@@ -3267,7 +3519,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "line-outer",
@@ -3280,7 +3533,8 @@
         "result": "3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "cached-error-position",
@@ -3293,7 +3547,8 @@
         "result": "3 3",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "repeated-error-globals",
@@ -3306,7 +3561,8 @@
         "result": "{infoA CODE_A} infoB CODE_B",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "validation-on bad {} {}",
@@ -3319,7 +3575,8 @@
         "result": "1 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "validation-trap \\{ {} {}",
@@ -3332,7 +3589,8 @@
         "result": "1 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "validation-on error \\{ {}",
@@ -3345,7 +3603,8 @@
         "result": "1 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "validation-on error {} -",
@@ -3358,7 +3617,8 @@
         "result": "1 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "validation-finally {} extra",
@@ -3371,7 +3631,8 @@
         "result": "1 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "validation-finally",
@@ -3384,7 +3645,8 @@
         "result": "1 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "validation-bad value",
@@ -3397,7 +3659,8 @@
         "result": "1 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "validation-on error",
@@ -3410,7 +3673,8 @@
         "result": "1 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "catch-result-write-failure",
@@ -3423,7 +3687,8 @@
         "result": "1 9",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "catch-options-write-failure",
@@ -3436,7 +3701,8 @@
         "result": "1 9 9",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "handler-variable-write-finally",
@@ -3449,7 +3715,8 @@
         "result": "1 1 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "bad-finally-validates-first",
@@ -3462,7 +3729,8 @@
         "result": "1 0",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-0",
@@ -3475,7 +3743,8 @@
         "error": "Invalid(\"catch arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-1",
@@ -3488,7 +3757,8 @@
         "error": "Invalid(\"catch arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-2",
@@ -3501,7 +3771,8 @@
         "error": "Invalid(\"error arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-3",
@@ -3514,7 +3785,8 @@
         "error": "Invalid(\"error arity\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-4",
@@ -3527,7 +3799,8 @@
         "error": "Invalid(\"type must be non-empty list\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-5",
@@ -3540,7 +3813,8 @@
         "error": "Invalid(\"throw requires error type and message\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-6",
@@ -3553,7 +3827,8 @@
         "error": "Invalid(\"bad completion code \\\"bad\\\": must be ok, error, return, break, continue, or an integer\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-7",
@@ -3566,7 +3841,8 @@
         "error": "Invalid(\"bad -level value: expected non-negative integer but got \\\"-1\\\"\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-8",
@@ -3579,7 +3855,8 @@
         "error": "Invalid(\"bad -level value: expected non-negative integer but got \\\"1.5\\\"\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-9",
@@ -3592,7 +3869,8 @@
         "error": "Invalid(\"missing dictionary value\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-10",
@@ -3605,7 +3883,8 @@
         "error": "Invalid(\"unmatched open brace in list\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-11",
@@ -3618,7 +3897,8 @@
         "error": "Invalid(\"errorstack requires token/value pairs\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-12",
@@ -3631,7 +3911,8 @@
         "error": "Invalid(\"unmatched open brace in list\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-13",
@@ -3644,7 +3925,8 @@
         "error": "Invalid(\"bad -level value: expected non-negative integer but got \\\"2147483648\\\"\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "invalid-14",
@@ -3657,7 +3939,8 @@
         "error": "Invalid(\"try body required\")",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lexical-z-aa",
@@ -3670,7 +3953,8 @@
         "result": "1 0 {aa z}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lexical-long-x",
@@ -3683,7 +3967,8 @@
         "result": "-1 1 {long x}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lexical--tag--code",
@@ -3696,7 +3981,8 @@
         "result": "1 0 {-code -tag}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lexical-ab-abc",
@@ -3709,7 +3995,8 @@
         "result": "-1 1 {ab abc}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lexical--a",
@@ -3722,7 +4009,8 @@
         "result": "-1 1 {{} a}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lexical-中-中文",
@@ -3735,7 +4023,8 @@
         "result": "-1 1 {中 中文}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "lexical-😀-中",
@@ -3748,7 +4037,8 @@
         "result": "1 0 {中 😀}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-0",
@@ -3761,7 +4051,8 @@
         "result": "{invalid command name \"missing_command\"} {TCL LOOKUP COMMAND missing_command}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-1",
@@ -3774,7 +4065,8 @@
         "result": "{invalid command name \"two words\"} {TCL LOOKUP COMMAND {two words}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-2",
@@ -3787,7 +4079,8 @@
         "result": "{can't read \"absent\": no such variable} {TCL LOOKUP VARNAME absent}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-3",
@@ -3800,7 +4093,8 @@
         "result": "{can't read \"a(x)\": no such variable} {TCL LOOKUP VARNAME a}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-4",
@@ -3813,7 +4107,8 @@
         "result": "{can't read \"a(x)\": variable isn't array} {TCL LOOKUP VARNAME a}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-5",
@@ -3826,7 +4121,8 @@
         "result": "{can't read \"a\": variable is array} {TCL READ VARNAME}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-6",
@@ -3839,7 +4135,8 @@
         "result": "{can't read \"a(x)\": no such element in array} {TCL READ VARNAME}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-7",
@@ -3852,7 +4149,8 @@
         "result": "{can't read \"x\": no such variable} {TCL LOOKUP VARNAME x}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-8",
@@ -3865,7 +4163,8 @@
         "result": "{can't read \"missing\": no such variable} {TCL LOOKUP VARNAME missing}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-9",
@@ -3878,7 +4177,8 @@
         "result": "{can't read \"x\": no such variable} {TCL READ VARNAME}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-10",
@@ -3891,7 +4191,8 @@
         "result": "{can't read \"x\": no such variable} {TCL READ VARNAME}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-11",
@@ -3904,7 +4205,8 @@
         "result": "{can't read \"x(a)\": no such variable} {TCL LOOKUP VARNAME x}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-12",
@@ -3917,7 +4219,8 @@
         "result": "{can't read \"alias(z)\": no such variable} {TCL LOOKUP VARNAME}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-13",
@@ -3930,7 +4233,8 @@
         "result": "{can't read \"alias(z)\": variable isn't array} {TCL LOOKUP VARNAME}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-14",
@@ -3943,7 +4247,8 @@
         "result": "{can't read \"alias\": no such variable} {TCL READ VARNAME}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-15",
@@ -3956,7 +4261,8 @@
         "result": "{can't read \"alias\": no such variable} {TCL READ VARNAME}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-16",
@@ -3969,7 +4275,8 @@
         "result": "{can't read \"alias\": no such variable} {TCL READ VARNAME}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-17",
@@ -3982,7 +4289,8 @@
         "result": "{divide by zero} {ARITH DIVZERO {divide by zero}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-18",
@@ -3995,7 +4303,8 @@
         "result": "{divide by zero} {ARITH DIVZERO {divide by zero}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-19",
@@ -4008,7 +4317,8 @@
         "result": "{divide by zero} {ARITH DIVZERO {divide by zero}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-20",
@@ -4021,7 +4331,8 @@
         "result": "{exponentiation of zero by negative power} {ARITH DOMAIN {exponentiation of zero by negative power}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-21",
@@ -4034,7 +4345,8 @@
         "result": "{domain error: argument not in valid range} {ARITH DOMAIN {domain error: argument not in valid range}}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-22",
@@ -4047,7 +4359,8 @@
         "result": "{type must be non-empty list} {TCL OPERATION THROW BADEXCEPTION}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-23",
@@ -4060,7 +4373,8 @@
         "result": "{bad completion code \"BAD\": must be ok, error, return, break, continue, or an integer} {TCL RESULT ILLEGAL_CODE}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-24",
@@ -4073,7 +4387,8 @@
         "result": "{bad completion code \"BAD\": must be ok, error, return, break, continue, or an integer} {TCL RESULT ILLEGAL_CODE}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-25",
@@ -4086,7 +4401,8 @@
         "result": "{bad -level value: expected non-negative integer but got \"-1\"} {TCL RESULT ILLEGAL_LEVEL}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-26",
@@ -4099,7 +4415,8 @@
         "result": "{bad -level value: expected non-negative integer but got \"abc\"} {TCL RESULT ILLEGAL_LEVEL}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-27",
@@ -4112,7 +4429,8 @@
         "result": "{bad -level value: expected non-negative integer but got \"1.5\"} {TCL RESULT ILLEGAL_LEVEL}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "native-error-28",
@@ -4125,7 +4443,8 @@
         "result": "{bad -level value: expected non-negative integer but got \"2147483648\"} {TCL RESULT ILLEGAL_LEVEL}",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "trap-variable",
@@ -4138,7 +4457,8 @@
         "result": "TCL LOOKUP VARNAME absent",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "trap-command",
@@ -4151,7 +4471,8 @@
         "result": "yes",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "trap-arithmetic",
@@ -4164,7 +4485,8 @@
         "result": "yes",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     },
     {
       "name": "trap-read",
@@ -4177,7 +4499,8 @@
         "result": "yes",
         "output": ""
       },
-      "matched": true
+      "matched": true,
+      "unexpected": false
     }
   ]
 }
