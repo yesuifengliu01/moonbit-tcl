@@ -312,8 +312,7 @@ fn Interpreter::expand_values(
   if depth > 64 {
     raise Invalid("substitution depth")
   }
-  let mut result = text_value("")
-  let mut first = true
+  let mut result : TclValue? = None
   let mut size = 0
   let mut builder : StringBuilder? = None
   for part in parts {
@@ -334,24 +333,77 @@ fn Interpreter::expand_values(
     if size > 1000000 {
       raise Invalid("substitution result size limit")
     }
-    if first {
-      result = value
-      first = false
-    } else if !value.text.is_empty() {
-      match builder {
-        Some(out) => out.write_string(value.text)
-        None => {
-          let out = StringBuilder()
-          out.write_string(result.text)
-          out.write_string(value.text)
-          builder = Some(out)
+    match result {
+      None => result = Some(value)
+      Some(first) =>
+        if !value.text.is_empty() {
+          match builder {
+            Some(out) => out.write_string(value.text)
+            None => {
+              let out = StringBuilder()
+              out.write_string(first.text)
+              out.write_string(value.text)
+              builder = Some(out)
+            }
+          }
         }
-      }
     }
   }
   match builder {
     Some(out) => text_value(out.to_string())
-    None => result
+    None =>
+      match result {
+        Some(value) => value
+        None => text_value("")
+      }
+  }
+}
+
+///|
+// None denotes a command whose words all expanded away. The caller chooses
+// the surrounding script's existing empty-command result behavior.
+fn Interpreter::execute_parsed_command(
+  self : Interpreter,
+  parsed : ParsedCommand,
+  depth : Int,
+  discard_result? : Bool = false,
+) -> TclValue? raise TclError {
+  if depth > 64 {
+    raise Invalid("execution nesting limit")
+  }
+  let args = []
+  try {
+    for word in parsed.words {
+      let value = self.expand_values(word.parts, depth + 1)
+      if word.expand {
+        for item in value.as_list() {
+          args.push(item)
+        }
+      } else {
+        args.push(value)
+      }
+      if args.length() > 4096 {
+        raise Invalid("expanded argument limit")
+      }
+    }
+    if args.is_empty() {
+      return None
+    }
+    let result = self.command_value(args, depth, discard_result~)
+    if result.text.length() > 1000000 {
+      raise Invalid("command result size limit")
+    }
+    Some(result)
+  } catch {
+    error =>
+      raise Signal(
+        self.annotate_error(
+          outcome(error),
+          parsed.source,
+          parsed.line,
+          args.map(v => v.text),
+        ),
+      )
   }
 }
 
@@ -365,42 +417,17 @@ fn Interpreter::execute_command_values(
   if depth > 64 {
     raise Invalid("execution nesting limit")
   }
-  let mut result = text_value("")
+  let mut result : TclValue? = None
   for parsed in commands {
-    let args = []
-    try {
-      for word in parsed.words {
-        let value = self.expand_values(word.parts, depth + 1)
-        if word.expand {
-          for item in value.as_list() {
-            args.push(item)
-          }
-        } else {
-          args.push(value)
-        }
-        if args.length() > 4096 {
-          raise Invalid("expanded argument limit")
-        }
-      }
-      if !args.is_empty() {
-        result = self.command_value(args, depth, discard_result~)
-      }
-      if result.text.length() > 1000000 {
-        raise Invalid("command result size limit")
-      }
-    } catch {
-      error =>
-        raise Signal(
-          self.annotate_error(
-            outcome(error),
-            parsed.source,
-            parsed.line,
-            args.map(v => v.text),
-          ),
-        )
+    if self.execute_parsed_command(parsed, depth, discard_result~)
+      is Some(value) {
+      result = Some(value)
     }
   }
-  result
+  match result {
+    Some(value) => value
+    None => text_value("")
+  }
 }
 
 ///|
@@ -414,7 +441,7 @@ fn Interpreter::execute_value(
     raise Invalid("script size limit")
   }
   let program = self.cached_script(source)
-  let mut result = text_value("")
+  let mut result : TclValue? = None
   let mut index = 0
   while true {
     if index == program.commands.length() {
@@ -458,14 +485,17 @@ fn Interpreter::execute_value(
         continue
       }
     }
-    result = self.execute_command_values(
-      [program.commands[index]],
+    result = self.execute_parsed_command(
+      program.commands[index],
       depth,
       discard_result~,
     )
     index += 1
   }
-  result
+  match result {
+    Some(value) => value
+    None => text_value("")
+  }
 }
 
 ///|

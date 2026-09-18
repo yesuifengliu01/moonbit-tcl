@@ -13,13 +13,12 @@ fn Interpreter::invoke_procedure(
   values : Array[TclValue],
   depth : Int,
 ) -> TclValue raise TclError {
-  let args = values.map(v => v.text)
   let parameters = definition.parameters
   let body = definition.body
   let variadic = !parameters.is_empty() &&
     parameters[parameters.length() - 1].0 == "args"
   let fixed = parameters.length() - (if variadic { 1 } else { 0 })
-  let supplied = args.length() - 1
+  let supplied = values.length() - 1
   if !variadic && supplied > fixed {
     raise Invalid("procedure arity")
   }
@@ -89,6 +88,8 @@ fn Interpreter::invoke_procedure(
           ),
         )
       } else if result.code == 1 {
+        // Text arguments are only needed for the observable error context.
+        let args = values.map(v => v.text)
         let options = result.options.copy()
         let line = option_get(options, "-errorline").unwrap_or("1")
         let info = option_get(options, "-errorinfo").unwrap_or(
@@ -140,9 +141,9 @@ fn Interpreter::control_command(
   values : Array[TclValue],
   depth : Int,
 ) -> TclValue raise TclError {
-  let args = values.map(v => v.text)
-  let n = args.length()
-  let text = match args[0] {
+  let n = values.length()
+  let name = values[0].text
+  let text = match name {
     "break" => {
       if n != 1 {
         raise Invalid("break arity")
@@ -163,7 +164,7 @@ fn Interpreter::control_command(
       if n != 3 {
         raise Invalid("while arity")
       }
-      while self.math(args[1], depth) != 0 {
+      while self.math(values[1].text, depth) != 0 {
         self.tick()
         if self.loop_body(values[2], depth) == 2 {
           break
@@ -178,7 +179,7 @@ fn Interpreter::control_command(
       ignore(
         self.execute_value_script(values[1], depth + 1, discard_result=true),
       )
-      while self.math(args[2], depth) != 0 {
+      while self.math(values[2].text, depth) != 0 {
         self.tick()
         if self.loop_body(values[4], depth) == 2 {
           break
@@ -203,7 +204,7 @@ fn Interpreter::control_command(
       let mut count = 0
       let mut i = 1
       while i < n - 1 {
-        let names = parse_list(args[i])
+        let names = parse_list(values[i].text)
         let values = values[i + 1].as_list()
         if names.is_empty() {
           raise Invalid("foreach variable list is empty")
@@ -229,7 +230,7 @@ fn Interpreter::control_command(
             )
           }
         }
-        if args[0] == "lmap" {
+        if name == "lmap" {
           collected.push(self.execute_value_script(values[n - 1], depth + 1)) catch {
             Continue => continue
             Break => break
@@ -241,7 +242,7 @@ fn Interpreter::control_command(
           break
         }
       }
-      if args[0] == "lmap" {
+      if name == "lmap" {
         return list_value(collected)
       } else {
         self.state.return_options.val = []

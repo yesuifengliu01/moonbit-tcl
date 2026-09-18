@@ -22,64 +22,64 @@
       "name": "dictionary-100",
       "source": "set d {}; for {set i 0} {$i < 100} {incr i} {dict set d $i [expr {$i*$i}]}; dict get $d 99",
       "result": "9801",
-      "medianMs": 7.6364,
-      "p95Ms": 8.3201,
-      "sessionMedianMs": 0.08315,
-      "sessionP95Ms": 0.0846
+      "medianMs": 6.569050000000001,
+      "p95Ms": 7.1971,
+      "sessionMedianMs": 0.07955000000000001,
+      "sessionP95Ms": 0.0809
     },
     {
       "name": "array-300",
       "source": "array set a {}; for {set i 0} {$i < 300} {incr i} {set a($i) [expr {$i*3}]}; list [array size a] $a(299)",
       "result": "300 897",
-      "medianMs": 7.9874,
-      "p95Ms": 8.4229,
-      "sessionMedianMs": 0.1456,
-      "sessionP95Ms": 0.1836
+      "medianMs": 6.8934999999999995,
+      "p95Ms": 7.4291,
+      "sessionMedianMs": 0.1458,
+      "sessionP95Ms": 0.1864
     },
     {
       "name": "bigint-150",
       "source": "set x 1; for {set i 0} {$i < 150} {incr i} {set x [expr {$x * 3 + 1}]}; set x",
       "result": "554982727552690459387051173677544966279709650584584460722776607952622373",
-      "medianMs": 7.7311,
-      "p95Ms": 8.7128,
-      "sessionMedianMs": 0.1012,
-      "sessionP95Ms": 0.1025
+      "medianMs": 6.75825,
+      "p95Ms": 7.2927,
+      "sessionMedianMs": 0.1032,
+      "sessionP95Ms": 0.1256
     },
     {
       "name": "alias-200",
       "source": "proc bump {name} {upvar 1 $name x; incr x}; set x 0; for {set i 0} {$i < 200} {incr i} {bump x}; set x",
       "result": "200",
-      "medianMs": 7.0013000000000005,
-      "p95Ms": 8.1683,
-      "sessionMedianMs": 0.11725,
-      "sessionP95Ms": 0.1265
+      "medianMs": 6.79965,
+      "p95Ms": 7.2191,
+      "sessionMedianMs": 0.10200000000000001,
+      "sessionP95Ms": 0.1063
     },
     {
       "name": "sort-200",
       "source": "set xs {}; for {set i 200} {$i > 0} {incr i -1} {lappend xs $i}; lindex [lsort -integer $xs] end",
       "result": "200",
-      "medianMs": 7.27485,
-      "p95Ms": 8.1749,
-      "sessionMedianMs": 0.10575000000000001,
-      "sessionP95Ms": 0.1264
+      "medianMs": 6.7158,
+      "p95Ms": 7.0995,
+      "sessionMedianMs": 0.10175000000000001,
+      "sessionP95Ms": 0.1032
     },
     {
       "name": "dictionary-1000",
       "source": "set d {}; for {set i 0} {$i < 1000} {incr i} {dict set d $i [expr {$i*$i}]}; dict get $d 999",
       "result": "998001",
-      "medianMs": 7.8583,
-      "p95Ms": 8.2149,
-      "sessionMedianMs": 0.84075,
-      "sessionP95Ms": 0.9465
+      "medianMs": 7.57855,
+      "p95Ms": 7.9823,
+      "sessionMedianMs": 0.74515,
+      "sessionP95Ms": 0.854
     },
     {
       "name": "sort-1000",
       "source": "set xs {}; for {set i 1000} {$i > 0} {incr i -1} {lappend xs $i}; lindex [lsort -integer $xs] end",
       "result": "1000",
-      "medianMs": 7.6037,
-      "p95Ms": 7.9493,
-      "sessionMedianMs": 0.5703,
-      "sessionP95Ms": 0.6473
+      "medianMs": 7.58245,
+      "p95Ms": 8.4987,
+      "sessionMedianMs": 0.7361500000000001,
+      "sessionP95Ms": 0.839
     }
   ]
 }

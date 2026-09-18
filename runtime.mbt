@@ -100,12 +100,12 @@ fn Interpreter::command_value(
   depth : Int,
   discard_result? : Bool = false,
 ) -> TclValue raise TclError {
-  let input = values.map(v => v.text)
+  let requested = values[0].text
   self.tick()
   if depth > 64 {
     raise Invalid("command recursion limit")
   }
-  let command = match self.find_command(input[0]) {
+  let command = match self.find_command(requested) {
     Some(command) => command.origin()
     None => {
       let local_handler = self.state.unknown_handlers
@@ -126,8 +126,8 @@ fn Interpreter::command_value(
         (words[0].text == "::unknown" && self.find_command("::unknown") is None) {
         raise Signal(
           completion_error(
-            "invalid command name \"" + input[0] + "\"",
-            errorcode=format_list(["TCL", "LOOKUP", "COMMAND", input[0]]),
+            "invalid command name \"" + requested + "\"",
+            errorcode=format_list(["TCL", "LOOKUP", "COMMAND", requested]),
           ),
         )
       }
@@ -148,17 +148,17 @@ fn Interpreter::command_value(
     Native(name) => name
     Imported(_) => raise Invalid("invalid command import")
   }
-  let args = if input[0] == name {
-    input
+  // Only renamed/qualified native commands need a canonical command word.
+  // The caller owns the array, so normalize a copy only in that case.
+  let values = if requested == name {
+    values
   } else {
-    let args = input.copy()
-    args[0] = name
-    args
+    let normalized = values.copy()
+    normalized[0] = text_value(name)
+    normalized
   }
-  let values = values.copy()
-  values[0] = text_value(name)
-  let n = args.length()
-  let text = match args[0] {
+  let n = values.length()
+  let text = match name {
     "list"
     | "llength"
     | "lindex"
@@ -187,14 +187,14 @@ fn Interpreter::command_value(
     "array" => return self.array_command(values)
     "dict" => return self.dict_command(values, depth, discard_result~)
     "format" => format_command(values)
-    "scan" => return self.scan_command(args)
+    "scan" => return self.scan_command(values.map(v => v.text))
     "string" => return self.string_command(values)
-    "info" => self.info_command(args)
+    "info" => self.info_command(values.map(v => v.text))
     "set" =>
       if n == 2 {
-        return self.read_value(args[1])
+        return self.read_value(values[1].text)
       } else if n == 3 {
-        self.set_value(args[1], values[2])
+        self.set_value(values[1].text, values[2])
         return values[2]
       } else {
         raise Invalid("set arity")
@@ -202,18 +202,18 @@ fn Interpreter::command_value(
     "unset" => {
       let mut i = 1
       let mut quiet = false
-      if i < n && args[i] == "-nocomplain" {
+      if i < n && values[i].text == "-nocomplain" {
         quiet = true
         i += 1
       }
-      if i < n && args[i] == "--" {
+      if i < n && values[i].text == "--" {
         i += 1
       }
       if i == n && !quiet {
         raise Invalid("unset arity")
       }
-      for name in args[i:] {
-        self.unset_var(name, quiet)
+      for name in values[i:] {
+        self.unset_var(name.text, quiet)
       }
       ""
     }
@@ -222,51 +222,56 @@ fn Interpreter::command_value(
         raise Invalid("incr arity")
       }
       let text = integer_add(
-        self.get_var(args[1]).unwrap_or("0"),
+        self.get_var(values[1].text).unwrap_or("0"),
         if n == 3 {
-          args[2]
+          values[2].text
         } else {
           "1"
         },
       )
-      self.set_var(args[1], text)
+      self.set_var(values[1].text, text)
       text
     }
     "append" => {
       if n < 2 {
         raise Invalid("append arity")
       }
-      let original = self.get_value(args[1]).unwrap_or(text_value(""))
-      if args[2:].iter().all(v => v.is_empty()) {
-        self.set_value(args[1], original)
+      let original = self.get_value(values[1].text).unwrap_or(text_value(""))
+      if values[2:].iter().all(v => v.text.is_empty()) {
+        self.set_value(values[1].text, original)
         return original
       }
       let previous = original.text
-      let values = [previous] + args[2:].to_owned()
+      let pieces = [previous] + values[2:].iter().map(v => v.text).collect()
       let mut size = 0
-      for value in values {
+      for value in pieces {
         size += value.length()
         if size > 1000000 {
           raise Invalid("append size limit")
         }
       }
-      let result = values.join("")
-      self.set_var(args[1], result)
+      let result = pieces.join("")
+      self.set_var(values[1].text, result)
       result
     }
     "expr" => {
       if n < 2 {
         raise Invalid("expr arity")
       }
-      return self.expression_object(args[1:].to_owned().join(" "), depth)
+      let source = if n == 2 {
+        values[1].text
+      } else {
+        values[1:].iter().map(v => v.text).collect().join(" ")
+      }
+      return self.expression_object(source, depth)
     }
     "puts" => {
-      let nonewline = n >= 2 && args[1] == "-nonewline"
+      let nonewline = n >= 2 && values[1].text == "-nonewline"
       let start = if nonewline { 2 } else { 1 }
       let value = if n == start + 1 {
-        args[start]
-      } else if n == start + 2 && args[start] == "stdout" {
-        args[start + 1]
+        values[start].text
+      } else if n == start + 2 && values[start].text == "stdout" {
+        values[start + 1].text
       } else {
         raise Invalid("puts arity or unsupported channel")
       }
@@ -281,9 +286,9 @@ fn Interpreter::command_value(
     "if" => {
       let mut i = 1
       while i < n {
-        let expression = args[i]
+        let expression = values[i].text
         i += 1
-        if i < n && args[i] == "then" {
+        if i < n && values[i].text == "then" {
           i += 1
         }
         if i >= n {
@@ -300,11 +305,11 @@ fn Interpreter::command_value(
         if i == n {
           return text_value("")
         }
-        if args[i] == "elseif" {
+        if values[i].text == "elseif" {
           i += 1
           continue
         }
-        if args[i] == "else" {
+        if values[i].text == "else" {
           i += 1
         }
         if i != n - 1 {
@@ -318,7 +323,7 @@ fn Interpreter::command_value(
       if n != 4 {
         raise Invalid("proc name parameters body")
       }
-      let key = command_name(self.frame.namespace_name, args[1])
+      let key = command_name(self.frame.namespace_name, values[1].text)
       let owner = command_parent(key)
       if !self.state.namespaces.contains(owner) {
         raise Invalid("procedure namespace missing")
@@ -342,7 +347,7 @@ fn Interpreter::command_value(
       }
       self.define_command(
         key,
-        Script({ parameters, body: args[3], namespace_name: owner, }),
+        Script({ parameters, body: values[3].text, namespace_name: owner, }),
       )
       ""
     }
@@ -357,14 +362,14 @@ fn Interpreter::command_value(
         discard_result~,
       )
     }
-    "subst" => self.subst_command(args, depth)
+    "subst" => self.subst_command(values.map(v => v.text), depth)
     "rename" => {
       if n != 3 {
         raise Invalid("rename arity")
       }
-      self.rename_command(args[1], args[2])
+      self.rename_command(values[1].text, values[2].text)
     }
-    _ => raise Invalid("unsupported command " + args[0])
+    _ => raise Invalid("unsupported command " + name)
   }
   text_value(text)
 }

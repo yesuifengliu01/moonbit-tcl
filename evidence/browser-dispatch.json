@@ -1,0 +1,138 @@
+{
+  "utc": "2026-09-18T07:20:54.436342+00:00",
+  "engineSHA256": "05a063d3e9ce44ce2cf90e8a82660cf302732076f314327ca241af17f12e20a5",
+  "url": "http://127.0.0.1:16040/web/",
+  "tool": "CUA in-app browser, real page controls and real web Worker",
+  "checks": 11,
+  "passed": 11,
+  "rows": [
+    {
+      "name": "qualified and renamed native command",
+      "source": "rename ::set ::store;::store x 7;list [::store x] [info exists x];rename ::store ::set;set x",
+      "expected": "7",
+      "actual": {
+        "result": "7",
+        "output": "",
+        "error": ""
+      },
+      "passed": true,
+      "nativeMatched": true
+    },
+    {
+      "name": "stored double in list script",
+      "source": "scan 18446744073709551616 %f v;set script [list list $v];format %.17g [lindex [eval $script] 0]",
+      "expected": "1.8446744073709552e+19",
+      "actual": {
+        "result": "1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true,
+      "nativeMatched": true
+    },
+    {
+      "name": "procedure and nested command",
+      "source": "proc identity x {return $x};format %.17g [identity [lindex [list $v] 0]]",
+      "expected": "1.8446744073709552e+19",
+      "actual": {
+        "result": "1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true,
+      "nativeMatched": true
+    },
+    {
+      "name": "canonicalization preserves script container",
+      "source": "set script [list ::list $v];eval $script;list [lindex $script 0] [format %.17g [lindex $script 1]]",
+      "expected": "::list 1.8446744073709552e+19",
+      "actual": {
+        "result": "::list 1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true,
+      "nativeMatched": true
+    },
+    {
+      "name": "empty substitution order",
+      "source": "set empty {};list [format %.17g \"$empty$v\"] [format %.17g \"$v$empty\"]",
+      "expected": "1.844674407370955e+19 1.8446744073709552e+19",
+      "actual": {
+        "result": "1.844674407370955e+19 1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true,
+      "nativeMatched": true
+    },
+    {
+      "name": "procedure error context",
+      "source": "proc fail x {error failed};catch {fail hello} r o;list $r [string match {*procedure \"fail\" line 1*} [dict get $o -errorinfo]]",
+      "expected": "failed 1",
+      "actual": {
+        "result": "failed 1",
+        "output": "",
+        "error": ""
+      },
+      "passed": true,
+      "nativeMatched": true
+    },
+    {
+      "name": "nested collection copy",
+      "source": "dict set a nested v $v;set b $a;dict set b nested v 0;format %.17g [dict get $a nested v]",
+      "expected": "1.8446744073709552e+19",
+      "actual": {
+        "result": "1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true,
+      "nativeMatched": true
+    },
+    {
+      "name": "output before error",
+      "source": "puts [format %.17g $v];error failed",
+      "actual": {
+        "result": "",
+        "output": "1.8446744073709552e+19\n",
+        "error": "Invalid(\"failed\")"
+      },
+      "nativeCode": 1,
+      "nativeResult": "failed",
+      "passed": true
+    },
+    {
+      "name": "recover after error",
+      "source": "format %.17g $v",
+      "expected": "1.8446744073709552e+19",
+      "actual": {
+        "result": "1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true,
+      "nativeMatched": true
+    },
+    {
+      "name": "reset",
+      "result": "\u4f1a\u8bdd\u5df2\u6e05\u7a7a\u3002",
+      "passed": true
+    },
+    {
+      "name": "reset removes state",
+      "source": "list [info exists v] [info exists script]",
+      "expected": "0 0",
+      "actual": {
+        "result": "0 0",
+        "output": "",
+        "error": ""
+      },
+      "passed": true,
+      "nativeMatched": true
+    }
+  ],
+  "consoleWarningsAndErrors": [],
+  "versionLabel": "MOONBIT TCL 0.11.1",
+  "scope": "Renamed/qualified native commands, list-script container identity, numeric transport, empty substitution ordering, procedure error context, copy isolation, output before error, recovery and reset. Native Tcl results independently checked after page observations. Import/download, cancellation/timeout and mobile layout were not rerun. Temporary page and server closed."
+}

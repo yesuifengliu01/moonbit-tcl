@@ -1,0 +1,2090 @@
+{
+  "engineSHA256": "05a063d3e9ce44ce2cf90e8a82660cf302732076f314327ca241af17f12e20a5",
+  "references": [
+    {
+      "name": "semantic-benchmark-reference.json",
+      "sha256": "9c111d89457b13d1c2e352f834b7b8790304e0b4632d0c1ddedb046e9bc8bb3a"
+    },
+    {
+      "name": "conversion-workloads.json",
+      "sha256": "34012e8d50bb1482e04c6df04619fc860ce06f48e6d506aacf6893c5bf5f2799"
+    }
+  ],
+  "runtime": "v24.11.0",
+  "warmups": 20,
+  "iterations": 1000,
+  "samplingIntervalMicroseconds": 500,
+  "rows": [
+    {
+      "name": "dictionary-100",
+      "samples": 272,
+      "sampledMicroseconds": 316722,
+      "top": [
+        {
+          "functionName": "(garbage collector)",
+          "microseconds": 27569,
+          "fraction": 0.08704479006826175
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter7binding",
+          "microseconds": 25342,
+          "fraction": 0.08001338713445862
+        },
+        {
+          "functionName": "post",
+          "microseconds": 21695,
+          "fraction": 0.06849855709423407
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14expand__values",
+          "microseconds": 18662,
+          "fraction": 0.05892233567608186
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22command__value_2einner",
+          "microseconds": 15028,
+          "fraction": 0.0474485510952823
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12integer__add",
+          "microseconds": 14326,
+          "fraction": 0.04523209628633312
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22execute__value_2einner",
+          "microseconds": 13925,
+          "fraction": 0.04396600173022398
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13find__command",
+          "microseconds": 12853,
+          "fraction": 0.04058132999917909
+        },
+        {
+          "functionName": "_M0IPC16string6StringPB4Hash4hash",
+          "microseconds": 11343,
+          "fraction": 0.035813742019815485
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14quote__element",
+          "microseconds": 11095,
+          "fraction": 0.03503072094770809
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16small__operation",
+          "microseconds": 11077,
+          "fraction": 0.034973888773119646
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl6number",
+          "microseconds": 10107,
+          "fraction": 0.03191126603140925
+        },
+        {
+          "functionName": "_M0MPB7JSArray4push",
+          "microseconds": 9589,
+          "fraction": 0.030275762340475243
+        },
+        {
+          "functionName": "_M0MPC16string10StringView11has__suffix",
+          "microseconds": 8474,
+          "fraction": 0.026755324859024633
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter21dict__command_2einner",
+          "microseconds": 8148,
+          "fraction": 0.025726031030367327
+        },
+        {
+          "functionName": "_M0MPC15array9ArrayView4joinGsE",
+          "microseconds": 7802,
+          "fraction": 0.024633590341056194
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4ExprE",
+          "microseconds": 7645,
+          "fraction": 0.024137887484923688
+        },
+        {
+          "functionName": "_M0MPC16string10StringView4find",
+          "microseconds": 7413,
+          "fraction": 0.023405383901339345
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18update__dictionary",
+          "microseconds": 7277,
+          "fraction": 0.02297598524889335
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__parsed__command_2einner",
+          "microseconds": 6088,
+          "fraction": 0.019221904383023597
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15qualified__name",
+          "microseconds": 5532,
+          "fraction": 0.01746642165684733
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18expression__object",
+          "microseconds": 5105,
+          "fraction": 0.016118236181888217
+        },
+        {
+          "functionName": "_M0MPB3Map15set__with__hashGsiE",
+          "microseconds": 4542,
+          "fraction": 0.014340652054483111
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter11read__value",
+          "microseconds": 4341,
+          "fraction": 0.013706026104912195
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter16control__command",
+          "microseconds": 3217,
+          "fraction": 0.010157172536167365
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl10DictObject3put",
+          "microseconds": 3190,
+          "fraction": 0.010071924274284704
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsiE",
+          "microseconds": 3157,
+          "fraction": 0.009967731954205897
+        },
+        {
+          "functionName": "_M0MPC14json4Json17stringify_2einner",
+          "microseconds": 3104,
+          "fraction": 0.009800392773473266
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__binary",
+          "microseconds": 2839,
+          "fraction": 0.008963696869810118
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10eval__expr",
+          "microseconds": 2212,
+          "fraction": 0.006984042788312779
+        },
+        {
+          "functionName": "_M0FPC14json20need__escape__scalar",
+          "microseconds": 2190,
+          "fraction": 0.0069145812415935745
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl10DictObject11from__value",
+          "microseconds": 2129,
+          "fraction": 0.006721983316599415
+        },
+        {
+          "functionName": "_M0FPB19int__to__string__js",
+          "microseconds": 2097,
+          "fraction": 0.006620948339553299
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl13command__name",
+          "microseconds": 2035,
+          "fraction": 0.006425193071526449
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10loop__body",
+          "microseconds": 1977,
+          "fraction": 0.006242067175630363
+        },
+        {
+          "functionName": "_M0FPB21int64__to__string__js",
+          "microseconds": 1961,
+          "fraction": 0.006191549687107305
+        },
+        {
+          "functionName": "_M0MPC15array5Array11unsafe__popGRPC14json10WriteFrameE",
+          "microseconds": 1305,
+          "fraction": 0.004120332657661924
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl22dictionary__get__value",
+          "microseconds": 1209,
+          "fraction": 0.003817227726523576
+        },
+        {
+          "functionName": "dispatch",
+          "microseconds": 1131,
+          "fraction": 0.0035709549699736677
+        },
+        {
+          "functionName": "_M0FPC14json14write__escaped",
+          "microseconds": 1092,
+          "fraction": 0.0034478185916987135
+        }
+      ]
+    },
+    {
+      "name": "array-300",
+      "samples": 609,
+      "sampledMicroseconds": 698427,
+      "top": [
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter7binding",
+          "microseconds": 70902,
+          "fraction": 0.1015166939422445
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14expand__values",
+          "microseconds": 58363,
+          "fraction": 0.0835634933930103
+        },
+        {
+          "functionName": "(garbage collector)",
+          "microseconds": 44003,
+          "fraction": 0.06300300532482278
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22command__value_2einner",
+          "microseconds": 36432,
+          "fraction": 0.05216293184541835
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__parsed__command_2einner",
+          "microseconds": 35029,
+          "fraction": 0.05015413207106827
+        },
+        {
+          "functionName": "_M0FPB21int64__to__string__js",
+          "microseconds": 32568,
+          "fraction": 0.04663049967999519
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22execute__value_2einner",
+          "microseconds": 31440,
+          "fraction": 0.04501544184288408
+        },
+        {
+          "functionName": "_M0MPC16string10StringView4find",
+          "microseconds": 30775,
+          "fraction": 0.04406330224919713
+        },
+        {
+          "functionName": "post",
+          "microseconds": 29997,
+          "fraction": 0.042949370514026516
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16small__operation",
+          "microseconds": 29968,
+          "fraction": 0.04290784863700859
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4CellE",
+          "microseconds": 29104,
+          "fraction": 0.041670783059646894
+        },
+        {
+          "functionName": "_M0IPC16string6StringPB4Hash4hash",
+          "microseconds": 28057,
+          "fraction": 0.04017170012041344
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl6number",
+          "microseconds": 27285,
+          "fraction": 0.039066359118418964
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13find__command",
+          "microseconds": 26439,
+          "fraction": 0.03785506574058563
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10set__value",
+          "microseconds": 25252,
+          "fraction": 0.03615553236057598
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12integer__add",
+          "microseconds": 20500,
+          "fraction": 0.02935167168508663
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15qualified__name",
+          "microseconds": 13427,
+          "fraction": 0.019224629059300398
+        },
+        {
+          "functionName": "_M0MPB7JSArray4push",
+          "microseconds": 13000,
+          "fraction": 0.018613255214932987
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10eval__expr",
+          "microseconds": 12562,
+          "fraction": 0.017986131693076012
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__binary",
+          "microseconds": 10821,
+          "fraction": 0.015493387283137679
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18cached__expression",
+          "microseconds": 9177,
+          "fraction": 0.01313952639288
+        },
+        {
+          "functionName": "_M0IPB13StringBuilderPB6Logger13write__string",
+          "microseconds": 8645,
+          "fraction": 0.012377814717930435
+        },
+        {
+          "functionName": "_M0FPB19int__to__string__js",
+          "microseconds": 8247,
+          "fraction": 0.011807962750580948
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4ExprE",
+          "microseconds": 7783,
+          "fraction": 0.011143612718294109
+        },
+        {
+          "functionName": "_M0MPC16string6String11sub_2einner",
+          "microseconds": 7705,
+          "fraction": 0.011031933187004512
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter11read__value",
+          "microseconds": 7569,
+          "fraction": 0.010837209901679058
+        },
+        {
+          "functionName": "_M0MPC16string10StringView9to__owned",
+          "microseconds": 5803,
+          "fraction": 0.008308670770173547
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18expression__object",
+          "microseconds": 5022,
+          "fraction": 0.007190443668414881
+        },
+        {
+          "functionName": "_M0FPB28find__code__unit__from__view",
+          "microseconds": 4148,
+          "fraction": 0.00593906020242631
+        },
+        {
+          "functionName": "_M0MPC16string6String4find",
+          "microseconds": 3160,
+          "fraction": 0.004524452806091403
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15variable__parts",
+          "microseconds": 3097,
+          "fraction": 0.004434250107742112
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl13command__name",
+          "microseconds": 3024,
+          "fraction": 0.0043297295207659495
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10loop__body",
+          "microseconds": 2101,
+          "fraction": 0.0030081884005057078
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter4math",
+          "microseconds": 1978,
+          "fraction": 0.002832078370395188
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__command__values_2einner",
+          "microseconds": 1955,
+          "fraction": 0.0027991472265533834
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter16control__command",
+          "microseconds": 1845,
+          "fraction": 0.002641650451657797
+        },
+        {
+          "functionName": "_M0FPC14json20need__escape__scalar",
+          "microseconds": 1154,
+          "fraction": 0.0016522843475409743
+        },
+        {
+          "functionName": "_M0MPC16string6String20unsafe__range__equal",
+          "microseconds": 1071,
+          "fraction": 0.0015334458719379405
+        },
+        {
+          "functionName": "dispatch",
+          "microseconds": 1069,
+          "fraction": 0.0015305822942125662
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl6Number4text",
+          "microseconds": 1039,
+          "fraction": 0.0014876286283319517
+        }
+      ]
+    },
+    {
+      "name": "bigint-150",
+      "samples": 440,
+      "sampledMicroseconds": 506605,
+      "top": [
+        {
+          "functionName": "_M0MPC16bigint6BigInt11bit__length",
+          "microseconds": 90484,
+          "fraction": 0.17860858064961854
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt21js__to__string__radix",
+          "microseconds": 67903,
+          "fraction": 0.13403539246553034
+        },
+        {
+          "functionName": "post",
+          "microseconds": 32543,
+          "fraction": 0.06423742363379753
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter7binding",
+          "microseconds": 30995,
+          "fraction": 0.06118178857295131
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22execute__value_2einner",
+          "microseconds": 22734,
+          "fraction": 0.044875198626148576
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13find__command",
+          "microseconds": 21594,
+          "fraction": 0.042624924744130044
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14expand__values",
+          "microseconds": 17766,
+          "fraction": 0.03506874191924675
+        },
+        {
+          "functionName": "(garbage collector)",
+          "microseconds": 16447,
+          "fraction": 0.03246513555926215
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl6number",
+          "microseconds": 14606,
+          "fraction": 0.028831140632248006
+        },
+        {
+          "functionName": "_M0MPC16string10StringView4find",
+          "microseconds": 13495,
+          "fraction": 0.026638110559508887
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__binary",
+          "microseconds": 13164,
+          "fraction": 0.025984741563940348
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22command__value_2einner",
+          "microseconds": 13046,
+          "fraction": 0.025751818477906852
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16small__operation",
+          "microseconds": 12379,
+          "fraction": 0.024435210864480215
+        },
+        {
+          "functionName": "_M0IPC16string6StringPB4Hash4hash",
+          "microseconds": 12364,
+          "fraction": 0.02440560199761155
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10eval__expr",
+          "microseconds": 11907,
+          "fraction": 0.023503518520346225
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18cached__expression",
+          "microseconds": 11581,
+          "fraction": 0.022860019147067243
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__parsed__command_2einner",
+          "microseconds": 11254,
+          "fraction": 0.022214545849330348
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15qualified__name",
+          "microseconds": 11125,
+          "fraction": 0.02195990959425983
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4CellE",
+          "microseconds": 9358,
+          "fraction": 0.0184719850771311
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12integer__add",
+          "microseconds": 7107,
+          "fraction": 0.014028681122373448
+        },
+        {
+          "functionName": "_M0FPB21int64__to__string__js",
+          "microseconds": 7107,
+          "fraction": 0.014028681122373448
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt12op__mul__ffi",
+          "microseconds": 6575,
+          "fraction": 0.012978553310764798
+        },
+        {
+          "functionName": "_M0MPC15array5Array8containsGsE",
+          "microseconds": 5228,
+          "fraction": 0.010319677065958686
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter16control__command",
+          "microseconds": 5045,
+          "fraction": 0.009958448890160974
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter11read__value",
+          "microseconds": 4159,
+          "fraction": 0.008209551820451832
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14small__decimal",
+          "microseconds": 4132,
+          "fraction": 0.008156255860088234
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10set__value",
+          "microseconds": 4112,
+          "fraction": 0.008116777370930015
+        },
+        {
+          "functionName": "(program)",
+          "microseconds": 3431,
+          "fraction": 0.006772534815092626
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18expression__object",
+          "microseconds": 3112,
+          "fraction": 0.006142852913019019
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl13number__value",
+          "microseconds": 2079,
+          "fraction": 0.00410378894799696
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl13command__name",
+          "microseconds": 2043,
+          "fraction": 0.004032727667512164
+        },
+        {
+          "functionName": "_M0MPB7JSArray4push",
+          "microseconds": 1964,
+          "fraction": 0.0038767876353371956
+        },
+        {
+          "functionName": "_M0FP411localreview3tcl3cmd3web21evaluate__interpreter",
+          "microseconds": 1193,
+          "fraction": 0.002354891878287818
+        },
+        {
+          "functionName": "_M0FPB19int__to__string__js",
+          "microseconds": 1167,
+          "fraction": 0.002303569842382132
+        },
+        {
+          "functionName": "dispatch",
+          "microseconds": 1102,
+          "fraction": 0.0021752647526179173
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4ExprE",
+          "microseconds": 1088,
+          "fraction": 0.0021476298102071634
+        },
+        {
+          "functionName": "_M0MPB3Map20add__entry__to__tailGsRP211localreview3tcl7CommandE",
+          "microseconds": 1082,
+          "fraction": 0.0021357862634596974
+        },
+        {
+          "functionName": "(anonymous)",
+          "microseconds": 1065,
+          "fraction": 0.0021022295476752105
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt18to__string_2einner",
+          "microseconds": 1059,
+          "fraction": 0.0020903860009277445
+        },
+        {
+          "functionName": "_M0MPC13int3Int18to__string_2einner",
+          "microseconds": 1053,
+          "fraction": 0.0020785424541802785
+        }
+      ]
+    },
+    {
+      "name": "alias-200",
+      "samples": 504,
+      "sampledMicroseconds": 574835,
+      "top": [
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter7binding",
+          "microseconds": 51622,
+          "fraction": 0.08980316090704289
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13find__command",
+          "microseconds": 36273,
+          "fraction": 0.06310158567241034
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22command__value_2einner",
+          "microseconds": 36136,
+          "fraction": 0.06286325641270973
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14expand__values",
+          "microseconds": 34520,
+          "fraction": 0.06005201492602225
+        },
+        {
+          "functionName": "$make_array_len_and_init",
+          "microseconds": 34329,
+          "fraction": 0.059719745666147676
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12integer__add",
+          "microseconds": 29087,
+          "fraction": 0.05060060713074187
+        },
+        {
+          "functionName": "post",
+          "microseconds": 28862,
+          "fraction": 0.05020919046335035
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22execute__value_2einner",
+          "microseconds": 28190,
+          "fraction": 0.04904015935007437
+        },
+        {
+          "functionName": "_M0MPC16string10StringView4find",
+          "microseconds": 22398,
+          "fraction": 0.038964224516600414
+        },
+        {
+          "functionName": "_M0MPB7JSArray4push",
+          "microseconds": 20752,
+          "fraction": 0.03610079414092739
+        },
+        {
+          "functionName": "(garbage collector)",
+          "microseconds": 19335,
+          "fraction": 0.033635738951177295
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14scope__command",
+          "microseconds": 18719,
+          "fraction": 0.032564127097340974
+        },
+        {
+          "functionName": "_M0IPC16string6StringPB4Hash4hash",
+          "microseconds": 17065,
+          "fraction": 0.029686779684605147
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4CellE",
+          "microseconds": 15829,
+          "fraction": 0.027536597458401105
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15variable__parts",
+          "microseconds": 14130,
+          "fraction": 0.024580966712186975
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__parsed__command_2einner",
+          "microseconds": 13692,
+          "fraction": 0.023819008932998164
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15qualified__name",
+          "microseconds": 13020,
+          "fraction": 0.02264997781972218
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl6number",
+          "microseconds": 12943,
+          "fraction": 0.022516026337992642
+        },
+        {
+          "functionName": "_M0FPB21int64__to__string__js",
+          "microseconds": 12550,
+          "fraction": 0.021832351892282133
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter17invoke__procedure",
+          "microseconds": 10746,
+          "fraction": 0.01869406003461863
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16small__operation",
+          "microseconds": 10495,
+          "fraction": 0.018257412996772988
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10set__value",
+          "microseconds": 8483,
+          "fraction": 0.014757278175476441
+        },
+        {
+          "functionName": "_M0MPB3Map8containsGsRP211localreview3tcl7BindingE",
+          "microseconds": 7354,
+          "fraction": 0.012793236319987475
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl13command__name",
+          "microseconds": 5944,
+          "fraction": 0.01034035853766733
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter12level__frame",
+          "microseconds": 5844,
+          "fraction": 0.010166395574382214
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14small__decimal",
+          "microseconds": 5299,
+          "fraction": 0.009218297424478328
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__binary",
+          "microseconds": 5270,
+          "fraction": 0.009167848165125645
+        },
+        {
+          "functionName": "_M0MPB3Map3MapGsRP211localreview3tcl7BindingE",
+          "microseconds": 4520,
+          "fraction": 0.00786312594048727
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10loop__body",
+          "microseconds": 3834,
+          "fraction": 0.00666974001235137
+        },
+        {
+          "functionName": "_M0MPB3Map15set__with__hashGsRP211localreview3tcl7BindingE",
+          "microseconds": 3521,
+          "fraction": 0.006125235937268956
+        },
+        {
+          "functionName": "_M0FPB19int__to__string__js",
+          "microseconds": 3449,
+          "fraction": 0.005999982603703671
+        },
+        {
+          "functionName": "_M0MPC16string10StringView11has__prefix",
+          "microseconds": 3254,
+          "fraction": 0.005660754825297694
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10eval__expr",
+          "microseconds": 3178,
+          "fraction": 0.005528542973201006
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18cached__expression",
+          "microseconds": 2986,
+          "fraction": 0.005194534083693581
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl7integer",
+          "microseconds": 2961,
+          "fraction": 0.005151043342872303
+        },
+        {
+          "functionName": "_M0MPB3Map3MapGsRP211localreview3tcl8TclValueE",
+          "microseconds": 2903,
+          "fraction": 0.005050144824166935
+        },
+        {
+          "functionName": "_M0MPC16string10StringView20contains__code__unit",
+          "microseconds": 2219,
+          "fraction": 0.0038602381552967375
+        },
+        {
+          "functionName": "_M0MPB3Map3setGsRP211localreview3tcl8TclValueE",
+          "microseconds": 2126,
+          "fraction": 0.003698452599441579
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter11read__value",
+          "microseconds": 2120,
+          "fraction": 0.003688014821644472
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter16control__command",
+          "microseconds": 2065,
+          "fraction": 0.0035923351918376576
+        }
+      ]
+    },
+    {
+      "name": "sort-200",
+      "samples": 349,
+      "sampledMicroseconds": 414274,
+      "top": [
+        {
+          "functionName": "post",
+          "microseconds": 34277,
+          "fraction": 0.08273992574962465
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14expand__values",
+          "microseconds": 26016,
+          "fraction": 0.06279901707565524
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22execute__value_2einner",
+          "microseconds": 25308,
+          "fraction": 0.06109000323457422
+        },
+        {
+          "functionName": "_M0MPB7JSArray4push",
+          "microseconds": 21428,
+          "fraction": 0.05172422116763301
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter7binding",
+          "microseconds": 21034,
+          "fraction": 0.05077315979279414
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22command__value_2einner",
+          "microseconds": 20201,
+          "fraction": 0.04876241328203074
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4CellE",
+          "microseconds": 19587,
+          "fraction": 0.04728030240855086
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14quote__element",
+          "microseconds": 18525,
+          "fraction": 0.04471678164692933
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl7BindingE",
+          "microseconds": 18482,
+          "fraction": 0.044612985608558586
+        },
+        {
+          "functionName": "_M0MPC16string10StringView4find",
+          "microseconds": 17840,
+          "fraction": 0.04306328661706986
+        },
+        {
+          "functionName": "(garbage collector)",
+          "microseconds": 17583,
+          "fraction": 0.04244292424820288
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__parsed__command_2einner",
+          "microseconds": 15581,
+          "fraction": 0.037610373810569815
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12sort__values",
+          "microseconds": 13893,
+          "fraction": 0.033535775839178904
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13find__command",
+          "microseconds": 12537,
+          "fraction": 0.030262579838464396
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter12append__list",
+          "microseconds": 11628,
+          "fraction": 0.0280683798645341
+        },
+        {
+          "functionName": "compare",
+          "microseconds": 10332,
+          "fraction": 0.024940015545267143
+        },
+        {
+          "functionName": "_M0MPB3Map8containsGsRP211localreview3tcl7BindingE",
+          "microseconds": 9933,
+          "fraction": 0.02397688486364097
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16small__operation",
+          "microseconds": 9181,
+          "fraction": 0.022161661122831747
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15qualified__name",
+          "microseconds": 8878,
+          "fraction": 0.02143026113152165
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12integer__add",
+          "microseconds": 8785,
+          "fraction": 0.021205772025277955
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl6number",
+          "microseconds": 8674,
+          "fraction": 0.0209378334146
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12format__list",
+          "microseconds": 6174,
+          "fraction": 0.014903180020952317
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__binary",
+          "microseconds": 6101,
+          "fraction": 0.014726968141857805
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14small__decimal",
+          "microseconds": 4914,
+          "fraction": 0.011861714710553885
+        },
+        {
+          "functionName": "_M0FPB21int64__to__string__js",
+          "microseconds": 4831,
+          "fraction": 0.011661364217884782
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10set__value",
+          "microseconds": 4258,
+          "fraction": 0.010278221660060732
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18cached__expression",
+          "microseconds": 4055,
+          "fraction": 0.00978820780449654
+        },
+        {
+          "functionName": "_M0MPC15array9ArrayView4joinGsE",
+          "microseconds": 3868,
+          "fraction": 0.009336815730651694
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter11read__value",
+          "microseconds": 3352,
+          "fraction": 0.008091263270202813
+        },
+        {
+          "functionName": "(anonymous)",
+          "microseconds": 3043,
+          "fraction": 0.007345380110747959
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter21list__command_2einner",
+          "microseconds": 3010,
+          "fraction": 0.00726572268595181
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter16control__command",
+          "microseconds": 2989,
+          "fraction": 0.007215031597445169
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18expression__object",
+          "microseconds": 2046,
+          "fraction": 0.004938760337361263
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10eval__expr",
+          "microseconds": 1963,
+          "fraction": 0.004738409844692161
+        },
+        {
+          "functionName": "_M0MPB3Map3MapGsRPB4JsonE",
+          "microseconds": 1432,
+          "fraction": 0.0034566494638813925
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl8TclValue8as__list",
+          "microseconds": 1162,
+          "fraction": 0.0028049068973674427
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter8get__var",
+          "microseconds": 1131,
+          "fraction": 0.0027300771952862117
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl10ListObject6append",
+          "microseconds": 1090,
+          "fraction": 0.0026311088796303894
+        },
+        {
+          "functionName": "_M0MPC16string6String4iter",
+          "microseconds": 1076,
+          "fraction": 0.0025973148206259625
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl11list__space",
+          "microseconds": 1038,
+          "fraction": 0.0025055880890425177
+        }
+      ]
+    },
+    {
+      "name": "dictionary-1000",
+      "samples": 2590,
+      "sampledMicroseconds": 2835240,
+      "top": [
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter7binding",
+          "microseconds": 227246,
+          "fraction": 0.0801505339935949
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14expand__values",
+          "microseconds": 156860,
+          "fraction": 0.055325122388228155
+        },
+        {
+          "functionName": "_M0MPB7JSArray4push",
+          "microseconds": 150506,
+          "fraction": 0.053084042268026696
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4CellE",
+          "microseconds": 141197,
+          "fraction": 0.049800722337438805
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__parsed__command_2einner",
+          "microseconds": 130524,
+          "fraction": 0.046036314386083715
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22command__value_2einner",
+          "microseconds": 128787,
+          "fraction": 0.04542366783764337
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22execute__value_2einner",
+          "microseconds": 125967,
+          "fraction": 0.04442904304397512
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14quote__element",
+          "microseconds": 115518,
+          "fraction": 0.040743640749989415
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13find__command",
+          "microseconds": 113072,
+          "fraction": 0.039880927187821845
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16small__operation",
+          "microseconds": 108116,
+          "fraction": 0.038132927018524006
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl7BindingE",
+          "microseconds": 106282,
+          "fraction": 0.037486068198812096
+        },
+        {
+          "functionName": "(garbage collector)",
+          "microseconds": 103387,
+          "fraction": 0.03646499061807819
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl6number",
+          "microseconds": 92747,
+          "fraction": 0.03271222189303198
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15qualified__name",
+          "microseconds": 88629,
+          "fraction": 0.03125978753121429
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18update__dictionary",
+          "microseconds": 87881,
+          "fraction": 0.030995965068212922
+        },
+        {
+          "functionName": "_M0MPC16string10StringView4find",
+          "microseconds": 83963,
+          "fraction": 0.029614071471903612
+        },
+        {
+          "functionName": "_M0FPB21int64__to__string__js",
+          "microseconds": 81792,
+          "fraction": 0.02884835146231007
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18cached__expression",
+          "microseconds": 75219,
+          "fraction": 0.02653002920387692
+        },
+        {
+          "functionName": "_M0MPB3Map15set__with__hashGsiE",
+          "microseconds": 64249,
+          "fraction": 0.022660868215741876
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12integer__add",
+          "microseconds": 61883,
+          "fraction": 0.021826370959777654
+        },
+        {
+          "functionName": "_M0MPB3Map8containsGsRP211localreview3tcl7BindingE",
+          "microseconds": 59739,
+          "fraction": 0.021070173953527744
+        },
+        {
+          "functionName": "_M0FPB19int__to__string__js",
+          "microseconds": 52391,
+          "fraction": 0.018478506228749594
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10eval__expr",
+          "microseconds": 43684,
+          "fraction": 0.015407514002341954
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl10DictObject3put",
+          "microseconds": 39336,
+          "fraction": 0.013873957760189614
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter21dict__command_2einner",
+          "microseconds": 36588,
+          "fraction": 0.012904727642104373
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter11read__value",
+          "microseconds": 33005,
+          "fraction": 0.011640989828021614
+        },
+        {
+          "functionName": "post",
+          "microseconds": 32398,
+          "fraction": 0.011426898604703658
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18expression__object",
+          "microseconds": 30761,
+          "fraction": 0.010849522439017508
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__binary",
+          "microseconds": 30256,
+          "fraction": 0.01067140700610883
+        },
+        {
+          "functionName": "_M0MPC15array9ArrayView4joinGsE",
+          "microseconds": 25508,
+          "fraction": 0.008996769232939716
+        },
+        {
+          "functionName": "_M0MPB3Map4growGsiE",
+          "microseconds": 23110,
+          "fraction": 0.008150985454494152
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14small__decimal",
+          "microseconds": 21312,
+          "fraction": 0.0075168239725737504
+        },
+        {
+          "functionName": "(anonymous)",
+          "microseconds": 17866,
+          "fraction": 0.006301406582864238
+        },
+        {
+          "functionName": "_M0MPC15array5Array4joinGsE",
+          "microseconds": 16950,
+          "fraction": 0.005978329876835824
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter16control__command",
+          "microseconds": 15074,
+          "fraction": 0.00531665749636715
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10set__value",
+          "microseconds": 14107,
+          "fraction": 0.004975592895134098
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl13command__name",
+          "microseconds": 13611,
+          "fraction": 0.004800651796673297
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsiE",
+          "microseconds": 13263,
+          "fraction": 0.004677910864688704
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl22dictionary__get__value",
+          "microseconds": 11037,
+          "fraction": 0.003892792144580353
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter4math",
+          "microseconds": 10630,
+          "fraction": 0.0037492416867707847
+        }
+      ]
+    },
+    {
+      "name": "sort-1000",
+      "samples": 1756,
+      "sampledMicroseconds": 1981096,
+      "top": [
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter7binding",
+          "microseconds": 141566,
+          "fraction": 0.07145842503341585
+        },
+        {
+          "functionName": "_M0MPB7JSArray4push",
+          "microseconds": 118822,
+          "fraction": 0.059977911216821396
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14quote__element",
+          "microseconds": 101715,
+          "fraction": 0.0513427920706518
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14expand__values",
+          "microseconds": 99659,
+          "fraction": 0.050304982696446815
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22execute__value_2einner",
+          "microseconds": 96939,
+          "fraction": 0.0489320053142301
+        },
+        {
+          "functionName": "compare",
+          "microseconds": 96411,
+          "fraction": 0.04866548617532921
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13find__command",
+          "microseconds": 94930,
+          "fraction": 0.047917920181556065
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22command__value_2einner",
+          "microseconds": 93681,
+          "fraction": 0.047287461082148464
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4CellE",
+          "microseconds": 92926,
+          "fraction": 0.04690635890436405
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12sort__values",
+          "microseconds": 80705,
+          "fraction": 0.0407375513352205
+        },
+        {
+          "functionName": "_M0MPC16string10StringView4find",
+          "microseconds": 76808,
+          "fraction": 0.038770458372537224
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl7BindingE",
+          "microseconds": 72047,
+          "fraction": 0.03636724318256157
+        },
+        {
+          "functionName": "post",
+          "microseconds": 66639,
+          "fraction": 0.03363744109321305
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__parsed__command_2einner",
+          "microseconds": 62260,
+          "fraction": 0.03142704846206342
+        },
+        {
+          "functionName": "_M0MPB3Map8containsGsRP211localreview3tcl7BindingE",
+          "microseconds": 53841,
+          "fraction": 0.027177380601444857
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16small__operation",
+          "microseconds": 53014,
+          "fraction": 0.026759934904719406
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter12append__list",
+          "microseconds": 52129,
+          "fraction": 0.026313212484402573
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl6number",
+          "microseconds": 48185,
+          "fraction": 0.02432239528018834
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15qualified__name",
+          "microseconds": 42252,
+          "fraction": 0.021327588365228137
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12integer__add",
+          "microseconds": 39386,
+          "fraction": 0.019880914402936555
+        },
+        {
+          "functionName": "_M0FPB21int64__to__string__js",
+          "microseconds": 38012,
+          "fraction": 0.019187358916478554
+        },
+        {
+          "functionName": "(garbage collector)",
+          "microseconds": 36732,
+          "fraction": 0.018541251913082455
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter21list__command_2einner",
+          "microseconds": 32533,
+          "fraction": 0.016421718079285406
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18cached__expression",
+          "microseconds": 28363,
+          "fraction": 0.01431682260728405
+        },
+        {
+          "functionName": "_M0MPC15array9ArrayView4joinGsE",
+          "microseconds": 28325,
+          "fraction": 0.014297641305620726
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14small__decimal",
+          "microseconds": 24725,
+          "fraction": 0.012480465358569197
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10set__value",
+          "microseconds": 21049,
+          "fraction": 0.01062492680819102
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter16control__command",
+          "microseconds": 20011,
+          "fraction": 0.010100974410124497
+        },
+        {
+          "functionName": "key",
+          "microseconds": 18002,
+          "fraction": 0.009086889277450461
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10eval__expr",
+          "microseconds": 15433,
+          "fraction": 0.007790132330790633
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__binary",
+          "microseconds": 15107,
+          "fraction": 0.007625576953363189
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter8get__var",
+          "microseconds": 14836,
+          "fraction": 0.007488783986237921
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18expression__object",
+          "microseconds": 13370,
+          "fraction": 0.0067487895589108254
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter11read__value",
+          "microseconds": 13284,
+          "fraction": 0.00670537924462015
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10loop__body",
+          "microseconds": 12418,
+          "fraction": 0.006268247475134976
+        },
+        {
+          "functionName": "_M0FPB19int__to__string__js",
+          "microseconds": 12319,
+          "fraction": 0.0062182751365910584
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl13command__name",
+          "microseconds": 10976,
+          "fraction": 0.005540367554121557
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12format__list",
+          "microseconds": 7191,
+          "fraction": 0.0036298089542354333
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter4math",
+          "microseconds": 7185,
+          "fraction": 0.003626780327657014
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl10ListObject8snapshot",
+          "microseconds": 6042,
+          "fraction": 0.003049826964468153
+        }
+      ]
+    },
+    {
+      "name": "format-receipt-100",
+      "samples": 620,
+      "sampledMicroseconds": 726365,
+      "top": [
+        {
+          "functionName": "post",
+          "microseconds": 58368,
+          "fraction": 0.08035629470032284
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22command__value_2einner",
+          "microseconds": 35290,
+          "fraction": 0.048584389391008655
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15format__command",
+          "microseconds": 34167,
+          "fraction": 0.0470383347215243
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14quote__element",
+          "microseconds": 34140,
+          "fraction": 0.047001163326977485
+        },
+        {
+          "functionName": "(anonymous)",
+          "microseconds": 30166,
+          "fraction": 0.041530084737012384
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter7binding",
+          "microseconds": 26224,
+          "fraction": 0.03610306113317684
+        },
+        {
+          "functionName": "_M0MPB7JSArray4push",
+          "microseconds": 26197,
+          "fraction": 0.03606588973863003
+        },
+        {
+          "functionName": "_M0MPC16string10StringView4find",
+          "microseconds": 23603,
+          "fraction": 0.03249468242550233
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl20tcl__shortest__power",
+          "microseconds": 23081,
+          "fraction": 0.03177603546426384
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14expand__values",
+          "microseconds": 21913,
+          "fraction": 0.030168028470534788
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13find__command",
+          "microseconds": 21760,
+          "fraction": 0.02995739056810281
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22execute__value_2einner",
+          "microseconds": 16415,
+          "fraction": 0.02259883116614925
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl11float__text",
+          "microseconds": 16001,
+          "fraction": 0.02202886978309803
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl6number",
+          "microseconds": 15443,
+          "fraction": 0.021260660962463776
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4CellE",
+          "microseconds": 15132,
+          "fraction": 0.020832501566017084
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__parsed__command_2einner",
+          "microseconds": 13639,
+          "fraction": 0.018777061119409664
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__binary",
+          "microseconds": 13118,
+          "fraction": 0.018059790876487715
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt21js__to__string__radix",
+          "microseconds": 12064,
+          "fraction": 0.016608729770845237
+        },
+        {
+          "functionName": "_M0MPC28internal7strconv6Number15try__fast__path",
+          "microseconds": 11737,
+          "fraction": 0.016158542881333764
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl7BindingE",
+          "microseconds": 11085,
+          "fraction": 0.015260922538943919
+        },
+        {
+          "functionName": "_M0MPC16string6String12replace__all",
+          "microseconds": 9914,
+          "fraction": 0.013648785390265225
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12integer__add",
+          "microseconds": 9545,
+          "fraction": 0.013140776331458702
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18cached__expression",
+          "microseconds": 9091,
+          "fraction": 0.012515746215745527
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12utf16__units",
+          "microseconds": 8589,
+          "fraction": 0.011824633620838009
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16double__fraction",
+          "microseconds": 8465,
+          "fraction": 0.011653920549585951
+        },
+        {
+          "functionName": "_M0MPC16string6String6repeat",
+          "microseconds": 8461,
+          "fraction": 0.011648413676319757
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__prefix",
+          "microseconds": 8347,
+          "fraction": 0.011491467788233189
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt9from__int",
+          "microseconds": 8088,
+          "fraction": 0.011134897744247039
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter12append__list",
+          "microseconds": 7544,
+          "fraction": 0.010385962980044468
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16small__operation",
+          "microseconds": 7222,
+          "fraction": 0.00994265968211574
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl6Number4text",
+          "microseconds": 7164,
+          "fraction": 0.009862810019755908
+        },
+        {
+          "functionName": "(garbage collector)",
+          "microseconds": 7123,
+          "fraction": 0.009806364568777405
+        },
+        {
+          "functionName": "_M0MPC16string6String11sub_2einner",
+          "microseconds": 6414,
+          "fraction": 0.008830271282344275
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18expression__object",
+          "microseconds": 6316,
+          "fraction": 0.00869535288732249
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl6Number6double",
+          "microseconds": 6206,
+          "fraction": 0.008543913872502116
+        },
+        {
+          "functionName": "_M0FPC28internal7strconv13parse__number",
+          "microseconds": 6198,
+          "fraction": 0.008532900125969725
+        },
+        {
+          "functionName": "_M0FPB28find__code__unit__from__view",
+          "microseconds": 6099,
+          "fraction": 0.00839660501263139
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15qualified__name",
+          "microseconds": 5473,
+          "fraction": 0.007534779346471815
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt12op__div__ffi",
+          "microseconds": 5300,
+          "fraction": 0.0072966070777088655
+        },
+        {
+          "functionName": "_M0FPB21int64__to__string__js",
+          "microseconds": 5289,
+          "fraction": 0.0072814631762268284
+        }
+      ]
+    },
+    {
+      "name": "scan-record-100",
+      "samples": 516,
+      "sampledMicroseconds": 608916,
+      "top": [
+        {
+          "functionName": "post",
+          "microseconds": 53851,
+          "fraction": 0.08843748563020187
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter7binding",
+          "microseconds": 34277,
+          "fraction": 0.0562918366408503
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl13unicode__mask",
+          "microseconds": 25875,
+          "fraction": 0.042493545907809946
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13scan__command",
+          "microseconds": 25120,
+          "fraction": 0.041253637611755975
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4CellE",
+          "microseconds": 23434,
+          "fraction": 0.03848478279434273
+        },
+        {
+          "functionName": "_M0MPC16string10StringView4find",
+          "microseconds": 23093,
+          "fraction": 0.03792477123281372
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14expand__values",
+          "microseconds": 21590,
+          "fraction": 0.03545645047921224
+        },
+        {
+          "functionName": "_M0MPB3Map8containsGsRP211localreview3tcl7BindingE",
+          "microseconds": 18102,
+          "fraction": 0.02972823837770727
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15qualified__name",
+          "microseconds": 16660,
+          "fraction": 0.027360095645376375
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13find__command",
+          "microseconds": 16196,
+          "fraction": 0.02659808577866241
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22command__value_2einner",
+          "microseconds": 16002,
+          "fraction": 0.026279486825769072
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl21scan__integer__prefix",
+          "microseconds": 14400,
+          "fraction": 0.023648582070433362
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12integer__add",
+          "microseconds": 13819,
+          "fraction": 0.022694427474397125
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl26scan__real__prefix_2einner",
+          "microseconds": 13277,
+          "fraction": 0.021804321121468313
+        },
+        {
+          "functionName": "$make_array_len_and_init",
+          "microseconds": 12705,
+          "fraction": 0.0208649468892261
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22execute__value_2einner",
+          "microseconds": 12483,
+          "fraction": 0.020500364582306918
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__parsed__command_2einner",
+          "microseconds": 12316,
+          "fraction": 0.020226106720795643
+        },
+        {
+          "functionName": "_M0MPC16string6String8contains",
+          "microseconds": 12034,
+          "fraction": 0.019762988655249655
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl6Number4text",
+          "microseconds": 11855,
+          "fraction": 0.01946902364201302
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl21unicode__case_2einner",
+          "microseconds": 11419,
+          "fraction": 0.0187529971293249
+        },
+        {
+          "functionName": "_M0MPB7JSArray4push",
+          "microseconds": 11400,
+          "fraction": 0.018721794139093077
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl20tcl__shortest__power",
+          "microseconds": 10830,
+          "fraction": 0.01778570443213842
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt17js__parse__string",
+          "microseconds": 10341,
+          "fraction": 0.016982637999329957
+        },
+        {
+          "functionName": "_M0FPC28internal7strconv13parse__number",
+          "microseconds": 9649,
+          "fraction": 0.01584619224983413
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt11bit__length",
+          "microseconds": 9228,
+          "fraction": 0.015154799676802711
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl14small__decimal",
+          "microseconds": 8291,
+          "fraction": 0.013615999579580764
+        },
+        {
+          "functionName": "_M0FPC28internal7strconv13parse__double",
+          "microseconds": 8248,
+          "fraction": 0.01354538228589822
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12utf16__units",
+          "microseconds": 8242,
+          "fraction": 0.013535528710035539
+        },
+        {
+          "functionName": "_M0FPB21int64__to__string__js",
+          "microseconds": 7585,
+          "fraction": 0.012456562153072016
+        },
+        {
+          "functionName": "_M0MPC16string6String12replace__all",
+          "microseconds": 7476,
+          "fraction": 0.012277555524899985
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12scan__format",
+          "microseconds": 7179,
+          "fraction": 0.011789803519697299
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10set__value",
+          "microseconds": 7128,
+          "fraction": 0.011706048124864513
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15variable__parts",
+          "microseconds": 6156,
+          "fraction": 0.010109768835110262
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl6number",
+          "microseconds": 5710,
+          "fraction": 0.00937731969598434
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter8get__var",
+          "microseconds": 5704,
+          "fraction": 0.009367466120121659
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl11float__text",
+          "microseconds": 5565,
+          "fraction": 0.009139191612636226
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10eval__expr",
+          "microseconds": 5346,
+          "fraction": 0.008779536093648385
+        },
+        {
+          "functionName": "(garbage collector)",
+          "microseconds": 5193,
+          "fraction": 0.008528269909150031
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10loop__body",
+          "microseconds": 5147,
+          "fraction": 0.008452725827536147
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16small__operation",
+          "microseconds": 5123,
+          "fraction": 0.008413311524085424
+        }
+      ]
+    },
+    {
+      "name": "format-exact-100",
+      "samples": 322,
+      "sampledMicroseconds": 418297,
+      "top": [
+        {
+          "functionName": "post",
+          "microseconds": 68212,
+          "fraction": 0.16307073682096693
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl11unit__slice",
+          "microseconds": 23584,
+          "fraction": 0.056380992452730955
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt8pow__ffi",
+          "microseconds": 19903,
+          "fraction": 0.04758102496551493
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt21js__to__string__radix",
+          "microseconds": 17525,
+          "fraction": 0.0418960690609782
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22command__value_2einner",
+          "microseconds": 16010,
+          "fraction": 0.03827424055156982
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15format__command",
+          "microseconds": 15728,
+          "fraction": 0.03760007841318489
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter14expand__values",
+          "microseconds": 15054,
+          "fraction": 0.0359887830895273
+        },
+        {
+          "functionName": "_M0MPB3Map3getGsRP211localreview3tcl4CellE",
+          "microseconds": 13241,
+          "fraction": 0.03165454210764122
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter13find__command",
+          "microseconds": 12365,
+          "fraction": 0.02956033631606251
+        },
+        {
+          "functionName": "_M0MPC16string10StringView4find",
+          "microseconds": 11756,
+          "fraction": 0.028104432974656764
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl6number",
+          "microseconds": 11059,
+          "fraction": 0.026438152795740827
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter7binding",
+          "microseconds": 10268,
+          "fraction": 0.024547151904029913
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15qualified__name",
+          "microseconds": 9716,
+          "fraction": 0.02322751537782963
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt12op__mod__ffi",
+          "microseconds": 9318,
+          "fraction": 0.02227603831727218
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__prefix",
+          "microseconds": 8835,
+          "fraction": 0.021121356356846928
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter32execute__parsed__command_2einner",
+          "microseconds": 8246,
+          "fraction": 0.019713265933057136
+        },
+        {
+          "functionName": "_M0FPC28internal7strconv13parse__number",
+          "microseconds": 8212,
+          "fraction": 0.019631983973110015
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt12op__div__ffi",
+          "microseconds": 8196,
+          "fraction": 0.019593733639017254
+        },
+        {
+          "functionName": "_M0MPB7JSArray4push",
+          "microseconds": 6422,
+          "fraction": 0.015352727846482284
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter22execute__value_2einner",
+          "microseconds": 6376,
+          "fraction": 0.015242758135965593
+        },
+        {
+          "functionName": "_M0MPB3Map8containsGsRP211localreview3tcl7BindingE",
+          "microseconds": 6306,
+          "fraction": 0.01507541292430976
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl19conversion__decimal",
+          "microseconds": 6222,
+          "fraction": 0.014874598670322762
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt12op__mul__ffi",
+          "microseconds": 6116,
+          "fraction": 0.014621190206958214
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12integer__add",
+          "microseconds": 5309,
+          "fraction": 0.012691938981154538
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl15numeric__binary",
+          "microseconds": 5237,
+          "fraction": 0.01251981247773711
+        },
+        {
+          "functionName": "(garbage collector)",
+          "microseconds": 4995,
+          "fraction": 0.011941276174584087
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16double__fraction",
+          "microseconds": 4417,
+          "fraction": 0.010559482855483067
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10set__value",
+          "microseconds": 4326,
+          "fraction": 0.010341934080330482
+        },
+        {
+          "functionName": "_M0FPB21int64__to__string__js",
+          "microseconds": 4137,
+          "fraction": 0.009890102008859734
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter18cached__expression",
+          "microseconds": 4032,
+          "fraction": 0.009639084191375984
+        },
+        {
+          "functionName": "_M0MPC16string6String11has__prefix",
+          "microseconds": 3975,
+          "fraction": 0.00950281737617052
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl21unicode__case_2einner",
+          "microseconds": 3498,
+          "fraction": 0.008362479291030057
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl16could__be__whole",
+          "microseconds": 3329,
+          "fraction": 0.007958460137175261
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12utf16__units",
+          "microseconds": 3282,
+          "fraction": 0.007846099780777773
+        },
+        {
+          "functionName": "(anonymous)",
+          "microseconds": 3262,
+          "fraction": 0.00779828686316182
+        },
+        {
+          "functionName": "_M0FP411localreview3tcl3cmd3web21evaluate__interpreter",
+          "microseconds": 3135,
+          "fraction": 0.007494674836300523
+        },
+        {
+          "functionName": "_M0FP211localreview3tcl12format__real",
+          "microseconds": 3078,
+          "fraction": 0.007358408021095059
+        },
+        {
+          "functionName": "_M0MPC16bigint6BigInt7js__shl",
+          "microseconds": 3053,
+          "fraction": 0.0072986418740751185
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10eval__expr",
+          "microseconds": 2878,
+          "fraction": 0.0068802788449355366
+        },
+        {
+          "functionName": "_M0MP211localreview3tcl11Interpreter10loop__body",
+          "microseconds": 2368,
+          "fraction": 0.005661049445728752
+        }
+      ]
+    }
+  ],
+  "scope": "V8 statistical CPU self-time samples on ten fixed warm-session workloads, with profiler overhead and independent native result/stdout assertions. These are hotspot diagnostics, not timing comparisons or allocation counts."
+}

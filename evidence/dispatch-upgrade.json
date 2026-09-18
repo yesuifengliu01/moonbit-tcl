@@ -1,0 +1,525 @@
+{
+  "project": "moonbit-tcl",
+  "version": "0.11.1",
+  "localDate": "2026-09-18",
+  "createdUTC": "2026-09-18T07:36:41.880698+00:00",
+  "baseCommit": "25f500621277908ab583419a3c21ca0fcd32dc16",
+  "scope": "Reduce repeated command/control parameter arrays, canonical-name copies and empty execution containers. Delay procedure text arguments until error context is needed. Retain typed-value/copy/error/resource behavior and public signatures; full 20-project parity remains incomplete.",
+  "verified": {
+    "jsTests": 10712,
+    "wasmGCTests": 10712,
+    "conversionReferencePrograms": 4970,
+    "conversionMatched": 4969,
+    "conversionKnownDifferences": 1,
+    "conversionUnexpectedDifferences": 0,
+    "knownDifferenceLocalContractTests": 1,
+    "floatTextBatches": 91,
+    "positiveBinary64Powers": 2098,
+    "negativeBinary64Powers": 300,
+    "randomFiniteBinary64Inputs": 500,
+    "newPublicAPIRegressions": 0,
+    "conversionHostChecks": 36,
+    "unicodeHostChecks": 30,
+    "syntaxHostChecks": 24,
+    "completionHostChecks": 34,
+    "namespaceHostChecks": 20,
+    "existingSessionChecks": 29,
+    "httpChecks": 11,
+    "browserChecks": 11,
+    "resourceChecks": 17,
+    "malformedInputs": 307,
+    "independentUnicodeCases": 1866,
+    "bmpDataAuditChecks": 1048576,
+    "independentSyntaxCases": 1019,
+    "independentCompletionCases": 321,
+    "independentNamespaceCases": 312,
+    "independentSemanticCases": 726,
+    "independentCacheCases": 340,
+    "legacyIndependentCases": 248,
+    "generationCycles": 2,
+    "generationFiles": 127,
+    "exampleIndependentMatched": true,
+    "publicAPISignaturesUnchanged": true,
+    "reusedConversionAPIRegressions": 6,
+    "performanceProcessesPerCampaign": 5,
+    "performanceCampaigns": 4,
+    "independentValueCases": 855,
+    "valueExactSuccesses": 853,
+    "valueExpectedRejections": 2,
+    "valueHostChecks": 30,
+    "newOpaqueTypeNames": [],
+    "reusedValueAPIRegressions": 6,
+    "newNativePrograms": 0
+  },
+  "reference": {
+    "runtime": "Windows Tcl 8.6.15 via tkinter; only puts redirected for ordinary stdout",
+    "integerProfile": "32-bit default word, 64-bit wide, format h16, ll arbitrary integers within local resource limits",
+    "officialDocumentation": [
+      "https://www.tcl-lang.org/man/tcl8.6/TclCmd/format.htm",
+      "https://www.tcl-lang.org/man/tcl8.6/TclCmd/scan.htm",
+      "https://www.tcl-lang.org/man/tcl8.6/TclLib/Object.htm",
+      "https://www.tcl-lang.org/man/tcl8.6/TclCmd/string.htm"
+    ],
+    "comparison": "Existing independent matrices rerun with zero unexpected differences. All 855 value programs match; 4970 conversion programs retain 4969 matches and one raw-UTF-8 difference. Successful result/stdout comparisons are exact; error text is not generally compared. The known-difference backend test validates a local contract, not a native match. No added language coverage is claimed for this performance refactor.",
+    "knownDifferences": [
+      {
+        "id": "scan-raw-utf8-fragment",
+        "reason": "Native eval keeps four-byte UTF-8 and width 1 cuts the first byte; this interpreter retains UTF-16 units and counts their canonical byte lengths.",
+        "source": "scan \"\ud83d\ude00x\" \"%1s%n%s\"",
+        "referenceResult": "\udcf0 1 \udc9f\udc98\udc80x",
+        "localResult": "\ud83d 3 \ude00x"
+      }
+    ],
+    "previousReferenceLimitReport": {
+      "file": "evidence/unicode-reference-limits.json",
+      "probes": 5,
+      "rerunThisMilestone": false,
+      "scope": "Historical 0.9 native crash/truncated UTF-8 probes; not passing ordinary oracles."
+    },
+    "upstreamFullSuiteRun": false,
+    "resolvedInPriorMilestone": "scan-double-object-identity: original fixture now compares native output, annotation removed"
+  },
+  "performance": {
+    "baselineCommit": "25f500621277908ab583419a3c21ca0fcd32dc16",
+    "generalFile": "evidence/dispatch-general-performance.json",
+    "conversionFile": "evidence/dispatch-conversion-performance.json",
+    "nativeConversionReference": "evidence/dispatch-workloads.json",
+    "generalRows": [
+      {
+        "name": "dictionary-100",
+        "currentOverBaselineMedian": 0.9120531154238551,
+        "currentOverBaselineRange": [
+          0.7486631016042843,
+          0.9381267908309536
+        ],
+        "baselineMedianMs": 0.558400000000006,
+        "currentMedianMs": 0.4627499999999998,
+        "systemTclRatio": 5.817096165933371,
+        "allResultsMatched": true
+      },
+      {
+        "name": "array-300",
+        "currentOverBaselineMedian": 0.9529734289329079,
+        "currentOverBaselineRange": [
+          0.7256641321693673,
+          1.0325171939476987
+        ],
+        "baselineMedianMs": 0.9618999999999858,
+        "currentMedianMs": 0.9037999999999897,
+        "systemTclRatio": 6.198902606309943,
+        "allResultsMatched": true
+      },
+      {
+        "name": "bigint-150",
+        "currentOverBaselineMedian": 0.8883785360162982,
+        "currentOverBaselineRange": [
+          0.8494305576098294,
+          0.9143804392872029
+        ],
+        "baselineMedianMs": 0.6761000000000195,
+        "currentMedianMs": 0.5743000000000222,
+        "systemTclRatio": 5.56492248062037,
+        "allResultsMatched": true
+      },
+      {
+        "name": "alias-200",
+        "currentOverBaselineMedian": 0.8741613035739285,
+        "currentOverBaselineRange": [
+          0.8444373401535369,
+          0.9242821599085207
+        ],
+        "baselineMedianMs": 0.7769500000000562,
+        "currentMedianMs": 0.6704500000000166,
+        "systemTclRatio": 6.573039215686437,
+        "allResultsMatched": true
+      },
+      {
+        "name": "sort-200",
+        "currentOverBaselineMedian": 0.882838137472346,
+        "currentOverBaselineRange": [
+          0.8342536515853107,
+          0.9152890540937317
+        ],
+        "baselineMedianMs": 0.5637499999999704,
+        "currentMedianMs": 0.4977000000000089,
+        "systemTclRatio": 4.891400491400579,
+        "allResultsMatched": true
+      },
+      {
+        "name": "dictionary-1000",
+        "currentOverBaselineMedian": 0.9061473099503679,
+        "currentOverBaselineRange": [
+          0.8472478406330072,
+          0.9927125768912246
+        ],
+        "baselineMedianMs": 3.2919499999999857,
+        "currentMedianMs": 3.0581999999999425,
+        "systemTclRatio": 4.104140106018845,
+        "allResultsMatched": true
+      },
+      {
+        "name": "sort-1000",
+        "currentOverBaselineMedian": 0.8958695760226961,
+        "currentOverBaselineRange": [
+          0.8790688197238619,
+          0.9627677256969249
+        ],
+        "baselineMedianMs": 2.030550000000062,
+        "currentMedianMs": 1.81350000000009,
+        "systemTclRatio": 2.4634924947362493,
+        "allResultsMatched": true
+      }
+    ],
+    "conversionRows": [
+      {
+        "name": "format-receipt-100",
+        "currentOverBaselineMedian": 0.9676506719279255,
+        "currentOverBaselineRange": [
+          0.9067895763162365,
+          1.003485376572216
+        ],
+        "baselineMedianMs": 1.3431500000000085,
+        "currentMedianMs": 1.2997000000000014,
+        "systemTclRatio": 7.602807838549292,
+        "allResultsMatched": true
+      },
+      {
+        "name": "scan-record-100",
+        "currentOverBaselineMedian": 0.9059608349472769,
+        "currentOverBaselineRange": [
+          0.8482823431137418,
+          0.9616024918103737
+        ],
+        "baselineMedianMs": 0.9294000000000153,
+        "currentMedianMs": 0.842000000000013,
+        "systemTclRatio": 6.845528455284659,
+        "allResultsMatched": true
+      },
+      {
+        "name": "format-exact-100",
+        "currentOverBaselineMedian": 0.8509845662585522,
+        "currentOverBaselineRange": [
+          0.802054231717345,
+          0.8665866586658033
+        ],
+        "baselineMedianMs": 0.5637000000000398,
+        "currentMedianMs": 0.4796999999999798,
+        "systemTclRatio": 8.826126954921433,
+        "allResultsMatched": true
+      }
+    ],
+    "preValueBaselineCommit": "18552dfaeb1e902d97afc02f29a19d3df24697ed",
+    "preValueGeneralFile": "evidence/dispatch-prevalue-general-performance.json",
+    "preValueConversionFile": "evidence/dispatch-prevalue-conversion-performance.json",
+    "preValueGeneralRows": [
+      {
+        "name": "dictionary-100",
+        "currentOverBaselineMedian": 0.8333016717324587,
+        "currentOverBaselineRange": [
+          0.7562520038473838,
+          0.8597911991413328
+        ],
+        "baselineMedianMs": 0.5264000000000522,
+        "currentMedianMs": 0.43865000000000975,
+        "systemTclRatio": 5.514142049025892,
+        "allResultsMatched": true
+      },
+      {
+        "name": "array-300",
+        "currentOverBaselineMedian": 1.024735164044007,
+        "currentOverBaselineRange": [
+          0.9863179497973651,
+          1.1042708106933459
+        ],
+        "baselineMedianMs": 0.9201999999999941,
+        "currentMedianMs": 0.9596499999999821,
+        "systemTclRatio": 6.581961591220727,
+        "allResultsMatched": true
+      },
+      {
+        "name": "bigint-150",
+        "currentOverBaselineMedian": 0.6464892445062691,
+        "currentOverBaselineRange": [
+          0.628630705394177,
+          0.686220316994773
+        ],
+        "baselineMedianMs": 0.8623499999999922,
+        "currentMedianMs": 0.5574999999999761,
+        "systemTclRatio": 5.402131782945505,
+        "allResultsMatched": true
+      },
+      {
+        "name": "alias-200",
+        "currentOverBaselineMedian": 0.9566129148890392,
+        "currentOverBaselineRange": [
+          0.9033220866856991,
+          1.0048342019790761
+        ],
+        "baselineMedianMs": 0.6914499999999748,
+        "currentMedianMs": 0.6651500000000397,
+        "systemTclRatio": 6.5210784313729375,
+        "allResultsMatched": true
+      },
+      {
+        "name": "sort-200",
+        "currentOverBaselineMedian": 0.882635325277107,
+        "currentOverBaselineRange": [
+          0.8644955404631922,
+          0.9754419576765906
+        ],
+        "baselineMedianMs": 0.5828500000000076,
+        "currentMedianMs": 0.5282500000000141,
+        "systemTclRatio": 5.1916461916463295,
+        "allResultsMatched": true
+      },
+      {
+        "name": "dictionary-1000",
+        "currentOverBaselineMedian": 0.8691613089648134,
+        "currentOverBaselineRange": [
+          0.8028240719943759,
+          0.899695421809052
+        ],
+        "baselineMedianMs": 3.1870999999999867,
+        "currentMedianMs": 2.749750000000006,
+        "systemTclRatio": 3.690196604710469,
+        "allResultsMatched": true
+      },
+      {
+        "name": "sort-1000",
+        "currentOverBaselineMedian": 0.872527367005967,
+        "currentOverBaselineRange": [
+          0.8660712396029404,
+          0.9237370968126539
+        ],
+        "baselineMedianMs": 2.097350000000006,
+        "currentMedianMs": 1.937400000000025,
+        "systemTclRatio": 2.631800584120118,
+        "allResultsMatched": true
+      }
+    ],
+    "preValueConversionRows": [
+      {
+        "name": "format-receipt-100",
+        "currentOverBaselineMedian": 0.8929002818413548,
+        "currentOverBaselineRange": [
+          0.7694116928339955,
+          0.9145508347641818
+        ],
+        "baselineMedianMs": 1.4774500000000046,
+        "currentMedianMs": 1.2594499999999869,
+        "systemTclRatio": 7.367358876864504,
+        "allResultsMatched": true
+      },
+      {
+        "name": "scan-record-100",
+        "currentOverBaselineMedian": 1.0237163524249755,
+        "currentOverBaselineRange": [
+          0.9896835880984696,
+          1.0584635494029024
+        ],
+        "baselineMedianMs": 0.8415500000000122,
+        "currentMedianMs": 0.8632999999999811,
+        "systemTclRatio": 7.018699186991716,
+        "allResultsMatched": true
+      },
+      {
+        "name": "format-exact-100",
+        "currentOverBaselineMedian": 1.0108145421075854,
+        "currentOverBaselineRange": [
+          1.0050205385669015,
+          1.0460526315788166
+        ],
+        "baselineMedianMs": 0.43460000000004584,
+        "currentMedianMs": 0.440400000000011,
+        "systemTclRatio": 8.103035878565061,
+        "allResultsMatched": true
+      }
+    ],
+    "assessment": "Four fixed five-process campaigns retain every round. Ten medians vs 0.11.0 range 0.851-0.968, about 3-15% lower. Array/receipt run-ratio ranges cross 1. Direct pre-value 0.10.1 array/scan/exact medians remain about 1.025/1.024/1.011. Native ratios in the 0.11.0 comparisons range about 2.5-8.8. No significance, full application, allocation-count, peak-memory or cross-platform claim. Performance parity remains open.",
+    "diagnostics": {
+      "baselineCPUProfile": "evidence/value-runtime-profile-baseline.json",
+      "currentCPUProfile": "evidence/value-runtime-profile-current.json",
+      "pilot": "evidence/dispatch-pilot-performance.json",
+      "scope": "Statistical CPU self-time includes profiler overhead. Pilot preceded final control cleanup and is not used for final claims. Reference source/result pairs unchanged; timing digests differ as explicitly recorded."
+    }
+  },
+  "remaining": [
+    "retained raw UTF-8 fragment difference; complete object/string-interning and representation semantics",
+    "small measured array/scan/high-precision regressions vs 0.10.1 and full performance parity; binding and numeric-text hotspots",
+    "full string/parser/Unicode/error-stack semantics and active namespace deferred destruction",
+    "file/channel/package/regexp/switch/events/process/network behavior and automatic loading",
+    "full objects/bytecode, aggregate memory governance, upstream suite and cross-platform/application acceptance"
+  ],
+  "localOnly": true,
+  "remoteCIExecuted": false,
+  "archivesUpdated": false,
+  "otherRepositoriesRetested": false,
+  "temporaryServicesStopped": true,
+  "engineSHA256": "05a063d3e9ce44ce2cf90e8a82660cf302732076f314327ca241af17f12e20a5",
+  "sourceGitBlobSHA256": {
+    ".gitattributes": "4d03324fd57c757cc2b195010f56a85bededcc3bcff5124c79c5f8c23e51efed",
+    ".github/workflows/ci.yml": "f460a340ddf70a9507def055b404fa1e190eeeee14d20cf4e76f2a06109ae9f4",
+    ".gitignore": "3d9dc44b0aac4db3956c0de5cf053d34927f4b4105058932d2dc9a6ffcb58a03",
+    "CONTRIBUTING.md": "e066713924ff8db789960bf03122a64cea6904cf4dc7666b9747802f3b50d491",
+    "DUPLICATION.md": "e60d38bc20862962083412f5ab77d8a32eb0da1d81fbfeb710f25d03b54ff5fc",
+    "FEATURES.md": "c444d2db9d8e828c94b65474776bdf6f730bbb62dd9aea052eaea49ab1509204",
+    "LICENSE": "a2ae469f92ac7fd70592f338c7c43657c7e9510be802cfb3db880fff11df3807",
+    "MANIFEST.sha256.json.baseline": "099e1f899d32e652cb090c42cdb18476ba1b0cfb3aa841881d5f826ea7234d9a",
+    "README.mbt.md": "f955b3dea01ba9b1b8f044aacad7d52f22b3565b78693592401e5a4c0d2e7031",
+    "README.md": "e9dd1ed334d69519b2d8dfa7f98bcbaba30e54bb3bb825493a4df725cc949e0a",
+    "ROADMAP.md": "ff17f15a7fc10140d1191f72f30ffe2e238c5a70f596069eda8e6c2f00bc683f",
+    "TESTING.md": "5ab71b9575646071c93c539846a38ce21407e59e62f9d7b7d3414ff1bdb8d2dc",
+    "cache.mbt": "30af848d19e254a3cb0516ef056f03c8c5cfc307da8dcebf21622a6e5f9f62df",
+    "cache_oracle_test.mbt": "b79827cd0f29baf46201a2a0d744798851616169783729d8e35accaf7b7474e7",
+    "cache_test.mbt": "8c2f4a90cce9257b27a4e74db915bbd567923da69b45b816d77b0a72375c1a69",
+    "cmd/main/main.mbt": "93b7ef777a0c79d66905adb25061984b741d9117056b1067ce081ca2167eab18",
+    "cmd/main/moon.pkg": "fb05267e7d953ce6350d13856c4f3e04305e3bcdfd094615c9ecc675f0886c43",
+    "cmd/main/pkg.generated.mbti": "fe6280b0e28de534bdb4e7829991557f24929f3f7ea652bfcc56249ff6529ff1",
+    "cmd/web/main.mbt": "39d936968553ef6ccfbd12ed7d8fb3067be533781f10e11e1872a866ad658cfd",
+    "cmd/web/moon.pkg": "d3f0b49ad95dcd82154319a049f5d4d188117d50a5831eebf60bf809b6633bfc",
+    "collections.mbt": "b2aa6ac2d7c1dbf32616c2ab723145ed022bd80fe96b5a8ce676ed76f23746c1",
+    "commands.mbt": "adc718e03b4af185576aa66bf5a2c62d489d0bc18f5b7409369f38ed62061839",
+    "completion.mbt": "b08f16da9535e03db096448285aae509e55c7f8fde6a86a6dfbebb9ca00313e3",
+    "completion_oracle_test.mbt": "75e35f8e0ff8c9037a2b213e33f81bf71528da4f9a24a2ab0d0a9b88a03aa94d",
+    "completion_test.mbt": "702cc4d99fc559da05264e6cf3dbf00085038a5905d9e841b2a7ce8346e43bb7",
+    "control.mbt": "741c1ef3920d3e2f7a2f5a8c987850649a98fcccce418c063351861b5995bd18",
+    "conversion_oracle_test.mbt": "5ea8299b83f7413e932daeeeb075fead757ad32cd42d72bcc4e91633c5960992",
+    "conversion_test.mbt": "d92db502d8179875ad1a52294aa33385c5703113ef971e32e8209501806a27c4",
+    "core_test.mbt": "a23e50ec1bfc5fd99a024dbf0d3eb5acb38438d746699fb4dbcf0f5beef47a2a",
+    "ensembles.mbt": "fc87916da1bb9caecac15c23c340e88c536a276218ea7c89702f2a0787102c14",
+    "examples/completions.tcl": "4979edbdc0b0e8c4f9b95477d73b31c89ca83dee86bd07c7c9fcb7de862e6104",
+    "examples/conversion.tcl": "99a21a1a06288edf6a2e6afbc015299d552b291b6a4373b1016a345e45e71fab",
+    "examples/namespaces.tcl": "479acee7e94b97d6d382133999228ab33af5830b38ae57381a9bc71d5ac4a5b9",
+    "examples/substitution.tcl": "0685962d2dcf1987403a162a39328ddf543bcbcdc1235dc6c106524a8d0cf656",
+    "examples/unicode.tcl": "af9af4d9956475429e83bed8c8bdac3692f8e82c77e0bb5ef23698c9399aa174",
+    "examples/values.tcl": "5d97841f26a123d4cb045d585fa3f8bec4c4c5329faa87b5eec3539e002feb06",
+    "expressions.mbt": "34bf9b94bc3e37adacdc533447bd126082426712e4f8cc52a2cfa702d6a16ca8",
+    "format.mbt": "33df3f043c66866054f78369b948e2499067a4786e3fba8384685b1a62771a82",
+    "format_real.mbt": "b42334e084321f60f9472ed71f05ed8b1b29ee2a6e662c0abc5a0c94976a6446",
+    "list_extensions.mbt": "17d6bb0db7313337d35e3e12fedf03de2dbc6d2288897814edaf007445095eb2",
+    "list_limits_test.mbt": "7bdcf5b435a944a8027584193c28111259e03bcb60ba56afa80fa580d6518a82",
+    "list_oracle_test.mbt": "b732479b958e5233b98822f7ff7bf1ec746f2919a577cef1eab0b6764d215cc7",
+    "lists.mbt": "201ebf6aea295fed65d147ca8cd9cd545be1cbc77c02e5ab019bff8c6f913e6d",
+    "moon.mod": "635fec1f55172844cff48d3789226fc5fed90dcc905c8c06d24d954f13c6b245",
+    "moon.pkg": "7583a76298c81eb35005ed059d791d0810d14449990a68211fde158b6728e509",
+    "namespace_oracle_test.mbt": "e92672048f6cae053ef0ca61749b45953c91c158c60b2b27dcdc69032de2b4ec",
+    "namespace_test.mbt": "e4ebff880ad4076323513aa4f38d516bb167a0177c6725f60dcdc66415d4fefc",
+    "numbers.mbt": "9345ff493006c7c65944ccabfb097e159a07883dddc435f4ed1f4e71b989f0e2",
+    "objects.mbt": "15970565fade43817493b8daa13437c7701aeecb37885858f6716e0f67e021c7",
+    "oracle_test.mbt": "8c35589044b79b68a2ae71de90063a90d2550734e78d993f2a50a44e2ea6b48c",
+    "pkg.generated.mbti": "b0e86ed70351eab6854c2d3285126578570287aa08ade5853ddac43863fc2ae6",
+    "runtime.mbt": "380e16c322a036cbc22d925f37977d7c3223a4eaa8105b845365f88625446a3f",
+    "sample.txt": "f30809bfe24e441c6bfb61f15d9787e4fde1cff2e2951e7c69d0b35927ded1d5",
+    "scan.mbt": "6f2e76edd1e938dc2dfb026571b3c4378bd25add62d6d7d13be285150a991f0d",
+    "semantic_oracle_test.mbt": "dd5c6adfd0bbd138adfead2034af9ea48fd36b92187085312c93ced32506161d",
+    "start-review.ps1": "b81e1ec128093b2011996812e138f4d0dbd403d2f65789dbcc17102af30ba416",
+    "string_classes.mbt": "519c3761a76f85ed157eb7e5eb4e9556869a6c52c28d98b67d13548114f11823",
+    "strings.mbt": "139d0733a16552871516690b5eae0d5bc7d2d97acc23a9375e16f5c53cbb6df6",
+    "substitution.mbt": "4b81fc92b1646d01218e6b7d17729ebe4bf56f1f6b1f1ef466144d7d8641c5f0",
+    "syntax.mbt": "ded09c7a8fc5017e162b03fb8cf70a2e3e120be4341165d8e2540b8e4c87a793",
+    "syntax_oracle_test.mbt": "0be27370b24ee86a8e6019084a7be8d728615e2df19c95d7a3e97864939346f9",
+    "syntax_test.mbt": "e9a93c2ae39bc675afb386d96235431f4eed6356507a32862f3774e7b35131f1",
+    "tools/audit-unicode.py": "48bef538b5aa46689595c46a056c2fdadaada8111c5192dda812a99fc499cb80",
+    "tools/benchmark-conversion.py": "78f8bed111fdea4ef5f2abc5aa6cc72bd80d76efff314fb1b78ca907a38b3c55",
+    "tools/benchmark-semantic.mjs": "bc4ce49be8a2f30012458ce7566d012eb5e703f722c3b0d6a1aa2cbe735dd4ee",
+    "tools/benchmark-semantic.py": "d00f312efaef9f59075ef8d1952d7c1d8c7e129d24c4a62f73109c95491c4358",
+    "tools/benchmark.mjs": "53ac611536ba7cb3732017d22976ff8f38dbd9e7aa579c2469eab75b0cdc7216",
+    "tools/cache-cases.py": "590fe0d00e88221581cccb9cda709d4a589cd033d23e1bb5b620d42676a46d3a",
+    "tools/check-generation.py": "b518dfbe1cdf80500e9279a65b51f321500888cf03043aec0eb19e572fc43dd9",
+    "tools/check-proof.py": "5f5faf08e24765b7c9915ea8858513445069e9a01e21fce0f3a67efae4c28deb",
+    "tools/cli.mjs": "d3a1d6db5468af0d656d850dc6ff11fc628e7865c127a2fae2e03378488c4cd0",
+    "tools/compare-performance.mjs": "ade321e8b04dcaf656ac831dba4ec1aad27d3228bc7b97ee3ae1130681e69e24",
+    "tools/completion-cases.py": "d028274f5accd238ac6616a175fa63bc43d9ef11589a18452e23ec8b7f30c6e5",
+    "tools/conversion-cases.py": "d4286efecffa196b59298fdec592c4e0fa789fad0ac06aa6f4394c4fae87ed66",
+    "tools/generate-semantic-oracle.py": "844d027205bfd83b06443776bc359ff71a9af956f7fae2151ce559e05202fc56",
+    "tools/generate-unicode.py": "c61a5c387bf5991caca03005d7572c46db36fc54731f28226740c55946f777f1",
+    "tools/generate_list_oracle.py": "e6ab86dbebf6750d7f40ec207ffd6de120f46e47198c5f07b32684a49dd30ce6",
+    "tools/invalid-input.txt": "51c2ec0c89654a56d1c7cf4326886482fc2f4e8dcd77ad998a5933cea21bce8b",
+    "tools/namespace-cases.py": "dc050aa1f1747e9d7699eea83feb2e2e3cdc82dd3583478a8dbd87a72bafce8e",
+    "tools/probe-unicode-reference.py": "ffbf0c5304cd878359d22455a73cbb879fa5341595a253ffdd7348e6ac212e7b",
+    "tools/profile-conversion.mjs": "a175e48bc053a1c1096dd6987763651c51e47cc40865360858a72221cfd80efb",
+    "tools/profile-runtime.mjs": "ad27d5bfac6ea1eca7ca7d2c2e504deaa84d19a3ab2068e008af5d9d88629b0f",
+    "tools/repeat-performance.py": "ef73157072e953e9661cb15966bb8ffcc621aeb355c49de487c193ad7d64f6b1",
+    "tools/robustness.mjs": "24964a078897dccc448ba3d5db4c08f6446d38008424987bf26b4b6f042a21d6",
+    "tools/semantic-cases.py": "708334e35cf039307a8fde22f4a758c6f343da09ff860462eeeedcff472daa7b",
+    "tools/semantic-stress.mjs": "19e83364465bd2b4b616f6db52bd55b274f672d8e02fc208d1ce6e77330d0914",
+    "tools/serve.py": "06046d6c07e65ac199fbefdeaf19e9b32c1ec0557955c19c1bc7fe07cee34681",
+    "tools/syntax-cases.py": "ce1302938514318176cb758ccfd8cacb4edeb64e66962b399b713fba804f67d2",
+    "tools/test-cli.mjs": "b1acaf8992e16d37e1527fd60beeea275ce0df574a9622ab3b44d86dcaf08b03",
+    "tools/test-completions.mjs": "02bc33910f7e35454719877a59fb9a704917f2c070b46253fb6819159bac88a7",
+    "tools/test-conversion.mjs": "da778d621da5c649b4cfc6255e2bf4d251dd35ecbc398c45822a87cc2b90296a",
+    "tools/test-demo.mjs": "02ec6337b9c72c299450db6f0d2b024fd4fd96193d17e5cd501c3a8e6eb87188",
+    "tools/test-http.py": "af52804ebd506ce54417ae307c9c2841ab91db46c6a8ea1b21737d1701ca079e",
+    "tools/test-namespaces.mjs": "b3cae9ece8b2a61b9b3930e31dd5b9723171d09d5a3008388e8b3b1887c6cf7b",
+    "tools/test-semantic-oracle.mjs": "54cd66b06d0b1f75df810299bb893461d8d9b1fc356cb9131cdb1a5362b3b64c",
+    "tools/test-sessions.mjs": "d69fd2c4bcd5b6a0e75bd4dfe0598e4bf5b219f87fe5ea0ba622b520fa4adfa0",
+    "tools/test-syntax.mjs": "4670c232f372473ba92a53d67e59411bd0147d2d903ba2875c851056580eccaa",
+    "tools/test-unicode.mjs": "0ca92b1213c42292259e9bccbad79048e7a3211f55b137d543fefa59dcae9879",
+    "tools/test-values.mjs": "85ee178617fcf7c0bde57af3efcb3568ec23c953f86e2436e3e9900f97224e23",
+    "tools/unicode-cases.py": "4e740b14c0f3f837214a313d2519c591d703e2c681e1af6e50e53b91e055012a",
+    "tools/value-cases.py": "65cd535a6e90f80ff6bf801b12362a9fa626d21a1af9e90d741533d096a9971d",
+    "try.mbt": "36aa8ef131d9cd6bba7782c24691cdc87f04ac679333c61edcb6e194341b7e23",
+    "unicode.mbt": "d438c8c5a2ce01359675651cfe21ae37dcbb9235e0d7a2afeee472c5fbc056cc",
+    "unicode_data.mbt": "f51ff6d44450d5e18f0b9c5bda661076b814f9da9ef86cfd612059c82ee2f330",
+    "unicode_oracle_test.mbt": "c0b1052d653287eada44b82ca903186bf1d3968a9f2b4365f5e70e243257dd8d",
+    "unicode_test.mbt": "92dae9926d6ab96711d8842aff685e028b11007e5e25a2316e07f1128f9358ed",
+    "value_oracle_test.mbt": "1e61e9f536888056ea7e33e007e94716bde109d874b5b048342eef5cfaa2c8b0",
+    "value_test.mbt": "b2a4f6e0ec1ff9ba15c2c33a662cdd14e94b2a9fff2ee1211996fe70badd7269",
+    "values.mbt": "6a6e96be9fcda3f69585c9ff4267bf83ddcee31c4c74164f15ee8161168ab385",
+    "variables.mbt": "841605e0775415897efb93c6cd526fad813488da2b08f17607f1436f2c33703c",
+    "vendor/ucd-16.0.0/LICENSE.txt": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+    "vendor/ucd-16.0.0/SOURCE.json": "a4a69210cf52fb8ecc22f41f422766b310521572cca7a9211e1d43024aa7b004",
+    "vendor/ucd-16.0.0/UnicodeData.txt": "ff58e5823bd095166564a006e47d111130813dcf8bf234ef79fa51a870edb48f",
+    "verify.ps1": "7a264dc8a22863a11de7c008a467ac8b26eb7483fe3f662ec7bd4f4788b1f8fb",
+    "web/app.mjs": "fc5c5b7cb6709373d625dacd614f369a486ecbe251eadd8140e6ead85dac8ba5",
+    "web/config.mjs": "5d4b51969436593df6106bd88c1c6fcc88434a16533eb11c6e1a942ccaf458a4",
+    "web/engine.mjs": "05a063d3e9ce44ce2cf90e8a82660cf302732076f314327ca241af17f12e20a5",
+    "web/index.html": "14b1a519eb87cab1301dd78df352b070735e01d4945e72e062dc0445e726f9eb",
+    "web/worker.mjs": "280f6f11bf2c623721d2b2075b1fdb2f37fb918a198eaa8689325701bf072358"
+  },
+  "evidenceGitBlobSHA256": {
+    "evidence/semantic-reference.json": "3345cfb5b04a9176e59790e8357dd7e0356ad88fef50329b78810ffe9cd6492c",
+    "evidence/semantic-comparison.json": "2c81e29a262035c923d62f9cc399feaada18841e454be013e7e82e9381a28d2c",
+    "evidence/cache-reference.json": "5f00a5d10be827bb5b379a248b9b0e2cf284ca999de8b4b7afdef5652d34a017",
+    "evidence/cache-comparison.json": "a2d577de6c782437846b44d48a618ef2e42779c640bb6de76489687427eabcaf",
+    "evidence/namespace-reference.json": "5748684b58c69154ec80905c580d6eb5f7c39fa2225066c55c6c844bd7a634fb",
+    "evidence/namespace-comparison.json": "7b22d41687116fe9f9354e7e3ff4c62a2612aa71920aa20f2570225d4a639e8f",
+    "evidence/completion-reference.json": "81fae54e0e153507c50fedbd57f2a0dd9aea2fd9ae5fa9a8db23439f9ef4bf80",
+    "evidence/completion-comparison.json": "d7ca90195609d8e8ae0bd4b35ec433f2ca248bb89d0df5c5dcb0365b1ab382bb",
+    "evidence/syntax-reference.json": "d273f3ac673f9171b8c3471f35ab6e8cfdf1b0fd1cfb65746e9a97c1612fa089",
+    "evidence/syntax-comparison.json": "39c406f35806f68f9423417e74b63fca01db08a5bcb69b9e493af78f9c197ad9",
+    "evidence/syntax-hosts.json": "84547ea734de42258d72b2ed8d3e9773f3530eccd9401ef2172a124f183ff8d6",
+    "evidence/completion-hosts.json": "bc4da9171f4fe03d03288d4e9a312ab5b9ad7dc64fdb8f4885dc939df371fe55",
+    "evidence/namespace-hosts.json": "9dee4c8fef76b24afb8691405766e89482a9f6a917e6ff000749929ff07395df",
+    "evidence/session-validation.json": "454b1b645cd4685618e766249abe43ed013e4da929326b2b249219c9dd1f7fc2",
+    "evidence/http-validation.json": "8818710b7e5a27c7430b37de3f81812e0d5ff35c14cb4646808067306a14d6a8",
+    "evidence/browser-dispatch.json": "2e4be29c327f0e3ae3c8ced5e79b13da0c43da9ac017b111b435c702ce5f26d0",
+    "evidence/generation-dispatch.json": "737416aef336641a59f00517d32d865a62aa9e364df4938d92b11a1fe8a924e1",
+    "evidence/verify-dispatch.log": "e221c5c3e60823e13f979c9edd23422339cca9e067e3e37108fd33f7ad07bfe3",
+    "evidence/semantic-stress.json": "1af968e5ce8f5331583e21ec368242c37d57993cea2a7b7156b7b28a3f3e4d2e",
+    "evidence/dispatch-robustness.json": "13a944d0ecb54a44791d4372bc5faefa3b2c4cd140c2c25fe8776b0d1ea5faf1",
+    "evidence/dispatch-benchmark.json": "ddc7db755444144e65e5ef3619b76e7734e67a9d636eb385319c46d85531d401",
+    "evidence/semantic-benchmark-reference.json": "9c111d89457b13d1c2e352f834b7b8790304e0b4632d0c1ddedb046e9bc8bb3a",
+    "evidence/dispatch-general-performance.json": "d6e505c1c37a32f57dd18871ddbbf0278bfb4dea5edd3f354fe476eb22cd24f6",
+    "evidence/example-dispatch.json": "12255ad53a364359fb239d4ac91d9edf74d4e08f7bf87b15e8028d05340834c3",
+    "evidence/unicode-reference.json": "53f87642cdfd5b1e7cf0ceedb770b058f3b85f81f8e143860a3fa94af17ae28f",
+    "evidence/unicode-comparison.json": "fc754254912f6bfd5b22672a91599d34ce59a4665f0f0a47f33c7b5a79b8d509",
+    "evidence/unicode-hosts.json": "beaad4bf66cdf949262f10184057e207deb86c9452e71e873b9b501b62f9bf58",
+    "evidence/unicode-data-audit.json": "fd88833e9934d0e052e3b53a8e77e476d196dbdd8f409fb2570edb35a2c78379",
+    "evidence/unicode-reference-limits.json": "5adf27219b39d17d419aa8c506b7fecaf785476ca855b11068bde3d481343843",
+    "evidence/conversion-reference.json": "6e19e9b2a58c27ab59b2ed03197c636134afdad09bca707c560b8a0268064ebb",
+    "evidence/conversion-comparison.json": "7467c23d705c7125909af1277071da5e00e6cd672e02fbf1357c8ec7625e7525",
+    "evidence/conversion-hosts.json": "e5ce573f0299d40a11c20947b3c2ab4b2aa560fe421e08a98cb7770f0b245f03",
+    "evidence/dispatch-workloads.json": "a12631071b59b9b8fcfb0e5b4ded0d154523fd0826ba805511350d6f811cddb7",
+    "evidence/generation-dispatch.log": "a595fb44ba7c068339573e98fb2c1cd31e65bfd78454b59c91770a78ab1f6333",
+    "evidence/dispatch-conversion-performance.json": "72c1a23efa72e49fe591235f81228dc8e48b81d233607bb866c2b2895e8940ee",
+    "evidence/value-reference.json": "0a38af21378f60753ee99e050793265feb56505fda43834ebd723d7ec537fc63",
+    "evidence/value-comparison.json": "5a1f95f1b949310b1953cd97098dc72e68ce5557845b1a90fc169901c23f56ea",
+    "evidence/value-hosts.json": "1261b40799173ab447ea820b525384cdd08bcf099b9c719b54af595d7d7733c5",
+    "evidence/dispatch-prevalue-general-performance.json": "d65bbc17a7eab38cf65a090476c4c044b42a0fe6e2a99a4d60fdc3991a53e14f",
+    "evidence/dispatch-prevalue-conversion-performance.json": "0378f78df561e406d69fd76569c1e9f44109ac20c4c27f3f049f329284f65e7b",
+    "evidence/value-runtime-profile-baseline.json": "3a4cceec6ee54767e8912e20c1729f6165f40edb6ff7aea875565a8b2318b701",
+    "evidence/value-runtime-profile-current.json": "ed9edfb33a175506407d5bb7adacd472a9d88783eaede4249af9902abd72ea5e",
+    "evidence/dispatch-pilot-performance.json": "76611351cb84709b3825aec16bf77007dbd912773960380db3059b6ec02f9250"
+  }
+}
