@@ -119,8 +119,9 @@ fn numeric_prefix(text : String, real : Bool) -> Int {
 ///|
 fn Interpreter::string_is(
   self : Interpreter,
-  args : Array[String],
+  input : Array[TclValue],
 ) -> String raise TclError {
+  let args = input.map(v => v.text)
   let n = args.length()
   if n < 4 || n > 7 {
     raise Invalid("string is arity")
@@ -159,6 +160,7 @@ fn Interpreter::string_is(
   let valid = if value.is_empty() {
     !strict || kind == "list"
   } else if classes.search(kind) is Some(bit) {
+    input[n - 1].payload = Plain
     let mut valid = true
     for c in value.to_array() {
       if (unicode_mask(c.to_int()) & (1 << bit)) == 0 {
@@ -211,6 +213,12 @@ fn Interpreter::string_is(
   }
   if !valid && failure is Some(name) {
     self.set_var(name, position.val.to_string())
+  }
+  if valid && kind == "list" {
+    ignore(input[n - 1].as_list())
+  }
+  if valid && ["integer", "wideinteger", "entier", "double"].contains(kind) {
+    ignore(input[n - 1].as_number())
   }
   boolean_text(valid)
 }

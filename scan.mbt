@@ -313,7 +313,7 @@ fn scan_byte_offset(text : String, units : Int) -> Int {
 fn Interpreter::scan_command(
   self : Interpreter,
   args : Array[String],
-) -> String raise TclError {
+) -> TclValue raise TclError {
   if args.length() < 3 {
     raise Invalid("scan arity")
   }
@@ -321,7 +321,7 @@ fn Interpreter::scan_command(
   let (tokens, slots) = scan_format(args[2], variables)
   let text = args[1]
   let cs = utf16_units(text)
-  let values : Array[String] = Array::make(slots, "")
+  let values : Array[TclValue] = Array::makei(slots, _ => text_value(""))
   let mut at = 0
   let mut converted = 0
   let matched = Array::make(slots, false)
@@ -354,7 +354,7 @@ fn Interpreter::scan_command(
           break
         }
         let value = if kind == 'n' {
-          scan_byte_offset(text, at).to_string()
+          number_value(Small(scan_byte_offset(text, at)))
         } else if kind == 'c' {
           let first = cs[at].to_int()
           at += 1
@@ -365,9 +365,9 @@ fn Interpreter::scan_command(
             cs[at].to_int() <= 57343 {
             let cp = 65536 + (first - 55296) * 1024 + cs[at].to_int() - 56320
             at += 1
-            cp.to_string()
+            number_value(Small(cp))
           } else {
-            first.to_string()
+            number_value(Small(first))
           }
         } else if kind == 's' || kind == '[' {
           let start = at
@@ -392,7 +392,7 @@ fn Interpreter::scan_command(
           if at == start {
             break
           }
-          unit_slice(text, start, at)
+          text_value(unit_slice(text, start, at))
         } else if ['f', 'e', 'E', 'g', 'G'].contains(kind) {
           let (length, real, exhausted) = scan_real_prefix(
             unit_slice(text, at, (at + width).min(cs.length())),
@@ -404,9 +404,9 @@ fn Interpreter::scan_command(
           }
           at += length
           if slot < 0 {
-            ""
+            text_value("")
           } else {
-            Real(real).text()
+            number_value(Real(real))
           }
         } else {
           let (length, raw, exhausted) = scan_integer_prefix(
@@ -431,7 +431,7 @@ fn Interpreter::scan_command(
             }
             conversion_wrap(limited, bits, kind != 'u')
           }
-          value.to_string()
+          number_value(Whole(value))
         }
         converted += 1
         if slot >= 0 {
@@ -445,19 +445,19 @@ fn Interpreter::scan_command(
   if variables > 0 {
     for i in 0..<slots {
       if matched[i] {
-        self.set_var(args[i + 3], values[i])
+        self.set_value(args[i + 3], values[i])
       }
     }
   }
   if variables == 0 {
     if eof && converted == 0 {
-      ""
+      text_value("")
     } else {
-      format_list(values)
+      list_value(values)
     }
   } else if eof && converted == 0 {
-    "-1"
+    text_value("-1")
   } else {
-    assigned.to_string()
+    text_value(assigned.to_string())
   }
 }

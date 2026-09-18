@@ -94,12 +94,13 @@ fn builtin_names() -> Array[String] {
 }
 
 ///|
-fn Interpreter::command(
+fn Interpreter::command_value(
   self : Interpreter,
-  input : Array[String],
+  values : Array[TclValue],
   depth : Int,
   discard_result? : Bool = false,
-) -> String raise TclError {
+) -> TclValue raise TclError {
+  let input = values.map(v => v.text)
   self.tick()
   if depth > 64 {
     raise Invalid("command recursion limit")
@@ -109,20 +110,20 @@ fn Interpreter::command(
     None => {
       let local_handler = self.state.unknown_handlers
         .get(self.frame.namespace_name)
-        .unwrap_or("")
+        .unwrap_or(text_value(""))
       let global_handler = self.state.unknown_handlers
         .get("::")
-        .unwrap_or("::unknown")
-      let handler = if !local_handler.is_empty() {
+        .unwrap_or(text_value("::unknown"))
+      let handler = if !local_handler.text.is_empty() {
         local_handler
-      } else if !global_handler.is_empty() {
+      } else if !global_handler.text.is_empty() {
         global_handler
       } else {
-        "::unknown"
+        text_value("::unknown")
       }
-      let words = parse_list(handler)
+      let words = handler.as_list()
       if words.is_empty() ||
-        (words[0] == "::unknown" && self.find_command("::unknown") is None) {
+        (words[0].text == "::unknown" && self.find_command("::unknown") is None) {
         raise Signal(
           completion_error(
             "invalid command name \"" + input[0] + "\"",
@@ -130,16 +131,17 @@ fn Interpreter::command(
           ),
         )
       }
-      return self.command(words + input, depth + 1, discard_result~)
+      return self.command_value(words + values, depth + 1, discard_result~)
     }
   }
   let name = match command.body {
-    Script(definition) => return self.invoke_procedure(definition, input, depth)
+    Script(definition) =>
+      return self.invoke_procedure(definition, values, depth)
     EnsembleCommand(ensemble) =>
       return self.invoke_ensemble(
         command,
         ensemble,
-        input,
+        values,
         depth,
         discard_result~,
       )
@@ -153,8 +155,10 @@ fn Interpreter::command(
     args[0] = name
     args
   }
+  let values = values.copy()
+  values[0] = text_value(name)
   let n = args.length()
-  match args[0] {
+  let text = match args[0] {
     "list"
     | "llength"
     | "lindex"
@@ -164,9 +168,9 @@ fn Interpreter::command(
     | "concat"
     | "lrange"
     | "lreverse"
-    | "lrepeat" => self.list_command(args, discard_result~)
+    | "lrepeat" => return self.list_command(values, discard_result~)
     "lset" | "linsert" | "lreplace" | "lsearch" | "lsort" =>
-      self.extended_list_command(args, depth)
+      return self.extended_list_command(values, depth)
     "while"
     | "for"
     | "foreach"
@@ -176,22 +180,22 @@ fn Interpreter::command(
     | "catch"
     | "error"
     | "try"
-    | "throw" => self.control_command(args, depth)
-    "namespace" => self.namespace_command(args, depth)
+    | "throw" => return self.control_command(values, depth)
+    "namespace" => return self.namespace_command(values, depth)
     "global" | "variable" | "upvar" | "uplevel" =>
-      self.scope_command(args, depth)
-    "array" => self.array_command(args)
-    "dict" => self.dict_command(args, depth, discard_result~)
-    "format" => format_command(args)
-    "scan" => self.scan_command(args)
-    "string" => self.string_command(args)
+      return self.scope_command(values, depth)
+    "array" => return self.array_command(values)
+    "dict" => return self.dict_command(values, depth, discard_result~)
+    "format" => format_command(values)
+    "scan" => return self.scan_command(args)
+    "string" => return self.string_command(values)
     "info" => self.info_command(args)
     "set" =>
       if n == 2 {
-        self.read_var(args[1])
+        return self.read_value(args[1])
       } else if n == 3 {
-        self.set_var(args[1], args[2])
-        args[2]
+        self.set_value(args[1], values[2])
+        return values[2]
       } else {
         raise Invalid("set arity")
       }
@@ -232,7 +236,12 @@ fn Interpreter::command(
       if n < 2 {
         raise Invalid("append arity")
       }
-      let previous = self.get_var(args[1]).unwrap_or("")
+      let original = self.get_value(args[1]).unwrap_or(text_value(""))
+      if args[2:].iter().all(v => v.is_empty()) {
+        self.set_value(args[1], original)
+        return original
+      }
+      let previous = original.text
       let values = [previous] + args[2:].to_owned()
       let mut size = 0
       for value in values {
@@ -249,7 +258,7 @@ fn Interpreter::command(
       if n < 2 {
         raise Invalid("expr arity")
       }
-      self.expression_value(args[1:].to_owned().join(" "), depth)
+      return self.expression_object(args[1:].to_owned().join(" "), depth)
     }
     "puts" => {
       let nonewline = n >= 2 && args[1] == "-nonewline"
@@ -280,13 +289,16 @@ fn Interpreter::command(
         if i >= n {
           raise Invalid("if missing body")
         }
-        let body = args[i]
         i += 1
         if boolean(self.expression_value(expression, depth)) {
-          return self.execute(body, depth + 1, discard_result~)
+          return self.execute_value_script(
+            values[i - 1],
+            depth + 1,
+            discard_result~,
+          )
         }
         if i == n {
-          return ""
+          return text_value("")
         }
         if args[i] == "elseif" {
           i += 1
@@ -298,7 +310,7 @@ fn Interpreter::command(
         if i != n - 1 {
           raise Invalid("if malformed else")
         }
-        return self.execute(args[i], depth + 1, discard_result~)
+        return self.execute_value_script(values[i], depth + 1, discard_result~)
       }
       raise Invalid("if arity")
     }
@@ -312,13 +324,20 @@ fn Interpreter::command(
         raise Invalid("procedure namespace missing")
       }
       let parameters = []
-      for spec in parse_list(args[2]) {
-        let parts = parse_list(spec)
+      for spec in values[2].as_list() {
+        let parts = spec.as_list()
         if parts.is_empty() || parts.length() > 2 {
           raise Invalid("invalid procedure parameter")
         }
         parameters.push(
-          (parts[0], if parts.length() == 2 { Some(parts[1]) } else { None }),
+          (
+            parts[0].text,
+            if parts.length() == 2 {
+              Some(parts[1])
+            } else {
+              None
+            },
+          ),
         )
       }
       self.define_command(
@@ -327,12 +346,16 @@ fn Interpreter::command(
       )
       ""
     }
-    "return" => self.return_command(args)
+    "return" => return self.return_command(values)
     "eval" => {
       if n < 2 {
         raise Invalid("eval arity")
       }
-      self.execute(args[1:].to_owned().join(" "), depth + 1, discard_result~)
+      return self.execute_value_script(
+        script_arguments(values[1:].to_owned()),
+        depth + 1,
+        discard_result~,
+      )
     }
     "subst" => self.subst_command(args, depth)
     "rename" => {
@@ -343,6 +366,7 @@ fn Interpreter::command(
     }
     _ => raise Invalid("unsupported command " + args[0])
   }
+  text_value(text)
 }
 
 ///|
@@ -364,14 +388,23 @@ pub fn Interpreter::eval(
   match result.actual_code() {
     0 => {
       self.state.return_options.val = result.options
-      result.value
+      result.value.text
     }
     1 => {
       self.record_error(result)
-      raise Invalid(result.value)
+      raise Invalid(result.value.text)
     }
     3 => raise Invalid("invoked break outside of a loop")
     4 => raise Invalid("invoked continue outside of a loop")
     code => raise Invalid("command returned bad code: " + code.to_string())
   }
+}
+
+///|
+fn Interpreter::command(
+  self : Interpreter,
+  args : Array[String],
+  depth : Int,
+) -> String raise TclError {
+  self.command_value(args.map(text_value), depth).text
 }

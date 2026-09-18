@@ -3,7 +3,7 @@ priv enum Number {
   Small(Int)
   Whole(@bigint.BigInt)
   Real(Double)
-}
+} derive(Debug)
 
 ///|
 fn whole(text : String) -> @bigint.BigInt raise TclError {
@@ -190,20 +190,27 @@ fn boolean_text(value : Bool) -> String {
 ///|
 fn numeric_binary(
   operator : String,
-  left : String,
-  right : String,
-) -> String raise TclError {
+  left : TclValue,
+  right : TclValue,
+) -> TclValue raise TclError {
   if operator == "eq" || operator == "ne" {
-    return boolean_text((left == right) == (operator == "eq"))
+    return text_value(
+      boolean_text((left.text == right.text) == (operator == "eq")),
+    )
   }
   if operator == "in" || operator == "ni" {
-    return boolean_text(parse_list(right).contains(left) == (operator == "in"))
+    return text_value(
+      boolean_text(
+        right.as_list().iter().any(v => v.text == left.text) ==
+        (operator == "in"),
+      ),
+    )
   }
-  let a = number(left)
-  let b = number(right)
+  let a = left.as_number()
+  let b = right.as_number()
   if (a, b) is (Some(Small(x)), Some(Small(y))) {
     if small_operation(operator, x, y) is Some(result) {
-      return result
+      return text_value(result)
     }
   }
   let a = a.map(Number::promote)
@@ -213,13 +220,13 @@ fn numeric_binary(
       (Some(Whole(a)), Some(Whole(b))) => a.compare(b)
       (Some(Whole(a)), Some(Real(b))) => {
         if b.is_nan() {
-          return boolean_text(operator == "!=")
+          return text_value(boolean_text(operator == "!="))
         }
         integer_double_compare(a, b)
       }
       (Some(Real(a)), Some(Whole(b))) => {
         if a.is_nan() {
-          return boolean_text(operator == "!=")
+          return text_value(boolean_text(operator == "!="))
         }
         -integer_double_compare(b, a)
       }
@@ -227,7 +234,7 @@ fn numeric_binary(
         let x = a.double()
         let y = b.double()
         if x.is_nan() || y.is_nan() {
-          return boolean_text(operator == "!=")
+          return text_value(boolean_text(operator == "!="))
         }
         if x < y {
           -1
@@ -237,17 +244,19 @@ fn numeric_binary(
           0
         }
       }
-      _ => tcl_string_compare(left, right)
+      _ => tcl_string_compare(left.text, right.text)
     }
-    return boolean_text(
-      match operator {
-        "==" => comparison == 0
-        "!=" => comparison != 0
-        "<" => comparison < 0
-        ">" => comparison > 0
-        "<=" => comparison <= 0
-        _ => comparison >= 0
-      },
+    return text_value(
+      boolean_text(
+        match operator {
+          "==" => comparison == 0
+          "!=" => comparison != 0
+          "<" => comparison < 0
+          ">" => comparison > 0
+          "<=" => comparison <= 0
+          _ => comparison >= 0
+        },
+      ),
     )
   }
   guard a is Some(a) && b is Some(b) else {
@@ -328,7 +337,7 @@ fn numeric_binary(
       "^" => x ^ y
       _ => raise Invalid("unsupported integer operator")
     }
-    return Whole(value).text()
+    return number_value(Whole(value))
   }
   if ["%", "<<", ">>", "&", "|", "^"].contains(operator) {
     raise Invalid("integer operand required")
@@ -343,7 +352,7 @@ fn numeric_binary(
     "**" => @math.pow(x, y)
     _ => raise Invalid("unsupported arithmetic operator")
   }
-  Real(result).text()
+  number_value(Real(result))
 }
 
 ///|
@@ -414,11 +423,11 @@ fn float_text(value : Double) -> String raise TclError {
 }
 
 ///|
-fn numeric_divide(left : String, right : String) -> String raise TclError {
-  let a = number(left)
-  let b = number(right)
+fn numeric_divide(left : TclValue, right : TclValue) -> TclValue raise TclError {
+  let a = left.as_number()
+  let b = right.as_number()
   if (a, b) is (Some(Small(x)), Some(Small(y))) {
-    return small_operation("/", x, y).unwrap()
+    return text_value(small_operation("/", x, y).unwrap())
   }
   match (a.map(Number::promote), b.map(Number::promote)) {
     (Some(Whole(x)), Some(Whole(y))) => {
@@ -432,7 +441,9 @@ fn numeric_divide(left : String, right : String) -> String raise TclError {
       }
       let q = x / y
       let r = x % y
-      Whole(if r != 0N && (x < 0N) != (y < 0N) { q - 1N } else { q }).text()
+      number_value(
+        Whole(if r != 0N && (x < 0N) != (y < 0N) { q - 1N } else { q }),
+      )
     }
     _ => numeric_binary("/", left, right)
   }
@@ -524,12 +535,4 @@ fn integer_add(left : String, right : String) -> String raise TclError {
     return (x.to_int64() + y.to_int64()).to_string()
   }
   Whole(whole(left) + whole(right)).text()
-}
-
-///|
-fn integer_compare(left : String, right : String) -> Int raise TclError {
-  if (small_decimal(left), small_decimal(right)) is (Some(x), Some(y)) {
-    return x.compare(y)
-  }
-  whole(left).compare(whole(right))
 }

@@ -93,12 +93,7 @@ differences={
   'referenceResult':'\udcf0 1 \udc9f\udc98\udc80x',
   'localResult':'\ud83d 3 \ude00x',
  },
- 'scan 18446744073709551616 %f v;list [format %.17g $v] [set v]':{
-  'id':'scan-double-object-identity',
-  'reason':'Native variables retain an exact double alongside non-roundtripping display text. Local scalar variables currently retain strings, so later format reparses that text.',
-  'referenceResult':'1.8446744073709552e+19 1.844674407370955e+19',
-  'localResult':'1.844674407370955e+19 1.844674407370955e+19',
- },
+
 }
 for case in cases:
     if case['source'] in differences:case['knownDifference']=differences[case['source']]

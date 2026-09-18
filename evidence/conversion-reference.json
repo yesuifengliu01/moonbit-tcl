@@ -34795,12 +34795,6 @@
     {
       "name": "conversion-state-4969",
       "source": "scan 18446744073709551616 %f v;list [format %.17g $v] [set v]",
-      "knownDifference": {
-        "id": "scan-double-object-identity",
-        "reason": "Native variables retain an exact double alongside non-roundtripping display text. Local scalar variables currently retain strings, so later format reparses that text.",
-        "referenceResult": "1.8446744073709552e+19 1.844674407370955e+19",
-        "localResult": "1.844674407370955e+19 1.844674407370955e+19"
-      },
       "result": "1.8446744073709552e+19 1.844674407370955e+19",
       "output": "",
       "error": false

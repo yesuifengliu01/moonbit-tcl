@@ -89,6 +89,10 @@ type ScriptProgram derive(@debug.Debug)
 
 type State derive(@debug.Debug)
 
+type TclValue derive(@debug.Debug)
+
+type ValuePayload derive(@debug.Debug)
+
 type VariableValue derive(@debug.Debug)
 
 type Word derive(@debug.Debug)

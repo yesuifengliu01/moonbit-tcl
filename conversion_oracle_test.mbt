@@ -44195,14 +44195,14 @@ test "Tcl conversion conversion-state-4968" {
 }
 
 ///|
-test "Known difference local contract conversion conversion-state-4969" {
+test "Tcl conversion conversion-state-4969" {
   let t = @tcl.Interpreter::new()
   assert_eq(
     t.eval(
       "scan 18446744073709551616 %f v;list [format %.17g $v] [set v]",
       budget=100000,
     ),
-    "1.844674407370955e+19 1.844674407370955e+19",
+    "1.8446744073709552e+19 1.844674407370955e+19",
   )
   assert_eq(t.output_text(), "")
 }

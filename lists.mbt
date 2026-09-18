@@ -294,17 +294,18 @@ fn list_index(text : String, length : Int) -> Int raise TclError {
 ///|
 fn Interpreter::list_command(
   self : Interpreter,
-  args : Array[String],
+  input : Array[TclValue],
   discard_result? : Bool = false,
-) -> String raise TclError {
+) -> TclValue raise TclError {
+  let args = input.map(v => v.text)
   let n = args.length()
-  match args[0] {
-    "list" => format_list(args[1:].to_owned())
+  let text = match args[0] {
+    "list" => return list_value(input[1:].to_owned())
     "llength" => {
       if n != 2 {
         raise Invalid("llength arity")
       }
-      parse_list(args[1]).length().to_string()
+      input[1].as_list().length().to_string()
     }
     "lindex" => {
       if n < 2 {
@@ -315,35 +316,39 @@ fn Interpreter::list_command(
       } else {
         args[2:].to_owned()
       }
-      let mut value = args[1]
+      let mut value = input[1]
       for index in indices {
-        let values = parse_list(value)
+        let values = value.as_list()
         let i = list_index(index, values.length())
-        value = if i >= 0 && i < values.length() { values[i] } else { "" }
+        value = if i >= 0 && i < values.length() {
+          values[i]
+        } else {
+          text_value("")
+        }
       }
-      value
+      return value
     }
     "lappend" => {
       if n < 2 {
         raise Invalid("lappend arity")
       }
       if n == 2 {
-        let value = self.get_var(args[1]).unwrap_or("")
-        ignore(parse_list(value))
-        self.set_var(args[1], value)
+        let value = self.get_value(args[1]).unwrap_or(text_value(""))
+        ignore(value.as_list())
+        self.set_value(args[1], value)
         return value
       }
-      self.append_list(args[1], args[2:].to_owned(), discard_result)
+      return self.append_list(args[1], input[2:].to_owned(), discard_result)
     }
     "join" => {
       if n != 2 && n != 3 {
         raise Invalid("join arity")
       }
-      let values = parse_list(args[1])
+      let values = input[1].as_list()
       let sep = if n == 3 { args[2] } else { " " }
       let mut size = 0
       for value in values {
-        size += value.length()
+        size += value.text.length()
         if size > 1000000 {
           raise Invalid("join size limit")
         }
@@ -352,7 +357,7 @@ fn Interpreter::list_command(
         sep.length() > (1000000 - size) / (values.length() - 1) {
         raise Invalid("join size limit")
       }
-      values.join(sep)
+      values.map(v => v.text).join(sep)
     }
     "split" => {
       if n != 2 && n != 3 {
@@ -379,50 +384,27 @@ fn Interpreter::list_command(
       }
       format_list(values)
     }
-    "concat" => {
-      let values = []
-      let mut size = 0
-      for part in args[1:] {
-        let chars = part.to_array()
-        let mut first = 0
-        let mut last = chars.length()
-        while first < last && list_space(chars[first]) {
-          first += 1
-        }
-        while last > first && list_space(chars[last - 1]) {
-          last -= 1
-        }
-        if first < last {
-          let value = String::from_array(chars[first:last])
-          size += value.length() + 1
-          if size > 1000000 {
-            raise Invalid("concat size limit")
-          }
-          values.push(value)
-        }
-      }
-      values.join(" ")
-    }
+    "concat" => return concat_values(input[1:].to_owned())
     "lrange" => {
       if n != 4 {
         raise Invalid("lrange arity")
       }
-      let values = parse_list(args[1])
+      let values = input[1].as_list()
       let first = list_index(args[2], values.length()).max(0)
       let last = list_index(args[3], values.length()).min(values.length() - 1)
       if first > last {
         ""
       } else {
-        format_list(values[first:last + 1].to_owned())
+        return list_value(values[first:last + 1].to_owned())
       }
     }
     "lreverse" => {
       if n != 2 {
         raise Invalid("lreverse arity")
       }
-      let values = parse_list(args[1])
+      let values = input[1].as_list()
       values.rev_in_place()
-      format_list(values)
+      return list_value(values)
     }
     "lrepeat" => {
       if n < 3 {
@@ -434,12 +416,52 @@ fn Interpreter::list_command(
       }
       let values = []
       for _ in 0..<count {
-        for value in args[2:] {
+        for value in input[2:] {
           values.push(value)
         }
       }
-      format_list(values)
+      return list_value(values)
     }
     _ => raise Invalid("list command not implemented")
   }
+  text_value(text)
+}
+
+///|
+fn concat_values(input : Array[TclValue]) -> TclValue raise TclError {
+  if input.length() == 1 && input[0].payload is Items(_) {
+    return input[0]
+  }
+  if input.iter().all(v => v.payload is Items(_)) {
+    let values = []
+    for item in input {
+      for value in item.as_list() {
+        values.push(value)
+      }
+    }
+    return list_value(values)
+  }
+
+  let values = []
+  let mut size = 0
+  for part in input.map(v => v.text) {
+    let chars = part.to_array()
+    let mut first = 0
+    let mut last = chars.length()
+    while first < last && list_space(chars[first]) {
+      first += 1
+    }
+    while last > first && list_space(chars[last - 1]) {
+      last -= 1
+    }
+    if first < last {
+      let value = String::from_array(chars[first:last])
+      size += value.length() + 1
+      if size > 1000000 {
+        raise Invalid("concat size limit")
+      }
+      values.push(value)
+    }
+  }
+  text_value(values.join(" "))
 }

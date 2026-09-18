@@ -304,73 +304,75 @@ fn ScriptParser::script(
 }
 
 ///|
-fn Interpreter::expand_parts(
+fn Interpreter::expand_values(
   self : Interpreter,
   parts : Array[Part],
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
   if depth > 64 {
     raise Invalid("substitution depth")
   }
-  let mut first = ""
-  let mut out : StringBuilder? = None
-  let mut length = 0
+  let mut result = text_value("")
+  let mut first = true
+  let mut size = 0
+  let mut builder : StringBuilder? = None
   for part in parts {
     self.tick()
     let value = match part {
-      Text(text) => text
+      Text(text) if text.is_empty() => continue
+      Text(text) => text_value(text)
       Variable(name, index) => {
         let name = match index {
           Some(parts) => name + "(" + self.expand_parts(parts, depth + 1) + ")"
           None => name
         }
-        self.read_var(name)
+        self.read_value(name)
       }
-      Command(commands) => self.execute_commands(commands, depth + 1)
+      Command(commands) => self.execute_command_values(commands, depth + 1)
     }
-    let previous = length
-    length += value.length()
-    if length > 1000000 {
+    size += value.text.length()
+    if size > 1000000 {
       raise Invalid("substitution result size limit")
     }
-    if previous == 0 {
-      first = value
-    } else if !value.is_empty() {
-      match out {
-        Some(builder) => builder.write_string(value)
+    if first {
+      result = value
+      first = false
+    } else if !value.text.is_empty() {
+      match builder {
+        Some(out) => out.write_string(value.text)
         None => {
-          let builder = StringBuilder()
-          builder.write_string(first)
-          builder.write_string(value)
-          out = Some(builder)
+          let out = StringBuilder()
+          out.write_string(result.text)
+          out.write_string(value.text)
+          builder = Some(out)
         }
       }
     }
   }
-  match out {
-    Some(builder) => builder.to_string()
-    None => first
+  match builder {
+    Some(out) => text_value(out.to_string())
+    None => result
   }
 }
 
 ///|
-fn Interpreter::execute_commands(
+fn Interpreter::execute_command_values(
   self : Interpreter,
   commands : Array[ParsedCommand],
   depth : Int,
   discard_result? : Bool = false,
-) -> String raise TclError {
+) -> TclValue raise TclError {
   if depth > 64 {
     raise Invalid("execution nesting limit")
   }
-  let mut result = ""
+  let mut result = text_value("")
   for parsed in commands {
     let args = []
     try {
       for word in parsed.words {
-        let value = self.expand_parts(word.parts, depth + 1)
+        let value = self.expand_values(word.parts, depth + 1)
         if word.expand {
-          for item in parse_list(value) {
+          for item in value.as_list() {
             args.push(item)
           }
         } else {
@@ -381,15 +383,20 @@ fn Interpreter::execute_commands(
         }
       }
       if !args.is_empty() {
-        result = self.command(args, depth, discard_result~)
+        result = self.command_value(args, depth, discard_result~)
       }
-      if result.length() > 1000000 {
+      if result.text.length() > 1000000 {
         raise Invalid("command result size limit")
       }
     } catch {
       error =>
         raise Signal(
-          self.annotate_error(outcome(error), parsed.source, parsed.line, args),
+          self.annotate_error(
+            outcome(error),
+            parsed.source,
+            parsed.line,
+            args.map(v => v.text),
+          ),
         )
     }
   }
@@ -397,17 +404,17 @@ fn Interpreter::execute_commands(
 }
 
 ///|
-fn Interpreter::execute(
+fn Interpreter::execute_value(
   self : Interpreter,
   source : String,
   depth : Int,
   discard_result? : Bool = false,
-) -> String raise TclError {
+) -> TclValue raise TclError {
   if source.length() > 100000 {
     raise Invalid("script size limit")
   }
   let program = self.cached_script(source)
-  let mut result = ""
+  let mut result = text_value("")
   let mut index = 0
   while true {
     if index == program.commands.length() {
@@ -451,7 +458,7 @@ fn Interpreter::execute(
         continue
       }
     }
-    result = self.execute_commands(
+    result = self.execute_command_values(
       [program.commands[index]],
       depth,
       discard_result~,
@@ -485,4 +492,22 @@ fn ScriptParser::parsed_command(
     source: String::from_array(self.chars[start:end]).trim_end().to_owned(),
     line,
   }
+}
+
+///|
+fn Interpreter::expand_parts(
+  self : Interpreter,
+  parts : Array[Part],
+  depth : Int,
+) -> String raise TclError {
+  self.expand_values(parts, depth).text
+}
+
+///|
+fn Interpreter::execute_commands(
+  self : Interpreter,
+  commands : Array[ParsedCommand],
+  depth : Int,
+) -> String raise TclError {
+  self.execute_command_values(commands, depth).text
 }

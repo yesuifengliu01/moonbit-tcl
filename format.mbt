@@ -18,9 +18,9 @@ fn conversion_decimal(
 
 ///|
 fn conversion_argument(
-  args : Array[String],
+  args : Array[TclValue],
   cursor : Ref[Int],
-) -> String raise TclError {
+) -> TclValue raise TclError {
   if cursor.val < 2 || cursor.val >= args.length() {
     raise Invalid("not enough arguments for format")
   }
@@ -77,11 +77,11 @@ fn conversion_int32(text : String) -> Int raise TclError {
 }
 
 ///|
-fn format_command(args : Array[String]) -> String raise TclError {
+fn format_command(args : Array[TclValue]) -> String raise TclError {
   if args.length() < 2 {
     raise Invalid("format arity")
   }
-  let cs = utf16_units(args[1])
+  let cs = utf16_units(args[1].text)
   let cursor = Ref(0)
   let next = Ref(2)
   let mut positional = None
@@ -141,7 +141,7 @@ fn format_command(args : Array[String]) -> String raise TclError {
     }
     let mut width = if cursor.val < cs.length() && cs[cursor.val] == '*' {
       cursor.val += 1
-      conversion_int32(conversion_argument(args, next))
+      conversion_int32(conversion_argument(args, next).text)
     } else {
       conversion_decimal(cs, cursor)
     }
@@ -156,7 +156,7 @@ fn format_command(args : Array[String]) -> String raise TclError {
       cursor.val += 1
       let p = if cursor.val < cs.length() && cs[cursor.val] == '*' {
         cursor.val += 1
-        conversion_int32(conversion_argument(args, next)).max(0)
+        conversion_int32(conversion_argument(args, next).text).max(0)
       } else {
         conversion_decimal(cs, cursor)
       }
@@ -193,22 +193,22 @@ fn format_command(args : Array[String]) -> String raise TclError {
     let mut prefix = ""
     let body = if kind == 's' {
       match precision {
-        Some(p) => unit_slice(value, 0, p.min(value.length()))
-        None => value
+        Some(p) => unit_slice(value.text, 0, p.min(value.text.length()))
+        None => value.text
       }
     } else if kind == 'c' {
-      let raw = conversion_integer(value)
+      let raw = conversion_integer(value.text)
       if raw < -4294967295N || raw > 4294967295N {
         raise Invalid("character integer out of range")
       }
       let cp = conversion_wrap(raw, 32, true).to_int()
       unit_text(if cp >= 0 && cp <= 65535 { cp } else { 65533 })
     } else if ['f', 'e', 'E', 'g', 'G'].contains(kind) {
-      let text = conversion_trim(value)
+      let text = conversion_trim(value.text)
       if text.is_empty() || numeric_prefix(text, true) != text.length() {
         raise Invalid("expected floating-point number")
       }
-      let x = match number(text) {
+      let x = match value.as_number() {
         Some(n) => n.double()
         None => {
           let (length, value, _) = scan_real_prefix(text)
@@ -245,7 +245,7 @@ fn format_command(args : Array[String]) -> String raise TclError {
         raise Invalid("unsigned bignum format is invalid")
       }
       let signed = kind == 'd' || kind == 'i' || bits == 0
-      let raw = conversion_integer(value)
+      let raw = conversion_integer(value.text)
       let value = if bits == 0 {
         raw
       } else {

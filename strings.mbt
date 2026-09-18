@@ -90,24 +90,42 @@ fn glob_match(
 ///|
 fn Interpreter::string_command(
   self : Interpreter,
-  args : Array[String],
-) -> String raise TclError {
+  input : Array[TclValue],
+) -> TclValue raise TclError {
+  let args = input.map(v => v.text)
   let n = args.length()
   if n < 2 {
     raise Invalid("string arity")
   }
   let op = args[1]
-  match op {
+  let text = match op {
+    "cat" => {
+      if n == 2 {
+        return text_value("")
+      }
+      let mut result = input[2]
+      for item in input[3:] {
+        if !item.text.is_empty() {
+          if item.text.length() > 1000000 - result.text.length() {
+            raise Invalid("string cat size limit")
+          }
+          result = text_value(result.text + item.text)
+        }
+      }
+      return result
+    }
     "length" => {
       if n != 3 {
         raise Invalid("string length arity")
       }
+      input[2].payload = Plain
       args[2].length().to_string()
     }
     "index" | "range" => {
       if n != (if op == "index" { 4 } else { 5 }) {
         raise Invalid("string index/range arity")
       }
+      input[2].payload = Plain
       let text = args[2]
       let first = list_index(args[3], text.length())
       let last = if op == "index" {
@@ -167,10 +185,12 @@ fn Interpreter::string_command(
       if n != 4 && n != 5 {
         raise Invalid("string search arity")
       }
+      input[2].payload = Plain
+      input[3].payload = Plain
       let needle = args[2]
       let text = args[3]
       if needle.is_empty() {
-        return "-1"
+        return text_value("-1")
       }
       if op == "first" {
         let start = if n == 5 {
@@ -179,7 +199,7 @@ fn Interpreter::string_command(
           0
         }
         if start > text.length() {
-          return "-1"
+          return text_value("-1")
         }
         match unit_slice(text, start, text.length()).find(needle) {
           Some(i) => (i + start).to_string()
@@ -192,7 +212,7 @@ fn Interpreter::string_command(
           text.length() - 1
         }
         if last < 0 {
-          return "-1"
+          return text_value("-1")
         }
         unit_slice(text, 0, last + 1).rev_find(needle).unwrap_or(-1).to_string()
       }
@@ -212,7 +232,7 @@ fn Interpreter::string_command(
       }
       let first = first.max(0).min(text.length())
       if last < first {
-        return text
+        return text_value(text)
       }
       let part = unit_slice(text, first, last + 1)
       let converted = unicode_case(
@@ -261,6 +281,9 @@ fn Interpreter::string_command(
         raise Invalid("string repeat arity")
       }
       let count = integer(args[3]).max(0)
+      if count == 1 {
+        return input[2]
+      }
       if !args[2].is_empty() && count > 1000000 / args[2].length() {
         raise Invalid("string repeat size")
       }
@@ -270,17 +293,19 @@ fn Interpreter::string_command(
       if n != 3 {
         raise Invalid("string reverse arity")
       }
+      input[2].payload = Plain
       unicode_reverse(args[2])
     }
     "replace" => {
       if n != 5 && n != 6 {
         raise Invalid("string replace arity")
       }
+      input[2].payload = Plain
       let text = args[2]
       let first = list_index(args[3], text.length()).max(0)
       let last = list_index(args[4], text.length()).min(text.length() - 1)
       if first >= text.length() || last < first {
-        return text
+        return text_value(text)
       }
       unit_slice(text, 0, first) +
       (if n == 6 { args[5] } else { "" }) +
@@ -302,6 +327,10 @@ fn Interpreter::string_command(
       if mapping.length() % 2 != 0 {
         raise Invalid("string map expects pairs")
       }
+      if mapping.is_empty() {
+        return input[n - 1]
+      }
+      input[n - 1].payload = Plain
       let source = args[n - 1]
       let subject = if nocase { unicode_case(source, 0) } else { source }
       let out = StringBuilder()
@@ -340,9 +369,10 @@ fn Interpreter::string_command(
       }
       out.to_string()
     }
-    "is" => self.string_is(args)
+    "is" => self.string_is(input)
     _ => raise Invalid("unsupported string subcommand " + op)
   }
+  text_value(text)
 }
 
 ///|
@@ -478,7 +508,7 @@ fn Interpreter::info_command(
       } else {
         for (name, value) in definition.parameters {
           if name == args[3] {
-            self.set_var(args[4], value.unwrap_or(""))
+            self.set_value(args[4], value.unwrap_or(text_value("")))
             return boolean_text(value is Some(_))
           }
         }

@@ -1,0 +1,40 @@
+{
+  "runtime": "v24.11.0",
+  "rows": [
+    {
+      "name": "format-receipt-100",
+      "source": "set rows {};for {set i 0} {$i<100} {incr i} {lappend rows [format {%04d|%8.2f|%-8s} $i [expr {$i*1.375}] apple]};lindex $rows end",
+      "result": "0099|  136.12|apple   ",
+      "nativeMedianMs": 0.1773,
+      "currentMedianMs": 1.506050000000009,
+      "currentP95Ms": 1.8374000000000024,
+      "systemTclRatio": 8.494359842075628,
+      "resultMatched": true
+    },
+    {
+      "name": "scan-record-100",
+      "source": "set total 0;for {set i 0} {$i<100} {incr i} {scan {0042|13.75|ready} {%d|%f|%s} id amount status;incr total $id};list $total $amount $status",
+      "result": "4200 13.75 ready",
+      "nativeMedianMs": 0.11925,
+      "currentMedianMs": 1.1224000000000132,
+      "currentP95Ms": 1.5324999999999989,
+      "systemTclRatio": 9.412159329140572,
+      "resultMatched": true
+    },
+    {
+      "name": "format-exact-100",
+      "source": "set text {};for {set i 0} {$i<100} {incr i} {set text [format {%.80f} 0.1]};set text",
+      "result": "0.10000000000000000555111512312578270211815834045410156250000000000000000000000000",
+      "nativeMedianMs": 0.04975,
+      "currentMedianMs": 0.6173000000000002,
+      "currentP95Ms": 0.9765999999999906,
+      "systemTclRatio": 12.408040201005027,
+      "resultMatched": true
+    }
+  ],
+  "reference": "Windows Tcl 8.6.15",
+  "warmups": 10,
+  "measurements": 30,
+  "engineSHA256": "d53b5916aa5c9530dc6ca029c1026cfc88dddc2cf8b8b15b564f68ced27dc1e1",
+  "scope": "Three small warm-session workloads, native and Node measured separately on one host; exact results verified. Different host adapters; no full application, peak memory or cross-platform acceptance."
+}

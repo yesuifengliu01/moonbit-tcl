@@ -1,0 +1,16 @@
+{
+  "engineSHA256": "d53b5916aa5c9530dc6ca029c1026cfc88dddc2cf8b8b15b564f68ced27dc1e1",
+  "source": "examples/values.tcl",
+  "reference": "Windows Tcl 8.6.15 via tkinter, only puts captured",
+  "expected": {
+    "result": "1.8446744073709552e+19",
+    "output": "display: 1.844674407370955e+19\nstored:  1.8446744073709552e+19\nparsed:  1.844674407370955e+19\noriginal: 1.8446744073709552e+19\nchanged:  0\n"
+  },
+  "actual": {
+    "ok": true,
+    "result": "1.8446744073709552e+19",
+    "output": "display: 1.844674407370955e+19\nstored:  1.8446744073709552e+19\nparsed:  1.844674407370955e+19\noriginal: 1.8446744073709552e+19\nchanged:  0\n"
+  },
+  "matched": true,
+  "cliExitCode": 0
+}

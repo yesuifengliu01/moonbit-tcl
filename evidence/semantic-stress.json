@@ -1,7 +1,7 @@
 {
   "cases": 17,
   "passed": 17,
-  "milliseconds": 190.73340000000002,
+  "milliseconds": 204.50279999999998,
   "scope": "Bounded resource rejection and recovery cases; not a multi-tenant isolation guarantee",
   "rows": [
     {

@@ -10,9 +10,10 @@ fn Interpreter::tick(self : Interpreter) -> Unit raise TclError {
 fn Interpreter::invoke_procedure(
   self : Interpreter,
   definition : Procedure,
-  args : Array[String],
+  values : Array[TclValue],
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
+  let args = values.map(v => v.text)
   let parameters = definition.parameters
   let body = definition.body
   let variadic = !parameters.is_empty() &&
@@ -31,11 +32,11 @@ fn Interpreter::invoke_procedure(
   if supplied < required {
     raise Invalid("procedure arity")
   }
-  let vars : Map[String, String] = Map([])
+  let vars : Map[String, TclValue] = Map([])
   for i in 0..<fixed {
     let (name, default) = parameters[i]
     let value = if i < supplied {
-      args[i + 1]
+      values[i + 1]
     } else {
       match default {
         Some(v) => v
@@ -48,9 +49,9 @@ fn Interpreter::invoke_procedure(
     }
   }
   if variadic && !vars.contains("args") {
-    vars["args"] = format_list(
+    vars["args"] = list_value(
       if supplied > fixed {
-        args[fixed + 1:].to_owned()
+        values[fixed + 1:].to_owned()
       } else {
         []
       },
@@ -70,11 +71,11 @@ fn Interpreter::invoke_procedure(
     procedure: true,
     parent: Some(self.frame),
   })
-  child.execute(body, depth + 1) catch {
+  child.execute_value(body, depth + 1) catch {
     error => {
       let result = outcome(error)
       if result.level != 0 {
-        self.propagate({ ..result, level: result.level - 1, })
+        self.propagate_value({ ..result, level: result.level - 1, })
       } else if result.code == 3 || result.code == 4 {
         let options = result.options.copy()
         option_set(options, "-errorcode", "TCL RESULT UNEXPECTED")
@@ -90,7 +91,9 @@ fn Interpreter::invoke_procedure(
       } else if result.code == 1 {
         let options = result.options.copy()
         let line = option_get(options, "-errorline").unwrap_or("1")
-        let info = option_get(options, "-errorinfo").unwrap_or(result.value)
+        let info = option_get(options, "-errorinfo").unwrap_or(
+          result.value.text,
+        )
         option_set(
           options,
           "-errorinfo",
@@ -116,11 +119,11 @@ fn Interpreter::invoke_procedure(
 // 0 normal, 1 continue, 2 break; return and errors propagate across loop bodies.
 fn Interpreter::loop_body(
   self : Interpreter,
-  source : String,
+  source : TclValue,
   depth : Int,
 ) -> Int raise TclError {
   try {
-    ignore(self.execute(source, depth + 1, discard_result=true))
+    ignore(self.execute_value_script(source, depth + 1, discard_result=true))
     0
   } catch {
     Break => 2
@@ -134,11 +137,12 @@ fn Interpreter::loop_body(
 ///|
 fn Interpreter::control_command(
   self : Interpreter,
-  args : Array[String],
+  values : Array[TclValue],
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
+  let args = values.map(v => v.text)
   let n = args.length()
-  match args[0] {
+  let text = match args[0] {
     "break" => {
       if n != 1 {
         raise Invalid("break arity")
@@ -151,17 +155,17 @@ fn Interpreter::control_command(
       }
       raise Continue
     }
-    "error" | "throw" => self.error_command(args)
-    "return" => self.return_command(args)
-    "catch" => self.catch_command(args, depth)
-    "try" => self.try_command(args, depth)
+    "error" | "throw" => return self.error_command(values)
+    "return" => return self.return_command(values)
+    "catch" => self.catch_command(values, depth)
+    "try" => return self.try_command(values, depth)
     "while" => {
       if n != 3 {
         raise Invalid("while arity")
       }
       while self.math(args[1], depth) != 0 {
         self.tick()
-        if self.loop_body(args[2], depth) == 2 {
+        if self.loop_body(values[2], depth) == 2 {
           break
         }
       }
@@ -171,13 +175,15 @@ fn Interpreter::control_command(
       if n != 5 {
         raise Invalid("for arity")
       }
-      ignore(self.execute(args[1], depth + 1, discard_result=true))
+      ignore(
+        self.execute_value_script(values[1], depth + 1, discard_result=true),
+      )
       while self.math(args[2], depth) != 0 {
         self.tick()
-        if self.loop_body(args[4], depth) == 2 {
+        if self.loop_body(values[4], depth) == 2 {
           break
         }
-        let code = self.loop_body(args[3], depth)
+        let code = self.loop_body(values[3], depth)
         if code == 2 {
           break
         }
@@ -193,12 +199,12 @@ fn Interpreter::control_command(
       if n < 4 || n % 2 != 0 {
         raise Invalid("foreach arity")
       }
-      let groups : Array[(Array[String], Array[String])] = []
+      let groups : Array[(Array[String], Array[TclValue])] = []
       let mut count = 0
       let mut i = 1
       while i < n - 1 {
         let names = parse_list(args[i])
-        let values = parse_list(args[i + 1])
+        let values = values[i + 1].as_list()
         if names.is_empty() {
           raise Invalid("foreach variable list is empty")
         }
@@ -213,30 +219,30 @@ fn Interpreter::control_command(
         for (names, values) in groups {
           for j in 0..<names.length() {
             let at = iteration * names.length() + j
-            self.set_var(
+            self.set_value(
               names[j],
               if at < values.length() {
                 values[at]
               } else {
-                ""
+                text_value("")
               },
             )
           }
         }
         if args[0] == "lmap" {
-          collected.push(self.execute(args[n - 1], depth + 1)) catch {
+          collected.push(self.execute_value_script(values[n - 1], depth + 1)) catch {
             Continue => continue
             Break => break
             Signal(result) if result.actual_code() == 4 => continue
             Signal(result) if result.actual_code() == 3 => break
             error => raise error
           }
-        } else if self.loop_body(args[n - 1], depth) == 2 {
+        } else if self.loop_body(values[n - 1], depth) == 2 {
           break
         }
       }
       if args[0] == "lmap" {
-        format_list(collected)
+        return list_value(collected)
       } else {
         self.state.return_options.val = []
         ""
@@ -244,4 +250,5 @@ fn Interpreter::control_command(
     }
     _ => raise Invalid("unsupported control command")
   }
+  text_value(text)
 }

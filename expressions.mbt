@@ -199,17 +199,17 @@ fn Interpreter::eval_expr(
   self : Interpreter,
   expr : Expr,
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
   self.tick()
   if depth > 64 {
     raise Invalid("expression evaluation depth")
   }
   match expr {
-    Value(value) => value
-    Substitute(parts) => self.expand_parts(parts, depth + 1)
+    Value(value) => text_value(value)
+    Substitute(parts) => self.expand_values(parts, depth + 1)
     Conditional(condition, yes, no) =>
       self.eval_expr(
-        if boolean(self.eval_expr(condition, depth + 1)) {
+        if self.eval_expr(condition, depth + 1).truth() {
           yes
         } else {
           no
@@ -219,31 +219,31 @@ fn Interpreter::eval_expr(
     Unary(op, value) => {
       let v = self.eval_expr(value, depth + 1)
       if op == "!" {
-        return boolean_text(!boolean(v))
+        return text_value(boolean_text(!v.truth()))
       }
       if op == "~" {
-        return Whole(-whole(v) - 1N).text()
+        return number_value(Whole(-v.as_whole() - 1N))
       }
-      let n = match number(v) {
+      let n = match v.as_number() {
         Some(n) => n
         None => raise Invalid("expected numeric operand")
       }
       match n {
-        Small(x) => (if op == "-" { -x } else { x }).to_string()
-        Whole(x) => Whole(if op == "-" { -x } else { x }).text()
-        Real(x) => Real(if op == "-" { -x } else { x }).text()
+        Small(x) => number_value(Small(if op == "-" { -x } else { x }))
+        Whole(x) => number_value(Whole(if op == "-" { -x } else { x }))
+        Real(x) => number_value(Real(if op == "-" { -x } else { x }))
       }
     }
     Binary(op, a, b) => {
       let left = self.eval_expr(a, depth + 1)
       if op == "&&" {
-        return boolean_text(
-          boolean(left) && boolean(self.eval_expr(b, depth + 1)),
+        return text_value(
+          boolean_text(left.truth() && self.eval_expr(b, depth + 1).truth()),
         )
       }
       if op == "||" {
-        return boolean_text(
-          boolean(left) || boolean(self.eval_expr(b, depth + 1)),
+        return text_value(
+          boolean_text(left.truth() || self.eval_expr(b, depth + 1).truth()),
         )
       }
       let right = self.eval_expr(b, depth + 1)
@@ -261,15 +261,15 @@ fn Interpreter::eval_expr(
 }
 
 ///|
-fn Interpreter::expression_value(
+fn Interpreter::expression_object(
   self : Interpreter,
   source : String,
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
   let expr = self.cached_expression(source)
   let value = self.eval_expr(expr, depth + 1)
-  match number(value) {
-    Some(n) => n.text()
+  match value.as_number() {
+    Some(n) => number_value(n)
     None => value
   }
 }
@@ -291,20 +291,20 @@ fn Interpreter::math(
 fn Interpreter::math_function(
   self : Interpreter,
   name : String,
-  args : Array[String],
+  args : Array[TclValue],
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
   if self.find_command("tcl::mathfunc::" + name) is Some(command) {
-    return self.command([command.name] + args, depth)
+    return self.command_value([text_value(command.name)] + args, depth)
   }
   if name == "bool" {
     if args.length() != 1 {
       raise Invalid("math function arity")
     }
-    return boolean_text(boolean(args[0]))
+    return text_value(boolean_text(args[0].truth()))
   }
   let values = args.map(v => {
-    match number(v) {
+    match v.as_number() {
       Some(n) => n
       None => raise Invalid("math function requires number")
     }
@@ -315,13 +315,13 @@ fn Interpreter::math_function(
     }
     let mut best = args[0]
     for value in args[1:] {
-      if numeric_binary(if name == "min" { "<" } else { ">" }, value, best) ==
+      if numeric_binary(if name == "min" { "<" } else { ">" }, value, best).text ==
         "1" {
         best = value
       }
     }
-    return match number(best) {
-      Some(n) => n.text()
+    return match best.as_number() {
+      Some(n) => number_value(n)
       None => best
     }
   }
@@ -333,9 +333,9 @@ fn Interpreter::math_function(
   let y = if two { values[1].double() } else { 0.0 }
   if name == "abs" {
     return match values[0] {
-      Small(n) => n.abs().to_string()
-      Whole(n) => Whole(if n < 0N { -n } else { n }).text()
-      Real(n) => Real(n.abs()).text()
+      Small(n) => number_value(Small(n.abs()))
+      Whole(n) => number_value(Whole(if n < 0N { -n } else { n }))
+      Real(n) => number_value(Real(n.abs()))
     }
   }
   if ["int", "wide", "entier", "round"].contains(name) {
@@ -363,9 +363,11 @@ fn Interpreter::math_function(
     if name == "int" || name == "wide" {
       let modulus = 1N << 64
       let masked = n & (modulus - 1N)
-      return Whole(if masked >= 1N << 63 { masked - modulus } else { masked }).text()
+      return number_value(
+        Whole(if masked >= 1N << 63 { masked - modulus } else { masked }),
+      )
     }
-    return Whole(n).text()
+    return number_value(Whole(n))
   }
   let value = match name {
     "double" => x
@@ -391,7 +393,7 @@ fn Interpreter::math_function(
       x - y * (if x / y < 0.0 { (x / y).ceil() } else { (x / y).floor() })
     _ => raise Invalid("unknown math function " + name)
   }
-  Real(value).text()
+  number_value(Real(value))
 }
 
 ///|
@@ -418,4 +420,13 @@ fn double_integer(value : Double) -> @bigint.BigInt raise TclError {
   } else {
     magnitude
   }
+}
+
+///|
+fn Interpreter::expression_value(
+  self : Interpreter,
+  source : String,
+  depth : Int,
+) -> String raise TclError {
+  self.expression_object(source, depth).text
 }

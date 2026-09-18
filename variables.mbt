@@ -1,9 +1,9 @@
 ///|
 enum VariableValue {
-  Scalar(String)
+  Scalar(TclValue)
   Sequence(ListObject)
   Mapping(DictObject)
-  Elements(Map[String, String])
+  Elements(Map[String, TclValue])
 } derive(Debug)
 
 ///|
@@ -29,7 +29,7 @@ struct Frame {
 
 ///|
 struct Procedure {
-  parameters : Array[(String, String?)]
+  parameters : Array[(String, TclValue?)]
   body : String
   namespace_name : String
 } derive(Debug)
@@ -41,9 +41,9 @@ struct State {
   commands : Map[String, Command]
   exports : Map[String, Array[String]]
   namespace_paths : Map[String, Array[String]]
-  unknown_handlers : Map[String, String]
+  unknown_handlers : Map[String, TclValue]
   namespaces : Map[String, Bool]
-  return_options : Ref[Array[(String, String)]]
+  return_options : Ref[Array[(String, TclValue)]]
   error_stack : Ref[String]
   cache : ParseCache
 } derive(Debug)
@@ -206,11 +206,19 @@ fn Interpreter::link_variable(
 }
 
 ///|
-fn Binding::read(self : Binding) -> String? raise TclError {
+fn Binding::read_value(self : Binding) -> TclValue? raise TclError {
   match (self.cell.value, self.index) {
     (Some(Scalar(value)), None) => Some(value)
-    (Some(Sequence(value)), None) => Some(value.text())
-    (Some(Mapping(value)), None) => Some(value.text())
+    (Some(Sequence(value)), None) => {
+      let result = value.snapshot()
+      self.cell.value = Some(Scalar(result))
+      Some(result)
+    }
+    (Some(Mapping(value)), None) => {
+      let result = value.snapshot()
+      self.cell.value = Some(Scalar(result))
+      Some(result)
+    }
     (Some(Elements(values)), Some(index)) => values.get(index)
     (Some(Elements(_)), None) => raise Invalid("variable is array")
     (Some(_), Some(_)) => raise Invalid("variable is not an array")
@@ -219,21 +227,21 @@ fn Binding::read(self : Binding) -> String? raise TclError {
 }
 
 ///|
-fn Interpreter::get_var(
+fn Interpreter::get_value(
   self : Interpreter,
   name : String,
-) -> String? raise TclError {
+) -> TclValue? raise TclError {
   match self.binding(name, false) {
-    Some(binding) => binding.read()
+    Some(binding) => binding.read_value()
     None => None
   }
 }
 
 ///|
-fn Interpreter::read_var(
+fn Interpreter::read_value(
   self : Interpreter,
   name : String,
-) -> String raise TclError {
+) -> TclValue raise TclError {
   let binding = self.binding(name, false)
   let (reason, code) = match binding {
     None => ("no such variable", "")
@@ -263,7 +271,7 @@ fn Interpreter::read_var(
             },
           )
         _ =>
-          match binding.read() {
+          match binding.read_value() {
             Some(value) => return value
             None =>
               (
@@ -292,12 +300,12 @@ fn Interpreter::read_var(
 }
 
 ///|
-fn Interpreter::set_var(
+fn Interpreter::set_value(
   self : Interpreter,
   name : String,
-  value : String,
+  value : TclValue,
 ) -> Unit raise TclError {
-  if value.length() > 1000000 {
+  if value.text.length() > 1000000 {
     raise Invalid("variable size limit")
   }
   let binding = self.binding(name, true).unwrap()
@@ -393,9 +401,10 @@ fn Interpreter::level_frame(
 ///|
 fn Interpreter::namespace_command(
   self : Interpreter,
-  args : Array[String],
+  input : Array[TclValue],
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
+  let args = input.map(v => v.text)
   if args.length() < 2 {
     raise Invalid("namespace arity")
   }
@@ -406,7 +415,7 @@ fn Interpreter::namespace_command(
     "unknown", "upvar", "which",
   ])
   let n = args.length()
-  match args[1] {
+  let text = match args[1] {
     "export" => {
       let clear = n > 2 && args[2] == "-clear"
       let patterns = if clear {
@@ -417,7 +426,7 @@ fn Interpreter::namespace_command(
       self.state.exports[self.frame.namespace_name] = patterns
       let start = if clear { 3 } else { 2 }
       if n == 2 {
-        return format_list(patterns)
+        return text_value(format_list(patterns))
       }
       for pattern in args[start:] {
         if pattern.contains("::") {
@@ -445,10 +454,12 @@ fn Interpreter::namespace_command(
         raise Invalid("namespace path arity")
       }
       if n == 2 {
-        return format_list(
-          self.state.namespace_paths
-          .get(self.frame.namespace_name)
-          .unwrap_or([]),
+        return text_value(
+          format_list(
+            self.state.namespace_paths
+            .get(self.frame.namespace_name)
+            .unwrap_or([]),
+          ),
         )
       }
       let path = []
@@ -464,15 +475,15 @@ fn Interpreter::namespace_command(
         raise Invalid("namespace unknown arity")
       }
       if n == 3 {
-        self.state.unknown_handlers[self.frame.namespace_name] = args[2]
+        self.state.unknown_handlers[self.frame.namespace_name] = input[2]
       }
       let handler = self.state.unknown_handlers
         .get(self.frame.namespace_name)
-        .unwrap_or("")
-      if handler.is_empty() && self.frame.namespace_name == "::" {
+        .unwrap_or(text_value(""))
+      if handler.text.is_empty() && self.frame.namespace_name == "::" {
         "::unknown"
       } else {
-        handler
+        return handler
       }
     }
     "upvar" => {
@@ -486,7 +497,7 @@ fn Interpreter::namespace_command(
       }
       ""
     }
-    "ensemble" => self.ensemble_command(args)
+    "ensemble" => return self.ensemble_command(input)
     "current" => {
       if n != 2 {
         raise Invalid("namespace current arity")
@@ -516,19 +527,23 @@ fn Interpreter::namespace_command(
         procedure: false,
         parent: Some(self.frame),
       }
-      let script = if args[1] == "inscope" && n > 4 {
-        args[3] + " " + format_list(args[4:].to_owned())
-      } else {
-        args[3:].to_owned().join(" ")
-      }
-      self.with_frame(frame).execute(script, depth + 1)
+      return self
+        .with_frame(frame)
+        .execute_value_script(
+          if args[1] == "inscope" && n > 4 {
+            concat_values([input[3], list_value(input[4:].to_owned())])
+          } else {
+            script_arguments(input[3:].to_owned())
+          },
+          depth + 1,
+        )
     }
     "exists" => {
       if n != 3 {
         raise Invalid("namespace exists arity")
       }
       if args[2].is_empty() && self.frame.namespace_name != "::" {
-        return "0"
+        return text_value("0")
       }
       boolean_text(
         self.state.namespaces.contains(
@@ -706,16 +721,18 @@ fn Interpreter::namespace_command(
     }
     _ => raise Invalid("unsupported namespace subcommand")
   }
+  text_value(text)
 }
 
 ///|
 fn Interpreter::scope_command(
   self : Interpreter,
-  args : Array[String],
+  input : Array[TclValue],
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
+  let args = input.map(v => v.text)
   let n = args.length()
-  match args[0] {
+  let text = match args[0] {
     "global" | "variable" => {
       let mut i = 1
       while i < n {
@@ -742,7 +759,7 @@ fn Interpreter::scope_command(
         if args[0] == "variable" && i < n {
           self
           .with_frame({ ..self.frame, procedure: false, })
-          .set_var(target, args[i])
+          .set_value(target, input[i])
           i += 1
         }
       }
@@ -792,12 +809,16 @@ fn Interpreter::scope_command(
       if n <= start {
         raise Invalid("uplevel script required")
       }
-      self
-      .with_frame(self.level_frame(if explicit { args[1] } else { "1" }))
-      .execute(args[start:].to_owned().join(" "), depth + 1)
+      return self
+        .with_frame(self.level_frame(if explicit { args[1] } else { "1" }))
+        .execute_value_script(
+          script_arguments(input[start:].to_owned()),
+          depth + 1,
+        )
     }
     _ => raise Invalid("unsupported scope command")
   }
+  text_value(text)
 }
 
 ///|
@@ -813,4 +834,26 @@ fn Interpreter::namespace_target(
     raise Invalid("unknown namespace")
   }
   target
+}
+
+///|
+fn Binding::read(self : Binding) -> String? raise TclError {
+  self.read_value().map(v => v.text)
+}
+
+///|
+fn Interpreter::get_var(
+  self : Interpreter,
+  name : String,
+) -> String? raise TclError {
+  self.get_value(name).map(v => v.text)
+}
+
+///|
+fn Interpreter::set_var(
+  self : Interpreter,
+  name : String,
+  value : String,
+) -> Unit raise TclError {
+  self.set_value(name, text_value(value))
 }

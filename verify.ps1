@@ -44,6 +44,10 @@ try {
   if ($LASTEXITCODE -ne 0) {throw 'Tcl Unicode differential failed'}
   node tools/test-semantic-oracle.mjs conversion
   if ($LASTEXITCODE -ne 0) {throw 'Tcl conversion differential failed'}
+  node tools/test-semantic-oracle.mjs value
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl value differential failed'}
+  node tools/test-values.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl value hosts failed'}
   node tools/test-conversion.mjs
   if ($LASTEXITCODE -ne 0) {throw 'Tcl conversion hosts failed'}
   python tools/audit-unicode.py

@@ -3,7 +3,7 @@ from pathlib import Path
 import tkinter,json,runpy,sys,re,gc
 root=Path(__file__).resolve().parents[1]
 suite=sys.argv[1] if len(sys.argv)>1 else 'semantic'
-if suite not in {'semantic','cache','namespace','completion','syntax','unicode','conversion'}:raise SystemExit('suite must be semantic, cache, namespace, completion, syntax, unicode or conversion')
+if suite not in {'semantic','cache','namespace','completion','syntax','unicode','conversion','value'}:raise SystemExit('suite must be semantic, cache, namespace, completion, syntax, unicode, conversion or value')
 cases=runpy.run_path(str(root/f'tools/{suite}-cases.py'))['cases']
 rows=[]
 def normalize_transport(text):

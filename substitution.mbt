@@ -74,7 +74,7 @@ fn Interpreter::substitute(
           1 => raise Signal(result)
           3 => return output.to_string()
           4 => ""
-          _ => result.value
+          _ => result.value.text
         }
       }
     }

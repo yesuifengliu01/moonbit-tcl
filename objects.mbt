@@ -1,28 +1,28 @@
 ///|
 struct ListObject {
-  values : Array[String]
+  values : Array[TclValue]
   encoded : Array[String]
   mut units : Int
   mut representation : String?
 } derive(Debug)
 
 ///|
-fn ListObject::from_text(text : String) -> ListObject raise TclError {
+fn ListObject::from_value(value : TclValue) -> ListObject raise TclError {
   let object = ListObject::{
     values: [],
     encoded: [],
     units: 0,
-    representation: Some(text),
+    representation: Some(value.text),
   }
-  object.append(parse_list(text))
-  object.representation = Some(text)
+  object.append(value.as_list())
+  object.representation = Some(value.text)
   object
 }
 
 ///|
 fn ListObject::append(
   self : ListObject,
-  items : Array[String],
+  items : Array[TclValue],
 ) -> Unit raise TclError {
   if items.is_empty() {
     return
@@ -33,7 +33,7 @@ fn ListObject::append(
   let encoded = []
   let mut units = self.units
   for i in 0..<items.length() {
-    let text = quote_element(items[i], self.values.is_empty() && i == 0)
+    let text = quote_element(items[i].text, self.values.is_empty() && i == 0)
     units += text.length() +
       (if self.values.is_empty() && i == 0 { 0 } else { 1 })
     if units > 1000000 {
@@ -65,8 +65,8 @@ fn ListObject::text(self : ListObject) -> String {
 
 ///|
 struct DictObject {
-  keys : Array[String]
-  values : Array[String]
+  keys : Array[TclValue]
+  values : Array[TclValue]
   index : Map[String, Int]
   encoded : Array[String]
   mut units : Int
@@ -74,35 +74,35 @@ struct DictObject {
 } derive(Debug)
 
 ///|
-fn DictObject::from_text(text : String) -> DictObject raise TclError {
+fn DictObject::from_value(value : TclValue) -> DictObject raise TclError {
   let object = DictObject::{
     keys: [],
     values: [],
     index: Map([]),
     encoded: [],
     units: 0,
-    representation: Some(text),
+    representation: Some(value.text),
   }
-  for (key, value) in dictionary(text) {
+  for (key, value) in dictionary_values(value) {
     object.put(key, value)
   }
-  object.representation = Some(text)
+  object.representation = Some(value.text)
   object
 }
 
 ///|
-fn DictObject::get(self : DictObject, key : String) -> String? {
+fn DictObject::get(self : DictObject, key : String) -> TclValue? {
   self.index.get(key).map(i => self.values[i])
 }
 
 ///|
 fn DictObject::put(
   self : DictObject,
-  key : String,
-  value : String,
+  key : TclValue,
+  value : TclValue,
 ) -> Unit raise TclError {
-  let index = self.index.get(key)
-  let encoded = quote_element(value, false)
+  let index = self.index.get(key.text)
+  let encoded = quote_element(value.text, false)
   let (units, encoded_key) = match index {
     Some(i) =>
       (self.units - self.encoded[i * 2 + 1].length() + encoded.length(), "")
@@ -110,7 +110,7 @@ fn DictObject::put(
       if self.keys.length() >= 50000 {
         raise Invalid("dictionary element limit")
       }
-      let k = quote_element(key, self.keys.is_empty())
+      let k = quote_element(key.text, self.keys.is_empty())
       (
         self.units +
         k.length() +
@@ -129,7 +129,7 @@ fn DictObject::put(
       self.encoded[i * 2 + 1] = encoded
     }
     None => {
-      self.index[key] = self.keys.length()
+      self.index[key.text] = self.keys.length()
       self.keys.push(key)
       self.values.push(value)
       self.encoded.push(encoded_key)
@@ -156,70 +156,97 @@ fn DictObject::text(self : DictObject) -> String {
 fn Interpreter::append_list(
   self : Interpreter,
   name : String,
-  items : Array[String],
+  items : Array[TclValue],
   discard_result : Bool,
-) -> String raise TclError {
+) -> TclValue raise TclError {
   let binding = self.binding(name, true).unwrap()
   if binding.index is Some(_) {
-    let values = parse_list(binding.read().unwrap_or("")) + items
-    let result = format_list(values)
-    self.set_var(name, result)
-    return if discard_result { "" } else { result }
+    let values = binding.read_value().unwrap_or(text_value("")).as_list() +
+      items
+    let result = list_value(values)
+    self.set_value(name, result)
+    return if discard_result { text_value("") } else { result }
   }
   let object = match binding.cell.value {
     Some(Sequence(object)) => object
     Some(Elements(_)) => raise Invalid("variable is array")
-    _ => ListObject::from_text(binding.read().unwrap_or(""))
+    _ => ListObject::from_value(binding.read_value().unwrap_or(text_value("")))
   }
   object.append(items)
   binding.cell.value = Some(Sequence(object))
   if discard_result {
-    ""
+    text_value("")
   } else {
-    object.text()
+    binding.read_value().unwrap()
   }
 }
 
 ///|
 fn Interpreter::update_dictionary(
   self : Interpreter,
-  args : Array[String],
+  input : Array[TclValue],
   depth : Int,
   discard_result : Bool,
-) -> String raise TclError {
+) -> TclValue raise TclError {
+  let args = input.map(v => v.text)
   let name = args[2]
   let key = args[3]
   let binding = self.binding(name, true).unwrap()
   if binding.index is Some(_) {
-    return self.dict_command(args, depth, object_path=false)
+    return self.dict_command(input, depth, object_path=false)
   }
   let object = match binding.cell.value {
     Some(Mapping(object)) => object
     Some(Elements(_)) => raise Invalid("variable is array")
-    _ => DictObject::from_text(binding.read().unwrap_or(""))
+    _ => DictObject::from_value(binding.read_value().unwrap_or(text_value("")))
   }
   let previous = object.get(key)
   let value = match args[1] {
-    "set" => args[4]
+    "set" => input[4]
     "incr" =>
-      integer_add(
-        previous.unwrap_or("0"),
-        if args.length() == 5 {
-          args[4]
-        } else {
-          "1"
-        },
+      text_value(
+        integer_add(
+          previous.map(v => v.text).unwrap_or("0"),
+          if args.length() == 5 {
+            args[4]
+          } else {
+            "1"
+          },
+        ),
       )
-    "append" => previous.unwrap_or("") + args[4:].to_owned().join("")
+    "append" =>
+      if args[4:].iter().all(v => v.is_empty()) {
+        previous.unwrap_or(text_value(""))
+      } else {
+        text_value(
+          previous.map(v => v.text).unwrap_or("") + args[4:].to_owned().join(""),
+        )
+      }
     "lappend" =>
-      format_list(parse_list(previous.unwrap_or("")) + args[4:].to_owned())
+      list_value(
+        previous.unwrap_or(text_value("")).as_list() + input[4:].to_owned(),
+      )
     _ => raise Invalid("dictionary update operation")
   }
-  object.put(key, value)
+  object.put(input[3], value)
   binding.cell.value = Some(Mapping(object))
   if discard_result {
-    ""
+    text_value("")
   } else {
-    object.text()
+    binding.read_value().unwrap()
   }
+}
+
+///|
+fn ListObject::snapshot(self : ListObject) -> TclValue {
+  { text: self.text(), payload: Items(self.values.copy()), }
+}
+
+///|
+fn DictObject::snapshot(self : DictObject) -> TclValue {
+  let pairs = []
+  for i in 0..<self.keys.length() {
+    pairs.push((self.keys[i], self.values[i]))
+  }
+  { text: self.text(), payload: Pairs(pairs), }
 }

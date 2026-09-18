@@ -3,20 +3,21 @@ struct Handler {
   code : Int
   pattern : Array[String]?
   variables : Array[String]
-  script : String
+  script : TclValue
 } derive(Debug)
 
 ///|
 fn Interpreter::try_command(
   self : Interpreter,
-  args : Array[String],
+  input : Array[TclValue],
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
+  let args = input.map(v => v.text)
   if args.length() < 2 {
     raise Invalid("try body required")
   }
   let handlers : Array[Handler] = []
-  let mut finalizer : String? = None
+  let mut finalizer : TclValue? = None
   let mut index = 2
   while index < args.length() {
     let kind = args[index]
@@ -24,7 +25,7 @@ fn Interpreter::try_command(
       if index != args.length() - 2 {
         raise Invalid("finally must be last with one script")
       }
-      finalizer = Some(args[index + 1])
+      finalizer = Some(input[index + 1])
       break
     }
     if (kind != "on" && kind != "trap") || index + 3 >= args.length() {
@@ -37,13 +38,13 @@ fn Interpreter::try_command(
       None
     }
     let variables = parse_list(args[index + 2])
-    handlers.push({ code, pattern, variables, script: args[index + 3], })
+    handlers.push({ code, pattern, variables, script: input[index + 3], })
     index += 4
   }
-  if handlers.last() is Some(handler) && handler.script == "-" {
+  if handlers.last() is Some(handler) && handler.script.text == "-" {
     raise Invalid("last try handler has no script")
   }
-  let original = self.capture(args[1], depth + 1)
+  let original = self.capture_value(input[1], depth + 1)
   let mut result = original
   try {
     let mut selected = -1
@@ -76,20 +77,20 @@ fn Interpreter::try_command(
       }
     }
     if selected >= 0 {
-      while handlers[selected].script == "-" {
+      while handlers[selected].script.text == "-" {
         selected += 1
       }
       let handler = handlers[selected]
       if handler.variables.length() >= 1 && !handler.variables[0].is_empty() {
-        self.set_var(handler.variables[0], original.value)
+        self.set_value(handler.variables[0], original.value)
       }
       if handler.variables.length() >= 2 && !handler.variables[1].is_empty() {
-        self.set_var(handler.variables[1], original.option_text())
+        self.set_value(handler.variables[1], original.option_value())
       }
-      result = self.capture(handler.script, depth + 1)
+      result = self.capture_value(handler.script, depth + 1)
       if result.actual_code() == 1 {
         let options = result.options.copy()
-        option_set(options, "-during", original.option_text())
+        option_set_value(options, "-during", original.option_value())
         result = { ..result, options, }
       }
     }
@@ -98,22 +99,22 @@ fn Interpreter::try_command(
       result = outcome(error)
       if result.actual_code() == 1 {
         let options = result.options.copy()
-        option_set(options, "-during", original.option_text())
+        option_set_value(options, "-during", original.option_value())
         result = { ..result, options, }
       }
     }
   }
   if finalizer is Some(script) {
-    let finished = self.capture(script, depth + 1)
+    let finished = self.capture_value(script, depth + 1)
     if finished.actual_code() != 0 {
       if finished.actual_code() == 1 {
         let options = finished.options.copy()
-        option_set(options, "-during", result.option_text())
+        option_set_value(options, "-during", result.option_value())
         result = { ..finished, options, }
       } else {
         result = finished
       }
     }
   }
-  self.propagate(result)
+  self.propagate_value(result)
 }

@@ -1,10 +1,10 @@
 {
   "reference": "System Tcl 8.6.15 through Python tkinter",
   "cases": 4970,
-  "matched": 4968,
-  "engineSHA256": "d3d91aea0827f490f990076df786ba9d2cdf9bf3465c6ebc435db789fd6da6d2",
+  "matched": 4969,
+  "engineSHA256": "d53b5916aa5c9530dc6ca029c1026cfc88dddc2cf8b8b15b564f68ced27dc1e1",
   "conversionScope": "Canonical Tcl string results and stdout; default integers follow the pinned Windows 32-bit word/64-bit wide profile. Valid CESU-8 surrogateescape triples from tkinter are normalized to their UTF-16 units. Known raw-object byte-representation differences are recorded separately.",
-  "knownDifferences": 2,
+  "knownDifferences": 1,
   "unexpectedDifferences": 0,
   "comparison": "Exact result and standard-output strings on success; rejection only on expected errors.",
   "rows": [
@@ -69584,22 +69584,15 @@
     {
       "name": "conversion-state-4969",
       "source": "scan 18446744073709551616 %f v;list [format %.17g $v] [set v]",
-      "knownDifference": {
-        "id": "scan-double-object-identity",
-        "reason": "Native variables retain an exact double alongside non-roundtripping display text. Local scalar variables currently retain strings, so later format reparses that text.",
-        "referenceResult": "1.8446744073709552e+19 1.844674407370955e+19",
-        "localResult": "1.844674407370955e+19 1.844674407370955e+19"
-      },
       "result": "1.8446744073709552e+19 1.844674407370955e+19",
       "output": "",
       "error": false,
       "actual": {
         "ok": true,
-        "result": "1.844674407370955e+19 1.844674407370955e+19",
+        "result": "1.8446744073709552e+19 1.844674407370955e+19",
         "output": ""
       },
-      "matched": false,
-      "knownDifferenceExpected": true,
+      "matched": true,
       "unexpected": false
     }
   ]

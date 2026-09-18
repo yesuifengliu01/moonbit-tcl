@@ -1,0 +1,106 @@
+{
+  "utc": "2026-09-18T06:53:41.390228+00:00",
+  "engineSHA256": "d53b5916aa5c9530dc6ca029c1026cfc88dddc2cf8b8b15b564f68ced27dc1e1",
+  "url": "http://127.0.0.1:16040/web/",
+  "tool": "CUA in-app browser, real page controls and real web Worker",
+  "checks": 10,
+  "passed": 10,
+  "rows": [
+    {
+      "name": "stored double",
+      "source": "scan 18446744073709551616 %f v;list $v [format %.17g $v]",
+      "expected": "1.844674407370955e+19 1.8446744073709552e+19",
+      "actual": {
+        "result": "1.844674407370955e+19 1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "same text remains distinct",
+      "source": "set text [format %s $v];list [expr {$v==$text}] [format %.17g $v]",
+      "expected": "0 1.8446744073709552e+19",
+      "actual": {
+        "result": "0 1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "nested copy isolation",
+      "source": "dict set a nested v $v;set b $a;dict set b nested v 0;format %.17g [dict get $a nested v]",
+      "expected": "1.8446744073709552e+19",
+      "actual": {
+        "result": "1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "procedure and list",
+      "source": "proc identity x {return $x};set items [list [identity $v]];format %.17g [lindex $items 0]",
+      "expected": "1.8446744073709552e+19",
+      "actual": {
+        "result": "1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "completion options",
+      "source": "catch {return -amount $v ok} r o;format %.17g [dict get $o -amount]",
+      "expected": "1.8446744073709552e+19",
+      "actual": {
+        "result": "1.8446744073709552e+19",
+        "output": "",
+        "error": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "negative zero",
+      "source": "scan -0.0 %f z;format %.1f [expr {$z*1.0}]",
+      "expected": "-0.0",
+      "actual": {
+        "result": "-0.0",
+        "output": "",
+        "error": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "output before error",
+      "source": "puts [format %.17g $v];error failed",
+      "actual": {
+        "result": "",
+        "output": "1.8446744073709552e+19\n",
+        "error": "Invalid(\"failed\")"
+      },
+      "passed": true
+    },
+    {
+      "name": "recover after error",
+      "source": "format %.17g $v",
+      "result": "1.8446744073709552e+19",
+      "passed": true
+    },
+    {
+      "name": "reset",
+      "result": "\u4f1a\u8bdd\u5df2\u6e05\u7a7a\u3002",
+      "passed": true
+    },
+    {
+      "name": "reset removes typed state",
+      "source": "list [info exists v] [info exists items]",
+      "result": "0 0",
+      "passed": true
+    }
+  ],
+  "consoleWarningsAndErrors": [],
+  "versionLabel": "MOONBIT TCL 0.11.0",
+  "scope": "Numeric object transport, copy isolation, completion options, output before error, recovery and reset. Import/download, cancellation/timeout and mobile layout were not rerun. Temporary page and server closed."
+}

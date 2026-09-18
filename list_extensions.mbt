@@ -1,23 +1,23 @@
 ///|
 fn list_edit(
-  text : String,
+  text : TclValue,
   indices : Array[String],
-  replacement : String,
+  replacement : TclValue,
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
   if depth > 64 {
     raise Invalid("nested list limit")
   }
   if indices.is_empty() {
     return replacement
   }
-  let values = parse_list(text)
+  let values = text.as_list()
   let index = list_index(indices[0], values.length())
   if index < 0 || index > values.length() {
     raise Invalid("list index out of range")
   }
   if index == values.length() {
-    values.push("")
+    values.push(text_value(""))
   }
   values[index] = list_edit(
     values[index],
@@ -25,17 +25,18 @@ fn list_edit(
     replacement,
     depth + 1,
   )
-  format_list(values)
+  list_value(values)
 }
 
 ///|
 fn Interpreter::extended_list_command(
   self : Interpreter,
-  args : Array[String],
+  input : Array[TclValue],
   depth : Int,
-) -> String raise TclError {
+) -> TclValue raise TclError {
+  let args = input.map(v => v.text)
   let n = args.length()
-  match args[0] {
+  let text = match args[0] {
     "lset" => {
       if n < 3 {
         raise Invalid("lset arity")
@@ -45,21 +46,21 @@ fn Interpreter::extended_list_command(
       } else {
         args[2:n - 1].to_owned()
       }
-      let result = list_edit(self.read_var(args[1]), indices, args[n - 1], 0)
-      self.set_var(args[1], result)
-      result
+      let result = list_edit(self.read_value(args[1]), indices, input[n - 1], 0)
+      self.set_value(args[1], result)
+      return result
     }
     "linsert" => {
       if n < 3 {
         raise Invalid("linsert arity")
       }
-      let values = parse_list(args[1])
+      let values = input[1].as_list()
       let index = list_index(args[2], values.length() + 1)
         .max(0)
         .min(values.length())
-      format_list(
+      return list_value(
         values[:index].to_owned() +
-        args[3:].to_owned() +
+        input[3:].to_owned() +
         values[index:].to_owned(),
       )
     }
@@ -67,16 +68,16 @@ fn Interpreter::extended_list_command(
       if n < 4 {
         raise Invalid("lreplace arity")
       }
-      let values = parse_list(args[1])
+      let values = input[1].as_list()
       let first = list_index(args[2], values.length())
         .max(0)
         .min(values.length())
       let last = list_index(args[3], values.length())
         .max(first - 1)
         .min(values.length() - 1)
-      format_list(
+      return list_value(
         values[:first].to_owned() +
-        args[4:].to_owned() +
+        input[4:].to_owned() +
         values[last + 1:].to_owned(),
       )
     }
@@ -110,7 +111,7 @@ fn Interpreter::extended_list_command(
       if i != n - 2 {
         raise Invalid("lsearch arity")
       }
-      let values = parse_list(args[i])
+      let values = input[i].as_list()
       let pattern = if nocase {
         unicode_case(args[i + 1], 0)
       } else {
@@ -118,18 +119,22 @@ fn Interpreter::extended_list_command(
       }
       let result = []
       for j in start..<values.length() {
-        let value = if nocase { unicode_case(values[j], 0) } else { values[j] }
+        let value = if nocase {
+          unicode_case(values[j].text, 0)
+        } else {
+          values[j].text
+        }
         let matched = if exact {
           value == pattern &&
           (
             !nocase ||
-            tcl_utf8_length(values[j]) == tcl_utf8_length(args[i + 1])
+            tcl_utf8_length(values[j].text) == tcl_utf8_length(args[i + 1])
           )
         } else {
           glob_match(pattern, value, false)
         }
         if matched != negate {
-          let item = if inline { values[j] } else { j.to_string() }
+          let item = if inline { values[j] } else { text_value(j.to_string()) }
           if !all {
             return item
           }
@@ -137,7 +142,7 @@ fn Interpreter::extended_list_command(
         }
       }
       if all {
-        format_list(result)
+        return list_value(result)
       } else if inline {
         ""
       } else {
@@ -180,11 +185,11 @@ fn Interpreter::extended_list_command(
         }
         i += 1
       }
-      let values = parse_list(args[n - 1])
-      let key = fn(value : String) -> String raise TclError {
+      let values = input[n - 1].as_list()
+      let key = fn(value : TclValue) -> TclValue raise TclError {
         let raw = match index {
           Some(index) => {
-            let values = parse_list(value)
+            let values = value.as_list()
             let at = list_index(index, values.length())
             if at < 0 || at >= values.length() {
               raise Invalid("lsort index range")
@@ -194,25 +199,30 @@ fn Interpreter::extended_list_command(
           None => value
         }
         if nocase {
-          unicode_case(raw, 0)
+          text_value(unicode_case(raw.text, 0))
         } else {
           raw
         }
       }
-      let compare = fn(a : String, b : String) -> Int raise TclError {
+      let compare = fn(a : TclValue, b : TclValue) -> Int raise TclError {
         self.tick()
         let a = key(a)
         let b = key(b)
         let result = if command is Some(script) {
-          integer(self.command(parse_list(script) + [a, b], depth + 1))
+          integer(
+            self.command_value(
+              parse_list(script).map(text_value) + [a, b],
+              depth + 1,
+            ).text,
+          )
         } else if mode == "-integer" {
-          integer_compare(a, b)
+          a.as_whole().compare(b.as_whole())
         } else if mode == "-real" {
-          let a = match number(a) {
+          let a = match a.as_number() {
             Some(n) => n.double()
             None => raise Invalid("expected real")
           }
-          let b = match number(b) {
+          let b = match b.as_number() {
             Some(n) => n.double()
             None => raise Invalid("expected real")
           }
@@ -227,7 +237,7 @@ fn Interpreter::extended_list_command(
             0
           }
         } else {
-          tcl_string_compare(a, b)
+          tcl_string_compare(a.text, b.text)
         }
         let sign = if result < 0 { -1 } else if result > 0 { 1 } else { 0 }
         if reverse {
@@ -236,7 +246,7 @@ fn Interpreter::extended_list_command(
           sign
         }
       }
-      sort_strings(values, compare)
+      sort_values(values, compare)
       if unique {
         let result = []
         for value in values {
@@ -247,20 +257,20 @@ fn Interpreter::extended_list_command(
             result.push(value)
           }
         }
-        format_list(result)
+        return list_value(result)
       } else {
-        format_list(values)
+        return list_value(values)
       }
     }
     _ => raise Invalid("unsupported list command")
   }
+  text_value(text)
 }
 
 ///|
-/// Stable merge sort permits Tcl comparator errors and shared budget accounting.
-fn sort_strings(
-  values : Array[String],
-  compare : (String, String) -> Int raise TclError,
+fn sort_values(
+  values : Array[TclValue],
+  compare : (TclValue, TclValue) -> Int raise TclError,
 ) -> Unit raise TclError {
   let buffer = values.copy()
   let mut width = 1
