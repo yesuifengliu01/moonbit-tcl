@@ -25,5 +25,5 @@ for cycle in range(2):
     if drift:raise SystemExit('Generation drift: '+', '.join(drift))
     cycles.append({'cycle':cycle+1,'files':len(paths),'unchanged':True})
 report={'cycles':cycles,'scope':'Two independent Tcl fixture regeneration, MoonBit fmt/info/build and shipped-engine refresh cycles; LF-normalized file digests. Timing reports are excluded.','files':baseline}
-(root/'evidence/generation-conversion.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
+(root/'evidence/generation-number-dispatch.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
 print(json.dumps({'cycles':len(cycles),'files':len(paths),'unchanged':True}))

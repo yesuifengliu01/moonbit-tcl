@@ -1,7 +1,9 @@
 """Same-host new-command workloads; exact results, separate native/Node timings."""
 from pathlib import Path
-import tkinter,time,statistics,json,subprocess,hashlib
+import tkinter,time,statistics,json,subprocess,hashlib,sys,re
 root=Path(__file__).resolve().parents[1]
+output=sys.argv[1] if len(sys.argv)>1 else 'conversion-workloads.json'
+assert re.fullmatch(r'[a-z0-9-]+\.json',output),'Pass an evidence JSON basename'
 t=tkinter.Tcl()
 assert t.eval('info patchlevel')=='8.6.15'
 workloads=[
@@ -32,5 +34,5 @@ console.log(JSON.stringify({runtime:process.version,rows}));'''.replace('ROWS',j
 result=subprocess.run(['node','--input-type=module','-'],input=script,text=True,encoding='utf-8',cwd=root,capture_output=True,check=True)
 report=json.loads(result.stdout)
 report.update(reference='Windows Tcl 8.6.15',warmups=10,measurements=30,engineSHA256=hashlib.sha256((root/'web/engine.mjs').read_bytes()).hexdigest(),scope='Three small warm-session workloads, native and Node measured separately on one host; exact results verified. Different host adapters; no full application, peak memory or cross-platform acceptance.')
-(root/'evidence/conversion-workloads.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
+(root/'evidence'/output).write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
 print(json.dumps({r['name']:r['systemTclRatio'] for r in report['rows']}))

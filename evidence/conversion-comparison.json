@@ -2,7 +2,7 @@
   "reference": "System Tcl 8.6.15 through Python tkinter",
   "cases": 4970,
   "matched": 4968,
-  "engineSHA256": "95e62fe56d39fd5fdb72218de4e238fbedd7c2f98eb29c8c0c2cb634d9dea9b9",
+  "engineSHA256": "d3d91aea0827f490f990076df786ba9d2cdf9bf3465c6ebc435db789fd6da6d2",
   "conversionScope": "Canonical Tcl string results and stdout; default integers follow the pinned Windows 32-bit word/64-bit wide profile. Valid CESU-8 surrogateescape triples from tkinter are normalized to their UTF-16 units. Known raw-object byte-representation differences are recorded separately.",
   "knownDifferences": 2,
   "unexpectedDifferences": 0,

@@ -1,0 +1,16 @@
+{
+  "source": "examples/conversion.tcl",
+  "reference": "Windows Tcl 8.6.15",
+  "expected": {
+    "ok": true,
+    "result": "Order 0023: ready",
+    "output": "Item        Qty    Total\napple         3     4.12\ntea           2     8.25\n"
+  },
+  "actual": {
+    "ok": true,
+    "result": "Order 0023: ready",
+    "output": "Item        Qty    Total\napple         3     4.12\ntea           2     8.25\n"
+  },
+  "matched": true,
+  "engineSHA256": "d3d91aea0827f490f990076df786ba9d2cdf9bf3465c6ebc435db789fd6da6d2"
+}

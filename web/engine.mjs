@@ -11177,24 +11177,24 @@ function _M0FPC14math3exp(_tmp) {
 function _M0FPC14math5hypot(_tmp, _tmp$2) {
   return Math.hypot(_tmp, _tmp$2);
 }
-function _M0IP211localreview3tcl8TclErrorPC15debug5Debug8to__repr(_x_1596) {
-  let _arg_1599;
+function _M0IP211localreview3tcl8TclErrorPC15debug5Debug8to__repr(_x_1604) {
+  let _arg_1607;
   _L: {
-    let _arg_1598;
+    let _arg_1606;
     _L$2: {
-      let _arg_1597;
+      let _arg_1605;
       _L$3: {
-        switch (_x_1596.$tag) {
+        switch (_x_1604.$tag) {
           case 4: {
-            const _Invalid = _x_1596;
-            const _$42$arg_1597 = _Invalid._0;
-            _arg_1597 = _$42$arg_1597;
+            const _Invalid = _x_1604;
+            const _$42$arg_1605 = _Invalid._0;
+            _arg_1605 = _$42$arg_1605;
             break _L$3;
           }
           case 3: {
-            const _Return = _x_1596;
-            const _$42$arg_1598 = _Return._0;
-            _arg_1598 = _$42$arg_1598;
+            const _Return = _x_1604;
+            const _$42$arg_1606 = _Return._0;
+            _arg_1606 = _$42$arg_1606;
             break _L$2;
           }
           case 2: {
@@ -11204,21 +11204,21 @@ function _M0IP211localreview3tcl8TclErrorPC15debug5Debug8to__repr(_x_1596) {
             return _M0MPC15debug4Repr4ctor("Continue", []);
           }
           default: {
-            const _Signal = _x_1596;
-            const _$42$arg_1599 = _Signal._0;
-            _arg_1599 = _$42$arg_1599;
+            const _Signal = _x_1604;
+            const _$42$arg_1607 = _Signal._0;
+            _arg_1607 = _$42$arg_1607;
             break _L;
           }
         }
       }
-      return _M0MPC15debug4Repr4ctor("Invalid", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_1597) }]);
+      return _M0MPC15debug4Repr4ctor("Invalid", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_1605) }]);
     }
-    return _M0MPC15debug4Repr4ctor("Return", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_1598) }]);
+    return _M0MPC15debug4Repr4ctor("Return", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_1606) }]);
   }
-  return _M0MPC15debug4Repr4ctor("Signal", [{ _0: undefined, _1: _M0IP211localreview3tcl10CompletionPC15debug5Debug8to__repr(_arg_1599) }]);
+  return _M0MPC15debug4Repr4ctor("Signal", [{ _0: undefined, _1: _M0IP211localreview3tcl10CompletionPC15debug5Debug8to__repr(_arg_1607) }]);
 }
-function _M0IP211localreview3tcl10CompletionPC15debug5Debug8to__repr(_x_1594) {
-  const _bind$2 = [{ _0: "code", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_1594.code) }, { _0: "level", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_1594.level) }, { _0: "value", _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_x_1594.value) }, { _0: "options", _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGUssEE(_x_1594.options) }, { _0: "skip_trace", _1: _M0IPC14bool4BoolPC15debug5Debug8to__repr(_x_1594.skip_trace) }];
+function _M0IP211localreview3tcl10CompletionPC15debug5Debug8to__repr(_x_1602) {
+  const _bind$2 = [{ _0: "code", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_1602.code) }, { _0: "level", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_1602.level) }, { _0: "value", _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_x_1602.value) }, { _0: "options", _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGUssEE(_x_1602.options) }, { _0: "skip_trace", _1: _M0IPC14bool4BoolPC15debug5Debug8to__repr(_x_1602.skip_trace) }];
   return _M0MPC15debug4Repr6record(_M0MPB3Map3MapGsRPC15debug4ReprE(new _M0TPB9ArrayViewGUsRPC15debug4ReprEE(_bind$2, 0, 5), undefined));
 }
 function _M0FP211localreview3tcl15qualified__name(prefix, name) {
@@ -12160,6 +12160,120 @@ function _M0FP211localreview3tcl14small__decimal(text) {
   }
   return negative ? -value.val | 0 : value.val;
 }
+function _M0FP211localreview3tcl14whole__trimmed(text) {
+  if (text.length > 5000) {
+    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer size limit"));
+  }
+  const _bind$2 = "-";
+  const negative = _M0MPC16string6String11has__prefix(text, new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length));
+  let s;
+  let _tmp;
+  if (negative) {
+    _tmp = true;
+  } else {
+    const _bind$3 = "+";
+    _tmp = _M0MPC16string6String11has__prefix(text, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length));
+  }
+  if (_tmp) {
+    s = _M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(text, 1, undefined));
+  } else {
+    s = text;
+  }
+  let digits;
+  let base;
+  _L: {
+    let _tmp$2;
+    const _bind$3 = "0x";
+    if (_M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length))) {
+      _tmp$2 = true;
+    } else {
+      const _bind$4 = "0X";
+      _tmp$2 = _M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$4, 0, _bind$4.length));
+    }
+    if (_tmp$2) {
+      digits = _M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(s, 2, undefined));
+      base = 16;
+      break _L;
+    } else {
+      let _tmp$3;
+      const _bind$4 = "0b";
+      if (_M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$4, 0, _bind$4.length))) {
+        _tmp$3 = true;
+      } else {
+        const _bind$5 = "0B";
+        _tmp$3 = _M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$5, 0, _bind$5.length));
+      }
+      if (_tmp$3) {
+        digits = _M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(s, 2, undefined));
+        base = 2;
+        break _L;
+      } else {
+        let _tmp$4;
+        const _bind$5 = "0o";
+        if (_M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$5, 0, _bind$5.length))) {
+          _tmp$4 = true;
+        } else {
+          const _bind$6 = "0O";
+          _tmp$4 = _M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$6, 0, _bind$6.length));
+        }
+        if (_tmp$4) {
+          digits = _M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(s, 2, undefined));
+          base = 8;
+          break _L;
+        } else {
+          let _tmp$5;
+          if (s.length > 1) {
+            const _bind$6 = "0";
+            _tmp$5 = _M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$6, 0, _bind$6.length));
+          } else {
+            _tmp$5 = false;
+          }
+          if (_tmp$5) {
+            digits = s;
+            base = 8;
+            break _L;
+          } else {
+            digits = s;
+            base = 10;
+            break _L;
+          }
+        }
+      }
+    }
+  }
+  let _tmp$2;
+  const _bind$3 = "-";
+  if (_M0MPC16string6String11has__prefix(digits, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length))) {
+    _tmp$2 = true;
+  } else {
+    const _bind$4 = "+";
+    _tmp$2 = _M0MPC16string6String11has__prefix(digits, new _M0TPC16string10StringView(_bind$4, 0, _bind$4.length));
+  }
+  if (_tmp$2) {
+    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid(`expected integer: ${text}`));
+  }
+  let value;
+  let _try_err;
+  _L$2: {
+    _L$3: {
+      const _bind$4 = _M0FPC16string21parse__bigint_2einner(new _M0TPC16string10StringView(digits, 0, digits.length), base);
+      if (_bind$4.$tag === 1) {
+        const _ok = _bind$4;
+        value = _ok._0;
+      } else {
+        const _err = _bind$4;
+        _try_err = _err._0;
+        break _L$3;
+      }
+      break _L$2;
+    }
+    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid(`expected integer: ${text}`));
+  }
+  if (_M0MPC16bigint6BigInt11bit__length(value) > 16384) {
+    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer bit limit"));
+  }
+  return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(negative ? _M0IPC16bigint6BigIntPB3Neg3neg(value) : value);
+}
 function _M0FP211localreview3tcl5whole(text) {
   let value;
   _L: {
@@ -12176,119 +12290,7 @@ function _M0FP211localreview3tcl5whole(text) {
     }
     return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(_M0MPC16bigint6BigInt9from__int(value));
   }
-  const text$2 = _M0MPC16string10StringView9to__owned(_M0MPC16string6String4trim(text, undefined));
-  if (text$2.length > 5000) {
-    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer size limit"));
-  }
-  const _bind$2 = "-";
-  const negative = _M0MPC16string6String11has__prefix(text$2, new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length));
-  let s;
-  let _tmp;
-  if (negative) {
-    _tmp = true;
-  } else {
-    const _bind$3 = "+";
-    _tmp = _M0MPC16string6String11has__prefix(text$2, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length));
-  }
-  if (_tmp) {
-    s = _M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(text$2, 1, undefined));
-  } else {
-    s = text$2;
-  }
-  let digits;
-  let base;
-  _L$2: {
-    let _tmp$2;
-    const _bind$3 = "0x";
-    if (_M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length))) {
-      _tmp$2 = true;
-    } else {
-      const _bind$4 = "0X";
-      _tmp$2 = _M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$4, 0, _bind$4.length));
-    }
-    if (_tmp$2) {
-      digits = _M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(s, 2, undefined));
-      base = 16;
-      break _L$2;
-    } else {
-      let _tmp$3;
-      const _bind$4 = "0b";
-      if (_M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$4, 0, _bind$4.length))) {
-        _tmp$3 = true;
-      } else {
-        const _bind$5 = "0B";
-        _tmp$3 = _M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$5, 0, _bind$5.length));
-      }
-      if (_tmp$3) {
-        digits = _M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(s, 2, undefined));
-        base = 2;
-        break _L$2;
-      } else {
-        let _tmp$4;
-        const _bind$5 = "0o";
-        if (_M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$5, 0, _bind$5.length))) {
-          _tmp$4 = true;
-        } else {
-          const _bind$6 = "0O";
-          _tmp$4 = _M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$6, 0, _bind$6.length));
-        }
-        if (_tmp$4) {
-          digits = _M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(s, 2, undefined));
-          base = 8;
-          break _L$2;
-        } else {
-          let _tmp$5;
-          if (s.length > 1) {
-            const _bind$6 = "0";
-            _tmp$5 = _M0MPC16string6String11has__prefix(s, new _M0TPC16string10StringView(_bind$6, 0, _bind$6.length));
-          } else {
-            _tmp$5 = false;
-          }
-          if (_tmp$5) {
-            digits = s;
-            base = 8;
-            break _L$2;
-          } else {
-            digits = s;
-            base = 10;
-            break _L$2;
-          }
-        }
-      }
-    }
-  }
-  let _tmp$2;
-  const _bind$3 = "-";
-  if (_M0MPC16string6String11has__prefix(digits, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length))) {
-    _tmp$2 = true;
-  } else {
-    const _bind$4 = "+";
-    _tmp$2 = _M0MPC16string6String11has__prefix(digits, new _M0TPC16string10StringView(_bind$4, 0, _bind$4.length));
-  }
-  if (_tmp$2) {
-    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid(`expected integer: ${text$2}`));
-  }
-  let value$2;
-  let _try_err;
-  _L$3: {
-    _L$4: {
-      const _bind$4 = _M0FPC16string21parse__bigint_2einner(new _M0TPC16string10StringView(digits, 0, digits.length), base);
-      if (_bind$4.$tag === 1) {
-        const _ok = _bind$4;
-        value$2 = _ok._0;
-      } else {
-        const _err = _bind$4;
-        _try_err = _err._0;
-        break _L$4;
-      }
-      break _L$3;
-    }
-    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid(`expected integer: ${text$2}`));
-  }
-  if (_M0MPC16bigint6BigInt11bit__length(value$2) > 16384) {
-    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer bit limit"));
-  }
-  return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(negative ? _M0IPC16bigint6BigIntPB3Neg3neg(value$2) : value$2);
+  return _M0FP211localreview3tcl14whole__trimmed(_M0MPC16string10StringView9to__owned(_M0MPC16string6String4trim(text, undefined)));
 }
 function _M0FP211localreview3tcl7integer(s) {
   let value;
@@ -12996,6 +12998,44 @@ function _M0MP211localreview3tcl8Ensemble6option(self, option) {
   }
   return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0MPC16option6Option10unwrap__orGsE(_M0MPB3Map3getGssE(self.option_text, key), ""));
 }
+function _M0FP211localreview3tcl16could__be__whole(text) {
+  const n = text.length;
+  if (n === 0) {
+    return false;
+  }
+  const initial = 0 >>> 0 < text.length ? text.charCodeAt(0) : $oob();
+  const start = initial === 43 || initial === 45 ? 1 : 0;
+  if (start >= n) {
+    return false;
+  }
+  const first = start >>> 0 < text.length ? text.charCodeAt(start) : $oob();
+  if (first < 48 || first > 57) {
+    return false;
+  }
+  if (first === 48 && (start + 1 | 0) < n) {
+    const _tmp = start + 1 | 0;
+    const marker = (_tmp >>> 0 < text.length ? text.charCodeAt(_tmp) : $oob()) | 32;
+    if (marker === 120 || (marker === 98 || marker === 111)) {
+      return true;
+    }
+  }
+  const _bind$2 = start + 1 | 0;
+  let _tmp = _bind$2;
+  while (true) {
+    const i = _tmp;
+    if (i < n) {
+      const c = i >>> 0 < text.length ? text.charCodeAt(i) : $oob();
+      if (c < 48 || c > 57) {
+        return false;
+      }
+      _tmp = i + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return true;
+}
 function _M0FP211localreview3tcl6number(text) {
   let value;
   _L: {
@@ -13012,39 +13052,41 @@ function _M0FP211localreview3tcl6number(text) {
     }
     return new _M0DTP211localreview3tcl6Number5Small(value);
   }
-  let value$2;
-  _L$2: {
-    _L$3: {
-      let _bind$2;
-      let _try_err;
-      _L$4: {
-        _L$5: {
-          const _bind$3 = _M0FP211localreview3tcl5whole(text);
-          let _tmp;
-          if (_bind$3.$tag === 1) {
-            const _ok = _bind$3;
-            _tmp = _ok._0;
-          } else {
-            const _err = _bind$3;
-            _try_err = _err._0;
-            break _L$5;
-          }
-          _bind$2 = new _M0DTPC16option6OptionGRPC16bigint6BigIntE4Some(_tmp);
-          break _L$4;
-        }
-        _bind$2 = _M0DTPC16option6OptionGRPC16bigint6BigIntE4None__;
-      }
-      if (_bind$2.$tag === 1) {
-        const _Some = _bind$2;
-        const _value = _Some._0;
-        value$2 = _value;
-        break _L$3;
-      }
-      break _L$2;
-    }
-    return new _M0DTP211localreview3tcl6Number5Whole(value$2);
-  }
   const text$2 = _M0MPC16string10StringView9to__owned(_M0MPC16string6String4trim(text, undefined));
+  if (_M0FP211localreview3tcl16could__be__whole(text$2)) {
+    let value$2;
+    _L$2: {
+      _L$3: {
+        let _bind$2;
+        let _try_err;
+        _L$4: {
+          _L$5: {
+            const _bind$3 = _M0FP211localreview3tcl14whole__trimmed(text$2);
+            let _tmp;
+            if (_bind$3.$tag === 1) {
+              const _ok = _bind$3;
+              _tmp = _ok._0;
+            } else {
+              const _err = _bind$3;
+              _try_err = _err._0;
+              break _L$5;
+            }
+            _bind$2 = new _M0DTPC16option6OptionGRPC16bigint6BigIntE4Some(_tmp);
+            break _L$4;
+          }
+          _bind$2 = _M0DTPC16option6OptionGRPC16bigint6BigIntE4None__;
+        }
+        if (_bind$2.$tag === 1) {
+          const _Some = _bind$2;
+          const _value = _Some._0;
+          value$2 = _value;
+          break _L$3;
+        }
+        break _L$2;
+      }
+      return new _M0DTP211localreview3tcl6Number5Whole(value$2);
+    }
+  }
   const lower = _M0MPC16string6String9to__lower(text$2);
   if (lower === "inf" || (lower === "+inf" || (lower === "infinity" || lower === "+infinity"))) {
     return new _M0DTP211localreview3tcl6Number4Real(1 / 0);
@@ -13067,7 +13109,7 @@ function _M0FP211localreview3tcl6number(text) {
     return undefined;
   }
   let _try_err;
-  _L$3: {
+  _L$2: {
     const _bind$3 = _M0FPC28internal7strconv13parse__double(new _M0TPC16string10StringView(text$2, 0, text$2.length));
     let _tmp$2;
     if (_bind$3.$tag === 1) {
@@ -13076,7 +13118,7 @@ function _M0FP211localreview3tcl6number(text) {
     } else {
       const _err = _bind$3;
       _try_err = _err._0;
-      break _L$3;
+      break _L$2;
     }
     return new _M0DTP211localreview3tcl6Number4Real(_tmp$2);
   }

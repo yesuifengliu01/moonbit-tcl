@@ -1,0 +1,70 @@
+{
+  "createdUTC": "2026-09-18T05:51:40.400411+00:00",
+  "url": "http://127.0.0.1:16040/web/",
+  "browser": "Codex In-app Browser, tab 1",
+  "engineSHA256": "d3d91aea0827f490f990076df786ba9d2cdf9bf3465c6ebc435db789fd6da6d2",
+  "checks": 8,
+  "passed": 8,
+  "rows": [
+    {
+      "name": "hex exponent and arbitrary integers",
+      "result": "255 125.5 10000000000000000",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "negative zero and exact ties",
+      "result": "-0 2 4",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "80-place exact fraction",
+      "result": "0.10000000000000000555111512312578270211815834045410156250000000000000000000000000",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "trimmed signed integer",
+      "result": "13",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "nonnumeric comparison",
+      "result": "1",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "integer resource rejection",
+      "result": "",
+      "output": "before\n",
+      "error": "Invalid(\"exponent limit\")",
+      "passed": true
+    },
+    {
+      "name": "recovery and retained variable",
+      "result": "24",
+      "output": "",
+      "error": "",
+      "passed": true
+    },
+    {
+      "name": "reset",
+      "result": "0",
+      "output": "",
+      "error": "",
+      "passed": true
+    }
+  ],
+  "consoleWarningsErrors": [],
+  "scope": "Live CUA input/run/reset controls and displayed result/output/error in the actual browser Worker. No import/download, cancel/timeout or mobile-layout rerun.",
+  "tabClosed": true,
+  "temporaryServerStopped": true
+}

@@ -10,7 +10,11 @@ fn whole(text : String) -> @bigint.BigInt raise TclError {
   if small_decimal(text) is Some(value) {
     return @bigint.BigInt::from_int(value)
   }
-  let text = text.trim().to_owned()
+  whole_trimmed(text.trim().to_owned())
+}
+
+///|
+fn whole_trimmed(text : String) -> @bigint.BigInt raise TclError {
   if text.length() > 5000 {
     raise Invalid("integer size limit")
   }
@@ -52,10 +56,15 @@ fn number(text : String) -> Number? {
   if small_decimal(text) is Some(value) {
     return Some(Small(value))
   }
-  if (Some(whole(text)) catch { _ => None }) is Some(value) {
-    return Some(Whole(value))
-  }
   let text = text.trim().to_owned()
+  // Skip the failing bigint probe for decimal floating-point operands and
+  // obvious nonnumbers. This is only a conservative dispatch check; whole()
+  // still validates syntax and enforces the exact integer resource limits.
+  if could_be_whole(text) {
+    if (Some(whole_trimmed(text)) catch { _ => None }) is Some(value) {
+      return Some(Whole(value))
+    }
+  }
   let lower = text.to_lower()
   if lower == "inf" ||
     lower == "+inf" ||
@@ -75,6 +84,37 @@ fn number(text : String) -> Number? {
   Some(Real(@strconv.parse_double(text))) catch {
     _ => None
   }
+}
+
+///|
+fn could_be_whole(text : String) -> Bool {
+  let n = text.length()
+  if n == 0 {
+    return false
+  }
+  let initial = text.at(0).to_int()
+  let start = if initial == 43 || initial == 45 { 1 } else { 0 }
+  if start >= n {
+    return false
+  }
+  let first = text.at(start).to_int()
+  if first < 48 || first > 57 {
+    return false
+  }
+  if first == 48 && start + 1 < n {
+    let marker = text.at(start + 1).to_int() | 32
+    if marker == 120 || marker == 98 || marker == 111 {
+      // Hexadecimal e/E is an integer digit, not an exponent marker.
+      return true
+    }
+  }
+  for i in (start + 1)..<n {
+    let c = text.at(i).to_int()
+    if c < 48 || c > 57 {
+      return false
+    }
+  }
+  true
 }
 
 ///|
