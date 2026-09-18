@@ -1,0 +1,98 @@
+[
+  [
+    "array set inventory {tea 12 coffee 8 juice 4};array size inventory",
+    "3"
+  ],
+  [
+    "set s [array startsearch inventory]",
+    "s-1-inventory"
+  ],
+  [
+    "list [array anymore inventory $s] [array anymore inventory $s]",
+    "1 1"
+  ],
+  [
+    "array nextelement inventory $s",
+    "juice"
+  ],
+  [
+    "incr inventory(tea);array anymore inventory $s",
+    "1"
+  ],
+  [
+    "set inventory(water) 20;catch {array anymore inventory $s} r;set r",
+    "couldn't find search \"s-1-inventory\""
+  ],
+  [
+    "set s [array startsearch inventory];set found {};while {[array anymore inventory $s]} {lappend found [array nextelement inventory $s]};lsort $found",
+    "coffee juice tea water"
+  ],
+  [
+    "array donesearch inventory $s;array startsearch inventory",
+    "s-1-inventory"
+  ],
+  [
+    "array set empty {};set e [array startsearch empty];list [array anymore empty $e] [array nextelement empty $e]",
+    "0 {}"
+  ],
+  [
+    "set empty() 5;set e [array startsearch empty];list [array anymore empty $e] [array nextelement empty $e] [array anymore empty $e]",
+    "1 {} 0"
+  ],
+  [
+    "array set a {x 1};upvar #0 a(z) alias;list [array size a] [lindex [split [array statistics a] \\n] 0]",
+    "1 {2 entries in table, 4 buckets}"
+  ],
+  [
+    "set p [array startsearch a];set alias 2;list [array anymore a $p] [array names a]",
+    "1 {x z}"
+  ],
+  [
+    "unset alias;list [array names a] [array anymore a $p]",
+    "x 1"
+  ],
+  [
+    "unset a;array set a {z 7};catch {set alias 4} r;list $r $a(z)",
+    "{can't set \"alias\": upvar refers to element in deleted array} 7"
+  ],
+  [
+    "array set data {x 1};proc inspect {} {upvar #0 data(temporary) link;return done};list [inspect] [lindex [split [array statistics data] \\n] 0]",
+    "done {1 entries in table, 4 buckets}"
+  ],
+  [
+    "array set many {};for {set i 0} {$i<48} {incr i} {set many($i) $i};lindex [split [array stat many] \\n] 0",
+    "48 entries in table, 64 buckets"
+  ],
+  [
+    "array unset many *;lindex [split [array statistics many] \\n] 0",
+    "0 entries in table, 64 buckets"
+  ],
+  [
+    "array se quick {a 1};list [array si quick] [array ex quick] [array na quick]",
+    "1 1 a"
+  ],
+  [
+    "catch {array st quick} r o;dict get $o -errorcode",
+    "TCL LOOKUP SUBCOMMAND st"
+  ],
+  [
+    "namespace eval shelf {array set goods {a 1};proc next {} {variable goods;set s [array startsearch goods];array nextelement goods $s}};shelf::next",
+    "a"
+  ],
+  [
+    "set k \\ud800;array set units {};set units($k) 7;list [array size units] [set units($k)] [string length [lindex [array names units] 0]]",
+    "1 7 1"
+  ],
+  [
+    "scan 18446744073709551616 %f precise;array set typed [list x $precise];format %.17g [dict get [array get typed] x]",
+    "1.8446744073709552e+19"
+  ],
+  [
+    "catch {array set quick {a}} r o;list $r [dict get $o -errorcode]",
+    "{list must have an even number of elements} {TCL ARGUMENT FORMAT}"
+  ],
+  [
+    "list [array exists inventory] [array size inventory]",
+    "1 4"
+  ]
+]

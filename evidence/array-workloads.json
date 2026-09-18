@@ -1,0 +1,70 @@
+{
+  "runtime": "v24.11.0",
+  "rows": [
+    {
+      "name": "array-populate-1000",
+      "source": "array unset a;array set a {};for {set i 0} {$i<1000} {incr i} {set a($i) $i};array size a",
+      "result": "1000",
+      "nativeMedianMs": 0.5274000000000001,
+      "currentMedianMs": 1.8316999999999979,
+      "currentP95Ms": 3.0490999999999957,
+      "systemTclRatio": 3.4730754645430366,
+      "resultMatched": true
+    },
+    {
+      "name": "array-cursor-500",
+      "source": "array unset a;array set a {};for {set i 0} {$i<500} {incr i} {set a($i) $i};set s [array startsearch a];set total 0;while {[array anymore a $s]} {set k [array nextelement a $s];incr total $a($k)};array donesearch a $s;set total",
+      "result": "124750",
+      "nativeMedianMs": 0.5729500000000001,
+      "currentMedianMs": 2.1837000000000018,
+      "currentP95Ms": 2.863200000000006,
+      "systemTclRatio": 3.8113273409547106,
+      "resultMatched": true
+    },
+    {
+      "name": "array-statistics-500",
+      "source": "array unset a;array set a {};for {set i 0} {$i<500} {incr i} {set a($i) $i};lindex [split [array statistics a] \\n] 0",
+      "result": "500 entries in table, 256 buckets",
+      "nativeMedianMs": 0.26839999999999997,
+      "currentMedianMs": 0.952350000000024,
+      "currentP95Ms": 1.3804000000000087,
+      "systemTclRatio": 3.5482488822653657,
+      "resultMatched": true
+    },
+    {
+      "name": "array-retained-100",
+      "source": "array unset a;array set a {};proc p {} {for {set i 0} {$i<100} {incr i} {upvar #0 a($i) slot$i};array size ::a};p;lindex [split [array statistics a] \\n] 0",
+      "result": "0 entries in table, 64 buckets",
+      "nativeMedianMs": 0.05665,
+      "currentMedianMs": 0.33389999999999986,
+      "currentP95Ms": 0.6465999999999781,
+      "systemTclRatio": 5.894086496028241,
+      "resultMatched": true
+    },
+    {
+      "name": "array-glob-500",
+      "source": "array unset a;array set a {};for {set i 0} {$i<500} {incr i} {set a(key$i) $i};llength [array names a *5*]",
+      "result": "95",
+      "nativeMedianMs": 0.29255,
+      "currentMedianMs": 1.0293999999999812,
+      "currentP95Ms": 1.3914999999999509,
+      "systemTclRatio": 3.5187147496153863,
+      "resultMatched": true
+    },
+    {
+      "name": "array-mutate-200",
+      "source": "array unset a;array set a {};set total 0;for {set i 0} {$i<200} {incr i} {set s [array startsearch a];set a($i) $i;incr total [catch {array anymore a $s}]};set total",
+      "result": "200",
+      "nativeMedianMs": 0.5631999999999999,
+      "currentMedianMs": 1.4028999999999883,
+      "currentP95Ms": 1.706200000000024,
+      "systemTclRatio": 2.4909446022727066,
+      "resultMatched": true
+    }
+  ],
+  "reference": "Windows Tcl 8.6.15",
+  "warmups": 10,
+  "measurements": 30,
+  "engineSHA256": "0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e",
+  "scope": "Six small warm-session array workloads, native and Node measured separately on one host; exact results verified. Different host adapters; no full application, peak memory or cross-platform acceptance."
+}

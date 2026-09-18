@@ -141,6 +141,7 @@ fn Interpreter::record_error(self : Interpreter, result : Completion) -> Unit {
         self.state.globals[name] = {
           value: Some(Scalar(text_value(value))),
           declared: false,
+          frame_local: false,
         }
     }
   }

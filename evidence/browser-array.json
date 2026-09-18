@@ -1,0 +1,112 @@
+{
+  "checks": 20,
+  "passed": 20,
+  "rows": [
+    {
+      "name": "persistent-create",
+      "actual": "s-1-a",
+      "passed": true
+    },
+    {
+      "name": "peek-does-not-consume",
+      "actual": "1 1 x 0",
+      "passed": true
+    },
+    {
+      "name": "handle-reuse",
+      "actual": "s-1-a",
+      "passed": true
+    },
+    {
+      "name": "replace-keeps-cursor",
+      "actual": "1",
+      "passed": true
+    },
+    {
+      "name": "addition-invalidates",
+      "actual": "couldn't find search \"s-1-a\"",
+      "passed": true
+    },
+    {
+      "name": "empty-key",
+      "actual": "1 {} 0",
+      "passed": true
+    },
+    {
+      "name": "retained-entry",
+      "actual": "1 {2 entries in table, 4 buckets}",
+      "passed": true
+    },
+    {
+      "name": "populate-retained-entry",
+      "actual": "1 {x z}",
+      "passed": true
+    },
+    {
+      "name": "old-alias-after-recreate",
+      "actual": "{can't set \"alias\": upvar refers to element in deleted array} 7",
+      "passed": true
+    },
+    {
+      "name": "scope-cleanup",
+      "actual": "1 entries in table, 4 buckets",
+      "passed": true
+    },
+    {
+      "name": "hash-expansion",
+      "actual": "48 entries in table, 64 buckets",
+      "passed": true
+    },
+    {
+      "name": "buckets-after-delete",
+      "actual": "0 entries in table, 64 buckets",
+      "passed": true
+    },
+    {
+      "name": "prefixes",
+      "actual": "1 1 a",
+      "passed": true
+    },
+    {
+      "name": "ambiguous-prefix",
+      "actual": "TCL LOOKUP SUBCOMMAND st",
+      "passed": true
+    },
+    {
+      "name": "isolated-unit-key",
+      "actual": "1 7 1",
+      "passed": true
+    },
+    {
+      "name": "numeric-object",
+      "actual": "1.8446744073709552e+19",
+      "passed": true
+    },
+    {
+      "name": "namespace-cursor",
+      "actual": "a",
+      "passed": true
+    },
+    {
+      "name": "output-before-error",
+      "actual": "BEFORE / illegal search identifier \"missing\"",
+      "passed": true
+    },
+    {
+      "name": "error-recovery",
+      "actual": "recovered kept 2",
+      "passed": true
+    },
+    {
+      "name": "reset-clears-arrays",
+      "actual": "0 0 0",
+      "passed": true
+    }
+  ],
+  "engineSHA256": "0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e",
+  "version": "0.16.0",
+  "utc": "2026-09-18T12:39:00.701467+00:00",
+  "surface": "Actual Codex in-app browser localhost:16040/web/, tab 10, CUA accessibility actions and fresh visible results/output.",
+  "scope": "Persistent cursor state, non-consuming queries, identifier reuse, update/addition invalidation, empty keys, undefined retained entries, deleted-array aliases, scope cleanup, bucket growth, prefixes, isolated UTF-16 keys, numeric values, namespace scope, output before error, recovery and reset. Import/download, cancel/timeout, mobile layout and console-log inspection were not rerun.",
+  "temporaryTabClosed": true
+}

@@ -23,6 +23,8 @@ pub suberror TclError {
 } derive(@debug.Debug)
 
 // Types and methods
+type ArrayObject derive(@debug.Debug)
+
 type Binding derive(@debug.Debug)
 
 pub struct CacheStats {

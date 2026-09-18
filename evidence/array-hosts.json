@@ -1,0 +1,6 @@
+{
+  "checks": 56,
+  "passed": 56,
+  "engineSHA256": "0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e",
+  "scope": "Persistent exported sessions, real JSONL CLI, and actual web Worker through a Node adapter. Array cursor persistence/invalidation/reuse, empty keys, alias retention/deletion/procedure cleanup, hash expansion/statistics, prefixes, isolated UTF-16 keys, numeric values, failure recovery and reset. Browser acceptance is separate."
+}

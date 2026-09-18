@@ -1,0 +1,59 @@
+Finished. moon: ran 2 tasks, now up to date
+Finished. moon: ran 2 tasks, now up to date
+Finished. moon: ran 3 tasks, now up to date
+Total tests: 11211, passed: 11211, failed: 0.
+Total tests: 11211, passed: 11211, failed: 0.
+Finished. moon: no work to do
+Result: 15
+Output:
+sum=15
+tcl: independent browser engine passed
+tcl: CLI input/file/stdin/error/exit-status checks passed
+{"cases":726,"matched":726,"knownDifferences":0,"unexpectedDifferences":0}
+{"cases":340,"matched":340,"knownDifferences":0,"unexpectedDifferences":0}
+{"cases":312,"matched":312,"knownDifferences":0,"unexpectedDifferences":0}
+{"cases":321,"matched":321,"knownDifferences":0,"unexpectedDifferences":0}
+{"cases":1019,"matched":1019,"knownDifferences":0,"unexpectedDifferences":0}
+{"cases":1866,"matched":1866,"knownDifferences":0,"unexpectedDifferences":0}
+{"cases":4970,"matched":4969,"knownDifferences":1,"unexpectedDifferences":0}
+{"cases":855,"matched":855,"knownDifferences":0,"unexpectedDifferences":0}
+{"cases":5828,"matched":5828,"knownDifferences":0,"unexpectedDifferences":0}
+{"cases":6299,"matched":6291,"knownDifferences":8,"unexpectedDifferences":0}
+{"cases":3307,"matched":3307,"knownDifferences":0,"unexpectedDifferences":0}
+{"cases":1951,"matched":1949,"knownDifferences":2,"unexpectedDifferences":0}
+{"cases":937,"matched":937,"knownDifferences":0,"unexpectedDifferences":0}
+{"checks":56,"passed":56,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent exported sessions, real JSONL CLI, and actual web Worker through a Node adapter. Array cursor persistence/invalidation/reuse, empty keys, alias retention/deletion/procedure cleanup, hash expansion/statistics, prefixes, isolated UTF-16 keys, numeric values, failure recovery and reset. Browser acceptance is separate."}
+{"checks":48,"passed":48,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent exported sessions, real JSONL CLI, and actual web Worker through a Node adapter. Group sorting and original indices, nested paths, stable uniqueness, numeric conversion, comparator order/case/completion/reentrancy, failure recovery and reset. Browser acceptance is separate."}
+{"checks":44,"passed":44,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent module sessions, real JSONL CLI and actual web Worker through a Node message adapter. Collection regexps, nested indices, binary boundaries, dictionary ordering, numeric representation, Unicode, failure recovery and reset. Browser checks are separate."}
+{"checks":48,"passed":48,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent module sessions, real JSONL CLI and actual web Worker module through a Node message adapter. Global captures and indices, start/empty boundaries, substitution references, literal optimization, options, metadata, scope, numeric representations, failure recovery and reset. Browser checks are separate."}
+{"checks":34,"passed":34,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent module sessions, real JSONL CLI and actual web Worker module with a Node message adapter; exact/glob/regexp dispatch, captures and inclusive indices, no-match/default write semantics, greedy alternation, backreferences/lookahead, procedure completion, typed body values, fallthrough without compiling skipped patterns, structured regex errors, recovery and reset. Separate browser evidence required."}
+{"checks":30,"passed":30,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent module sessions, real JSONL CLI and actual web Worker module with a Node message adapter; exact double identity, separate same-text objects, procedure/collection/completion transport, copy isolation, string conversion, negative zero, recovery and reset. Separate browser evidence required."}
+{"checks":36,"passed":36,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent module sessions, real JSONL CLI and actual web Worker module with a Node message adapter; Format/scan precision, arbitrary integers, positional assignment order, suppression, Unicode JSON, partial writes and recovery. Separate browser evidence required."}
+{"codepoints": 65536, "checks": 1048576} mismatches 0
+{"checks":30,"passed":30,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent module sessions, real JSONL CLI and actual web Worker module with a Node message adapter; Unicode case/classification, failindex, surrogate JSON roundtrips, glob units and recovery. Separate browser evidence required."}
+{"checks":24,"passed":24,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent module sessions, real JSONL CLI and the actual web Worker module with a Node message adapter; substitution flags, exceptional completion, persistent side effects and no-execution completeness checks; separate browser evidence required."}
+{"checks":34,"passed":34,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent module sessions, real JSONL CLI and the actual web Worker module with a Node message adapter; completion options, trap/finally, rethrow, loop control, top-level return and recovery; separate browser evidence required."}
+{"checks":20,"passed":20,"engineSHA256":"0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e","scope":"Persistent module sessions, real JSONL CLI and the actual web Worker module with a Node message adapter; separate browser evidence required."}
+{"sessionChecks":29,"passed":29}
+127.0.0.1 - - [18/Sep/2026 20:35:27] "GET /web/ HTTP/1.1" 200 -
+127.0.0.1 - - [18/Sep/2026 20:35:27] "GET /web/worker.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Sep/2026 20:35:27] "GET /web/engine.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [18/Sep/2026 20:35:27] code 404, message Not Found
+127.0.0.1 - - [18/Sep/2026 20:35:27] "GET /.git/config HTTP/1.1" 404 -
+127.0.0.1 - - [18/Sep/2026 20:35:27] code 404, message Not Found
+127.0.0.1 - - [18/Sep/2026 20:35:27] "GET /_build/ HTTP/1.1" 404 -
+127.0.0.1 - - [18/Sep/2026 20:35:27] code 404, message Not Found
+127.0.0.1 - - [18/Sep/2026 20:35:27] "GET /tools/ HTTP/1.1" 404 -
+127.0.0.1 - - [18/Sep/2026 20:35:27] "POST /download.tcl HTTP/1.1" 200 -
+127.0.0.1 - - [18/Sep/2026 20:35:27] code 415, message Unsupported Media Type
+127.0.0.1 - - [18/Sep/2026 20:35:27] "POST /download.tcl HTTP/1.1" 415 -
+127.0.0.1 - - [18/Sep/2026 20:35:27] code 400, message Bad Request
+127.0.0.1 - - [18/Sep/2026 20:35:27] "POST /download.tcl HTTP/1.1" 400 -
+127.0.0.1 - - [18/Sep/2026 20:35:27] code 413, message Content Too Large
+127.0.0.1 - - [18/Sep/2026 20:35:27] "POST /download.tcl HTTP/1.1" 413 -
+127.0.0.1 - - [18/Sep/2026 20:35:27] code 404, message Not Found
+127.0.0.1 - - [18/Sep/2026 20:35:27] "POST /other HTTP/1.1" 404 -
+HTTP checks passed: 11
+{"stressChecks":17,"passed":17}
+tcl: 307 bounded inputs, no uncaught runtime failure
+{"project":"tcl","utc":"2026-09-18T12:35:28.877Z","runtime":"v24.11.0","platform":"win32","cpu":"Intel(R) Core(TM) i7-14700HX","input_utf8_bytes":542,"samples":30,"warmup":5,"median_ms":0.5060000000000002,"p95_ms":1.001100000000008,"max_ms":1.1071999999999917,"scope":"JS warm execution of documented example; no cross-project or upstream performance claim"}

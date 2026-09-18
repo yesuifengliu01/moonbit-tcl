@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {evaluate} from '../web/engine.mjs';
 const suite=process.argv[2]||'semantic';
-if(!['semantic','cache','namespace','completion','syntax','unicode','conversion','value','switch','regexp','search','sort'].includes(suite))throw new Error('suite must be semantic, cache, namespace, completion, syntax, unicode, conversion, value, switch, regexp, search or sort');
+if(!['semantic','cache','namespace','completion','syntax','unicode','conversion','value','switch','regexp','search','sort','array'].includes(suite))throw new Error('suite must be semantic, cache, namespace, completion, syntax, unicode, conversion, value, switch, regexp, search, sort or array');
 const reference=JSON.parse(fs.readFileSync(new URL('../evidence/'+suite+'-reference.json',import.meta.url),'utf8'));
 const rows=reference.rows.map(row=>{
  const actual=JSON.parse(evaluate(row.source));

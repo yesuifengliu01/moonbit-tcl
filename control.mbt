@@ -59,9 +59,10 @@ fn Interpreter::invoke_procedure(
   let bindings : Map[String, Binding] = Map([])
   for name, value in vars {
     bindings[name] = {
-      cell: { value: Some(Scalar(value)), declared: false, },
+      cell: { value: Some(Scalar(value)), declared: false, frame_local: true, },
       index: None,
       linked: false,
+      array: None,
     }
   }
   let child = self.with_frame({
@@ -70,8 +71,13 @@ fn Interpreter::invoke_procedure(
     procedure: true,
     parent: Some(self.frame),
   })
-  child.execute_value(body, depth + 1) catch {
-    error => {
+  let executed = Ok(child.execute_value(body, depth + 1)) catch {
+    error => Err(error)
+  }
+  child.frame.release_variables()
+  match executed {
+    Ok(value) => value
+    Err(error) => {
       let result = outcome(error)
       if result.level != 0 {
         self.propagate_value({ ..result, level: result.level - 1, })

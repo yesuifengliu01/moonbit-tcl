@@ -3,13 +3,14 @@ enum VariableValue {
   Scalar(TclValue)
   Sequence(ListObject)
   Mapping(DictObject)
-  Elements(Map[String, TclValue])
+  Elements(ArrayObject)
 } derive(Debug)
 
 ///|
 struct Cell {
   mut value : VariableValue?
   mut declared : Bool
+  frame_local : Bool
 } derive(Debug)
 
 ///|
@@ -17,6 +18,7 @@ struct Binding {
   cell : Cell
   index : String?
   linked : Bool
+  array : ArrayObject?
 } derive(Debug)
 
 ///|
@@ -97,7 +99,7 @@ fn namespace_tail(name : String) -> String {
 ///|
 fn variable_parts(name : String) -> (String, String?) {
   if name.has_suffix(")") && name.find("(") is Some(at) {
-    (name[:at].to_owned(), Some(name[at + 1:name.length() - 1].to_owned()))
+    (unit_slice(name, 0, at), Some(unit_slice(name, at + 1, name.length() - 1)))
   } else {
     (name, None)
   }
@@ -119,9 +121,14 @@ fn Interpreter::binding(
           return None
         }
         let binding = Binding::{
-          cell: { value: None, declared: false, },
+          cell: {
+            value: None,
+            declared: false,
+            frame_local: self.frame.procedure,
+          },
           index: None,
           linked: false,
+          array: None,
         }
         self.frame.vars[base] = binding
         binding
@@ -166,12 +173,12 @@ fn Interpreter::binding(
       if !self.state.namespaces.contains(namespace_parent(key)) {
         raise Invalid("parent namespace does not exist")
       }
-      let cell = Cell::{ value: None, declared: false, }
+      let cell = Cell::{ value: None, declared: false, frame_local: false, }
       self.state.globals[key] = cell
       cell
     }
   }
-  Some({ cell, index, linked: false, })
+  Some({ cell, index, linked: false, array: None, })
 }
 
 ///|
@@ -191,13 +198,45 @@ fn Interpreter::link_variable(
   name : String,
   binding : Binding,
 ) -> Unit raise TclError {
+  if !self.frame.procedure && binding.cell.frame_local {
+    raise Invalid(
+      "can't create namespace variable that refers to procedure variable",
+    )
+  }
   let previous = self.binding(name, false)
   if previous is Some(old) &&
+    !old.linked &&
     old.cell.value is Some(_) &&
     (!physical_equal(old.cell, binding.cell) || old.index != binding.index) {
     raise Invalid("variable already exists")
   }
-  let linked = { ..binding, linked: true, }
+  let array = match binding.index {
+    None => None
+    Some(index) => {
+      let array = match binding.array {
+        Some(v) => v
+        None =>
+          match binding.cell.value {
+            Some(Elements(v)) => v
+            None => {
+              let v = ArrayObject::new()
+              binding.cell.value = Some(Elements(v))
+              v
+            }
+            _ => raise Invalid("variable is not an array")
+          }
+      }
+      if array.alive {
+        array.ensure_key(index)
+      }
+      array.pins[index] = array.pins.get(index).unwrap_or(0) + 1
+      Some(array)
+    }
+  }
+  if previous is Some(old) {
+    old.release_link()
+  }
+  let linked = { ..binding, linked: true, array, }
   if self.frame.procedure {
     self.frame.vars[name] = linked
   } else {
@@ -206,7 +245,39 @@ fn Interpreter::link_variable(
 }
 
 ///|
+fn Binding::release_link(self : Binding) -> Unit {
+  if self.linked {
+    if self.array is Some(array) && self.index is Some(index) {
+      array.unpin(index)
+    }
+  }
+}
+
+///|
+fn Cell::unset(self : Cell) -> Unit {
+  if self.value is Some(Elements(array)) {
+    array.destroy()
+  }
+  self.value = None
+  self.declared = false
+}
+
+///|
+fn Frame::release_variables(self : Frame) -> Unit {
+  for binding in self.vars.values() {
+    if binding.linked {
+      binding.release_link()
+    } else {
+      binding.cell.unset()
+    }
+  }
+}
+
+///|
 fn Binding::read_value(self : Binding) -> TclValue? raise TclError {
+  if self.array is Some(array) && self.index is Some(index) {
+    return array.get(index)
+  }
   match (self.cell.value, self.index) {
     (Some(Scalar(value)), None) => Some(value)
     (Some(Sequence(value)), None) => {
@@ -243,6 +314,15 @@ fn Interpreter::read_value(
   name : String,
 ) -> TclValue raise TclError {
   let binding = self.binding(name, false)
+  if binding is Some(b) && b.array is Some(array) && b.index is Some(index) {
+    if array.get(index) is Some(value) {
+      return value
+    }
+    switch_error(
+      "can't read \"" + name + "\": no such variable",
+      "TCL READ VARNAME",
+    )
+  }
   let (reason, code) = match binding {
     None => ("no such variable", "")
     Some(binding) =>
@@ -309,6 +389,16 @@ fn Interpreter::set_value(
     raise Invalid("variable size limit")
   }
   let binding = self.binding(name, true).unwrap()
+  if binding.array is Some(array) && binding.index is Some(index) {
+    if !array.alive {
+      switch_error(
+        "can't set \"" + name + "\": upvar refers to element in deleted array",
+        "TCL WRITE VARNAME",
+      )
+    }
+    array.put(index, value)
+    return
+  }
   match binding.index {
     None => {
       if binding.cell.value is Some(Elements(_)) {
@@ -322,7 +412,7 @@ fn Interpreter::set_value(
           raise Invalid("variable is not an array")
         Some(Elements(values)) => values
         None => {
-          let values = Map([])
+          let values = ArrayObject::new()
           binding.cell.value = Some(Elements(values))
           values
         }
@@ -330,7 +420,7 @@ fn Interpreter::set_value(
       if values.length() >= 10000 && !values.contains(index) {
         raise Invalid("array size limit")
       }
-      values[index] = value
+      values.put(index, value)
     }
   }
 }
@@ -350,13 +440,19 @@ fn Interpreter::unset_var(
       raise Invalid("undefined variable " + name)
     }
   }
+  if binding.array is Some(array) && binding.index is Some(index) {
+    if !array.contains(index) && !quiet {
+      raise Invalid("undefined variable " + name)
+    }
+    array.remove(index, invalidate=false)
+    return
+  }
   match binding.index {
     None => {
       if binding.cell.value is None && !quiet {
         raise Invalid("undefined variable " + name)
       }
-      binding.cell.value = None
-      binding.cell.declared = false
+      binding.cell.unset()
     }
     Some(index) =>
       match binding.cell.value {
@@ -657,7 +753,7 @@ fn Interpreter::namespace_command(
         for key in self.state.globals.keys().to_array() {
           if key.has_prefix(target + "::") {
             if self.state.globals.get(key) is Some(cell) {
-              cell.value = None
+              cell.unset()
             }
             self.state.globals.remove(key)
           }
@@ -695,6 +791,7 @@ fn Interpreter::namespace_command(
         }
         for key in self.state.aliases.keys().to_array() {
           if key.has_prefix(target + "::") {
+            self.state.aliases.get(key).unwrap().release_link()
             self.state.aliases.remove(key)
           }
         }

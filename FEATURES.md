@@ -1,4 +1,4 @@
-# Tcl 兼容矩阵（0.15.0）
+# Tcl 兼容矩阵（0.16.0）
 
 | 能力 | 本轮实现 | 仍需追平 |
 |---|---|---|
@@ -8,7 +8,7 @@
 | 过程与作用域 | 默认参数/args、namespace eval/inscope、变量声明、global/upvar/uplevel、内置/过程重命名 | trace、别名全部边界、运行中 namespace 延迟销毁和根删除 |
 | 命名空间库 | import/export/forget/origin、path/upvar/unknown、导入引用/循环检测、auto_import 回调 | Tcl 自带自动加载库、完整生态与上游全量 |
 | ensemble | create/configure/exists、map/subcommands/parameters/prefixes/unknown、动态导出、转发帧与安全参数 | 全部重入/删除/错误堆栈边界、上游全量 |
-| array | set/get/names/size/exists/unset、names 正则/模式缩写、元素变量和别名 | 搜索游标、统计及完整子命令缩写接口 |
+| array | 全部 11 子命令/缩写、搜索游标/失效/复用、真实哈希遍历/统计、别名条目保留与对象生命周期 | trace、完整上游边界、跨平台标识解析和统一累计内存 |
 | dict | 构造、get/set/unset、incr/append/lappend、for/map/filter/update/with | 全部写回异常边界、嵌套/数组对象缓存和代表性性能 |
 | string | cat、UTF-16 索引/替换/匹配、BMP Unicode 16 分类/简单大小写、trim/reverse/map、is 的 strict/failindex 和数字/列表失败位置 | 全部子命令/选项、原始字节表示与补充平面参考异常、完整上游 Unicode 边界 |
 | format/scan | 位置参数、宽度/精度/填充、精确浮点舍入、整数大小、扫描集合/抑制/%n、变量写入顺序 | 原始 UTF-8 截片一项已知差异、完整诊断和上游全量；固定 Windows 32/64 位配置 |
@@ -27,4 +27,4 @@ $name 仅接受 ASCII 名称是 Tcl 8.6 的规定；Unicode 变量使用 ${名�
 
 分支正则限额：4096 UTF-16 模式单元、64 捕获/解析层、128 执行层、每状态数组 16384 项及现有执行预算。可空反向引用的 35 个原生超时探针不算兼容通过；现有路径枚举算法仍可能在复杂短输入上触及本地资源限额。
 
-0.15.0 当前验证：JS/WasmGC 各 11178 项、48 新宿主、20 网页检查；1951 排序原生程序中 1949 一致、两项原始字节诊断差异、零未解释差异。原有八项正则字节码差异、一项转换字节差异、35 项 switch 原生超时仍保留。五进程计时中短字典/短整数排序较 0.14.0 回退约 28.1%/15.9%；六项排序负载仍慢于原生约 3.6–7.9 倍。当前证据见 evidence/sort-upgrade.json，历史测量不代表当前引擎。
+0.16.0 当前验证：JS/WasmGC 各 11211 项，56 新宿主和 20 实际网页检查；938 个数组原生探针中 937 完成且一致、1 原生超时，零未解释差异。原有 regexp 8 项、conversion 1 项、sort 2 项明确差异，以及 switch 35 项超时仍保留。四组五进程计时中短字典较 0.15.0 回退约 22.7%，其他 23 个既有负载中位比为 0.943–1.040；六项新数组负载为原生耗时约 2.49–5.89 倍。当前指纹见 evidence/array-upgrade.json，历史版本测量不代表当前引擎。公共函数/方法签名保持不变；生成接口新增 ArrayObject 内部类型条目。

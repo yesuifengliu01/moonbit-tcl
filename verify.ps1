@@ -54,6 +54,10 @@ try {
   if ($LASTEXITCODE -ne 0) {throw 'Tcl search differential failed'}
   node tools/test-semantic-oracle.mjs sort
   if ($LASTEXITCODE -ne 0) {throw 'Tcl sort differential failed'}
+  node tools/test-semantic-oracle.mjs array
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl array differential failed'}
+  node tools/test-array.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl array hosts failed'}
   node tools/test-sort.mjs
   if ($LASTEXITCODE -ne 0) {throw 'Tcl sort hosts failed'}
   node tools/test-search.mjs

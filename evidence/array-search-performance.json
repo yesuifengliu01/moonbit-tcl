@@ -1,0 +1,623 @@
+{
+  "baselineCommit": "5b52ecba55205687c2535fa1b65b4078fb7035ba",
+  "baselineEngineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+  "currentEngineSHA256": "0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e",
+  "referenceName": "array-search-workloads.json",
+  "referenceSHA256": "6b42b1f3a3a37c856085f1f5627cc3814ad6934e4c62c222bd32b6db9ffaa827",
+  "runtime": "v24.11.0",
+  "cpu": "Intel(R) Core(TM) i7-14700HX",
+  "warmups": 20,
+  "measurements": 30,
+  "independentProcesses": 5,
+  "rows": [
+    {
+      "name": "search-exact-500",
+      "currentOverBaselineMedian": 1.035769349367918,
+      "currentOverBaselineRange": [
+        0.8684136376444382,
+        1.1071197411004872
+      ],
+      "baselineMedianMs": 0.1621499999999969,
+      "currentMedianMs": 0.16485000000000127,
+      "systemTclRatio": 48.485294117647435,
+      "allResultsMatched": true
+    },
+    {
+      "name": "search-glob-300",
+      "currentOverBaselineMedian": 0.9670446491850885,
+      "currentOverBaselineRange": [
+        0.9386837881219613,
+        1.1269781461943553
+      ],
+      "baselineMedianMs": 0.14860000000001605,
+      "currentMedianMs": 0.14605000000001667,
+      "systemTclRatio": 38.43421052632018,
+      "allResultsMatched": true
+    },
+    {
+      "name": "sort-ascii-200",
+      "currentOverBaselineMedian": 1.0328159183248191,
+      "currentOverBaselineRange": [
+        0.9431331540683816,
+        1.04546393883038
+      ],
+      "baselineMedianMs": 0.5020499999999686,
+      "currentMedianMs": 0.5010499999999922,
+      "systemTclRatio": 4.399034240561828,
+      "allResultsMatched": true
+    },
+    {
+      "name": "search-sorted-500",
+      "currentOverBaselineMedian": 0.976066753272724,
+      "currentOverBaselineRange": [
+        0.952532123960723,
+        1.0544634404410569
+      ],
+      "baselineMedianMs": 0.9728000000000065,
+      "currentMedianMs": 0.9467500000000086,
+      "systemTclRatio": 3.661767549796978,
+      "allResultsMatched": true
+    },
+    {
+      "name": "search-regexp-100",
+      "currentOverBaselineMedian": 0.9661260226783568,
+      "currentOverBaselineRange": [
+        0.8881063122923369,
+        1.2457273583635753
+      ],
+      "baselineMedianMs": 0.3606499999999926,
+      "currentMedianMs": 0.33654999999998836,
+      "systemTclRatio": 14.140756302520519,
+      "allResultsMatched": true
+    },
+    {
+      "name": "array-regexp-100",
+      "currentOverBaselineMedian": 1.0069316081330975,
+      "currentOverBaselineRange": [
+        0.9642801677278716,
+        1.0350746268656927
+      ],
+      "baselineMedianMs": 0.3328000000000202,
+      "currentMedianMs": 0.3281999999999812,
+      "systemTclRatio": 4.036900369003458,
+      "allResultsMatched": true
+    },
+    {
+      "name": "sort-dictionary-200",
+      "currentOverBaselineMedian": 1.0007693491305298,
+      "currentOverBaselineRange": [
+        0.9742404876609808,
+        1.0160468189541734
+      ],
+      "baselineMedianMs": 0.5085500000000138,
+      "currentMedianMs": 0.4954500000000053,
+      "systemTclRatio": 2.8246864310148534,
+      "allResultsMatched": true
+    },
+    {
+      "name": "search-nested-100",
+      "currentOverBaselineMedian": 0.992168674698709,
+      "currentOverBaselineRange": [
+        0.9378407851691376,
+        1.088647959184636
+      ],
+      "baselineMedianMs": 0.08550000000002456,
+      "currentMedianMs": 0.0858000000000061,
+      "systemTclRatio": 15.32142857142966,
+      "allResultsMatched": true
+    }
+  ],
+  "rounds": [
+    {
+      "baselineCommit": "5b52ecba55205687c2535fa1b65b4078fb7035ba",
+      "baselineEngineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+      "currentEngineSHA256": "0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e",
+      "referenceName": "array-search-workloads.json",
+      "referenceSHA256": "6b42b1f3a3a37c856085f1f5627cc3814ad6934e4c62c222bd32b6db9ffaa827",
+      "runtime": "v24.11.0",
+      "cpu": "Intel(R) Core(TM) i7-14700HX",
+      "warmups": 20,
+      "measurements": 30,
+      "rows": [
+        {
+          "name": "search-exact-500",
+          "baselineMedianMs": 0.17744999999999322,
+          "currentMedianMs": 0.15409999999999968,
+          "baselineP95Ms": 0.4601000000000113,
+          "currentP95Ms": 0.44999999999998863,
+          "speedup": 1.1515249837767267,
+          "systemTclMedianMs": 0.0034,
+          "systemTclRatio": 45.32352941176462,
+          "resultMatched": true
+        },
+        {
+          "name": "search-glob-300",
+          "baselineMedianMs": 0.1557499999999976,
+          "currentMedianMs": 0.14619999999999322,
+          "baselineP95Ms": 0.34310000000002105,
+          "currentP95Ms": 0.27129999999999654,
+          "speedup": 1.0653214774282136,
+          "systemTclMedianMs": 0.0038,
+          "systemTclRatio": 38.47368421052453,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-ascii-200",
+          "baselineMedianMs": 0.5222999999999729,
+          "currentMedianMs": 0.5010499999999922,
+          "baselineP95Ms": 0.8501999999999725,
+          "currentP95Ms": 0.7205999999999904,
+          "speedup": 1.0424109370321943,
+          "systemTclMedianMs": 0.1139,
+          "systemTclRatio": 4.399034240561828,
+          "resultMatched": true
+        },
+        {
+          "name": "search-sorted-500",
+          "baselineMedianMs": 0.8978500000000054,
+          "currentMedianMs": 0.9467500000000086,
+          "baselineP95Ms": 1.2869999999999777,
+          "currentP95Ms": 1.2051000000000158,
+          "speedup": 0.9483496171111668,
+          "systemTclMedianMs": 0.25855,
+          "systemTclRatio": 3.661767549796978,
+          "resultMatched": true
+        },
+        {
+          "name": "search-regexp-100",
+          "baselineMedianMs": 0.3483499999999822,
+          "currentMedianMs": 0.33654999999998836,
+          "baselineP95Ms": 0.73599999999999,
+          "currentP95Ms": 0.4586999999999648,
+          "speedup": 1.0350616550289533,
+          "systemTclMedianMs": 0.0238,
+          "systemTclRatio": 14.140756302520519,
+          "resultMatched": true
+        },
+        {
+          "name": "array-regexp-100",
+          "baselineMedianMs": 0.33465000000001055,
+          "currentMedianMs": 0.3281999999999812,
+          "baselineP95Ms": 0.5981999999999061,
+          "currentP95Ms": 0.5798999999999523,
+          "speedup": 1.0196526508227597,
+          "systemTclMedianMs": 0.0813,
+          "systemTclRatio": 4.036900369003458,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-dictionary-200",
+          "baselineMedianMs": 0.5085500000000138,
+          "currentMedianMs": 0.4954500000000053,
+          "baselineP95Ms": 0.7182999999999993,
+          "currentP95Ms": 0.6620000000000346,
+          "speedup": 1.0264406095468936,
+          "systemTclMedianMs": 0.1754,
+          "systemTclRatio": 2.8246864310148534,
+          "resultMatched": true
+        },
+        {
+          "name": "search-nested-100",
+          "baselineMedianMs": 0.09184999999996535,
+          "currentMedianMs": 0.08635000000003856,
+          "baselineP95Ms": 0.3588999999999487,
+          "currentP95Ms": 0.2540000000000191,
+          "speedup": 1.0636942675150471,
+          "systemTclMedianMs": 0.0056,
+          "systemTclRatio": 15.419642857149743,
+          "resultMatched": true
+        }
+      ],
+      "scope": "Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim."
+    },
+    {
+      "baselineCommit": "5b52ecba55205687c2535fa1b65b4078fb7035ba",
+      "baselineEngineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+      "currentEngineSHA256": "0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e",
+      "referenceName": "array-search-workloads.json",
+      "referenceSHA256": "6b42b1f3a3a37c856085f1f5627cc3814ad6934e4c62c222bd32b6db9ffaa827",
+      "runtime": "v24.11.0",
+      "cpu": "Intel(R) Core(TM) i7-14700HX",
+      "warmups": 20,
+      "measurements": 30,
+      "rows": [
+        {
+          "name": "search-exact-500",
+          "baselineMedianMs": 0.15389999999999304,
+          "currentMedianMs": 0.16294999999999504,
+          "baselineP95Ms": 0.4613999999999976,
+          "currentP95Ms": 0.4268000000000143,
+          "speedup": 0.9444614912549723,
+          "systemTclMedianMs": 0.0034,
+          "systemTclRatio": 47.92647058823384,
+          "resultMatched": true
+        },
+        {
+          "name": "search-glob-300",
+          "baselineMedianMs": 0.13269999999999982,
+          "currentMedianMs": 0.14954999999999075,
+          "baselineP95Ms": 0.3188000000000102,
+          "currentP95Ms": 0.2656999999999812,
+          "speedup": 0.8873286526245939,
+          "systemTclMedianMs": 0.0038,
+          "systemTclRatio": 39.3552631578923,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-ascii-200",
+          "baselineMedianMs": 0.4799500000000023,
+          "currentMedianMs": 0.49569999999999936,
+          "baselineP95Ms": 0.7672000000000025,
+          "currentP95Ms": 0.6197999999999979,
+          "speedup": 0.9682267500504397,
+          "systemTclMedianMs": 0.1139,
+          "systemTclRatio": 4.352063213345033,
+          "resultMatched": true
+        },
+        {
+          "name": "search-sorted-500",
+          "baselineMedianMs": 0.9556499999999915,
+          "currentMedianMs": 0.9864000000000033,
+          "baselineP95Ms": 1.4354999999999905,
+          "currentP95Ms": 1.2647000000000048,
+          "speedup": 0.9688260340632484,
+          "systemTclMedianMs": 0.25855,
+          "systemTclRatio": 3.8151228002320763,
+          "resultMatched": true
+        },
+        {
+          "name": "search-regexp-100",
+          "baselineMedianMs": 0.3606499999999926,
+          "currentMedianMs": 0.3257000000000403,
+          "baselineP95Ms": 0.6579000000000406,
+          "currentP95Ms": 0.7094000000000165,
+          "speedup": 1.1073073380409824,
+          "systemTclMedianMs": 0.0238,
+          "systemTclRatio": 13.684873949581524,
+          "resultMatched": true
+        },
+        {
+          "name": "array-regexp-100",
+          "baselineMedianMs": 0.3246000000000322,
+          "currentMedianMs": 0.32685000000003583,
+          "baselineP95Ms": 0.5863999999999123,
+          "currentP95Ms": 0.7168000000000347,
+          "speedup": 0.9931161083065523,
+          "systemTclMedianMs": 0.0813,
+          "systemTclRatio": 4.020295202952471,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-dictionary-200",
+          "baselineMedianMs": 0.48560000000003356,
+          "currentMedianMs": 0.48689999999999145,
+          "baselineP95Ms": 0.6951999999999998,
+          "currentP95Ms": 0.6671999999999798,
+          "speedup": 0.9973300472377122,
+          "systemTclMedianMs": 0.1754,
+          "systemTclRatio": 2.7759407069554816,
+          "resultMatched": true
+        },
+        {
+          "name": "search-nested-100",
+          "baselineMedianMs": 0.07839999999998781,
+          "currentMedianMs": 0.08535000000006221,
+          "baselineP95Ms": 0.14190000000007785,
+          "currentP95Ms": 0.15239999999994325,
+          "speedup": 0.9185705916804999,
+          "systemTclMedianMs": 0.0056,
+          "systemTclRatio": 15.241071428582538,
+          "resultMatched": true
+        }
+      ],
+      "scope": "Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim."
+    },
+    {
+      "baselineCommit": "5b52ecba55205687c2535fa1b65b4078fb7035ba",
+      "baselineEngineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+      "currentEngineSHA256": "0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e",
+      "referenceName": "array-search-workloads.json",
+      "referenceSHA256": "6b42b1f3a3a37c856085f1f5627cc3814ad6934e4c62c222bd32b6db9ffaa827",
+      "runtime": "v24.11.0",
+      "cpu": "Intel(R) Core(TM) i7-14700HX",
+      "warmups": 20,
+      "measurements": 30,
+      "rows": [
+        {
+          "name": "search-exact-500",
+          "baselineMedianMs": 0.16800000000002058,
+          "currentMedianMs": 0.16485000000000127,
+          "baselineP95Ms": 0.3883999999999901,
+          "currentP95Ms": 0.34489999999999554,
+          "speedup": 1.019108280254894,
+          "systemTclMedianMs": 0.0034,
+          "systemTclRatio": 48.485294117647435,
+          "resultMatched": true
+        },
+        {
+          "name": "search-glob-300",
+          "baselineMedianMs": 0.14860000000001605,
+          "currentMedianMs": 0.14605000000001667,
+          "baselineP95Ms": 0.3581000000000074,
+          "currentP95Ms": 0.3503999999999792,
+          "speedup": 1.0174597740499767,
+          "systemTclMedianMs": 0.0038,
+          "systemTclRatio": 38.43421052632018,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-ascii-200",
+          "baselineMedianMs": 0.5306500000000085,
+          "currentMedianMs": 0.5498499999999922,
+          "baselineP95Ms": 0.8066000000000031,
+          "currentP95Ms": 0.6841000000000008,
+          "speedup": 0.965081385832529,
+          "systemTclMedianMs": 0.1139,
+          "systemTclRatio": 4.827480245829606,
+          "resultMatched": true
+        },
+        {
+          "name": "search-sorted-500",
+          "baselineMedianMs": 1.0006999999999948,
+          "currentMedianMs": 0.9767500000000098,
+          "baselineP95Ms": 1.2631000000000085,
+          "currentP95Ms": 1.420500000000004,
+          "speedup": 1.024520092142293,
+          "systemTclMedianMs": 0.25855,
+          "systemTclRatio": 3.7777992651325074,
+          "resultMatched": true
+        },
+        {
+          "name": "search-regexp-100",
+          "baselineMedianMs": 0.3468000000000302,
+          "currentMedianMs": 0.3456499999999778,
+          "baselineP95Ms": 0.5333000000000538,
+          "currentP95Ms": 0.6730000000000018,
+          "speedup": 1.0033270649502457,
+          "systemTclMedianMs": 0.0238,
+          "systemTclRatio": 14.523109243696545,
+          "resultMatched": true
+        },
+        {
+          "name": "array-regexp-100",
+          "baselineMedianMs": 0.33499999999997954,
+          "currentMedianMs": 0.3467499999999859,
+          "baselineP95Ms": 0.5537000000000489,
+          "currentP95Ms": 0.6590999999999667,
+          "speedup": 0.9661139149242773,
+          "systemTclMedianMs": 0.0813,
+          "systemTclRatio": 4.265067650676333,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-dictionary-200",
+          "baselineMedianMs": 0.5024500000000103,
+          "currentMedianMs": 0.494199999999978,
+          "baselineP95Ms": 0.5989000000000715,
+          "currentP95Ms": 0.7267000000000507,
+          "speedup": 1.016693646297112,
+          "systemTclMedianMs": 0.1754,
+          "systemTclRatio": 2.817559863169772,
+          "resultMatched": true
+        },
+        {
+          "name": "search-nested-100",
+          "baselineMedianMs": 0.08300000000002683,
+          "currentMedianMs": 0.08235000000001946,
+          "baselineP95Ms": 0.12350000000003547,
+          "currentP95Ms": 0.1329000000000633,
+          "speedup": 1.0078931390407677,
+          "systemTclMedianMs": 0.0056,
+          "systemTclRatio": 14.705357142860619,
+          "resultMatched": true
+        }
+      ],
+      "scope": "Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim."
+    },
+    {
+      "baselineCommit": "5b52ecba55205687c2535fa1b65b4078fb7035ba",
+      "baselineEngineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+      "currentEngineSHA256": "0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e",
+      "referenceName": "array-search-workloads.json",
+      "referenceSHA256": "6b42b1f3a3a37c856085f1f5627cc3814ad6934e4c62c222bd32b6db9ffaa827",
+      "runtime": "v24.11.0",
+      "cpu": "Intel(R) Core(TM) i7-14700HX",
+      "warmups": 20,
+      "measurements": 30,
+      "rows": [
+        {
+          "name": "search-exact-500",
+          "baselineMedianMs": 0.1621499999999969,
+          "currentMedianMs": 0.1679500000000047,
+          "baselineP95Ms": 0.37229999999999563,
+          "currentP95Ms": 0.3961999999999932,
+          "speedup": 0.9654659124739051,
+          "systemTclMedianMs": 0.0034,
+          "systemTclRatio": 49.3970588235308,
+          "resultMatched": true
+        },
+        {
+          "name": "search-glob-300",
+          "baselineMedianMs": 0.15375000000000227,
+          "currentMedianMs": 0.14495000000002278,
+          "baselineP95Ms": 0.3428000000000111,
+          "currentP95Ms": 0.23230000000000928,
+          "speedup": 1.0607105898584208,
+          "systemTclMedianMs": 0.0038,
+          "systemTclRatio": 38.14473684211126,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-ascii-200",
+          "baselineMedianMs": 0.4838999999999771,
+          "currentMedianMs": 0.5058999999999969,
+          "baselineP95Ms": 0.7136999999999603,
+          "currentP95Ms": 0.6782999999999788,
+          "speedup": 0.9565131448902552,
+          "systemTclMedianMs": 0.1139,
+          "systemTclRatio": 4.441615452150982,
+          "resultMatched": true
+        },
+        {
+          "name": "search-sorted-500",
+          "baselineMedianMs": 0.9728000000000065,
+          "currentMedianMs": 0.9382999999999981,
+          "baselineP95Ms": 1.3657999999999788,
+          "currentP95Ms": 1.147800000000018,
+          "speedup": 1.0367686241074374,
+          "systemTclMedianMs": 0.25855,
+          "systemTclRatio": 3.6290852833107645,
+          "resultMatched": true
+        },
+        {
+          "name": "search-regexp-100",
+          "baselineMedianMs": 0.37624999999997044,
+          "currentMedianMs": 0.33414999999996553,
+          "baselineP95Ms": 0.6431999999999789,
+          "currentP95Ms": 0.5433000000000447,
+          "speedup": 1.1259913212629336,
+          "systemTclMedianMs": 0.0238,
+          "systemTclRatio": 14.039915966385106,
+          "resultMatched": true
+        },
+        {
+          "name": "array-regexp-100",
+          "baselineMedianMs": 0.3219500000000153,
+          "currentMedianMs": 0.310450000000003,
+          "baselineP95Ms": 0.5971999999999298,
+          "currentP95Ms": 0.5225000000000364,
+          "speedup": 1.0370430020937742,
+          "systemTclMedianMs": 0.0813,
+          "systemTclRatio": 3.8185731857318945,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-dictionary-200",
+          "baselineMedianMs": 0.529700000000048,
+          "currentMedianMs": 0.5382000000000744,
+          "baselineP95Ms": 0.6694999999999709,
+          "currentP95Ms": 1.0269000000000688,
+          "speedup": 0.9842066146413504,
+          "systemTclMedianMs": 0.1754,
+          "systemTclRatio": 3.0684150513117125,
+          "resultMatched": true
+        },
+        {
+          "name": "search-nested-100",
+          "baselineMedianMs": 0.091700000000003,
+          "currentMedianMs": 0.08600000000001273,
+          "baselineP95Ms": 0.47289999999998145,
+          "currentP95Ms": 0.15160000000003038,
+          "speedup": 1.0662790697673188,
+          "systemTclMedianMs": 0.0056,
+          "systemTclRatio": 15.357142857145131,
+          "resultMatched": true
+        }
+      ],
+      "scope": "Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim."
+    },
+    {
+      "baselineCommit": "5b52ecba55205687c2535fa1b65b4078fb7035ba",
+      "baselineEngineSHA256": "fedb07692dc2555161ac5e3c433de43b1086e17fd3c55aec71f1da7c45c1c9aa",
+      "currentEngineSHA256": "0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e",
+      "referenceName": "array-search-workloads.json",
+      "referenceSHA256": "6b42b1f3a3a37c856085f1f5627cc3814ad6934e4c62c222bd32b6db9ffaa827",
+      "runtime": "v24.11.0",
+      "cpu": "Intel(R) Core(TM) i7-14700HX",
+      "warmups": 20,
+      "measurements": 30,
+      "rows": [
+        {
+          "name": "search-exact-500",
+          "baselineMedianMs": 0.15449999999998454,
+          "currentMedianMs": 0.17105000000000814,
+          "baselineP95Ms": 0.29470000000000596,
+          "currentP95Ms": 0.3720000000000141,
+          "speedup": 0.9032446653024098,
+          "systemTclMedianMs": 0.0034,
+          "systemTclRatio": 50.30882352941416,
+          "resultMatched": true
+        },
+        {
+          "name": "search-glob-300",
+          "baselineMedianMs": 0.14109999999999445,
+          "currentMedianMs": 0.13645000000001062,
+          "baselineP95Ms": 0.2989000000000033,
+          "currentP95Ms": 0.22560000000001423,
+          "speedup": 1.034078417002444,
+          "systemTclMedianMs": 0.0038,
+          "systemTclRatio": 35.9078947368449,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-ascii-200",
+          "baselineMedianMs": 0.5020499999999686,
+          "currentMedianMs": 0.47350000000000136,
+          "baselineP95Ms": 0.7857999999999947,
+          "currentP95Ms": 0.7545000000000073,
+          "speedup": 1.0602956705384734,
+          "systemTclMedianMs": 0.1139,
+          "systemTclRatio": 4.157155399473234,
+          "resultMatched": true
+        },
+        {
+          "name": "search-sorted-500",
+          "baselineMedianMs": 0.9922499999999843,
+          "currentMedianMs": 0.9451500000000124,
+          "baselineP95Ms": 1.8546999999999798,
+          "currentP95Ms": 1.3290999999999826,
+          "speedup": 1.049833359784131,
+          "systemTclMedianMs": 0.25855,
+          "systemTclRatio": 3.6555791916457645,
+          "resultMatched": true
+        },
+        {
+          "name": "search-regexp-100",
+          "baselineMedianMs": 0.37155000000001337,
+          "currentMedianMs": 0.4628500000000031,
+          "baselineP95Ms": 0.9732000000000198,
+          "currentP95Ms": 0.9390000000000214,
+          "speedup": 0.8027438695041825,
+          "systemTclMedianMs": 0.0238,
+          "systemTclRatio": 19.447478991596768,
+          "resultMatched": true
+        },
+        {
+          "name": "array-regexp-100",
+          "baselineMedianMs": 0.3328000000000202,
+          "currentMedianMs": 0.342049999999972,
+          "baselineP95Ms": 0.6282999999999674,
+          "currentP95Ms": 0.5563999999999396,
+          "speedup": 0.9729571700045241,
+          "systemTclMedianMs": 0.0813,
+          "systemTclRatio": 4.207257072570381,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-dictionary-200",
+          "baselineMedianMs": 0.6499000000000024,
+          "currentMedianMs": 0.6503999999999337,
+          "baselineP95Ms": 1.080000000000041,
+          "currentP95Ms": 1.0050999999999704,
+          "speedup": 0.9992312423125286,
+          "systemTclMedianMs": 0.1754,
+          "systemTclRatio": 3.708095781071458,
+          "resultMatched": true
+        },
+        {
+          "name": "search-nested-100",
+          "baselineMedianMs": 0.08550000000002456,
+          "currentMedianMs": 0.0858000000000061,
+          "baselineP95Ms": 0.26690000000007785,
+          "currentP95Ms": 0.30579999999997654,
+          "speedup": 0.996503496503712,
+          "systemTclMedianMs": 0.0056,
+          "systemTclRatio": 15.32142857142966,
+          "resultMatched": true
+        }
+      ],
+      "scope": "Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim."
+    }
+  ],
+  "scope": "Five preselected sequential fresh Node processes, each with 20 warmups and 30 interleaved measurements per workload. Every run retained. Aggregate medians and min/max of run ratios; no significance test, application or cross-platform claim."
+}

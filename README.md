@@ -1,8 +1,62 @@
 # MoonBit Tcl
 
-Tcl 8.6 脚本解释器，0.15.0。本地独立实现，仍在追平成熟项目的完整行为。
+Tcl 8.6 脚本解释器，0.16.0。本地独立实现，仍在追平成熟项目的完整行为。
 
-## 0.15.0 分组、索引与比较命令排序
+## 0.16.0 数组游标、哈希统计与变量生命周期
+
+实现 array 的 11 个子命令及唯一缩写：anymore、donesearch、exists、get、names、nextelement、set、size、startsearch、statistics、unset。游标可以跨会话调用保留，anymore 不消耗条目，空键与耗尽结果分开处理；标识按当前存活搜索编号分配，可回收编号。新增/删除哈希条目使已有搜索失效，覆盖现有值保持游标。
+
+采用 Tcl 8.6.15 的 modified UTF-8 字符串哈希与四倍扩容规则，保留桶链遍历次序；names/get 和 statistics 使用真实表结构。统计包含被元素别名保留但未定义的条目；size 只计算已定义元素。搜索标识的数值解析固定到 Windows Tcl 的 32 位 unsigned long 行为。
+
+元素别名绑定原数组对象。删除并重建同名数组后，旧别名不能写进新数组；过程退出释放别名引用与局部数组。通过元素别名 unset 与直接删除条目的游标行为分别对齐原生，重绑/清理未定义条目会更新游标位置。修复孤立 UTF-16 数组索引的内部截取，保留内部数值精度。
+
+938 个独立原生探针中 937 个完成且一致：935 个成功结果/stdout 逐字匹配、2 个预期拒绝；指定诊断通过 catch 包装后逐字比较。1 个补充平面大写转换探针超过原生 2 秒期限，记录在 array-reference-limits.json，不计为通过。没有新已知语义差异或未解释差异；原有 regexp 8 个字节码差异、conversion 1 个和 sort 2 个原始字节差异，以及 switch 35 个原生超时继续保留。
+
+完整 verify 的 JS/WasmGC 各 11211 项通过（新增 24 组原生向量和 9 个公共 API 回归）。56 个模块/CLI/Worker 检查、20 个实际浏览器检查及独立示例一致。例：node tools/cli.mjs --file examples/arrays.tcl --eval-json。网页证据来自本轮同一引擎的已保存实测，没有在打包检查中冒充重跑。公共函数/方法签名未改，生成接口新增一个不公开内部字段的 ArrayObject 类型条目。
+
+四组固定五进程活动对比提交版 0.15.0，共 24 项既有负载，每进程 20 次预热、30 次新旧交替测量并保留全部轮次。短字典中位耗时比约 1.227（回退约 22.7%），其他 23 项约为 0.943–1.040；这些单机短热会话结果没有统计显著性、完整应用或峰值内存结论。
+
+| 既有负载 | 耗时 / 0.15.0 | 五进程范围 |
+|---|---:|---:|
+| dictionary-100 | 1.227 | 1.106–1.384 |
+| array-300 | 0.970 | 0.926–1.063 |
+| bigint-150 | 1.015 | 0.933–1.062 |
+| alias-200 | 0.983 | 0.973–1.118 |
+| sort-200 | 0.996 | 0.950–1.084 |
+| dictionary-1000 | 1.025 | 0.922–1.066 |
+| sort-1000 | 0.979 | 0.960–1.039 |
+| format-receipt-100 | 0.986 | 0.931–1.046 |
+| scan-record-100 | 0.977 | 0.930–1.046 |
+| format-exact-100 | 1.028 | 0.940–1.084 |
+| search-exact-500 | 1.036 | 0.868–1.107 |
+| search-glob-300 | 0.967 | 0.939–1.127 |
+| sort-ascii-200 | 1.033 | 0.943–1.045 |
+| search-sorted-500 | 0.976 | 0.953–1.054 |
+| search-regexp-100 | 0.966 | 0.888–1.246 |
+| array-regexp-100 | 1.007 | 0.964–1.035 |
+| sort-dictionary-200 | 1.001 | 0.974–1.016 |
+| search-nested-100 | 0.992 | 0.938–1.089 |
+| sort-integer-1000 | 0.989 | 0.980–1.020 |
+| sort-stride-200 | 0.994 | 0.960–1.017 |
+| sort-indices-500 | 0.950 | 0.941–0.997 |
+| sort-nested-100 | 0.943 | 0.907–0.967 |
+| sort-command-100 | 1.040 | 1.033–1.120 |
+| sort-unique-200 | 1.020 | 1.002–1.083 |
+
+六项新数组负载与原生分别计时，结果逐字核对一致，耗时仍约为原生的 2.49–5.89 倍。
+
+| 数组负载 | 耗时 / 原生 Tcl |
+|---|---:|
+| array-populate-1000 | 3.47 |
+| array-cursor-500 | 3.81 |
+| array-statistics-500 | 3.55 |
+| array-retained-100 | 5.89 |
+| array-glob-500 | 3.52 |
+| array-mutate-200 | 2.49 |
+
+每个数组最多 10000 个哈希条目（包括别名保留的未定义条目）和 10000 个活动搜索。未提供 trace、统一累计内存配额、完整对象/原始字节表示、字节码、非指数正则、I/O/包/事件或全套上游/跨平台验收。两轮再生与当前源码/证据指纹见 evidence/array-upgrade.json，性能回退仍列入后续工作。
+
+## 0.15.0 分组、索引与比较命令排序（历史版本）
 
 实现 lsort 的 12 个选项及唯一前缀：分组 -stride、原始位置 -indices、嵌套 -index、升降序、内容类型、-command、-nocase 和 -unique。分组中的首个索引选字段，其余索引继续向内选择；去重保留最后一组及其原始位置。按固定合并顺序边读取键边排序，保留比较命令的调用顺序、大小写、所在作用域、重入及对输入变量的修改。
 
@@ -291,7 +345,7 @@ Ensemble 支持动态导出列表、显式 subcommands、map 命令前缀、唯�
 
 - 延迟求值的表达式树：&&、||、?: 短路，整数/浮点运算、位运算、幂、比较、eq/ne、in/ni 和常用数学函数。整数最大 16384 位；整数与浮点比较保留大整数精度；浮点转整数直接还原 IEEE 754 数值。
 - proc 默认/可变参数、递归、命名空间内过程解析、namespace eval/inscope/code、global/variable/upvar/uplevel；数组及元素别名、删除后重建。
-- array set/get/names/size/exists/unset；dict 构造、嵌套路径、修改、迭代、过滤、update/with 写回。
+- array 全部 11 个子命令及缩写、持久搜索游标、真实哈希统计、数组对象/元素别名生命周期；dict 构造、嵌套路径、修改、迭代、过滤、update/with 写回。
 - 常用 string 查询/转换/匹配/映射，以及 lset/linsert/lreplace/lsearch/lsort/lmap；if/then/elseif/else、for/foreach/while 和结构化异常控制。
 - 持久会话工作台：连续运行保留变量和过程，返回值与标准输出分栏；支持脚本导入/下载、清空会话、取消和 5 秒超时。普通脚本错误保留此前修改，取消/超时会清空整个会话。
 
@@ -338,8 +392,8 @@ moon fmt
 
 ## 边界
 
-仍缺运行中命名空间删除的完整延迟销毁语义、全局命名空间删除、Tcl 自带自动加载库、包加载、regexp/regsub、switch、format/scan、trace、source/open/file/exec/socket、事件循环、全量错误码/诊断堆栈与全部解析边界等。string 字符类别目前主要覆盖 ASCII；非 BMP 字符在全部命令上的 Tcl 8.x UTF-16 行为未完成。已有部分集合对象缓存与解析缓存，仍缺完整 Tcl 对象系统、字节码和成熟性能证明。不能将有限场景通过等同于完整 Tcl 兼容。
+仍缺运行中命名空间删除的完整延迟销毁语义、全局命名空间删除、Tcl 自带自动加载库、包/扩展、trace、source/open/file/exec/socket、事件循环、全量错误码/诊断堆栈与全部解析边界。regexp/regsub、switch、format/scan 和 BMP Unicode 类别已实现上述范围，仍有明确原始字节/字节码差异、补充平面参考限制和非指数算法缺口。已有对象值传递与解析缓存，尚缺完整 Tcl 对象系统、字节码、累计内存与成熟性能证明；有限场景通过不等于完整 Tcl 兼容。
 
-脚本最多 100000 UTF-16 单元；解析/执行嵌套 64 层；命令及替换共享预算，API 最大 1000000，网页/新会话接口使用 100000。字符串、变量值、列表结果及单次输出限 1000000 单元；整数 16384 位；命令表最多 10000 项（含内置命令）；数组 10000 元素；glob 动态规划最多 1000000 单元。网页 Worker 另有 5 秒终止机制。持久会话的累计内存尚无统一配额，因此不适合作为不可信多租户沙箱。
+脚本最多 100000 UTF-16 单元；解析/执行嵌套 64 层；命令及替换共享预算，API 最大 1000000，网页/新会话接口使用 100000。字符串、变量值、列表结果及单次输出限 1000000 单元；整数 16384 位；命令表最多 10000 项（含内置命令）；数组 10000 哈希条目及 10000 活动游标；glob 动态规划最多 1000000 单元。网页 Worker 另有 5 秒终止机制。持久会话的累计内存尚无统一配额，因此不适合作为不可信多租户沙箱。
 
 根据 [Tcl subst](https://www.tcl-lang.org/man/tcl8.6/TclCmd/subst.htm)、[info](https://www.tcl-lang.org/man/tcl8.6/TclCmd/info.htm)、[return](https://www.tcl-lang.org/man/tcl8.6/TclCmd/return.htm)、[try](https://www.tcl-lang.org/man/tcl8.6/TclCmd/try.htm)、[catch](https://www.tcl-lang.org/man/tcl8.6/TclCmd/catch.htm)、[expr](https://www.tcl-lang.org/man/tcl8.6/TclCmd/expr.htm)、[namespace](https://www.tcl-lang.org/man/tcl8.6/TclCmd/namespace.htm)、[dict](https://www.tcl-lang.org/man/tcl8.6/TclCmd/dict.htm) 文档和系统解释器行为原创实现，没有复制 Tcl 上游实现代码；原创实现采用 MIT 许可。Unicode 属性/映射来自官方 UnicodeData 16.0.0，按 vendor/ucd-16.0.0/LICENSE.txt 的 Unicode 许可分发；原始来源与 SHA256 见同目录 SOURCE.json，生成器为 tools/generate-unicode.py。详见 FEATURES.md、TESTING.md 与 evidence/unicode-upgrade.json。独立 Git 仓库，无 remote，未上传、发布或提交比赛。

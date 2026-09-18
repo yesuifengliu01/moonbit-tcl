@@ -1,0 +1,13 @@
+{
+  "source": "examples/arrays.tcl",
+  "reference": "Windows Tcl 8.6.15",
+  "result": "coffee juice tea water",
+  "output": "{coffee 8} {juice 4} {tea 12}\n1\ncouldn't find search \"s-1-stock\"\n4\n4 entries in table, 4 buckets\n",
+  "actual": {
+    "ok": true,
+    "result": "coffee juice tea water",
+    "output": "{coffee 8} {juice 4} {tea 12}\n1\ncouldn't find search \"s-1-stock\"\n4\n4 entries in table, 4 buckets\n"
+  },
+  "matched": true,
+  "engineSHA256": "0016ae533689ca40bd4e9edee67a320632181480274c4d7b85eefd6e23cafd9e"
+}

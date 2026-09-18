@@ -18,7 +18,7 @@ const cases=[
  ['signed-input','incr a --1',false],
  ['precise-comparison','expr {9007199254740993 > 9007199254740992.0}',true,'1'],
  ['lazy-rejection','expr {0 && [error not-run]}',true,'0'],
- ['alias-lifetime','set a(x) 1; upvar #0 a(x) y; unset a; set y 7; set a(x)',true,'7'],
+ ['alias-lifetime','set a(x) 1;upvar #0 a(x) y;unset a;array set a {x 2};set code [catch {set y 7}];list $code [info exists y] $a(x)',true,'1 0 2'],
  ['writeback-error','set d {x 1}; catch {dict with d {incr x; error bad}}; set d',true,'x 2'],
 ];
 if(isMainThread){
