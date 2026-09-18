@@ -12,8 +12,8 @@ fn glob_match(
   value : String,
   nocase : Bool,
 ) -> Bool raise TclError {
-  let p = (if nocase { pattern.to_lower() } else { pattern }).to_array()
-  let s = (if nocase { value.to_lower() } else { value }).to_array()
+  let p = utf16_units(if nocase { unicode_case(pattern, 0) } else { pattern })
+  let s = utf16_units(if nocase { unicode_case(value, 0) } else { value })
   if p.length() > 4096 ||
     s.length() > 100000 ||
     p.length() > 1000000 / (s.length() + 1) {
@@ -89,7 +89,7 @@ fn glob_match(
 
 ///|
 fn Interpreter::string_command(
-  _self : Interpreter,
+  self : Interpreter,
   args : Array[String],
 ) -> String raise TclError {
   let n = args.length()
@@ -121,7 +121,7 @@ fn Interpreter::string_command(
         last < 0 {
         ""
       } else {
-        text[first.max(0):(last + 1).min(text.length())].to_owned()
+        unit_slice(text, first.max(0), last.min(text.length() - 1) + 1)
       }
     }
     "compare" | "equal" => {
@@ -142,14 +142,14 @@ fn Interpreter::string_command(
       if i != n - 2 {
         raise Invalid("string compare arity")
       }
-      let a = if nocase { args[i].to_lower() } else { args[i] }
-      let b = if nocase { args[i + 1].to_lower() } else { args[i + 1] }
+      let a = if nocase { unicode_case(args[i], 0) } else { args[i] }
+      let b = if nocase { unicode_case(args[i + 1], 0) } else { args[i + 1] }
       let a = match limit {
-        Some(v) if v >= 0 => a[:v.min(a.length())].to_owned()
+        Some(v) if v >= 0 => unit_slice(a, 0, v.min(a.length()))
         _ => a
       }
       let b = match limit {
-        Some(v) if v >= 0 => b[:v.min(b.length())].to_owned()
+        Some(v) if v >= 0 => unit_slice(b, 0, v.min(b.length()))
         _ => b
       }
       let cmp = tcl_string_compare(a, b)
@@ -173,11 +173,15 @@ fn Interpreter::string_command(
         return "-1"
       }
       if op == "first" {
-        let start = if n == 5 { integer(args[4]).max(0) } else { 0 }
+        let start = if n == 5 {
+          list_index(args[4], text.length()).max(0)
+        } else {
+          0
+        }
         if start > text.length() {
           return "-1"
         }
-        match text[start:].to_owned().find(needle) {
+        match unit_slice(text, start, text.length()).find(needle) {
           Some(i) => (i + start).to_string()
           None => "-1"
         }
@@ -190,7 +194,7 @@ fn Interpreter::string_command(
         if last < 0 {
           return "-1"
         }
-        text[:last + 1].to_owned().rev_find(needle).unwrap_or(-1).to_string()
+        unit_slice(text, 0, last + 1).rev_find(needle).unwrap_or(-1).to_string()
       }
     }
     "tolower" | "toupper" | "totitle" => {
@@ -198,55 +202,55 @@ fn Interpreter::string_command(
         raise Invalid("string case arity")
       }
       let text = args[2]
-      let first = if n >= 4 {
-        list_index(args[3], text.length()).max(0).min(text.length())
-      } else {
-        0
-      }
+      let first = if n >= 4 { list_index(args[3], text.length()) } else { 0 }
       let last = if n == 5 {
         list_index(args[4], text.length()).min(text.length() - 1)
       } else if n == 4 {
-        first
+        first.min(text.length() - 1)
       } else {
         text.length() - 1
       }
+      let first = first.max(0).min(text.length())
       if last < first {
         return text
       }
-      let part = text[first:last + 1].to_owned()
-      let converted = if op == "tolower" {
-        part.to_lower()
-      } else if op == "toupper" {
-        part.to_upper()
-      } else {
-        let cs = part.to_array()
-        if cs.is_empty() {
-          ""
+      let part = unit_slice(text, first, last + 1)
+      let converted = unicode_case(
+        part,
+        if op == "tolower" {
+          0
+        } else if op == "toupper" {
+          1
         } else {
-          cs[0].to_string().to_upper() + String::from_array(cs[1:]).to_lower()
-        }
-      }
-      text[:first].to_owned() + converted + text[last + 1:].to_owned()
+          2
+        },
+        conversion=true,
+      )
+      unit_slice(text, 0, first) +
+      converted +
+      unit_slice(text, last + 1, text.length())
     }
     "trim" | "trimleft" | "trimright" => {
       if n != 3 && n != 4 {
         raise Invalid("string trim arity")
       }
       let text = args[2].to_array()
-      let chars = if n == 4 {
-        args[3].to_array()
-      } else {
-        " \t\r\n\u000b\u000c\u0085\u00a0".to_array()
+      let chars = if n == 4 { Some(args[3].to_array()) } else { None }
+      let matches = fn(c) {
+        match chars {
+          Some(values) => values.contains(c)
+          None => c.to_int() <= 65535 && (unicode_mask(c.to_int()) & 512) != 0
+        }
       }
       let mut first = 0
       let mut last = text.length()
       if op != "trimright" {
-        while first < last && chars.contains(text[first]) {
+        while first < last && matches(text[first]) {
           first += 1
         }
       }
       if op != "trimleft" {
-        while last > first && chars.contains(text[last - 1]) {
+        while last > first && matches(text[last - 1]) {
           last -= 1
         }
       }
@@ -266,7 +270,7 @@ fn Interpreter::string_command(
       if n != 3 {
         raise Invalid("string reverse arity")
       }
-      args[2].rev()
+      unicode_reverse(args[2])
     }
     "replace" => {
       if n != 5 && n != 6 {
@@ -278,9 +282,9 @@ fn Interpreter::string_command(
       if first >= text.length() || last < first {
         return text
       }
-      text[:first].to_owned() +
+      unit_slice(text, 0, first) +
       (if n == 6 { args[5] } else { "" }) +
-      text[last + 1:].to_owned()
+      unit_slice(text, last + 1, text.length())
     }
     "match" => {
       let nocase = n == 5 && args[2] == "-nocase"
@@ -299,7 +303,7 @@ fn Interpreter::string_command(
         raise Invalid("string map expects pairs")
       }
       let source = args[n - 1]
-      let subject = if nocase { source.to_lower() } else { source }
+      let subject = if nocase { unicode_case(source, 0) } else { source }
       let out = StringBuilder()
       let mut i = 0
       let mut size = 0
@@ -307,8 +311,13 @@ fn Interpreter::string_command(
         let mut matched = false
         let mut j = 0
         while j < mapping.length() {
-          let key = if nocase { mapping[j].to_lower() } else { mapping[j] }
-          if !key.is_empty() && subject[i:].has_prefix(key) {
+          let key = if nocase {
+            unicode_case(mapping[j], 0)
+          } else {
+            mapping[j]
+          }
+          if !key.is_empty() &&
+            unit_slice(subject, i, subject.length()).has_prefix(key) {
             size += mapping[j + 1].length()
             if size > 1000000 {
               raise Invalid("string map size limit")
@@ -321,98 +330,24 @@ fn Interpreter::string_command(
           j += 2
         }
         if !matched {
-          out.write_string(source[i:i + 1].to_owned())
+          out.write_string(unit_slice(source, i, i + 1))
           i += 1
           size += 1
+          if size > 1000000 {
+            raise Invalid("string map size limit")
+          }
         }
       }
       out.to_string()
     }
-    "is" => {
-      if n < 4 {
-        raise Invalid("string is arity")
-      }
-      let strict = n == 5 && args[3] == "-strict"
-      if n != (if strict { 5 } else { 4 }) {
-        raise Invalid("string is options")
-      }
-      let value = args[n - 1]
-      let kind = args[2]
-      let valid = if value.is_empty() {
-        !strict || kind == "list"
-      } else {
-        match kind {
-          "integer" =>
-            try {
-              let v = whole(value)
-              v >= -2147483648N && v <= 4294967295N
-            } catch {
-              _ => false
-            }
-          "wideinteger" =>
-            try {
-              let v = whole(value)
-              v >= -9223372036854775808N && v <= 18446744073709551615N
-            } catch {
-              _ => false
-            }
-          "entier" =>
-            try {
-              ignore(whole(value))
-              true
-            } catch {
-              _ => false
-            }
-          "double" => number(value) is Some(_)
-          "boolean" =>
-            try {
-              ignore(string_boolean(value))
-              true
-            } catch {
-              _ => false
-            }
-          "true" => string_boolean(value) catch { _ => false }
-          "false" =>
-            try !string_boolean(value) catch {
-              _ => false
-            }
-          "list" =>
-            try {
-              ignore(parse_list(value))
-              true
-            } catch {
-              _ => false
-            }
-          "digit" => value.to_array().iter().all(c => c >= '0' && c <= '9')
-          "xdigit" => value.to_array().iter().all(c => hex_digit(c) >= 0)
-          "space" => value.to_array().iter().all(list_space)
-          "ascii" => value.to_array().iter().all(c => c.to_int() < 128)
-          "alpha" =>
-            value
-            .to_array()
-            .iter()
-            .all(c => (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-          "alnum" =>
-            value
-            .to_array()
-            .iter()
-            .all(c => {
-              (c >= 'a' && c <= 'z') ||
-              (c >= 'A' && c <= 'Z') ||
-              (c >= '0' && c <= '9')
-            })
-          _ => raise Invalid("unsupported string class")
-        }
-      }
-      boolean_text(valid)
-    }
+    "is" => self.string_is(args)
     _ => raise Invalid("unsupported string subcommand " + op)
   }
 }
 
 ///|
 fn string_boolean(value : String) -> Bool raise TclError {
-  let text = value.to_lower()
+  let text = unicode_case(value, 0)
   if text == "0" {
     return false
   }
@@ -572,7 +507,7 @@ fn Interpreter::info_command(
       if n != 2 {
         raise Invalid("info patchlevel arity")
       }
-      "0.8.0"
+      "0.9.0"
     }
     "tclversion" => {
       if n != 2 {

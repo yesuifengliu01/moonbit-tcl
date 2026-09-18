@@ -1,8 +1,22 @@
 # MoonBit Tcl
 
-Tcl 8.6 脚本解释器，0.8.0。本地独立实现，仍在追平成熟项目的完整行为。
+Tcl 8.6 脚本解释器，0.9.0。本地独立实现，仍在追平成熟项目的完整行为。
 
-## 本轮脚本替换与完整性判断
+## 本轮 Unicode 与字符串边界
+
+基于固定的 Unicode 16.0.0 数据补齐 13 类字符判定与 BMP 简单大小写映射。string is 支持 -strict、-failindex 与唯一缩写；字符类别失败位置按码位计数，列表失败位置按 UTF-16 偏移计数，数字溢出记为 -1。成功判定不修改失败变量。补齐数字前缀、整数正负范围、Inf/NaN 形式；entier 仍受既有 16384 位/5000 字符限额约束。
+
+index/range/replace/map/限定长度比较及 glob 使用 UTF-16 单元，允许拆分并重新合并代理对；reverse 保留完整代理对，trim 按完整字符匹配。大小写不做多字符展开（例如 ß 不变为 SS），转换保留 Tcl 8.6 的 UTF-8 字节数不增长规则和 Georgian title 特例；忽略大小写比较使用完整简单映射。修复 lsearch -exact -nocase 的编码长度前置条件和 Unicode 反斜杠转义边界。
+
+**名称语法澄清：** Tcl 8.6 的 $name 本来只接受 ASCII 字母/数字/下划线及命名空间分隔符；Unicode 名称使用 ${名称}，数组索引可以含 Unicode。现有解析器的这部分无需放宽；此前追平记录将它误列为缺口，本轮已有原生回归证明。
+
+1866 个新增原生 Tcl 8.6.15 程序包括 107 批分类边界、75 批全部简单映射、840 个类别矩阵、284 个数字失败位置，以及选项、trim、glob 和代理单元回归。另有 5 个公共 API 回归。JS/WasmGC 各 4875 项、30 项新增宿主和原有检查全部通过；真实网页 13 项检查及新示例 CLI 对照通过。独立数据审计覆盖全部 65536 BMP 码位的 13 类属性和 3 种转换，共 1048576 项属性/转换检查，不替代编译后端测试。
+
+固定 Windows Tcl 8.6.15 参考会在三个补充平面大小写案例中崩溃，另两个 trim 案例返回截断 UTF-8。它们记录于 evidence/unicode-reference-limits.json，未计入 1866 个通过案例。本实现对补充平面大小写保证 UTF-16 保留和有界处理；这是本地 API 保证，不是原生逐字一致的证明。原始 Tcl 字节表示、这些参考边界、完整 string 子命令和完整 Unicode/解析行为仍未追平。
+
+七组既有同进程交替计时中新版耗时为 0.8.0 的约 0.95–1.03 倍，仍比系统 Tcl 慢约 3.8–8.4 倍，仅代表本机小负载。示例见 examples/unicode.tcl；当前源码/证据指纹见 evidence/unicode-upgrade.json，性能见 evidence/unicode-performance.json。
+
+## 0.8.0 脚本替换与完整性判断（历史测量）
 
 subst 支持 -nobackslashes/-nocommands/-novariables 及唯一缩写，并保留嵌套变量索引/命令内部需要的替换。break 返回此前已替换文本，continue 丢弃整个命令或变量替换，return/自定义完成码使用其结果作为替换值。普通错误继续传播；未完成语法前已执行的替换保留副作用。变量 token 先完整解析，命令替换逐条解析执行；这两类顺序不同，不能共享一个简单的整串预解析路径。
 
@@ -79,6 +93,9 @@ python tools/generate-semantic-oracle.py cache
 python tools/generate-semantic-oracle.py namespace
 python tools/generate-semantic-oracle.py completion
 python tools/generate-semantic-oracle.py syntax
+python tools/generate-unicode.py
+python tools/generate-semantic-oracle.py unicode
+python tools/audit-unicode.py
 moon fmt
 ./verify.ps1
 ```
@@ -91,4 +108,4 @@ moon fmt
 
 脚本最多 100000 UTF-16 单元；解析/执行嵌套 64 层；命令及替换共享预算，API 最大 1000000，网页/新会话接口使用 100000。字符串、变量值、列表结果及单次输出限 1000000 单元；整数 16384 位；命令表最多 10000 项（含内置命令）；数组 10000 元素；glob 动态规划最多 1000000 单元。网页 Worker 另有 5 秒终止机制。持久会话的累计内存尚无统一配额，因此不适合作为不可信多租户沙箱。
 
-根据 [Tcl subst](https://www.tcl-lang.org/man/tcl8.6/TclCmd/subst.htm)、[info](https://www.tcl-lang.org/man/tcl8.6/TclCmd/info.htm)、[return](https://www.tcl-lang.org/man/tcl8.6/TclCmd/return.htm)、[try](https://www.tcl-lang.org/man/tcl8.6/TclCmd/try.htm)、[catch](https://www.tcl-lang.org/man/tcl8.6/TclCmd/catch.htm)、[expr](https://www.tcl-lang.org/man/tcl8.6/TclCmd/expr.htm)、[namespace](https://www.tcl-lang.org/man/tcl8.6/TclCmd/namespace.htm)、[dict](https://www.tcl-lang.org/man/tcl8.6/TclCmd/dict.htm) 文档和系统解释器行为原创实现，没有复制上游源码。MIT 许可。详见 FEATURES.md、TESTING.md 与 evidence/syntax-upgrade.json。独立 Git 仓库，无 remote，未上传、发布或提交比赛。
+根据 [Tcl subst](https://www.tcl-lang.org/man/tcl8.6/TclCmd/subst.htm)、[info](https://www.tcl-lang.org/man/tcl8.6/TclCmd/info.htm)、[return](https://www.tcl-lang.org/man/tcl8.6/TclCmd/return.htm)、[try](https://www.tcl-lang.org/man/tcl8.6/TclCmd/try.htm)、[catch](https://www.tcl-lang.org/man/tcl8.6/TclCmd/catch.htm)、[expr](https://www.tcl-lang.org/man/tcl8.6/TclCmd/expr.htm)、[namespace](https://www.tcl-lang.org/man/tcl8.6/TclCmd/namespace.htm)、[dict](https://www.tcl-lang.org/man/tcl8.6/TclCmd/dict.htm) 文档和系统解释器行为原创实现，没有复制 Tcl 上游实现代码；原创实现采用 MIT 许可。Unicode 属性/映射来自官方 UnicodeData 16.0.0，按 vendor/ucd-16.0.0/LICENSE.txt 的 Unicode 许可分发；原始来源与 SHA256 见同目录 SOURCE.json，生成器为 tools/generate-unicode.py。详见 FEATURES.md、TESTING.md 与 evidence/unicode-upgrade.json。独立 Git 仓库，无 remote，未上传、发布或提交比赛。

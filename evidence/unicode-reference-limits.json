@@ -1,0 +1,38 @@
+{
+  "reference": "System Tcl 8.6.15 through tkinter",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
+  "rows": [
+    {
+      "source": "string tolower \ud83d\ude00Ab",
+      "exitCode": 3221225477,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "source": "string toupper \ud83d\ude00Ab",
+      "exitCode": 3221225477,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "source": "string totitle \ud83d\ude00Ab",
+      "exitCode": 3221225477,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "source": "string trim \"\ud800\udc20x\ud800\udc20\"",
+      "exitCode": 0,
+      "stdout": "{\"result\": \"\\ud800\\udc20x\\udcf0\\udc90\\udc80\", \"codepoints\": [65568, 120, 56560, 56464, 56448]}\r\n",
+      "stderr": ""
+    },
+    {
+      "source": "string trimright \"\ud800\udc20x\ud800\udc20\"",
+      "exitCode": 0,
+      "stdout": "{\"result\": \"\\ud800\\udc20x\\udcf0\\udc90\\udc80\", \"codepoints\": [65568, 120, 56560, 56464, 56448]}\r\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Known excluded reference hazards. Supplementary case-conversion crashes and invalid UTF-8 trim outputs are not counted as passing compatibility cases. Local UTF-16 preservation guarantees have separate API tests."
+}

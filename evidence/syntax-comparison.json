@@ -2,7 +2,7 @@
   "reference": "System Tcl 8.6.15 through Python tkinter",
   "cases": 1019,
   "matched": 1019,
-  "engineSHA256": "38345fc6951e14eda6692bd0065849abbd737df26160a3a283b388c4dc9b210f",
+  "engineSHA256": "24507f9d91a13db49db6ec77022edc94944df10ddf306d5a263d4184ce9dddfa",
   "syntaxScope": "Substitution fixtures compare status, normalized error result, side effects and selected completion options. Completeness fixtures compare exact booleans; other successes compare exact values/stdout. Not complete error-message or upstream-suite coverage.",
   "comparison": "Exact result and standard-output strings on success; rejection only on expected errors.",
   "rows": [

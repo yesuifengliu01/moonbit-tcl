@@ -53,7 +53,11 @@ fn backslash(cs : Array[Char], start : Int) -> (String, Int) {
         if digit < 0 {
           break
         }
-        value = value * 16UL + digit.to_uint64()
+        let next = value * 16UL + digit.to_uint64()
+        if c == 'U' && next > 1114111UL {
+          break
+        }
+        value = next
         count += 1
         i += 1
       }
@@ -62,7 +66,7 @@ fn backslash(cs : Array[Char], start : Int) -> (String, Int) {
       } else if value > 65535UL {
         "\ufffd"
       } else {
-        value.to_int().to_char().unwrap_or('\ufffd').to_string()
+        unit_text(value.to_int())
       }
     }
     _ =>
@@ -86,18 +90,35 @@ fn backslash(cs : Array[Char], start : Int) -> (String, Int) {
 ///|
 /// Parse Tcl lists without variable or command substitution.
 pub fn parse_list(text : String) -> Array[String] raise TclError {
+  parse_list_at(text, None)
+}
+
+///|
+fn parse_list_at(
+  text : String,
+  failure : Ref[Int]?,
+) -> Array[String] raise TclError {
   if text.length() > 1000000 {
     raise Invalid("list size limit")
   }
   let cs = text.to_array()
   let values = []
   let mut i = 0
+  let mut counted = 0
+  let mut offset = 0
   while i < cs.length() {
     while i < cs.length() && list_space(cs[i]) {
       i += 1
     }
     if i == cs.length() {
       break
+    }
+    if failure is Some(position) {
+      while counted < i {
+        offset += if cs[counted].to_int() > 65535 { 2 } else { 1 }
+        counted += 1
+      }
+      position.val = offset
     }
     let out = StringBuilder()
     if cs[i] == '{' {

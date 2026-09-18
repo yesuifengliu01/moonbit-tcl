@@ -1,0 +1,11 @@
+{
+  "reference": "System Tcl 8.6.15 through tkinter",
+  "unicodeVersion": "16.0.0",
+  "codepoints": 65536,
+  "propertiesPerCodepoint": 13,
+  "caseMappingsPerCodepoint": 3,
+  "checks": 1048576,
+  "mismatches": [],
+  "scope": "Exhaustive BMP category and public simple-case conversion audit (including Tcl UTF-8 non-growth behavior); separate compiled command and host fixtures verify use of the tables. Does not imply full Tcl or Unicode compatibility.",
+  "unicodeDataSHA256": "ff58e5823bd095166564a006e47d111130813dcf8bf234ef79fa51a870edb48f"
+}

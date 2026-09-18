@@ -111,12 +111,20 @@ fn Interpreter::extended_list_command(
         raise Invalid("lsearch arity")
       }
       let values = parse_list(args[i])
-      let pattern = if nocase { args[i + 1].to_lower() } else { args[i + 1] }
+      let pattern = if nocase {
+        unicode_case(args[i + 1], 0)
+      } else {
+        args[i + 1]
+      }
       let result = []
       for j in start..<values.length() {
-        let value = if nocase { values[j].to_lower() } else { values[j] }
+        let value = if nocase { unicode_case(values[j], 0) } else { values[j] }
         let matched = if exact {
-          value == pattern
+          value == pattern &&
+          (
+            !nocase ||
+            tcl_utf8_length(values[j]) == tcl_utf8_length(args[i + 1])
+          )
         } else {
           glob_match(pattern, value, false)
         }
@@ -186,7 +194,7 @@ fn Interpreter::extended_list_command(
           None => value
         }
         if nocase {
-          raw.to_lower()
+          unicode_case(raw, 0)
         } else {
           raw
         }

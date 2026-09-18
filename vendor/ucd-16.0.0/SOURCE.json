@@ -1,0 +1,14 @@
+{
+  "version": "16.0.0",
+  "files": {
+    "UnicodeData.txt": {
+      "url": "https://www.unicode.org/Public/16.0.0/ucd/UnicodeData.txt",
+      "sha256": "ff58e5823bd095166564a006e47d111130813dcf8bf234ef79fa51a870edb48f"
+    },
+    "LICENSE.txt": {
+      "url": "https://www.unicode.org/license.txt",
+      "sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96"
+    }
+  },
+  "scope": "Unmodified official Unicode property data and license. Generated implementation tables use Unicode categories and simple case mappings; Tcl-specific rules are original code."
+}

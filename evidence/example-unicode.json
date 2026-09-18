@@ -1,0 +1,15 @@
+{
+  "reference": "System Tcl 8.6.15",
+  "example": "examples/unicode.tcl",
+  "expected": {
+    "ok": true,
+    "result": "1",
+    "output": "ißǳ 中文\nİßǱ 中文\nǲabc\nvalid=0 index=2\n2 0 1\n"
+  },
+  "actual": {
+    "ok": true,
+    "result": "1",
+    "output": "ißǳ 中文\nİßǱ 中文\nǲabc\nvalid=0 index=2\n2 0 1\n"
+  },
+  "matched": true
+}

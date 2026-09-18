@@ -1,0 +1,14 @@
+{
+  "project": "tcl",
+  "utc": "2026-09-18T00:13:12.018Z",
+  "runtime": "v24.11.0",
+  "platform": "win32",
+  "cpu": "Intel(R) Core(TM) i7-14700HX",
+  "input_utf8_bytes": 282,
+  "samples": 30,
+  "warmup": 5,
+  "median_ms": 0.5020999999999987,
+  "p95_ms": 0.8950999999999993,
+  "max_ms": 0.9514000000000067,
+  "scope": "JS warm execution of documented example; no cross-project or upstream performance claim"
+}

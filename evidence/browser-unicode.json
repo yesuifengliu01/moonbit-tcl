@@ -1,0 +1,88 @@
+{
+  "checks": 13,
+  "passed": 13,
+  "rows": [
+    {
+      "case": "case conversion and standard output",
+      "result": "ǲabc",
+      "output": "ißǳ 中文\nİßǱ 中文\n",
+      "error": ""
+    },
+    {
+      "case": "Unicode failure variable",
+      "result": "0 2",
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "valid input leaves failindex unchanged",
+      "result": "1 2",
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "UTF16 length, glob and split/rejoin",
+      "result": "2 0 1 1",
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "reverse and isolated-unit replacement",
+      "result": "B😀A 1",
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "simple nocase mapping",
+      "result": "XXYSS",
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "numeric failure and NaN payload",
+      "result": "0 -1 1",
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "list failure offset after emoji",
+      "result": "0 3",
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "ASCII dollar names and Unicode braced names",
+      "result": "1 3",
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "local supplementary conversion preservation",
+      "result": "𐐀ab😀",
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "error preserves stdout and mutation",
+      "result": "",
+      "output": "before\n",
+      "error": "Invalid(\"variable is array\")"
+    },
+    {
+      "case": "recovery with prior mutation",
+      "result": "after failure kept",
+      "output": "",
+      "error": ""
+    },
+    {
+      "case": "reset clears session",
+      "result": "0",
+      "output": "",
+      "error": ""
+    }
+  ],
+  "consoleWarningsAndErrors": [],
+  "url": "http://127.0.0.1:16038/web/",
+  "engineSHA256": "24507f9d91a13db49db6ec77022edc94944df10ddf306d5a263d4184ce9dddfa",
+  "method": "Real Codex in-app browser; textarea input and Run/Reset buttons; DOM result/output/error readback. Supplementary case conversion is a local preservation guarantee, not a passing native oracle. Import/download, cancellation, timeout and responsive layout were not rerun this milestone."
+}

@@ -3,7 +3,7 @@ from pathlib import Path
 import tkinter,json,runpy,sys
 root=Path(__file__).resolve().parents[1]
 suite=sys.argv[1] if len(sys.argv)>1 else 'semantic'
-if suite not in {'semantic','cache','namespace','completion','syntax'}:raise SystemExit('suite must be semantic, cache, namespace, completion or syntax')
+if suite not in {'semantic','cache','namespace','completion','syntax','unicode'}:raise SystemExit('suite must be semantic, cache, namespace, completion, syntax or unicode')
 cases=runpy.run_path(str(root/f'tools/{suite}-cases.py'))['cases']
 rows=[]
 for case in cases:

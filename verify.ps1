@@ -40,6 +40,12 @@ try {
   if ($LASTEXITCODE -ne 0) {throw 'Tcl completion differential failed'}
   node tools/test-semantic-oracle.mjs syntax
   if ($LASTEXITCODE -ne 0) {throw 'Tcl syntax differential failed'}
+  node tools/test-semantic-oracle.mjs unicode
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl Unicode differential failed'}
+  python tools/audit-unicode.py
+  if ($LASTEXITCODE -ne 0) {throw 'Unicode table data audit failed'}
+  node tools/test-unicode.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl Unicode hosts failed'}
   node tools/test-syntax.mjs
   if ($LASTEXITCODE -ne 0) {throw 'Tcl syntax hosts failed'}
   node tools/test-completions.mjs
