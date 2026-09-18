@@ -1,0 +1,82 @@
+[
+  [
+    "set n [regexp -all -indices {(a)(b?)} aba m a b];list $n $m $a $b",
+    "2 {2 2} {2 2} {3 2}"
+  ],
+  [
+    "list $m $a $b",
+    "{2 2} {2 2} {3 2}"
+  ],
+  [
+    "regexp z abc m;set m",
+    "2 2"
+  ],
+  [
+    "regexp -all -inline {(a)(b?)} aba",
+    "ab a b a a {}"
+  ],
+  [
+    "regexp -start end -inline -indices {} abc",
+    "{3 2}"
+  ],
+  [
+    "regexp -start 100 -inline -indices {} abc",
+    "{100 99}"
+  ],
+  [
+    "regexp -all -inline -indices {\\A} abc",
+    "{0 -1} {1 0} {2 1}"
+  ],
+  [
+    "regsub -all {} abc X",
+    "XaXbXc"
+  ],
+  [
+    "regsub -all {()} abc X",
+    "XaXbXcX"
+  ],
+  [
+    "regsub -all {(a)(b?)} aba {<\\2:&:\\1>}",
+    "<b:ab:a><:a:a>"
+  ],
+  [
+    "regsub -all -expanded {a b} {a b} X",
+    "X"
+  ],
+  [
+    "regsub -all -nocase a AbA X out;set out",
+    "XbX"
+  ],
+  [
+    "regexp -about {a+?}",
+    "0 {REG_UNONPOSIX REG_USHORTEST}"
+  ],
+  [
+    "regexp -about {a^}",
+    "0 REG_UIMPOSSIBLE"
+  ],
+  [
+    "regexp -about {[[:digit:]]+}",
+    "0 REG_ULOCALE"
+  ],
+  [
+    "regexp -nocase a A",
+    "1"
+  ],
+  [
+    "set opt -no;catch {regexp $opt a A}",
+    "1"
+  ],
+  [
+    "proc f name {upvar 1 $name v;regsub -all a aba X v};f out;set out",
+    "XbX"
+  ],
+  [
+    "scan 18446744073709551616 %f v;catch {regexp {(} $v};format %.17g $v",
+    "1.8446744073709552e+19"
+  ],
+  [
+    "regexp .* $v;format %.17g $v",
+    "1.844674407370955e+19"
+  ]
+]

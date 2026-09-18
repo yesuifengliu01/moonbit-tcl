@@ -89,7 +89,7 @@ fn builtin_names() -> Array[String] {
     "lrepeat", "lset", "linsert", "lreplace", "lsearch", "lsort", "while", "for",
     "foreach", "lmap", "break", "continue", "catch", "error", "namespace", "global",
     "variable", "upvar", "uplevel", "array", "dict", "string", "info", "eval", "subst",
-    "rename", "try", "throw", "format", "scan", "switch",
+    "rename", "try", "throw", "format", "scan", "switch", "regexp", "regsub",
   ]
 }
 
@@ -183,6 +183,7 @@ fn Interpreter::command_value(
     | "throw" => return self.control_command(values, depth)
     "namespace" => return self.namespace_command(values, depth)
     "switch" => return self.switch_command(values, depth, discard_result~)
+    "regexp" | "regsub" => return self.regexp_command(values)
     "global" | "variable" | "upvar" | "uplevel" =>
       return self.scope_command(values, depth)
     "array" => return self.array_command(values)

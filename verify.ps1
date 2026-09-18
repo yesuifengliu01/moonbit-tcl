@@ -48,6 +48,10 @@ try {
   if ($LASTEXITCODE -ne 0) {throw 'Tcl value differential failed'}
   node tools/test-semantic-oracle.mjs switch
   if ($LASTEXITCODE -ne 0) {throw 'Tcl switch differential failed'}
+  node tools/test-semantic-oracle.mjs regexp
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl regexp differential failed'}
+  node tools/test-regexp.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'Tcl regexp hosts failed'}
   node tools/test-switch.mjs
   if ($LASTEXITCODE -ne 0) {throw 'Tcl switch hosts failed'}
   node tools/test-values.mjs

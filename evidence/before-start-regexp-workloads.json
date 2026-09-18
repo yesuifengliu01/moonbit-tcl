@@ -1,0 +1,70 @@
+{
+  "runtime": "v24.11.0",
+  "rows": [
+    {
+      "name": "regexp-capture-50",
+      "source": "set total 0;for {set i 0} {$i<50} {incr i} {regexp {^ADD ([a-z]+) ([0-9]+)$} {ADD tea 42} m name amount;incr total $amount};list $total $name",
+      "result": "2100 tea",
+      "nativeMedianMs": 0.23775,
+      "currentMedianMs": 0.9547999999999988,
+      "currentP95Ms": 1.8877000000000095,
+      "systemTclRatio": 4.015983175604622,
+      "resultMatched": true
+    },
+    {
+      "name": "regexp-all-50",
+      "source": "set text [string repeat {tea=12 coffee=34 } 25];llength [regexp -all -inline {([a-z]+)=([0-9]+)} $text]",
+      "result": "150",
+      "nativeMedianMs": 0.1519,
+      "currentMedianMs": 0.3692000000000064,
+      "currentP95Ms": 0.6514999999999986,
+      "systemTclRatio": 2.4305464121132743,
+      "resultMatched": true
+    },
+    {
+      "name": "regexp-start-50",
+      "source": "set total 0;for {set i 0} {$i<50} {incr i} {incr total [regexp -start 3 -all {a} {abaabaaba}]};set total",
+      "result": "200",
+      "nativeMedianMs": 0.09195,
+      "currentMedianMs": 0.46120000000000516,
+      "currentP95Ms": 0.851399999999984,
+      "systemTclRatio": 5.015769439913052,
+      "resultMatched": true
+    },
+    {
+      "name": "regsub-literal-200",
+      "source": "set text [string repeat {tea=12 coffee=34 } 100];string length [regsub -all {=} $text {:}]",
+      "result": "1700",
+      "nativeMedianMs": 0.0105,
+      "currentMedianMs": 0.04834999999999923,
+      "currentP95Ms": 0.2254000000000076,
+      "systemTclRatio": 4.604761904761831,
+      "resultMatched": true
+    },
+    {
+      "name": "regsub-capture-50",
+      "source": "set text [string repeat {tea=12 coffee=34 } 25];regsub -all {([a-z]+)=([0-9]+)} $text {\\2:\\1} output;string length $output",
+      "result": "425",
+      "nativeMedianMs": 0.13740000000000002,
+      "currentMedianMs": 0.33780000000000143,
+      "currentP95Ms": 0.6505999999999972,
+      "systemTclRatio": 2.4585152838428046,
+      "resultMatched": true
+    },
+    {
+      "name": "regexp-about-20",
+      "source": "set result {};for {set i 0} {$i<20} {incr i} {set result [regexp -about {^([a-z]+)=([0-9]+)$}]};set result",
+      "result": "2 REG_UUNPORT",
+      "nativeMedianMs": 0.0206,
+      "currentMedianMs": 0.7382499999999794,
+      "currentP95Ms": 1.4362000000000137,
+      "systemTclRatio": 35.8373786407757,
+      "resultMatched": true
+    }
+  ],
+  "reference": "Windows Tcl 8.6.15",
+  "warmups": 10,
+  "measurements": 30,
+  "engineSHA256": "d2faf58b76401e5f7044d3f4fb90682c8f1270a6f5ceb77d6d86f04182257d03",
+  "scope": "Six small warm-session regexp/regsub workloads, native and Node measured separately on one host; exact results verified. Different host adapters; no full application, peak memory or cross-platform acceptance."
+}

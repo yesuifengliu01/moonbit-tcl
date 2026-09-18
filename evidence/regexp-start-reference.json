@@ -1,0 +1,35 @@
+{
+  "reference": "Windows Tcl 8.6.15, two-second bounded worker",
+  "rows": [
+    {
+      "name": "signed-start-0",
+      "source": "regexp -all -start 2147483647 -inline -indices {} abc",
+      "result": "{2147483647 2147483646}",
+      "output": "",
+      "error": false
+    },
+    {
+      "name": "signed-start-1",
+      "source": "regexp -all -start 2147483647 -inline -indices {a*} abc",
+      "result": "{2147483647 2147483646}",
+      "output": "",
+      "error": false
+    },
+    {
+      "name": "signed-start-2",
+      "source": "regexp -all -start 2147483646 -inline -indices {} abc",
+      "result": "{2147483646 2147483645}",
+      "output": "",
+      "error": false
+    },
+    {
+      "name": "signed-start-3",
+      "source": "regexp -all -start 2147483647 -inline -indices {$} abc",
+      "result": "{2147483647 2147483646}",
+      "output": "",
+      "error": false
+    }
+  ],
+  "excluded": [],
+  "scope": "Four independent edge references, also asserted by regexp_test.mbt on JS and WasmGC. Separate from the 6299-program matrix."
+}

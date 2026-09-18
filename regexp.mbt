@@ -20,6 +20,7 @@ priv enum ReKind {
 priv struct ReNode {
   kind : ReKind
   preference : Int
+  mut analysis : ReAnalysis?
 }
 
 ///|
@@ -36,6 +37,7 @@ priv struct ReParser {
   mut groups : Int
   mut look_level : Int
   closed : Map[Int, Bool]
+  mut notes : Int
   mode : Int // 0 ARE, 1 ERE, 2 BRE, 3 literal
   nocase : Bool
   expanded : Bool
@@ -48,6 +50,9 @@ priv struct RePattern {
   nocase : Bool
   line_stop : Bool
   line_anchor : Bool
+  origin : Int
+  not_bol : Bool
+  notes : Int
 }
 
 ///|
@@ -68,7 +73,7 @@ fn re_error(message : String, code : String) -> Unit raise TclError {
 
 ///|
 fn re_node(kind : ReKind, preference? : Int = 0) -> ReNode {
-  { kind, preference, }
+  { kind, preference, analysis: None, }
 }
 
 ///|
@@ -80,8 +85,10 @@ fn ReParser::peek(self : ReParser, offset? : Int = 0) -> Char {
 fn ReParser::skip(self : ReParser) -> Unit raise TclError {
   while self.pos < self.chars.length() {
     if self.expanded && (unicode_mask(self.peek().to_int()) & 512) != 0 {
+      self.notes = self.notes | 128
       self.pos += 1
     } else if self.expanded && self.peek() == '#' {
+      self.notes = self.notes | 128
       while self.pos < self.chars.length() && self.peek() != '\n' {
         self.pos += 1
       }
@@ -89,6 +96,7 @@ fn ReParser::skip(self : ReParser) -> Unit raise TclError {
       self.peek() == '(' &&
       self.peek(offset=1) == '?' &&
       self.peek(offset=2) == '#' {
+      self.notes = self.notes | 128
       self.pos += 3
       while self.pos < self.chars.length() && self.peek() != ')' {
         self.pos += 1
@@ -128,7 +136,7 @@ fn ReParser::expression(
     while true {
       self.skip()
       if self.pos == self.chars.length() ||
-        self.closing() ||
+        (self.closing() && !(self.mode == 1 && depth == 0)) ||
         (self.mode != 2 && self.peek() == '|') {
         break
       }
@@ -156,6 +164,7 @@ fn ReParser::expression(
           self.peek(offset=1) <= '9'
         ) ||
         (self.mode == 2 && self.peek() == '\\' && self.peek(offset=1) == '{') {
+        self.notes = self.notes | 4
         self.pos += if self.mode == 2 { 2 } else { 1 }
         min = self.bound()
         max = min
@@ -192,6 +201,8 @@ fn ReParser::expression(
         }
         let mut reluctant = false
         if self.mode == 0 && self.peek() == '?' {
+          self.notes = self.notes | 128
+          self.notes = self.notes | 128
           reluctant = true
           self.pos += 1
         }
@@ -214,6 +225,9 @@ fn ReParser::expression(
         preference = node.preference
       }
       nodes.push(node)
+    }
+    if nodes.is_empty() {
+      self.notes = self.notes | 256
     }
     branches.push(
       if nodes.length() == 1 {
@@ -311,6 +325,7 @@ fn ReParser::atom(
     let mut capture = !look
     let mut assertion = 0
     if self.mode == 0 && self.peek() == '?' {
+      self.notes = self.notes | 128
       self.pos += 1
       match self.peek() {
         ':' => capture = false
@@ -336,6 +351,7 @@ fn ReParser::atom(
       raise Invalid("regexp capture limit")
     }
     if assertion != 0 {
+      self.notes = self.notes | 2
       self.look_level += 1
     }
     let inner = self.expression(depth + 1, assertion != 0)
@@ -354,6 +370,16 @@ fn ReParser::atom(
       return re_node(Capture(group, inner), preference=inner.preference)
     }
     return inner
+  }
+  if self.mode == 2 &&
+    ((c == '^' && first && depth > 0) || (c == '$' && self.closing())) {
+    self.notes = self.notes | 256
+  }
+  if self.mode != 2 && c == '{' {
+    self.notes = self.notes | 8 | 256
+  }
+  if self.mode == 1 && c == ')' {
+    self.notes = self.notes | 32
   }
   match c {
     '[' => self.bracket()
@@ -386,12 +412,18 @@ fn ReParser::escape(
   }
   let c = self.peek()
   self.pos += 1
+  let alnum = (unicode_mask(c.to_int()) & 1) != 0
+  if self.mode == 0 && alnum {
+    self.notes = self.notes | 128
+  }
   if self.mode != 0 {
     if self.mode == 2 && !bracket {
       if c == '<' {
+        self.notes = self.notes | 128 | 1024
         return re_node(Anchor(4))
       }
       if c == '>' {
+        self.notes = self.notes | 128 | 1024
         return re_node(Anchor(5))
       }
       if c >= '1' && c <= '9' {
@@ -399,8 +431,12 @@ fn ReParser::escape(
         if !self.closed.contains(number) {
           re_error("invalid backreference number", "ESUBREG")
         }
+        self.notes = self.notes | 1
         return re_node(Backref(number))
       }
+    }
+    if alnum {
+      self.notes = self.notes | 16 | 256
     }
     return re_node(Literal(c.to_int()))
   }
@@ -418,9 +454,11 @@ fn ReParser::escape(
       if bracket || look || !self.closed.contains(number) {
         re_error("invalid backreference number", "ESUBREG")
       }
+      self.notes = self.notes | 1
       self.pos = end
       return re_node(Backref(number))
     }
+    self.notes = self.notes | 512
     self.pos = start
     number = 0
     let limit = if c <= '3' { 3 } else { 2 }
@@ -435,6 +473,12 @@ fn ReParser::escape(
       re_error("invalid escape \\ sequence", "EESCAPE")
     }
     return re_node(Literal(number))
+  }
+  if c == 'c' || c == 'e' || c == 'x' {
+    self.notes = self.notes | 512
+  }
+  if "dDsSwWmMyY".contains(c.to_string()) {
+    self.notes = self.notes | 1024
   }
   match c {
     'a' => re_node(Literal(7))
@@ -603,6 +647,9 @@ fn ReParser::class_item(self : ReParser) -> ReNode raise TclError {
     }
     let name = String::from_array(self.chars[start:self.pos])
     self.pos += 2
+    if kind == ':' || kind == '=' {
+      self.notes = self.notes | 1024
+    }
     if kind == ':' {
       if ![
           "alnum", "alpha", "ascii", "blank", "cntrl", "digit", "graph", "lower",
@@ -617,6 +664,12 @@ fn ReParser::class_item(self : ReParser) -> ReNode raise TclError {
       re_node(Set({ ranges: [(value, value)], classes: [], negated: false, }))
     } else {
       re_node(Literal(value))
+    }
+  }
+  if c == '\\' {
+    self.notes = self.notes | 64
+    if self.mode == 0 {
+      self.notes = self.notes | 128
     }
   }
   if c == '\\' && self.mode == 0 {
@@ -634,6 +687,7 @@ fn ReParser::bracket(self : ReParser) -> ReNode raise TclError {
     self.peek(offset=3) == ':' &&
     self.peek(offset=4) == ']' &&
     self.peek(offset=5) == ']' {
+    self.notes = self.notes | 128 | 1024
     let direction = self.peek(offset=2)
     self.pos += 6
     return re_node(Anchor(if direction == '<' { 4 } else { 5 }))
@@ -653,6 +707,9 @@ fn ReParser::bracket(self : ReParser) -> ReNode raise TclError {
       let last = self.class_item()
       match (atom.kind, last.kind) {
         (Literal(a), Literal(b)) if a <= b => {
+          if a != b {
+            self.notes = self.notes | 512
+          }
           ranges.push((a, b))
           if self.peek() == '-' && self.peek(offset=1) != ']' {
             re_error("invalid character range", "ERANGE")
@@ -703,7 +760,13 @@ fn ReParser::bracket(self : ReParser) -> ReNode raise TclError {
 }
 
 ///|
-fn re_compile(source : String, nocase : Bool) -> RePattern raise TclError {
+fn re_compile(
+  source : String,
+  nocase : Bool,
+  expanded? : Bool = false,
+  line_stop? : Bool = false,
+  line_anchor? : Bool = false,
+) -> RePattern raise TclError {
   if source.length() > 4096 {
     raise Invalid("regexp pattern size limit")
   }
@@ -711,9 +774,9 @@ fn re_compile(source : String, nocase : Bool) -> RePattern raise TclError {
   let mut pos = 0
   let mut mode = 0
   let mut nocase = nocase
-  let mut expanded = false
-  let mut line_stop = false
-  let mut line_anchor = false
+  let mut expanded = expanded
+  let mut line_stop = line_stop
+  let mut line_anchor = line_anchor
   if source.has_prefix("***=") {
     pos = 4
     mode = 3
@@ -769,9 +832,17 @@ fn re_compile(source : String, nocase : Bool) -> RePattern raise TclError {
     groups: 0,
     look_level: 0,
     closed: Map([]),
+    notes: if pos > 0 {
+      128
+    } else {
+      0
+    },
     mode,
     nocase,
     expanded,
+  }
+  if pos == chars.length() {
+    parser.notes = parser.notes | 256
   }
   let node = if mode == 3 {
     re_node(
@@ -785,5 +856,14 @@ fn re_compile(source : String, nocase : Bool) -> RePattern raise TclError {
   if mode != 3 && parser.pos != chars.length() {
     re_error("parentheses () not balanced", "EPAREN")
   }
-  { node, groups: parser.groups, nocase, line_stop, line_anchor, }
+  {
+    node,
+    groups: parser.groups,
+    nocase,
+    line_stop,
+    line_anchor,
+    origin: 0,
+    not_bol: false,
+    notes: parser.notes,
+  }
 }

@@ -114,16 +114,21 @@ fn Interpreter::re_states(
       }
     }
     Anchor(kind) => {
-      let previous = at > 0 && re_class("word", text.at(at - 1).to_int(), false)
+      let previous = at > pattern.origin &&
+        re_class("word", text.at(at - 1).to_int(), false)
       let next = at < n && re_class("word", text.at(at).to_int(), false)
       let valid = match kind {
         0 =>
-          at == 0 ||
-          (pattern.line_anchor && at > 0 && text.at(at - 1).to_int() == 10)
+          (at == pattern.origin && !pattern.not_bol) ||
+          (
+            pattern.line_anchor &&
+            at > pattern.origin &&
+            text.at(at - 1).to_int() == 10
+          )
         1 =>
           at == n ||
           (pattern.line_anchor && at < n && text.at(at).to_int() == 10)
-        2 => at == 0
+        2 => at == pattern.origin
         3 => at == n
         4 => !previous && next
         5 => previous && !next
@@ -289,7 +294,21 @@ fn Interpreter::regexp_matches(
 ) -> Array[(Int, Int)]? raise TclError {
   let pattern = re_compile(source.text, nocase)
   source.payload = Plain
-  for start in 0..<=text.length() {
+  self.regexp_find(pattern, text, 0)
+}
+
+///|
+fn Interpreter::regexp_find(
+  self : Interpreter,
+  compiled : RePattern,
+  text : String,
+  offset : Int,
+) -> Array[(Int, Int)]? raise TclError {
+  let origin = offset.min(text.length())
+  let not_bol = offset > 0 &&
+    (offset > text.length() || text.at(offset - 1).to_int() != 10)
+  let pattern = { ..compiled, origin, not_bol, }
+  for start in origin..<=text.length() {
     let state = {
       pos: start,
       captures: Array::make(pattern.groups + 1, (-1, -1)),

@@ -1,0 +1,9 @@
+{
+  "reference": "System Tcl 8.6.15, native evaluation in a killable worker",
+  "probes": 6299,
+  "completed": 6299,
+  "excluded": 0,
+  "timeoutSeconds": 2,
+  "rows": [],
+  "scope": "Native timeouts, crashes or transport failures are not expected errors or passing comparisons. Each case has a fresh Tcl interpreter; the worker restarts after a deadline or failure."
+}

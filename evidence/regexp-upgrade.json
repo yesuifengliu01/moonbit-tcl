@@ -1,0 +1,626 @@
+{
+  "project": "moonbit-tcl",
+  "version": "0.13.0",
+  "localDate": "2026-09-18",
+  "createdUTC": "2026-09-18T10:18:45.706394+00:00",
+  "baseCommit": "c302c665d2af526f9be023116cbb540196228707",
+  "engineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+  "scope": "Add independent regexp/regsub commands, compile-property metadata and interval-based metadata analysis. Full 20-project parity remains incomplete.",
+  "verified": {
+    "jsTests": 11031,
+    "wasmGCTests": 11031,
+    "newPublicAPIRegressions": 8,
+    "regexpNativeProbes": 6299,
+    "regexpExactSuccesses": 6287,
+    "regexpExpectedRejections": 4,
+    "regexpKnownDifferenceCases": 8,
+    "regexpNativeTimeouts": 0,
+    "additionalNativeStartCases": 4,
+    "regexpGroupedBackendTests": 158,
+    "regexpHostChecks": 48,
+    "browserChecks": 15,
+    "resourceChecks": 17,
+    "httpChecks": 11,
+    "malformedInputs": 307,
+    "generationCycles": 2,
+    "generationFiles": 152,
+    "publicAPISignaturesUnchanged": true,
+    "exampleIndependentMatched": true,
+    "comparisons": {
+      "semantic": {
+        "cases": 726,
+        "matched": 726,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "cache": {
+        "cases": 340,
+        "matched": 340,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "namespace": {
+        "cases": 312,
+        "matched": 312,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "completion": {
+        "cases": 321,
+        "matched": 321,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "syntax": {
+        "cases": 1019,
+        "matched": 1019,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "unicode": {
+        "cases": 1866,
+        "matched": 1866,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "conversion": {
+        "cases": 4970,
+        "matched": 4969,
+        "knownDifferences": 1,
+        "unexpectedDifferences": 0
+      },
+      "value": {
+        "cases": 855,
+        "matched": 855,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "switch": {
+        "cases": 5828,
+        "matched": 5828,
+        "knownDifferences": 0,
+        "unexpectedDifferences": 0
+      },
+      "regexp": {
+        "cases": 6299,
+        "matched": 6291,
+        "knownDifferences": 8,
+        "unexpectedDifferences": 0
+      }
+    },
+    "hostChecks": {
+      "regexp-hosts.json": 48,
+      "switch-hosts.json": 34,
+      "value-hosts.json": 30,
+      "conversion-hosts.json": 36,
+      "unicode-hosts.json": 30,
+      "syntax-hosts.json": 24,
+      "completion-hosts.json": 34,
+      "namespace-hosts.json": 20,
+      "browser-regexp.json": 15
+    }
+  },
+  "reference": {
+    "runtime": "Windows Tcl 8.6.15 via tkinter; only puts redirected",
+    "officialDocumentation": [
+      "https://www.tcl-lang.org/man/tcl8.6/TclCmd/regexp.htm",
+      "https://www.tcl-lang.org/man/tcl8.6/TclCmd/regsub.htm",
+      "https://www.tcl-lang.org/man/tcl8.6/TclCmd/re_syntax.htm"
+    ],
+    "implementationReferences": [
+      "https://github.com/tcltk/tcl/blob/core-8-6-15/generic/tclCmdMZ.c",
+      "https://github.com/tcltk/tcl/blob/core-8-6-15/generic/tclRegexp.c",
+      "https://github.com/tcltk/tcl/blob/core-8-6-15/generic/regc_lex.c",
+      "https://github.com/tcltk/tcl/blob/core-8-6-15/generic/regc_nfa.c"
+    ],
+    "comparison": "6299 completed original native programs: 6287 exact successes, 4 expected rejections, 8 explicit bytecode-prefix differences, zero unexplained differences. Errors wrapped in catch compare selected exact metadata. Full error-stack/text and upstream-suite parity are not claimed.",
+    "nativeLimitReport": "evidence/regexp-reference-limits.json",
+    "knownDifferences": [
+      {
+        "name": "option-dispatch-5404",
+        "source": "set code [catch {regexp -n a a} result options];list $code $result",
+        "id": "regexp-bytecode-nocase-prefix",
+        "reason": "Native Tcl compiles this static command form and accepts a nocase prefix. Its runtime dispatcher rejects abbreviations; this interpreter does not reproduce that bytecode optimization.",
+        "referenceResult": "0 1",
+        "localResult": "1 {bad option \"-n\": must be -all, -about, -indices, -inline, -expanded, -line, -linestop, -lineanchor, -nocase, -start, or --}"
+      },
+      {
+        "name": "option-dispatch-5405",
+        "source": "set code [catch {set p a;regexp -n $p a} result options];list $code $result",
+        "id": "regexp-bytecode-nocase-prefix",
+        "reason": "Native Tcl compiles this static command form and accepts a nocase prefix. Its runtime dispatcher rejects abbreviations; this interpreter does not reproduce that bytecode optimization.",
+        "referenceResult": "0 1",
+        "localResult": "1 {bad option \"-n\": must be -all, -about, -indices, -inline, -expanded, -line, -linestop, -lineanchor, -nocase, -start, or --}"
+      },
+      {
+        "name": "option-dispatch-5413",
+        "source": "set code [catch {regexp -no a a} result options];list $code $result",
+        "id": "regexp-bytecode-nocase-prefix",
+        "reason": "Native Tcl compiles this static command form and accepts a nocase prefix. Its runtime dispatcher rejects abbreviations; this interpreter does not reproduce that bytecode optimization.",
+        "referenceResult": "0 1",
+        "localResult": "1 {bad option \"-no\": must be -all, -about, -indices, -inline, -expanded, -line, -linestop, -lineanchor, -nocase, -start, or --}"
+      },
+      {
+        "name": "option-dispatch-5414",
+        "source": "set code [catch {set p a;regexp -no $p a} result options];list $code $result",
+        "id": "regexp-bytecode-nocase-prefix",
+        "reason": "Native Tcl compiles this static command form and accepts a nocase prefix. Its runtime dispatcher rejects abbreviations; this interpreter does not reproduce that bytecode optimization.",
+        "referenceResult": "0 1",
+        "localResult": "1 {bad option \"-no\": must be -all, -about, -indices, -inline, -expanded, -line, -linestop, -lineanchor, -nocase, -start, or --}"
+      },
+      {
+        "name": "option-dispatch-5422",
+        "source": "set code [catch {regexp -noc a a} result options];list $code $result",
+        "id": "regexp-bytecode-nocase-prefix",
+        "reason": "Native Tcl compiles this static command form and accepts a nocase prefix. Its runtime dispatcher rejects abbreviations; this interpreter does not reproduce that bytecode optimization.",
+        "referenceResult": "0 1",
+        "localResult": "1 {bad option \"-noc\": must be -all, -about, -indices, -inline, -expanded, -line, -linestop, -lineanchor, -nocase, -start, or --}"
+      },
+      {
+        "name": "option-dispatch-5423",
+        "source": "set code [catch {set p a;regexp -noc $p a} result options];list $code $result",
+        "id": "regexp-bytecode-nocase-prefix",
+        "reason": "Native Tcl compiles this static command form and accepts a nocase prefix. Its runtime dispatcher rejects abbreviations; this interpreter does not reproduce that bytecode optimization.",
+        "referenceResult": "0 1",
+        "localResult": "1 {bad option \"-noc\": must be -all, -about, -indices, -inline, -expanded, -line, -linestop, -lineanchor, -nocase, -start, or --}"
+      },
+      {
+        "name": "option-dispatch-5431",
+        "source": "set code [catch {regexp -nocas a a} result options];list $code $result",
+        "id": "regexp-bytecode-nocase-prefix",
+        "reason": "Native Tcl compiles this static command form and accepts a nocase prefix. Its runtime dispatcher rejects abbreviations; this interpreter does not reproduce that bytecode optimization.",
+        "referenceResult": "0 1",
+        "localResult": "1 {bad option \"-nocas\": must be -all, -about, -indices, -inline, -expanded, -line, -linestop, -lineanchor, -nocase, -start, or --}"
+      },
+      {
+        "name": "option-dispatch-5432",
+        "source": "set code [catch {set p a;regexp -nocas $p a} result options];list $code $result",
+        "id": "regexp-bytecode-nocase-prefix",
+        "reason": "Native Tcl compiles this static command form and accepts a nocase prefix. Its runtime dispatcher rejects abbreviations; this interpreter does not reproduce that bytecode optimization.",
+        "referenceResult": "0 1",
+        "localResult": "1 {bad option \"-nocas\": must be -all, -about, -indices, -inline, -expanded, -line, -linestop, -lineanchor, -nocase, -start, or --}"
+      }
+    ],
+    "inheritedConversionDifferences": [
+      {
+        "id": "scan-raw-utf8-fragment",
+        "reason": "Native eval keeps four-byte UTF-8 and width 1 cuts the first byte; this interpreter retains UTF-16 units and counts their canonical byte lengths.",
+        "source": "scan \"\ud83d\ude00x\" \"%1s%n%s\"",
+        "referenceResult": "\udcf0 1 \udc9f\udc98\udc80x",
+        "localResult": "\ud83d 3 \ude00x"
+      }
+    ],
+    "switchNativeTimeouts": 35,
+    "previousUnicodeNativeLimitReport": "evidence/unicode-reference-limits.json",
+    "previousUnicodeProbesRerun": false,
+    "upstreamFullSuiteRun": false
+  },
+  "performance": {
+    "baselineCommit": "c302c665d2af526f9be023116cbb540196228707",
+    "generalFile": "evidence/regexp-general-performance.json",
+    "conversionFile": "evidence/regexp-conversion-performance.json",
+    "newWorkloadsFile": "evidence/regexp-workloads.json",
+    "generalRows": [
+      {
+        "name": "dictionary-100",
+        "currentOverBaselineMedian": 1.2401025984162861,
+        "currentOverBaselineRange": [
+          1.0266228616744886,
+          1.4477929643737268
+        ],
+        "baselineMedianMs": 0.44835000000003333,
+        "currentMedianMs": 0.5559999999999832,
+        "systemTclRatio": 6.2824858757060245,
+        "allResultsMatched": true
+      },
+      {
+        "name": "array-300",
+        "currentOverBaselineMedian": 1.0069376693767085,
+        "currentOverBaselineRange": [
+          0.9273211567731944,
+          1.1010938017898215
+        ],
+        "baselineMedianMs": 0.9224999999999852,
+        "currentMedianMs": 0.932850000000002,
+        "systemTclRatio": 5.076734693877562,
+        "allResultsMatched": true
+      },
+      {
+        "name": "bigint-150",
+        "currentOverBaselineMedian": 0.9812397404831653,
+        "currentOverBaselineRange": [
+          0.9023491083675829,
+          1.0551373900425987
+        ],
+        "baselineMedianMs": 0.5832000000000335,
+        "currentMedianMs": 0.5629500000000007,
+        "systemTclRatio": 4.269624573378845,
+        "allResultsMatched": true
+      },
+      {
+        "name": "alias-200",
+        "currentOverBaselineMedian": 0.9691173081354939,
+        "currentOverBaselineRange": [
+          0.9035250463820749,
+          1.0557410941474206
+        ],
+        "baselineMedianMs": 0.7007000000000403,
+        "currentMedianMs": 0.6638499999999112,
+        "systemTclRatio": 5.637791932058694,
+        "allResultsMatched": true
+      },
+      {
+        "name": "sort-200",
+        "currentOverBaselineMedian": 0.9875531268974075,
+        "currentOverBaselineRange": [
+          0.9431316541157226,
+          1.0102289332683678
+        ],
+        "baselineMedianMs": 0.5318500000000199,
+        "currentMedianMs": 0.5296000000000163,
+        "systemTclRatio": 4.559621179509396,
+        "allResultsMatched": true
+      },
+      {
+        "name": "dictionary-1000",
+        "currentOverBaselineMedian": 1.0183842568617143,
+        "currentOverBaselineRange": [
+          0.9425337821357016,
+          1.066693838733783
+        ],
+        "baselineMedianMs": 3.0896000000000186,
+        "currentMedianMs": 3.1463999999999714,
+        "systemTclRatio": 3.304347826086927,
+        "allResultsMatched": true
+      },
+      {
+        "name": "sort-1000",
+        "currentOverBaselineMedian": 0.9853025737746681,
+        "currentOverBaselineRange": [
+          0.9756781827643503,
+          1.0144135310698763
+        ],
+        "baselineMedianMs": 2.173850000000016,
+        "currentMedianMs": 2.141900000000078,
+        "systemTclRatio": 3.135558483384684,
+        "allResultsMatched": true
+      }
+    ],
+    "conversionRows": [
+      {
+        "name": "format-receipt-100",
+        "currentOverBaselineMedian": 1.0024451538409525,
+        "currentOverBaselineRange": [
+          0.9860335195530433,
+          1.045832563296997
+        ],
+        "baselineMedianMs": 1.3527499999999861,
+        "currentMedianMs": 1.414749999999998,
+        "systemTclRatio": 8.74111831943156,
+        "allResultsMatched": true
+      },
+      {
+        "name": "scan-record-100",
+        "currentOverBaselineMedian": 1.0163578613022626,
+        "currentOverBaselineRange": [
+          0.9495088308647649,
+          1.0680078333630012
+        ],
+        "baselineMedianMs": 0.944500000000005,
+        "currentMedianMs": 0.9327499999999986,
+        "systemTclRatio": 8.45265065700044,
+        "allResultsMatched": true
+      },
+      {
+        "name": "format-exact-100",
+        "currentOverBaselineMedian": 1.0309942158682026,
+        "currentOverBaselineRange": [
+          0.9898648648649297,
+          1.0717374431756659
+        ],
+        "baselineMedianMs": 0.45094999999997754,
+        "currentMedianMs": 0.46839999999997417,
+        "systemTclRatio": 10.149512459371055,
+        "allResultsMatched": true
+      }
+    ],
+    "newRows": [
+      {
+        "name": "regexp-capture-50",
+        "source": "set total 0;for {set i 0} {$i<50} {incr i} {regexp {^ADD ([a-z]+) ([0-9]+)$} {ADD tea 42} m name amount;incr total $amount};list $total $name",
+        "result": "2100 tea",
+        "nativeMedianMs": 0.2341,
+        "currentMedianMs": 0.9014000000000024,
+        "currentP95Ms": 1.3369,
+        "systemTclRatio": 3.8504912430585323,
+        "resultMatched": true
+      },
+      {
+        "name": "regexp-all-50",
+        "source": "set text [string repeat {tea=12 coffee=34 } 25];llength [regexp -all -inline {([a-z]+)=([0-9]+)} $text]",
+        "result": "150",
+        "nativeMedianMs": 0.18005,
+        "currentMedianMs": 0.34950000000000614,
+        "currentP95Ms": 0.582000000000022,
+        "systemTclRatio": 1.9411274645932028,
+        "resultMatched": true
+      },
+      {
+        "name": "regexp-start-50",
+        "source": "set total 0;for {set i 0} {$i<50} {incr i} {incr total [regexp -start 3 -all {a} {abaabaaba}]};set total",
+        "result": "200",
+        "nativeMedianMs": 0.10494999999999999,
+        "currentMedianMs": 0.4818999999999818,
+        "currentP95Ms": 0.8936000000000206,
+        "systemTclRatio": 4.5917103382561395,
+        "resultMatched": true
+      },
+      {
+        "name": "regsub-literal-200",
+        "source": "set text [string repeat {tea=12 coffee=34 } 100];string length [regsub -all {=} $text {:}]",
+        "result": "1700",
+        "nativeMedianMs": 0.0124,
+        "currentMedianMs": 0.05725000000001046,
+        "currentP95Ms": 0.1741999999999848,
+        "systemTclRatio": 4.616935483871812,
+        "resultMatched": true
+      },
+      {
+        "name": "regsub-capture-50",
+        "source": "set text [string repeat {tea=12 coffee=34 } 25];regsub -all {([a-z]+)=([0-9]+)} $text {\\2:\\1} output;string length $output",
+        "result": "425",
+        "nativeMedianMs": 0.1592,
+        "currentMedianMs": 0.24670000000001835,
+        "currentP95Ms": 0.6867000000000019,
+        "systemTclRatio": 1.5496231155780047,
+        "resultMatched": true
+      },
+      {
+        "name": "regexp-about-20",
+        "source": "set result {};for {set i 0} {$i<20} {incr i} {set result [regexp -about {^([a-z]+)=([0-9]+)$}]};set result",
+        "result": "2 REG_UUNPORT",
+        "nativeMedianMs": 0.02345,
+        "currentMedianMs": 0.579899999999995,
+        "currentP95Ms": 0.9279999999999973,
+        "systemTclRatio": 24.72921108741983,
+        "resultMatched": true
+      }
+    ],
+    "earlierDevelopmentReports": [
+      "evidence/regexp-before-interval-general-performance.json",
+      "evidence/regexp-before-interval-conversion-performance.json",
+      "evidence/regexp-before-interval-workloads.json",
+      "evidence/regexp-before-interval-conversion-workloads.json",
+      "evidence/before-start-regexp-general-performance.json",
+      "evidence/before-start-regexp-conversion-performance.json",
+      "evidence/before-start-regexp-workloads.json",
+      "evidence/before-start-regexp-conversion-workloads.json",
+      "evidence/before-start-browser-regexp.json",
+      "evidence/before-start-generation-regexp.json",
+      "evidence/before-start-verify-regexp.log"
+    ],
+    "assessment": "Two final five-process campaigns retain every round. Short dictionary median ratio 1.240; other nine workloads 0.969-1.031. New match/substitute workloads about 1.5-4.6 times native; about remains 24.7 times native, versus 4332 in the earlier development build. No significance, peak-memory, application or cross-platform acceptance; performance parity is open."
+  },
+  "limits": {
+    "compiledPatternUTF16Units": 4096,
+    "captures": 64,
+    "parserDepth": 64,
+    "evaluationDepth": 128,
+    "statesPerArray": 16384,
+    "inlineElements": 100000,
+    "substitutionOutputUTF16Units": 1000000,
+    "usesInterpreterInstructionBudget": true,
+    "literalFastPath": "Does not compile a regex; subject/pattern strings retain existing host/value limits and the inner comparison loop consumes instruction budget.",
+    "algorithm": "Candidate-state enumeration can remain exponential. Compile metadata is a finite relation approximation with shared-node memoization; it is not a full satisfiability decision procedure. No cumulative memory quota."
+  },
+  "remaining": [
+    "native bytecode-only static nocase prefix behavior (8 recorded cases); complete regexp syntax/compilation/metadata/diagnostics and array/lsearch integration",
+    "regex compile caching, non-exponential matching, cumulative memory bounds and native timeout cases",
+    "short-dictionary regression and about/native performance gap; full application and peak-memory/cross-platform acceptance",
+    "raw UTF-8 fragments, complete objects/interning, string/parser/Unicode/error stacks and active namespace deferred destruction",
+    "file/channel/package/event/process/network behavior, automatic loading, bytecode and upstream full-suite acceptance"
+  ],
+  "sourceGitBlobSHA256": {
+    ".gitattributes": "4d03324fd57c757cc2b195010f56a85bededcc3bcff5124c79c5f8c23e51efed",
+    ".github/workflows/ci.yml": "f460a340ddf70a9507def055b404fa1e190eeeee14d20cf4e76f2a06109ae9f4",
+    ".gitignore": "3d9dc44b0aac4db3956c0de5cf053d34927f4b4105058932d2dc9a6ffcb58a03",
+    "CONTRIBUTING.md": "e066713924ff8db789960bf03122a64cea6904cf4dc7666b9747802f3b50d491",
+    "DUPLICATION.md": "e60d38bc20862962083412f5ab77d8a32eb0da1d81fbfeb710f25d03b54ff5fc",
+    "FEATURES.md": "bf31ca352f61aaef47f72dde28b0b66fbecbf1305193d7b331d335c498e555f9",
+    "LICENSE": "a2ae469f92ac7fd70592f338c7c43657c7e9510be802cfb3db880fff11df3807",
+    "MANIFEST.sha256.json.baseline": "099e1f899d32e652cb090c42cdb18476ba1b0cfb3aa841881d5f826ea7234d9a",
+    "README.mbt.md": "f955b3dea01ba9b1b8f044aacad7d52f22b3565b78693592401e5a4c0d2e7031",
+    "README.md": "89f8990a98b2b63960ad4c29279fd23d584e7a70b116dfb5082408d31ca44a89",
+    "ROADMAP.md": "e495392377ae4cc26802eeccd94ed08346eede5280e1f7066dbc2bbd35261932",
+    "TESTING.md": "e8267810ffa0edf48d9695bb92c6ccc471f50fe80f54bd7c306998dd9d030559",
+    "cache.mbt": "30af848d19e254a3cb0516ef056f03c8c5cfc307da8dcebf21622a6e5f9f62df",
+    "cache_oracle_test.mbt": "b79827cd0f29baf46201a2a0d744798851616169783729d8e35accaf7b7474e7",
+    "cache_test.mbt": "8c2f4a90cce9257b27a4e74db915bbd567923da69b45b816d77b0a72375c1a69",
+    "cmd/main/main.mbt": "93b7ef777a0c79d66905adb25061984b741d9117056b1067ce081ca2167eab18",
+    "cmd/main/moon.pkg": "fb05267e7d953ce6350d13856c4f3e04305e3bcdfd094615c9ecc675f0886c43",
+    "cmd/main/pkg.generated.mbti": "fe6280b0e28de534bdb4e7829991557f24929f3f7ea652bfcc56249ff6529ff1",
+    "cmd/web/main.mbt": "39d936968553ef6ccfbd12ed7d8fb3067be533781f10e11e1872a866ad658cfd",
+    "cmd/web/moon.pkg": "d3f0b49ad95dcd82154319a049f5d4d188117d50a5831eebf60bf809b6633bfc",
+    "collections.mbt": "b2aa6ac2d7c1dbf32616c2ab723145ed022bd80fe96b5a8ce676ed76f23746c1",
+    "commands.mbt": "adc718e03b4af185576aa66bf5a2c62d489d0bc18f5b7409369f38ed62061839",
+    "completion.mbt": "b08f16da9535e03db096448285aae509e55c7f8fde6a86a6dfbebb9ca00313e3",
+    "completion_oracle_test.mbt": "75e35f8e0ff8c9037a2b213e33f81bf71528da4f9a24a2ab0d0a9b88a03aa94d",
+    "completion_test.mbt": "702cc4d99fc559da05264e6cf3dbf00085038a5905d9e841b2a7ce8346e43bb7",
+    "control.mbt": "741c1ef3920d3e2f7a2f5a8c987850649a98fcccce418c063351861b5995bd18",
+    "conversion_oracle_test.mbt": "5ea8299b83f7413e932daeeeb075fead757ad32cd42d72bcc4e91633c5960992",
+    "conversion_test.mbt": "d92db502d8179875ad1a52294aa33385c5703113ef971e32e8209501806a27c4",
+    "core_test.mbt": "a23e50ec1bfc5fd99a024dbf0d3eb5acb38438d746699fb4dbcf0f5beef47a2a",
+    "ensembles.mbt": "fc87916da1bb9caecac15c23c340e88c536a276218ea7c89702f2a0787102c14",
+    "examples/completions.tcl": "4979edbdc0b0e8c4f9b95477d73b31c89ca83dee86bd07c7c9fcb7de862e6104",
+    "examples/conversion.tcl": "99a21a1a06288edf6a2e6afbc015299d552b291b6a4373b1016a345e45e71fab",
+    "examples/namespaces.tcl": "479acee7e94b97d6d382133999228ab33af5830b38ae57381a9bc71d5ac4a5b9",
+    "examples/regexp.tcl": "46ec569bb07d19b98466ead87c4cb128bc20839aa0e566e10d650fb1321874f6",
+    "examples/substitution.tcl": "0685962d2dcf1987403a162a39328ddf543bcbcdc1235dc6c106524a8d0cf656",
+    "examples/switch.tcl": "85646aa51c2d781a34891b7e0e0a5e394d74d524466f4973964be80f7f21f9e2",
+    "examples/unicode.tcl": "af9af4d9956475429e83bed8c8bdac3692f8e82c77e0bb5ef23698c9399aa174",
+    "examples/values.tcl": "5d97841f26a123d4cb045d585fa3f8bec4c4c5329faa87b5eec3539e002feb06",
+    "expressions.mbt": "34bf9b94bc3e37adacdc533447bd126082426712e4f8cc52a2cfa702d6a16ca8",
+    "format.mbt": "33df3f043c66866054f78369b948e2499067a4786e3fba8384685b1a62771a82",
+    "format_real.mbt": "b42334e084321f60f9472ed71f05ed8b1b29ee2a6e662c0abc5a0c94976a6446",
+    "list_extensions.mbt": "17d6bb0db7313337d35e3e12fedf03de2dbc6d2288897814edaf007445095eb2",
+    "list_limits_test.mbt": "7bdcf5b435a944a8027584193c28111259e03bcb60ba56afa80fa580d6518a82",
+    "list_oracle_test.mbt": "b732479b958e5233b98822f7ff7bf1ec746f2919a577cef1eab0b6764d215cc7",
+    "lists.mbt": "201ebf6aea295fed65d147ca8cd9cd545be1cbc77c02e5ab019bff8c6f913e6d",
+    "moon.mod": "08de184e5d7ed54aeda1d4d1d6ebeae1a8c21185270f154c1d84ae922edb4c00",
+    "moon.pkg": "7583a76298c81eb35005ed059d791d0810d14449990a68211fde158b6728e509",
+    "namespace_oracle_test.mbt": "e92672048f6cae053ef0ca61749b45953c91c158c60b2b27dcdc69032de2b4ec",
+    "namespace_test.mbt": "e4ebff880ad4076323513aa4f38d516bb167a0177c6725f60dcdc66415d4fefc",
+    "numbers.mbt": "9345ff493006c7c65944ccabfb097e159a07883dddc435f4ed1f4e71b989f0e2",
+    "objects.mbt": "15970565fade43817493b8daa13437c7701aeecb37885858f6716e0f67e021c7",
+    "oracle_test.mbt": "8c35589044b79b68a2ae71de90063a90d2550734e78d993f2a50a44e2ea6b48c",
+    "pkg.generated.mbti": "b0e86ed70351eab6854c2d3285126578570287aa08ade5853ddac43863fc2ae6",
+    "regexp.mbt": "8648714c1a9aa14ae6948e37d1ca989b2cb95f5716032d8d8a12f7962d750510",
+    "regexp_about.mbt": "58266e84c716fa0cc23ef375dab0d1fc294ade9d638dd2803358ef8cf227a41c",
+    "regexp_commands.mbt": "7ad53554e6d6be7821b38b53147d9cbfdfb611feda0cf6fcbba66a068fa01d05",
+    "regexp_match.mbt": "5af7f792828b33ac6fac95752d04a06b9a1697289b6f456603edc5435524f9e6",
+    "regexp_oracle_test.mbt": "b5842711d454676057ab105d04b8c048370d2828c3f957ca17dc9f0c5407566c",
+    "regexp_test.mbt": "726623c0bb71ebeb4a999873a321e424c2c7083b52f7e5bbbdeaca5d85a17740",
+    "runtime.mbt": "ba97e1a109b27ee7050be6870ec1f07ac000b0792e51d37dbfd5e4acd6ef43e8",
+    "sample.txt": "f30809bfe24e441c6bfb61f15d9787e4fde1cff2e2951e7c69d0b35927ded1d5",
+    "scan.mbt": "6f2e76edd1e938dc2dfb026571b3c4378bd25add62d6d7d13be285150a991f0d",
+    "semantic_oracle_test.mbt": "dd5c6adfd0bbd138adfead2034af9ea48fd36b92187085312c93ced32506161d",
+    "start-review.ps1": "b81e1ec128093b2011996812e138f4d0dbd403d2f65789dbcc17102af30ba416",
+    "string_classes.mbt": "519c3761a76f85ed157eb7e5eb4e9556869a6c52c28d98b67d13548114f11823",
+    "strings.mbt": "139d0733a16552871516690b5eae0d5bc7d2d97acc23a9375e16f5c53cbb6df6",
+    "substitution.mbt": "4b81fc92b1646d01218e6b7d17729ebe4bf56f1f6b1f1ef466144d7d8641c5f0",
+    "switch.mbt": "470fea5c38cfc4e91b27569e308a83623de23149a3c0be52e46c400499363abf",
+    "switch_oracle_test.mbt": "9c794476cc6614c95d1f7327c6d25b78aedbda5e02d1197ee3b5a095b86460b3",
+    "switch_test.mbt": "ac801f6e990cb3a50de6679de724f88275aa48a133e582e3125cdd4a3313fd14",
+    "syntax.mbt": "ded09c7a8fc5017e162b03fb8cf70a2e3e120be4341165d8e2540b8e4c87a793",
+    "syntax_oracle_test.mbt": "0be27370b24ee86a8e6019084a7be8d728615e2df19c95d7a3e97864939346f9",
+    "syntax_test.mbt": "e9a93c2ae39bc675afb386d96235431f4eed6356507a32862f3774e7b35131f1",
+    "tools/audit-unicode.py": "48bef538b5aa46689595c46a056c2fdadaada8111c5192dda812a99fc499cb80",
+    "tools/benchmark-conversion.py": "78f8bed111fdea4ef5f2abc5aa6cc72bd80d76efff314fb1b78ca907a38b3c55",
+    "tools/benchmark-regexp.py": "d370c02c69409373f988f18939373da84e19d8667e5a59181ccbe203b2e9c941",
+    "tools/benchmark-semantic.mjs": "bc4ce49be8a2f30012458ce7566d012eb5e703f722c3b0d6a1aa2cbe735dd4ee",
+    "tools/benchmark-semantic.py": "d00f312efaef9f59075ef8d1952d7c1d8c7e129d24c4a62f73109c95491c4358",
+    "tools/benchmark-switch.py": "1a3a5867d998f52bfb28df7f6d6bbf7a0f9975a08308e94d4c59a06ea1bef98a",
+    "tools/benchmark.mjs": "53ac611536ba7cb3732017d22976ff8f38dbd9e7aa579c2469eab75b0cdc7216",
+    "tools/cache-cases.py": "590fe0d00e88221581cccb9cda709d4a589cd033d23e1bb5b620d42676a46d3a",
+    "tools/check-generation.py": "0afe7f96e40fc797744949af06ede359516364dd9dbcb02f078c123a3a4bda22",
+    "tools/check-proof.py": "b471fa7c5569aa483ba2a7971844e7cd850acd6d90e356cdf876eab439f19751",
+    "tools/cli.mjs": "d3a1d6db5468af0d656d850dc6ff11fc628e7865c127a2fae2e03378488c4cd0",
+    "tools/compare-performance.mjs": "ade321e8b04dcaf656ac831dba4ec1aad27d3228bc7b97ee3ae1130681e69e24",
+    "tools/completion-cases.py": "d028274f5accd238ac6616a175fa63bc43d9ef11589a18452e23ec8b7f30c6e5",
+    "tools/conversion-cases.py": "d4286efecffa196b59298fdec592c4e0fa789fad0ac06aa6f4394c4fae87ed66",
+    "tools/generate-semantic-oracle.py": "26ee2de337c1283cbf8bfa1ac0c3f4ff1a1c2eabd0a0e4fa46c9d5182d847a94",
+    "tools/generate-unicode.py": "c61a5c387bf5991caca03005d7572c46db36fc54731f28226740c55946f777f1",
+    "tools/generate_list_oracle.py": "e6ab86dbebf6750d7f40ec207ffd6de120f46e47198c5f07b32684a49dd30ce6",
+    "tools/invalid-input.txt": "51c2ec0c89654a56d1c7cf4326886482fc2f4e8dcd77ad998a5933cea21bce8b",
+    "tools/namespace-cases.py": "dc050aa1f1747e9d7699eea83feb2e2e3cdc82dd3583478a8dbd87a72bafce8e",
+    "tools/probe-regexp-start.py": "4867a790abdc860350f5e079f1e6a4cc91be59394581e3febcbd1fac43a80748",
+    "tools/probe-unicode-reference.py": "ffbf0c5304cd878359d22455a73cbb879fa5341595a253ffdd7348e6ac212e7b",
+    "tools/profile-conversion.mjs": "a175e48bc053a1c1096dd6987763651c51e47cc40865360858a72221cfd80efb",
+    "tools/profile-runtime.mjs": "ad27d5bfac6ea1eca7ca7d2c2e504deaa84d19a3ab2068e008af5d9d88629b0f",
+    "tools/regexp-cases.py": "14ea340605541bcbcbd1b87d41283527dcf92f755de80b7fb4a8767652c9b045",
+    "tools/regexp-host-cases.json": "a7fa1cd23666f6d66ac450196f42ebf2a18cbf02394f7d80be2cf9ef28c764ad",
+    "tools/repeat-performance.py": "ef73157072e953e9661cb15966bb8ffcc621aeb355c49de487c193ad7d64f6b1",
+    "tools/robustness.mjs": "24964a078897dccc448ba3d5db4c08f6446d38008424987bf26b4b6f042a21d6",
+    "tools/semantic-cases.py": "708334e35cf039307a8fde22f4a758c6f343da09ff860462eeeedcff472daa7b",
+    "tools/semantic-stress.mjs": "19e83364465bd2b4b616f6db52bd55b274f672d8e02fc208d1ce6e77330d0914",
+    "tools/serve.py": "06046d6c07e65ac199fbefdeaf19e9b32c1ec0557955c19c1bc7fe07cee34681",
+    "tools/switch-cases.py": "1874e0cf179893b7bdd4a49619d225d72aee8df4c8814c0b7645485bfe3a041a",
+    "tools/switch-reference.py": "321c2a106fc34908e013bb529c5d4f41bb5f813e1b1c6b49626488a4cc055428",
+    "tools/syntax-cases.py": "ce1302938514318176cb758ccfd8cacb4edeb64e66962b399b713fba804f67d2",
+    "tools/test-cli.mjs": "b1acaf8992e16d37e1527fd60beeea275ce0df574a9622ab3b44d86dcaf08b03",
+    "tools/test-completions.mjs": "02bc33910f7e35454719877a59fb9a704917f2c070b46253fb6819159bac88a7",
+    "tools/test-conversion.mjs": "da778d621da5c649b4cfc6255e2bf4d251dd35ecbc398c45822a87cc2b90296a",
+    "tools/test-demo.mjs": "02ec6337b9c72c299450db6f0d2b024fd4fd96193d17e5cd501c3a8e6eb87188",
+    "tools/test-http.py": "af52804ebd506ce54417ae307c9c2841ab91db46c6a8ea1b21737d1701ca079e",
+    "tools/test-namespaces.mjs": "b3cae9ece8b2a61b9b3930e31dd5b9723171d09d5a3008388e8b3b1887c6cf7b",
+    "tools/test-regexp.mjs": "88e3b1420dac4b57e30a5553b4e1a6f723b03e5d80c12c838a14f6713427368a",
+    "tools/test-semantic-oracle.mjs": "472f2a89e303906ee77fcbf4c00797b330771c5171d726c6ae003592b05c1a1b",
+    "tools/test-sessions.mjs": "d69fd2c4bcd5b6a0e75bd4dfe0598e4bf5b219f87fe5ea0ba622b520fa4adfa0",
+    "tools/test-switch.mjs": "9bc12e98bca5fb6fa6f21c3c26bea434a028cd853cf5d8b413c9724db5acda65",
+    "tools/test-syntax.mjs": "4670c232f372473ba92a53d67e59411bd0147d2d903ba2875c851056580eccaa",
+    "tools/test-unicode.mjs": "0ca92b1213c42292259e9bccbad79048e7a3211f55b137d543fefa59dcae9879",
+    "tools/test-values.mjs": "85ee178617fcf7c0bde57af3efcb3568ec23c953f86e2436e3e9900f97224e23",
+    "tools/unicode-cases.py": "4e740b14c0f3f837214a313d2519c591d703e2c681e1af6e50e53b91e055012a",
+    "tools/value-cases.py": "65cd535a6e90f80ff6bf801b12362a9fa626d21a1af9e90d741533d096a9971d",
+    "try.mbt": "36aa8ef131d9cd6bba7782c24691cdc87f04ac679333c61edcb6e194341b7e23",
+    "unicode.mbt": "d438c8c5a2ce01359675651cfe21ae37dcbb9235e0d7a2afeee472c5fbc056cc",
+    "unicode_data.mbt": "f51ff6d44450d5e18f0b9c5bda661076b814f9da9ef86cfd612059c82ee2f330",
+    "unicode_oracle_test.mbt": "c0b1052d653287eada44b82ca903186bf1d3968a9f2b4365f5e70e243257dd8d",
+    "unicode_test.mbt": "92dae9926d6ab96711d8842aff685e028b11007e5e25a2316e07f1128f9358ed",
+    "value_oracle_test.mbt": "1e61e9f536888056ea7e33e007e94716bde109d874b5b048342eef5cfaa2c8b0",
+    "value_test.mbt": "b2a4f6e0ec1ff9ba15c2c33a662cdd14e94b2a9fff2ee1211996fe70badd7269",
+    "values.mbt": "6a6e96be9fcda3f69585c9ff4267bf83ddcee31c4c74164f15ee8161168ab385",
+    "variables.mbt": "841605e0775415897efb93c6cd526fad813488da2b08f17607f1436f2c33703c",
+    "vendor/ucd-16.0.0/LICENSE.txt": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+    "vendor/ucd-16.0.0/SOURCE.json": "a4a69210cf52fb8ecc22f41f422766b310521572cca7a9211e1d43024aa7b004",
+    "vendor/ucd-16.0.0/UnicodeData.txt": "ff58e5823bd095166564a006e47d111130813dcf8bf234ef79fa51a870edb48f",
+    "verify.ps1": "6a460f09970efd568ec812930c8f6a979a33ec4e4769f1d8109208844abe408f",
+    "web/app.mjs": "fc5c5b7cb6709373d625dacd614f369a486ecbe251eadd8140e6ead85dac8ba5",
+    "web/config.mjs": "b639220f732c87681aaadf4022b256aec8257910e59397a93302b1f411432c02",
+    "web/engine.mjs": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+    "web/index.html": "4c2ee43e080563c5421da37b71fb353d0388c912743a92923ae4cbb421f69f03",
+    "web/worker.mjs": "280f6f11bf2c623721d2b2075b1fdb2f37fb918a198eaa8689325701bf072358"
+  },
+  "evidenceGitBlobSHA256": {
+    "evidence/semantic-reference.json": "3345cfb5b04a9176e59790e8357dd7e0356ad88fef50329b78810ffe9cd6492c",
+    "evidence/semantic-comparison.json": "0167a639619389dc30e99e438102588b0f50f54e769660e500e2455c3dfcec38",
+    "evidence/cache-reference.json": "5f00a5d10be827bb5b379a248b9b0e2cf284ca999de8b4b7afdef5652d34a017",
+    "evidence/cache-comparison.json": "f37a719bc9f8a29747ba33fbb446c2e411f4ed06c48e82f9d508553a5f996193",
+    "evidence/namespace-reference.json": "5748684b58c69154ec80905c580d6eb5f7c39fa2225066c55c6c844bd7a634fb",
+    "evidence/namespace-comparison.json": "bfa77ba47f0ab8d530be1e39f6e7f824859102e961d6e01c4f310af6f6eebabb",
+    "evidence/completion-reference.json": "81fae54e0e153507c50fedbd57f2a0dd9aea2fd9ae5fa9a8db23439f9ef4bf80",
+    "evidence/completion-comparison.json": "9d47c6b2d6727784b4488368a5851d7ca194b3d06f031c83c5bb529d04c94b80",
+    "evidence/syntax-reference.json": "d273f3ac673f9171b8c3471f35ab6e8cfdf1b0fd1cfb65746e9a97c1612fa089",
+    "evidence/syntax-comparison.json": "a587d1fd75a55ade7f951f1b81cfb1a92fc9d789ac5b41e03e797d255f72048b",
+    "evidence/unicode-reference.json": "53f87642cdfd5b1e7cf0ceedb770b058f3b85f81f8e143860a3fa94af17ae28f",
+    "evidence/unicode-comparison.json": "f83adbc2c637385dc187a3ef5535eae18ea395c8a5cff59a5879e9acda2708cd",
+    "evidence/conversion-reference.json": "6e19e9b2a58c27ab59b2ed03197c636134afdad09bca707c560b8a0268064ebb",
+    "evidence/conversion-comparison.json": "fa95a25fd7998f446c14ac1822e675b16d40ad6a9c9f484ea488f4d8dd83f787",
+    "evidence/value-reference.json": "0a38af21378f60753ee99e050793265feb56505fda43834ebd723d7ec537fc63",
+    "evidence/value-comparison.json": "c0d2ee4304ce068f2becb48fe7ce5d83e746c6ceff900ab1297ca42a0a20846f",
+    "evidence/switch-reference.json": "47322b11bb87231edb4ef8b4f62a6c2a5b2e8b6f8c19700b656673c0c7baaf0c",
+    "evidence/switch-comparison.json": "96aeec9aebf0491da7b40f2ef6baf6f6ec156bdf8ee9e61fcc8a909ba4385b50",
+    "evidence/regexp-reference.json": "b14276809c77aeeb0e861fb0139efd9f915c784341e6ba586460a74128b56b9c",
+    "evidence/regexp-comparison.json": "a7aeaac9e84e8afb1e61b640d07cd725e42af1625f249c0cdfd9e02378b4b2f2",
+    "evidence/switch-reference-limits.json": "7953125988b28332e45e5ec8b5bdab06437a67fc0387c55cb8dc9c4d913c91e5",
+    "evidence/regexp-reference-limits.json": "430bd25ab7de2b75be6437a79ea992cade43163d1da91ea0a5d2c1b596412fdd",
+    "evidence/regexp-start-reference.json": "675e572375d6a76938b5f0dcfab4f06d79ff7d4194fbb1bd7c651d1ba03940c5",
+    "evidence/regexp-reference-generation.log": "4b876405398f240ce423df756025b6ccf7309fa53a785823dcf92d02cee96e66",
+    "evidence/regexp-hosts.json": "56e6b0c508bfbbd44fc1f4ae35d42dbb43b80e7d3b115cc53148967d3bbf24b0",
+    "evidence/switch-hosts.json": "a89bfa09e69025fe547c0f1547456073b269a65e66c70e112e1f4441369c6a8e",
+    "evidence/value-hosts.json": "185a817a947c57332592e31351062c64fc57ed6e289a239676829da14d6cc2ed",
+    "evidence/conversion-hosts.json": "84fede7ae2239f357b8867986452ed4e257f3b8e084f7db7e79e80f8ac35c5b4",
+    "evidence/unicode-hosts.json": "c37dadaba7821edf1ea1d6d741c5a770c4151307f4ed50dc4db06577622f2f6d",
+    "evidence/syntax-hosts.json": "bdc928ce64858cb5e8da1f8eff73c9db000d41ac881c30bc5d08611976ece80c",
+    "evidence/completion-hosts.json": "151131d9826347f6f5870195a669910ec1d7a2a8d03c66482696ceae0c5ba191",
+    "evidence/namespace-hosts.json": "a8fef873e5d03d257e6ce83131ccdf3cf93bfdd108f56afe28b06191664d845e",
+    "evidence/session-validation.json": "454b1b645cd4685618e766249abe43ed013e4da929326b2b249219c9dd1f7fc2",
+    "evidence/http-validation.json": "8818710b7e5a27c7430b37de3f81812e0d5ff35c14cb4646808067306a14d6a8",
+    "evidence/browser-regexp.json": "d5623ccd15ec4d489df4773d73e44e7fc46b2bde2dbd0aff45da729289086cc8",
+    "evidence/example-regexp.json": "f8fcfad94b0f4123ad4c341d9a5d7e7228324375be4288c8f1dfe8ec71358da4",
+    "evidence/generation-regexp.json": "1e26e3d18b105393a354f84d4e05d5a125315b1fc28be063588612b718cf154f",
+    "evidence/generation-regexp.log": "ef0c996ec7e745de8863db4a536ae1fc2e6478ae0bac073229ad4c84209cb9c0",
+    "evidence/verify-regexp.log": "0d6076850bfe5c68a9e7c64e85d083ce7d40d31626750bbb9018d2753ba24433",
+    "evidence/semantic-stress.json": "c4676670e7e9003b19909216013084727be8445e2f2ef5be9877cdf819338a06",
+    "evidence/regexp-robustness.json": "13a944d0ecb54a44791d4372bc5faefa3b2c4cd140c2c25fe8776b0d1ea5faf1",
+    "evidence/regexp-benchmark.json": "0f9e20d398614df19124f9b453e034451d30e68f9a095c47a6714c05680e2f0a",
+    "evidence/unicode-data-audit.json": "fd88833e9934d0e052e3b53a8e77e476d196dbdd8f409fb2570edb35a2c78379",
+    "evidence/unicode-reference-limits.json": "5adf27219b39d17d419aa8c506b7fecaf785476ca855b11068bde3d481343843",
+    "evidence/semantic-benchmark-reference.json": "c64257378a5feef1b88369f78549871645c74c7e3d3dfca873203daad3600b7f",
+    "evidence/regexp-conversion-workloads.json": "35498ad038f282cfe0b4f6b48fca42151f8c65780397143aac7cb2539c12e0d4",
+    "evidence/regexp-workloads.json": "ca0e4b381dcd042104aaecdfd55744dfa39096ce59460ef196e0a119b09ddbbd",
+    "evidence/regexp-general-performance.json": "e9b6062cc8795e75e75e30507c763aea4b07468c43e34dc430766c00cc7a6178",
+    "evidence/regexp-conversion-performance.json": "5fa61c811ac1c7edb864b4fcf993615e6c68c2979092ab3cd1dabe50f0645913",
+    "evidence/regexp-before-interval-general-performance.json": "09bd5094d7a70c3c8755725d582c3a4a5bccf9b436d4c7e95c30bc855c8e0d7c",
+    "evidence/regexp-before-interval-conversion-performance.json": "b23b61a731ee0e1fa16f2912ef373bd82fe6cc90a2e44f7f5070a40cc77ce811",
+    "evidence/regexp-before-interval-workloads.json": "58522e291c58da2bc154cf023793900b40e70dd7b0134aa070a5b33056a599d8",
+    "evidence/regexp-before-interval-conversion-workloads.json": "61e0e0b7cf6d97b3978d4462f9cf93e7352d24f3a4b6f48e7e2235bf8b20edb7",
+    "evidence/before-start-regexp-general-performance.json": "f3b4a8181e7bbc695fd241e131f86982576e1f7fb3c031f05c9f201a2e8aaada",
+    "evidence/before-start-regexp-conversion-performance.json": "3b6fe2b4d952904d160bad5f23c7a34084854f6e22effee660cbf92573f1c7b0",
+    "evidence/before-start-regexp-workloads.json": "654b72e7d3c1c1bb9223c07944affab5cd87441fff0dbd66f283a1e72e9b8aa4",
+    "evidence/before-start-regexp-conversion-workloads.json": "8d3a2b25ba71d304db806f4aa5c5247bc700cfe73a13f83255abe2ebcd27f8bc",
+    "evidence/before-start-browser-regexp.json": "a153bab91e1a34823c9dd44ed48df45bea96fb2544204449ad21911e1ba1eb50",
+    "evidence/before-start-generation-regexp.json": "32a7a37eb7ee25c297a71c624797c4a54b569d8136d257dd6cec0d0b0cdb79b2",
+    "evidence/before-start-verify-regexp.log": "53d90eaba2cf8a511d1be3cb22db73f142e3ebe48f05bc2783d50407cef618f9"
+  }
+}

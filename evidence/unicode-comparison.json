@@ -2,7 +2,7 @@
   "reference": "System Tcl 8.6.15 through Python tkinter",
   "cases": 1866,
   "matched": 1866,
-  "engineSHA256": "efa3789d8637fa901bfa6ae5e62ed98376adb7e31b4238772ea3d31ec4d87d72",
+  "engineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
   "knownDifferences": 0,
   "unexpectedDifferences": 0,
   "comparison": "Exact result and standard-output strings on success; rejection only on expected errors.",

@@ -1,0 +1,16 @@
+{
+  "engineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+  "source": "examples/regexp.tcl",
+  "reference": "Windows Tcl 8.6.15; only puts redirected",
+  "expected": {
+    "result": "2 20 {7 15} {14 15}",
+    "output": "tea 20 coffee 24\nContact <hidden>@example.com or <hidden>@example.org\n"
+  },
+  "actual": {
+    "ok": true,
+    "result": "2 20 {7 15} {14 15}",
+    "output": "tea 20 coffee 24\nContact <hidden>@example.com or <hidden>@example.org\n"
+  },
+  "matched": true,
+  "cliExitCode": 0
+}

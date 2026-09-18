@@ -1,0 +1,175 @@
+{
+  "utc": "2026-09-18T10:08:36.839886+00:00",
+  "engineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+  "url": "http://127.0.0.1:16040/web/",
+  "tool": "CUA in-app browser with actual page controls and web Worker",
+  "checks": 15,
+  "passed": 15,
+  "versionLabel": "MOONBIT TCL 0.13.0",
+  "rows": [
+    {
+      "name": "extraction and redaction example",
+      "source": "# Extract records and redact email addresses without losing the session.\nset text {Tea:12 Coffee:24 Tea:8}\nset totals {}\nforeach {whole name amount} [regexp -all -inline {([[:alpha:]]+):([0-9]+)} $text] {\n    dict incr totals [string tolower $name] $amount\n}\nputs $totals\nset message {Contact alice@example.com or bob@example.org}\nset count [regsub -all {([[:alnum:]_.]+)@([[:alnum:].]+)} $message {<hidden>@\\2} redacted]\nputs $redacted\nregexp -indices {Coffee:([0-9]+)} $text record amount\nlist $count [dict get $totals tea] $record $amount\n",
+      "actual": {
+        "result": "2 20 {7 15} {14 15}",
+        "output": "tea 20 coffee 24\nContact <hidden>@example.com or <hidden>@example.org\n",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "persistent state",
+      "source": "list [dict get $totals tea] $redacted $count",
+      "actual": {
+        "result": "20 {Contact <hidden>@example.com or <hidden>@example.org} 2",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "global last capture",
+      "source": "set n [regexp -all -indices {(a)(b?)} aba m a b];list $n $m $a $b",
+      "actual": {
+        "result": "2 {2 2} {2 2} {3 2}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "unmatched variables",
+      "source": "regexp z abc m a b;list $m $a $b",
+      "actual": {
+        "result": "{2 2} {2 2} {3 2}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "empty and start indices",
+      "source": "list [regexp -all -inline -indices {} abc] [regexp -start end -inline -indices {} abc] [regexp -start 100 -inline -indices {} abc]",
+      "actual": {
+        "result": "{{0 -1} {1 0} {2 1}} {{3 2}} {{100 99}}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "literal optimization",
+      "source": "list [regsub -all {} abc X] [regsub -all {()} abc X] [regsub -all -expanded {a b} {a b} X]",
+      "actual": {
+        "result": "XaXbXc XaXbXcX X",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "replacement backreferences",
+      "source": "regsub -all {(a)(b?)} aba {<\\2:&:\\1>}",
+      "actual": {
+        "result": "<b:ab:a><:a:a>",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "maximum signed start",
+      "source": "regexp -all -start 2147483647 -inline -indices {a*} abc",
+      "actual": {
+        "result": "{2147483647 2147483646}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "compile metadata",
+      "source": "list [regexp -about {a+?}] [regexp -about {a^}] [regexp -about {[[:digit:]]+}]",
+      "actual": {
+        "result": "{0 {REG_UNONPOSIX REG_USHORTEST}} {0 REG_UIMPOSSIBLE} {0 REG_ULOCALE}",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "numeric conversion order",
+      "source": "scan 18446744073709551616 %f v;catch {regexp {(} $v};set before [format %.17g $v];regexp .* $v;list $before [format %.17g $v]",
+      "actual": {
+        "result": "1.8446744073709552e+19 1.844674407370955e+19",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "ordered partial assignment",
+      "source": "set scalar 0;set m OLD;set tail OLD;catch {regexp {(a)} a m scalar(x) tail};list $m $scalar $tail",
+      "actual": {
+        "result": "a 0 OLD",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "compile error with output",
+      "source": "set touched kept;puts before;regsub {(} abc X",
+      "actual": {
+        "result": "",
+        "output": "before\n",
+        "error": "Invalid(\"couldn't compile regular expression pattern: parentheses () not balanced\")"
+      },
+      "nativeCode": 1,
+      "nativeResult": "couldn't compile regular expression pattern: parentheses () not balanced",
+      "passed": true
+    },
+    {
+      "name": "recovery",
+      "source": "list recovered $touched [regsub a abc X]",
+      "actual": {
+        "result": "recovered kept Xbc",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    },
+    {
+      "name": "reset",
+      "actualStatus": "\u4f1a\u8bdd\u5df2\u6e05\u7a7a\u3002",
+      "passed": true
+    },
+    {
+      "name": "reset removes variables",
+      "source": "list [info exists touched] [info exists totals] [info exists redacted]",
+      "actual": {
+        "result": "0 0 0",
+        "output": "",
+        "error": ""
+      },
+      "nativeMatched": true,
+      "passed": true
+    }
+  ],
+  "consoleLogsCollected": false,
+  "temporaryPageClosed": true,
+  "temporaryServerStopped": true,
+  "scope": "Rendered result/stdout/error/reset text observed after every UI action, then independently checked against native Tcl. Import/download, cancellation/timeout, mobile layout and console logs were not rerun."
+}

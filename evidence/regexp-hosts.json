@@ -1,0 +1,6 @@
+{
+  "checks": 48,
+  "passed": 48,
+  "engineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+  "scope": "Persistent module sessions, real JSONL CLI and actual web Worker module through a Node message adapter. Global captures and indices, start/empty boundaries, substitution references, literal optimization, options, metadata, scope, numeric representations, failure recovery and reset. Browser checks are separate."
+}
