@@ -1,0 +1,103 @@
+{
+  "checks": 18,
+  "passed": 18,
+  "rows": [
+    {
+      "name": "dictionary-order",
+      "actual": "{rack1 tea 7} {rack2 tea 12} {rack10 coffee 34}",
+      "passed": true
+    },
+    {
+      "name": "regexp-nested",
+      "actual": "{rack2 tea 12} {rack1 tea 7}",
+      "passed": true
+    },
+    {
+      "name": "nested-indices",
+      "actual": "{0 1} {2 1}",
+      "passed": true
+    },
+    {
+      "name": "selected-values",
+      "actual": "tea tea",
+      "passed": true
+    },
+    {
+      "name": "native-end-path",
+      "actual": "{0 2} {1 2}",
+      "passed": true
+    },
+    {
+      "name": "binary-first",
+      "actual": "1",
+      "passed": true
+    },
+    {
+      "name": "binary-last",
+      "actual": "2",
+      "passed": true
+    },
+    {
+      "name": "binary-start",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "name": "wide-wrap",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "name": "array-regexp",
+      "actual": "rack1 rack2 rack10",
+      "passed": true
+    },
+    {
+      "name": "empty-array-lazy",
+      "actual": "{}",
+      "passed": true
+    },
+    {
+      "name": "unicode-representations",
+      "actual": "0 -1 0",
+      "passed": true
+    },
+    {
+      "name": "dictionary-unique",
+      "actual": "ǆ",
+      "passed": true
+    },
+    {
+      "name": "numeric-preservation",
+      "actual": "1.8446744073709552e+19",
+      "passed": true
+    },
+    {
+      "name": "numeric-conversion",
+      "actual": "1.844674407370955e+19",
+      "passed": true
+    },
+    {
+      "name": "error-with-output",
+      "actual": "before\n",
+      "passed": true,
+      "error": "Invalid(\"couldn't compile regular expression pattern: parentheses () not balanced\")"
+    },
+    {
+      "name": "recovery",
+      "actual": "YES 1",
+      "passed": true
+    },
+    {
+      "name": "reset",
+      "actual": "0 0 1",
+      "passed": true
+    }
+  ],
+  "engineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+  "version": "0.14.0",
+  "utc": "2026-09-18T11:01:06.313365+00:00",
+  "surface": "Actual Codex in-app browser localhost:16040/web/, tab 8, CUA accessibility actions and fresh visible result/output observations.",
+  "scope": "Dictionary order/uniqueness, nested searches and subindices, binary boundaries, wide wrap, array regexp timing, Unicode/object fast paths, numeric representations, error output, continued state and reset. Import/download, cancel/timeout, mobile layout and console-log inspection were not rerun.",
+  "temporaryTabClosed": true
+}

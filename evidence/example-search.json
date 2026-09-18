@@ -1,0 +1,13 @@
+{
+  "source": "examples/search.tcl",
+  "reference": "Windows Tcl 8.6.15",
+  "result": "1 1",
+  "output": "{rack1 tea 7} {rack2 tea 12} {rack10 coffee 34}\n{rack1 tea 7} {rack2 tea 12}\n{0 1} {1 1}\nrack1 rack2 rack10\n",
+  "actual": {
+    "ok": true,
+    "result": "1 1",
+    "output": "{rack1 tea 7} {rack2 tea 12} {rack10 coffee 34}\n{rack1 tea 7} {rack2 tea 12}\n{0 1} {1 1}\nrack1 rack2 rack10\n"
+  },
+  "matched": true,
+  "engineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2"
+}

@@ -69,17 +69,21 @@ fn Interpreter::array_command(
       } else if n == 4 {
         args[3]
       } else if n == 5 && op == "names" {
-        mode = args[3]
+        mode = collection_option(args[3], ["-exact", "-glob", "-regexp"])
         args[4]
       } else {
         raise Invalid("array names/get arity")
       }
-      if mode != "-glob" && mode != "-exact" {
-        raise Invalid("unsupported array match mode")
-      }
       let values = match values {
         Some(v) => v
         None => return text_value("")
+      }
+      let compiled = if mode == "-regexp" && values.length() > 0 {
+        let compiled = re_compile(pattern, false)
+        input[n - 1].payload = Plain
+        Some(compiled)
+      } else {
+        None
       }
       let keys = values.keys().to_array()
       keys.sort()
@@ -87,8 +91,10 @@ fn Interpreter::array_command(
       for key in keys {
         if (if mode == "-exact" {
             key == pattern
+          } else if compiled is Some(compiled) {
+            self.regexp_find(compiled, key, 0) is Some(_)
           } else {
-            glob_match(pattern, key, false)
+            glob_match(pattern, key, false, codepoints=true)
           }) {
           result.push(text_value(key))
           if op == "get" {

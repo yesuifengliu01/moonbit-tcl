@@ -81,74 +81,7 @@ fn Interpreter::extended_list_command(
         values[last + 1:].to_owned(),
       )
     }
-    "lsearch" => {
-      let mut i = 1
-      let mut exact = false
-      let mut nocase = false
-      let mut all = false
-      let mut inline = false
-      let mut negate = false
-      let mut start = 0
-      while i < n - 2 {
-        match args[i] {
-          "-exact" => exact = true
-          "-glob" => exact = false
-          "-nocase" => nocase = true
-          "-all" => all = true
-          "-inline" => inline = true
-          "-not" => negate = true
-          "-start" => {
-            i += 1
-            if i >= n - 2 {
-              raise Invalid("lsearch start")
-            }
-            start = integer(args[i]).max(0)
-          }
-          _ => raise Invalid("unsupported lsearch option")
-        }
-        i += 1
-      }
-      if i != n - 2 {
-        raise Invalid("lsearch arity")
-      }
-      let values = input[i].as_list()
-      let pattern = if nocase {
-        unicode_case(args[i + 1], 0)
-      } else {
-        args[i + 1]
-      }
-      let result = []
-      for j in start..<values.length() {
-        let value = if nocase {
-          unicode_case(values[j].text, 0)
-        } else {
-          values[j].text
-        }
-        let matched = if exact {
-          value == pattern &&
-          (
-            !nocase ||
-            tcl_utf8_length(values[j].text) == tcl_utf8_length(args[i + 1])
-          )
-        } else {
-          glob_match(pattern, value, false)
-        }
-        if matched != negate {
-          let item = if inline { values[j] } else { text_value(j.to_string()) }
-          if !all {
-            return item
-          }
-          result.push(item)
-        }
-      }
-      if all {
-        return list_value(result)
-      } else if inline {
-        ""
-      } else {
-        "-1"
-      }
-    }
+    "lsearch" => return self.lsearch_command(input)
     "lsort" => {
       if n < 2 {
         raise Invalid("lsort arity")
@@ -162,7 +95,7 @@ fn Interpreter::extended_list_command(
       let mut command : String? = None
       while i < n - 1 {
         match args[i] {
-          "-ascii" | "-integer" | "-real" => mode = args[i]
+          "-ascii" | "-dictionary" | "-integer" | "-real" => mode = args[i]
           "-decreasing" => reverse = true
           "-increasing" => reverse = false
           "-nocase" => nocase = true
@@ -198,7 +131,7 @@ fn Interpreter::extended_list_command(
           }
           None => value
         }
-        if nocase {
+        if nocase && mode != "-dictionary" {
           text_value(unicode_case(raw.text, 0))
         } else {
           raw
@@ -236,8 +169,12 @@ fn Interpreter::extended_list_command(
           } else {
             0
           }
-        } else {
+        } else if mode == "-dictionary" {
+          dictionary_compare(a.text, b.text)
+        } else if nocase {
           tcl_string_compare(a.text, b.text)
+        } else {
+          collection_ascii_compare(a.text, b.text)
         }
         let sign = if result < 0 { -1 } else if result > 0 { 1 } else { 0 }
         if reverse {
@@ -245,6 +182,12 @@ fn Interpreter::extended_list_command(
         } else {
           sign
         }
+      }
+      if mode == "-dictionary" && command is None {
+        for value in values {
+          ignore(key(value))
+        }
+        return list_value(dictionary_sort(values, compare, unique))
       }
       sort_values(values, compare)
       if unique {

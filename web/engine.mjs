@@ -338,6 +338,14 @@ function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl8TclValueERP211loc
   this._0 = param0;
 }
 _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
+function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl11SearchIndexERP211localreview3tcl8TclErrorE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl11SearchIndexERP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl11SearchIndexERP211localreview3tcl8TclErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl11SearchIndexERP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
 function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl6NumberERP211localreview3tcl8TclErrorE3Err(param0) {
   this._0 = param0;
 }
@@ -718,6 +726,7 @@ const _M0MPC16bigint6BigInt7js__shr = (x, y) => x >> BigInt(y);
 const _M0MPC16bigint6BigInt8js__land = (x, y) => x & y;
 const _M0MPC16bigint6BigInt7js__lor = (x, y) => x | y;
 const _M0MPC16bigint6BigInt8js__lxor = (x, y) => x ^ y;
+const _M0MPC16bigint6BigInt8to__uint = (x) => Number(BigInt.asUintN(32, x)) | 0;
 const _M0MPC16bigint6BigInt7to__int = (x) => Number(BigInt.asIntN(32, x));
 const _M0MPC16bigint6BigInt11bit__length = (n) => {
   if (n >= 0) {
@@ -961,6 +970,138 @@ function $f64_reinterpret_i64(a) {
 function _M0TPB8MutLocalGObE(param0) {
   this.val = param0;
 }
+function _M0TP211localreview3tcl6ReNode(param0, param1, param2) {
+  this.kind = param0;
+  this.preference = param1;
+  this.analysis = param2;
+}
+function _M0DTP211localreview3tcl6ReKind5Empty() {}
+_M0DTP211localreview3tcl6ReKind5Empty.prototype.$tag = 0;
+const _M0DTP211localreview3tcl6ReKind5Empty__ = new _M0DTP211localreview3tcl6ReKind5Empty();
+function _M0DTP211localreview3tcl6ReKind7Literal(param0) {
+  this._0 = param0;
+}
+_M0DTP211localreview3tcl6ReKind7Literal.prototype.$tag = 1;
+function _M0DTP211localreview3tcl6ReKind3Any() {}
+_M0DTP211localreview3tcl6ReKind3Any.prototype.$tag = 2;
+const _M0DTP211localreview3tcl6ReKind3Any__ = new _M0DTP211localreview3tcl6ReKind3Any();
+function _M0DTP211localreview3tcl6ReKind3Set(param0) {
+  this._0 = param0;
+}
+_M0DTP211localreview3tcl6ReKind3Set.prototype.$tag = 3;
+function _M0DTP211localreview3tcl6ReKind6Anchor(param0) {
+  this._0 = param0;
+}
+_M0DTP211localreview3tcl6ReKind6Anchor.prototype.$tag = 4;
+function _M0DTP211localreview3tcl6ReKind8Sequence(param0) {
+  this._0 = param0;
+}
+_M0DTP211localreview3tcl6ReKind8Sequence.prototype.$tag = 5;
+function _M0DTP211localreview3tcl6ReKind9Alternate(param0) {
+  this._0 = param0;
+}
+_M0DTP211localreview3tcl6ReKind9Alternate.prototype.$tag = 6;
+function _M0DTP211localreview3tcl6ReKind6Repeat(param0, param1, param2) {
+  this._0 = param0;
+  this._1 = param1;
+  this._2 = param2;
+}
+_M0DTP211localreview3tcl6ReKind6Repeat.prototype.$tag = 7;
+function _M0DTP211localreview3tcl6ReKind7Capture(param0, param1) {
+  this._0 = param0;
+  this._1 = param1;
+}
+_M0DTP211localreview3tcl6ReKind7Capture.prototype.$tag = 8;
+function _M0DTP211localreview3tcl6ReKind10Uncaptured(param0) {
+  this._0 = param0;
+}
+_M0DTP211localreview3tcl6ReKind10Uncaptured.prototype.$tag = 9;
+function _M0DTP211localreview3tcl6ReKind7Backref(param0) {
+  this._0 = param0;
+}
+_M0DTP211localreview3tcl6ReKind7Backref.prototype.$tag = 10;
+function _M0DTP211localreview3tcl6ReKind4Look(param0, param1) {
+  this._0 = param0;
+  this._1 = param1;
+}
+_M0DTP211localreview3tcl6ReKind4Look.prototype.$tag = 11;
+function _M0DTPC16result6ResultGRP211localreview3tcl6ReNodeRP211localreview3tcl8TclErrorE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRP211localreview3tcl6ReNodeRP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGRP211localreview3tcl6ReNodeRP211localreview3tcl8TclErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRP211localreview3tcl6ReNodeRP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
+function _M0TP211localreview3tcl5ReSet(param0, param1, param2) {
+  this.ranges = param0;
+  this.classes = param1;
+  this.negated = param2;
+}
+function _M0DTPC16result6ResultGRP211localreview3tcl9RePatternRP211localreview3tcl8TclErrorE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRP211localreview3tcl9RePatternRP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGRP211localreview3tcl9RePatternRP211localreview3tcl8TclErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRP211localreview3tcl9RePatternRP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
+function _M0TP211localreview3tcl8ReParser(param0, param1, param2, param3, param4, param5, param6, param7, param8) {
+  this.chars = param0;
+  this.pos = param1;
+  this.groups = param2;
+  this.look_level = param3;
+  this.closed = param4;
+  this.notes = param5;
+  this.mode = param6;
+  this.nocase = param7;
+  this.expanded = param8;
+}
+function _M0TPB9ArrayViewGUibEE(param0, param1, param2) {
+  this.buf = param0;
+  this.start = param1;
+  this.end = param2;
+}
+function _M0TP211localreview3tcl9RePattern(param0, param1, param2, param3, param4, param5, param6, param7) {
+  this.node = param0;
+  this.groups = param1;
+  this.nocase = param2;
+  this.line_stop = param3;
+  this.line_anchor = param4;
+  this.origin = param5;
+  this.not_bol = param6;
+  this.notes = param7;
+}
+function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
+function _M0TP211localreview3tcl7ReState(param0, param1) {
+  this.pos = param0;
+  this.captures = param1;
+}
+function _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl7ReStateEE(param0) {
+  this.val = param0;
+}
+function _M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
+function _M0DTPC16option6OptionGRPB5ArrayGUiiEEE4None() {}
+_M0DTPC16option6OptionGRPB5ArrayGUiiEEE4None.prototype.$tag = 0;
+const _M0DTPC16option6OptionGRPB5ArrayGUiiEEE4None__ = new _M0DTPC16option6OptionGRPB5ArrayGUiiEEE4None();
+function _M0DTPC16option6OptionGRPB5ArrayGUiiEEE4Some(param0) {
+  this._0 = param0;
+}
+_M0DTPC16option6OptionGRPB5ArrayGUiiEEE4Some.prototype.$tag = 1;
 function _M0TP211localreview3tcl13ParsedCommand(param0, param1, param2) {
   this.words = param0;
   this.source = param1;
@@ -1121,6 +1262,60 @@ function _M0DTPC16result6ResultGRP211localreview3tcl10DictObjectRP211localreview
   this._0 = param0;
 }
 _M0DTPC16result6ResultGRP211localreview3tcl10DictObjectRP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
+function _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl8TclValueEE(param0) {
+  this.val = param0;
+}
+function _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None() {}
+_M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None.prototype.$tag = 0;
+const _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None__ = new _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None();
+function _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4Some(param0) {
+  this._0 = param0;
+}
+_M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4Some.prototype.$tag = 1;
+function _M0TPB8MutLocalGOiE(param0) {
+  this.val = param0;
+}
+function _M0DTPC16result6ResultGRP211localreview3tcl11SearchIndexRP211localreview3tcl8TclErrorE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRP211localreview3tcl11SearchIndexRP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGRP211localreview3tcl11SearchIndexRP211localreview3tcl8TclErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRP211localreview3tcl11SearchIndexRP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
+function _M0TP211localreview3tcl11SearchIndex(param0, param1) {
+  this.relative = param0;
+  this.value = param1;
+}
+function _M0DTPC16result6ResultGdRP211localreview3tcl8TclErrorE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGdRP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGdRP211localreview3tcl8TclErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGdRP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
+function _M0DTPC16result6ResultGlRP211localreview3tcl8TclErrorE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGlRP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGlRP211localreview3tcl8TclErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGlRP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
+function _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl11SearchIndexEE(param0) {
+  this.val = param0;
+}
+function _M0TPB8MutLocalGOsE(param0) {
+  this.val = param0;
+}
+function $compare_int64(a, b) {
+  const c = BigInt.asIntN(64, a);
+  const d = BigInt.asIntN(64, b);
+  if (c < d) return -1;
+  if (c > d) return 1;
+  return 0;
+}
 function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7CommandERP211localreview3tcl8TclErrorE3Err(param0) {
   this._0 = param0;
 }
@@ -1129,9 +1324,6 @@ function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7CommandERP211loca
   this._0 = param0;
 }
 _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7CommandERP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
-function _M0TPB8MutLocalGOsE(param0) {
-  this.val = param0;
-}
 function _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE3Err(param0) {
   this._0 = param0;
 }
@@ -1140,13 +1332,6 @@ function _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211lo
   this._0 = param0;
 }
 _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
-function _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None() {}
-_M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None.prototype.$tag = 0;
-const _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None__ = new _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None();
-function _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4Some(param0) {
-  this._0 = param0;
-}
-_M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4Some.prototype.$tag = 1;
 function _M0TP211localreview3tcl13ScriptProgram(param0, param1, param2) {
   this.parser = param0;
   this.commands = param1;
@@ -1166,111 +1351,6 @@ function _M0DTPC16result6ResultGRP211localreview3tcl10ListObjectRP211localreview
   this._0 = param0;
 }
 _M0DTPC16result6ResultGRP211localreview3tcl10ListObjectRP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
-function _M0TP211localreview3tcl6ReNode(param0, param1, param2) {
-  this.kind = param0;
-  this.preference = param1;
-  this.analysis = param2;
-}
-function _M0DTP211localreview3tcl6ReKind5Empty() {}
-_M0DTP211localreview3tcl6ReKind5Empty.prototype.$tag = 0;
-const _M0DTP211localreview3tcl6ReKind5Empty__ = new _M0DTP211localreview3tcl6ReKind5Empty();
-function _M0DTP211localreview3tcl6ReKind7Literal(param0) {
-  this._0 = param0;
-}
-_M0DTP211localreview3tcl6ReKind7Literal.prototype.$tag = 1;
-function _M0DTP211localreview3tcl6ReKind3Any() {}
-_M0DTP211localreview3tcl6ReKind3Any.prototype.$tag = 2;
-const _M0DTP211localreview3tcl6ReKind3Any__ = new _M0DTP211localreview3tcl6ReKind3Any();
-function _M0DTP211localreview3tcl6ReKind3Set(param0) {
-  this._0 = param0;
-}
-_M0DTP211localreview3tcl6ReKind3Set.prototype.$tag = 3;
-function _M0DTP211localreview3tcl6ReKind6Anchor(param0) {
-  this._0 = param0;
-}
-_M0DTP211localreview3tcl6ReKind6Anchor.prototype.$tag = 4;
-function _M0DTP211localreview3tcl6ReKind8Sequence(param0) {
-  this._0 = param0;
-}
-_M0DTP211localreview3tcl6ReKind8Sequence.prototype.$tag = 5;
-function _M0DTP211localreview3tcl6ReKind9Alternate(param0) {
-  this._0 = param0;
-}
-_M0DTP211localreview3tcl6ReKind9Alternate.prototype.$tag = 6;
-function _M0DTP211localreview3tcl6ReKind6Repeat(param0, param1, param2) {
-  this._0 = param0;
-  this._1 = param1;
-  this._2 = param2;
-}
-_M0DTP211localreview3tcl6ReKind6Repeat.prototype.$tag = 7;
-function _M0DTP211localreview3tcl6ReKind7Capture(param0, param1) {
-  this._0 = param0;
-  this._1 = param1;
-}
-_M0DTP211localreview3tcl6ReKind7Capture.prototype.$tag = 8;
-function _M0DTP211localreview3tcl6ReKind10Uncaptured(param0) {
-  this._0 = param0;
-}
-_M0DTP211localreview3tcl6ReKind10Uncaptured.prototype.$tag = 9;
-function _M0DTP211localreview3tcl6ReKind7Backref(param0) {
-  this._0 = param0;
-}
-_M0DTP211localreview3tcl6ReKind7Backref.prototype.$tag = 10;
-function _M0DTP211localreview3tcl6ReKind4Look(param0, param1) {
-  this._0 = param0;
-  this._1 = param1;
-}
-_M0DTP211localreview3tcl6ReKind4Look.prototype.$tag = 11;
-function _M0DTPC16result6ResultGRP211localreview3tcl6ReNodeRP211localreview3tcl8TclErrorE3Err(param0) {
-  this._0 = param0;
-}
-_M0DTPC16result6ResultGRP211localreview3tcl6ReNodeRP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
-function _M0DTPC16result6ResultGRP211localreview3tcl6ReNodeRP211localreview3tcl8TclErrorE2Ok(param0) {
-  this._0 = param0;
-}
-_M0DTPC16result6ResultGRP211localreview3tcl6ReNodeRP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
-function _M0TP211localreview3tcl5ReSet(param0, param1, param2) {
-  this.ranges = param0;
-  this.classes = param1;
-  this.negated = param2;
-}
-function _M0DTPC16result6ResultGRP211localreview3tcl9RePatternRP211localreview3tcl8TclErrorE3Err(param0) {
-  this._0 = param0;
-}
-_M0DTPC16result6ResultGRP211localreview3tcl9RePatternRP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
-function _M0DTPC16result6ResultGRP211localreview3tcl9RePatternRP211localreview3tcl8TclErrorE2Ok(param0) {
-  this._0 = param0;
-}
-_M0DTPC16result6ResultGRP211localreview3tcl9RePatternRP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
-function _M0TP211localreview3tcl8ReParser(param0, param1, param2, param3, param4, param5, param6, param7, param8) {
-  this.chars = param0;
-  this.pos = param1;
-  this.groups = param2;
-  this.look_level = param3;
-  this.closed = param4;
-  this.notes = param5;
-  this.mode = param6;
-  this.nocase = param7;
-  this.expanded = param8;
-}
-function _M0TPB9ArrayViewGUibEE(param0, param1, param2) {
-  this.buf = param0;
-  this.start = param1;
-  this.end = param2;
-}
-function _M0TP211localreview3tcl9RePattern(param0, param1, param2, param3, param4, param5, param6, param7) {
-  this.node = param0;
-  this.groups = param1;
-  this.nocase = param2;
-  this.line_stop = param3;
-  this.line_anchor = param4;
-  this.origin = param5;
-  this.not_bol = param6;
-  this.notes = param7;
-}
-function _M0TPB8MutLocalGOiE(param0) {
-  this.val = param0;
-}
 function _M0TPB8MutLocalGRPB5ArrayGiEE(param0) {
   this.val = param0;
 }
@@ -1291,36 +1371,6 @@ function _M0TPB9ArrayViewGUiRP211localreview3tcl10ReAnalysisEE(param0, param1, p
   this.start = param1;
   this.end = param2;
 }
-function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(param0) {
-  this._0 = param0;
-}
-_M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
-function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok(param0) {
-  this._0 = param0;
-}
-_M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
-function _M0TP211localreview3tcl7ReState(param0, param1) {
-  this.pos = param0;
-  this.captures = param1;
-}
-function _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl7ReStateEE(param0) {
-  this.val = param0;
-}
-function _M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE3Err(param0) {
-  this._0 = param0;
-}
-_M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE3Err.prototype.$tag = 0;
-function _M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE2Ok(param0) {
-  this._0 = param0;
-}
-_M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE2Ok.prototype.$tag = 1;
-function _M0DTPC16option6OptionGRPB5ArrayGUiiEEE4None() {}
-_M0DTPC16option6OptionGRPB5ArrayGUiiEEE4None.prototype.$tag = 0;
-const _M0DTPC16option6OptionGRPB5ArrayGUiiEEE4None__ = new _M0DTPC16option6OptionGRPB5ArrayGUiiEEE4None();
-function _M0DTPC16option6OptionGRPB5ArrayGUiiEEE4Some(param0) {
-  this._0 = param0;
-}
-_M0DTPC16option6OptionGRPB5ArrayGUiiEEE4Some.prototype.$tag = 1;
 function _M0TP211localreview3tcl8ReOutput(param0, param1) {
   this.builder = param0;
   this.size = param1;
@@ -1935,10 +1985,10 @@ function _M0MPC16uint166UInt168to__uint(self) {
 function _M0MPC13int3Int10to__uint64(self) {
   return BigInt.asUintN(64, BigInt(self));
 }
-function _M0IP016_24default__implPB2Eq10not__equalGbE(x, y) {
+function _M0IP016_24default__implPB2Eq10not__equalGsE(x, y) {
   return !(x === y);
 }
-function _M0IP016_24default__implPB2Eq10not__equalGsE(x, y) {
+function _M0IP016_24default__implPB2Eq10not__equalGbE(x, y) {
   return !(x === y);
 }
 function _M0IP016_24default__implPB2Eq10not__equalGOsE(x, y) {
@@ -3421,6 +3471,9 @@ function _M0MPC16string6String9to__array(self) {
     _M0MPC15array5Array4pushGcE(rv, c);
     return rv;
   });
+}
+function _M0MPC14uint4UInt10to__uint64(self) {
+  return BigInt.asUintN(64, BigInt(self >>> 0));
 }
 function _M0IPC14bool4BoolPB4Show10to__string(self) {
   return self ? "true" : "false";
@@ -7125,6 +7178,48 @@ function _M0MPC15array5Array3mapGUsRP211localreview3tcl8TclValueEURP211localrevi
   }
   return arr;
 }
+function _M0MPC15array5Array3mapGRP211localreview3tcl8TclValueRP211localreview3tcl11SearchIndexEHRP211localreview3tcl8TclError(self, f) {
+  const arr = new Array(self.length);
+  const _bind$2 = self.length;
+  let _tmp = 0;
+  while (true) {
+    const i = _tmp;
+    if (i < _bind$2) {
+      const v = self[i];
+      const _bind$3 = f(v);
+      let _tmp$2;
+      if (_bind$3.$tag === 1) {
+        const _ok = _bind$3;
+        _tmp$2 = _ok._0;
+      } else {
+        return _bind$3;
+      }
+      arr[i] = _tmp$2;
+      _tmp = i + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl11SearchIndexERP211localreview3tcl8TclErrorE2Ok(arr);
+}
+function _M0MPC15array5Array3mapGRP211localreview3tcl11SearchIndexRP211localreview3tcl8TclValueE(self, f) {
+  const arr = new Array(self.length);
+  const _bind$2 = self.length;
+  let _tmp = 0;
+  while (true) {
+    const i = _tmp;
+    if (i < _bind$2) {
+      const v = self[i];
+      arr[i] = f(v);
+      _tmp = i + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return arr;
+}
 function _M0MPC15array5Array3mapGRP211localreview3tcl8TclValueRP211localreview3tcl6NumberEHRP211localreview3tcl8TclError(self, f) {
   const arr = new Array(self.length);
   const _bind$2 = self.length;
@@ -8649,6 +8744,9 @@ function _M0MPC15array5Array4joinGsE(self, separator) {
 }
 function _M0MPC15array5Array4joinGRPC16string10StringViewE(self, separator) {
   return _M0MPC15array9ArrayView4joinGRPC16string10StringViewE(new _M0TPB9ArrayViewGRPC16string10StringViewE(self, 0, self.length), separator);
+}
+function _M0MPC14uint4UInt9to__int64(self) {
+  return _M0MPC14uint4UInt10to__uint64(self);
 }
 function _M0IPC15float5FloatPB4Show10to__string(self) {
   return String(self);
@@ -12328,6 +12426,11 @@ function _M0IPC16bigint6BigIntPB5BitOr3lor(self, other) {
 function _M0IPC16bigint6BigIntPB6BitXOr4lxor(self, other) {
   return _M0MPC16bigint6BigInt8js__lxor(self, other);
 }
+function _M0MPC16bigint6BigInt9to__int64(self) {
+  const hi = _M0MPC16bigint6BigInt8to__uint(_M0IPC16bigint6BigIntPB3Shr3shr(self, 32));
+  const lo = _M0MPC16bigint6BigInt8to__uint(self);
+  return BigInt.asUintN(64, BigInt.asUintN(64, _M0MPC14uint4UInt9to__int64(hi) << BigInt(32 & 63)) | _M0MPC14uint4UInt9to__int64(lo));
+}
 function _M0IPC16bigint6BigIntPC15debug5Debug8to__repr(self) {
   return _M0MPC15debug4Repr7integer(_M0MPC16bigint6BigInt18to__string_2einner(self, 10));
 }
@@ -12379,62 +12482,62 @@ function _M0FPC14math3exp(_tmp) {
 function _M0FPC14math5hypot(_tmp, _tmp$2) {
   return Math.hypot(_tmp, _tmp$2);
 }
-function _M0IP211localreview3tcl8TclValuePC15debug5Debug8to__repr(_x_2278) {
-  const _bind$2 = [{ _0: "text", _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_x_2278.text) }, { _0: "payload", _1: _M0IP211localreview3tcl12ValuePayloadPC15debug5Debug8to__repr(_x_2278.payload) }];
+function _M0IP211localreview3tcl8TclValuePC15debug5Debug8to__repr(_x_2397) {
+  const _bind$2 = [{ _0: "text", _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_x_2397.text) }, { _0: "payload", _1: _M0IP211localreview3tcl12ValuePayloadPC15debug5Debug8to__repr(_x_2397.payload) }];
   return _M0MPC15debug4Repr6record(_M0MPB3Map3MapGsRPC15debug4ReprE(new _M0TPB9ArrayViewGUsRPC15debug4ReprEE(_bind$2, 0, 2), undefined));
 }
-function _M0IP211localreview3tcl6NumberPC15debug5Debug8to__repr(_x_2216) {
-  let _arg_2219;
+function _M0IP211localreview3tcl6NumberPC15debug5Debug8to__repr(_x_2335) {
+  let _arg_2338;
   _L: {
-    let _arg_2218;
+    let _arg_2337;
     _L$2: {
-      let _arg_2217;
+      let _arg_2336;
       _L$3: {
-        switch (_x_2216.$tag) {
+        switch (_x_2335.$tag) {
           case 0: {
-            const _Small = _x_2216;
-            const _$42$arg_2217 = _Small._0;
-            _arg_2217 = _$42$arg_2217;
+            const _Small = _x_2335;
+            const _$42$arg_2336 = _Small._0;
+            _arg_2336 = _$42$arg_2336;
             break _L$3;
           }
           case 1: {
-            const _Whole = _x_2216;
-            const _$42$arg_2218 = _Whole._0;
-            _arg_2218 = _$42$arg_2218;
+            const _Whole = _x_2335;
+            const _$42$arg_2337 = _Whole._0;
+            _arg_2337 = _$42$arg_2337;
             break _L$2;
           }
           default: {
-            const _Real = _x_2216;
-            const _$42$arg_2219 = _Real._0;
-            _arg_2219 = _$42$arg_2219;
+            const _Real = _x_2335;
+            const _$42$arg_2338 = _Real._0;
+            _arg_2338 = _$42$arg_2338;
             break _L;
           }
         }
       }
-      return _M0MPC15debug4Repr4ctor("Small", [{ _0: undefined, _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_arg_2217) }]);
+      return _M0MPC15debug4Repr4ctor("Small", [{ _0: undefined, _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_arg_2336) }]);
     }
-    return _M0MPC15debug4Repr4ctor("Whole", [{ _0: undefined, _1: _M0IPC16bigint6BigIntPC15debug5Debug8to__repr(_arg_2218) }]);
+    return _M0MPC15debug4Repr4ctor("Whole", [{ _0: undefined, _1: _M0IPC16bigint6BigIntPC15debug5Debug8to__repr(_arg_2337) }]);
   }
-  return _M0MPC15debug4Repr4ctor("Real", [{ _0: undefined, _1: _M0IPC16double6DoublePC15debug5Debug8to__repr(_arg_2219) }]);
+  return _M0MPC15debug4Repr4ctor("Real", [{ _0: undefined, _1: _M0IPC16double6DoublePC15debug5Debug8to__repr(_arg_2338) }]);
 }
-function _M0IP211localreview3tcl8TclErrorPC15debug5Debug8to__repr(_x_2186) {
-  let _arg_2189;
+function _M0IP211localreview3tcl8TclErrorPC15debug5Debug8to__repr(_x_2305) {
+  let _arg_2308;
   _L: {
-    let _arg_2188;
+    let _arg_2307;
     _L$2: {
-      let _arg_2187;
+      let _arg_2306;
       _L$3: {
-        switch (_x_2186.$tag) {
+        switch (_x_2305.$tag) {
           case 4: {
-            const _Invalid = _x_2186;
-            const _$42$arg_2187 = _Invalid._0;
-            _arg_2187 = _$42$arg_2187;
+            const _Invalid = _x_2305;
+            const _$42$arg_2306 = _Invalid._0;
+            _arg_2306 = _$42$arg_2306;
             break _L$3;
           }
           case 3: {
-            const _Return = _x_2186;
-            const _$42$arg_2188 = _Return._0;
-            _arg_2188 = _$42$arg_2188;
+            const _Return = _x_2305;
+            const _$42$arg_2307 = _Return._0;
+            _arg_2307 = _$42$arg_2307;
             break _L$2;
           }
           case 2: {
@@ -12444,59 +12547,59 @@ function _M0IP211localreview3tcl8TclErrorPC15debug5Debug8to__repr(_x_2186) {
             return _M0MPC15debug4Repr4ctor("Continue", []);
           }
           default: {
-            const _Signal = _x_2186;
-            const _$42$arg_2189 = _Signal._0;
-            _arg_2189 = _$42$arg_2189;
+            const _Signal = _x_2305;
+            const _$42$arg_2308 = _Signal._0;
+            _arg_2308 = _$42$arg_2308;
             break _L;
           }
         }
       }
-      return _M0MPC15debug4Repr4ctor("Invalid", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_2187) }]);
+      return _M0MPC15debug4Repr4ctor("Invalid", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_2306) }]);
     }
-    return _M0MPC15debug4Repr4ctor("Return", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_2188) }]);
+    return _M0MPC15debug4Repr4ctor("Return", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_2307) }]);
   }
-  return _M0MPC15debug4Repr4ctor("Signal", [{ _0: undefined, _1: _M0IP211localreview3tcl10CompletionPC15debug5Debug8to__repr(_arg_2189) }]);
+  return _M0MPC15debug4Repr4ctor("Signal", [{ _0: undefined, _1: _M0IP211localreview3tcl10CompletionPC15debug5Debug8to__repr(_arg_2308) }]);
 }
-function _M0IP211localreview3tcl10CompletionPC15debug5Debug8to__repr(_x_2184) {
-  const _bind$2 = [{ _0: "code", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_2184.code) }, { _0: "level", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_2184.level) }, { _0: "value", _1: _M0IP211localreview3tcl8TclValuePC15debug5Debug8to__repr(_x_2184.value) }, { _0: "options", _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGUsRP211localreview3tcl8TclValueEE(_x_2184.options) }, { _0: "skip_trace", _1: _M0IPC14bool4BoolPC15debug5Debug8to__repr(_x_2184.skip_trace) }];
+function _M0IP211localreview3tcl10CompletionPC15debug5Debug8to__repr(_x_2303) {
+  const _bind$2 = [{ _0: "code", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_2303.code) }, { _0: "level", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_2303.level) }, { _0: "value", _1: _M0IP211localreview3tcl8TclValuePC15debug5Debug8to__repr(_x_2303.value) }, { _0: "options", _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGUsRP211localreview3tcl8TclValueEE(_x_2303.options) }, { _0: "skip_trace", _1: _M0IPC14bool4BoolPC15debug5Debug8to__repr(_x_2303.skip_trace) }];
   return _M0MPC15debug4Repr6record(_M0MPB3Map3MapGsRPC15debug4ReprE(new _M0TPB9ArrayViewGUsRPC15debug4ReprEE(_bind$2, 0, 5), undefined));
 }
-function _M0IP211localreview3tcl12ValuePayloadPC15debug5Debug8to__repr(_x_2176) {
-  let _arg_2179;
+function _M0IP211localreview3tcl12ValuePayloadPC15debug5Debug8to__repr(_x_2295) {
+  let _arg_2298;
   _L: {
-    let _arg_2178;
+    let _arg_2297;
     _L$2: {
-      let _arg_2177;
+      let _arg_2296;
       _L$3: {
-        switch (_x_2176.$tag) {
+        switch (_x_2295.$tag) {
           case 0: {
             return _M0MPC15debug4Repr4ctor("Plain", []);
           }
           case 1: {
-            const _Numeric = _x_2176;
-            const _$42$arg_2177 = _Numeric._0;
-            _arg_2177 = _$42$arg_2177;
+            const _Numeric = _x_2295;
+            const _$42$arg_2296 = _Numeric._0;
+            _arg_2296 = _$42$arg_2296;
             break _L$3;
           }
           case 2: {
-            const _Items = _x_2176;
-            const _$42$arg_2178 = _Items._0;
-            _arg_2178 = _$42$arg_2178;
+            const _Items = _x_2295;
+            const _$42$arg_2297 = _Items._0;
+            _arg_2297 = _$42$arg_2297;
             break _L$2;
           }
           default: {
-            const _Pairs = _x_2176;
-            const _$42$arg_2179 = _Pairs._0;
-            _arg_2179 = _$42$arg_2179;
+            const _Pairs = _x_2295;
+            const _$42$arg_2298 = _Pairs._0;
+            _arg_2298 = _$42$arg_2298;
             break _L;
           }
         }
       }
-      return _M0MPC15debug4Repr4ctor("Numeric", [{ _0: undefined, _1: _M0IP211localreview3tcl6NumberPC15debug5Debug8to__repr(_arg_2177) }]);
+      return _M0MPC15debug4Repr4ctor("Numeric", [{ _0: undefined, _1: _M0IP211localreview3tcl6NumberPC15debug5Debug8to__repr(_arg_2296) }]);
     }
-    return _M0MPC15debug4Repr4ctor("Items", [{ _0: undefined, _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGRP211localreview3tcl8TclValueE(_arg_2178) }]);
+    return _M0MPC15debug4Repr4ctor("Items", [{ _0: undefined, _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGRP211localreview3tcl8TclValueE(_arg_2297) }]);
   }
-  return _M0MPC15debug4Repr4ctor("Pairs", [{ _0: undefined, _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(_arg_2179) }]);
+  return _M0MPC15debug4Repr4ctor("Pairs", [{ _0: undefined, _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(_arg_2298) }]);
 }
 function _M0FP211localreview3tcl15qualified__name(prefix, name) {
   let _tmp;
@@ -14147,6 +14250,41 @@ function _M0FP211localreview3tcl14concat__values(input) {
   const _bind$4 = " ";
   return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0MPC15array5Array4joinGsE(values, new _M0TPC16string10StringView(_bind$4, 0, _bind$4.length))));
 }
+function _M0FP211localreview3tcl21collection__codepoint(text, at) {
+  const first = at >>> 0 < text.length ? text.charCodeAt(at) : $oob();
+  if (first >= 55296 && (first <= 56319 && (at + 1 | 0) < text.length)) {
+    const _tmp = at + 1 | 0;
+    const second = _tmp >>> 0 < text.length ? text.charCodeAt(_tmp) : $oob();
+    if (second >= 56320 && second <= 57343) {
+      return { _0: ((65536 + (Math.imul(first - 55296 | 0, 1024) | 0) | 0) + second | 0) - 56320 | 0, _1: at + 2 | 0 };
+    }
+  }
+  return { _0: first, _1: at + 1 | 0 };
+}
+function _M0FP211localreview3tcl22collection__codepoints(text) {
+  const result = [];
+  const at = new _M0TPB8MutLocalGiE(0);
+  while (true) {
+    if (at.val < text.length) {
+      let cp;
+      let next;
+      _L: {
+        const _bind$2 = _M0FP211localreview3tcl21collection__codepoint(text, at.val);
+        const _cp = _bind$2._0;
+        const _next = _bind$2._1;
+        cp = _cp;
+        next = _next;
+        break _L;
+      }
+      _M0MPC15array5Array4pushGcE(result, cp);
+      at.val = next;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return result;
+}
 function _M0FP211localreview3tcl19unicode__case__unit(code, mode) {
   if (code < 128) {
     if (mode === 0 && (code >= 65 && code <= 90)) {
@@ -14221,9 +14359,10 @@ function _M0FP211localreview3tcl21unicode__case_2einner(text, mode, conversion) 
 function _M0FP211localreview3tcl12utf16__units(text) {
   return _M0MPC15array5Array5makeiGcE(text.length, (i) => _M0MPC16option6Option6unwrapGkE(_M0MPC16string6String3get(text, i)));
 }
-function _M0FP211localreview3tcl11glob__match(pattern, value, nocase) {
-  const p = _M0FP211localreview3tcl12utf16__units(nocase ? _M0FP211localreview3tcl21unicode__case_2einner(pattern, 0, false) : pattern);
-  const s = _M0FP211localreview3tcl12utf16__units(nocase ? _M0FP211localreview3tcl21unicode__case_2einner(value, 0, false) : value);
+function _M0FP211localreview3tcl19glob__match_2einner(pattern, value, nocase, codepoints) {
+  const units = codepoints ? _M0FP211localreview3tcl22collection__codepoints : _M0FP211localreview3tcl12utf16__units;
+  const p = units(nocase ? _M0FP211localreview3tcl21unicode__case_2einner(pattern, 0, false) : pattern);
+  const s = units(nocase ? _M0FP211localreview3tcl21unicode__case_2einner(value, 0, false) : value);
   let _tmp;
   if (p.length > 4096) {
     _tmp = true;
@@ -16443,3708 +16582,37 @@ function _M0FP211localreview3tcl12integer__add(left, right) {
   }
   return _M0MP211localreview3tcl6Number4text(new _M0DTP211localreview3tcl6Number5Whole(_M0IPC16bigint6BigIntPB3Add3add(_tmp$2, _tmp$3)));
 }
-function _M0MP211localreview3tcl11Interpreter14array__command(self, input) {
-  const args = _M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(input, (v) => v.text);
-  const n = args.length;
-  if (n < 3) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array arity"));
-  }
-  const op = _M0MPC15array5Array2atGRPB4JsonE(args, 1);
-  const _bind$2 = _M0MP211localreview3tcl11Interpreter7binding(self, _M0MPC15array5Array2atGRPB4JsonE(args, 2), op === "set");
-  let binding;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    binding = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  let values;
-  _L: {
-    _L$2: {
-      let b;
-      _L$3: {
-        if (binding === undefined) {
-          break _L$2;
-        } else {
-          const _Some = binding;
-          const _b = _Some;
-          const _bind$3 = _b.index;
-          if (_bind$3 === undefined) {
-            b = _b;
-            break _L$3;
-          } else {
-            break _L$2;
-          }
-        }
-      }
-      _L$4: {
-        _L$5: {
-          let v;
-          _L$6: {
-            const _bind$3 = b.cell.value;
-            if (_bind$3 === undefined) {
-              break _L$5;
-            } else {
-              const _Some = _bind$3;
-              const _x = _Some;
-              if (_x.$tag === 3) {
-                const _Elements = _x;
-                const _v = _Elements._0;
-                v = _v;
-                break _L$6;
-              } else {
-                break _L$5;
-              }
-            }
-          }
-          values = v;
-          break _L$4;
-        }
-        values = undefined;
-      }
-      break _L;
-    }
-    values = undefined;
-  }
-  let text;
-  _L$2: {
-    _L$3: {
-      switch (op) {
-        case "exists": {
-          if (n !== 3) {
-            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array exists arity"));
-          }
-          text = _M0FP211localreview3tcl13boolean__text(!(values === undefined));
-          break;
-        }
-        case "size": {
-          if (n !== 3) {
-            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array size arity"));
-          }
-          text = _M0MPC13int3Int18to__string_2einner(_M0MPC16option6Option10unwrap__orGiE(_M0MPC16option6Option3mapGRPB3MapGsRP211localreview3tcl8TclValueEiE(values, (v) => _M0MPB3Map6lengthGsRP211localreview3tcl8TclValueE(v)), 0), 10);
-          break;
-        }
-        case "set": {
-          if (n !== 4) {
-            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array set arity"));
-          }
-          const _bind$3 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, 3));
-          let pairs;
-          if (_bind$3.$tag === 1) {
-            const _ok = _bind$3;
-            pairs = _ok._0;
-          } else {
-            return _bind$3;
-          }
-          if (2 === 0) {
-            $panic();
-          }
-          if ((pairs.length % 2 | 0) !== 0) {
-            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array set expects pairs"));
-          }
-          const binding$2 = _M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(binding);
-          _L$4: {
-            _L$5: {
-              const _bind$4 = binding$2.index;
-              if (_bind$4 === undefined) {
-                const _bind$5 = binding$2.cell.value;
-                if (_bind$5 === undefined) {
-                } else {
-                  if (values === undefined) {
-                    break _L$5;
-                  }
-                }
-              } else {
-                break _L$5;
-              }
-              break _L$4;
-            }
-            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("variable is not array"));
-          }
-          let values$2;
-          if (values === undefined) {
-            const _bind$4 = [];
-            const v = _M0MPB3Map3MapGsRP211localreview3tcl8TclValueE(new _M0TPB9ArrayViewGUsRP211localreview3tcl8TclValueEE(_bind$4, 0, 0), undefined);
-            binding$2.cell.value = new _M0DTP211localreview3tcl13VariableValue8Elements(v);
-            values$2 = v;
-          } else {
-            const _Some = values;
-            const _v = _Some;
-            values$2 = _v;
-          }
-          const i = new _M0TPB8MutLocalGiE(0);
-          while (true) {
-            if (i.val < pairs.length) {
-              if (_M0MPB3Map6lengthGsRP211localreview3tcl8TclValueE(values$2) >= 10000 && !_M0MPB3Map8containsGsRP211localreview3tcl8TclValueE(values$2, _M0MPC15array5Array2atGRPB4JsonE(pairs, i.val).text)) {
-                return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array size limit"));
-              }
-              _M0MPB3Map3setGsRP211localreview3tcl8TclValueE(values$2, _M0MPC15array5Array2atGRPB4JsonE(pairs, i.val).text, _M0MPC15array5Array2atGRPB4JsonE(pairs, i.val + 1 | 0));
-              i.val = i.val + 2 | 0;
-              continue;
-            } else {
-              break;
-            }
-          }
-          text = "";
-          break;
-        }
-        case "names": {
-          break _L$3;
-        }
-        case "get": {
-          break _L$3;
-        }
-        case "unset": {
-          if (n !== 3 && n !== 4) {
-            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array unset arity"));
-          }
-          let values$3;
-          _L$5: {
-            _L$6: {
-              if (values === undefined) {
-              } else {
-                const _Some = values;
-                const _values = _Some;
-                values$3 = _values;
-                break _L$6;
-              }
-              break _L$5;
-            }
-            if (n === 3) {
-              const _bind$4 = _M0MP211localreview3tcl11Interpreter10unset__var(self, _M0MPC15array5Array2atGRPB4JsonE(args, 2), true);
-              if (_bind$4.$tag === 1) {
-                const _ok = _bind$4;
-                _ok._0;
-              } else {
-                return _bind$4;
-              }
-            } else {
-              const _bind$4 = _M0MPB4Iter9to__arrayGsE(_M0MPB3Map4keysGsRP211localreview3tcl4CellE(values$3));
-              const _bind$5 = _bind$4.length;
-              let _tmp = 0;
-              while (true) {
-                const _ = _tmp;
-                if (_ < _bind$5) {
-                  const key = _bind$4[_];
-                  const _bind$6 = _M0FP211localreview3tcl11glob__match(_M0MPC15array5Array2atGRPB4JsonE(args, 3), key, false);
-                  let _tmp$2;
-                  if (_bind$6.$tag === 1) {
-                    const _ok = _bind$6;
-                    _tmp$2 = _ok._0;
-                  } else {
-                    return _bind$6;
-                  }
-                  if (_tmp$2) {
-                    _M0MPB3Map6removeGsRP211localreview3tcl8TclValueE(values$3, key);
-                  }
-                  _tmp = _ + 1 | 0;
-                  continue;
-                } else {
-                  break;
-                }
-              }
-            }
-          }
-          text = "";
-          break;
-        }
-        default: {
-          return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported array subcommand"));
-        }
-      }
-      break _L$2;
-    }
-    const mode = new _M0TPB8MutLocalGsE("-glob");
-    let pattern;
-    if (n === 3) {
-      pattern = "*";
-    } else {
-      if (n === 4) {
-        pattern = _M0MPC15array5Array2atGRPB4JsonE(args, 3);
-      } else {
-        if (n === 5 && op === "names") {
-          mode.val = _M0MPC15array5Array2atGRPB4JsonE(args, 3);
-          pattern = _M0MPC15array5Array2atGRPB4JsonE(args, 4);
-        } else {
-          return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array names/get arity"));
-        }
-      }
-    }
-    if (_M0IP016_24default__implPB2Eq10not__equalGsE(mode.val, "-glob") && _M0IP016_24default__implPB2Eq10not__equalGsE(mode.val, "-exact")) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported array match mode"));
-    }
-    let values$2;
-    if (values === undefined) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(""));
-    } else {
-      const _Some = values;
-      const _v = _Some;
-      values$2 = _v;
-    }
-    const keys = _M0MPB4Iter9to__arrayGsE(_M0MPB3Map4keysGsRP211localreview3tcl4CellE(values$2));
-    _M0MPC15array5Array4sortGsE(keys);
-    const result = [];
-    const _bind$3 = keys.length;
-    let _tmp = 0;
-    while (true) {
-      const _ = _tmp;
-      if (_ < _bind$3) {
-        const key = keys[_];
-        let _tmp$2;
-        if (mode.val === "-exact") {
-          _tmp$2 = key === pattern;
-        } else {
-          const _bind$4 = _M0FP211localreview3tcl11glob__match(pattern, key, false);
-          if (_bind$4.$tag === 1) {
-            const _ok = _bind$4;
-            _tmp$2 = _ok._0;
-          } else {
-            return _bind$4;
-          }
-        }
-        if (_tmp$2) {
-          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result, _M0FP211localreview3tcl11text__value(key));
-          if (op === "get") {
-            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result, _M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(_M0MPB3Map3getGsRP211localreview3tcl8TclValueE(values$2, key)));
-          }
-        }
-        _tmp = _ + 1 | 0;
-        continue;
-      } else {
-        break;
-      }
-    }
-    const _bind$4 = _M0FP211localreview3tcl11list__value(result);
-    let _tmp$2;
-    if (_bind$4.$tag === 1) {
-      const _ok = _bind$4;
-      _tmp$2 = _ok._0;
-    } else {
-      return _bind$4;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$2);
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(text));
+function _M0FP211localreview3tcl13switch__error(message, code) {
+  return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner(message, code)));
 }
-function _M0FP211localreview3tcl17dictionary__value(pairs) {
-  const values = [];
-  const _bind$2 = pairs.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const _foreach_element = pairs[_];
-      let key;
-      let value;
-      _L: {
-        const _key = _foreach_element._0;
-        const _value = _foreach_element._1;
-        key = _key;
-        value = _value;
-        break _L;
-      }
-      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, key);
-      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, value);
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
+function _M0FP211localreview3tcl18collection__option(value, choices) {
+  if (_M0MPC15array5Array8containsGsE(choices, value)) {
+    return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(value);
   }
-  const _bind$3 = _M0FP211localreview3tcl12format__list(_M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(values, (v) => v.text));
-  let _tmp$2;
+  const candidates = _M0MPC15array5Array6filterGsE(choices, (choice) => _M0MPC16string6String11has__prefix(choice, new _M0TPC16string10StringView(value, 0, value.length)));
+  if (candidates.length === 1) {
+    return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0MPC15array5Array2atGRPB4JsonE(candidates, 0));
+  }
+  const _tmp = _M0MPC15array5Array9is__emptyGRPB4JsonE(candidates) ? "bad" : "ambiguous";
+  const _tmp$2 = _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(choices, 0, choices.length - 1 | 0));
+  const _bind$2 = ", ";
+  const _tmp$3 = `${_tmp} option \"${value}\": must be ${_M0MPC15array5Array4joinGsE(_tmp$2, new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length))}, or ${_M0MPC15array5Array2atGRPB4JsonE(choices, choices.length - 1 | 0)}`;
+  const _bind$3 = _M0FP211localreview3tcl12format__list(["TCL", "LOOKUP", "INDEX", "option", value]);
+  let _tmp$4;
   if (_bind$3.$tag === 1) {
     const _ok = _bind$3;
-    _tmp$2 = _ok._0;
+    _tmp$4 = _ok._0;
   } else {
     return _bind$3;
   }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(new _M0TP211localreview3tcl8TclValue(_tmp$2, new _M0DTP211localreview3tcl12ValuePayload5Pairs(_M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(pairs))));
-}
-function _M0MP211localreview3tcl10Completion13option__value(self) {
-  const options = _M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(self.options);
-  _M0FP211localreview3tcl11option__set(options, "-code", _M0MPC13int3Int18to__string_2einner(self.code, 10));
-  _M0FP211localreview3tcl11option__set(options, "-level", _M0MPC13int3Int18to__string_2einner(self.level, 10));
-  return _M0FP211localreview3tcl17dictionary__value(_M0MPC15array5Array3mapGUsRP211localreview3tcl8TclValueEURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(options, (p) => ({ _0: _M0FP211localreview3tcl11text__value(p._0), _1: p._1 })));
-}
-function _M0MP211localreview3tcl11Interpreter14error__command(self, values) {
-  const args = _M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(values, (v) => v.text);
-  self.state.return_options.val = [];
-  const n = args.length;
-  if (_M0MPC15array5Array2atGRPB4JsonE(args, 0) === "throw") {
-    if (n !== 3) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("throw requires error type and message"));
-    }
-    const _bind$2 = _M0FP211localreview3tcl11parse__list(_M0MPC15array5Array2atGRPB4JsonE(args, 1));
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    if (_M0MPC15array5Array9is__emptyGRPB4JsonE(_tmp)) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner("type must be non-empty list", "TCL OPERATION THROW BADEXCEPTION")));
-    }
-    const _bind$3 = _M0FP211localreview3tcl25completion__error_2einner(_M0MPC15array5Array2atGRPB4JsonE(args, 2), _M0MPC15array5Array2atGRPB4JsonE(args, 1));
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(new _M0TP211localreview3tcl10Completion(_bind$3.code, _bind$3.level, _M0MPC15array5Array2atGRPB4JsonE(values, 2), _bind$3.options, _bind$3.skip_trace)));
-  }
-  if (n < 2 || n > 4) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("error arity"));
-  }
-  const options = [];
-  if (n >= 3) {
-    _M0MPC15array5Array4pushGRPC14json10WriteFrameE(options, { _0: "-errorinfo", _1: _M0MPC15array5Array2atGRPB4JsonE(values, 2) });
-  }
-  _M0MPC15array5Array4pushGRPC14json10WriteFrameE(options, { _0: "-errorcode", _1: n === 4 ? _M0MPC15array5Array2atGRPB4JsonE(values, 3) : _M0FP211localreview3tcl11text__value("NONE") });
-  const _bind$2 = _M0FP211localreview3tcl18completion_2einner(1, _M0MPC15array5Array2atGRPB4JsonE(args, 1), 0, options, n >= 3 && !_M0MPC16string6String9is__empty(_M0MPC15array5Array2atGRPB4JsonE(args, 2)));
-  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(new _M0TP211localreview3tcl10Completion(_bind$2.code, _bind$2.level, _M0MPC15array5Array2atGRPB4JsonE(values, 1), _bind$2.options, _bind$2.skip_trace)));
-}
-function _M0FP211localreview3tcl13number__value(value) {
-  const _bind$2 = _M0MP211localreview3tcl6Number4text(value);
-  let _tmp;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    _tmp = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(new _M0TP211localreview3tcl8TclValue(_tmp, new _M0DTP211localreview3tcl12ValuePayload7Numeric(value)));
-}
-function _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, offset) {
-  return _M0MPC16option6Option10unwrap__orGcE(_M0MPC15array5Array3getGcE(self.chars, self.pos + offset | 0), 0);
-}
-function _M0MP211localreview3tcl12ScriptParser11expr__space(self) {
-  while (true) {
-    if (_M0FP211localreview3tcl11list__space(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0))) {
-      self.pos = self.pos + 1 | 0;
-      continue;
-    } else {
-      return;
-    }
-  }
-}
-function _M0FP211localreview3tcl8namechar(c) {
-  return c >= 97 && c <= 122 || (c >= 65 && c <= 90 || (c >= 48 && c <= 57 || (c === 95 || c === 58)));
-}
-function _M0MP211localreview3tcl12ScriptParser6braces(self) {
-  self.pos = self.pos + 1 | 0;
-  const level = new _M0TPB8MutLocalGiE(1);
-  const out = _M0MPB13StringBuilder21StringBuilder_2einner(0);
-  while (true) {
-    if (self.pos < self.chars.length) {
-      const c = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0);
-      self.pos = self.pos + 1 | 0;
-      if (c === 92 && self.pos < self.chars.length) {
-        if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 10) {
-          let text;
-          let next;
-          _L: {
-            const _bind$2 = _M0FP211localreview3tcl9backslash(self.chars, self.pos - 1 | 0);
-            const _text = _bind$2._0;
-            const _next = _bind$2._1;
-            text = _text;
-            next = _next;
-            break _L;
-          }
-          _M0IPB13StringBuilderPB6Logger13write__string(out, text);
-          self.pos = next;
-        } else {
-          _M0IPB13StringBuilderPB6Logger11write__char(out, c);
-          _M0IPB13StringBuilderPB6Logger11write__char(out, _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0));
-          self.pos = self.pos + 1 | 0;
-        }
-        continue;
-      }
-      if (c === 123) {
-        level.val = level.val + 1 | 0;
-      }
-      if (c === 125) {
-        level.val = level.val - 1 | 0;
-        if (level.val === 0) {
-          return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0MPB13StringBuilder10to__string(out));
-        }
-      }
-      _M0IPB13StringBuilderPB6Logger11write__char(out, c);
-      continue;
-    } else {
-      break;
-    }
-  }
-  return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing close-brace"));
-}
-function _M0MP211localreview3tcl12ScriptParser15parsed__command(self, words, start, line, end) {
-  return new _M0TP211localreview3tcl13ParsedCommand(words, _M0MPC16string10StringView9to__owned(_M0MPC16string6String9trim__end(_M0MPC16string6String11from__array(_M0MPC15array5Array12view_2einnerGcE(self.chars, start, end)), undefined)), line);
-}
-function _M0MP211localreview3tcl12ScriptParser12source__line(self) {
-  while (true) {
-    if (self.line_pos < self.pos) {
-      if (_M0MPC15array5Array2atGcE(self.chars, self.line_pos) === 10) {
-        self.line = self.line + 1 | 0;
-      }
-      self.line_pos = self.line_pos + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return self.line;
-}
-function _M0MP211localreview3tcl12ScriptParser13parts_2einner(self, stop, raw, depth, bracket) {
-  if (depth > 64) {
-    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl4PartERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("substitution depth"));
-  }
-  const parts = [];
-  const text = new _M0TPB8MutLocalGRPB13StringBuilderE(_M0MPB13StringBuilder21StringBuilder_2einner(0));
-  while (true) {
-    if (self.pos < self.chars.length) {
-      const c = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0);
-      if (stop !== 0 && c === stop) {
-        self.pos = self.pos + 1 | 0;
-        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(parts, new _M0DTP211localreview3tcl4Part4Text(_M0MPB13StringBuilder10to__string(text.val)));
-        return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl4PartERP211localreview3tcl8TclErrorE2Ok(parts);
-      }
-      if (raw && (_M0FP211localreview3tcl11list__space(c) || (c === 59 || bracket && c === 93))) {
-        break;
-      }
-      if (raw && (c === 92 && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) === 10)) {
-        break;
-      }
-      if (c === 36 || c === 91) {
-        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(parts, new _M0DTP211localreview3tcl4Part4Text(_M0MPB13StringBuilder10to__string(text.val)));
-        text.val = _M0MPB13StringBuilder21StringBuilder_2einner(0);
-        if (c === 36) {
-          const _bind$2 = _M0MP211localreview3tcl12ScriptParser8variable(self, depth);
-          let _tmp;
-          if (_bind$2.$tag === 1) {
-            const _ok = _bind$2;
-            _tmp = _ok._0;
-          } else {
-            return _bind$2;
-          }
-          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(parts, _tmp);
-        } else {
-          self.pos = self.pos + 1 | 0;
-          const _bind$2 = _M0MP211localreview3tcl12ScriptParser14script_2einner(self, true, depth + 1 | 0, false);
-          let _tmp;
-          if (_bind$2.$tag === 1) {
-            const _ok = _bind$2;
-            _tmp = _ok._0;
-          } else {
-            return _bind$2;
-          }
-          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(parts, new _M0DTP211localreview3tcl4Part7Command(_tmp));
-        }
-      } else {
-        if (c === 92) {
-          let value;
-          let next;
-          _L: {
-            const _bind$2 = _M0FP211localreview3tcl9backslash(self.chars, self.pos);
-            const _value = _bind$2._0;
-            const _next = _bind$2._1;
-            value = _value;
-            next = _next;
-            break _L;
-          }
-          _M0IPB13StringBuilderPB6Logger13write__string(text.val, value);
-          self.pos = next;
-        } else {
-          _M0IPB13StringBuilderPB6Logger11write__char(text.val, c);
-          self.pos = self.pos + 1 | 0;
-        }
-      }
-      continue;
-    } else {
-      break;
-    }
-  }
-  if (stop !== 0) {
-    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl4PartERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing closing substitution delimiter"));
-  }
-  _M0MPC15array5Array4pushGRPC14json10WriteFrameE(parts, new _M0DTP211localreview3tcl4Part4Text(_M0MPB13StringBuilder10to__string(text.val)));
-  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl4PartERP211localreview3tcl8TclErrorE2Ok(parts);
-}
-function _M0MP211localreview3tcl12ScriptParser14script_2einner(self, bracket, depth, one) {
-  if (depth > 64) {
-    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("script nesting limit"));
-  }
-  const commands = [];
-  const words = new _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl4WordEE([]);
-  const start = new _M0TPB8MutLocalGiE(self.pos);
-  const line = new _M0TPB8MutLocalGiE(_M0MP211localreview3tcl12ScriptParser12source__line(self));
-  while (true) {
-    if (self.pos < self.chars.length) {
-      const c = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0);
-      if (c === 93 && bracket) {
-        self.pos = self.pos + 1 | 0;
-        if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(words.val)) {
-          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(commands, _M0MP211localreview3tcl12ScriptParser15parsed__command(self, words.val, start.val, line.val, self.pos - 1 | 0));
-        }
-        return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE2Ok(commands);
-      }
-      if (c === 92 && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) === 10) {
-        if ((self.pos + 2 | 0) === self.chars.length) {
-          self.trailing_continuation = true;
-        }
-        let next;
-        _L: {
-          const _bind$2 = _M0FP211localreview3tcl9backslash(self.chars, self.pos);
-          const _next = _bind$2._1;
-          next = _next;
-          break _L;
-        }
-        self.pos = next;
-        continue;
-      }
-      if (c === 59 || c === 10) {
-        self.pos = self.pos + 1 | 0;
-        if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(words.val)) {
-          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(commands, _M0MP211localreview3tcl12ScriptParser15parsed__command(self, words.val, start.val, line.val, self.pos - 1 | 0));
-          words.val = [];
-        }
-        if (one && !_M0MPC15array5Array9is__emptyGRPB4JsonE(commands)) {
-          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE2Ok(commands);
-        }
-      } else {
-        if (_M0FP211localreview3tcl11list__space(c)) {
-          self.pos = self.pos + 1 | 0;
-        } else {
-          if (c === 35 && _M0MPC15array5Array9is__emptyGRPB4JsonE(words.val)) {
-            while (true) {
-              if (self.pos < self.chars.length && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 10) {
-                if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 92 && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) === 10) {
-                  if ((self.pos + 2 | 0) === self.chars.length) {
-                    self.trailing_continuation = true;
-                  }
-                  let next;
-                  _L: {
-                    const _bind$2 = _M0FP211localreview3tcl9backslash(self.chars, self.pos);
-                    const _next = _bind$2._1;
-                    next = _next;
-                    break _L;
-                  }
-                  self.pos = next;
-                } else {
-                  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 92 && (self.pos + 1 | 0) < self.chars.length) {
-                    self.pos = self.pos + 2 | 0;
-                  } else {
-                    self.pos = self.pos + 1 | 0;
-                  }
-                }
-                continue;
-              } else {
-                break;
-              }
-            }
-          } else {
-            if (_M0MPC15array5Array9is__emptyGRPB4JsonE(words.val)) {
-              start.val = self.pos;
-              line.val = _M0MP211localreview3tcl12ScriptParser12source__line(self);
-              self.command_start = start.val;
-              self.command_line = line.val;
-            }
-            const _tmp = words.val;
-            const _bind$2 = _M0MP211localreview3tcl12ScriptParser4word(self, depth, bracket);
-            let _tmp$2;
-            if (_bind$2.$tag === 1) {
-              const _ok = _bind$2;
-              _tmp$2 = _ok._0;
-            } else {
-              return _bind$2;
-            }
-            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(_tmp, _tmp$2);
-            if (words.val.length > 4096) {
-              return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("command argument limit"));
-            }
-          }
-        }
-      }
-      if (commands.length > 10000) {
-        return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("script command limit"));
-      }
-      continue;
-    } else {
-      break;
-    }
-  }
-  if (bracket) {
-    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing close-bracket"));
-  }
-  if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(words.val)) {
-    _M0MPC15array5Array4pushGRPC14json10WriteFrameE(commands, _M0MP211localreview3tcl12ScriptParser15parsed__command(self, words.val, start.val, line.val, self.pos));
-  }
-  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE2Ok(commands);
-}
-function _M0MP211localreview3tcl12ScriptParser4word(self, depth, bracket) {
-  const expand = new _M0TPB8MutLocalGbE(false);
-  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 123 && (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) === 42 && (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 2) === 125 && ((self.pos + 3 | 0) < self.chars.length && (!_M0FP211localreview3tcl11list__space(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 3)) && (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 3) !== 59 && (!bracket || _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 3) !== 93))))))) {
-    expand.val = true;
-    self.pos = self.pos + 3 | 0;
-  }
-  const grouped = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 123 || _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 34;
-  let parts;
-  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 123) {
-    const _bind$2 = _M0MP211localreview3tcl12ScriptParser6braces(self);
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    parts = [new _M0DTP211localreview3tcl4Part4Text(_tmp)];
-  } else {
-    if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 34) {
-      self.pos = self.pos + 1 | 0;
-      const _bind$2 = _M0MP211localreview3tcl12ScriptParser13parts_2einner(self, 34, false, depth, false);
-      if (_bind$2.$tag === 1) {
-        const _ok = _bind$2;
-        parts = _ok._0;
-      } else {
-        return _bind$2;
-      }
-    } else {
-      const _bind$2 = _M0MP211localreview3tcl12ScriptParser13parts_2einner(self, 0, true, depth, bracket);
-      if (_bind$2.$tag === 1) {
-        const _ok = _bind$2;
-        parts = _ok._0;
-      } else {
-        return _bind$2;
-      }
-    }
-  }
-  if (grouped && (self.pos < self.chars.length && (!_M0FP211localreview3tcl11list__space(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0)) && (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 59 && (!(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 92 && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) === 10) && (!bracket || _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 93)))))) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4WordRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("extra characters after grouped word"));
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl4WordRP211localreview3tcl8TclErrorE2Ok(new _M0TP211localreview3tcl4Word(parts, expand.val));
-}
-function _M0MP211localreview3tcl12ScriptParser8variable(self, depth) {
-  self.pos = self.pos + 1 | 0;
-  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 123) {
-    self.pos = self.pos + 1 | 0;
-    const start = self.pos;
-    while (true) {
-      if (self.pos < self.chars.length && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 125) {
-        self.pos = self.pos + 1 | 0;
-        continue;
-      } else {
-        break;
-      }
-    }
-    if (self.pos === self.chars.length) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl4PartRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing variable close-brace"));
-    }
-    const name = _M0MPC16string6String11from__array(_M0MPC15array5Array12view_2einnerGcE(self.chars, start, self.pos));
-    self.pos = self.pos + 1 | 0;
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4PartRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Part8Variable(name, _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl4PartEE4None__));
-  }
-  const start = self.pos;
-  while (true) {
-    if (_M0FP211localreview3tcl8namechar(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0))) {
-      if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 58) {
-        if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) !== 58) {
-          break;
-        }
-        while (true) {
-          if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 58) {
-            self.pos = self.pos + 1 | 0;
-            continue;
-          } else {
-            break;
-          }
-        }
-      } else {
-        self.pos = self.pos + 1 | 0;
-      }
-      continue;
-    } else {
-      break;
-    }
-  }
-  const name = _M0MPC16string6String11from__array(_M0MPC15array5Array12view_2einnerGcE(self.chars, start, self.pos));
-  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 40) {
-    self.pos = self.pos + 1 | 0;
-    const _bind$2 = _M0MP211localreview3tcl12ScriptParser13parts_2einner(self, 41, false, depth + 1 | 0, false);
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4PartRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Part8Variable(name, new _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl4PartEE4Some(_tmp)));
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl4PartRP211localreview3tcl8TclErrorE2Ok(_M0MPC16string6String9is__empty(name) ? new _M0DTP211localreview3tcl4Part4Text("$") : new _M0DTP211localreview3tcl4Part8Variable(name, _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl4PartEE4None__));
-}
-function _M0MP211localreview3tcl12ScriptParser10expression(self, minimum, depth) {
-  if (depth > 64) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expression nesting limit"));
-  }
-  _M0MP211localreview3tcl12ScriptParser11expr__space(self);
-  const _bind$2 = _M0MP211localreview3tcl12ScriptParser7operand(self, depth + 1 | 0);
-  let _tmp;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    _tmp = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  const left = new _M0TPB8MutLocalGRP211localreview3tcl4ExprE(_tmp);
-  while (true) {
-    _M0MP211localreview3tcl12ScriptParser11expr__space(self);
-    if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 63 && minimum <= 1) {
-      self.pos = self.pos + 1 | 0;
-      const _bind$3 = _M0MP211localreview3tcl12ScriptParser10expression(self, 1, depth + 1 | 0);
-      let yes;
-      if (_bind$3.$tag === 1) {
-        const _ok = _bind$3;
-        yes = _ok._0;
-      } else {
-        return _bind$3;
-      }
-      _M0MP211localreview3tcl12ScriptParser11expr__space(self);
-      if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 58) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing expression colon"));
-      }
-      self.pos = self.pos + 1 | 0;
-      const _bind$4 = _M0MP211localreview3tcl12ScriptParser10expression(self, 1, depth + 1 | 0);
-      let _tmp$2;
-      if (_bind$4.$tag === 1) {
-        const _ok = _bind$4;
-        _tmp$2 = _ok._0;
-      } else {
-        return _bind$4;
-      }
-      left.val = new _M0DTP211localreview3tcl4Expr11Conditional(left.val, yes, _tmp$2);
-      continue;
-    }
-    const found = new _M0TPB8MutLocalGUsiEE({ _0: "", _1: 0 });
-    const _bind$3 = [{ _0: "||", _1: 2 }, { _0: "&&", _1: 3 }, { _0: "|", _1: 4 }, { _0: "^", _1: 5 }, { _0: "&", _1: 6 }, { _0: "in", _1: 7 }, { _0: "ni", _1: 7 }, { _0: "eq", _1: 8 }, { _0: "ne", _1: 8 }, { _0: "==", _1: 9 }, { _0: "!=", _1: 9 }, { _0: "<=", _1: 10 }, { _0: ">=", _1: 10 }, { _0: "<<", _1: 11 }, { _0: ">>", _1: 11 }, { _0: "<", _1: 10 }, { _0: ">", _1: 10 }, { _0: "+", _1: 12 }, { _0: "-", _1: 12 }, { _0: "**", _1: 14 }, { _0: "*", _1: 13 }, { _0: "/", _1: 13 }, { _0: "%", _1: 13 }];
-    const _bind$4 = _bind$3.length;
-    let _tmp$2 = 0;
-    while (true) {
-      const _ = _tmp$2;
-      if (_ < _bind$4) {
-        const _foreach_element = _bind$3[_];
-        let op;
-        let precedence;
-        _L: {
-          const _op = _foreach_element._0;
-          const _precedence = _foreach_element._1;
-          op = _op;
-          precedence = _precedence;
-          break _L;
-        }
-        _L$2: {
-          const cs = _M0MPC16string6String9to__array(op);
-          if ((self.pos + cs.length | 0) <= self.chars.length && _M0IPC15array5ArrayPB2Eq5equalGcE(_M0MPC15array9ArrayView9to__ownedGcE(_M0MPC15array5Array12view_2einnerGcE(self.chars, self.pos, self.pos + cs.length | 0)), cs)) {
-            if (_M0FP211localreview3tcl8namechar(_M0MPC15array5Array2atGcE(cs, 0)) && _M0FP211localreview3tcl8namechar(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, cs.length))) {
-              break _L$2;
-            }
-            found.val = { _0: op, _1: precedence };
-            break;
-          }
-          break _L$2;
-        }
-        _tmp$2 = _ + 1 | 0;
-        continue;
-      } else {
-        break;
-      }
-    }
-    let op;
-    let precedence;
-    _L: {
-      const _bind$5 = found.val;
-      const _op = _bind$5._0;
-      const _precedence = _bind$5._1;
-      op = _op;
-      precedence = _precedence;
-      break _L;
-    }
-    if (precedence === 0 || precedence < minimum) {
-      break;
-    }
-    self.pos = self.pos + op.length | 0;
-    const _bind$5 = _M0MP211localreview3tcl12ScriptParser10expression(self, op === "**" ? precedence : precedence + 1 | 0, depth + 1 | 0);
-    let _tmp$3;
-    if (_bind$5.$tag === 1) {
-      const _ok = _bind$5;
-      _tmp$3 = _ok._0;
-    } else {
-      return _bind$5;
-    }
-    left.val = new _M0DTP211localreview3tcl4Expr6Binary(op, left.val, _tmp$3);
-    continue;
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(left.val);
-}
-function _M0MP211localreview3tcl12ScriptParser7operand(self, depth) {
-  if (depth > 64) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expression nesting limit"));
-  }
-  _M0MP211localreview3tcl12ScriptParser11expr__space(self);
-  const c = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0);
-  if (_M0MPC15array5Array8containsGcE([43, 45, 33, 126], c)) {
-    self.pos = self.pos + 1 | 0;
-    const _bind$2 = _M0MP211localreview3tcl12ScriptParser7operand(self, depth + 1 | 0);
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr5Unary(_M0IPC14char4CharPB4Show10to__string(c), _tmp));
-  }
-  if (c === 40) {
-    self.pos = self.pos + 1 | 0;
-    const _bind$2 = _M0MP211localreview3tcl12ScriptParser10expression(self, 1, depth + 1 | 0);
-    let value;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      value = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    _M0MP211localreview3tcl12ScriptParser11expr__space(self);
-    if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 41) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing expression close-parenthesis"));
-    }
-    self.pos = self.pos + 1 | 0;
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(value);
-  }
-  if (c === 123) {
-    const _bind$2 = _M0MP211localreview3tcl12ScriptParser6braces(self);
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr5Value(_tmp));
-  }
-  if (c === 34) {
-    self.pos = self.pos + 1 | 0;
-    const _bind$2 = _M0MP211localreview3tcl12ScriptParser13parts_2einner(self, 34, false, depth + 1 | 0, false);
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr10Substitute(_tmp));
-  }
-  if (c === 36) {
-    const _bind$2 = _M0MP211localreview3tcl12ScriptParser8variable(self, depth + 1 | 0);
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr10Substitute([_tmp]));
-  }
-  if (c === 91) {
-    self.pos = self.pos + 1 | 0;
-    const _bind$2 = _M0MP211localreview3tcl12ScriptParser14script_2einner(self, true, depth + 1 | 0, false);
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr10Substitute([new _M0DTP211localreview3tcl4Part7Command(_tmp)]));
-  }
-  const start = self.pos;
-  while (true) {
-    if (self.pos < self.chars.length) {
-      const x = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0);
-      if (_M0FP211localreview3tcl11list__space(x) || _M0MPC15array5Array8containsGcE([40, 41, 44, 63, 58, 42, 47, 37, 60, 62, 61, 33, 38, 94, 124, 126], x)) {
-        break;
-      }
-      if (x === 43 || x === 45) {
-        const hex = self.pos >= (start + 2 | 0) && (_M0MPC15array5Array2atGcE(self.chars, start) === 48 && _M0MPC15array5Array8containsGcE([120, 88], _M0MPC15array5Array2atGcE(self.chars, start + 1 | 0)));
-        if (self.pos === start || (hex || !_M0MPC15array5Array8containsGcE([101, 69], _M0MPC15array5Array2atGcE(self.chars, self.pos - 1 | 0)))) {
-          break;
-        }
-      }
-      self.pos = self.pos + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  if (start === self.pos) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expected expression operand"));
-  }
-  const text = _M0MPC16string6String11from__array(_M0MPC15array5Array12view_2einnerGcE(self.chars, start, self.pos));
-  _M0MP211localreview3tcl12ScriptParser11expr__space(self);
-  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 40) {
-    self.pos = self.pos + 1 | 0;
-    _M0MP211localreview3tcl12ScriptParser11expr__space(self);
-    const args = [];
-    if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 41) {
-      while (true) {
-        const _bind$2 = _M0MP211localreview3tcl12ScriptParser10expression(self, 1, depth + 1 | 0);
-        let _tmp;
-        if (_bind$2.$tag === 1) {
-          const _ok = _bind$2;
-          _tmp = _ok._0;
-        } else {
-          return _bind$2;
-        }
-        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(args, _tmp);
-        _M0MP211localreview3tcl12ScriptParser11expr__space(self);
-        if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 44) {
-          break;
-        }
-        self.pos = self.pos + 1 | 0;
-        continue;
-      }
-    }
-    if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 41) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing math function close-parenthesis"));
-    }
-    self.pos = self.pos + 1 | 0;
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr8Function(text, args));
-  }
-  const _bind$2 = _M0FP211localreview3tcl6number(text);
-  if (_bind$2 === undefined) {
-    let _tmp;
-    let _try_err;
-    _L: {
-      _L$2: {
-        const _bind$3 = _M0FP211localreview3tcl7boolean(text);
-        if (_bind$3.$tag === 1) {
-          const _ok = _bind$3;
-          _ok._0;
-        } else {
-          const _err = _bind$3;
-          _try_err = _err._0;
-          break _L$2;
-        }
-        _tmp = true;
-        break _L;
-      }
-      _tmp = false;
-    }
-    if (!_tmp) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid(`invalid bareword ${text}`));
-    }
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr5Value(text));
-}
-function _M0MP211localreview3tcl12ScriptParser3new(source) {
-  return new _M0TP211localreview3tcl12ScriptParser(_M0MPC16string6String9to__array(source), 0, 0, 1, 0, 1, false);
-}
-function _M0MP211localreview3tcl11Interpreter18cached__expression(self, source) {
-  const cache = self.state.cache;
-  let expr;
-  _L: {
-    _L$2: {
-      const _bind$2 = _M0MPB3Map3getGsRP211localreview3tcl4ExprE(cache.expressions, source);
-      if (_bind$2 === undefined) {
-      } else {
-        const _Some = _bind$2;
-        const _expr = _Some;
-        expr = _expr;
-        break _L$2;
-      }
-      break _L;
-    }
-    if (cache.expression_hits < 2147483647) {
-      cache.expression_hits = cache.expression_hits + 1 | 0;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(expr);
-  }
-  const parser = _M0MP211localreview3tcl12ScriptParser3new(source);
-  const _bind$2 = _M0MP211localreview3tcl12ScriptParser10expression(parser, 1, 0);
-  let expr$2;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    expr$2 = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  _M0MP211localreview3tcl12ScriptParser11expr__space(parser);
-  if (parser.pos !== parser.chars.length) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("trailing expression token"));
-  }
-  if (_M0MPB3Map6lengthGsRP211localreview3tcl8TclValueE(cache.expressions) >= 256 || (cache.expression_units + source.length | 0) > 131072) {
-    _M0MPB3Map5clearGsRP211localreview3tcl13ScriptProgramE(cache.expressions);
-    cache.expression_units = 0;
-  }
-  if (source.length <= 16384) {
-    _M0MPB3Map3setGsRP211localreview3tcl4ExprE(cache.expressions, source, expr$2);
-    cache.expression_units = cache.expression_units + source.length | 0;
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(expr$2);
-}
-function _M0FP211localreview3tcl15double__integer(value) {
-  if (_M0MPC16double6Double7is__nan(value) || _M0MPC16double6Double7is__inf(value)) {
-    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("cannot convert non-finite integer"));
-  }
-  const bits = $f64_reinterpret_i64(value);
-  const exponent = (Number(BigInt.asIntN(32, BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, bits) >> BigInt(52 & 63)) & 2047n))) | 0) - 1023 | 0;
-  if (exponent < 0) {
-    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(0n);
-  }
-  const mantissa = BigInt.asUintN(64, BigInt.asUintN(64, bits & 4503599627370495n) | 4503599627370496n);
-  let n;
-  let _try_err;
-  _L: {
-    _L$2: {
-      const _bind$2 = _M0MPC16uint646UInt6418to__string_2einner(mantissa, 10);
-      const _bind$3 = _M0FPC16string21parse__bigint_2einner(new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length), 10);
-      if (_bind$3.$tag === 1) {
-        const _ok = _bind$3;
-        n = _ok._0;
-      } else {
-        const _err = _bind$3;
-        _try_err = _err._0;
-        break _L$2;
-      }
-      break _L;
-    }
-    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer conversion"));
-  }
-  const magnitude = exponent >= 52 ? _M0IPC16bigint6BigIntPB3Shl3shl(n, exponent - 52 | 0) : _M0IPC16bigint6BigIntPB3Shr3shr(n, 52 - exponent | 0);
-  return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(value < 0 ? _M0IPC16bigint6BigIntPB3Neg3neg(magnitude) : magnitude);
-}
-function _M0FP211localreview3tcl24integer__double__compare(a, b) {
-  if (_M0MPC16double6Double7is__inf(b)) {
-    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(b < 0 ? 1 : -1);
-  }
-  const _bind$2 = _M0FP211localreview3tcl15double__integer(b);
-  let integral;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    integral = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  const order = _M0IPC16bigint6BigIntPB7Compare7compare(a, integral);
-  if (order !== 0) {
-    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(order);
-  }
-  return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(b === _M0MPC16double6Double5floor(b) ? 0 : b < 0 ? 1 : -1);
-}
-function _M0FP211localreview3tcl16small__operation(operator, x, y) {
-  const a = BigInt.asUintN(64, BigInt(x));
-  const b = BigInt.asUintN(64, BigInt(y));
-  let result;
-  _L: {
-    _L$2: {
-      switch (operator) {
-        case "+": {
-          result = _M0MPC15int645Int6418to__string_2einner(BigInt.asUintN(64, a + b), 10);
-          break;
-        }
-        case "-": {
-          result = _M0MPC15int645Int6418to__string_2einner(BigInt.asUintN(64, a - b), 10);
-          break;
-        }
-        case "*": {
-          result = _M0MPC15int645Int6418to__string_2einner(BigInt.asUintN(64, a * b), 10);
-          break;
-        }
-        case "/": {
-          break _L$2;
-        }
-        case "%": {
-          break _L$2;
-        }
-        case "&": {
-          result = _M0MPC13int3Int18to__string_2einner(x & y, 10);
-          break;
-        }
-        case "|": {
-          result = _M0MPC13int3Int18to__string_2einner(x | y, 10);
-          break;
-        }
-        case "^": {
-          result = _M0MPC13int3Int18to__string_2einner(x ^ y, 10);
-          break;
-        }
-        case "==": {
-          result = _M0FP211localreview3tcl13boolean__text(x === y);
-          break;
-        }
-        case "!=": {
-          result = _M0FP211localreview3tcl13boolean__text(x !== y);
-          break;
-        }
-        case "<": {
-          result = _M0FP211localreview3tcl13boolean__text(x < y);
-          break;
-        }
-        case ">": {
-          result = _M0FP211localreview3tcl13boolean__text(x > y);
-          break;
-        }
-        case "<=": {
-          result = _M0FP211localreview3tcl13boolean__text(x <= y);
-          break;
-        }
-        case ">=": {
-          result = _M0FP211localreview3tcl13boolean__text(x >= y);
-          break;
-        }
-        default: {
-          return new _M0DTPC16result6ResultGOsRP211localreview3tcl8TclErrorE2Ok(undefined);
-        }
-      }
-      break _L;
-    }
-    if (y === 0) {
-      return new _M0DTPC16result6ResultGOsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner("divide by zero", "ARITH DIVZERO {divide by zero}")));
-    }
-    if (b === 0n) {
-      $panic();
-    }
-    const q = BigInt.asUintN(64, BigInt.asIntN(64, a) / BigInt.asIntN(64, b));
-    if (b === 0n) {
-      $panic();
-    }
-    const r = BigInt.asUintN(64, BigInt.asIntN(64, a) % BigInt.asIntN(64, b));
-    result = operator === "/" ? _M0MPC15int645Int6418to__string_2einner(BigInt.asUintN(64, r) !== BigInt.asUintN(64, 0n) && _M0IP016_24default__implPB2Eq10not__equalGbE(x < 0, y < 0) ? BigInt.asUintN(64, q - 1n) : q, 10) : _M0MPC15int645Int6418to__string_2einner(BigInt.asUintN(64, r) !== BigInt.asUintN(64, 0n) && _M0IP016_24default__implPB2Eq10not__equalGbE(BigInt.asIntN(64, r) < BigInt.asIntN(64, 0n), y < 0) ? BigInt.asUintN(64, r + b) : r, 10);
-  }
-  return new _M0DTPC16result6ResultGOsRP211localreview3tcl8TclErrorE2Ok(result);
-}
-function _M0FP211localreview3tcl20tcl__string__compare(a, b) {
-  const _bind$2 = 0;
-  const _bind$3 = _M0MPC13int3Int3min(a.length, b.length);
-  let _tmp = _bind$2;
-  while (true) {
-    const i = _tmp;
-    if (i < _bind$3) {
-      const x = _M0MPC16option6Option6unwrapGkE(_M0MPC16string6String3get(a, i));
-      const y = _M0MPC16option6Option6unwrapGkE(_M0MPC16string6String3get(b, i));
-      if (x < y) {
-        return -1;
-      }
-      if (x > y) {
-        return 1;
-      }
-      _tmp = i + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return $compare_int(a.length, b.length);
-}
-function _M0MP211localreview3tcl6Number7promote(self) {
-  let x;
-  _L: {
-    if (self.$tag === 0) {
-      const _Small = self;
-      const _x = _Small._0;
-      x = _x;
-      break _L;
-    } else {
-      return self;
-    }
-  }
-  return new _M0DTP211localreview3tcl6Number5Whole(_M0MPC16bigint6BigInt9from__int(x));
-}
-function _M0FP211localreview3tcl15numeric__binary(operator, left, right) {
-  if (operator === "eq" || operator === "ne") {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(left.text === right.text === (operator === "eq"))));
-  }
-  if (operator === "in" || operator === "ni") {
-    const _bind$2 = _M0MP211localreview3tcl8TclValue8as__list(right);
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(_M0MPB4Iter3anyGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(_M0MPC15array5Array4iterGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(_tmp), (v) => v.text === left.text) === (operator === "in"))));
-  }
-  const a = _M0MP211localreview3tcl8TclValue10as__number(left);
-  const b = _M0MP211localreview3tcl8TclValue10as__number(right);
-  let x;
-  let y;
-  _L: {
-    _L$2: {
-      if (a === undefined) {
-      } else {
-        const _Some = a;
-        const _x = _Some;
-        if (_x.$tag === 0) {
-          const _Small = _x;
-          const _x$2 = _Small._0;
-          if (b === undefined) {
-          } else {
-            const _Some$2 = b;
-            const _x$3 = _Some$2;
-            if (_x$3.$tag === 0) {
-              const _Small$2 = _x$3;
-              const _y = _Small$2._0;
-              x = _x$2;
-              y = _y;
-              break _L$2;
-            }
-          }
-        }
-      }
-      break _L;
-    }
-    let result;
-    _L$3: {
-      _L$4: {
-        const _bind$2 = _M0FP211localreview3tcl16small__operation(operator, x, y);
-        let _bind$3;
-        if (_bind$2.$tag === 1) {
-          const _ok = _bind$2;
-          _bind$3 = _ok._0;
-        } else {
-          return _bind$2;
-        }
-        if (_bind$3 === undefined) {
-        } else {
-          const _Some = _bind$3;
-          const _result = _Some;
-          result = _result;
-          break _L$4;
-        }
-        break _L$3;
-      }
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(result));
-    }
-  }
-  const a$2 = _M0MPC16option6Option3mapGRP211localreview3tcl6NumberRP211localreview3tcl6NumberE(a, _M0MP211localreview3tcl6Number7promote);
-  const b$2 = _M0MPC16option6Option3mapGRP211localreview3tcl6NumberRP211localreview3tcl6NumberE(b, _M0MP211localreview3tcl6Number7promote);
-  if (_M0MPC15array5Array8containsGsE(["==", "!=", "<", ">", "<=", ">="], operator)) {
-    let comparison;
-    _L$2: {
-      _L$3: {
-        let a$3;
-        let b$3;
-        _L$4: {
-          _L$5: {
-            let a$4;
-            let b$4;
-            _L$6: {
-              _L$7: {
-                let a$5;
-                let b$5;
-                _L$8: {
-                  _L$9: {
-                    let a$6;
-                    let b$6;
-                    _L$10: {
-                      if (a$2 === undefined) {
-                        break _L$3;
-                      } else {
-                        const _Some = a$2;
-                        const _x = _Some;
-                        switch (_x.$tag) {
-                          case 1: {
-                            const _Whole = _x;
-                            const _a = _Whole._0;
-                            if (b$2 === undefined) {
-                              break _L$3;
-                            } else {
-                              const _Some$2 = b$2;
-                              const _x$2 = _Some$2;
-                              switch (_x$2.$tag) {
-                                case 1: {
-                                  const _Whole$2 = _x$2;
-                                  const _b = _Whole$2._0;
-                                  a$6 = _a;
-                                  b$6 = _b;
-                                  break _L$10;
-                                }
-                                case 2: {
-                                  const _Real = _x$2;
-                                  const _b$2 = _Real._0;
-                                  a$5 = _a;
-                                  b$5 = _b$2;
-                                  break _L$9;
-                                }
-                                default: {
-                                  a$3 = _x;
-                                  b$3 = _x$2;
-                                  break _L$5;
-                                }
-                              }
-                            }
-                          }
-                          case 2: {
-                            const _Real = _x;
-                            const _a$2 = _Real._0;
-                            if (b$2 === undefined) {
-                              break _L$3;
-                            } else {
-                              const _Some$2 = b$2;
-                              const _x$2 = _Some$2;
-                              if (_x$2.$tag === 1) {
-                                const _Whole$2 = _x$2;
-                                const _b = _Whole$2._0;
-                                a$4 = _a$2;
-                                b$4 = _b;
-                                break _L$7;
-                              } else {
-                                a$3 = _x;
-                                b$3 = _x$2;
-                                break _L$5;
-                              }
-                            }
-                          }
-                          default: {
-                            if (b$2 === undefined) {
-                              break _L$3;
-                            } else {
-                              const _Some$2 = b$2;
-                              const _b = _Some$2;
-                              a$3 = _x;
-                              b$3 = _b;
-                              break _L$5;
-                            }
-                          }
-                        }
-                      }
-                    }
-                    comparison = _M0IPC16bigint6BigIntPB7Compare7compare(a$6, b$6);
-                    break _L$8;
-                  }
-                  if (_M0MPC16double6Double7is__nan(b$5)) {
-                    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(operator === "!=")));
-                  }
-                  const _bind$2 = _M0FP211localreview3tcl24integer__double__compare(a$5, b$5);
-                  if (_bind$2.$tag === 1) {
-                    const _ok = _bind$2;
-                    comparison = _ok._0;
-                  } else {
-                    return _bind$2;
-                  }
-                }
-                break _L$6;
-              }
-              if (_M0MPC16double6Double7is__nan(a$4)) {
-                return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(operator === "!=")));
-              }
-              const _bind$2 = _M0FP211localreview3tcl24integer__double__compare(b$4, a$4);
-              let _tmp;
-              if (_bind$2.$tag === 1) {
-                const _ok = _bind$2;
-                _tmp = _ok._0;
-              } else {
-                return _bind$2;
-              }
-              comparison = -_tmp | 0;
-            }
-            break _L$4;
-          }
-          const x$2 = _M0MP211localreview3tcl6Number6double(a$3);
-          const y$2 = _M0MP211localreview3tcl6Number6double(b$3);
-          if (_M0MPC16double6Double7is__nan(x$2) || _M0MPC16double6Double7is__nan(y$2)) {
-            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(operator === "!=")));
-          }
-          comparison = x$2 < y$2 ? -1 : x$2 > y$2 ? 1 : 0;
-        }
-        break _L$2;
-      }
-      comparison = _M0FP211localreview3tcl20tcl__string__compare(left.text, right.text);
-    }
-    let _tmp;
-    switch (operator) {
-      case "==": {
-        _tmp = comparison === 0;
-        break;
-      }
-      case "!=": {
-        _tmp = comparison !== 0;
-        break;
-      }
-      case "<": {
-        _tmp = comparison < 0;
-        break;
-      }
-      case ">": {
-        _tmp = comparison > 0;
-        break;
-      }
-      case "<=": {
-        _tmp = comparison <= 0;
-        break;
-      }
-      default: {
-        _tmp = comparison >= 0;
-      }
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(_tmp)));
-  }
-  _L$2: {
-    let a$3;
-    _L$3: {
-      if (a$2 === undefined) {
-        break _L$2;
-      } else {
-        const _Some = a$2;
-        const _a = _Some;
-        a$3 = _a;
-        break _L$3;
-      }
-    }
-    let b$3;
-    _L$4: {
-      if (b$2 === undefined) {
-        break _L$2;
-      } else {
-        const _Some = b$2;
-        const _b = _Some;
-        b$3 = _b;
-        break _L$4;
-      }
-    }
-    let x$2;
-    let y$2;
-    _L$5: {
-      _L$6: {
-        if (a$3.$tag === 1) {
-          const _Whole = a$3;
-          const _x = _Whole._0;
-          if (b$3.$tag === 1) {
-            const _Whole$2 = b$3;
-            const _y = _Whole$2._0;
-            x$2 = _x;
-            y$2 = _y;
-            break _L$6;
-          }
-        }
-        break _L$5;
-      }
-      let value;
-      _L$7: {
-        _L$8: {
-          switch (operator) {
-            case "+": {
-              value = _M0IPC16bigint6BigIntPB3Add3add(x$2, y$2);
-              break;
-            }
-            case "-": {
-              value = _M0IPC16bigint6BigIntPB3Sub3sub(x$2, y$2);
-              break;
-            }
-            case "*": {
-              if ((_M0MPC16bigint6BigInt11bit__length(x$2) + _M0MPC16bigint6BigInt11bit__length(y$2) | 0) > 16384) {
-                return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer bit limit"));
-              }
-              value = _M0IPC16bigint6BigIntPB3Mul3mul(x$2, y$2);
-              break;
-            }
-            case "%": {
-              if (_M0IPC16bigint6BigIntPB2Eq5equal(y$2, 0n)) {
-                return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner("divide by zero", "ARITH DIVZERO {divide by zero}")));
-              }
-              const r = _M0IPC16bigint6BigIntPB3Mod3mod(x$2, y$2);
-              value = _M0IP016_24default__implPB2Eq10not__equalGRPC16bigint6BigIntE(r, 0n) && _M0IP016_24default__implPB2Eq10not__equalGbE(_M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(r, 0n), _M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(y$2, 0n)) ? _M0IPC16bigint6BigIntPB3Add3add(r, y$2) : r;
-              break;
-            }
-            case "**": {
-              if (_M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(y$2, 0n)) {
-                if (_M0IPC16bigint6BigIntPB2Eq5equal(x$2, 0n)) {
-                  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner("exponentiation of zero by negative power", "ARITH DOMAIN {exponentiation of zero by negative power}")));
-                }
-                value = _M0IPC16bigint6BigIntPB2Eq5equal(x$2, 1n) ? 1n : _M0IPC16bigint6BigIntPB2Eq5equal(x$2, _M0IPC16bigint6BigIntPB3Neg3neg(1n)) ? (_M0IPC16bigint6BigIntPB2Eq5equal(_M0IPC16bigint6BigIntPB3Mod3mod(y$2, 2n), 0n) ? 1n : _M0IPC16bigint6BigIntPB3Neg3neg(1n)) : 0n;
-              } else {
-                let _tmp;
-                if (_M0IP016_24default__implPB7Compare6op__gtGRPC16bigint6BigIntE(y$2, 16384n)) {
-                  _tmp = true;
-                } else {
-                  let _tmp$2;
-                  if (_M0MPC16bigint6BigInt11bit__length(x$2) > 1) {
-                    const _tmp$3 = _M0MPC16bigint6BigInt11bit__length(x$2);
-                    if (_tmp$3 === 0) {
-                      $panic();
-                    }
-                    _tmp$2 = _M0IP016_24default__implPB7Compare6op__gtGRPC16bigint6BigIntE(y$2, _M0MPC16bigint6BigInt9from__int(16384 / _tmp$3 | 0));
-                  } else {
-                    _tmp$2 = false;
-                  }
-                  _tmp = _tmp$2;
-                }
-                if (_tmp) {
-                  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("exponent limit"));
-                }
-                value = _M0MPC16bigint6BigInt3pow(x$2, y$2, _M0DTPC16option6OptionGRPC16bigint6BigIntE4None__);
-              }
-              break;
-            }
-            case "<<": {
-              break _L$8;
-            }
-            case ">>": {
-              break _L$8;
-            }
-            case "&": {
-              value = _M0IPC16bigint6BigIntPB6BitAnd4land(x$2, y$2);
-              break;
-            }
-            case "|": {
-              value = _M0IPC16bigint6BigIntPB5BitOr3lor(x$2, y$2);
-              break;
-            }
-            case "^": {
-              value = _M0IPC16bigint6BigIntPB6BitXOr4lxor(x$2, y$2);
-              break;
-            }
-            default: {
-              return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported integer operator"));
-            }
-          }
-          break _L$7;
-        }
-        if (_M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(y$2, 0n) || _M0IP016_24default__implPB7Compare6op__gtGRPC16bigint6BigIntE(y$2, 16384n)) {
-          return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("shift limit"));
-        }
-        if (operator === "<<") {
-          if ((_M0MPC16bigint6BigInt11bit__length(x$2) + _M0MPC16bigint6BigInt7to__int(y$2) | 0) > 16384) {
-            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer bit limit"));
-          }
-          value = _M0IPC16bigint6BigIntPB3Shl3shl(x$2, _M0MPC16bigint6BigInt7to__int(y$2));
-        } else {
-          value = _M0IPC16bigint6BigIntPB3Shr3shr(x$2, _M0MPC16bigint6BigInt7to__int(y$2));
-        }
-      }
-      const _bind$2 = _M0FP211localreview3tcl13number__value(new _M0DTP211localreview3tcl6Number5Whole(value));
-      let _tmp;
-      if (_bind$2.$tag === 1) {
-        const _ok = _bind$2;
-        _tmp = _ok._0;
-      } else {
-        return _bind$2;
-      }
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp);
-    }
-    if (_M0MPC15array5Array8containsGsE(["%", "<<", ">>", "&", "|", "^"], operator)) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer operand required"));
-    }
-    const x$3 = _M0MP211localreview3tcl6Number6double(a$3);
-    const y$3 = _M0MP211localreview3tcl6Number6double(b$3);
-    let result;
-    switch (operator) {
-      case "+": {
-        result = x$3 + y$3;
-        break;
-      }
-      case "-": {
-        result = x$3 - y$3;
-        break;
-      }
-      case "*": {
-        result = x$3 * y$3;
-        break;
-      }
-      case "/": {
-        result = x$3 / y$3;
-        break;
-      }
-      case "**": {
-        result = _M0FPC14math3pow(x$3, y$3);
-        break;
-      }
-      default: {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported arithmetic operator"));
-      }
-    }
-    return _M0FP211localreview3tcl13number__value(new _M0DTP211localreview3tcl6Number4Real(result));
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expected numeric operand"));
-}
-function _M0FP211localreview3tcl15numeric__divide(left, right) {
-  const a = _M0MP211localreview3tcl8TclValue10as__number(left);
-  const b = _M0MP211localreview3tcl8TclValue10as__number(right);
-  let x;
-  let y;
-  _L: {
-    _L$2: {
-      if (a === undefined) {
-      } else {
-        const _Some = a;
-        const _x = _Some;
-        if (_x.$tag === 0) {
-          const _Small = _x;
-          const _x$2 = _Small._0;
-          if (b === undefined) {
-          } else {
-            const _Some$2 = b;
-            const _x$3 = _Some$2;
-            if (_x$3.$tag === 0) {
-              const _Small$2 = _x$3;
-              const _y = _Small$2._0;
-              x = _x$2;
-              y = _y;
-              break _L$2;
-            }
-          }
-        }
-      }
-      break _L;
-    }
-    const _bind$2 = _M0FP211localreview3tcl16small__operation("/", x, y);
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(_tmp)));
-  }
-  _L$2: {
-    let x$2;
-    let y$2;
-    _L$3: {
-      const _bind$2 = _M0MPC16option6Option3mapGRP211localreview3tcl6NumberRP211localreview3tcl6NumberE(a, _M0MP211localreview3tcl6Number7promote);
-      const _bind$3 = _M0MPC16option6Option3mapGRP211localreview3tcl6NumberRP211localreview3tcl6NumberE(b, _M0MP211localreview3tcl6Number7promote);
-      if (_bind$2 === undefined) {
-        break _L$2;
-      } else {
-        const _Some = _bind$2;
-        const _x = _Some;
-        if (_x.$tag === 1) {
-          const _Whole = _x;
-          const _x$2 = _Whole._0;
-          if (_bind$3 === undefined) {
-            break _L$2;
-          } else {
-            const _Some$2 = _bind$3;
-            const _x$3 = _Some$2;
-            if (_x$3.$tag === 1) {
-              const _Whole$2 = _x$3;
-              const _y = _Whole$2._0;
-              x$2 = _x$2;
-              y$2 = _y;
-              break _L$3;
-            } else {
-              break _L$2;
-            }
-          }
-        } else {
-          break _L$2;
-        }
-      }
-    }
-    if (_M0IPC16bigint6BigIntPB2Eq5equal(y$2, 0n)) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner("divide by zero", "ARITH DIVZERO {divide by zero}")));
-    }
-    const q = _M0IPC16bigint6BigIntPB3Div3div(x$2, y$2);
-    const r = _M0IPC16bigint6BigIntPB3Mod3mod(x$2, y$2);
-    return _M0FP211localreview3tcl13number__value(new _M0DTP211localreview3tcl6Number5Whole(_M0IP016_24default__implPB2Eq10not__equalGRPC16bigint6BigIntE(r, 0n) && _M0IP016_24default__implPB2Eq10not__equalGbE(_M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(x$2, 0n), _M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(y$2, 0n)) ? _M0IPC16bigint6BigIntPB3Sub3sub(q, 1n) : q));
-  }
-  return _M0FP211localreview3tcl15numeric__binary("/", left, right);
-}
-function _M0MP211localreview3tcl11Interpreter4tick(self) {
-  const _bind$2 = self.budget;
-  _bind$2.val = _bind$2.val - 1 | 0;
-  if (self.budget.val < 0) {
-    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("execution budget"));
-  } else {
-    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
-  }
-}
-function _M0MP211localreview3tcl8TclValue5truth(self) {
-  let n;
-  _L: {
-    const _bind$2 = _M0MP211localreview3tcl8TclValue10as__number(self);
-    if (_bind$2 === undefined) {
-      return _M0FP211localreview3tcl7boolean(self.text);
-    } else {
-      const _Some = _bind$2;
-      const _n = _Some;
-      n = _n;
-      break _L;
-    }
-  }
-  const value = _M0MP211localreview3tcl6Number6double(n);
-  if (_M0MPC16double6Double7is__nan(value)) {
-    return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expected boolean"));
-  }
-  return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE2Ok(value !== 0);
-}
-function _M0MP211localreview3tcl8TclValue9as__whole(self) {
-  let n;
-  _L: {
-    let n$2;
-    _L$2: {
-      const _bind$2 = self.payload;
-      if (_bind$2.$tag === 1) {
-        const _Numeric = _bind$2;
-        const _x = _Numeric._0;
-        switch (_x.$tag) {
-          case 0: {
-            const _Small = _x;
-            const _n = _Small._0;
-            n$2 = _n;
-            break _L$2;
-          }
-          case 1: {
-            const _Whole = _x;
-            const _n$2 = _Whole._0;
-            n = _n$2;
-            break _L;
-          }
-          default: {
-            return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expected integer"));
-          }
-        }
-      } else {
-        return _M0FP211localreview3tcl5whole(self.text);
-      }
-    }
-    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(_M0MPC16bigint6BigInt9from__int(n$2));
-  }
-  return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(n);
-}
-function _M0FP211localreview3tcl16completion__code(value) {
-  switch (value) {
-    case "ok": {
-      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(0);
-    }
-    case "error": {
-      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(1);
-    }
-    case "return": {
-      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(2);
-    }
-    case "break": {
-      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(3);
-    }
-    case "continue": {
-      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(4);
-    }
-    default: {
-      let _try_err;
-      _L: {
-        const _bind$2 = _M0FP211localreview3tcl7integer(value);
-        let _tmp;
-        if (_bind$2.$tag === 1) {
-          const _ok = _bind$2;
-          _tmp = _ok._0;
-        } else {
-          const _err = _bind$2;
-          _try_err = _err._0;
-          break _L;
-        }
-        return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(_tmp);
-      }
-      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner(`bad completion code \"${value}\": must be ok, error, return, break, continue, or an integer`, "TCL RESULT ILLEGAL_CODE")));
-    }
-  }
-}
-function _M0FP211localreview3tcl18dictionary__values(text) {
-  let pairs;
-  _L: {
-    _L$2: {
-      const _bind$2 = text.payload;
-      if (_bind$2.$tag === 3) {
-        const _Pairs = _bind$2;
-        const _pairs = _Pairs._0;
-        pairs = _pairs;
-        break _L$2;
-      }
-      break _L;
-    }
-    return new _M0DTPC16result6ResultGRPB5ArrayGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEERP211localreview3tcl8TclErrorE2Ok(_M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(pairs));
-  }
-  const _bind$2 = _M0MP211localreview3tcl8TclValue8as__list(text);
-  let words;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    words = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  if (2 === 0) {
-    $panic();
-  }
-  if ((words.length % 2 | 0) !== 0) {
-    return new _M0DTPC16result6ResultGRPB5ArrayGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing dictionary value"));
-  }
-  const result = [];
-  const _bind$3 = [];
-  const seen = _M0MPB3Map3MapGsiE(new _M0TPB9ArrayViewGUsiEE(_bind$3, 0, 0), undefined);
-  const i = new _M0TPB8MutLocalGiE(0);
-  while (true) {
-    if (i.val < words.length) {
-      let index;
-      _L$2: {
-        _L$3: {
-          const _bind$4 = _M0MPB3Map3getGsiE(seen, _M0MPC15array5Array2atGRPB4JsonE(words, i.val).text);
-          if (_bind$4 === undefined) {
-            _M0MPB3Map3setGsiE(seen, _M0MPC15array5Array2atGRPB4JsonE(words, i.val).text, result.length);
-            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result, { _0: _M0MPC15array5Array2atGRPB4JsonE(words, i.val), _1: _M0MPC15array5Array2atGRPB4JsonE(words, i.val + 1 | 0) });
-          } else {
-            const _Some = _bind$4;
-            const _index = _Some;
-            index = _index;
-            break _L$3;
-          }
-          break _L$2;
-        }
-        _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(result, index, { _0: _M0MPC15array5Array2atGRPB4JsonE(result, index)._0, _1: _M0MPC15array5Array2atGRPB4JsonE(words, i.val + 1 | 0) });
-      }
-      i.val = i.val + 2 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  text.payload = new _M0DTP211localreview3tcl12ValuePayload5Pairs(_M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(result));
-  return new _M0DTPC16result6ResultGRPB5ArrayGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEERP211localreview3tcl8TclErrorE2Ok(result);
-}
-function _M0FP211localreview3tcl22merge__return__options(target, values, depth) {
-  if (depth > 64) {
-    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("return option nesting limit"));
-  }
-  const _bind$2 = values.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const _foreach_element = values[_];
-      let key;
-      let value;
-      _L: {
-        const _key = _foreach_element._0;
-        const _value = _foreach_element._1;
-        key = _key;
-        value = _value;
-        break _L;
-      }
-      if (key === "-options") {
-        const _bind$3 = _M0FP211localreview3tcl18dictionary__values(value);
-        let _tmp$2;
-        if (_bind$3.$tag === 1) {
-          const _ok = _bind$3;
-          _tmp$2 = _ok._0;
-        } else {
-          return _bind$3;
-        }
-        const _bind$4 = _M0FP211localreview3tcl22merge__return__options(target, _M0MPC15array5Array3mapGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEUsRP211localreview3tcl8TclValueEE(_tmp$2, (p) => ({ _0: p._0.text, _1: p._1 })), depth + 1 | 0);
-        if (_bind$4.$tag === 1) {
-          const _ok = _bind$4;
-          _ok._0;
-        } else {
-          return _bind$4;
-        }
-      } else {
-        _M0FP211localreview3tcl18option__set__value(target, key, value);
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
-}
-function _M0MP211localreview3tcl11Interpreter16propagate__value(self, result) {
-  if (_M0MP211localreview3tcl10Completion12actual__code(result) === 0) {
-    self.state.return_options.val = result.options;
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(result.value);
-  } else {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(result));
-  }
-}
-function _M0MP211localreview3tcl11Interpreter15return__command(self, values) {
-  const args = _M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(values, (v) => v.text);
-  if (args.length <= 2) {
-    if (args.length === 1) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eReturn(""));
-    }
-    const _bind$2 = _M0FP211localreview3tcl10completion(0, "", 1, _M0DTPC16option6OptionGRPB5ArrayGUsRP211localreview3tcl8TclValueEEE4None__, -1);
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(new _M0TP211localreview3tcl10Completion(_bind$2.code, _bind$2.level, values.length === 2 ? _M0MPC15array5Array2atGRPB4JsonE(values, 1) : _M0FP211localreview3tcl11text__value(""), _bind$2.options, _bind$2.skip_trace)));
-  }
-  const count = args.length - 1 | 0;
-  let value;
-  if (2 === 0) {
-    $panic();
-  }
-  if ((count % 2 | 0) === 1) {
-    value = _M0MPC15array5Array2atGRPB4JsonE(values, values.length - 1 | 0);
-  } else {
-    value = _M0FP211localreview3tcl11text__value("");
-  }
-  const pairs = [];
-  let _tmp = 1;
-  while (true) {
-    const i = _tmp;
-    if ((i + 1 | 0) < args.length) {
-      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(pairs, { _0: _M0MPC15array5Array2atGRPB4JsonE(args, i), _1: _M0MPC15array5Array2atGRPB4JsonE(values, i + 1 | 0) });
-      _tmp = i + 2 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  const options = [];
-  const _bind$2 = _M0FP211localreview3tcl22merge__return__options(options, pairs, 0);
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    _ok._0;
-  } else {
-    return _bind$2;
-  }
-  const _bind$3 = _M0FP211localreview3tcl16completion__code(_M0MPC16option6Option10unwrap__orGsE(_M0FP211localreview3tcl11option__get(options, "-code"), "0"));
-  let _tmp$2;
-  if (_bind$3.$tag === 1) {
-    const _ok = _bind$3;
-    _tmp$2 = _ok._0;
-  } else {
-    return _bind$3;
-  }
-  const code = new _M0TPB8MutLocalGiE(_tmp$2);
-  const level_text = _M0MPC16option6Option10unwrap__orGsE(_M0FP211localreview3tcl11option__get(options, "-level"), "1");
-  let _tmp$3;
-  let _try_err;
-  _L: {
-    _L$2: {
-      const _bind$4 = _M0FP211localreview3tcl7integer(level_text);
-      let parsed;
-      if (_bind$4.$tag === 1) {
-        const _ok = _bind$4;
-        parsed = _ok._0;
-      } else {
-        const _err = _bind$4;
-        _try_err = _err._0;
-        break _L$2;
-      }
-      if (parsed < 0) {
-        _try_err = new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("negative level");
-        break _L$2;
-      }
-      _tmp$3 = parsed;
-      break _L;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner(`bad -level value: expected non-negative integer but got \"${level_text}\"`, "TCL RESULT ILLEGAL_LEVEL")));
-  }
-  const level = new _M0TPB8MutLocalGiE(_tmp$3);
-  if (code.val === 2) {
-    code.val = 0;
-    level.val = level.val + 1 | 0;
-  }
-  const extras = _M0MPC15array5Array6filterGUsRP211localreview3tcl8TclValueEE(options, (pair) => _M0IP016_24default__implPB2Eq10not__equalGsE(pair._0, "-code") && _M0IP016_24default__implPB2Eq10not__equalGsE(pair._0, "-level"));
-  let text;
-  _L$2: {
-    _L$3: {
-      const _bind$4 = _M0FP211localreview3tcl11option__get(extras, "-errorcode");
-      if (_bind$4 === undefined) {
-      } else {
-        const _Some = _bind$4;
-        const _text = _Some;
-        text = _text;
-        break _L$3;
-      }
-      break _L$2;
-    }
-    const _bind$4 = _M0FP211localreview3tcl11parse__list(text);
-    if (_bind$4.$tag === 1) {
-      const _ok = _bind$4;
-      _ok._0;
-    } else {
-      return _bind$4;
-    }
-  }
-  let text$2;
-  _L$3: {
-    _L$4: {
-      const _bind$4 = _M0FP211localreview3tcl11option__get(extras, "-errorstack");
-      if (_bind$4 === undefined) {
-      } else {
-        const _Some = _bind$4;
-        const _text = _Some;
-        text$2 = _text;
-        break _L$4;
-      }
-      break _L$3;
-    }
-    const _bind$4 = _M0FP211localreview3tcl11parse__list(text$2);
-    let _tmp$4;
-    if (_bind$4.$tag === 1) {
-      const _ok = _bind$4;
-      _tmp$4 = _ok._0;
-    } else {
-      return _bind$4;
-    }
-    if (2 === 0) {
-      $panic();
-    }
-    if ((_tmp$4.length % 2 | 0) !== 0) {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("errorstack requires token/value pairs"));
-    }
-  }
-  if (code.val === 1) {
-    const _bind$4 = _M0FP211localreview3tcl11option__get(extras, "-errorcode");
-    if (_bind$4 === undefined) {
-      _M0FP211localreview3tcl11option__set(extras, "-errorcode", "NONE");
-    }
-    let text$3;
-    _L$4: {
-      _L$5: {
-        const _bind$5 = _M0FP211localreview3tcl11option__get(extras, "-errorinfo");
-        if (_bind$5 === undefined) {
-        } else {
-          const _Some = _bind$5;
-          const _text = _Some;
-          text$3 = _text;
-          break _L$5;
-        }
-        break _L$4;
-      }
-      if (!_M0MPC16string6String9is__empty(text$3)) {
-        const _bind$5 = _M0FP211localreview3tcl11option__get(extras, "-errorline");
-        if (_bind$5 === undefined) {
-          _M0FP211localreview3tcl11option__set(extras, "-errorline", "1");
-        }
-      }
-    }
-  }
-  const _bind$4 = _M0FP211localreview3tcl18completion_2einner(code.val, value.text, level.val, extras, level.val === 0 && _M0IP016_24default__implPB2Eq10not__equalGsE(_M0MPC16option6Option10unwrap__orGsE(_M0FP211localreview3tcl11option__get(extras, "-errorinfo"), ""), ""));
-  return _M0MP211localreview3tcl11Interpreter16propagate__value(self, new _M0TP211localreview3tcl10Completion(_bind$4.code, _bind$4.level, value, _bind$4.options, _bind$4.skip_trace));
-}
-function _M0FP211localreview3tcl23dictionary__edit__value(text, keys, value, depth) {
-  if (depth > 64) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary nesting limit"));
-  }
-  if (_M0MPC15array5Array9is__emptyGRPB4JsonE(keys)) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary key required"));
-  }
-  const _bind$2 = _M0FP211localreview3tcl18dictionary__values(text);
-  let pairs;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    pairs = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  const index = new _M0TPB8MutLocalGiE(-1);
-  const _bind$3 = 0;
-  const _bind$4 = pairs.length;
-  let _tmp = _bind$3;
-  while (true) {
-    const i = _tmp;
-    if (i < _bind$4) {
-      if (_M0MPC15array5Array2atGRPB4JsonE(pairs, i)._0.text === _M0MPC15array5Array2atGRPB4JsonE(keys, 0).text) {
-        index.val = i;
-        break;
-      }
-      _tmp = i + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  let value$2;
-  if (keys.length > 1) {
-    if (index.val < 0) {
-      if (value === undefined) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary path not found"));
-      }
-    }
-    const _bind$5 = _M0FP211localreview3tcl23dictionary__edit__value(index.val < 0 ? _M0FP211localreview3tcl11text__value("") : _M0MPC15array5Array2atGRPB4JsonE(pairs, index.val)._1, _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(keys, 1, undefined)), value, depth + 1 | 0);
-    if (_bind$5.$tag === 1) {
-      const _ok = _bind$5;
-      value$2 = _ok._0;
-    } else {
-      return _bind$5;
-    }
-  } else {
-    value$2 = value;
-  }
-  let v;
-  _L: {
-    _L$2: {
-      if (value$2 === undefined) {
-        if (index.val >= 0) {
-          _M0MPC15array5Array6removeGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(pairs, index.val);
-        }
-      } else {
-        const _Some = value$2;
-        const _v = _Some;
-        v = _v;
-        break _L$2;
-      }
-      break _L;
-    }
-    if (index.val < 0) {
-      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(pairs, { _0: _M0MPC15array5Array2atGRPB4JsonE(keys, 0), _1: v });
-    } else {
-      _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(pairs, index.val, { _0: _M0MPC15array5Array2atGRPB4JsonE(pairs, index.val)._0, _1: v });
-    }
-  }
-  return _M0FP211localreview3tcl17dictionary__value(pairs);
-}
-function _M0FP211localreview3tcl22dictionary__get__value(text, path) {
-  const value = new _M0TPB8MutLocalGRP211localreview3tcl8TclValueE(text);
-  const _bind$2 = path.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const key = path[_];
-      const _bind$3 = _M0FP211localreview3tcl18dictionary__values(value.val);
-      let pairs;
-      if (_bind$3.$tag === 1) {
-        const _ok = _bind$3;
-        pairs = _ok._0;
-      } else {
-        return _bind$3;
-      }
-      const found = _M0MPC15array5Array3getGUiiEE(_M0MPC15array5Array6filterGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(pairs, (p) => p._0.text === key.text), 0);
-      let _tmp$2;
-      if (found === undefined) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary key not found"));
-      } else {
-        const _Some = found;
-        const _x = _Some;
-        const _v = _x._1;
-        _tmp$2 = _v;
-      }
-      value.val = _tmp$2;
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(value.val);
-}
-function _M0MP211localreview3tcl10DictObject3put(self, key, value) {
-  const index = _M0MPB3Map3getGsiE(self.index, key.text);
-  const encoded = _M0FP211localreview3tcl14quote__element(value.text, false);
-  let units;
-  let encoded_key;
-  _L: {
-    let i;
-    _L$2: {
-      if (index === undefined) {
-        if (self.keys.length >= 50000) {
-          return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary element limit"));
-        }
-        const k = _M0FP211localreview3tcl14quote__element(key.text, _M0MPC15array5Array9is__emptyGRPB4JsonE(self.keys));
-        units = ((self.units + k.length | 0) + encoded.length | 0) + (_M0MPC15array5Array9is__emptyGRPB4JsonE(self.keys) ? 1 : 2) | 0;
-        encoded_key = k;
-        break _L;
-      } else {
-        const _Some = index;
-        const _i = _Some;
-        i = _i;
-        break _L$2;
-      }
-    }
-    units = (self.units - _M0MPC15array5Array2atGRPB4JsonE(self.encoded, (Math.imul(i, 2) | 0) + 1 | 0).length | 0) + encoded.length | 0;
-    encoded_key = "";
-    break _L;
-  }
-  if (units > 1000000) {
-    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary size limit"));
-  }
-  let i;
-  _L$2: {
-    _L$3: {
-      if (index === undefined) {
-        _M0MPB3Map3setGsiE(self.index, key.text, self.keys.length);
-        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.keys, key);
-        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.values, value);
-        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.encoded, encoded_key);
-        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.encoded, encoded);
-      } else {
-        const _Some = index;
-        const _i = _Some;
-        i = _i;
-        break _L$3;
-      }
-      break _L$2;
-    }
-    _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(self.values, i, value);
-    _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(self.encoded, (Math.imul(i, 2) | 0) + 1 | 0, encoded);
-  }
-  self.units = units;
-  self.representation = undefined;
-  return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
-}
-function _M0MP211localreview3tcl10DictObject11from__value(value) {
-  const _tmp = [];
-  const _tmp$2 = [];
-  const _bind$2 = [];
-  const object = new _M0TP211localreview3tcl10DictObject(_tmp, _tmp$2, _M0MPB3Map3MapGsiE(new _M0TPB9ArrayViewGUsiEE(_bind$2, 0, 0), undefined), [], 0, value.text);
-  const _bind$3 = _M0FP211localreview3tcl18dictionary__values(value);
-  let _bind$4;
-  if (_bind$3.$tag === 1) {
-    const _ok = _bind$3;
-    _bind$4 = _ok._0;
-  } else {
-    return _bind$3;
-  }
-  const _bind$5 = _bind$4.length;
-  let _tmp$3 = 0;
-  while (true) {
-    const _ = _tmp$3;
-    if (_ < _bind$5) {
-      const _foreach_element = _bind$4[_];
-      let key;
-      let value$2;
-      _L: {
-        const _key = _foreach_element._0;
-        const _value = _foreach_element._1;
-        key = _key;
-        value$2 = _value;
-        break _L;
-      }
-      const _bind$6 = _M0MP211localreview3tcl10DictObject3put(object, key, value$2);
-      if (_bind$6.$tag === 1) {
-        const _ok = _bind$6;
-        _ok._0;
-      } else {
-        return _bind$6;
-      }
-      _tmp$3 = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  object.representation = value.text;
-  return new _M0DTPC16result6ResultGRP211localreview3tcl10DictObjectRP211localreview3tcl8TclErrorE2Ok(object);
-}
-function _M0MP211localreview3tcl10DictObject3get(self, key) {
-  return _M0MPC16option6Option3mapGiRP211localreview3tcl8TclValueE(_M0MPB3Map3getGsiE(self.index, key), (i) => _M0MPC15array5Array2atGRPB4JsonE(self.values, i));
-}
-function _M0FP211localreview3tcl11list__index(text, length) {
-  if (text === "end") {
-    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(length - 1 | 0);
-  }
-  const _bind$2 = "end-";
-  if (_M0MPC16string6String11has__prefix(text, new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length))) {
-    const _tmp = length - 1 | 0;
-    const _bind$3 = _M0FP211localreview3tcl7integer(_M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(text, 4, undefined)));
-    let _tmp$2;
-    if (_bind$3.$tag === 1) {
-      const _ok = _bind$3;
-      _tmp$2 = _ok._0;
-    } else {
-      return _bind$3;
-    }
-    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(_tmp - _tmp$2 | 0);
-  }
-  const _bind$3 = "end+";
-  if (_M0MPC16string6String11has__prefix(text, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length))) {
-    const _tmp = length - 1 | 0;
-    const _bind$4 = _M0FP211localreview3tcl7integer(_M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(text, 4, undefined)));
-    let _tmp$2;
-    if (_bind$4.$tag === 1) {
-      const _ok = _bind$4;
-      _tmp$2 = _ok._0;
-    } else {
-      return _bind$4;
-    }
-    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(_tmp + _tmp$2 | 0);
-  }
-  return _M0FP211localreview3tcl7integer(text);
-}
-function _M0FP211localreview3tcl10list__edit(text, indices, replacement, depth) {
-  if (depth > 64) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("nested list limit"));
-  }
-  if (_M0MPC15array5Array9is__emptyGRPB4JsonE(indices)) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(replacement);
-  }
-  const _bind$2 = _M0MP211localreview3tcl8TclValue8as__list(text);
-  let values;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    values = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  const _bind$3 = _M0FP211localreview3tcl11list__index(_M0MPC15array5Array2atGRPB4JsonE(indices, 0), values.length);
-  let index;
-  if (_bind$3.$tag === 1) {
-    const _ok = _bind$3;
-    index = _ok._0;
-  } else {
-    return _bind$3;
-  }
-  if (index < 0 || index > values.length) {
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("list index out of range"));
-  }
-  if (index === values.length) {
-    _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, _M0FP211localreview3tcl11text__value(""));
-  }
-  const _bind$4 = _M0FP211localreview3tcl10list__edit(_M0MPC15array5Array2atGRPB4JsonE(values, index), _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(indices, 1, undefined)), replacement, depth + 1 | 0);
-  let _tmp;
-  if (_bind$4.$tag === 1) {
-    const _ok = _bind$4;
-    _tmp = _ok._0;
-  } else {
-    return _bind$4;
-  }
-  _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(values, index, _tmp);
-  return _M0FP211localreview3tcl11list__value(values);
-}
-function _M0FP211localreview3tcl12sort__values(values, compare) {
-  const buffer = _M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(values);
-  const width = new _M0TPB8MutLocalGiE(1);
-  while (true) {
-    if (width.val < values.length) {
-      const start = new _M0TPB8MutLocalGiE(0);
-      while (true) {
-        if (start.val < values.length) {
-          const middle = _M0MPC13int3Int3min(start.val + width.val | 0, values.length);
-          const end = _M0MPC13int3Int3min(start.val + (Math.imul(2, width.val) | 0) | 0, values.length);
-          const a = new _M0TPB8MutLocalGiE(start.val);
-          const b = new _M0TPB8MutLocalGiE(middle);
-          const i = new _M0TPB8MutLocalGiE(start.val);
-          while (true) {
-            if (i.val < end) {
-              let _tmp;
-              if (b.val >= end) {
-                _tmp = true;
-              } else {
-                let _tmp$2;
-                if (a.val < middle) {
-                  const _bind$2 = compare(_M0MPC15array5Array2atGRPB4JsonE(values, a.val), _M0MPC15array5Array2atGRPB4JsonE(values, b.val));
-                  let _tmp$3;
-                  if (_bind$2.$tag === 1) {
-                    const _ok = _bind$2;
-                    _tmp$3 = _ok._0;
-                  } else {
-                    return _bind$2;
-                  }
-                  _tmp$2 = _tmp$3 <= 0;
-                } else {
-                  _tmp$2 = false;
-                }
-                _tmp = _tmp$2;
-              }
-              if (_tmp) {
-                _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(buffer, i.val, _M0MPC15array5Array2atGRPB4JsonE(values, a.val));
-                a.val = a.val + 1 | 0;
-              } else {
-                _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(buffer, i.val, _M0MPC15array5Array2atGRPB4JsonE(values, b.val));
-                b.val = b.val + 1 | 0;
-              }
-              i.val = i.val + 1 | 0;
-              continue;
-            } else {
-              break;
-            }
-          }
-          start.val = end;
-          continue;
-        } else {
-          break;
-        }
-      }
-      const _bind$2 = 0;
-      const _bind$3 = values.length;
-      let _tmp = _bind$2;
-      while (true) {
-        const i = _tmp;
-        if (i < _bind$3) {
-          _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(values, i, _M0MPC15array5Array2atGRPB4JsonE(buffer, i));
-          _tmp = i + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-      width.val = Math.imul(width.val, 2) | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
-}
-function _M0FP211localreview3tcl17tcl__utf8__length(text) {
-  const length = new _M0TPB8MutLocalGiE(0);
-  const _bind$2 = 0;
-  const _bind$3 = text.length;
-  let _tmp = _bind$2;
-  while (true) {
-    const i = _tmp;
-    if (i < _bind$3) {
-      const cp = _M0MPC16option6Option6unwrapGkE(_M0MPC16string6String3get(text, i));
-      length.val = length.val + (cp > 0 && cp < 128 ? 1 : cp < 2048 ? 2 : 3) | 0;
-      _tmp = i + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return length.val;
-}
-function _M0MP211localreview3tcl11Interpreter8get__var(self, name) {
-  const _bind$2 = _M0MP211localreview3tcl11Interpreter10get__value(self, name);
-  let _tmp;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    _tmp = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  return new _M0DTPC16result6ResultGOsRP211localreview3tcl8TclErrorE2Ok(_M0MPC16option6Option3mapGRP211localreview3tcl8TclValuesE(_tmp, (v) => v.text));
-}
-function _M0FP211localreview3tcl12is__complete(source) {
-  if (source.length > 1000000) {
-    return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("script completeness size limit"));
-  }
-  const parser = _M0MP211localreview3tcl12ScriptParser3new(source);
-  let _try_err;
-  _L: {
-    const _bind$2 = _M0MP211localreview3tcl12ScriptParser14script_2einner(parser, false, 0, false);
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _ok._0;
-    } else {
-      const _err = _bind$2;
-      _try_err = _err._0;
-      break _L;
-    }
-    return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE2Ok(!parser.trailing_continuation);
-  }
-  let error;
-  _L$2: {
-    let message;
-    _L$3: {
-      if (_try_err.$tag === 4) {
-        const _Invalid = _try_err;
-        const _message = _Invalid._0;
-        message = _message;
-        break _L$3;
-      } else {
-        error = _try_err;
-        break _L$2;
-      }
-    }
-    let _tmp;
-    const _bind$2 = "limit";
-    if (_M0MPC16string6String11has__suffix(message, new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length))) {
-      _tmp = true;
-    } else {
-      const _bind$3 = "depth";
-      _tmp = _M0MPC16string6String11has__suffix(message, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length));
-    }
-    if (_tmp) {
-      return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid(message));
-    }
-    const _bind$3 = "missing";
-    return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE2Ok(!_M0MPC16string6String11has__prefix(message, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length)));
-  }
-  return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE3Err(error);
-}
-function _M0MP211localreview3tcl7Binding4read(self) {
-  const _bind$2 = _M0MP211localreview3tcl7Binding11read__value(self);
-  let _tmp;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    _tmp = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  return new _M0DTPC16result6ResultGOsRP211localreview3tcl8TclErrorE2Ok(_M0MPC16option6Option3mapGRP211localreview3tcl8TclValuesE(_tmp, (v) => v.text));
-}
-function _M0MP211localreview3tcl11Interpreter14command__names(self, pattern, procedures_only) {
-  const _bind$2 = "::";
-  const qualified = _M0MPC16string6String8contains(pattern, new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length));
-  const full = _M0FP211localreview3tcl13command__name(self.frame.namespace_name, pattern);
-  const space = _M0FP211localreview3tcl15command__parent(full);
-  const tail = qualified ? _M0FP211localreview3tcl15namespace__tail(full) : pattern;
-  let scopes;
-  if (qualified) {
-    scopes = [space];
-  } else {
-    const scopes$2 = [self.frame.namespace_name];
-    if (!procedures_only) {
-      const _bind$3 = _M0MPC16option6Option10unwrap__orGRPB5ArrayGsEE(_M0MPB3Map3getGsRPB5ArrayGsEE(self.state.namespace_paths, self.frame.namespace_name), []);
-      const _bind$4 = _bind$3.length;
-      let _tmp = 0;
-      while (true) {
-        const _ = _tmp;
-        if (_ < _bind$4) {
-          const item = _bind$3[_];
-          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(scopes$2, item);
-          _tmp = _ + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(scopes$2, "::");
-    }
-    scopes = scopes$2;
-  }
-  const values = [];
-  const _it = _M0MPB3Map6valuesGsRP211localreview3tcl7CommandE(self.state.commands);
-  while (true) {
-    let command;
-    _L: {
-      const _bind$3 = _M0MPB4Iter4nextGUsRPB4JsonEE(_it);
-      if (_bind$3 === undefined) {
-        break;
-      } else {
-        const _Some = _bind$3;
-        const _command = _Some;
-        command = _command;
-        break _L;
-      }
-    }
-    if (_M0MPC15array5Array8containsGsE(scopes, _M0FP211localreview3tcl15command__parent(command.name))) {
-      _L$2: {
-        _L$3: {
-          if (!procedures_only) {
-            break _L$3;
-          } else {
-            const _bind$3 = _M0MP211localreview3tcl7Command6origin(command).body;
-            if (_bind$3.$tag === 1) {
-              break _L$3;
-            }
-          }
-          break _L$2;
-        }
-        const _bind$3 = _M0FP211localreview3tcl11glob__match(tail, _M0FP211localreview3tcl15namespace__tail(command.name), false);
-        let _tmp;
-        if (_bind$3.$tag === 1) {
-          const _ok = _bind$3;
-          _tmp = _ok._0;
-        } else {
-          return _bind$3;
-        }
-        if (_tmp) {
-          const value = qualified ? command.name : _M0FP211localreview3tcl15namespace__tail(command.name);
-          if (!_M0MPC15array5Array8containsGsE(values, value)) {
-            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, value);
-          }
-        }
-      }
-    }
-    continue;
-  }
-  _M0MPC15array5Array4sortGsE(values);
-  return new _M0DTPC16result6ResultGRPB5ArrayGsERP211localreview3tcl8TclErrorE2Ok(values);
-}
-function _M0MP211localreview3tcl11Interpreter13info__command(self, args) {
-  const n = args.length;
-  if (n < 2) {
-    return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info arity"));
-  }
-  _L: {
-    _L$2: {
-      _L$3: {
-        const _bind$2 = _M0MPC15array5Array2atGRPB4JsonE(args, 1);
-        switch (_bind$2) {
-          case "complete": {
-            if (n !== 3) {
-              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info complete arity"));
-            }
-            const _bind$3 = _M0FP211localreview3tcl12is__complete(_M0MPC15array5Array2atGRPB4JsonE(args, 2));
-            let _tmp;
-            if (_bind$3.$tag === 1) {
-              const _ok = _bind$3;
-              _tmp = _ok._0;
-            } else {
-              return _bind$3;
-            }
-            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl13boolean__text(_tmp));
-          }
-          case "exists": {
-            if (n !== 3) {
-              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info exists arity"));
-            }
-            let exists;
-            let binding;
-            _L$4: {
-              _L$5: {
-                const _bind$4 = _M0MP211localreview3tcl11Interpreter7binding(self, _M0MPC15array5Array2atGRPB4JsonE(args, 2), false);
-                let _bind$5;
-                if (_bind$4.$tag === 1) {
-                  const _ok = _bind$4;
-                  _bind$5 = _ok._0;
-                } else {
-                  return _bind$4;
-                }
-                if (_bind$5 === undefined) {
-                  exists = false;
-                } else {
-                  const _Some = _bind$5;
-                  const _binding = _Some;
-                  binding = _binding;
-                  break _L$5;
-                }
-                break _L$4;
-              }
-              const _bind$4 = binding.index;
-              if (_bind$4 === undefined) {
-                const _bind$5 = binding.cell.value;
-                exists = !(_bind$5 === undefined);
-              } else {
-                let _try_err;
-                _L$6: {
-                  _L$7: {
-                    const _bind$5 = _M0MP211localreview3tcl7Binding4read(binding);
-                    let _bind$6;
-                    if (_bind$5.$tag === 1) {
-                      const _ok = _bind$5;
-                      _bind$6 = _ok._0;
-                    } else {
-                      const _err = _bind$5;
-                      _try_err = _err._0;
-                      break _L$7;
-                    }
-                    exists = !(_bind$6 === undefined);
-                    break _L$6;
-                  }
-                  exists = false;
-                }
-              }
-            }
-            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl13boolean__text(exists));
-          }
-          case "vars": {
-            break _L$3;
-          }
-          case "globals": {
-            break _L$3;
-          }
-          case "locals": {
-            break _L$3;
-          }
-          case "procs": {
-            break _L$2;
-          }
-          case "commands": {
-            break _L$2;
-          }
-          case "body": {
-            break _L;
-          }
-          case "args": {
-            break _L;
-          }
-          case "default": {
-            break _L;
-          }
-          case "level": {
-            if (n !== 2) {
-              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info level argument not implemented"));
-            }
-            const level = new _M0TPB8MutLocalGiE(0);
-            const frame = new _M0TPB8MutLocalGRP211localreview3tcl5FrameE(self.frame);
-            while (true) {
-              let parent;
-              _L$5: {
-                const _bind$4 = frame.val.parent;
-                if (_bind$4 === undefined) {
-                  break;
-                } else {
-                  const _Some = _bind$4;
-                  const _parent = _Some;
-                  parent = _parent;
-                  break _L$5;
-                }
-              }
-              level.val = level.val + 1 | 0;
-              frame.val = parent;
-              continue;
-            }
-            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0MPC13int3Int18to__string_2einner(level.val, 10));
-          }
-          case "errorstack": {
-            if (n !== 2 && !(n === 3 && _M0MPC16string6String9is__empty(_M0MPC15array5Array2atGRPB4JsonE(args, 2)))) {
-              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info errorstack arity or unsupported interpreter"));
-            }
-            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(self.state.error_stack.val);
-          }
-          case "patchlevel": {
-            if (n !== 2) {
-              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info patchlevel arity"));
-            }
-            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok("0.9.0");
-          }
-          case "tclversion": {
-            if (n !== 2) {
-              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info tclversion arity"));
-            }
-            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok("8.6");
-          }
-          default: {
-            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported info subcommand"));
-          }
-        }
-      }
-      if (n > 3) {
-        return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info vars arity"));
-      }
-      const values = [];
-      if (self.frame.procedure && _M0IP016_24default__implPB2Eq10not__equalGsE(_M0MPC15array5Array2atGRPB4JsonE(args, 1), "globals")) {
-        const _it = _M0MPB3Map5iter2GsRPC15debug4ReprE(self.frame.vars);
-        while (true) {
-          let key;
-          let binding;
-          _L$4: {
-            const _bind$2 = _M0MPB5Iter24nextGsRPC15debug4ReprE(_it);
-            if (_bind$2 === undefined) {
-              break;
-            } else {
-              const _Some = _bind$2;
-              const _x = _Some;
-              const _key = _x._0;
-              const _binding = _x._1;
-              key = _key;
-              binding = _binding;
-              break _L$4;
-            }
-          }
-          const _bind$2 = binding.cell.value;
-          if (_bind$2 === undefined) {
-          } else {
-            _L$5: {
-              _L$6: {
-                if (_M0IP016_24default__implPB2Eq10not__equalGsE(_M0MPC15array5Array2atGRPB4JsonE(args, 1), "locals")) {
-                  break _L$6;
-                } else {
-                  if (!binding.linked) {
-                    break _L$6;
-                  }
-                }
-                break _L$5;
-              }
-              _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, key);
-            }
-          }
-          continue;
-        }
-      } else {
-        const prefix = _M0MPC15array5Array2atGRPB4JsonE(args, 1) === "globals" ? "::" : self.frame.namespace_name;
-        const _it = _M0MPB3Map5iter2GsRPC15debug4ReprE(self.state.globals);
-        while (true) {
-          let key;
-          let cell;
-          _L$4: {
-            const _bind$2 = _M0MPB5Iter24nextGsRPC15debug4ReprE(_it);
-            if (_bind$2 === undefined) {
-              break;
-            } else {
-              const _Some = _bind$2;
-              const _x = _Some;
-              const _key = _x._0;
-              const _cell = _x._1;
-              key = _key;
-              cell = _cell;
-              break _L$4;
-            }
-          }
-          _L$5: {
-            _L$6: {
-              const _bind$2 = cell.value;
-              if (_bind$2 === undefined) {
-                if (cell.declared) {
-                  break _L$6;
-                }
-              } else {
-                break _L$6;
-              }
-              break _L$5;
-            }
-            if (_M0FP211localreview3tcl17namespace__parent(key) === prefix) {
-              _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, _M0FP211localreview3tcl15namespace__tail(key));
-            }
-          }
-          continue;
-        }
-        const _it$2 = _M0MPB3Map5iter2GsRPC15debug4ReprE(self.state.aliases);
-        while (true) {
-          let key;
-          let binding;
-          _L$4: {
-            const _bind$2 = _M0MPB5Iter24nextGsRPC15debug4ReprE(_it$2);
-            if (_bind$2 === undefined) {
-              break;
-            } else {
-              const _Some = _bind$2;
-              const _x = _Some;
-              const _key = _x._0;
-              const _binding = _x._1;
-              key = _key;
-              binding = _binding;
-              break _L$4;
-            }
-          }
-          const _bind$2 = binding.cell.value;
-          if (_bind$2 === undefined) {
-          } else {
-            if (_M0FP211localreview3tcl17namespace__parent(key) === prefix) {
-              if (!_M0MPC15array5Array8containsGsE(values, _M0FP211localreview3tcl15namespace__tail(key))) {
-                _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, _M0FP211localreview3tcl15namespace__tail(key));
-              }
-            }
-          }
-          continue;
-        }
-      }
-      _M0MPC15array5Array4sortGsE(values);
-      let _tmp;
-      if (n === 3) {
-        const _bind$2 = _M0MPC15array5Array6filterGsEHRP211localreview3tcl8TclError(values, (key) => _M0FP211localreview3tcl11glob__match(_M0MPC15array5Array2atGRPB4JsonE(args, 2), key, false));
-        if (_bind$2.$tag === 1) {
-          const _ok = _bind$2;
-          _tmp = _ok._0;
-        } else {
-          return _bind$2;
-        }
-      } else {
-        _tmp = values;
-      }
-      return _M0FP211localreview3tcl12format__list(_tmp);
-    }
-    if (n > 3) {
-      return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info commands arity"));
-    }
-    const _bind$2 = _M0MP211localreview3tcl11Interpreter14command__names(self, n === 3 ? _M0MPC15array5Array2atGRPB4JsonE(args, 2) : "*", _M0MPC15array5Array2atGRPB4JsonE(args, 1) === "procs");
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    return _M0FP211localreview3tcl12format__list(_tmp);
-  }
-  if (n !== (_M0MPC15array5Array2atGRPB4JsonE(args, 1) === "default" ? 5 : 3)) {
-    return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info procedure arity"));
-  }
-  let definition;
-  let command;
-  _L$2: {
-    const _bind$2 = _M0MP211localreview3tcl11Interpreter13find__command(self, _M0MPC15array5Array2atGRPB4JsonE(args, 2));
-    if (_bind$2 === undefined) {
-      return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unknown procedure"));
-    } else {
-      const _Some = _bind$2;
-      const _command = _Some;
-      command = _command;
-      break _L$2;
-    }
-  }
-  const _bind$2 = _M0MP211localreview3tcl7Command6origin(command).body;
-  if (_bind$2.$tag === 1) {
-    const _Script = _bind$2;
-    const _p = _Script._0;
-    definition = _p;
-  } else {
-    return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("not a procedure"));
-  }
-  if (_M0MPC15array5Array2atGRPB4JsonE(args, 1) === "body") {
-    return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(definition.body);
-  } else {
-    if (_M0MPC15array5Array2atGRPB4JsonE(args, 1) === "args") {
-      return _M0FP211localreview3tcl12format__list(_M0MPC15array5Array3mapGUsORP211localreview3tcl8TclValueEsE(definition.parameters, (p) => p._0));
-    } else {
-      const _bind$3 = definition.parameters;
-      const _bind$4 = _bind$3.length;
-      let _tmp = 0;
-      while (true) {
-        const _ = _tmp;
-        if (_ < _bind$4) {
-          const _foreach_element = _bind$3[_];
-          let name;
-          let value;
-          _L$3: {
-            const _name = _foreach_element._0;
-            const _value = _foreach_element._1;
-            name = _name;
-            value = _value;
-            break _L$3;
-          }
-          if (name === _M0MPC15array5Array2atGRPB4JsonE(args, 3)) {
-            const _bind$5 = _M0MP211localreview3tcl11Interpreter10set__value(self, _M0MPC15array5Array2atGRPB4JsonE(args, 4), _M0MPC16option6Option10unwrap__orGsE(value, _M0FP211localreview3tcl11text__value("")));
-            if (_bind$5.$tag === 1) {
-              const _ok = _bind$5;
-              _ok._0;
-            } else {
-              return _bind$5;
-            }
-            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl13boolean__text(!(value === undefined)));
-          }
-          _tmp = _ + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-      return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unknown argument"));
-    }
-  }
-}
-function _M0MP211localreview3tcl11Interpreter18exported__commands(self, space) {
-  const patterns = _M0MPC16option6Option10unwrap__orGRPB5ArrayGsEE(_M0MPB3Map3getGsRPB5ArrayGsEE(self.state.exports, space), []);
-  const result = [];
-  const _it = _M0MPB3Map6valuesGsRP211localreview3tcl7CommandE(self.state.commands);
-  while (true) {
-    let command;
-    _L: {
-      const _bind$2 = _M0MPB4Iter4nextGUsRPB4JsonEE(_it);
-      if (_bind$2 === undefined) {
-        break;
-      } else {
-        const _Some = _bind$2;
-        const _command = _Some;
-        command = _command;
-        break _L;
-      }
-    }
-    if (_M0FP211localreview3tcl15command__parent(command.name) === space) {
-      const _bind$2 = patterns.length;
-      let _tmp = 0;
-      while (true) {
-        const _ = _tmp;
-        if (_ < _bind$2) {
-          const pattern = patterns[_];
-          const _bind$3 = _M0FP211localreview3tcl11glob__match(pattern, _M0FP211localreview3tcl15namespace__tail(command.name), false);
-          let _tmp$2;
-          if (_bind$3.$tag === 1) {
-            const _ok = _bind$3;
-            _tmp$2 = _ok._0;
-          } else {
-            return _bind$3;
-          }
-          if (_tmp$2) {
-            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result, command);
-            break;
-          }
-          _tmp = _ + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-    }
-    continue;
-  }
-  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7CommandERP211localreview3tcl8TclErrorE2Ok(result);
-}
-function _M0MP211localreview3tcl11Interpreter16ensemble__prefix(self, ensemble, name) {
-  let candidates;
-  if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(ensemble.subcommands)) {
-    candidates = ensemble.subcommands;
-  } else {
-    if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(ensemble.mapping)) {
-      candidates = _M0MPC15array5Array3mapGUsRPB5ArrayGRP211localreview3tcl8TclValueEEsE(ensemble.mapping, (pair) => pair._0);
-    } else {
-      const _bind$2 = _M0MP211localreview3tcl11Interpreter18exported__commands(self, ensemble.namespace_name);
-      let _tmp;
-      if (_bind$2.$tag === 1) {
-        const _ok = _bind$2;
-        _tmp = _ok._0;
-      } else {
-        return _bind$2;
-      }
-      candidates = _M0MPC15array5Array3mapGRP211localreview3tcl7CommandsE(_tmp, (c) => _M0FP211localreview3tcl15namespace__tail(c.name));
-    }
-  }
-  const selected = new _M0TPB8MutLocalGOsE(undefined);
-  if (_M0MPC15array5Array8containsGsE(candidates, name)) {
-    selected.val = name;
-  } else {
-    if (ensemble.prefixes) {
-      const _bind$2 = candidates.length;
-      let _tmp = 0;
-      while (true) {
-        const _ = _tmp;
-        if (_ < _bind$2) {
-          const candidate = candidates[_];
-          if (_M0MPC16string6String11has__prefix(candidate, new _M0TPC16string10StringView(name, 0, name.length))) {
-            let old;
-            _L: {
-              _L$2: {
-                const _bind$3 = selected.val;
-                if (_bind$3 === undefined) {
-                  selected.val = candidate;
-                } else {
-                  const _Some = _bind$3;
-                  const _old = _Some;
-                  old = _old;
-                  break _L$2;
-                }
-                break _L;
-              }
-              if (_M0IP016_24default__implPB2Eq10not__equalGsE(old, candidate)) {
-                return new _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok(_M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None__);
-              }
-            }
-          }
-          _tmp = _ + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-    }
-  }
-  let key;
-  _L: {
-    const _bind$2 = selected.val;
-    if (_bind$2 === undefined) {
-      return new _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok(_M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None__);
-    } else {
-      const _Some = _bind$2;
-      const _key = _Some;
-      key = _key;
-      break _L;
-    }
-  }
-  const _bind$2 = ensemble.mapping;
-  const _bind$3 = _bind$2.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$3) {
-      const _foreach_element = _bind$2[_];
-      let mapped;
-      let words;
-      _L$2: {
-        const _mapped = _foreach_element._0;
-        const _words = _foreach_element._1;
-        mapped = _mapped;
-        words = _words;
-        break _L$2;
-      }
-      if (mapped === key) {
-        return new _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok(new _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4Some(words));
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return new _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok(new _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4Some([_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13command__name(ensemble.namespace_name, key))]));
-}
-function _M0MP211localreview3tcl11Interpreter14cached__script(self, source) {
-  const cache = self.state.cache;
-  let program;
-  _L: {
-    _L$2: {
-      const _bind$2 = _M0MPB3Map3getGsRP211localreview3tcl13ScriptProgramE(cache.scripts, source);
-      if (_bind$2 === undefined) {
-      } else {
-        const _Some = _bind$2;
-        const _program = _Some;
-        program = _program;
-        break _L$2;
-      }
-      break _L;
-    }
-    if (cache.script_hits < 2147483647) {
-      cache.script_hits = cache.script_hits + 1 | 0;
-    }
-    return program;
-  }
-  if (_M0MPB3Map6lengthGsRP211localreview3tcl8TclValueE(cache.scripts) >= 256 || (cache.script_units + source.length | 0) > 262144) {
-    _M0MPB3Map5clearGsRP211localreview3tcl13ScriptProgramE(cache.scripts);
-    cache.script_units = 0;
-  }
-  const program$2 = new _M0TP211localreview3tcl13ScriptProgram(_M0MP211localreview3tcl12ScriptParser3new(source), [], undefined);
-  if (source.length <= 65536) {
-    _M0MPB3Map3setGsRP211localreview3tcl13ScriptProgramE(cache.scripts, source, program$2);
-    cache.script_units = cache.script_units + source.length | 0;
-  }
-  return program$2;
-}
-function _M0MP211localreview3tcl10ListObject6append(self, items) {
-  if (_M0MPC15array5Array9is__emptyGRPB4JsonE(items)) {
-    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
-  }
-  if ((self.values.length + items.length | 0) > 100000) {
-    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("list element limit"));
-  }
-  const encoded = [];
-  const units = new _M0TPB8MutLocalGiE(self.units);
-  const _bind$2 = 0;
-  const _bind$3 = items.length;
-  let _tmp = _bind$2;
-  while (true) {
-    const i = _tmp;
-    if (i < _bind$3) {
-      const text = _M0FP211localreview3tcl14quote__element(_M0MPC15array5Array2atGRPB4JsonE(items, i).text, _M0MPC15array5Array9is__emptyGRPB4JsonE(self.values) && i === 0);
-      units.val = units.val + (text.length + (_M0MPC15array5Array9is__emptyGRPB4JsonE(self.values) && i === 0 ? 0 : 1) | 0) | 0;
-      if (units.val > 1000000) {
-        return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("list size limit"));
-      }
-      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(encoded, text);
-      _tmp = i + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  const _bind$4 = items.length;
-  let _tmp$2 = 0;
-  while (true) {
-    const _ = _tmp$2;
-    if (_ < _bind$4) {
-      const item = items[_];
-      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.values, item);
-      _tmp$2 = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  const _bind$5 = encoded.length;
-  let _tmp$3 = 0;
-  while (true) {
-    const _ = _tmp$3;
-    if (_ < _bind$5) {
-      const text = encoded[_];
-      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.encoded, text);
-      _tmp$3 = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  self.units = units.val;
-  self.representation = undefined;
-  return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
-}
-function _M0MP211localreview3tcl10ListObject11from__value(value) {
-  const object = new _M0TP211localreview3tcl10ListObject([], [], 0, value.text);
-  const _bind$2 = _M0MP211localreview3tcl8TclValue8as__list(value);
-  let _tmp;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    _tmp = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  const _bind$3 = _M0MP211localreview3tcl10ListObject6append(object, _tmp);
-  if (_bind$3.$tag === 1) {
-    const _ok = _bind$3;
-    _ok._0;
-  } else {
-    return _bind$3;
-  }
-  object.representation = value.text;
-  return new _M0DTPC16result6ResultGRP211localreview3tcl10ListObjectRP211localreview3tcl8TclErrorE2Ok(object);
-}
-function _M0MP211localreview3tcl11Interpreter12append__list(self, name, items, discard_result) {
-  const _bind$2 = _M0MP211localreview3tcl11Interpreter7binding(self, name, true);
-  let _tmp;
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    _tmp = _ok._0;
-  } else {
-    return _bind$2;
-  }
-  const binding = _M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(_tmp);
-  const _bind$3 = binding.index;
-  if (_bind$3 === undefined) {
-  } else {
-    const _bind$4 = _M0MP211localreview3tcl7Binding11read__value(binding);
-    let _tmp$2;
-    if (_bind$4.$tag === 1) {
-      const _ok = _bind$4;
-      _tmp$2 = _ok._0;
-    } else {
-      return _bind$4;
-    }
-    const _bind$5 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC16option6Option10unwrap__orGsE(_tmp$2, _M0FP211localreview3tcl11text__value("")));
-    let _tmp$3;
-    if (_bind$5.$tag === 1) {
-      const _ok = _bind$5;
-      _tmp$3 = _ok._0;
-    } else {
-      return _bind$5;
-    }
-    const values = _M0IPC15array5ArrayPB3Add3addGRP211localreview3tcl8TclValueE(_tmp$3, items);
-    const _bind$6 = _M0FP211localreview3tcl11list__value(values);
-    let result;
-    if (_bind$6.$tag === 1) {
-      const _ok = _bind$6;
-      result = _ok._0;
-    } else {
-      return _bind$6;
-    }
-    const _bind$7 = _M0MP211localreview3tcl11Interpreter10set__value(self, name, result);
-    if (_bind$7.$tag === 1) {
-      const _ok = _bind$7;
-      _ok._0;
-    } else {
-      return _bind$7;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(discard_result ? _M0FP211localreview3tcl11text__value("") : result);
-  }
-  let object;
-  _L: {
-    _L$2: {
-      const _bind$4 = binding.cell.value;
-      if (_bind$4 === undefined) {
-        break _L$2;
-      } else {
-        const _Some = _bind$4;
-        const _x = _Some;
-        switch (_x.$tag) {
-          case 1: {
-            const _Sequence = _x;
-            const _object = _Sequence._0;
-            object = _object;
-            break;
-          }
-          case 3: {
-            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("variable is array"));
-          }
-          default: {
-            break _L$2;
-          }
-        }
-      }
-      break _L;
-    }
-    const _bind$4 = _M0MP211localreview3tcl7Binding11read__value(binding);
-    let _tmp$2;
-    if (_bind$4.$tag === 1) {
-      const _ok = _bind$4;
-      _tmp$2 = _ok._0;
-    } else {
-      return _bind$4;
-    }
-    const _bind$5 = _M0MP211localreview3tcl10ListObject11from__value(_M0MPC16option6Option10unwrap__orGsE(_tmp$2, _M0FP211localreview3tcl11text__value("")));
-    if (_bind$5.$tag === 1) {
-      const _ok = _bind$5;
-      object = _ok._0;
-    } else {
-      return _bind$5;
-    }
-  }
-  const _bind$4 = _M0MP211localreview3tcl10ListObject6append(object, items);
+  const _bind$4 = _M0FP211localreview3tcl13switch__error(_tmp$3, _tmp$4);
   if (_bind$4.$tag === 1) {
     const _ok = _bind$4;
     _ok._0;
   } else {
     return _bind$4;
   }
-  binding.cell.value = new _M0DTP211localreview3tcl13VariableValue8Sequence(object);
-  let _tmp$2;
-  if (discard_result) {
-    _tmp$2 = _M0FP211localreview3tcl11text__value("");
-  } else {
-    const _bind$5 = _M0MP211localreview3tcl7Binding11read__value(binding);
-    let _tmp$3;
-    if (_bind$5.$tag === 1) {
-      const _ok = _bind$5;
-      _tmp$3 = _ok._0;
-    } else {
-      return _bind$5;
-    }
-    _tmp$2 = _M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(_tmp$3);
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$2);
-}
-function _M0MP211localreview3tcl11Interpreter21list__command_2einner(self, input, discard_result) {
-  const args = _M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(input, (v) => v.text);
-  const n = args.length;
-  const _bind$2 = _M0MPC15array5Array2atGRPB4JsonE(args, 0);
-  let text;
-  switch (_bind$2) {
-    case "list": {
-      const _bind$3 = _M0FP211localreview3tcl11list__value(_M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(input, 1, undefined)));
-      let _tmp;
-      if (_bind$3.$tag === 1) {
-        const _ok = _bind$3;
-        _tmp = _ok._0;
-      } else {
-        return _bind$3;
-      }
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp);
-    }
-    case "llength": {
-      if (n !== 2) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("llength arity"));
-      }
-      const _bind$4 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, 1));
-      let _tmp$2;
-      if (_bind$4.$tag === 1) {
-        const _ok = _bind$4;
-        _tmp$2 = _ok._0;
-      } else {
-        return _bind$4;
-      }
-      text = _M0MPC13int3Int18to__string_2einner(_tmp$2.length, 10);
-      break;
-    }
-    case "lindex": {
-      if (n < 2) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lindex arity"));
-      }
-      let indices;
-      if (n === 3) {
-        const _bind$5 = _M0FP211localreview3tcl11parse__list(_M0MPC15array5Array2atGRPB4JsonE(args, 2));
-        if (_bind$5.$tag === 1) {
-          const _ok = _bind$5;
-          indices = _ok._0;
-        } else {
-          return _bind$5;
-        }
-      } else {
-        indices = _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(args, 2, undefined));
-      }
-      const value = new _M0TPB8MutLocalGRP211localreview3tcl8TclValueE(_M0MPC15array5Array2atGRPB4JsonE(input, 1));
-      const _bind$5 = indices.length;
-      let _tmp$3 = 0;
-      while (true) {
-        const _ = _tmp$3;
-        if (_ < _bind$5) {
-          const index = indices[_];
-          const _bind$6 = _M0MP211localreview3tcl8TclValue8as__list(value.val);
-          let values;
-          if (_bind$6.$tag === 1) {
-            const _ok = _bind$6;
-            values = _ok._0;
-          } else {
-            return _bind$6;
-          }
-          const _bind$7 = _M0FP211localreview3tcl11list__index(index, values.length);
-          let i;
-          if (_bind$7.$tag === 1) {
-            const _ok = _bind$7;
-            i = _ok._0;
-          } else {
-            return _bind$7;
-          }
-          value.val = i >= 0 && i < values.length ? _M0MPC15array5Array2atGRPB4JsonE(values, i) : _M0FP211localreview3tcl11text__value("");
-          _tmp$3 = _ + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(value.val);
-    }
-    case "lappend": {
-      if (n < 2) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lappend arity"));
-      }
-      if (n === 2) {
-        const _bind$6 = _M0MP211localreview3tcl11Interpreter10get__value(self, _M0MPC15array5Array2atGRPB4JsonE(args, 1));
-        let _tmp$4;
-        if (_bind$6.$tag === 1) {
-          const _ok = _bind$6;
-          _tmp$4 = _ok._0;
-        } else {
-          return _bind$6;
-        }
-        const value$2 = _M0MPC16option6Option10unwrap__orGsE(_tmp$4, _M0FP211localreview3tcl11text__value(""));
-        const _bind$7 = _M0MP211localreview3tcl8TclValue8as__list(value$2);
-        if (_bind$7.$tag === 1) {
-          const _ok = _bind$7;
-          _ok._0;
-        } else {
-          return _bind$7;
-        }
-        const _bind$8 = _M0MP211localreview3tcl11Interpreter10set__value(self, _M0MPC15array5Array2atGRPB4JsonE(args, 1), value$2);
-        if (_bind$8.$tag === 1) {
-          const _ok = _bind$8;
-          _ok._0;
-        } else {
-          return _bind$8;
-        }
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(value$2);
-      }
-      const _bind$6 = _M0MP211localreview3tcl11Interpreter12append__list(self, _M0MPC15array5Array2atGRPB4JsonE(args, 1), _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(input, 2, undefined)), discard_result);
-      let _tmp$4;
-      if (_bind$6.$tag === 1) {
-        const _ok = _bind$6;
-        _tmp$4 = _ok._0;
-      } else {
-        return _bind$6;
-      }
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$4);
-    }
-    case "join": {
-      if (n !== 2 && n !== 3) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("join arity"));
-      }
-      const _bind$7 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, 1));
-      let values;
-      if (_bind$7.$tag === 1) {
-        const _ok = _bind$7;
-        values = _ok._0;
-      } else {
-        return _bind$7;
-      }
-      const sep = n === 3 ? _M0MPC15array5Array2atGRPB4JsonE(args, 2) : " ";
-      const size = new _M0TPB8MutLocalGiE(0);
-      const _bind$8 = values.length;
-      let _tmp$5 = 0;
-      while (true) {
-        const _ = _tmp$5;
-        if (_ < _bind$8) {
-          const value$2 = values[_];
-          size.val = size.val + value$2.text.length | 0;
-          if (size.val > 1000000) {
-            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("join size limit"));
-          }
-          _tmp$5 = _ + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-      let _tmp$6;
-      if (values.length > 1) {
-        const _tmp$7 = sep.length;
-        const _tmp$8 = values.length - 1 | 0;
-        if (_tmp$8 === 0) {
-          $panic();
-        }
-        _tmp$6 = _tmp$7 > ((1000000 - size.val | 0) / _tmp$8 | 0);
-      } else {
-        _tmp$6 = false;
-      }
-      if (_tmp$6) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("join size limit"));
-      }
-      text = _M0MPC15array5Array4joinGsE(_M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(values, (v) => v.text), new _M0TPC16string10StringView(sep, 0, sep.length));
-      break;
-    }
-    case "split": {
-      if (n !== 2 && n !== 3) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("split arity"));
-      }
-      const separators = _M0MPC16string6String9to__array(n === 3 ? _M0MPC15array5Array2atGRPB4JsonE(args, 2) : " \n\t\r");
-      const chars = _M0MPC16string6String9to__array(_M0MPC15array5Array2atGRPB4JsonE(args, 1));
-      const values$2 = [];
-      if (_M0MPC15array5Array9is__emptyGcE(separators)) {
-        const _bind$9 = chars.length;
-        let _tmp$7 = 0;
-        while (true) {
-          const _ = _tmp$7;
-          if (_ < _bind$9) {
-            const c = chars[_];
-            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values$2, _M0IPC14char4CharPB4Show10to__string(c));
-            _tmp$7 = _ + 1 | 0;
-            continue;
-          } else {
-            break;
-          }
-        }
-      } else {
-        if (!_M0MPC15array5Array9is__emptyGcE(chars)) {
-          const word = new _M0TPB8MutLocalGsE("");
-          const _bind$9 = chars.length;
-          let _tmp$7 = 0;
-          while (true) {
-            const _ = _tmp$7;
-            if (_ < _bind$9) {
-              const c = chars[_];
-              if (_M0MPC15array5Array8containsGcE(separators, c)) {
-                _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values$2, word.val);
-                word.val = "";
-              } else {
-                word.val = `${word.val}${_M0IPC14char4CharPB4Show10to__string(c)}`;
-              }
-              _tmp$7 = _ + 1 | 0;
-              continue;
-            } else {
-              break;
-            }
-          }
-          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values$2, word.val);
-        }
-      }
-      const _bind$9 = _M0FP211localreview3tcl12format__list(values$2);
-      if (_bind$9.$tag === 1) {
-        const _ok = _bind$9;
-        text = _ok._0;
-      } else {
-        return _bind$9;
-      }
-      break;
-    }
-    case "concat": {
-      const _bind$10 = _M0FP211localreview3tcl14concat__values(_M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(input, 1, undefined)));
-      let _tmp$7;
-      if (_bind$10.$tag === 1) {
-        const _ok = _bind$10;
-        _tmp$7 = _ok._0;
-      } else {
-        return _bind$10;
-      }
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$7);
-    }
-    case "lrange": {
-      if (n !== 4) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lrange arity"));
-      }
-      const _bind$11 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, 1));
-      let values$3;
-      if (_bind$11.$tag === 1) {
-        const _ok = _bind$11;
-        values$3 = _ok._0;
-      } else {
-        return _bind$11;
-      }
-      const _bind$12 = _M0FP211localreview3tcl11list__index(_M0MPC15array5Array2atGRPB4JsonE(args, 2), values$3.length);
-      let _tmp$8;
-      if (_bind$12.$tag === 1) {
-        const _ok = _bind$12;
-        _tmp$8 = _ok._0;
-      } else {
-        return _bind$12;
-      }
-      const first = _M0MPC13int3Int3max(_tmp$8, 0);
-      const _bind$13 = _M0FP211localreview3tcl11list__index(_M0MPC15array5Array2atGRPB4JsonE(args, 3), values$3.length);
-      let _tmp$9;
-      if (_bind$13.$tag === 1) {
-        const _ok = _bind$13;
-        _tmp$9 = _ok._0;
-      } else {
-        return _bind$13;
-      }
-      const last = _M0MPC13int3Int3min(_tmp$9, values$3.length - 1 | 0);
-      if (first > last) {
-        text = "";
-      } else {
-        const _bind$14 = _M0FP211localreview3tcl11list__value(_M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(values$3, first, last + 1 | 0)));
-        let _tmp$10;
-        if (_bind$14.$tag === 1) {
-          const _ok = _bind$14;
-          _tmp$10 = _ok._0;
-        } else {
-          return _bind$14;
-        }
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$10);
-      }
-      break;
-    }
-    case "lreverse": {
-      if (n !== 2) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lreverse arity"));
-      }
-      const _bind$14 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, 1));
-      let values$4;
-      if (_bind$14.$tag === 1) {
-        const _ok = _bind$14;
-        values$4 = _ok._0;
-      } else {
-        return _bind$14;
-      }
-      _M0MPC15array5Array14rev__in__placeGRP211localreview3tcl8TclValueE(values$4);
-      const _bind$15 = _M0FP211localreview3tcl11list__value(values$4);
-      let _tmp$10;
-      if (_bind$15.$tag === 1) {
-        const _ok = _bind$15;
-        _tmp$10 = _ok._0;
-      } else {
-        return _bind$15;
-      }
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$10);
-    }
-    case "lrepeat": {
-      if (n < 3) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lrepeat arity"));
-      }
-      const _bind$16 = _M0FP211localreview3tcl7integer(_M0MPC15array5Array2atGRPB4JsonE(args, 1));
-      let count;
-      if (_bind$16.$tag === 1) {
-        const _ok = _bind$16;
-        count = _ok._0;
-      } else {
-        return _bind$16;
-      }
-      let _tmp$11;
-      if (count < 0) {
-        _tmp$11 = true;
-      } else {
-        const _tmp$12 = n - 2 | 0;
-        if (_tmp$12 === 0) {
-          $panic();
-        }
-        _tmp$11 = count > (100000 / _tmp$12 | 0);
-      }
-      if (_tmp$11) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lrepeat count limit"));
-      }
-      const values$5 = [];
-      const _bind$17 = 0;
-      let _tmp$12 = _bind$17;
-      while (true) {
-        const _ = _tmp$12;
-        if (_ < count) {
-          const _bind$18 = _M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(input, 2, undefined);
-          const _bind$19 = _bind$18.end - _bind$18.start | 0;
-          let _tmp$13 = 0;
-          while (true) {
-            const _$2 = _tmp$13;
-            if (_$2 < _bind$19) {
-              const value$2 = _bind$18.buf[_bind$18.start + _$2 | 0];
-              _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values$5, value$2);
-              _tmp$13 = _$2 + 1 | 0;
-              continue;
-            } else {
-              break;
-            }
-          }
-          _tmp$12 = _ + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-      const _bind$18 = _M0FP211localreview3tcl11list__value(values$5);
-      let _tmp$13;
-      if (_bind$18.$tag === 1) {
-        const _ok = _bind$18;
-        _tmp$13 = _ok._0;
-      } else {
-        return _bind$18;
-      }
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$13);
-    }
-    default: {
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("list command not implemented"));
-    }
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(text));
-}
-function _M0FP211localreview3tcl18re__capture__value(text, span, indices, delta) {
-  if (indices) {
-    if (span._0 < 0) {
-      const _bind$2 = _M0FP211localreview3tcl11list__value([_M0FP211localreview3tcl11text__value("-1"), _M0FP211localreview3tcl11text__value("-1")]);
-      let _tmp;
-      if (_bind$2.$tag === 1) {
-        const _ok = _bind$2;
-        _tmp = _ok._0;
-      } else {
-        return _bind$2;
-      }
-      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp);
-    }
-    const _bind$2 = _M0FP211localreview3tcl11list__value([_M0FP211localreview3tcl11text__value(_M0MPC13int3Int18to__string_2einner(span._0 + delta | 0, 10)), _M0FP211localreview3tcl11text__value(_M0MPC13int3Int18to__string_2einner((span._1 + delta | 0) - 1 | 0, 10))]);
-    let _tmp;
-    if (_bind$2.$tag === 1) {
-      const _ok = _bind$2;
-      _tmp = _ok._0;
-    } else {
-      return _bind$2;
-    }
-    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp);
-  }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(span._0 < 0 || span._1 <= span._0 ? "" : _M0FP211localreview3tcl11unit__slice(text, span._0, span._1)));
+  return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok("");
 }
 function _M0FP211localreview3tcl9re__error(message, code) {
   const _tmp = `couldn't compile regular expression pattern: ${message}`;
@@ -21719,6 +18187,3408 @@ function _M0FP211localreview3tcl19re__compile_2einner(source, nocase, expanded, 
   }
   return new _M0DTPC16result6ResultGRP211localreview3tcl9RePatternRP211localreview3tcl8TclErrorE2Ok(new _M0TP211localreview3tcl9RePattern(node, parser.groups, nocase$2.val, line_stop$2.val, line_anchor$2.val, 0, false, parser.notes));
 }
+function _M0FP211localreview3tcl9re__class(name, cp, nocase) {
+  if (name === "blank") {
+    return cp === 9 || cp === 32;
+  }
+  let bit;
+  switch (name) {
+    case "alnum": {
+      bit = 1;
+      break;
+    }
+    case "alpha": {
+      bit = 2;
+      break;
+    }
+    case "ascii": {
+      bit = 4;
+      break;
+    }
+    case "cntrl": {
+      bit = 8;
+      break;
+    }
+    case "digit": {
+      bit = 16;
+      break;
+    }
+    case "graph": {
+      bit = 32;
+      break;
+    }
+    case "lower": {
+      bit = 64;
+      break;
+    }
+    case "print": {
+      bit = 128;
+      break;
+    }
+    case "punct": {
+      bit = 256;
+      break;
+    }
+    case "space": {
+      bit = 512;
+      break;
+    }
+    case "upper": {
+      bit = 1024;
+      break;
+    }
+    case "word": {
+      bit = 2048;
+      break;
+    }
+    case "xdigit": {
+      bit = 4096;
+      break;
+    }
+    default: {
+      bit = 0;
+    }
+  }
+  const mask = _M0FP211localreview3tcl13unicode__mask(cp);
+  return nocase && (name === "lower" || name === "upper") ? (mask & 1) !== 0 : (mask & bit) !== 0;
+}
+function _M0FP211localreview3tcl19re__clear__captures(node, captures) {
+  let _tmp = node;
+  let _tmp$2 = captures;
+  _L: while (true) {
+    const node$2 = _tmp;
+    const captures$2 = _tmp$2;
+    let child;
+    _L$2: {
+      let nodes;
+      _L$3: {
+        let group;
+        let child$2;
+        _L$4: {
+          const _bind$2 = node$2.kind;
+          switch (_bind$2.$tag) {
+            case 8: {
+              const _Capture = _bind$2;
+              const _group = _Capture._0;
+              const _child = _Capture._1;
+              group = _group;
+              child$2 = _child;
+              break _L$4;
+            }
+            case 5: {
+              const _Sequence = _bind$2;
+              const _nodes = _Sequence._0;
+              nodes = _nodes;
+              break _L$3;
+            }
+            case 6: {
+              const _Alternate = _bind$2;
+              const _nodes$2 = _Alternate._0;
+              nodes = _nodes$2;
+              break _L$3;
+            }
+            case 7: {
+              const _Repeat = _bind$2;
+              const _child$2 = _Repeat._0;
+              child = _child$2;
+              break _L$2;
+            }
+            case 11: {
+              const _Look = _bind$2;
+              const _child$3 = _Look._0;
+              child = _child$3;
+              break _L$2;
+            }
+            default: {
+              return;
+            }
+          }
+        }
+        _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(captures$2, group, { _0: -1, _1: -1 });
+        _tmp = child$2;
+        continue;
+      }
+      const _bind$2 = nodes.length;
+      let _tmp$3 = 0;
+      while (true) {
+        const _ = _tmp$3;
+        if (_ < _bind$2) {
+          const child$2 = nodes[_];
+          _M0FP211localreview3tcl19re__clear__captures(child$2, captures$2);
+          _tmp$3 = _ + 1 | 0;
+          continue;
+        } else {
+          return;
+        }
+      }
+    }
+    _tmp = child;
+    continue;
+  }
+}
+function _M0FP211localreview3tcl9re__order(states, preference) {
+  const indexed = _M0MPC15array5Array5makeiGUiRP211localreview3tcl7ReStateEE(states.length, (i) => ({ _0: i, _1: _M0MPC15array5Array2atGRPB4JsonE(states, i) }));
+  _M0MPC15array5Array8sort__byGUiiEE(indexed, (a, b) => {
+    const order = preference < 0 ? $compare_int(a._1.pos, b._1.pos) : $compare_int(b._1.pos, a._1.pos);
+    return order === 0 ? $compare_int(a._0, b._0) : order;
+  });
+  return _M0MPC15array5Array3mapGUiRP211localreview3tcl7ReStateERP211localreview3tcl7ReStateE(indexed, (p) => p._1);
+}
+function _M0MP211localreview3tcl11Interpreter4tick(self) {
+  const _bind$2 = self.budget;
+  _bind$2.val = _bind$2.val - 1 | 0;
+  if (self.budget.val < 0) {
+    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("execution budget"));
+  } else {
+    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
+  }
+}
+function _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, node, text, state, depth) {
+  const _bind$2 = _M0MP211localreview3tcl11Interpreter4tick(self);
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    _ok._0;
+  } else {
+    return _bind$2;
+  }
+  if (depth > 128) {
+    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp execution nesting limit"));
+  }
+  const at = state.pos;
+  const n = text.length;
+  let result;
+  let min;
+  let child;
+  let max;
+  _L: {
+    _L$2: {
+      let child$2;
+      let positive;
+      _L$3: {
+        _L$4: {
+          let group;
+          _L$5: {
+            _L$6: {
+              let child$3;
+              _L$7: {
+                _L$8: {
+                  let group$2;
+                  let child$4;
+                  _L$9: {
+                    _L$10: {
+                      let nodes;
+                      _L$11: {
+                        _L$12: {
+                          let nodes$2;
+                          _L$13: {
+                            _L$14: {
+                              let kind;
+                              _L$15: {
+                                _L$16: {
+                                  let set;
+                                  _L$17: {
+                                    _L$18: {
+                                      let cp;
+                                      _L$19: {
+                                        _L$20: {
+                                          const _bind$3 = node.kind;
+                                          switch (_bind$3.$tag) {
+                                            case 0: {
+                                              result = [state];
+                                              break;
+                                            }
+                                            case 1: {
+                                              const _Literal = _bind$3;
+                                              const _cp = _Literal._0;
+                                              cp = _cp;
+                                              break _L$20;
+                                            }
+                                            case 2: {
+                                              result = at < n && (!pattern.line_stop || (at >>> 0 < text.length ? text.charCodeAt(at) : $oob()) !== 10) ? [new _M0TP211localreview3tcl7ReState(at + 1 | 0, state.captures)] : [];
+                                              break;
+                                            }
+                                            case 3: {
+                                              const _Set = _bind$3;
+                                              const _set = _Set._0;
+                                              set = _set;
+                                              break _L$18;
+                                            }
+                                            case 4: {
+                                              const _Anchor = _bind$3;
+                                              const _kind = _Anchor._0;
+                                              kind = _kind;
+                                              break _L$16;
+                                            }
+                                            case 5: {
+                                              const _Sequence = _bind$3;
+                                              const _nodes = _Sequence._0;
+                                              nodes$2 = _nodes;
+                                              break _L$14;
+                                            }
+                                            case 6: {
+                                              const _Alternate = _bind$3;
+                                              const _nodes$2 = _Alternate._0;
+                                              nodes = _nodes$2;
+                                              break _L$12;
+                                            }
+                                            case 8: {
+                                              const _Capture = _bind$3;
+                                              const _group = _Capture._0;
+                                              const _child = _Capture._1;
+                                              group$2 = _group;
+                                              child$4 = _child;
+                                              break _L$10;
+                                            }
+                                            case 9: {
+                                              const _Uncaptured = _bind$3;
+                                              const _child$2 = _Uncaptured._0;
+                                              child$3 = _child$2;
+                                              break _L$8;
+                                            }
+                                            case 10: {
+                                              const _Backref = _bind$3;
+                                              const _group$2 = _Backref._0;
+                                              group = _group$2;
+                                              break _L$6;
+                                            }
+                                            case 11: {
+                                              const _Look = _bind$3;
+                                              const _child$3 = _Look._0;
+                                              const _positive = _Look._1;
+                                              child$2 = _child$3;
+                                              positive = _positive;
+                                              break _L$4;
+                                            }
+                                            default: {
+                                              const _Repeat = _bind$3;
+                                              const _child$4 = _Repeat._0;
+                                              const _min = _Repeat._1;
+                                              const _max = _Repeat._2;
+                                              min = _min;
+                                              child = _child$4;
+                                              max = _max;
+                                              break _L$2;
+                                            }
+                                          }
+                                          break _L$19;
+                                        }
+                                        const equal = at < n && (pattern.nocase ? _M0FP211localreview3tcl19unicode__case__unit(at >>> 0 < text.length ? text.charCodeAt(at) : $oob(), 0) === _M0FP211localreview3tcl19unicode__case__unit(cp, 0) : (at >>> 0 < text.length ? text.charCodeAt(at) : $oob()) === cp);
+                                        result = equal ? [new _M0TP211localreview3tcl7ReState(at + 1 | 0, state.captures)] : [];
+                                      }
+                                      break _L$17;
+                                    }
+                                    if (at >= n) {
+                                      return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok([]);
+                                    }
+                                    const raw = at >>> 0 < text.length ? text.charCodeAt(at) : $oob();
+                                    const cp = raw;
+                                    const included = _M0MPB4Iter3anyGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(_M0MPC15array5Array4iterGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(set.ranges), (r) => cp >= r._0 && cp <= r._1) || _M0MPB4Iter3anyGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(_M0MPC15array5Array4iterGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(set.classes), (c) => _M0FP211localreview3tcl9re__class(c, cp, pattern.nocase));
+                                    result = _M0IP016_24default__implPB2Eq10not__equalGbE(included, set.negated) && !(set.negated && (pattern.line_stop && raw === 10)) ? [new _M0TP211localreview3tcl7ReState(at + 1 | 0, state.captures)] : [];
+                                  }
+                                  break _L$15;
+                                }
+                                let previous;
+                                if (at > pattern.origin) {
+                                  const _tmp = at - 1 | 0;
+                                  previous = _M0FP211localreview3tcl9re__class("word", _tmp >>> 0 < text.length ? text.charCodeAt(_tmp) : $oob(), false);
+                                } else {
+                                  previous = false;
+                                }
+                                const next = at < n && _M0FP211localreview3tcl9re__class("word", at >>> 0 < text.length ? text.charCodeAt(at) : $oob(), false);
+                                let valid;
+                                switch (kind) {
+                                  case 0: {
+                                    if (at === pattern.origin && !pattern.not_bol) {
+                                      valid = true;
+                                    } else {
+                                      let _tmp;
+                                      if (pattern.line_anchor) {
+                                        let _tmp$2;
+                                        if (at > pattern.origin) {
+                                          const _tmp$3 = at - 1 | 0;
+                                          _tmp$2 = (_tmp$3 >>> 0 < text.length ? text.charCodeAt(_tmp$3) : $oob()) === 10;
+                                        } else {
+                                          _tmp$2 = false;
+                                        }
+                                        _tmp = _tmp$2;
+                                      } else {
+                                        _tmp = false;
+                                      }
+                                      valid = _tmp;
+                                    }
+                                    break;
+                                  }
+                                  case 1: {
+                                    valid = at === n || pattern.line_anchor && (at < n && (at >>> 0 < text.length ? text.charCodeAt(at) : $oob()) === 10);
+                                    break;
+                                  }
+                                  case 2: {
+                                    valid = at === pattern.origin;
+                                    break;
+                                  }
+                                  case 3: {
+                                    valid = at === n;
+                                    break;
+                                  }
+                                  case 4: {
+                                    valid = !previous && next;
+                                    break;
+                                  }
+                                  case 5: {
+                                    valid = previous && !next;
+                                    break;
+                                  }
+                                  case 6: {
+                                    valid = _M0IP016_24default__implPB2Eq10not__equalGbE(previous, next);
+                                    break;
+                                  }
+                                  default: {
+                                    valid = previous === next;
+                                  }
+                                }
+                                result = valid ? [state] : [];
+                              }
+                              break _L$13;
+                            }
+                            const current = new _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl7ReStateEE([state]);
+                            const _bind$3 = nodes$2.length;
+                            let _tmp = 0;
+                            while (true) {
+                              const _ = _tmp;
+                              if (_ < _bind$3) {
+                                const child$5 = nodes$2[_];
+                                const next = [];
+                                const _bind$4 = current.val;
+                                const _bind$5 = _bind$4.length;
+                                let _tmp$2 = 0;
+                                while (true) {
+                                  const _$2 = _tmp$2;
+                                  if (_$2 < _bind$5) {
+                                    const candidate = _bind$4[_$2];
+                                    const _bind$6 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child$5, text, candidate, depth + 1 | 0);
+                                    let _bind$7;
+                                    if (_bind$6.$tag === 1) {
+                                      const _ok = _bind$6;
+                                      _bind$7 = _ok._0;
+                                    } else {
+                                      return _bind$6;
+                                    }
+                                    const _bind$8 = _bind$7.length;
+                                    let _tmp$3 = 0;
+                                    while (true) {
+                                      const _$3 = _tmp$3;
+                                      if (_$3 < _bind$8) {
+                                        const matched = _bind$7[_$3];
+                                        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(next, matched);
+                                        if (next.length > 16384) {
+                                          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp state limit"));
+                                        }
+                                        _tmp$3 = _$3 + 1 | 0;
+                                        continue;
+                                      } else {
+                                        break;
+                                      }
+                                    }
+                                    _tmp$2 = _$2 + 1 | 0;
+                                    continue;
+                                  } else {
+                                    break;
+                                  }
+                                }
+                                current.val = next;
+                                if (_M0MPC15array5Array9is__emptyGRPB4JsonE(current.val)) {
+                                  break;
+                                }
+                                _tmp = _ + 1 | 0;
+                                continue;
+                              } else {
+                                break;
+                              }
+                            }
+                            result = current.val;
+                          }
+                          break _L$11;
+                        }
+                        const result$2 = [];
+                        const _bind$3 = nodes.length;
+                        let _tmp = 0;
+                        while (true) {
+                          const _ = _tmp;
+                          if (_ < _bind$3) {
+                            const child$5 = nodes[_];
+                            const _bind$4 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child$5, text, state, depth + 1 | 0);
+                            let _bind$5;
+                            if (_bind$4.$tag === 1) {
+                              const _ok = _bind$4;
+                              _bind$5 = _ok._0;
+                            } else {
+                              return _bind$4;
+                            }
+                            const _bind$6 = _bind$5.length;
+                            let _tmp$2 = 0;
+                            while (true) {
+                              const _$2 = _tmp$2;
+                              if (_$2 < _bind$6) {
+                                const matched = _bind$5[_$2];
+                                _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result$2, matched);
+                                if (result$2.length > 16384) {
+                                  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp state limit"));
+                                }
+                                _tmp$2 = _$2 + 1 | 0;
+                                continue;
+                              } else {
+                                break;
+                              }
+                            }
+                            _tmp = _ + 1 | 0;
+                            continue;
+                          } else {
+                            break;
+                          }
+                        }
+                        result = result$2;
+                      }
+                      break _L$9;
+                    }
+                    const cleared = _M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(state.captures);
+                    _M0FP211localreview3tcl19re__clear__captures(node, cleared);
+                    const _bind$3 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child$4, text, new _M0TP211localreview3tcl7ReState(state.pos, cleared), depth + 1 | 0);
+                    let _tmp;
+                    if (_bind$3.$tag === 1) {
+                      const _ok = _bind$3;
+                      _tmp = _ok._0;
+                    } else {
+                      return _bind$3;
+                    }
+                    result = _M0MPC15array5Array3mapGRP211localreview3tcl7ReStateRP211localreview3tcl7ReStateE(_tmp, (matched) => {
+                      const captures = _M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(matched.captures);
+                      _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(captures, group$2, { _0: at, _1: matched.pos });
+                      return new _M0TP211localreview3tcl7ReState(matched.pos, captures);
+                    });
+                  }
+                  break _L$7;
+                }
+                const _bind$3 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child$3, text, state, depth + 1 | 0);
+                let _tmp;
+                if (_bind$3.$tag === 1) {
+                  const _ok = _bind$3;
+                  _tmp = _ok._0;
+                } else {
+                  return _bind$3;
+                }
+                result = _M0MPC15array5Array3mapGRP211localreview3tcl7ReStateRP211localreview3tcl7ReStateE(_tmp, (matched) => new _M0TP211localreview3tcl7ReState(matched.pos, state.captures));
+              }
+              break _L$5;
+            }
+            let start;
+            let end;
+            _L$7: {
+              const _bind$3 = _M0MPC15array5Array2atGRPB4JsonE(state.captures, group);
+              const _start = _bind$3._0;
+              const _end = _bind$3._1;
+              start = _start;
+              end = _end;
+              break _L$7;
+            }
+            if (start < 0 || (end - start | 0) > (n - at | 0)) {
+              return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok([]);
+            }
+            const equal = new _M0TPB8MutLocalGbE(true);
+            const _bind$3 = 0;
+            const _bind$4 = end - start | 0;
+            let _tmp = _bind$3;
+            while (true) {
+              const i = _tmp;
+              if (i < _bind$4) {
+                const _tmp$2 = start + i | 0;
+                const a = _tmp$2 >>> 0 < text.length ? text.charCodeAt(_tmp$2) : $oob();
+                const _tmp$3 = at + i | 0;
+                const b = _tmp$3 >>> 0 < text.length ? text.charCodeAt(_tmp$3) : $oob();
+                if (pattern.nocase ? _M0FP211localreview3tcl19unicode__case__unit(a, 0) !== _M0FP211localreview3tcl19unicode__case__unit(b, 0) : a !== b) {
+                  equal.val = false;
+                  break;
+                }
+                _tmp = i + 1 | 0;
+                continue;
+              } else {
+                break;
+              }
+            }
+            result = equal.val ? [new _M0TP211localreview3tcl7ReState((at + end | 0) - start | 0, state.captures)] : [];
+          }
+          break _L$3;
+        }
+        const _bind$3 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child$2, text, state, depth + 1 | 0);
+        let _tmp;
+        if (_bind$3.$tag === 1) {
+          const _ok = _bind$3;
+          _tmp = _ok._0;
+        } else {
+          return _bind$3;
+        }
+        const found = !_M0MPC15array5Array9is__emptyGRPB4JsonE(_tmp);
+        result = found === positive ? [state] : [];
+      }
+      break _L;
+    }
+    let group;
+    _L$3: {
+      _L$4: {
+        const _bind$3 = child.kind;
+        if (_bind$3.$tag === 10) {
+          const _Backref = _bind$3;
+          const _group = _Backref._0;
+          group = _group;
+          break _L$4;
+        }
+        break _L$3;
+      }
+      if (max !== 0) {
+        if (_M0MPC15array5Array2atGRPB4JsonE(state.captures, group)._0 < 0) {
+          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok([]);
+        }
+      }
+    }
+    const result$2 = [];
+    const pending = [{ _0: state, _1: 0 }];
+    while (true) {
+      if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(pending)) {
+        let candidate;
+        let count;
+        _L$4: {
+          const _bind$3 = _M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(_M0MPC15array5Array3popGRPC14json10WriteFrameE(pending));
+          const _candidate = _bind$3._0;
+          const _count = _bind$3._1;
+          candidate = _candidate;
+          count = _count;
+          break _L$4;
+        }
+        if (count >= min) {
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result$2, candidate);
+        }
+        if (result$2.length > 16384) {
+          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp state limit"));
+        }
+        if (max >= 0 && count >= max) {
+          continue;
+        }
+        const captures = _M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(candidate.captures);
+        _M0FP211localreview3tcl19re__clear__captures(child, captures);
+        const _bind$3 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child, text, new _M0TP211localreview3tcl7ReState(candidate.pos, captures), depth + 1 | 0);
+        let matches;
+        if (_bind$3.$tag === 1) {
+          const _ok = _bind$3;
+          matches = _ok._0;
+        } else {
+          return _bind$3;
+        }
+        let _tmp = matches.length - 1 | 0;
+        while (true) {
+          const i = _tmp;
+          if (i >= 0) {
+            const matched = _M0MPC15array5Array2atGRPB4JsonE(matches, i);
+            if (matched.pos !== candidate.pos || count < min) {
+              _M0MPC15array5Array4pushGRPC14json10WriteFrameE(pending, { _0: matched, _1: count + 1 | 0 });
+            }
+            _tmp = i - 1 | 0;
+            continue;
+          } else {
+            break;
+          }
+        }
+        if (pending.length > 16384) {
+          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp state limit"));
+        }
+        continue;
+      } else {
+        break;
+      }
+    }
+    result = result$2;
+  }
+  if (result.length > 16384) {
+    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp state limit"));
+  }
+  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok(result.length > 1 ? _M0FP211localreview3tcl9re__order(result, node.preference) : result);
+}
+function _M0MP211localreview3tcl11Interpreter12regexp__find(self, compiled, text, offset) {
+  const origin = _M0MPC13int3Int3min(offset, text.length);
+  let not_bol;
+  if (offset > 0) {
+    let _tmp;
+    if (offset > text.length) {
+      _tmp = true;
+    } else {
+      const _tmp$2 = offset - 1 | 0;
+      _tmp = (_tmp$2 >>> 0 < text.length ? text.charCodeAt(_tmp$2) : $oob()) !== 10;
+    }
+    not_bol = _tmp;
+  } else {
+    not_bol = false;
+  }
+  const pattern = new _M0TP211localreview3tcl9RePattern(compiled.node, compiled.groups, compiled.nocase, compiled.line_stop, compiled.line_anchor, origin, not_bol, compiled.notes);
+  const _bind$2 = text.length;
+  let _tmp = origin;
+  while (true) {
+    const start = _tmp;
+    if (start <= _bind$2) {
+      const state = new _M0TP211localreview3tcl7ReState(start, _M0MPC15array5Array4makeGUiiEE(pattern.groups + 1 | 0, { _0: -1, _1: -1 }));
+      const _bind$3 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, pattern.node, text, state, 0);
+      let matches;
+      if (_bind$3.$tag === 1) {
+        const _ok = _bind$3;
+        matches = _ok._0;
+      } else {
+        return _bind$3;
+      }
+      if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(matches)) {
+        const found = _M0MPC15array5Array2atGRPB4JsonE(matches, 0);
+        _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(found.captures, 0, { _0: start, _1: found.pos });
+        return new _M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE2Ok(new _M0DTPC16option6OptionGRPB5ArrayGUiiEEE4Some(found.captures));
+      }
+      _tmp = start + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE2Ok(_M0DTPC16option6OptionGRPB5ArrayGUiiEEE4None__);
+}
+function _M0MP211localreview3tcl11Interpreter14array__command(self, input) {
+  const args = _M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(input, (v) => v.text);
+  const n = args.length;
+  if (n < 3) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array arity"));
+  }
+  const op = _M0MPC15array5Array2atGRPB4JsonE(args, 1);
+  const _bind$2 = _M0MP211localreview3tcl11Interpreter7binding(self, _M0MPC15array5Array2atGRPB4JsonE(args, 2), op === "set");
+  let binding;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    binding = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  let values;
+  _L: {
+    _L$2: {
+      let b;
+      _L$3: {
+        if (binding === undefined) {
+          break _L$2;
+        } else {
+          const _Some = binding;
+          const _b = _Some;
+          const _bind$3 = _b.index;
+          if (_bind$3 === undefined) {
+            b = _b;
+            break _L$3;
+          } else {
+            break _L$2;
+          }
+        }
+      }
+      _L$4: {
+        _L$5: {
+          let v;
+          _L$6: {
+            const _bind$3 = b.cell.value;
+            if (_bind$3 === undefined) {
+              break _L$5;
+            } else {
+              const _Some = _bind$3;
+              const _x = _Some;
+              if (_x.$tag === 3) {
+                const _Elements = _x;
+                const _v = _Elements._0;
+                v = _v;
+                break _L$6;
+              } else {
+                break _L$5;
+              }
+            }
+          }
+          values = v;
+          break _L$4;
+        }
+        values = undefined;
+      }
+      break _L;
+    }
+    values = undefined;
+  }
+  let text;
+  _L$2: {
+    _L$3: {
+      switch (op) {
+        case "exists": {
+          if (n !== 3) {
+            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array exists arity"));
+          }
+          text = _M0FP211localreview3tcl13boolean__text(!(values === undefined));
+          break;
+        }
+        case "size": {
+          if (n !== 3) {
+            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array size arity"));
+          }
+          text = _M0MPC13int3Int18to__string_2einner(_M0MPC16option6Option10unwrap__orGiE(_M0MPC16option6Option3mapGRPB3MapGsRP211localreview3tcl8TclValueEiE(values, (v) => _M0MPB3Map6lengthGsRP211localreview3tcl8TclValueE(v)), 0), 10);
+          break;
+        }
+        case "set": {
+          if (n !== 4) {
+            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array set arity"));
+          }
+          const _bind$3 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, 3));
+          let pairs;
+          if (_bind$3.$tag === 1) {
+            const _ok = _bind$3;
+            pairs = _ok._0;
+          } else {
+            return _bind$3;
+          }
+          if (2 === 0) {
+            $panic();
+          }
+          if ((pairs.length % 2 | 0) !== 0) {
+            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array set expects pairs"));
+          }
+          const binding$2 = _M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(binding);
+          _L$4: {
+            _L$5: {
+              const _bind$4 = binding$2.index;
+              if (_bind$4 === undefined) {
+                const _bind$5 = binding$2.cell.value;
+                if (_bind$5 === undefined) {
+                } else {
+                  if (values === undefined) {
+                    break _L$5;
+                  }
+                }
+              } else {
+                break _L$5;
+              }
+              break _L$4;
+            }
+            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("variable is not array"));
+          }
+          let values$2;
+          if (values === undefined) {
+            const _bind$4 = [];
+            const v = _M0MPB3Map3MapGsRP211localreview3tcl8TclValueE(new _M0TPB9ArrayViewGUsRP211localreview3tcl8TclValueEE(_bind$4, 0, 0), undefined);
+            binding$2.cell.value = new _M0DTP211localreview3tcl13VariableValue8Elements(v);
+            values$2 = v;
+          } else {
+            const _Some = values;
+            const _v = _Some;
+            values$2 = _v;
+          }
+          const i = new _M0TPB8MutLocalGiE(0);
+          while (true) {
+            if (i.val < pairs.length) {
+              if (_M0MPB3Map6lengthGsRP211localreview3tcl8TclValueE(values$2) >= 10000 && !_M0MPB3Map8containsGsRP211localreview3tcl8TclValueE(values$2, _M0MPC15array5Array2atGRPB4JsonE(pairs, i.val).text)) {
+                return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array size limit"));
+              }
+              _M0MPB3Map3setGsRP211localreview3tcl8TclValueE(values$2, _M0MPC15array5Array2atGRPB4JsonE(pairs, i.val).text, _M0MPC15array5Array2atGRPB4JsonE(pairs, i.val + 1 | 0));
+              i.val = i.val + 2 | 0;
+              continue;
+            } else {
+              break;
+            }
+          }
+          text = "";
+          break;
+        }
+        case "names": {
+          break _L$3;
+        }
+        case "get": {
+          break _L$3;
+        }
+        case "unset": {
+          if (n !== 3 && n !== 4) {
+            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array unset arity"));
+          }
+          let values$3;
+          _L$5: {
+            _L$6: {
+              if (values === undefined) {
+              } else {
+                const _Some = values;
+                const _values = _Some;
+                values$3 = _values;
+                break _L$6;
+              }
+              break _L$5;
+            }
+            if (n === 3) {
+              const _bind$4 = _M0MP211localreview3tcl11Interpreter10unset__var(self, _M0MPC15array5Array2atGRPB4JsonE(args, 2), true);
+              if (_bind$4.$tag === 1) {
+                const _ok = _bind$4;
+                _ok._0;
+              } else {
+                return _bind$4;
+              }
+            } else {
+              const _bind$4 = _M0MPB4Iter9to__arrayGsE(_M0MPB3Map4keysGsRP211localreview3tcl4CellE(values$3));
+              const _bind$5 = _bind$4.length;
+              let _tmp = 0;
+              while (true) {
+                const _ = _tmp;
+                if (_ < _bind$5) {
+                  const key = _bind$4[_];
+                  const _bind$6 = _M0FP211localreview3tcl19glob__match_2einner(_M0MPC15array5Array2atGRPB4JsonE(args, 3), key, false, false);
+                  let _tmp$2;
+                  if (_bind$6.$tag === 1) {
+                    const _ok = _bind$6;
+                    _tmp$2 = _ok._0;
+                  } else {
+                    return _bind$6;
+                  }
+                  if (_tmp$2) {
+                    _M0MPB3Map6removeGsRP211localreview3tcl8TclValueE(values$3, key);
+                  }
+                  _tmp = _ + 1 | 0;
+                  continue;
+                } else {
+                  break;
+                }
+              }
+            }
+          }
+          text = "";
+          break;
+        }
+        default: {
+          return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported array subcommand"));
+        }
+      }
+      break _L$2;
+    }
+    const mode = new _M0TPB8MutLocalGsE("-glob");
+    let pattern;
+    if (n === 3) {
+      pattern = "*";
+    } else {
+      if (n === 4) {
+        pattern = _M0MPC15array5Array2atGRPB4JsonE(args, 3);
+      } else {
+        if (n === 5 && op === "names") {
+          const _bind$3 = _M0FP211localreview3tcl18collection__option(_M0MPC15array5Array2atGRPB4JsonE(args, 3), ["-exact", "-glob", "-regexp"]);
+          let _tmp;
+          if (_bind$3.$tag === 1) {
+            const _ok = _bind$3;
+            _tmp = _ok._0;
+          } else {
+            return _bind$3;
+          }
+          mode.val = _tmp;
+          pattern = _M0MPC15array5Array2atGRPB4JsonE(args, 4);
+        } else {
+          return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("array names/get arity"));
+        }
+      }
+    }
+    let values$2;
+    if (values === undefined) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(""));
+    } else {
+      const _Some = values;
+      const _v = _Some;
+      values$2 = _v;
+    }
+    let compiled;
+    if (mode.val === "-regexp" && _M0MPB3Map6lengthGsRP211localreview3tcl8TclValueE(values$2) > 0) {
+      const _bind$3 = _M0FP211localreview3tcl19re__compile_2einner(pattern, false, false, false, false);
+      let compiled$2;
+      if (_bind$3.$tag === 1) {
+        const _ok = _bind$3;
+        compiled$2 = _ok._0;
+      } else {
+        return _bind$3;
+      }
+      _M0MPC15array5Array2atGRPB4JsonE(input, n - 1 | 0).payload = _M0DTP211localreview3tcl12ValuePayload5Plain__;
+      compiled = compiled$2;
+    } else {
+      compiled = undefined;
+    }
+    const keys = _M0MPB4Iter9to__arrayGsE(_M0MPB3Map4keysGsRP211localreview3tcl4CellE(values$2));
+    _M0MPC15array5Array4sortGsE(keys);
+    const result = [];
+    const _bind$3 = keys.length;
+    let _tmp = 0;
+    while (true) {
+      const _ = _tmp;
+      if (_ < _bind$3) {
+        const key = keys[_];
+        let _tmp$2;
+        if (mode.val === "-exact") {
+          _tmp$2 = key === pattern;
+        } else {
+          let compiled$2;
+          _L$4: {
+            _L$5: {
+              if (compiled === undefined) {
+                const _bind$4 = _M0FP211localreview3tcl19glob__match_2einner(pattern, key, false, true);
+                if (_bind$4.$tag === 1) {
+                  const _ok = _bind$4;
+                  _tmp$2 = _ok._0;
+                } else {
+                  return _bind$4;
+                }
+              } else {
+                const _Some = compiled;
+                const _compiled = _Some;
+                compiled$2 = _compiled;
+                break _L$5;
+              }
+              break _L$4;
+            }
+            const _bind$4 = _M0MP211localreview3tcl11Interpreter12regexp__find(self, compiled$2, key, 0);
+            let _bind$5;
+            if (_bind$4.$tag === 1) {
+              const _ok = _bind$4;
+              _bind$5 = _ok._0;
+            } else {
+              return _bind$4;
+            }
+            if (_bind$5.$tag === 1) {
+              _tmp$2 = true;
+            } else {
+              _tmp$2 = false;
+            }
+          }
+        }
+        if (_tmp$2) {
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result, _M0FP211localreview3tcl11text__value(key));
+          if (op === "get") {
+            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result, _M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(_M0MPB3Map3getGsRP211localreview3tcl8TclValueE(values$2, key)));
+          }
+        }
+        _tmp = _ + 1 | 0;
+        continue;
+      } else {
+        break;
+      }
+    }
+    const _bind$4 = _M0FP211localreview3tcl11list__value(result);
+    let _tmp$2;
+    if (_bind$4.$tag === 1) {
+      const _ok = _bind$4;
+      _tmp$2 = _ok._0;
+    } else {
+      return _bind$4;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$2);
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(text));
+}
+function _M0FP211localreview3tcl17dictionary__value(pairs) {
+  const values = [];
+  const _bind$2 = pairs.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const _foreach_element = pairs[_];
+      let key;
+      let value;
+      _L: {
+        const _key = _foreach_element._0;
+        const _value = _foreach_element._1;
+        key = _key;
+        value = _value;
+        break _L;
+      }
+      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, key);
+      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, value);
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  const _bind$3 = _M0FP211localreview3tcl12format__list(_M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(values, (v) => v.text));
+  let _tmp$2;
+  if (_bind$3.$tag === 1) {
+    const _ok = _bind$3;
+    _tmp$2 = _ok._0;
+  } else {
+    return _bind$3;
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(new _M0TP211localreview3tcl8TclValue(_tmp$2, new _M0DTP211localreview3tcl12ValuePayload5Pairs(_M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(pairs))));
+}
+function _M0MP211localreview3tcl10Completion13option__value(self) {
+  const options = _M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(self.options);
+  _M0FP211localreview3tcl11option__set(options, "-code", _M0MPC13int3Int18to__string_2einner(self.code, 10));
+  _M0FP211localreview3tcl11option__set(options, "-level", _M0MPC13int3Int18to__string_2einner(self.level, 10));
+  return _M0FP211localreview3tcl17dictionary__value(_M0MPC15array5Array3mapGUsRP211localreview3tcl8TclValueEURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(options, (p) => ({ _0: _M0FP211localreview3tcl11text__value(p._0), _1: p._1 })));
+}
+function _M0MP211localreview3tcl11Interpreter14error__command(self, values) {
+  const args = _M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(values, (v) => v.text);
+  self.state.return_options.val = [];
+  const n = args.length;
+  if (_M0MPC15array5Array2atGRPB4JsonE(args, 0) === "throw") {
+    if (n !== 3) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("throw requires error type and message"));
+    }
+    const _bind$2 = _M0FP211localreview3tcl11parse__list(_M0MPC15array5Array2atGRPB4JsonE(args, 1));
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    if (_M0MPC15array5Array9is__emptyGRPB4JsonE(_tmp)) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner("type must be non-empty list", "TCL OPERATION THROW BADEXCEPTION")));
+    }
+    const _bind$3 = _M0FP211localreview3tcl25completion__error_2einner(_M0MPC15array5Array2atGRPB4JsonE(args, 2), _M0MPC15array5Array2atGRPB4JsonE(args, 1));
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(new _M0TP211localreview3tcl10Completion(_bind$3.code, _bind$3.level, _M0MPC15array5Array2atGRPB4JsonE(values, 2), _bind$3.options, _bind$3.skip_trace)));
+  }
+  if (n < 2 || n > 4) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("error arity"));
+  }
+  const options = [];
+  if (n >= 3) {
+    _M0MPC15array5Array4pushGRPC14json10WriteFrameE(options, { _0: "-errorinfo", _1: _M0MPC15array5Array2atGRPB4JsonE(values, 2) });
+  }
+  _M0MPC15array5Array4pushGRPC14json10WriteFrameE(options, { _0: "-errorcode", _1: n === 4 ? _M0MPC15array5Array2atGRPB4JsonE(values, 3) : _M0FP211localreview3tcl11text__value("NONE") });
+  const _bind$2 = _M0FP211localreview3tcl18completion_2einner(1, _M0MPC15array5Array2atGRPB4JsonE(args, 1), 0, options, n >= 3 && !_M0MPC16string6String9is__empty(_M0MPC15array5Array2atGRPB4JsonE(args, 2)));
+  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(new _M0TP211localreview3tcl10Completion(_bind$2.code, _bind$2.level, _M0MPC15array5Array2atGRPB4JsonE(values, 1), _bind$2.options, _bind$2.skip_trace)));
+}
+function _M0FP211localreview3tcl13number__value(value) {
+  const _bind$2 = _M0MP211localreview3tcl6Number4text(value);
+  let _tmp;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    _tmp = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(new _M0TP211localreview3tcl8TclValue(_tmp, new _M0DTP211localreview3tcl12ValuePayload7Numeric(value)));
+}
+function _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, offset) {
+  return _M0MPC16option6Option10unwrap__orGcE(_M0MPC15array5Array3getGcE(self.chars, self.pos + offset | 0), 0);
+}
+function _M0MP211localreview3tcl12ScriptParser11expr__space(self) {
+  while (true) {
+    if (_M0FP211localreview3tcl11list__space(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0))) {
+      self.pos = self.pos + 1 | 0;
+      continue;
+    } else {
+      return;
+    }
+  }
+}
+function _M0FP211localreview3tcl8namechar(c) {
+  return c >= 97 && c <= 122 || (c >= 65 && c <= 90 || (c >= 48 && c <= 57 || (c === 95 || c === 58)));
+}
+function _M0MP211localreview3tcl12ScriptParser6braces(self) {
+  self.pos = self.pos + 1 | 0;
+  const level = new _M0TPB8MutLocalGiE(1);
+  const out = _M0MPB13StringBuilder21StringBuilder_2einner(0);
+  while (true) {
+    if (self.pos < self.chars.length) {
+      const c = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0);
+      self.pos = self.pos + 1 | 0;
+      if (c === 92 && self.pos < self.chars.length) {
+        if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 10) {
+          let text;
+          let next;
+          _L: {
+            const _bind$2 = _M0FP211localreview3tcl9backslash(self.chars, self.pos - 1 | 0);
+            const _text = _bind$2._0;
+            const _next = _bind$2._1;
+            text = _text;
+            next = _next;
+            break _L;
+          }
+          _M0IPB13StringBuilderPB6Logger13write__string(out, text);
+          self.pos = next;
+        } else {
+          _M0IPB13StringBuilderPB6Logger11write__char(out, c);
+          _M0IPB13StringBuilderPB6Logger11write__char(out, _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0));
+          self.pos = self.pos + 1 | 0;
+        }
+        continue;
+      }
+      if (c === 123) {
+        level.val = level.val + 1 | 0;
+      }
+      if (c === 125) {
+        level.val = level.val - 1 | 0;
+        if (level.val === 0) {
+          return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0MPB13StringBuilder10to__string(out));
+        }
+      }
+      _M0IPB13StringBuilderPB6Logger11write__char(out, c);
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing close-brace"));
+}
+function _M0MP211localreview3tcl12ScriptParser15parsed__command(self, words, start, line, end) {
+  return new _M0TP211localreview3tcl13ParsedCommand(words, _M0MPC16string10StringView9to__owned(_M0MPC16string6String9trim__end(_M0MPC16string6String11from__array(_M0MPC15array5Array12view_2einnerGcE(self.chars, start, end)), undefined)), line);
+}
+function _M0MP211localreview3tcl12ScriptParser12source__line(self) {
+  while (true) {
+    if (self.line_pos < self.pos) {
+      if (_M0MPC15array5Array2atGcE(self.chars, self.line_pos) === 10) {
+        self.line = self.line + 1 | 0;
+      }
+      self.line_pos = self.line_pos + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return self.line;
+}
+function _M0MP211localreview3tcl12ScriptParser13parts_2einner(self, stop, raw, depth, bracket) {
+  if (depth > 64) {
+    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl4PartERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("substitution depth"));
+  }
+  const parts = [];
+  const text = new _M0TPB8MutLocalGRPB13StringBuilderE(_M0MPB13StringBuilder21StringBuilder_2einner(0));
+  while (true) {
+    if (self.pos < self.chars.length) {
+      const c = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0);
+      if (stop !== 0 && c === stop) {
+        self.pos = self.pos + 1 | 0;
+        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(parts, new _M0DTP211localreview3tcl4Part4Text(_M0MPB13StringBuilder10to__string(text.val)));
+        return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl4PartERP211localreview3tcl8TclErrorE2Ok(parts);
+      }
+      if (raw && (_M0FP211localreview3tcl11list__space(c) || (c === 59 || bracket && c === 93))) {
+        break;
+      }
+      if (raw && (c === 92 && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) === 10)) {
+        break;
+      }
+      if (c === 36 || c === 91) {
+        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(parts, new _M0DTP211localreview3tcl4Part4Text(_M0MPB13StringBuilder10to__string(text.val)));
+        text.val = _M0MPB13StringBuilder21StringBuilder_2einner(0);
+        if (c === 36) {
+          const _bind$2 = _M0MP211localreview3tcl12ScriptParser8variable(self, depth);
+          let _tmp;
+          if (_bind$2.$tag === 1) {
+            const _ok = _bind$2;
+            _tmp = _ok._0;
+          } else {
+            return _bind$2;
+          }
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(parts, _tmp);
+        } else {
+          self.pos = self.pos + 1 | 0;
+          const _bind$2 = _M0MP211localreview3tcl12ScriptParser14script_2einner(self, true, depth + 1 | 0, false);
+          let _tmp;
+          if (_bind$2.$tag === 1) {
+            const _ok = _bind$2;
+            _tmp = _ok._0;
+          } else {
+            return _bind$2;
+          }
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(parts, new _M0DTP211localreview3tcl4Part7Command(_tmp));
+        }
+      } else {
+        if (c === 92) {
+          let value;
+          let next;
+          _L: {
+            const _bind$2 = _M0FP211localreview3tcl9backslash(self.chars, self.pos);
+            const _value = _bind$2._0;
+            const _next = _bind$2._1;
+            value = _value;
+            next = _next;
+            break _L;
+          }
+          _M0IPB13StringBuilderPB6Logger13write__string(text.val, value);
+          self.pos = next;
+        } else {
+          _M0IPB13StringBuilderPB6Logger11write__char(text.val, c);
+          self.pos = self.pos + 1 | 0;
+        }
+      }
+      continue;
+    } else {
+      break;
+    }
+  }
+  if (stop !== 0) {
+    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl4PartERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing closing substitution delimiter"));
+  }
+  _M0MPC15array5Array4pushGRPC14json10WriteFrameE(parts, new _M0DTP211localreview3tcl4Part4Text(_M0MPB13StringBuilder10to__string(text.val)));
+  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl4PartERP211localreview3tcl8TclErrorE2Ok(parts);
+}
+function _M0MP211localreview3tcl12ScriptParser14script_2einner(self, bracket, depth, one) {
+  if (depth > 64) {
+    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("script nesting limit"));
+  }
+  const commands = [];
+  const words = new _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl4WordEE([]);
+  const start = new _M0TPB8MutLocalGiE(self.pos);
+  const line = new _M0TPB8MutLocalGiE(_M0MP211localreview3tcl12ScriptParser12source__line(self));
+  while (true) {
+    if (self.pos < self.chars.length) {
+      const c = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0);
+      if (c === 93 && bracket) {
+        self.pos = self.pos + 1 | 0;
+        if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(words.val)) {
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(commands, _M0MP211localreview3tcl12ScriptParser15parsed__command(self, words.val, start.val, line.val, self.pos - 1 | 0));
+        }
+        return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE2Ok(commands);
+      }
+      if (c === 92 && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) === 10) {
+        if ((self.pos + 2 | 0) === self.chars.length) {
+          self.trailing_continuation = true;
+        }
+        let next;
+        _L: {
+          const _bind$2 = _M0FP211localreview3tcl9backslash(self.chars, self.pos);
+          const _next = _bind$2._1;
+          next = _next;
+          break _L;
+        }
+        self.pos = next;
+        continue;
+      }
+      if (c === 59 || c === 10) {
+        self.pos = self.pos + 1 | 0;
+        if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(words.val)) {
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(commands, _M0MP211localreview3tcl12ScriptParser15parsed__command(self, words.val, start.val, line.val, self.pos - 1 | 0));
+          words.val = [];
+        }
+        if (one && !_M0MPC15array5Array9is__emptyGRPB4JsonE(commands)) {
+          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE2Ok(commands);
+        }
+      } else {
+        if (_M0FP211localreview3tcl11list__space(c)) {
+          self.pos = self.pos + 1 | 0;
+        } else {
+          if (c === 35 && _M0MPC15array5Array9is__emptyGRPB4JsonE(words.val)) {
+            while (true) {
+              if (self.pos < self.chars.length && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 10) {
+                if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 92 && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) === 10) {
+                  if ((self.pos + 2 | 0) === self.chars.length) {
+                    self.trailing_continuation = true;
+                  }
+                  let next;
+                  _L: {
+                    const _bind$2 = _M0FP211localreview3tcl9backslash(self.chars, self.pos);
+                    const _next = _bind$2._1;
+                    next = _next;
+                    break _L;
+                  }
+                  self.pos = next;
+                } else {
+                  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 92 && (self.pos + 1 | 0) < self.chars.length) {
+                    self.pos = self.pos + 2 | 0;
+                  } else {
+                    self.pos = self.pos + 1 | 0;
+                  }
+                }
+                continue;
+              } else {
+                break;
+              }
+            }
+          } else {
+            if (_M0MPC15array5Array9is__emptyGRPB4JsonE(words.val)) {
+              start.val = self.pos;
+              line.val = _M0MP211localreview3tcl12ScriptParser12source__line(self);
+              self.command_start = start.val;
+              self.command_line = line.val;
+            }
+            const _tmp = words.val;
+            const _bind$2 = _M0MP211localreview3tcl12ScriptParser4word(self, depth, bracket);
+            let _tmp$2;
+            if (_bind$2.$tag === 1) {
+              const _ok = _bind$2;
+              _tmp$2 = _ok._0;
+            } else {
+              return _bind$2;
+            }
+            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(_tmp, _tmp$2);
+            if (words.val.length > 4096) {
+              return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("command argument limit"));
+            }
+          }
+        }
+      }
+      if (commands.length > 10000) {
+        return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("script command limit"));
+      }
+      continue;
+    } else {
+      break;
+    }
+  }
+  if (bracket) {
+    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing close-bracket"));
+  }
+  if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(words.val)) {
+    _M0MPC15array5Array4pushGRPC14json10WriteFrameE(commands, _M0MP211localreview3tcl12ScriptParser15parsed__command(self, words.val, start.val, line.val, self.pos));
+  }
+  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl13ParsedCommandERP211localreview3tcl8TclErrorE2Ok(commands);
+}
+function _M0MP211localreview3tcl12ScriptParser4word(self, depth, bracket) {
+  const expand = new _M0TPB8MutLocalGbE(false);
+  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 123 && (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) === 42 && (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 2) === 125 && ((self.pos + 3 | 0) < self.chars.length && (!_M0FP211localreview3tcl11list__space(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 3)) && (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 3) !== 59 && (!bracket || _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 3) !== 93))))))) {
+    expand.val = true;
+    self.pos = self.pos + 3 | 0;
+  }
+  const grouped = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 123 || _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 34;
+  let parts;
+  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 123) {
+    const _bind$2 = _M0MP211localreview3tcl12ScriptParser6braces(self);
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    parts = [new _M0DTP211localreview3tcl4Part4Text(_tmp)];
+  } else {
+    if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 34) {
+      self.pos = self.pos + 1 | 0;
+      const _bind$2 = _M0MP211localreview3tcl12ScriptParser13parts_2einner(self, 34, false, depth, false);
+      if (_bind$2.$tag === 1) {
+        const _ok = _bind$2;
+        parts = _ok._0;
+      } else {
+        return _bind$2;
+      }
+    } else {
+      const _bind$2 = _M0MP211localreview3tcl12ScriptParser13parts_2einner(self, 0, true, depth, bracket);
+      if (_bind$2.$tag === 1) {
+        const _ok = _bind$2;
+        parts = _ok._0;
+      } else {
+        return _bind$2;
+      }
+    }
+  }
+  if (grouped && (self.pos < self.chars.length && (!_M0FP211localreview3tcl11list__space(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0)) && (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 59 && (!(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 92 && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) === 10) && (!bracket || _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 93)))))) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4WordRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("extra characters after grouped word"));
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl4WordRP211localreview3tcl8TclErrorE2Ok(new _M0TP211localreview3tcl4Word(parts, expand.val));
+}
+function _M0MP211localreview3tcl12ScriptParser8variable(self, depth) {
+  self.pos = self.pos + 1 | 0;
+  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 123) {
+    self.pos = self.pos + 1 | 0;
+    const start = self.pos;
+    while (true) {
+      if (self.pos < self.chars.length && _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 125) {
+        self.pos = self.pos + 1 | 0;
+        continue;
+      } else {
+        break;
+      }
+    }
+    if (self.pos === self.chars.length) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl4PartRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing variable close-brace"));
+    }
+    const name = _M0MPC16string6String11from__array(_M0MPC15array5Array12view_2einnerGcE(self.chars, start, self.pos));
+    self.pos = self.pos + 1 | 0;
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4PartRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Part8Variable(name, _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl4PartEE4None__));
+  }
+  const start = self.pos;
+  while (true) {
+    if (_M0FP211localreview3tcl8namechar(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0))) {
+      if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 58) {
+        if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 1) !== 58) {
+          break;
+        }
+        while (true) {
+          if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 58) {
+            self.pos = self.pos + 1 | 0;
+            continue;
+          } else {
+            break;
+          }
+        }
+      } else {
+        self.pos = self.pos + 1 | 0;
+      }
+      continue;
+    } else {
+      break;
+    }
+  }
+  const name = _M0MPC16string6String11from__array(_M0MPC15array5Array12view_2einnerGcE(self.chars, start, self.pos));
+  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 40) {
+    self.pos = self.pos + 1 | 0;
+    const _bind$2 = _M0MP211localreview3tcl12ScriptParser13parts_2einner(self, 41, false, depth + 1 | 0, false);
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4PartRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Part8Variable(name, new _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl4PartEE4Some(_tmp)));
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl4PartRP211localreview3tcl8TclErrorE2Ok(_M0MPC16string6String9is__empty(name) ? new _M0DTP211localreview3tcl4Part4Text("$") : new _M0DTP211localreview3tcl4Part8Variable(name, _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl4PartEE4None__));
+}
+function _M0MP211localreview3tcl12ScriptParser10expression(self, minimum, depth) {
+  if (depth > 64) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expression nesting limit"));
+  }
+  _M0MP211localreview3tcl12ScriptParser11expr__space(self);
+  const _bind$2 = _M0MP211localreview3tcl12ScriptParser7operand(self, depth + 1 | 0);
+  let _tmp;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    _tmp = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  const left = new _M0TPB8MutLocalGRP211localreview3tcl4ExprE(_tmp);
+  while (true) {
+    _M0MP211localreview3tcl12ScriptParser11expr__space(self);
+    if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 63 && minimum <= 1) {
+      self.pos = self.pos + 1 | 0;
+      const _bind$3 = _M0MP211localreview3tcl12ScriptParser10expression(self, 1, depth + 1 | 0);
+      let yes;
+      if (_bind$3.$tag === 1) {
+        const _ok = _bind$3;
+        yes = _ok._0;
+      } else {
+        return _bind$3;
+      }
+      _M0MP211localreview3tcl12ScriptParser11expr__space(self);
+      if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 58) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing expression colon"));
+      }
+      self.pos = self.pos + 1 | 0;
+      const _bind$4 = _M0MP211localreview3tcl12ScriptParser10expression(self, 1, depth + 1 | 0);
+      let _tmp$2;
+      if (_bind$4.$tag === 1) {
+        const _ok = _bind$4;
+        _tmp$2 = _ok._0;
+      } else {
+        return _bind$4;
+      }
+      left.val = new _M0DTP211localreview3tcl4Expr11Conditional(left.val, yes, _tmp$2);
+      continue;
+    }
+    const found = new _M0TPB8MutLocalGUsiEE({ _0: "", _1: 0 });
+    const _bind$3 = [{ _0: "||", _1: 2 }, { _0: "&&", _1: 3 }, { _0: "|", _1: 4 }, { _0: "^", _1: 5 }, { _0: "&", _1: 6 }, { _0: "in", _1: 7 }, { _0: "ni", _1: 7 }, { _0: "eq", _1: 8 }, { _0: "ne", _1: 8 }, { _0: "==", _1: 9 }, { _0: "!=", _1: 9 }, { _0: "<=", _1: 10 }, { _0: ">=", _1: 10 }, { _0: "<<", _1: 11 }, { _0: ">>", _1: 11 }, { _0: "<", _1: 10 }, { _0: ">", _1: 10 }, { _0: "+", _1: 12 }, { _0: "-", _1: 12 }, { _0: "**", _1: 14 }, { _0: "*", _1: 13 }, { _0: "/", _1: 13 }, { _0: "%", _1: 13 }];
+    const _bind$4 = _bind$3.length;
+    let _tmp$2 = 0;
+    while (true) {
+      const _ = _tmp$2;
+      if (_ < _bind$4) {
+        const _foreach_element = _bind$3[_];
+        let op;
+        let precedence;
+        _L: {
+          const _op = _foreach_element._0;
+          const _precedence = _foreach_element._1;
+          op = _op;
+          precedence = _precedence;
+          break _L;
+        }
+        _L$2: {
+          const cs = _M0MPC16string6String9to__array(op);
+          if ((self.pos + cs.length | 0) <= self.chars.length && _M0IPC15array5ArrayPB2Eq5equalGcE(_M0MPC15array9ArrayView9to__ownedGcE(_M0MPC15array5Array12view_2einnerGcE(self.chars, self.pos, self.pos + cs.length | 0)), cs)) {
+            if (_M0FP211localreview3tcl8namechar(_M0MPC15array5Array2atGcE(cs, 0)) && _M0FP211localreview3tcl8namechar(_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, cs.length))) {
+              break _L$2;
+            }
+            found.val = { _0: op, _1: precedence };
+            break;
+          }
+          break _L$2;
+        }
+        _tmp$2 = _ + 1 | 0;
+        continue;
+      } else {
+        break;
+      }
+    }
+    let op;
+    let precedence;
+    _L: {
+      const _bind$5 = found.val;
+      const _op = _bind$5._0;
+      const _precedence = _bind$5._1;
+      op = _op;
+      precedence = _precedence;
+      break _L;
+    }
+    if (precedence === 0 || precedence < minimum) {
+      break;
+    }
+    self.pos = self.pos + op.length | 0;
+    const _bind$5 = _M0MP211localreview3tcl12ScriptParser10expression(self, op === "**" ? precedence : precedence + 1 | 0, depth + 1 | 0);
+    let _tmp$3;
+    if (_bind$5.$tag === 1) {
+      const _ok = _bind$5;
+      _tmp$3 = _ok._0;
+    } else {
+      return _bind$5;
+    }
+    left.val = new _M0DTP211localreview3tcl4Expr6Binary(op, left.val, _tmp$3);
+    continue;
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(left.val);
+}
+function _M0MP211localreview3tcl12ScriptParser7operand(self, depth) {
+  if (depth > 64) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expression nesting limit"));
+  }
+  _M0MP211localreview3tcl12ScriptParser11expr__space(self);
+  const c = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0);
+  if (_M0MPC15array5Array8containsGcE([43, 45, 33, 126], c)) {
+    self.pos = self.pos + 1 | 0;
+    const _bind$2 = _M0MP211localreview3tcl12ScriptParser7operand(self, depth + 1 | 0);
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr5Unary(_M0IPC14char4CharPB4Show10to__string(c), _tmp));
+  }
+  if (c === 40) {
+    self.pos = self.pos + 1 | 0;
+    const _bind$2 = _M0MP211localreview3tcl12ScriptParser10expression(self, 1, depth + 1 | 0);
+    let value;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      value = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    _M0MP211localreview3tcl12ScriptParser11expr__space(self);
+    if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 41) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing expression close-parenthesis"));
+    }
+    self.pos = self.pos + 1 | 0;
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(value);
+  }
+  if (c === 123) {
+    const _bind$2 = _M0MP211localreview3tcl12ScriptParser6braces(self);
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr5Value(_tmp));
+  }
+  if (c === 34) {
+    self.pos = self.pos + 1 | 0;
+    const _bind$2 = _M0MP211localreview3tcl12ScriptParser13parts_2einner(self, 34, false, depth + 1 | 0, false);
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr10Substitute(_tmp));
+  }
+  if (c === 36) {
+    const _bind$2 = _M0MP211localreview3tcl12ScriptParser8variable(self, depth + 1 | 0);
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr10Substitute([_tmp]));
+  }
+  if (c === 91) {
+    self.pos = self.pos + 1 | 0;
+    const _bind$2 = _M0MP211localreview3tcl12ScriptParser14script_2einner(self, true, depth + 1 | 0, false);
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr10Substitute([new _M0DTP211localreview3tcl4Part7Command(_tmp)]));
+  }
+  const start = self.pos;
+  while (true) {
+    if (self.pos < self.chars.length) {
+      const x = _M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0);
+      if (_M0FP211localreview3tcl11list__space(x) || _M0MPC15array5Array8containsGcE([40, 41, 44, 63, 58, 42, 47, 37, 60, 62, 61, 33, 38, 94, 124, 126], x)) {
+        break;
+      }
+      if (x === 43 || x === 45) {
+        const hex = self.pos >= (start + 2 | 0) && (_M0MPC15array5Array2atGcE(self.chars, start) === 48 && _M0MPC15array5Array8containsGcE([120, 88], _M0MPC15array5Array2atGcE(self.chars, start + 1 | 0)));
+        if (self.pos === start || (hex || !_M0MPC15array5Array8containsGcE([101, 69], _M0MPC15array5Array2atGcE(self.chars, self.pos - 1 | 0)))) {
+          break;
+        }
+      }
+      self.pos = self.pos + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  if (start === self.pos) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expected expression operand"));
+  }
+  const text = _M0MPC16string6String11from__array(_M0MPC15array5Array12view_2einnerGcE(self.chars, start, self.pos));
+  _M0MP211localreview3tcl12ScriptParser11expr__space(self);
+  if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) === 40) {
+    self.pos = self.pos + 1 | 0;
+    _M0MP211localreview3tcl12ScriptParser11expr__space(self);
+    const args = [];
+    if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 41) {
+      while (true) {
+        const _bind$2 = _M0MP211localreview3tcl12ScriptParser10expression(self, 1, depth + 1 | 0);
+        let _tmp;
+        if (_bind$2.$tag === 1) {
+          const _ok = _bind$2;
+          _tmp = _ok._0;
+        } else {
+          return _bind$2;
+        }
+        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(args, _tmp);
+        _M0MP211localreview3tcl12ScriptParser11expr__space(self);
+        if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 44) {
+          break;
+        }
+        self.pos = self.pos + 1 | 0;
+        continue;
+      }
+    }
+    if (_M0MP211localreview3tcl12ScriptParser12peek_2einner(self, 0) !== 41) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing math function close-parenthesis"));
+    }
+    self.pos = self.pos + 1 | 0;
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr8Function(text, args));
+  }
+  const _bind$2 = _M0FP211localreview3tcl6number(text);
+  if (_bind$2 === undefined) {
+    let _tmp;
+    let _try_err;
+    _L: {
+      _L$2: {
+        const _bind$3 = _M0FP211localreview3tcl7boolean(text);
+        if (_bind$3.$tag === 1) {
+          const _ok = _bind$3;
+          _ok._0;
+        } else {
+          const _err = _bind$3;
+          _try_err = _err._0;
+          break _L$2;
+        }
+        _tmp = true;
+        break _L;
+      }
+      _tmp = false;
+    }
+    if (!_tmp) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid(`invalid bareword ${text}`));
+    }
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(new _M0DTP211localreview3tcl4Expr5Value(text));
+}
+function _M0MP211localreview3tcl12ScriptParser3new(source) {
+  return new _M0TP211localreview3tcl12ScriptParser(_M0MPC16string6String9to__array(source), 0, 0, 1, 0, 1, false);
+}
+function _M0MP211localreview3tcl11Interpreter18cached__expression(self, source) {
+  const cache = self.state.cache;
+  let expr;
+  _L: {
+    _L$2: {
+      const _bind$2 = _M0MPB3Map3getGsRP211localreview3tcl4ExprE(cache.expressions, source);
+      if (_bind$2 === undefined) {
+      } else {
+        const _Some = _bind$2;
+        const _expr = _Some;
+        expr = _expr;
+        break _L$2;
+      }
+      break _L;
+    }
+    if (cache.expression_hits < 2147483647) {
+      cache.expression_hits = cache.expression_hits + 1 | 0;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(expr);
+  }
+  const parser = _M0MP211localreview3tcl12ScriptParser3new(source);
+  const _bind$2 = _M0MP211localreview3tcl12ScriptParser10expression(parser, 1, 0);
+  let expr$2;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    expr$2 = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  _M0MP211localreview3tcl12ScriptParser11expr__space(parser);
+  if (parser.pos !== parser.chars.length) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("trailing expression token"));
+  }
+  if (_M0MPB3Map6lengthGsRP211localreview3tcl8TclValueE(cache.expressions) >= 256 || (cache.expression_units + source.length | 0) > 131072) {
+    _M0MPB3Map5clearGsRP211localreview3tcl13ScriptProgramE(cache.expressions);
+    cache.expression_units = 0;
+  }
+  if (source.length <= 16384) {
+    _M0MPB3Map3setGsRP211localreview3tcl4ExprE(cache.expressions, source, expr$2);
+    cache.expression_units = cache.expression_units + source.length | 0;
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl4ExprRP211localreview3tcl8TclErrorE2Ok(expr$2);
+}
+function _M0FP211localreview3tcl15double__integer(value) {
+  if (_M0MPC16double6Double7is__nan(value) || _M0MPC16double6Double7is__inf(value)) {
+    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("cannot convert non-finite integer"));
+  }
+  const bits = $f64_reinterpret_i64(value);
+  const exponent = (Number(BigInt.asIntN(32, BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, bits) >> BigInt(52 & 63)) & 2047n))) | 0) - 1023 | 0;
+  if (exponent < 0) {
+    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(0n);
+  }
+  const mantissa = BigInt.asUintN(64, BigInt.asUintN(64, bits & 4503599627370495n) | 4503599627370496n);
+  let n;
+  let _try_err;
+  _L: {
+    _L$2: {
+      const _bind$2 = _M0MPC16uint646UInt6418to__string_2einner(mantissa, 10);
+      const _bind$3 = _M0FPC16string21parse__bigint_2einner(new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length), 10);
+      if (_bind$3.$tag === 1) {
+        const _ok = _bind$3;
+        n = _ok._0;
+      } else {
+        const _err = _bind$3;
+        _try_err = _err._0;
+        break _L$2;
+      }
+      break _L;
+    }
+    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer conversion"));
+  }
+  const magnitude = exponent >= 52 ? _M0IPC16bigint6BigIntPB3Shl3shl(n, exponent - 52 | 0) : _M0IPC16bigint6BigIntPB3Shr3shr(n, 52 - exponent | 0);
+  return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(value < 0 ? _M0IPC16bigint6BigIntPB3Neg3neg(magnitude) : magnitude);
+}
+function _M0FP211localreview3tcl24integer__double__compare(a, b) {
+  if (_M0MPC16double6Double7is__inf(b)) {
+    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(b < 0 ? 1 : -1);
+  }
+  const _bind$2 = _M0FP211localreview3tcl15double__integer(b);
+  let integral;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    integral = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  const order = _M0IPC16bigint6BigIntPB7Compare7compare(a, integral);
+  if (order !== 0) {
+    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(order);
+  }
+  return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(b === _M0MPC16double6Double5floor(b) ? 0 : b < 0 ? 1 : -1);
+}
+function _M0FP211localreview3tcl16small__operation(operator, x, y) {
+  const a = BigInt.asUintN(64, BigInt(x));
+  const b = BigInt.asUintN(64, BigInt(y));
+  let result;
+  _L: {
+    _L$2: {
+      switch (operator) {
+        case "+": {
+          result = _M0MPC15int645Int6418to__string_2einner(BigInt.asUintN(64, a + b), 10);
+          break;
+        }
+        case "-": {
+          result = _M0MPC15int645Int6418to__string_2einner(BigInt.asUintN(64, a - b), 10);
+          break;
+        }
+        case "*": {
+          result = _M0MPC15int645Int6418to__string_2einner(BigInt.asUintN(64, a * b), 10);
+          break;
+        }
+        case "/": {
+          break _L$2;
+        }
+        case "%": {
+          break _L$2;
+        }
+        case "&": {
+          result = _M0MPC13int3Int18to__string_2einner(x & y, 10);
+          break;
+        }
+        case "|": {
+          result = _M0MPC13int3Int18to__string_2einner(x | y, 10);
+          break;
+        }
+        case "^": {
+          result = _M0MPC13int3Int18to__string_2einner(x ^ y, 10);
+          break;
+        }
+        case "==": {
+          result = _M0FP211localreview3tcl13boolean__text(x === y);
+          break;
+        }
+        case "!=": {
+          result = _M0FP211localreview3tcl13boolean__text(x !== y);
+          break;
+        }
+        case "<": {
+          result = _M0FP211localreview3tcl13boolean__text(x < y);
+          break;
+        }
+        case ">": {
+          result = _M0FP211localreview3tcl13boolean__text(x > y);
+          break;
+        }
+        case "<=": {
+          result = _M0FP211localreview3tcl13boolean__text(x <= y);
+          break;
+        }
+        case ">=": {
+          result = _M0FP211localreview3tcl13boolean__text(x >= y);
+          break;
+        }
+        default: {
+          return new _M0DTPC16result6ResultGOsRP211localreview3tcl8TclErrorE2Ok(undefined);
+        }
+      }
+      break _L;
+    }
+    if (y === 0) {
+      return new _M0DTPC16result6ResultGOsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner("divide by zero", "ARITH DIVZERO {divide by zero}")));
+    }
+    if (b === 0n) {
+      $panic();
+    }
+    const q = BigInt.asUintN(64, BigInt.asIntN(64, a) / BigInt.asIntN(64, b));
+    if (b === 0n) {
+      $panic();
+    }
+    const r = BigInt.asUintN(64, BigInt.asIntN(64, a) % BigInt.asIntN(64, b));
+    result = operator === "/" ? _M0MPC15int645Int6418to__string_2einner(BigInt.asUintN(64, r) !== BigInt.asUintN(64, 0n) && _M0IP016_24default__implPB2Eq10not__equalGbE(x < 0, y < 0) ? BigInt.asUintN(64, q - 1n) : q, 10) : _M0MPC15int645Int6418to__string_2einner(BigInt.asUintN(64, r) !== BigInt.asUintN(64, 0n) && _M0IP016_24default__implPB2Eq10not__equalGbE(BigInt.asIntN(64, r) < BigInt.asIntN(64, 0n), y < 0) ? BigInt.asUintN(64, r + b) : r, 10);
+  }
+  return new _M0DTPC16result6ResultGOsRP211localreview3tcl8TclErrorE2Ok(result);
+}
+function _M0FP211localreview3tcl20tcl__string__compare(a, b) {
+  const _bind$2 = 0;
+  const _bind$3 = _M0MPC13int3Int3min(a.length, b.length);
+  let _tmp = _bind$2;
+  while (true) {
+    const i = _tmp;
+    if (i < _bind$3) {
+      const x = _M0MPC16option6Option6unwrapGkE(_M0MPC16string6String3get(a, i));
+      const y = _M0MPC16option6Option6unwrapGkE(_M0MPC16string6String3get(b, i));
+      if (x < y) {
+        return -1;
+      }
+      if (x > y) {
+        return 1;
+      }
+      _tmp = i + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return $compare_int(a.length, b.length);
+}
+function _M0MP211localreview3tcl6Number7promote(self) {
+  let x;
+  _L: {
+    if (self.$tag === 0) {
+      const _Small = self;
+      const _x = _Small._0;
+      x = _x;
+      break _L;
+    } else {
+      return self;
+    }
+  }
+  return new _M0DTP211localreview3tcl6Number5Whole(_M0MPC16bigint6BigInt9from__int(x));
+}
+function _M0FP211localreview3tcl15numeric__binary(operator, left, right) {
+  if (operator === "eq" || operator === "ne") {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(left.text === right.text === (operator === "eq"))));
+  }
+  if (operator === "in" || operator === "ni") {
+    const _bind$2 = _M0MP211localreview3tcl8TclValue8as__list(right);
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(_M0MPB4Iter3anyGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(_M0MPC15array5Array4iterGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(_tmp), (v) => v.text === left.text) === (operator === "in"))));
+  }
+  const a = _M0MP211localreview3tcl8TclValue10as__number(left);
+  const b = _M0MP211localreview3tcl8TclValue10as__number(right);
+  let x;
+  let y;
+  _L: {
+    _L$2: {
+      if (a === undefined) {
+      } else {
+        const _Some = a;
+        const _x = _Some;
+        if (_x.$tag === 0) {
+          const _Small = _x;
+          const _x$2 = _Small._0;
+          if (b === undefined) {
+          } else {
+            const _Some$2 = b;
+            const _x$3 = _Some$2;
+            if (_x$3.$tag === 0) {
+              const _Small$2 = _x$3;
+              const _y = _Small$2._0;
+              x = _x$2;
+              y = _y;
+              break _L$2;
+            }
+          }
+        }
+      }
+      break _L;
+    }
+    let result;
+    _L$3: {
+      _L$4: {
+        const _bind$2 = _M0FP211localreview3tcl16small__operation(operator, x, y);
+        let _bind$3;
+        if (_bind$2.$tag === 1) {
+          const _ok = _bind$2;
+          _bind$3 = _ok._0;
+        } else {
+          return _bind$2;
+        }
+        if (_bind$3 === undefined) {
+        } else {
+          const _Some = _bind$3;
+          const _result = _Some;
+          result = _result;
+          break _L$4;
+        }
+        break _L$3;
+      }
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(result));
+    }
+  }
+  const a$2 = _M0MPC16option6Option3mapGRP211localreview3tcl6NumberRP211localreview3tcl6NumberE(a, _M0MP211localreview3tcl6Number7promote);
+  const b$2 = _M0MPC16option6Option3mapGRP211localreview3tcl6NumberRP211localreview3tcl6NumberE(b, _M0MP211localreview3tcl6Number7promote);
+  if (_M0MPC15array5Array8containsGsE(["==", "!=", "<", ">", "<=", ">="], operator)) {
+    let comparison;
+    _L$2: {
+      _L$3: {
+        let a$3;
+        let b$3;
+        _L$4: {
+          _L$5: {
+            let a$4;
+            let b$4;
+            _L$6: {
+              _L$7: {
+                let a$5;
+                let b$5;
+                _L$8: {
+                  _L$9: {
+                    let a$6;
+                    let b$6;
+                    _L$10: {
+                      if (a$2 === undefined) {
+                        break _L$3;
+                      } else {
+                        const _Some = a$2;
+                        const _x = _Some;
+                        switch (_x.$tag) {
+                          case 1: {
+                            const _Whole = _x;
+                            const _a = _Whole._0;
+                            if (b$2 === undefined) {
+                              break _L$3;
+                            } else {
+                              const _Some$2 = b$2;
+                              const _x$2 = _Some$2;
+                              switch (_x$2.$tag) {
+                                case 1: {
+                                  const _Whole$2 = _x$2;
+                                  const _b = _Whole$2._0;
+                                  a$6 = _a;
+                                  b$6 = _b;
+                                  break _L$10;
+                                }
+                                case 2: {
+                                  const _Real = _x$2;
+                                  const _b$2 = _Real._0;
+                                  a$5 = _a;
+                                  b$5 = _b$2;
+                                  break _L$9;
+                                }
+                                default: {
+                                  a$3 = _x;
+                                  b$3 = _x$2;
+                                  break _L$5;
+                                }
+                              }
+                            }
+                          }
+                          case 2: {
+                            const _Real = _x;
+                            const _a$2 = _Real._0;
+                            if (b$2 === undefined) {
+                              break _L$3;
+                            } else {
+                              const _Some$2 = b$2;
+                              const _x$2 = _Some$2;
+                              if (_x$2.$tag === 1) {
+                                const _Whole$2 = _x$2;
+                                const _b = _Whole$2._0;
+                                a$4 = _a$2;
+                                b$4 = _b;
+                                break _L$7;
+                              } else {
+                                a$3 = _x;
+                                b$3 = _x$2;
+                                break _L$5;
+                              }
+                            }
+                          }
+                          default: {
+                            if (b$2 === undefined) {
+                              break _L$3;
+                            } else {
+                              const _Some$2 = b$2;
+                              const _b = _Some$2;
+                              a$3 = _x;
+                              b$3 = _b;
+                              break _L$5;
+                            }
+                          }
+                        }
+                      }
+                    }
+                    comparison = _M0IPC16bigint6BigIntPB7Compare7compare(a$6, b$6);
+                    break _L$8;
+                  }
+                  if (_M0MPC16double6Double7is__nan(b$5)) {
+                    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(operator === "!=")));
+                  }
+                  const _bind$2 = _M0FP211localreview3tcl24integer__double__compare(a$5, b$5);
+                  if (_bind$2.$tag === 1) {
+                    const _ok = _bind$2;
+                    comparison = _ok._0;
+                  } else {
+                    return _bind$2;
+                  }
+                }
+                break _L$6;
+              }
+              if (_M0MPC16double6Double7is__nan(a$4)) {
+                return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(operator === "!=")));
+              }
+              const _bind$2 = _M0FP211localreview3tcl24integer__double__compare(b$4, a$4);
+              let _tmp;
+              if (_bind$2.$tag === 1) {
+                const _ok = _bind$2;
+                _tmp = _ok._0;
+              } else {
+                return _bind$2;
+              }
+              comparison = -_tmp | 0;
+            }
+            break _L$4;
+          }
+          const x$2 = _M0MP211localreview3tcl6Number6double(a$3);
+          const y$2 = _M0MP211localreview3tcl6Number6double(b$3);
+          if (_M0MPC16double6Double7is__nan(x$2) || _M0MPC16double6Double7is__nan(y$2)) {
+            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(operator === "!=")));
+          }
+          comparison = x$2 < y$2 ? -1 : x$2 > y$2 ? 1 : 0;
+        }
+        break _L$2;
+      }
+      comparison = _M0FP211localreview3tcl20tcl__string__compare(left.text, right.text);
+    }
+    let _tmp;
+    switch (operator) {
+      case "==": {
+        _tmp = comparison === 0;
+        break;
+      }
+      case "!=": {
+        _tmp = comparison !== 0;
+        break;
+      }
+      case "<": {
+        _tmp = comparison < 0;
+        break;
+      }
+      case ">": {
+        _tmp = comparison > 0;
+        break;
+      }
+      case "<=": {
+        _tmp = comparison <= 0;
+        break;
+      }
+      default: {
+        _tmp = comparison >= 0;
+      }
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13boolean__text(_tmp)));
+  }
+  _L$2: {
+    let a$3;
+    _L$3: {
+      if (a$2 === undefined) {
+        break _L$2;
+      } else {
+        const _Some = a$2;
+        const _a = _Some;
+        a$3 = _a;
+        break _L$3;
+      }
+    }
+    let b$3;
+    _L$4: {
+      if (b$2 === undefined) {
+        break _L$2;
+      } else {
+        const _Some = b$2;
+        const _b = _Some;
+        b$3 = _b;
+        break _L$4;
+      }
+    }
+    let x$2;
+    let y$2;
+    _L$5: {
+      _L$6: {
+        if (a$3.$tag === 1) {
+          const _Whole = a$3;
+          const _x = _Whole._0;
+          if (b$3.$tag === 1) {
+            const _Whole$2 = b$3;
+            const _y = _Whole$2._0;
+            x$2 = _x;
+            y$2 = _y;
+            break _L$6;
+          }
+        }
+        break _L$5;
+      }
+      let value;
+      _L$7: {
+        _L$8: {
+          switch (operator) {
+            case "+": {
+              value = _M0IPC16bigint6BigIntPB3Add3add(x$2, y$2);
+              break;
+            }
+            case "-": {
+              value = _M0IPC16bigint6BigIntPB3Sub3sub(x$2, y$2);
+              break;
+            }
+            case "*": {
+              if ((_M0MPC16bigint6BigInt11bit__length(x$2) + _M0MPC16bigint6BigInt11bit__length(y$2) | 0) > 16384) {
+                return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer bit limit"));
+              }
+              value = _M0IPC16bigint6BigIntPB3Mul3mul(x$2, y$2);
+              break;
+            }
+            case "%": {
+              if (_M0IPC16bigint6BigIntPB2Eq5equal(y$2, 0n)) {
+                return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner("divide by zero", "ARITH DIVZERO {divide by zero}")));
+              }
+              const r = _M0IPC16bigint6BigIntPB3Mod3mod(x$2, y$2);
+              value = _M0IP016_24default__implPB2Eq10not__equalGRPC16bigint6BigIntE(r, 0n) && _M0IP016_24default__implPB2Eq10not__equalGbE(_M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(r, 0n), _M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(y$2, 0n)) ? _M0IPC16bigint6BigIntPB3Add3add(r, y$2) : r;
+              break;
+            }
+            case "**": {
+              if (_M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(y$2, 0n)) {
+                if (_M0IPC16bigint6BigIntPB2Eq5equal(x$2, 0n)) {
+                  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner("exponentiation of zero by negative power", "ARITH DOMAIN {exponentiation of zero by negative power}")));
+                }
+                value = _M0IPC16bigint6BigIntPB2Eq5equal(x$2, 1n) ? 1n : _M0IPC16bigint6BigIntPB2Eq5equal(x$2, _M0IPC16bigint6BigIntPB3Neg3neg(1n)) ? (_M0IPC16bigint6BigIntPB2Eq5equal(_M0IPC16bigint6BigIntPB3Mod3mod(y$2, 2n), 0n) ? 1n : _M0IPC16bigint6BigIntPB3Neg3neg(1n)) : 0n;
+              } else {
+                let _tmp;
+                if (_M0IP016_24default__implPB7Compare6op__gtGRPC16bigint6BigIntE(y$2, 16384n)) {
+                  _tmp = true;
+                } else {
+                  let _tmp$2;
+                  if (_M0MPC16bigint6BigInt11bit__length(x$2) > 1) {
+                    const _tmp$3 = _M0MPC16bigint6BigInt11bit__length(x$2);
+                    if (_tmp$3 === 0) {
+                      $panic();
+                    }
+                    _tmp$2 = _M0IP016_24default__implPB7Compare6op__gtGRPC16bigint6BigIntE(y$2, _M0MPC16bigint6BigInt9from__int(16384 / _tmp$3 | 0));
+                  } else {
+                    _tmp$2 = false;
+                  }
+                  _tmp = _tmp$2;
+                }
+                if (_tmp) {
+                  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("exponent limit"));
+                }
+                value = _M0MPC16bigint6BigInt3pow(x$2, y$2, _M0DTPC16option6OptionGRPC16bigint6BigIntE4None__);
+              }
+              break;
+            }
+            case "<<": {
+              break _L$8;
+            }
+            case ">>": {
+              break _L$8;
+            }
+            case "&": {
+              value = _M0IPC16bigint6BigIntPB6BitAnd4land(x$2, y$2);
+              break;
+            }
+            case "|": {
+              value = _M0IPC16bigint6BigIntPB5BitOr3lor(x$2, y$2);
+              break;
+            }
+            case "^": {
+              value = _M0IPC16bigint6BigIntPB6BitXOr4lxor(x$2, y$2);
+              break;
+            }
+            default: {
+              return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported integer operator"));
+            }
+          }
+          break _L$7;
+        }
+        if (_M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(y$2, 0n) || _M0IP016_24default__implPB7Compare6op__gtGRPC16bigint6BigIntE(y$2, 16384n)) {
+          return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("shift limit"));
+        }
+        if (operator === "<<") {
+          if ((_M0MPC16bigint6BigInt11bit__length(x$2) + _M0MPC16bigint6BigInt7to__int(y$2) | 0) > 16384) {
+            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer bit limit"));
+          }
+          value = _M0IPC16bigint6BigIntPB3Shl3shl(x$2, _M0MPC16bigint6BigInt7to__int(y$2));
+        } else {
+          value = _M0IPC16bigint6BigIntPB3Shr3shr(x$2, _M0MPC16bigint6BigInt7to__int(y$2));
+        }
+      }
+      const _bind$2 = _M0FP211localreview3tcl13number__value(new _M0DTP211localreview3tcl6Number5Whole(value));
+      let _tmp;
+      if (_bind$2.$tag === 1) {
+        const _ok = _bind$2;
+        _tmp = _ok._0;
+      } else {
+        return _bind$2;
+      }
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp);
+    }
+    if (_M0MPC15array5Array8containsGsE(["%", "<<", ">>", "&", "|", "^"], operator)) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("integer operand required"));
+    }
+    const x$3 = _M0MP211localreview3tcl6Number6double(a$3);
+    const y$3 = _M0MP211localreview3tcl6Number6double(b$3);
+    let result;
+    switch (operator) {
+      case "+": {
+        result = x$3 + y$3;
+        break;
+      }
+      case "-": {
+        result = x$3 - y$3;
+        break;
+      }
+      case "*": {
+        result = x$3 * y$3;
+        break;
+      }
+      case "/": {
+        result = x$3 / y$3;
+        break;
+      }
+      case "**": {
+        result = _M0FPC14math3pow(x$3, y$3);
+        break;
+      }
+      default: {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported arithmetic operator"));
+      }
+    }
+    return _M0FP211localreview3tcl13number__value(new _M0DTP211localreview3tcl6Number4Real(result));
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expected numeric operand"));
+}
+function _M0FP211localreview3tcl15numeric__divide(left, right) {
+  const a = _M0MP211localreview3tcl8TclValue10as__number(left);
+  const b = _M0MP211localreview3tcl8TclValue10as__number(right);
+  let x;
+  let y;
+  _L: {
+    _L$2: {
+      if (a === undefined) {
+      } else {
+        const _Some = a;
+        const _x = _Some;
+        if (_x.$tag === 0) {
+          const _Small = _x;
+          const _x$2 = _Small._0;
+          if (b === undefined) {
+          } else {
+            const _Some$2 = b;
+            const _x$3 = _Some$2;
+            if (_x$3.$tag === 0) {
+              const _Small$2 = _x$3;
+              const _y = _Small$2._0;
+              x = _x$2;
+              y = _y;
+              break _L$2;
+            }
+          }
+        }
+      }
+      break _L;
+    }
+    const _bind$2 = _M0FP211localreview3tcl16small__operation("/", x, y);
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(_M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(_tmp)));
+  }
+  _L$2: {
+    let x$2;
+    let y$2;
+    _L$3: {
+      const _bind$2 = _M0MPC16option6Option3mapGRP211localreview3tcl6NumberRP211localreview3tcl6NumberE(a, _M0MP211localreview3tcl6Number7promote);
+      const _bind$3 = _M0MPC16option6Option3mapGRP211localreview3tcl6NumberRP211localreview3tcl6NumberE(b, _M0MP211localreview3tcl6Number7promote);
+      if (_bind$2 === undefined) {
+        break _L$2;
+      } else {
+        const _Some = _bind$2;
+        const _x = _Some;
+        if (_x.$tag === 1) {
+          const _Whole = _x;
+          const _x$2 = _Whole._0;
+          if (_bind$3 === undefined) {
+            break _L$2;
+          } else {
+            const _Some$2 = _bind$3;
+            const _x$3 = _Some$2;
+            if (_x$3.$tag === 1) {
+              const _Whole$2 = _x$3;
+              const _y = _Whole$2._0;
+              x$2 = _x$2;
+              y$2 = _y;
+              break _L$3;
+            } else {
+              break _L$2;
+            }
+          }
+        } else {
+          break _L$2;
+        }
+      }
+    }
+    if (_M0IPC16bigint6BigIntPB2Eq5equal(y$2, 0n)) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner("divide by zero", "ARITH DIVZERO {divide by zero}")));
+    }
+    const q = _M0IPC16bigint6BigIntPB3Div3div(x$2, y$2);
+    const r = _M0IPC16bigint6BigIntPB3Mod3mod(x$2, y$2);
+    return _M0FP211localreview3tcl13number__value(new _M0DTP211localreview3tcl6Number5Whole(_M0IP016_24default__implPB2Eq10not__equalGRPC16bigint6BigIntE(r, 0n) && _M0IP016_24default__implPB2Eq10not__equalGbE(_M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(x$2, 0n), _M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(y$2, 0n)) ? _M0IPC16bigint6BigIntPB3Sub3sub(q, 1n) : q));
+  }
+  return _M0FP211localreview3tcl15numeric__binary("/", left, right);
+}
+function _M0MP211localreview3tcl8TclValue5truth(self) {
+  let n;
+  _L: {
+    const _bind$2 = _M0MP211localreview3tcl8TclValue10as__number(self);
+    if (_bind$2 === undefined) {
+      return _M0FP211localreview3tcl7boolean(self.text);
+    } else {
+      const _Some = _bind$2;
+      const _n = _Some;
+      n = _n;
+      break _L;
+    }
+  }
+  const value = _M0MP211localreview3tcl6Number6double(n);
+  if (_M0MPC16double6Double7is__nan(value)) {
+    return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expected boolean"));
+  }
+  return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE2Ok(value !== 0);
+}
+function _M0MP211localreview3tcl8TclValue9as__whole(self) {
+  let n;
+  _L: {
+    let n$2;
+    _L$2: {
+      const _bind$2 = self.payload;
+      if (_bind$2.$tag === 1) {
+        const _Numeric = _bind$2;
+        const _x = _Numeric._0;
+        switch (_x.$tag) {
+          case 0: {
+            const _Small = _x;
+            const _n = _Small._0;
+            n$2 = _n;
+            break _L$2;
+          }
+          case 1: {
+            const _Whole = _x;
+            const _n$2 = _Whole._0;
+            n = _n$2;
+            break _L;
+          }
+          default: {
+            return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expected integer"));
+          }
+        }
+      } else {
+        return _M0FP211localreview3tcl5whole(self.text);
+      }
+    }
+    return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(_M0MPC16bigint6BigInt9from__int(n$2));
+  }
+  return new _M0DTPC16result6ResultGRPC16bigint6BigIntRP211localreview3tcl8TclErrorE2Ok(n);
+}
+function _M0FP211localreview3tcl16completion__code(value) {
+  switch (value) {
+    case "ok": {
+      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(0);
+    }
+    case "error": {
+      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(1);
+    }
+    case "return": {
+      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(2);
+    }
+    case "break": {
+      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(3);
+    }
+    case "continue": {
+      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(4);
+    }
+    default: {
+      let _try_err;
+      _L: {
+        const _bind$2 = _M0FP211localreview3tcl7integer(value);
+        let _tmp;
+        if (_bind$2.$tag === 1) {
+          const _ok = _bind$2;
+          _tmp = _ok._0;
+        } else {
+          const _err = _bind$2;
+          _try_err = _err._0;
+          break _L;
+        }
+        return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(_tmp);
+      }
+      return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner(`bad completion code \"${value}\": must be ok, error, return, break, continue, or an integer`, "TCL RESULT ILLEGAL_CODE")));
+    }
+  }
+}
+function _M0FP211localreview3tcl18dictionary__values(text) {
+  let pairs;
+  _L: {
+    _L$2: {
+      const _bind$2 = text.payload;
+      if (_bind$2.$tag === 3) {
+        const _Pairs = _bind$2;
+        const _pairs = _Pairs._0;
+        pairs = _pairs;
+        break _L$2;
+      }
+      break _L;
+    }
+    return new _M0DTPC16result6ResultGRPB5ArrayGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEERP211localreview3tcl8TclErrorE2Ok(_M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(pairs));
+  }
+  const _bind$2 = _M0MP211localreview3tcl8TclValue8as__list(text);
+  let words;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    words = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  if (2 === 0) {
+    $panic();
+  }
+  if ((words.length % 2 | 0) !== 0) {
+    return new _M0DTPC16result6ResultGRPB5ArrayGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("missing dictionary value"));
+  }
+  const result = [];
+  const _bind$3 = [];
+  const seen = _M0MPB3Map3MapGsiE(new _M0TPB9ArrayViewGUsiEE(_bind$3, 0, 0), undefined);
+  const i = new _M0TPB8MutLocalGiE(0);
+  while (true) {
+    if (i.val < words.length) {
+      let index;
+      _L$2: {
+        _L$3: {
+          const _bind$4 = _M0MPB3Map3getGsiE(seen, _M0MPC15array5Array2atGRPB4JsonE(words, i.val).text);
+          if (_bind$4 === undefined) {
+            _M0MPB3Map3setGsiE(seen, _M0MPC15array5Array2atGRPB4JsonE(words, i.val).text, result.length);
+            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result, { _0: _M0MPC15array5Array2atGRPB4JsonE(words, i.val), _1: _M0MPC15array5Array2atGRPB4JsonE(words, i.val + 1 | 0) });
+          } else {
+            const _Some = _bind$4;
+            const _index = _Some;
+            index = _index;
+            break _L$3;
+          }
+          break _L$2;
+        }
+        _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(result, index, { _0: _M0MPC15array5Array2atGRPB4JsonE(result, index)._0, _1: _M0MPC15array5Array2atGRPB4JsonE(words, i.val + 1 | 0) });
+      }
+      i.val = i.val + 2 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  text.payload = new _M0DTP211localreview3tcl12ValuePayload5Pairs(_M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(result));
+  return new _M0DTPC16result6ResultGRPB5ArrayGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEERP211localreview3tcl8TclErrorE2Ok(result);
+}
+function _M0FP211localreview3tcl22merge__return__options(target, values, depth) {
+  if (depth > 64) {
+    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("return option nesting limit"));
+  }
+  const _bind$2 = values.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const _foreach_element = values[_];
+      let key;
+      let value;
+      _L: {
+        const _key = _foreach_element._0;
+        const _value = _foreach_element._1;
+        key = _key;
+        value = _value;
+        break _L;
+      }
+      if (key === "-options") {
+        const _bind$3 = _M0FP211localreview3tcl18dictionary__values(value);
+        let _tmp$2;
+        if (_bind$3.$tag === 1) {
+          const _ok = _bind$3;
+          _tmp$2 = _ok._0;
+        } else {
+          return _bind$3;
+        }
+        const _bind$4 = _M0FP211localreview3tcl22merge__return__options(target, _M0MPC15array5Array3mapGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEUsRP211localreview3tcl8TclValueEE(_tmp$2, (p) => ({ _0: p._0.text, _1: p._1 })), depth + 1 | 0);
+        if (_bind$4.$tag === 1) {
+          const _ok = _bind$4;
+          _ok._0;
+        } else {
+          return _bind$4;
+        }
+      } else {
+        _M0FP211localreview3tcl18option__set__value(target, key, value);
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
+}
+function _M0MP211localreview3tcl11Interpreter16propagate__value(self, result) {
+  if (_M0MP211localreview3tcl10Completion12actual__code(result) === 0) {
+    self.state.return_options.val = result.options;
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(result.value);
+  } else {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(result));
+  }
+}
+function _M0MP211localreview3tcl11Interpreter15return__command(self, values) {
+  const args = _M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(values, (v) => v.text);
+  if (args.length <= 2) {
+    if (args.length === 1) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eReturn(""));
+    }
+    const _bind$2 = _M0FP211localreview3tcl10completion(0, "", 1, _M0DTPC16option6OptionGRPB5ArrayGUsRP211localreview3tcl8TclValueEEE4None__, -1);
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(new _M0TP211localreview3tcl10Completion(_bind$2.code, _bind$2.level, values.length === 2 ? _M0MPC15array5Array2atGRPB4JsonE(values, 1) : _M0FP211localreview3tcl11text__value(""), _bind$2.options, _bind$2.skip_trace)));
+  }
+  const count = args.length - 1 | 0;
+  let value;
+  if (2 === 0) {
+    $panic();
+  }
+  if ((count % 2 | 0) === 1) {
+    value = _M0MPC15array5Array2atGRPB4JsonE(values, values.length - 1 | 0);
+  } else {
+    value = _M0FP211localreview3tcl11text__value("");
+  }
+  const pairs = [];
+  let _tmp = 1;
+  while (true) {
+    const i = _tmp;
+    if ((i + 1 | 0) < args.length) {
+      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(pairs, { _0: _M0MPC15array5Array2atGRPB4JsonE(args, i), _1: _M0MPC15array5Array2atGRPB4JsonE(values, i + 1 | 0) });
+      _tmp = i + 2 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  const options = [];
+  const _bind$2 = _M0FP211localreview3tcl22merge__return__options(options, pairs, 0);
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    _ok._0;
+  } else {
+    return _bind$2;
+  }
+  const _bind$3 = _M0FP211localreview3tcl16completion__code(_M0MPC16option6Option10unwrap__orGsE(_M0FP211localreview3tcl11option__get(options, "-code"), "0"));
+  let _tmp$2;
+  if (_bind$3.$tag === 1) {
+    const _ok = _bind$3;
+    _tmp$2 = _ok._0;
+  } else {
+    return _bind$3;
+  }
+  const code = new _M0TPB8MutLocalGiE(_tmp$2);
+  const level_text = _M0MPC16option6Option10unwrap__orGsE(_M0FP211localreview3tcl11option__get(options, "-level"), "1");
+  let _tmp$3;
+  let _try_err;
+  _L: {
+    _L$2: {
+      const _bind$4 = _M0FP211localreview3tcl7integer(level_text);
+      let parsed;
+      if (_bind$4.$tag === 1) {
+        const _ok = _bind$4;
+        parsed = _ok._0;
+      } else {
+        const _err = _bind$4;
+        _try_err = _err._0;
+        break _L$2;
+      }
+      if (parsed < 0) {
+        _try_err = new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("negative level");
+        break _L$2;
+      }
+      _tmp$3 = parsed;
+      break _L;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner(`bad -level value: expected non-negative integer but got \"${level_text}\"`, "TCL RESULT ILLEGAL_LEVEL")));
+  }
+  const level = new _M0TPB8MutLocalGiE(_tmp$3);
+  if (code.val === 2) {
+    code.val = 0;
+    level.val = level.val + 1 | 0;
+  }
+  const extras = _M0MPC15array5Array6filterGUsRP211localreview3tcl8TclValueEE(options, (pair) => _M0IP016_24default__implPB2Eq10not__equalGsE(pair._0, "-code") && _M0IP016_24default__implPB2Eq10not__equalGsE(pair._0, "-level"));
+  let text;
+  _L$2: {
+    _L$3: {
+      const _bind$4 = _M0FP211localreview3tcl11option__get(extras, "-errorcode");
+      if (_bind$4 === undefined) {
+      } else {
+        const _Some = _bind$4;
+        const _text = _Some;
+        text = _text;
+        break _L$3;
+      }
+      break _L$2;
+    }
+    const _bind$4 = _M0FP211localreview3tcl11parse__list(text);
+    if (_bind$4.$tag === 1) {
+      const _ok = _bind$4;
+      _ok._0;
+    } else {
+      return _bind$4;
+    }
+  }
+  let text$2;
+  _L$3: {
+    _L$4: {
+      const _bind$4 = _M0FP211localreview3tcl11option__get(extras, "-errorstack");
+      if (_bind$4 === undefined) {
+      } else {
+        const _Some = _bind$4;
+        const _text = _Some;
+        text$2 = _text;
+        break _L$4;
+      }
+      break _L$3;
+    }
+    const _bind$4 = _M0FP211localreview3tcl11parse__list(text$2);
+    let _tmp$4;
+    if (_bind$4.$tag === 1) {
+      const _ok = _bind$4;
+      _tmp$4 = _ok._0;
+    } else {
+      return _bind$4;
+    }
+    if (2 === 0) {
+      $panic();
+    }
+    if ((_tmp$4.length % 2 | 0) !== 0) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("errorstack requires token/value pairs"));
+    }
+  }
+  if (code.val === 1) {
+    const _bind$4 = _M0FP211localreview3tcl11option__get(extras, "-errorcode");
+    if (_bind$4 === undefined) {
+      _M0FP211localreview3tcl11option__set(extras, "-errorcode", "NONE");
+    }
+    let text$3;
+    _L$4: {
+      _L$5: {
+        const _bind$5 = _M0FP211localreview3tcl11option__get(extras, "-errorinfo");
+        if (_bind$5 === undefined) {
+        } else {
+          const _Some = _bind$5;
+          const _text = _Some;
+          text$3 = _text;
+          break _L$5;
+        }
+        break _L$4;
+      }
+      if (!_M0MPC16string6String9is__empty(text$3)) {
+        const _bind$5 = _M0FP211localreview3tcl11option__get(extras, "-errorline");
+        if (_bind$5 === undefined) {
+          _M0FP211localreview3tcl11option__set(extras, "-errorline", "1");
+        }
+      }
+    }
+  }
+  const _bind$4 = _M0FP211localreview3tcl18completion_2einner(code.val, value.text, level.val, extras, level.val === 0 && _M0IP016_24default__implPB2Eq10not__equalGsE(_M0MPC16option6Option10unwrap__orGsE(_M0FP211localreview3tcl11option__get(extras, "-errorinfo"), ""), ""));
+  return _M0MP211localreview3tcl11Interpreter16propagate__value(self, new _M0TP211localreview3tcl10Completion(_bind$4.code, _bind$4.level, value, _bind$4.options, _bind$4.skip_trace));
+}
+function _M0FP211localreview3tcl23dictionary__edit__value(text, keys, value, depth) {
+  if (depth > 64) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary nesting limit"));
+  }
+  if (_M0MPC15array5Array9is__emptyGRPB4JsonE(keys)) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary key required"));
+  }
+  const _bind$2 = _M0FP211localreview3tcl18dictionary__values(text);
+  let pairs;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    pairs = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  const index = new _M0TPB8MutLocalGiE(-1);
+  const _bind$3 = 0;
+  const _bind$4 = pairs.length;
+  let _tmp = _bind$3;
+  while (true) {
+    const i = _tmp;
+    if (i < _bind$4) {
+      if (_M0MPC15array5Array2atGRPB4JsonE(pairs, i)._0.text === _M0MPC15array5Array2atGRPB4JsonE(keys, 0).text) {
+        index.val = i;
+        break;
+      }
+      _tmp = i + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  let value$2;
+  if (keys.length > 1) {
+    if (index.val < 0) {
+      if (value === undefined) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary path not found"));
+      }
+    }
+    const _bind$5 = _M0FP211localreview3tcl23dictionary__edit__value(index.val < 0 ? _M0FP211localreview3tcl11text__value("") : _M0MPC15array5Array2atGRPB4JsonE(pairs, index.val)._1, _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(keys, 1, undefined)), value, depth + 1 | 0);
+    if (_bind$5.$tag === 1) {
+      const _ok = _bind$5;
+      value$2 = _ok._0;
+    } else {
+      return _bind$5;
+    }
+  } else {
+    value$2 = value;
+  }
+  let v;
+  _L: {
+    _L$2: {
+      if (value$2 === undefined) {
+        if (index.val >= 0) {
+          _M0MPC15array5Array6removeGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(pairs, index.val);
+        }
+      } else {
+        const _Some = value$2;
+        const _v = _Some;
+        v = _v;
+        break _L$2;
+      }
+      break _L;
+    }
+    if (index.val < 0) {
+      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(pairs, { _0: _M0MPC15array5Array2atGRPB4JsonE(keys, 0), _1: v });
+    } else {
+      _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(pairs, index.val, { _0: _M0MPC15array5Array2atGRPB4JsonE(pairs, index.val)._0, _1: v });
+    }
+  }
+  return _M0FP211localreview3tcl17dictionary__value(pairs);
+}
+function _M0FP211localreview3tcl22dictionary__get__value(text, path) {
+  const value = new _M0TPB8MutLocalGRP211localreview3tcl8TclValueE(text);
+  const _bind$2 = path.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const key = path[_];
+      const _bind$3 = _M0FP211localreview3tcl18dictionary__values(value.val);
+      let pairs;
+      if (_bind$3.$tag === 1) {
+        const _ok = _bind$3;
+        pairs = _ok._0;
+      } else {
+        return _bind$3;
+      }
+      const found = _M0MPC15array5Array3getGUiiEE(_M0MPC15array5Array6filterGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(pairs, (p) => p._0.text === key.text), 0);
+      let _tmp$2;
+      if (found === undefined) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary key not found"));
+      } else {
+        const _Some = found;
+        const _x = _Some;
+        const _v = _x._1;
+        _tmp$2 = _v;
+      }
+      value.val = _tmp$2;
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(value.val);
+}
+function _M0MP211localreview3tcl10DictObject3put(self, key, value) {
+  const index = _M0MPB3Map3getGsiE(self.index, key.text);
+  const encoded = _M0FP211localreview3tcl14quote__element(value.text, false);
+  let units;
+  let encoded_key;
+  _L: {
+    let i;
+    _L$2: {
+      if (index === undefined) {
+        if (self.keys.length >= 50000) {
+          return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary element limit"));
+        }
+        const k = _M0FP211localreview3tcl14quote__element(key.text, _M0MPC15array5Array9is__emptyGRPB4JsonE(self.keys));
+        units = ((self.units + k.length | 0) + encoded.length | 0) + (_M0MPC15array5Array9is__emptyGRPB4JsonE(self.keys) ? 1 : 2) | 0;
+        encoded_key = k;
+        break _L;
+      } else {
+        const _Some = index;
+        const _i = _Some;
+        i = _i;
+        break _L$2;
+      }
+    }
+    units = (self.units - _M0MPC15array5Array2atGRPB4JsonE(self.encoded, (Math.imul(i, 2) | 0) + 1 | 0).length | 0) + encoded.length | 0;
+    encoded_key = "";
+    break _L;
+  }
+  if (units > 1000000) {
+    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("dictionary size limit"));
+  }
+  let i;
+  _L$2: {
+    _L$3: {
+      if (index === undefined) {
+        _M0MPB3Map3setGsiE(self.index, key.text, self.keys.length);
+        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.keys, key);
+        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.values, value);
+        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.encoded, encoded_key);
+        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.encoded, encoded);
+      } else {
+        const _Some = index;
+        const _i = _Some;
+        i = _i;
+        break _L$3;
+      }
+      break _L$2;
+    }
+    _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(self.values, i, value);
+    _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(self.encoded, (Math.imul(i, 2) | 0) + 1 | 0, encoded);
+  }
+  self.units = units;
+  self.representation = undefined;
+  return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
+}
+function _M0MP211localreview3tcl10DictObject11from__value(value) {
+  const _tmp = [];
+  const _tmp$2 = [];
+  const _bind$2 = [];
+  const object = new _M0TP211localreview3tcl10DictObject(_tmp, _tmp$2, _M0MPB3Map3MapGsiE(new _M0TPB9ArrayViewGUsiEE(_bind$2, 0, 0), undefined), [], 0, value.text);
+  const _bind$3 = _M0FP211localreview3tcl18dictionary__values(value);
+  let _bind$4;
+  if (_bind$3.$tag === 1) {
+    const _ok = _bind$3;
+    _bind$4 = _ok._0;
+  } else {
+    return _bind$3;
+  }
+  const _bind$5 = _bind$4.length;
+  let _tmp$3 = 0;
+  while (true) {
+    const _ = _tmp$3;
+    if (_ < _bind$5) {
+      const _foreach_element = _bind$4[_];
+      let key;
+      let value$2;
+      _L: {
+        const _key = _foreach_element._0;
+        const _value = _foreach_element._1;
+        key = _key;
+        value$2 = _value;
+        break _L;
+      }
+      const _bind$6 = _M0MP211localreview3tcl10DictObject3put(object, key, value$2);
+      if (_bind$6.$tag === 1) {
+        const _ok = _bind$6;
+        _ok._0;
+      } else {
+        return _bind$6;
+      }
+      _tmp$3 = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  object.representation = value.text;
+  return new _M0DTPC16result6ResultGRP211localreview3tcl10DictObjectRP211localreview3tcl8TclErrorE2Ok(object);
+}
+function _M0MP211localreview3tcl10DictObject3get(self, key) {
+  return _M0MPC16option6Option3mapGiRP211localreview3tcl8TclValueE(_M0MPB3Map3getGsiE(self.index, key), (i) => _M0MPC15array5Array2atGRPB4JsonE(self.values, i));
+}
+function _M0FP211localreview3tcl26collection__ascii__compare(a, b) {
+  const i = new _M0TPB8MutLocalGiE(0);
+  const j = new _M0TPB8MutLocalGiE(0);
+  while (true) {
+    if (i.val < a.length && j.val < b.length) {
+      let x;
+      let next_i;
+      _L: {
+        const _bind$2 = _M0FP211localreview3tcl21collection__codepoint(a, i.val);
+        const _x = _bind$2._0;
+        const _next_i = _bind$2._1;
+        x = _x;
+        next_i = _next_i;
+        break _L;
+      }
+      let y;
+      let next_j;
+      _L$2: {
+        const _bind$2 = _M0FP211localreview3tcl21collection__codepoint(b, j.val);
+        const _y = _bind$2._0;
+        const _next_j = _bind$2._1;
+        y = _y;
+        next_j = _next_j;
+        break _L$2;
+      }
+      const x$2 = x === 0 ? 128 : x >= 128 ? x + 1 | 0 : x;
+      const y$2 = y === 0 ? 128 : y >= 128 ? y + 1 | 0 : y;
+      if (x$2 !== y$2) {
+        return x$2 - y$2 | 0;
+      }
+      i.val = next_i;
+      j.val = next_j;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return $compare_int(a.length - i.val | 0, b.length - j.val | 0);
+}
+function _M0FP211localreview3tcl17collection__digit(text, at) {
+  return at < text.length && ((at >>> 0 < text.length ? text.charCodeAt(at) : $oob()) >= 48 && (at >>> 0 < text.length ? text.charCodeAt(at) : $oob()) <= 57);
+}
+function _M0FP211localreview3tcl19dictionary__compare(a, b) {
+  const i = new _M0TPB8MutLocalGiE(0);
+  const j = new _M0TPB8MutLocalGiE(0);
+  const secondary = new _M0TPB8MutLocalGiE(0);
+  while (true) {
+    if (i.val < a.length && j.val < b.length) {
+      if (_M0FP211localreview3tcl17collection__digit(a, i.val) && _M0FP211localreview3tcl17collection__digit(b, j.val)) {
+        const zeros = new _M0TPB8MutLocalGiE(0);
+        while (true) {
+          let _tmp;
+          const _tmp$2 = i.val;
+          if (_M0IPC16uint166UInt16PB2Eq5equal(_tmp$2 >>> 0 < a.length ? a.charCodeAt(_tmp$2) : $oob(), 48)) {
+            _tmp = _M0FP211localreview3tcl17collection__digit(a, i.val + 1 | 0);
+          } else {
+            _tmp = false;
+          }
+          if (_tmp) {
+            i.val = i.val + 1 | 0;
+            zeros.val = zeros.val + 1 | 0;
+            continue;
+          } else {
+            break;
+          }
+        }
+        while (true) {
+          let _tmp;
+          const _tmp$2 = j.val;
+          if (_M0IPC16uint166UInt16PB2Eq5equal(_tmp$2 >>> 0 < b.length ? b.charCodeAt(_tmp$2) : $oob(), 48)) {
+            _tmp = _M0FP211localreview3tcl17collection__digit(b, j.val + 1 | 0);
+          } else {
+            _tmp = false;
+          }
+          if (_tmp) {
+            j.val = j.val + 1 | 0;
+            zeros.val = zeros.val - 1 | 0;
+            continue;
+          } else {
+            break;
+          }
+        }
+        if (secondary.val === 0) {
+          secondary.val = zeros.val;
+        }
+        const digits = new _M0TPB8MutLocalGiE(0);
+        while (true) {
+          if (_M0FP211localreview3tcl17collection__digit(a, i.val) && _M0FP211localreview3tcl17collection__digit(b, j.val)) {
+            if (digits.val === 0) {
+              const _tmp = i.val;
+              const _tmp$2 = _tmp >>> 0 < a.length ? a.charCodeAt(_tmp) : $oob();
+              const _tmp$3 = j.val;
+              digits.val = _tmp$2 - (_tmp$3 >>> 0 < b.length ? b.charCodeAt(_tmp$3) : $oob()) | 0;
+            }
+            i.val = i.val + 1 | 0;
+            j.val = j.val + 1 | 0;
+            continue;
+          } else {
+            break;
+          }
+        }
+        if (_M0FP211localreview3tcl17collection__digit(a, i.val)) {
+          return 1;
+        }
+        if (_M0FP211localreview3tcl17collection__digit(b, j.val)) {
+          return -1;
+        }
+        if (digits.val !== 0) {
+          return digits.val;
+        }
+      } else {
+        let x;
+        let next_i;
+        _L: {
+          const _bind$2 = _M0FP211localreview3tcl21collection__codepoint(a, i.val);
+          const _x = _bind$2._0;
+          const _next_i = _bind$2._1;
+          x = _x;
+          next_i = _next_i;
+          break _L;
+        }
+        let y;
+        let next_j;
+        _L$2: {
+          const _bind$2 = _M0FP211localreview3tcl21collection__codepoint(b, j.val);
+          const _y = _bind$2._0;
+          const _next_j = _bind$2._1;
+          y = _y;
+          next_j = _next_j;
+          break _L$2;
+        }
+        const difference = _M0FP211localreview3tcl19unicode__case__unit(x, 0) - _M0FP211localreview3tcl19unicode__case__unit(y, 0) | 0;
+        if (difference !== 0) {
+          return difference;
+        }
+        if (secondary.val === 0) {
+          if ((_M0FP211localreview3tcl13unicode__mask(x) & 1024) !== 0 && (_M0FP211localreview3tcl13unicode__mask(y) & 64) !== 0) {
+            secondary.val = -1;
+          } else {
+            if ((_M0FP211localreview3tcl13unicode__mask(y) & 1024) !== 0 && (_M0FP211localreview3tcl13unicode__mask(x) & 64) !== 0) {
+              secondary.val = 1;
+            }
+          }
+        }
+        i.val = next_i;
+        j.val = next_j;
+      }
+      continue;
+    } else {
+      break;
+    }
+  }
+  return i.val < a.length ? 1 : j.val < b.length ? -1 : secondary.val;
+}
+function _M0FP211localreview3tcl16dictionary__sort(values, compare, unique) {
+  const merge = (left, right) => {
+    const out = [];
+    const i = new _M0TPB8MutLocalGiE(0);
+    const j = new _M0TPB8MutLocalGiE(0);
+    while (true) {
+      if (i.val < left.length && j.val < right.length) {
+        const _bind$2 = compare(_M0MPC15array5Array2atGRPB4JsonE(left, i.val), _M0MPC15array5Array2atGRPB4JsonE(right, j.val));
+        let order;
+        if (_bind$2.$tag === 1) {
+          const _ok = _bind$2;
+          order = _ok._0;
+        } else {
+          return _bind$2;
+        }
+        if (order > 0 || order === 0 && unique) {
+          if (order === 0) {
+            i.val = i.val + 1 | 0;
+          }
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(out, _M0MPC15array5Array2atGRPB4JsonE(right, j.val));
+          j.val = j.val + 1 | 0;
+        } else {
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(out, _M0MPC15array5Array2atGRPB4JsonE(left, i.val));
+          i.val = i.val + 1 | 0;
+        }
+        continue;
+      } else {
+        break;
+      }
+    }
+    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok(_M0IPC15array5ArrayPB3Add3addGRP211localreview3tcl8TclValueE(_M0IPC15array5ArrayPB3Add3addGRP211localreview3tcl8TclValueE(out, _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(left, i.val, undefined))), _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(right, j.val, undefined))));
+  };
+  const runs = [];
+  const _bind$2 = values.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const value = values[_];
+      const run = new _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl8TclValueEE([value]);
+      const at = new _M0TPB8MutLocalGiE(0);
+      while (true) {
+        if (at.val < runs.length) {
+          let left;
+          _L: {
+            const _bind$3 = _M0MPC15array5Array2atGRPB4JsonE(runs, at.val);
+            if (_bind$3.$tag === 1) {
+              const _Some = _bind$3;
+              const _left = _Some._0;
+              left = _left;
+              break _L;
+            } else {
+              break;
+            }
+          }
+          const _bind$3 = merge(left, run.val);
+          let _tmp$2;
+          if (_bind$3.$tag === 1) {
+            const _ok = _bind$3;
+            _tmp$2 = _ok._0;
+          } else {
+            return _bind$3;
+          }
+          run.val = _tmp$2;
+          _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(runs, at.val, _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None__);
+          at.val = at.val + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+      if (at.val === runs.length) {
+        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(runs, new _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4Some(run.val));
+      } else {
+        _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(runs, at.val, new _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4Some(run.val));
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  const result = new _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl8TclValueEE([]);
+  const _bind$3 = runs.length;
+  let _tmp$2 = 0;
+  while (true) {
+    const _ = _tmp$2;
+    if (_ < _bind$3) {
+      const run = runs[_];
+      let left;
+      _L: {
+        _L$2: {
+          if (run.$tag === 1) {
+            const _Some = run;
+            const _left = _Some._0;
+            left = _left;
+            break _L$2;
+          }
+          break _L;
+        }
+        const _bind$4 = merge(left, result.val);
+        let _tmp$3;
+        if (_bind$4.$tag === 1) {
+          const _ok = _bind$4;
+          _tmp$3 = _ok._0;
+        } else {
+          return _bind$4;
+        }
+        result.val = _tmp$3;
+      }
+      _tmp$2 = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok(result.val);
+}
+function _M0FP211localreview3tcl11list__index(text, length) {
+  if (text === "end") {
+    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(length - 1 | 0);
+  }
+  const _bind$2 = "end-";
+  if (_M0MPC16string6String11has__prefix(text, new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length))) {
+    const _tmp = length - 1 | 0;
+    const _bind$3 = _M0FP211localreview3tcl7integer(_M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(text, 4, undefined)));
+    let _tmp$2;
+    if (_bind$3.$tag === 1) {
+      const _ok = _bind$3;
+      _tmp$2 = _ok._0;
+    } else {
+      return _bind$3;
+    }
+    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(_tmp - _tmp$2 | 0);
+  }
+  const _bind$3 = "end+";
+  if (_M0MPC16string6String11has__prefix(text, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length))) {
+    const _tmp = length - 1 | 0;
+    const _bind$4 = _M0FP211localreview3tcl7integer(_M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(text, 4, undefined)));
+    let _tmp$2;
+    if (_bind$4.$tag === 1) {
+      const _ok = _bind$4;
+      _tmp$2 = _ok._0;
+    } else {
+      return _bind$4;
+    }
+    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(_tmp + _tmp$2 | 0);
+  }
+  return _M0FP211localreview3tcl7integer(text);
+}
+function _M0FP211localreview3tcl10list__edit(text, indices, replacement, depth) {
+  if (depth > 64) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("nested list limit"));
+  }
+  if (_M0MPC15array5Array9is__emptyGRPB4JsonE(indices)) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(replacement);
+  }
+  const _bind$2 = _M0MP211localreview3tcl8TclValue8as__list(text);
+  let values;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    values = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  const _bind$3 = _M0FP211localreview3tcl11list__index(_M0MPC15array5Array2atGRPB4JsonE(indices, 0), values.length);
+  let index;
+  if (_bind$3.$tag === 1) {
+    const _ok = _bind$3;
+    index = _ok._0;
+  } else {
+    return _bind$3;
+  }
+  if (index < 0 || index > values.length) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("list index out of range"));
+  }
+  if (index === values.length) {
+    _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, _M0FP211localreview3tcl11text__value(""));
+  }
+  const _bind$4 = _M0FP211localreview3tcl10list__edit(_M0MPC15array5Array2atGRPB4JsonE(values, index), _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(indices, 1, undefined)), replacement, depth + 1 | 0);
+  let _tmp;
+  if (_bind$4.$tag === 1) {
+    const _ok = _bind$4;
+    _tmp = _ok._0;
+  } else {
+    return _bind$4;
+  }
+  _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(values, index, _tmp);
+  return _M0FP211localreview3tcl11list__value(values);
+}
+function _M0FP211localreview3tcl12sort__values(values, compare) {
+  const buffer = _M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(values);
+  const width = new _M0TPB8MutLocalGiE(1);
+  while (true) {
+    if (width.val < values.length) {
+      const start = new _M0TPB8MutLocalGiE(0);
+      while (true) {
+        if (start.val < values.length) {
+          const middle = _M0MPC13int3Int3min(start.val + width.val | 0, values.length);
+          const end = _M0MPC13int3Int3min(start.val + (Math.imul(2, width.val) | 0) | 0, values.length);
+          const a = new _M0TPB8MutLocalGiE(start.val);
+          const b = new _M0TPB8MutLocalGiE(middle);
+          const i = new _M0TPB8MutLocalGiE(start.val);
+          while (true) {
+            if (i.val < end) {
+              let _tmp;
+              if (b.val >= end) {
+                _tmp = true;
+              } else {
+                let _tmp$2;
+                if (a.val < middle) {
+                  const _bind$2 = compare(_M0MPC15array5Array2atGRPB4JsonE(values, a.val), _M0MPC15array5Array2atGRPB4JsonE(values, b.val));
+                  let _tmp$3;
+                  if (_bind$2.$tag === 1) {
+                    const _ok = _bind$2;
+                    _tmp$3 = _ok._0;
+                  } else {
+                    return _bind$2;
+                  }
+                  _tmp$2 = _tmp$3 <= 0;
+                } else {
+                  _tmp$2 = false;
+                }
+                _tmp = _tmp$2;
+              }
+              if (_tmp) {
+                _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(buffer, i.val, _M0MPC15array5Array2atGRPB4JsonE(values, a.val));
+                a.val = a.val + 1 | 0;
+              } else {
+                _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(buffer, i.val, _M0MPC15array5Array2atGRPB4JsonE(values, b.val));
+                b.val = b.val + 1 | 0;
+              }
+              i.val = i.val + 1 | 0;
+              continue;
+            } else {
+              break;
+            }
+          }
+          start.val = end;
+          continue;
+        } else {
+          break;
+        }
+      }
+      const _bind$2 = 0;
+      const _bind$3 = values.length;
+      let _tmp = _bind$2;
+      while (true) {
+        const i = _tmp;
+        if (i < _bind$3) {
+          _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(values, i, _M0MPC15array5Array2atGRPB4JsonE(buffer, i));
+          _tmp = i + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+      width.val = Math.imul(width.val, 2) | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
+}
 function _M0FP211localreview3tcl21re__bad__octal__index(text) {
   const trimmed = _M0MPC16string10StringView9to__owned(_M0MPC16string6String4trim(text, undefined));
   let value;
@@ -21783,9 +21653,6 @@ function _M0FP211localreview3tcl18re__index__integer(text) {
     return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp index integer range"));
   }
   return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(_M0MPC16bigint6BigInt7to__int(value));
-}
-function _M0FP211localreview3tcl13switch__error(message, code) {
-  return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error37localreview_2ftcl_2eTclError_2eSignal(_M0FP211localreview3tcl25completion__error_2einner(message, code)));
 }
 function _M0FP211localreview3tcl16re__start__index(text, end) {
   let parsed;
@@ -21958,70 +21825,2125 @@ function _M0FP211localreview3tcl16re__start__index(text, end) {
   }
   return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(value);
 }
-function _M0FP211localreview3tcl9re__class(name, cp, nocase) {
-  if (name === "blank") {
-    return cp === 9 || cp === 32;
+function _M0FP211localreview3tcl15search__indices(value) {
+  const _bind$2 = _M0MP211localreview3tcl8TclValue8as__list(value);
+  let _tmp;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    _tmp = _ok._0;
+  } else {
+    return _bind$2;
   }
-  let bit;
-  switch (name) {
-    case "alnum": {
-      bit = 1;
+  return _M0MPC15array5Array3mapGRP211localreview3tcl8TclValueRP211localreview3tcl11SearchIndexEHRP211localreview3tcl8TclError(_tmp, (index) => {
+    const _tmp$2 = index.text;
+    const _bind$3 = "end";
+    const relative = _M0MPC16string6String11has__prefix(_tmp$2, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length));
+    const _bind$4 = _M0FP211localreview3tcl16re__start__index(index.text, 0);
+    let value$2;
+    if (_bind$4.$tag === 1) {
+      const _ok = _bind$4;
+      value$2 = _ok._0;
+    } else {
+      return _bind$4;
+    }
+    if (relative && (value$2 > 0 || value$2 <= -2147483647) || !relative && (value$2 < 0 || value$2 >= 2147483647)) {
+      const _bind$5 = _M0FP211localreview3tcl13switch__error(`index \"${index.text}\" cannot select an element from any list`, "TCL VALUE INDEXOUTOFRANGE");
+      if (_bind$5.$tag === 1) {
+        const _ok = _bind$5;
+        _ok._0;
+      } else {
+        return _bind$5;
+      }
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl11SearchIndexRP211localreview3tcl8TclErrorE2Ok(new _M0TP211localreview3tcl11SearchIndex(relative, value$2));
+  });
+}
+function _M0FP211localreview3tcl11search__key(value, indices) {
+  const value$2 = new _M0TPB8MutLocalGRP211localreview3tcl8TclValueE(value);
+  const _bind$2 = indices.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const index = indices[_];
+      const _bind$3 = _M0MP211localreview3tcl8TclValue8as__list(value$2.val);
+      let values;
+      if (_bind$3.$tag === 1) {
+        const _ok = _bind$3;
+        values = _ok._0;
+      } else {
+        return _bind$3;
+      }
+      const at = index.relative ? (values.length - 1 | 0) + index.value | 0 : index.value;
+      if (at < 0 || at >= values.length) {
+        const _bind$4 = _M0FP211localreview3tcl13switch__error(`element ${_M0MPC13int3Int18to__string_2einner(at, 10)} missing from sublist \"${value$2.val.text}\"`, "TCL OPERATION LSORT INDEXFAILED");
+        if (_bind$4.$tag === 1) {
+          const _ok = _bind$4;
+          _ok._0;
+        } else {
+          return _bind$4;
+        }
+      }
+      value$2.val = _M0MPC15array5Array2atGRPB4JsonE(values, at);
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
       break;
     }
-    case "alpha": {
-      bit = 2;
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(value$2.val);
+}
+function _M0FP211localreview3tcl12search__real(value) {
+  let n;
+  let n$2;
+  _L: {
+    _L$2: {
+      const _bind$2 = _M0MP211localreview3tcl8TclValue10as__number(value);
+      if (_bind$2 === undefined) {
+        const _bind$3 = _M0FP211localreview3tcl13switch__error(`expected floating-point number but got \"${value.text}\"${_M0FP211localreview3tcl21re__bad__octal__index(value.text) ? " (looks like invalid octal number)" : ""}`, "TCL VALUE NUMBER");
+        if (_bind$3.$tag === 1) {
+          const _ok = _bind$3;
+          _ok._0;
+        } else {
+          return _bind$3;
+        }
+        n = 0;
+      } else {
+        const _Some = _bind$2;
+        const _n = _Some;
+        n$2 = _n;
+        break _L$2;
+      }
+      break _L;
+    }
+    n = _M0MP211localreview3tcl6Number6double(n$2);
+  }
+  if (_M0MPC16double6Double7is__nan(n)) {
+    const _bind$2 = _M0FP211localreview3tcl13switch__error("floating point value is Not a Number", "TCL VALUE DOUBLE NAN");
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _ok._0;
+    } else {
+      return _bind$2;
+    }
+  }
+  return new _M0DTPC16result6ResultGdRP211localreview3tcl8TclErrorE2Ok(n);
+}
+function _M0FP211localreview3tcl20search__regexp__glob(source) {
+  const out = _M0MPB13StringBuilder21StringBuilder_2einner(0);
+  const at = new _M0TPB8MutLocalGiE(0);
+  const _bind$2 = "***=";
+  if (_M0MPC16string6String11has__prefix(source, new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length))) {
+    _M0IPB13StringBuilderPB6Logger11write__char(out, 42);
+    const _bind$3 = _M0FP211localreview3tcl12utf16__units(_M0MPC16string10StringView9to__owned(_M0MPC16string6String11sub_2einner(source, 4, undefined)));
+    const _bind$4 = _bind$3.length;
+    let _tmp = 0;
+    while (true) {
+      const _ = _tmp;
+      if (_ < _bind$4) {
+        const c = _bind$3[_];
+        if (c === 92 || (c === 42 || (c === 91 || (c === 93 || c === 63)))) {
+          _M0IPB13StringBuilderPB6Logger11write__char(out, 92);
+        }
+        _M0IPB13StringBuilderPB6Logger11write__char(out, c);
+        _tmp = _ + 1 | 0;
+        continue;
+      } else {
+        break;
+      }
+    }
+    _M0IPB13StringBuilderPB6Logger11write__char(out, 42);
+    return _M0MPB13StringBuilder10to__string(out);
+  }
+  const last_star = new _M0TPB8MutLocalGbE(false);
+  const stars = new _M0TPB8MutLocalGiE(0);
+  const right = new _M0TPB8MutLocalGbE(false);
+  const _bind$3 = "^";
+  if (_M0MPC16string6String11has__prefix(source, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length))) {
+    at.val = 1;
+  } else {
+    _M0IPB13StringBuilderPB6Logger11write__char(out, 42);
+    last_star.val = true;
+  }
+  while (true) {
+    if (at.val < source.length) {
+      const _tmp = at.val;
+      const c = _tmp >>> 0 < source.length ? source.charCodeAt(_tmp) : $oob();
+      at.val = at.val + 1 | 0;
+      if (c === 92) {
+        if (at.val === source.length) {
+          return undefined;
+        }
+        const _tmp$2 = at.val;
+        const c$2 = _tmp$2 >>> 0 < source.length ? source.charCodeAt(_tmp$2) : $oob();
+        at.val = at.val + 1 | 0;
+        _L: {
+          _L$2: {
+            _L$3: {
+              _L$4: {
+                _L$5: {
+                  _L$6: {
+                    switch (c$2) {
+                      case 97: {
+                        _M0IPB13StringBuilderPB6Logger11write__char(out, 7);
+                        break;
+                      }
+                      case 98: {
+                        _M0IPB13StringBuilderPB6Logger11write__char(out, 8);
+                        break;
+                      }
+                      case 102: {
+                        _M0IPB13StringBuilderPB6Logger11write__char(out, 12);
+                        break;
+                      }
+                      case 110: {
+                        _M0IPB13StringBuilderPB6Logger11write__char(out, 10);
+                        break;
+                      }
+                      case 114: {
+                        _M0IPB13StringBuilderPB6Logger11write__char(out, 13);
+                        break;
+                      }
+                      case 116: {
+                        _M0IPB13StringBuilderPB6Logger11write__char(out, 9);
+                        break;
+                      }
+                      case 118: {
+                        _M0IPB13StringBuilderPB6Logger11write__char(out, 11);
+                        break;
+                      }
+                      case 66: {
+                        break _L$6;
+                      }
+                      case 92: {
+                        break _L$6;
+                      }
+                      case 42: {
+                        break _L$4;
+                      }
+                      case 91: {
+                        break _L$4;
+                      }
+                      case 93: {
+                        break _L$4;
+                      }
+                      case 63: {
+                        break _L$4;
+                      }
+                      case 123: {
+                        break _L$2;
+                      }
+                      case 125: {
+                        break _L$2;
+                      }
+                      case 40: {
+                        break _L$2;
+                      }
+                      case 41: {
+                        break _L$2;
+                      }
+                      case 43: {
+                        break _L$2;
+                      }
+                      case 46: {
+                        break _L$2;
+                      }
+                      case 124: {
+                        break _L$2;
+                      }
+                      case 94: {
+                        break _L$2;
+                      }
+                      case 36: {
+                        break _L$2;
+                      }
+                      default: {
+                        return undefined;
+                      }
+                    }
+                    break _L$5;
+                  }
+                  _M0IPB13StringBuilderPB6Logger13write__string(out, "\\\\");
+                }
+                break _L$3;
+              }
+              _M0IPB13StringBuilderPB6Logger11write__char(out, 92);
+              _M0IPB13StringBuilderPB6Logger11write__char(out, c$2);
+            }
+            break _L;
+          }
+          _M0IPB13StringBuilderPB6Logger11write__char(out, c$2);
+        }
+      } else {
+        if (c === 46) {
+          let _tmp$2;
+          if (at.val < source.length) {
+            const _tmp$3 = at.val;
+            _tmp$2 = _M0IPC16uint166UInt16PB2Eq5equal(_tmp$3 >>> 0 < source.length ? source.charCodeAt(_tmp$3) : $oob(), 42);
+          } else {
+            _tmp$2 = false;
+          }
+          if (_tmp$2) {
+            at.val = at.val + 1 | 0;
+            if (!last_star.val) {
+              _M0IPB13StringBuilderPB6Logger11write__char(out, 42);
+              stars.val = stars.val + 1 | 0;
+              last_star.val = true;
+            }
+            continue;
+          } else {
+            let _tmp$3;
+            if (at.val < source.length) {
+              const _tmp$4 = at.val;
+              _tmp$3 = _M0IPC16uint166UInt16PB2Eq5equal(_tmp$4 >>> 0 < source.length ? source.charCodeAt(_tmp$4) : $oob(), 43);
+            } else {
+              _tmp$3 = false;
+            }
+            if (_tmp$3) {
+              at.val = at.val + 1 | 0;
+              _M0IPB13StringBuilderPB6Logger13write__string(out, "?*");
+              stars.val = stars.val + 1 | 0;
+              last_star.val = true;
+              continue;
+            }
+          }
+          _M0IPB13StringBuilderPB6Logger11write__char(out, 63);
+        } else {
+          if (c === 36) {
+            if (at.val !== source.length) {
+              return undefined;
+            }
+            right.val = true;
+          } else {
+            const _bind$4 = _M0IPC14char4CharPB4Show10to__string(c);
+            if (_M0MPC16string6String8contains("*+?|^{}()[]", new _M0TPC16string10StringView(_bind$4, 0, _bind$4.length))) {
+              return undefined;
+            } else {
+              _M0IPB13StringBuilderPB6Logger11write__char(out, c);
+            }
+          }
+        }
+      }
+      last_star.val = false;
+      continue;
+    } else {
       break;
     }
-    case "ascii": {
-      bit = 4;
+  }
+  if (stars.val > 1) {
+    return undefined;
+  }
+  if (!right.val && !last_star.val) {
+    _M0IPB13StringBuilderPB6Logger11write__char(out, 42);
+  }
+  return _M0MPB13StringBuilder10to__string(out);
+}
+function _M0FP211localreview3tcl21search__result__index(at, indices, subindices, length) {
+  const result = _M0FP211localreview3tcl11text__value(_M0MPC13int3Int18to__string_2einner(at, 10));
+  if (!subindices) {
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(result);
+  }
+  return _M0FP211localreview3tcl11list__value(_M0IPC15array5ArrayPB3Add3addGRP211localreview3tcl8TclValueE([result], _M0MPC15array5Array3mapGRP211localreview3tcl11SearchIndexRP211localreview3tcl8TclValueE(indices, (index) => _M0FP211localreview3tcl11text__value(_M0MPC13int3Int18to__string_2einner(index.relative ? length + index.value | 0 : index.value, 10)))));
+}
+function _M0FP211localreview3tcl12search__wide(value) {
+  let n;
+  let _try_err;
+  _L: {
+    _L$2: {
+      const _bind$2 = _M0MP211localreview3tcl8TclValue9as__whole(value);
+      if (_bind$2.$tag === 1) {
+        const _ok = _bind$2;
+        n = _ok._0;
+      } else {
+        const _err = _bind$2;
+        _try_err = _err._0;
+        break _L$2;
+      }
+      break _L;
+    }
+    const _tmp = `expected integer but got \"${value.text}\"`;
+    const _bind$2 = value.payload;
+    let _tmp$2;
+    if (_bind$2.$tag === 1) {
+      const _Numeric = _bind$2;
+      const _x = _Numeric._0;
+      if (_x.$tag === 2) {
+        _tmp$2 = "TCL VALUE INTEGER";
+      } else {
+        _tmp$2 = "TCL VALUE NUMBER";
+      }
+    } else {
+      _tmp$2 = "TCL VALUE NUMBER";
+    }
+    const _bind$3 = _M0FP211localreview3tcl13switch__error(_tmp, _tmp$2);
+    if (_bind$3.$tag === 1) {
+      const _ok = _bind$3;
+      _ok._0;
+    } else {
+      return _bind$3;
+    }
+    n = 0n;
+  }
+  if (_M0IP016_24default__implPB7Compare6op__ltGRPC16bigint6BigIntE(n, _M0IPC16bigint6BigIntPB3Neg3neg(18446744073709551615n)) || _M0IP016_24default__implPB7Compare6op__gtGRPC16bigint6BigIntE(n, 18446744073709551615n)) {
+    const _bind$2 = _M0FP211localreview3tcl13switch__error("integer value too large to represent", "ARITH IOVERFLOW {integer value too large to represent}");
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _ok._0;
+    } else {
+      return _bind$2;
+    }
+  }
+  value.payload = new _M0DTP211localreview3tcl12ValuePayload7Numeric(new _M0DTP211localreview3tcl6Number5Whole(n));
+  return new _M0DTPC16result6ResultGlRP211localreview3tcl8TclErrorE2Ok(_M0MPC16bigint6BigInt9to__int64(n));
+}
+function _M0FP211localreview3tcl17tcl__utf8__length(text) {
+  const length = new _M0TPB8MutLocalGiE(0);
+  const _bind$2 = 0;
+  const _bind$3 = text.length;
+  let _tmp = _bind$2;
+  while (true) {
+    const i = _tmp;
+    if (i < _bind$3) {
+      const cp = _M0MPC16option6Option6unwrapGkE(_M0MPC16string6String3get(text, i));
+      length.val = length.val + (cp > 0 && cp < 128 ? 1 : cp < 2048 ? 2 : 3) | 0;
+      _tmp = i + 1 | 0;
+      continue;
+    } else {
       break;
     }
-    case "cntrl": {
-      bit = 8;
+  }
+  return length.val;
+}
+function _M0MP211localreview3tcl11Interpreter16lsearch__command(self, input) {
+  const n = input.length;
+  if (n < 3) {
+    const _bind$2 = _M0FP211localreview3tcl13switch__error("wrong # args: should be \"lsearch ?-option value ...? list pattern\"", "TCL WRONGARGS");
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _ok._0;
+    } else {
+      return _bind$2;
+    }
+  }
+  const options = ["-all", "-ascii", "-bisect", "-decreasing", "-dictionary", "-exact", "-glob", "-increasing", "-index", "-inline", "-integer", "-nocase", "-not", "-real", "-regexp", "-sorted", "-start", "-subindices"];
+  const mode = new _M0TPB8MutLocalGsE("-glob");
+  const datatype = new _M0TPB8MutLocalGsE("-ascii");
+  const all = new _M0TPB8MutLocalGbE(false);
+  const inline = new _M0TPB8MutLocalGbE(false);
+  const negate = new _M0TPB8MutLocalGbE(false);
+  const nocase = new _M0TPB8MutLocalGbE(false);
+  const decreasing = new _M0TPB8MutLocalGbE(false);
+  const bisect = new _M0TPB8MutLocalGbE(false);
+  const subindices = new _M0TPB8MutLocalGbE(false);
+  const indices = new _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl11SearchIndexEE([]);
+  const start = new _M0TPB8MutLocalGOsE(undefined);
+  const at = new _M0TPB8MutLocalGiE(1);
+  while (true) {
+    if (at.val < (n - 2 | 0)) {
+      const _bind$2 = _M0FP211localreview3tcl18collection__option(_M0MPC15array5Array2atGRPB4JsonE(input, at.val).text, options);
+      let option;
+      if (_bind$2.$tag === 1) {
+        const _ok = _bind$2;
+        option = _ok._0;
+      } else {
+        return _bind$2;
+      }
+      at.val = at.val + 1 | 0;
+      _L: {
+        _L$2: {
+          _L$3: {
+            _L$4: {
+              _L$5: {
+                _L$6: {
+                  switch (option) {
+                    case "-all": {
+                      all.val = true;
+                      break;
+                    }
+                    case "-inline": {
+                      inline.val = true;
+                      break;
+                    }
+                    case "-not": {
+                      negate.val = true;
+                      break;
+                    }
+                    case "-nocase": {
+                      nocase.val = true;
+                      break;
+                    }
+                    case "-subindices": {
+                      subindices.val = true;
+                      break;
+                    }
+                    case "-decreasing": {
+                      decreasing.val = true;
+                      break;
+                    }
+                    case "-increasing": {
+                      decreasing.val = false;
+                      break;
+                    }
+                    case "-bisect": {
+                      bisect.val = true;
+                      mode.val = "-sorted";
+                      break;
+                    }
+                    case "-exact": {
+                      break _L$6;
+                    }
+                    case "-glob": {
+                      break _L$6;
+                    }
+                    case "-regexp": {
+                      break _L$6;
+                    }
+                    case "-sorted": {
+                      break _L$6;
+                    }
+                    case "-ascii": {
+                      break _L$4;
+                    }
+                    case "-dictionary": {
+                      break _L$4;
+                    }
+                    case "-integer": {
+                      break _L$4;
+                    }
+                    case "-real": {
+                      break _L$4;
+                    }
+                    case "-start": {
+                      break _L$2;
+                    }
+                    case "-index": {
+                      break _L$2;
+                    }
+                  }
+                  break _L$5;
+                }
+                mode.val = option;
+              }
+              break _L$3;
+            }
+            datatype.val = option;
+          }
+          break _L;
+        }
+        if (at.val >= (n - 2 | 0)) {
+          const _bind$3 = _M0FP211localreview3tcl13switch__error(option === "-start" ? "missing starting index" : "\"-index\" option must be followed by list index", "TCL ARGUMENT MISSING");
+          if (_bind$3.$tag === 1) {
+            const _ok = _bind$3;
+            _ok._0;
+          } else {
+            return _bind$3;
+          }
+        }
+        if (option === "-start") {
+          start.val = _M0MPC15array5Array2atGRPB4JsonE(input, at.val).text;
+        } else {
+          const _bind$3 = _M0FP211localreview3tcl15search__indices(_M0MPC15array5Array2atGRPB4JsonE(input, at.val));
+          let _tmp;
+          if (_bind$3.$tag === 1) {
+            const _ok = _bind$3;
+            _tmp = _ok._0;
+          } else {
+            return _bind$3;
+          }
+          indices.val = _tmp;
+        }
+        at.val = at.val + 1 | 0;
+      }
+      continue;
+    } else {
       break;
     }
-    case "digit": {
-      bit = 16;
+  }
+  if (subindices.val && _M0MPC15array5Array9is__emptyGRPB4JsonE(indices.val)) {
+    const _bind$2 = _M0FP211localreview3tcl13switch__error("-subindices cannot be used without -index option", "TCL OPERATION LSEARCH BAD_OPTION_MIX");
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _ok._0;
+    } else {
+      return _bind$2;
+    }
+  }
+  if (bisect.val && (all.val || negate.val)) {
+    const _bind$2 = _M0FP211localreview3tcl13switch__error("-bisect is not compatible with -all or -not", "TCL OPERATION LSEARCH BAD_OPTION_MIX");
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _ok._0;
+    } else {
+      return _bind$2;
+    }
+  }
+  const pattern = _M0MPC15array5Array2atGRPB4JsonE(input, n - 1 | 0);
+  let compiled;
+  if (mode.val === "-regexp") {
+    const _bind$2 = _M0FP211localreview3tcl19re__compile_2einner(pattern.text, nocase.val, false, false, false);
+    let compiled$2;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      compiled$2 = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    pattern.payload = _M0DTP211localreview3tcl12ValuePayload5Plain__;
+    compiled = compiled$2;
+  } else {
+    compiled = undefined;
+  }
+  const fast_glob = compiled === undefined ? undefined : _M0FP211localreview3tcl20search__regexp__glob(pattern.text);
+  const _bind$2 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, n - 2 | 0));
+  let values;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    values = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  let offset;
+  let start$2;
+  _L: {
+    _L$2: {
+      const _bind$3 = start.val;
+      if (_bind$3 === undefined) {
+        offset = 0;
+      } else {
+        const _Some = _bind$3;
+        const _start = _Some;
+        start$2 = _start;
+        break _L$2;
+      }
+      break _L;
+    }
+    const _bind$3 = _M0FP211localreview3tcl16re__start__index(start$2, values.length - 1 | 0);
+    let _tmp;
+    if (_bind$3.$tag === 1) {
+      const _ok = _bind$3;
+      _tmp = _ok._0;
+    } else {
+      return _bind$3;
+    }
+    offset = _M0MPC13int3Int3max(_tmp, 0);
+  }
+  const _bind$3 = start.val;
+  if (_bind$3 === undefined) {
+  } else {
+    if (offset >= values.length) {
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(all.val || inline.val ? "" : "-1"));
+    }
+  }
+  const numeric = mode.val === "-exact" || mode.val === "-sorted";
+  let wide;
+  if (numeric && datatype.val === "-integer") {
+    const _bind$4 = _M0FP211localreview3tcl12search__wide(pattern);
+    if (_bind$4.$tag === 1) {
+      const _ok = _bind$4;
+      wide = _ok._0;
+    } else {
+      return _bind$4;
+    }
+  } else {
+    wide = 0n;
+  }
+  let real;
+  if (numeric && datatype.val === "-real") {
+    const _bind$4 = _M0FP211localreview3tcl12search__real(pattern);
+    if (_bind$4.$tag === 1) {
+      const _ok = _bind$4;
+      real = _ok._0;
+    } else {
+      return _bind$4;
+    }
+  } else {
+    real = 0;
+  }
+  const folded = nocase.val ? _M0FP211localreview3tcl21unicode__case_2einner(pattern.text, 0, false) : pattern.text;
+  const compare = (value) => {
+    let _tmp;
+    if (datatype.val === "-integer") {
+      const _bind$4 = _M0FP211localreview3tcl12search__wide(value);
+      let _tmp$2;
+      if (_bind$4.$tag === 1) {
+        const _ok = _bind$4;
+        _tmp$2 = _ok._0;
+      } else {
+        return _bind$4;
+      }
+      _tmp = $compare_int64(wide, _tmp$2);
+    } else {
+      if (datatype.val === "-real") {
+        const _bind$4 = _M0FP211localreview3tcl12search__real(value);
+        let value$2;
+        if (_bind$4.$tag === 1) {
+          const _ok = _bind$4;
+          value$2 = _ok._0;
+        } else {
+          return _bind$4;
+        }
+        _tmp = real < value$2 ? -1 : real > value$2 ? 1 : 0;
+      } else {
+        _tmp = datatype.val === "-dictionary" ? _M0FP211localreview3tcl19dictionary__compare(pattern.text, value.text) : nocase.val ? _M0FP211localreview3tcl20tcl__string__compare(folded, _M0FP211localreview3tcl21unicode__case_2einner(value.text, 0, false)) : _M0FP211localreview3tcl26collection__ascii__compare(pattern.text, value.text);
+      }
+    }
+    return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(_tmp);
+  };
+  const found = new _M0TPB8MutLocalGiE(-1);
+  if (mode.val === "-sorted" && (!all.val && !negate.val)) {
+    const lower = new _M0TPB8MutLocalGiE(offset - 1 | 0);
+    const upper = new _M0TPB8MutLocalGiE(values.length);
+    while (true) {
+      if ((lower.val + 1 | 0) < upper.val) {
+        const _bind$4 = _M0MP211localreview3tcl11Interpreter4tick(self);
+        if (_bind$4.$tag === 1) {
+          const _ok = _bind$4;
+          _ok._0;
+        } else {
+          return _bind$4;
+        }
+        const _tmp = lower.val;
+        if (2 === 0) {
+          $panic();
+        }
+        const i = _tmp + ((upper.val - lower.val | 0) / 2 | 0) | 0;
+        const _bind$5 = _M0FP211localreview3tcl11search__key(_M0MPC15array5Array2atGRPB4JsonE(values, i), indices.val);
+        let _tmp$2;
+        if (_bind$5.$tag === 1) {
+          const _ok = _bind$5;
+          _tmp$2 = _ok._0;
+        } else {
+          return _bind$5;
+        }
+        const _bind$6 = compare(_tmp$2);
+        let order;
+        if (_bind$6.$tag === 1) {
+          const _ok = _bind$6;
+          order = _ok._0;
+        } else {
+          return _bind$6;
+        }
+        if (order === 0) {
+          found.val = i;
+          if (bisect.val) {
+            lower.val = i;
+          } else {
+            upper.val = i;
+          }
+        } else {
+          if (_M0IP016_24default__implPB2Eq10not__equalGbE(order > 0, decreasing.val)) {
+            lower.val = i;
+          } else {
+            upper.val = i;
+          }
+        }
+        continue;
+      } else {
+        break;
+      }
+    }
+    if (bisect.val && found.val < 0) {
+      found.val = lower.val;
+    }
+  } else {
+    const results = [];
+    const _bind$4 = values.length;
+    let _tmp = offset;
+    while (true) {
+      const i = _tmp;
+      if (i < _bind$4) {
+        const _bind$5 = _M0MP211localreview3tcl11Interpreter4tick(self);
+        if (_bind$5.$tag === 1) {
+          const _ok = _bind$5;
+          _ok._0;
+        } else {
+          return _bind$5;
+        }
+        const _bind$6 = _M0FP211localreview3tcl11search__key(_M0MPC15array5Array2atGRPB4JsonE(values, i), indices.val);
+        let key;
+        if (_bind$6.$tag === 1) {
+          const _ok = _bind$6;
+          key = _ok._0;
+        } else {
+          return _bind$6;
+        }
+        let matched;
+        let glob;
+        _L$2: {
+          _L$3: {
+            if (fast_glob === undefined) {
+              let compiled$2;
+              _L$4: {
+                _L$5: {
+                  if (compiled === undefined) {
+                    if (mode.val === "-glob") {
+                      const _bind$7 = _M0FP211localreview3tcl19glob__match_2einner(pattern.text, key.text, nocase.val, true);
+                      if (_bind$7.$tag === 1) {
+                        const _ok = _bind$7;
+                        matched = _ok._0;
+                      } else {
+                        return _bind$7;
+                      }
+                    } else {
+                      const _bind$7 = compare(key);
+                      let _tmp$2;
+                      if (_bind$7.$tag === 1) {
+                        const _ok = _bind$7;
+                        _tmp$2 = _ok._0;
+                      } else {
+                        return _bind$7;
+                      }
+                      if (_tmp$2 === 0) {
+                        matched = _M0IP016_24default__implPB2Eq10not__equalGsE(datatype.val, "-ascii") || _M0FP211localreview3tcl17tcl__utf8__length(pattern.text) === _M0FP211localreview3tcl17tcl__utf8__length(key.text);
+                      } else {
+                        matched = false;
+                      }
+                    }
+                  } else {
+                    const _Some = compiled;
+                    const _compiled = _Some;
+                    compiled$2 = _compiled;
+                    break _L$5;
+                  }
+                  break _L$4;
+                }
+                key.payload = _M0DTP211localreview3tcl12ValuePayload5Plain__;
+                const _bind$7 = _M0MP211localreview3tcl11Interpreter12regexp__find(self, compiled$2, key.text, 0);
+                let _bind$8;
+                if (_bind$7.$tag === 1) {
+                  const _ok = _bind$7;
+                  _bind$8 = _ok._0;
+                } else {
+                  return _bind$7;
+                }
+                if (_bind$8.$tag === 1) {
+                  matched = true;
+                } else {
+                  matched = false;
+                }
+              }
+            } else {
+              const _Some = fast_glob;
+              const _glob = _Some;
+              glob = _glob;
+              break _L$3;
+            }
+            break _L$2;
+          }
+          const _tmp$2 = key.text;
+          const _tmp$3 = nocase.val;
+          const _bind$7 = key.payload;
+          let _tmp$4;
+          if (_bind$7.$tag === 0) {
+            _tmp$4 = true;
+          } else {
+            _tmp$4 = false;
+          }
+          const _bind$8 = _M0FP211localreview3tcl19glob__match_2einner(glob, _tmp$2, _tmp$3, !_tmp$4);
+          if (_bind$8.$tag === 1) {
+            const _ok = _bind$8;
+            matched = _ok._0;
+          } else {
+            return _bind$8;
+          }
+        }
+        if (_M0IP016_24default__implPB2Eq10not__equalGbE(matched, negate.val)) {
+          if (!all.val) {
+            found.val = i;
+            break;
+          }
+          let _tmp$2;
+          if (inline.val) {
+            _tmp$2 = subindices.val ? key : _M0MPC15array5Array2atGRPB4JsonE(values, i);
+          } else {
+            const _bind$7 = _M0FP211localreview3tcl21search__result__index(i, indices.val, subindices.val, values.length);
+            if (_bind$7.$tag === 1) {
+              const _ok = _bind$7;
+              _tmp$2 = _ok._0;
+            } else {
+              return _bind$7;
+            }
+          }
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(results, _tmp$2);
+        }
+        _tmp = i + 1 | 0;
+        continue;
+      } else {
+        break;
+      }
+    }
+    if (all.val) {
+      const _bind$5 = _M0FP211localreview3tcl11list__value(results);
+      let _tmp$2;
+      if (_bind$5.$tag === 1) {
+        const _ok = _bind$5;
+        _tmp$2 = _ok._0;
+      } else {
+        return _bind$5;
+      }
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$2);
+    }
+  }
+  return inline.val ? (found.val >= 0 ? new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0MPC15array5Array2atGRPB4JsonE(values, found.val)) : new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(""))) : _M0FP211localreview3tcl21search__result__index(found.val, indices.val, subindices.val, values.length);
+}
+function _M0MP211localreview3tcl11Interpreter8get__var(self, name) {
+  const _bind$2 = _M0MP211localreview3tcl11Interpreter10get__value(self, name);
+  let _tmp;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    _tmp = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  return new _M0DTPC16result6ResultGOsRP211localreview3tcl8TclErrorE2Ok(_M0MPC16option6Option3mapGRP211localreview3tcl8TclValuesE(_tmp, (v) => v.text));
+}
+function _M0FP211localreview3tcl12is__complete(source) {
+  if (source.length > 1000000) {
+    return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("script completeness size limit"));
+  }
+  const parser = _M0MP211localreview3tcl12ScriptParser3new(source);
+  let _try_err;
+  _L: {
+    const _bind$2 = _M0MP211localreview3tcl12ScriptParser14script_2einner(parser, false, 0, false);
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _ok._0;
+    } else {
+      const _err = _bind$2;
+      _try_err = _err._0;
+      break _L;
+    }
+    return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE2Ok(!parser.trailing_continuation);
+  }
+  let error;
+  _L$2: {
+    let message;
+    _L$3: {
+      if (_try_err.$tag === 4) {
+        const _Invalid = _try_err;
+        const _message = _Invalid._0;
+        message = _message;
+        break _L$3;
+      } else {
+        error = _try_err;
+        break _L$2;
+      }
+    }
+    let _tmp;
+    const _bind$2 = "limit";
+    if (_M0MPC16string6String11has__suffix(message, new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length))) {
+      _tmp = true;
+    } else {
+      const _bind$3 = "depth";
+      _tmp = _M0MPC16string6String11has__suffix(message, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length));
+    }
+    if (_tmp) {
+      return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid(message));
+    }
+    const _bind$3 = "missing";
+    return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE2Ok(!_M0MPC16string6String11has__prefix(message, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length)));
+  }
+  return new _M0DTPC16result6ResultGbRP211localreview3tcl8TclErrorE3Err(error);
+}
+function _M0MP211localreview3tcl7Binding4read(self) {
+  const _bind$2 = _M0MP211localreview3tcl7Binding11read__value(self);
+  let _tmp;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    _tmp = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  return new _M0DTPC16result6ResultGOsRP211localreview3tcl8TclErrorE2Ok(_M0MPC16option6Option3mapGRP211localreview3tcl8TclValuesE(_tmp, (v) => v.text));
+}
+function _M0MP211localreview3tcl11Interpreter14command__names(self, pattern, procedures_only) {
+  const _bind$2 = "::";
+  const qualified = _M0MPC16string6String8contains(pattern, new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length));
+  const full = _M0FP211localreview3tcl13command__name(self.frame.namespace_name, pattern);
+  const space = _M0FP211localreview3tcl15command__parent(full);
+  const tail = qualified ? _M0FP211localreview3tcl15namespace__tail(full) : pattern;
+  let scopes;
+  if (qualified) {
+    scopes = [space];
+  } else {
+    const scopes$2 = [self.frame.namespace_name];
+    if (!procedures_only) {
+      const _bind$3 = _M0MPC16option6Option10unwrap__orGRPB5ArrayGsEE(_M0MPB3Map3getGsRPB5ArrayGsEE(self.state.namespace_paths, self.frame.namespace_name), []);
+      const _bind$4 = _bind$3.length;
+      let _tmp = 0;
+      while (true) {
+        const _ = _tmp;
+        if (_ < _bind$4) {
+          const item = _bind$3[_];
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(scopes$2, item);
+          _tmp = _ + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(scopes$2, "::");
+    }
+    scopes = scopes$2;
+  }
+  const values = [];
+  const _it = _M0MPB3Map6valuesGsRP211localreview3tcl7CommandE(self.state.commands);
+  while (true) {
+    let command;
+    _L: {
+      const _bind$3 = _M0MPB4Iter4nextGUsRPB4JsonEE(_it);
+      if (_bind$3 === undefined) {
+        break;
+      } else {
+        const _Some = _bind$3;
+        const _command = _Some;
+        command = _command;
+        break _L;
+      }
+    }
+    if (_M0MPC15array5Array8containsGsE(scopes, _M0FP211localreview3tcl15command__parent(command.name))) {
+      _L$2: {
+        _L$3: {
+          if (!procedures_only) {
+            break _L$3;
+          } else {
+            const _bind$3 = _M0MP211localreview3tcl7Command6origin(command).body;
+            if (_bind$3.$tag === 1) {
+              break _L$3;
+            }
+          }
+          break _L$2;
+        }
+        const _bind$3 = _M0FP211localreview3tcl19glob__match_2einner(tail, _M0FP211localreview3tcl15namespace__tail(command.name), false, false);
+        let _tmp;
+        if (_bind$3.$tag === 1) {
+          const _ok = _bind$3;
+          _tmp = _ok._0;
+        } else {
+          return _bind$3;
+        }
+        if (_tmp) {
+          const value = qualified ? command.name : _M0FP211localreview3tcl15namespace__tail(command.name);
+          if (!_M0MPC15array5Array8containsGsE(values, value)) {
+            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, value);
+          }
+        }
+      }
+    }
+    continue;
+  }
+  _M0MPC15array5Array4sortGsE(values);
+  return new _M0DTPC16result6ResultGRPB5ArrayGsERP211localreview3tcl8TclErrorE2Ok(values);
+}
+function _M0MP211localreview3tcl11Interpreter13info__command(self, args) {
+  const n = args.length;
+  if (n < 2) {
+    return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info arity"));
+  }
+  _L: {
+    _L$2: {
+      _L$3: {
+        const _bind$2 = _M0MPC15array5Array2atGRPB4JsonE(args, 1);
+        switch (_bind$2) {
+          case "complete": {
+            if (n !== 3) {
+              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info complete arity"));
+            }
+            const _bind$3 = _M0FP211localreview3tcl12is__complete(_M0MPC15array5Array2atGRPB4JsonE(args, 2));
+            let _tmp;
+            if (_bind$3.$tag === 1) {
+              const _ok = _bind$3;
+              _tmp = _ok._0;
+            } else {
+              return _bind$3;
+            }
+            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl13boolean__text(_tmp));
+          }
+          case "exists": {
+            if (n !== 3) {
+              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info exists arity"));
+            }
+            let exists;
+            let binding;
+            _L$4: {
+              _L$5: {
+                const _bind$4 = _M0MP211localreview3tcl11Interpreter7binding(self, _M0MPC15array5Array2atGRPB4JsonE(args, 2), false);
+                let _bind$5;
+                if (_bind$4.$tag === 1) {
+                  const _ok = _bind$4;
+                  _bind$5 = _ok._0;
+                } else {
+                  return _bind$4;
+                }
+                if (_bind$5 === undefined) {
+                  exists = false;
+                } else {
+                  const _Some = _bind$5;
+                  const _binding = _Some;
+                  binding = _binding;
+                  break _L$5;
+                }
+                break _L$4;
+              }
+              const _bind$4 = binding.index;
+              if (_bind$4 === undefined) {
+                const _bind$5 = binding.cell.value;
+                exists = !(_bind$5 === undefined);
+              } else {
+                let _try_err;
+                _L$6: {
+                  _L$7: {
+                    const _bind$5 = _M0MP211localreview3tcl7Binding4read(binding);
+                    let _bind$6;
+                    if (_bind$5.$tag === 1) {
+                      const _ok = _bind$5;
+                      _bind$6 = _ok._0;
+                    } else {
+                      const _err = _bind$5;
+                      _try_err = _err._0;
+                      break _L$7;
+                    }
+                    exists = !(_bind$6 === undefined);
+                    break _L$6;
+                  }
+                  exists = false;
+                }
+              }
+            }
+            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl13boolean__text(exists));
+          }
+          case "vars": {
+            break _L$3;
+          }
+          case "globals": {
+            break _L$3;
+          }
+          case "locals": {
+            break _L$3;
+          }
+          case "procs": {
+            break _L$2;
+          }
+          case "commands": {
+            break _L$2;
+          }
+          case "body": {
+            break _L;
+          }
+          case "args": {
+            break _L;
+          }
+          case "default": {
+            break _L;
+          }
+          case "level": {
+            if (n !== 2) {
+              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info level argument not implemented"));
+            }
+            const level = new _M0TPB8MutLocalGiE(0);
+            const frame = new _M0TPB8MutLocalGRP211localreview3tcl5FrameE(self.frame);
+            while (true) {
+              let parent;
+              _L$5: {
+                const _bind$4 = frame.val.parent;
+                if (_bind$4 === undefined) {
+                  break;
+                } else {
+                  const _Some = _bind$4;
+                  const _parent = _Some;
+                  parent = _parent;
+                  break _L$5;
+                }
+              }
+              level.val = level.val + 1 | 0;
+              frame.val = parent;
+              continue;
+            }
+            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0MPC13int3Int18to__string_2einner(level.val, 10));
+          }
+          case "errorstack": {
+            if (n !== 2 && !(n === 3 && _M0MPC16string6String9is__empty(_M0MPC15array5Array2atGRPB4JsonE(args, 2)))) {
+              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info errorstack arity or unsupported interpreter"));
+            }
+            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(self.state.error_stack.val);
+          }
+          case "patchlevel": {
+            if (n !== 2) {
+              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info patchlevel arity"));
+            }
+            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok("0.9.0");
+          }
+          case "tclversion": {
+            if (n !== 2) {
+              return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info tclversion arity"));
+            }
+            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok("8.6");
+          }
+          default: {
+            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported info subcommand"));
+          }
+        }
+      }
+      if (n > 3) {
+        return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info vars arity"));
+      }
+      const values = [];
+      if (self.frame.procedure && _M0IP016_24default__implPB2Eq10not__equalGsE(_M0MPC15array5Array2atGRPB4JsonE(args, 1), "globals")) {
+        const _it = _M0MPB3Map5iter2GsRPC15debug4ReprE(self.frame.vars);
+        while (true) {
+          let key;
+          let binding;
+          _L$4: {
+            const _bind$2 = _M0MPB5Iter24nextGsRPC15debug4ReprE(_it);
+            if (_bind$2 === undefined) {
+              break;
+            } else {
+              const _Some = _bind$2;
+              const _x = _Some;
+              const _key = _x._0;
+              const _binding = _x._1;
+              key = _key;
+              binding = _binding;
+              break _L$4;
+            }
+          }
+          const _bind$2 = binding.cell.value;
+          if (_bind$2 === undefined) {
+          } else {
+            _L$5: {
+              _L$6: {
+                if (_M0IP016_24default__implPB2Eq10not__equalGsE(_M0MPC15array5Array2atGRPB4JsonE(args, 1), "locals")) {
+                  break _L$6;
+                } else {
+                  if (!binding.linked) {
+                    break _L$6;
+                  }
+                }
+                break _L$5;
+              }
+              _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, key);
+            }
+          }
+          continue;
+        }
+      } else {
+        const prefix = _M0MPC15array5Array2atGRPB4JsonE(args, 1) === "globals" ? "::" : self.frame.namespace_name;
+        const _it = _M0MPB3Map5iter2GsRPC15debug4ReprE(self.state.globals);
+        while (true) {
+          let key;
+          let cell;
+          _L$4: {
+            const _bind$2 = _M0MPB5Iter24nextGsRPC15debug4ReprE(_it);
+            if (_bind$2 === undefined) {
+              break;
+            } else {
+              const _Some = _bind$2;
+              const _x = _Some;
+              const _key = _x._0;
+              const _cell = _x._1;
+              key = _key;
+              cell = _cell;
+              break _L$4;
+            }
+          }
+          _L$5: {
+            _L$6: {
+              const _bind$2 = cell.value;
+              if (_bind$2 === undefined) {
+                if (cell.declared) {
+                  break _L$6;
+                }
+              } else {
+                break _L$6;
+              }
+              break _L$5;
+            }
+            if (_M0FP211localreview3tcl17namespace__parent(key) === prefix) {
+              _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, _M0FP211localreview3tcl15namespace__tail(key));
+            }
+          }
+          continue;
+        }
+        const _it$2 = _M0MPB3Map5iter2GsRPC15debug4ReprE(self.state.aliases);
+        while (true) {
+          let key;
+          let binding;
+          _L$4: {
+            const _bind$2 = _M0MPB5Iter24nextGsRPC15debug4ReprE(_it$2);
+            if (_bind$2 === undefined) {
+              break;
+            } else {
+              const _Some = _bind$2;
+              const _x = _Some;
+              const _key = _x._0;
+              const _binding = _x._1;
+              key = _key;
+              binding = _binding;
+              break _L$4;
+            }
+          }
+          const _bind$2 = binding.cell.value;
+          if (_bind$2 === undefined) {
+          } else {
+            if (_M0FP211localreview3tcl17namespace__parent(key) === prefix) {
+              if (!_M0MPC15array5Array8containsGsE(values, _M0FP211localreview3tcl15namespace__tail(key))) {
+                _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values, _M0FP211localreview3tcl15namespace__tail(key));
+              }
+            }
+          }
+          continue;
+        }
+      }
+      _M0MPC15array5Array4sortGsE(values);
+      let _tmp;
+      if (n === 3) {
+        const _bind$2 = _M0MPC15array5Array6filterGsEHRP211localreview3tcl8TclError(values, (key) => _M0FP211localreview3tcl19glob__match_2einner(_M0MPC15array5Array2atGRPB4JsonE(args, 2), key, false, false));
+        if (_bind$2.$tag === 1) {
+          const _ok = _bind$2;
+          _tmp = _ok._0;
+        } else {
+          return _bind$2;
+        }
+      } else {
+        _tmp = values;
+      }
+      return _M0FP211localreview3tcl12format__list(_tmp);
+    }
+    if (n > 3) {
+      return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info commands arity"));
+    }
+    const _bind$2 = _M0MP211localreview3tcl11Interpreter14command__names(self, n === 3 ? _M0MPC15array5Array2atGRPB4JsonE(args, 2) : "*", _M0MPC15array5Array2atGRPB4JsonE(args, 1) === "procs");
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    return _M0FP211localreview3tcl12format__list(_tmp);
+  }
+  if (n !== (_M0MPC15array5Array2atGRPB4JsonE(args, 1) === "default" ? 5 : 3)) {
+    return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("info procedure arity"));
+  }
+  let definition;
+  let command;
+  _L$2: {
+    const _bind$2 = _M0MP211localreview3tcl11Interpreter13find__command(self, _M0MPC15array5Array2atGRPB4JsonE(args, 2));
+    if (_bind$2 === undefined) {
+      return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unknown procedure"));
+    } else {
+      const _Some = _bind$2;
+      const _command = _Some;
+      command = _command;
+      break _L$2;
+    }
+  }
+  const _bind$2 = _M0MP211localreview3tcl7Command6origin(command).body;
+  if (_bind$2.$tag === 1) {
+    const _Script = _bind$2;
+    const _p = _Script._0;
+    definition = _p;
+  } else {
+    return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("not a procedure"));
+  }
+  if (_M0MPC15array5Array2atGRPB4JsonE(args, 1) === "body") {
+    return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(definition.body);
+  } else {
+    if (_M0MPC15array5Array2atGRPB4JsonE(args, 1) === "args") {
+      return _M0FP211localreview3tcl12format__list(_M0MPC15array5Array3mapGUsORP211localreview3tcl8TclValueEsE(definition.parameters, (p) => p._0));
+    } else {
+      const _bind$3 = definition.parameters;
+      const _bind$4 = _bind$3.length;
+      let _tmp = 0;
+      while (true) {
+        const _ = _tmp;
+        if (_ < _bind$4) {
+          const _foreach_element = _bind$3[_];
+          let name;
+          let value;
+          _L$3: {
+            const _name = _foreach_element._0;
+            const _value = _foreach_element._1;
+            name = _name;
+            value = _value;
+            break _L$3;
+          }
+          if (name === _M0MPC15array5Array2atGRPB4JsonE(args, 3)) {
+            const _bind$5 = _M0MP211localreview3tcl11Interpreter10set__value(self, _M0MPC15array5Array2atGRPB4JsonE(args, 4), _M0MPC16option6Option10unwrap__orGsE(value, _M0FP211localreview3tcl11text__value("")));
+            if (_bind$5.$tag === 1) {
+              const _ok = _bind$5;
+              _ok._0;
+            } else {
+              return _bind$5;
+            }
+            return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl13boolean__text(!(value === undefined)));
+          }
+          _tmp = _ + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+      return new _M0DTPC16result6ResultGsRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unknown argument"));
+    }
+  }
+}
+function _M0MP211localreview3tcl11Interpreter18exported__commands(self, space) {
+  const patterns = _M0MPC16option6Option10unwrap__orGRPB5ArrayGsEE(_M0MPB3Map3getGsRPB5ArrayGsEE(self.state.exports, space), []);
+  const result = [];
+  const _it = _M0MPB3Map6valuesGsRP211localreview3tcl7CommandE(self.state.commands);
+  while (true) {
+    let command;
+    _L: {
+      const _bind$2 = _M0MPB4Iter4nextGUsRPB4JsonEE(_it);
+      if (_bind$2 === undefined) {
+        break;
+      } else {
+        const _Some = _bind$2;
+        const _command = _Some;
+        command = _command;
+        break _L;
+      }
+    }
+    if (_M0FP211localreview3tcl15command__parent(command.name) === space) {
+      const _bind$2 = patterns.length;
+      let _tmp = 0;
+      while (true) {
+        const _ = _tmp;
+        if (_ < _bind$2) {
+          const pattern = patterns[_];
+          const _bind$3 = _M0FP211localreview3tcl19glob__match_2einner(pattern, _M0FP211localreview3tcl15namespace__tail(command.name), false, false);
+          let _tmp$2;
+          if (_bind$3.$tag === 1) {
+            const _ok = _bind$3;
+            _tmp$2 = _ok._0;
+          } else {
+            return _bind$3;
+          }
+          if (_tmp$2) {
+            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result, command);
+            break;
+          }
+          _tmp = _ + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+    }
+    continue;
+  }
+  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7CommandERP211localreview3tcl8TclErrorE2Ok(result);
+}
+function _M0MP211localreview3tcl11Interpreter16ensemble__prefix(self, ensemble, name) {
+  let candidates;
+  if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(ensemble.subcommands)) {
+    candidates = ensemble.subcommands;
+  } else {
+    if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(ensemble.mapping)) {
+      candidates = _M0MPC15array5Array3mapGUsRPB5ArrayGRP211localreview3tcl8TclValueEEsE(ensemble.mapping, (pair) => pair._0);
+    } else {
+      const _bind$2 = _M0MP211localreview3tcl11Interpreter18exported__commands(self, ensemble.namespace_name);
+      let _tmp;
+      if (_bind$2.$tag === 1) {
+        const _ok = _bind$2;
+        _tmp = _ok._0;
+      } else {
+        return _bind$2;
+      }
+      candidates = _M0MPC15array5Array3mapGRP211localreview3tcl7CommandsE(_tmp, (c) => _M0FP211localreview3tcl15namespace__tail(c.name));
+    }
+  }
+  const selected = new _M0TPB8MutLocalGOsE(undefined);
+  if (_M0MPC15array5Array8containsGsE(candidates, name)) {
+    selected.val = name;
+  } else {
+    if (ensemble.prefixes) {
+      const _bind$2 = candidates.length;
+      let _tmp = 0;
+      while (true) {
+        const _ = _tmp;
+        if (_ < _bind$2) {
+          const candidate = candidates[_];
+          if (_M0MPC16string6String11has__prefix(candidate, new _M0TPC16string10StringView(name, 0, name.length))) {
+            let old;
+            _L: {
+              _L$2: {
+                const _bind$3 = selected.val;
+                if (_bind$3 === undefined) {
+                  selected.val = candidate;
+                } else {
+                  const _Some = _bind$3;
+                  const _old = _Some;
+                  old = _old;
+                  break _L$2;
+                }
+                break _L;
+              }
+              if (_M0IP016_24default__implPB2Eq10not__equalGsE(old, candidate)) {
+                return new _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok(_M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None__);
+              }
+            }
+          }
+          _tmp = _ + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+    }
+  }
+  let key;
+  _L: {
+    const _bind$2 = selected.val;
+    if (_bind$2 === undefined) {
+      return new _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok(_M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4None__);
+    } else {
+      const _Some = _bind$2;
+      const _key = _Some;
+      key = _key;
+      break _L;
+    }
+  }
+  const _bind$2 = ensemble.mapping;
+  const _bind$3 = _bind$2.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$3) {
+      const _foreach_element = _bind$2[_];
+      let mapped;
+      let words;
+      _L$2: {
+        const _mapped = _foreach_element._0;
+        const _words = _foreach_element._1;
+        mapped = _mapped;
+        words = _words;
+        break _L$2;
+      }
+      if (mapped === key) {
+        return new _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok(new _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4Some(words));
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
       break;
     }
-    case "graph": {
-      bit = 32;
+  }
+  return new _M0DTPC16result6ResultGORPB5ArrayGRP211localreview3tcl8TclValueERP211localreview3tcl8TclErrorE2Ok(new _M0DTPC16option6OptionGRPB5ArrayGRP211localreview3tcl8TclValueEE4Some([_M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl13command__name(ensemble.namespace_name, key))]));
+}
+function _M0MP211localreview3tcl11Interpreter14cached__script(self, source) {
+  const cache = self.state.cache;
+  let program;
+  _L: {
+    _L$2: {
+      const _bind$2 = _M0MPB3Map3getGsRP211localreview3tcl13ScriptProgramE(cache.scripts, source);
+      if (_bind$2 === undefined) {
+      } else {
+        const _Some = _bind$2;
+        const _program = _Some;
+        program = _program;
+        break _L$2;
+      }
+      break _L;
+    }
+    if (cache.script_hits < 2147483647) {
+      cache.script_hits = cache.script_hits + 1 | 0;
+    }
+    return program;
+  }
+  if (_M0MPB3Map6lengthGsRP211localreview3tcl8TclValueE(cache.scripts) >= 256 || (cache.script_units + source.length | 0) > 262144) {
+    _M0MPB3Map5clearGsRP211localreview3tcl13ScriptProgramE(cache.scripts);
+    cache.script_units = 0;
+  }
+  const program$2 = new _M0TP211localreview3tcl13ScriptProgram(_M0MP211localreview3tcl12ScriptParser3new(source), [], undefined);
+  if (source.length <= 65536) {
+    _M0MPB3Map3setGsRP211localreview3tcl13ScriptProgramE(cache.scripts, source, program$2);
+    cache.script_units = cache.script_units + source.length | 0;
+  }
+  return program$2;
+}
+function _M0MP211localreview3tcl10ListObject6append(self, items) {
+  if (_M0MPC15array5Array9is__emptyGRPB4JsonE(items)) {
+    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
+  }
+  if ((self.values.length + items.length | 0) > 100000) {
+    return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("list element limit"));
+  }
+  const encoded = [];
+  const units = new _M0TPB8MutLocalGiE(self.units);
+  const _bind$2 = 0;
+  const _bind$3 = items.length;
+  let _tmp = _bind$2;
+  while (true) {
+    const i = _tmp;
+    if (i < _bind$3) {
+      const text = _M0FP211localreview3tcl14quote__element(_M0MPC15array5Array2atGRPB4JsonE(items, i).text, _M0MPC15array5Array9is__emptyGRPB4JsonE(self.values) && i === 0);
+      units.val = units.val + (text.length + (_M0MPC15array5Array9is__emptyGRPB4JsonE(self.values) && i === 0 ? 0 : 1) | 0) | 0;
+      if (units.val > 1000000) {
+        return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("list size limit"));
+      }
+      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(encoded, text);
+      _tmp = i + 1 | 0;
+      continue;
+    } else {
       break;
     }
-    case "lower": {
-      bit = 64;
+  }
+  const _bind$4 = items.length;
+  let _tmp$2 = 0;
+  while (true) {
+    const _ = _tmp$2;
+    if (_ < _bind$4) {
+      const item = items[_];
+      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.values, item);
+      _tmp$2 = _ + 1 | 0;
+      continue;
+    } else {
       break;
     }
-    case "print": {
-      bit = 128;
+  }
+  const _bind$5 = encoded.length;
+  let _tmp$3 = 0;
+  while (true) {
+    const _ = _tmp$3;
+    if (_ < _bind$5) {
+      const text = encoded[_];
+      _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.encoded, text);
+      _tmp$3 = _ + 1 | 0;
+      continue;
+    } else {
       break;
     }
-    case "punct": {
-      bit = 256;
+  }
+  self.units = units.val;
+  self.representation = undefined;
+  return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE2Ok(undefined);
+}
+function _M0MP211localreview3tcl10ListObject11from__value(value) {
+  const object = new _M0TP211localreview3tcl10ListObject([], [], 0, value.text);
+  const _bind$2 = _M0MP211localreview3tcl8TclValue8as__list(value);
+  let _tmp;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    _tmp = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  const _bind$3 = _M0MP211localreview3tcl10ListObject6append(object, _tmp);
+  if (_bind$3.$tag === 1) {
+    const _ok = _bind$3;
+    _ok._0;
+  } else {
+    return _bind$3;
+  }
+  object.representation = value.text;
+  return new _M0DTPC16result6ResultGRP211localreview3tcl10ListObjectRP211localreview3tcl8TclErrorE2Ok(object);
+}
+function _M0MP211localreview3tcl11Interpreter12append__list(self, name, items, discard_result) {
+  const _bind$2 = _M0MP211localreview3tcl11Interpreter7binding(self, name, true);
+  let _tmp;
+  if (_bind$2.$tag === 1) {
+    const _ok = _bind$2;
+    _tmp = _ok._0;
+  } else {
+    return _bind$2;
+  }
+  const binding = _M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(_tmp);
+  const _bind$3 = binding.index;
+  if (_bind$3 === undefined) {
+  } else {
+    const _bind$4 = _M0MP211localreview3tcl7Binding11read__value(binding);
+    let _tmp$2;
+    if (_bind$4.$tag === 1) {
+      const _ok = _bind$4;
+      _tmp$2 = _ok._0;
+    } else {
+      return _bind$4;
+    }
+    const _bind$5 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC16option6Option10unwrap__orGsE(_tmp$2, _M0FP211localreview3tcl11text__value("")));
+    let _tmp$3;
+    if (_bind$5.$tag === 1) {
+      const _ok = _bind$5;
+      _tmp$3 = _ok._0;
+    } else {
+      return _bind$5;
+    }
+    const values = _M0IPC15array5ArrayPB3Add3addGRP211localreview3tcl8TclValueE(_tmp$3, items);
+    const _bind$6 = _M0FP211localreview3tcl11list__value(values);
+    let result;
+    if (_bind$6.$tag === 1) {
+      const _ok = _bind$6;
+      result = _ok._0;
+    } else {
+      return _bind$6;
+    }
+    const _bind$7 = _M0MP211localreview3tcl11Interpreter10set__value(self, name, result);
+    if (_bind$7.$tag === 1) {
+      const _ok = _bind$7;
+      _ok._0;
+    } else {
+      return _bind$7;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(discard_result ? _M0FP211localreview3tcl11text__value("") : result);
+  }
+  let object;
+  _L: {
+    _L$2: {
+      const _bind$4 = binding.cell.value;
+      if (_bind$4 === undefined) {
+        break _L$2;
+      } else {
+        const _Some = _bind$4;
+        const _x = _Some;
+        switch (_x.$tag) {
+          case 1: {
+            const _Sequence = _x;
+            const _object = _Sequence._0;
+            object = _object;
+            break;
+          }
+          case 3: {
+            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("variable is array"));
+          }
+          default: {
+            break _L$2;
+          }
+        }
+      }
+      break _L;
+    }
+    const _bind$4 = _M0MP211localreview3tcl7Binding11read__value(binding);
+    let _tmp$2;
+    if (_bind$4.$tag === 1) {
+      const _ok = _bind$4;
+      _tmp$2 = _ok._0;
+    } else {
+      return _bind$4;
+    }
+    const _bind$5 = _M0MP211localreview3tcl10ListObject11from__value(_M0MPC16option6Option10unwrap__orGsE(_tmp$2, _M0FP211localreview3tcl11text__value("")));
+    if (_bind$5.$tag === 1) {
+      const _ok = _bind$5;
+      object = _ok._0;
+    } else {
+      return _bind$5;
+    }
+  }
+  const _bind$4 = _M0MP211localreview3tcl10ListObject6append(object, items);
+  if (_bind$4.$tag === 1) {
+    const _ok = _bind$4;
+    _ok._0;
+  } else {
+    return _bind$4;
+  }
+  binding.cell.value = new _M0DTP211localreview3tcl13VariableValue8Sequence(object);
+  let _tmp$2;
+  if (discard_result) {
+    _tmp$2 = _M0FP211localreview3tcl11text__value("");
+  } else {
+    const _bind$5 = _M0MP211localreview3tcl7Binding11read__value(binding);
+    let _tmp$3;
+    if (_bind$5.$tag === 1) {
+      const _ok = _bind$5;
+      _tmp$3 = _ok._0;
+    } else {
+      return _bind$5;
+    }
+    _tmp$2 = _M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(_tmp$3);
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$2);
+}
+function _M0MP211localreview3tcl11Interpreter21list__command_2einner(self, input, discard_result) {
+  const args = _M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(input, (v) => v.text);
+  const n = args.length;
+  const _bind$2 = _M0MPC15array5Array2atGRPB4JsonE(args, 0);
+  let text;
+  switch (_bind$2) {
+    case "list": {
+      const _bind$3 = _M0FP211localreview3tcl11list__value(_M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(input, 1, undefined)));
+      let _tmp;
+      if (_bind$3.$tag === 1) {
+        const _ok = _bind$3;
+        _tmp = _ok._0;
+      } else {
+        return _bind$3;
+      }
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp);
+    }
+    case "llength": {
+      if (n !== 2) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("llength arity"));
+      }
+      const _bind$4 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, 1));
+      let _tmp$2;
+      if (_bind$4.$tag === 1) {
+        const _ok = _bind$4;
+        _tmp$2 = _ok._0;
+      } else {
+        return _bind$4;
+      }
+      text = _M0MPC13int3Int18to__string_2einner(_tmp$2.length, 10);
       break;
     }
-    case "space": {
-      bit = 512;
+    case "lindex": {
+      if (n < 2) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lindex arity"));
+      }
+      let indices;
+      if (n === 3) {
+        const _bind$5 = _M0FP211localreview3tcl11parse__list(_M0MPC15array5Array2atGRPB4JsonE(args, 2));
+        if (_bind$5.$tag === 1) {
+          const _ok = _bind$5;
+          indices = _ok._0;
+        } else {
+          return _bind$5;
+        }
+      } else {
+        indices = _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(args, 2, undefined));
+      }
+      const value = new _M0TPB8MutLocalGRP211localreview3tcl8TclValueE(_M0MPC15array5Array2atGRPB4JsonE(input, 1));
+      const _bind$5 = indices.length;
+      let _tmp$3 = 0;
+      while (true) {
+        const _ = _tmp$3;
+        if (_ < _bind$5) {
+          const index = indices[_];
+          const _bind$6 = _M0MP211localreview3tcl8TclValue8as__list(value.val);
+          let values;
+          if (_bind$6.$tag === 1) {
+            const _ok = _bind$6;
+            values = _ok._0;
+          } else {
+            return _bind$6;
+          }
+          const _bind$7 = _M0FP211localreview3tcl11list__index(index, values.length);
+          let i;
+          if (_bind$7.$tag === 1) {
+            const _ok = _bind$7;
+            i = _ok._0;
+          } else {
+            return _bind$7;
+          }
+          value.val = i >= 0 && i < values.length ? _M0MPC15array5Array2atGRPB4JsonE(values, i) : _M0FP211localreview3tcl11text__value("");
+          _tmp$3 = _ + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(value.val);
+    }
+    case "lappend": {
+      if (n < 2) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lappend arity"));
+      }
+      if (n === 2) {
+        const _bind$6 = _M0MP211localreview3tcl11Interpreter10get__value(self, _M0MPC15array5Array2atGRPB4JsonE(args, 1));
+        let _tmp$4;
+        if (_bind$6.$tag === 1) {
+          const _ok = _bind$6;
+          _tmp$4 = _ok._0;
+        } else {
+          return _bind$6;
+        }
+        const value$2 = _M0MPC16option6Option10unwrap__orGsE(_tmp$4, _M0FP211localreview3tcl11text__value(""));
+        const _bind$7 = _M0MP211localreview3tcl8TclValue8as__list(value$2);
+        if (_bind$7.$tag === 1) {
+          const _ok = _bind$7;
+          _ok._0;
+        } else {
+          return _bind$7;
+        }
+        const _bind$8 = _M0MP211localreview3tcl11Interpreter10set__value(self, _M0MPC15array5Array2atGRPB4JsonE(args, 1), value$2);
+        if (_bind$8.$tag === 1) {
+          const _ok = _bind$8;
+          _ok._0;
+        } else {
+          return _bind$8;
+        }
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(value$2);
+      }
+      const _bind$6 = _M0MP211localreview3tcl11Interpreter12append__list(self, _M0MPC15array5Array2atGRPB4JsonE(args, 1), _M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(input, 2, undefined)), discard_result);
+      let _tmp$4;
+      if (_bind$6.$tag === 1) {
+        const _ok = _bind$6;
+        _tmp$4 = _ok._0;
+      } else {
+        return _bind$6;
+      }
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$4);
+    }
+    case "join": {
+      if (n !== 2 && n !== 3) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("join arity"));
+      }
+      const _bind$7 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, 1));
+      let values;
+      if (_bind$7.$tag === 1) {
+        const _ok = _bind$7;
+        values = _ok._0;
+      } else {
+        return _bind$7;
+      }
+      const sep = n === 3 ? _M0MPC15array5Array2atGRPB4JsonE(args, 2) : " ";
+      const size = new _M0TPB8MutLocalGiE(0);
+      const _bind$8 = values.length;
+      let _tmp$5 = 0;
+      while (true) {
+        const _ = _tmp$5;
+        if (_ < _bind$8) {
+          const value$2 = values[_];
+          size.val = size.val + value$2.text.length | 0;
+          if (size.val > 1000000) {
+            return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("join size limit"));
+          }
+          _tmp$5 = _ + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+      let _tmp$6;
+      if (values.length > 1) {
+        const _tmp$7 = sep.length;
+        const _tmp$8 = values.length - 1 | 0;
+        if (_tmp$8 === 0) {
+          $panic();
+        }
+        _tmp$6 = _tmp$7 > ((1000000 - size.val | 0) / _tmp$8 | 0);
+      } else {
+        _tmp$6 = false;
+      }
+      if (_tmp$6) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("join size limit"));
+      }
+      text = _M0MPC15array5Array4joinGsE(_M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(values, (v) => v.text), new _M0TPC16string10StringView(sep, 0, sep.length));
       break;
     }
-    case "upper": {
-      bit = 1024;
+    case "split": {
+      if (n !== 2 && n !== 3) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("split arity"));
+      }
+      const separators = _M0MPC16string6String9to__array(n === 3 ? _M0MPC15array5Array2atGRPB4JsonE(args, 2) : " \n\t\r");
+      const chars = _M0MPC16string6String9to__array(_M0MPC15array5Array2atGRPB4JsonE(args, 1));
+      const values$2 = [];
+      if (_M0MPC15array5Array9is__emptyGcE(separators)) {
+        const _bind$9 = chars.length;
+        let _tmp$7 = 0;
+        while (true) {
+          const _ = _tmp$7;
+          if (_ < _bind$9) {
+            const c = chars[_];
+            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values$2, _M0IPC14char4CharPB4Show10to__string(c));
+            _tmp$7 = _ + 1 | 0;
+            continue;
+          } else {
+            break;
+          }
+        }
+      } else {
+        if (!_M0MPC15array5Array9is__emptyGcE(chars)) {
+          const word = new _M0TPB8MutLocalGsE("");
+          const _bind$9 = chars.length;
+          let _tmp$7 = 0;
+          while (true) {
+            const _ = _tmp$7;
+            if (_ < _bind$9) {
+              const c = chars[_];
+              if (_M0MPC15array5Array8containsGcE(separators, c)) {
+                _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values$2, word.val);
+                word.val = "";
+              } else {
+                word.val = `${word.val}${_M0IPC14char4CharPB4Show10to__string(c)}`;
+              }
+              _tmp$7 = _ + 1 | 0;
+              continue;
+            } else {
+              break;
+            }
+          }
+          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values$2, word.val);
+        }
+      }
+      const _bind$9 = _M0FP211localreview3tcl12format__list(values$2);
+      if (_bind$9.$tag === 1) {
+        const _ok = _bind$9;
+        text = _ok._0;
+      } else {
+        return _bind$9;
+      }
       break;
     }
-    case "word": {
-      bit = 2048;
+    case "concat": {
+      const _bind$10 = _M0FP211localreview3tcl14concat__values(_M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(input, 1, undefined)));
+      let _tmp$7;
+      if (_bind$10.$tag === 1) {
+        const _ok = _bind$10;
+        _tmp$7 = _ok._0;
+      } else {
+        return _bind$10;
+      }
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$7);
+    }
+    case "lrange": {
+      if (n !== 4) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lrange arity"));
+      }
+      const _bind$11 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, 1));
+      let values$3;
+      if (_bind$11.$tag === 1) {
+        const _ok = _bind$11;
+        values$3 = _ok._0;
+      } else {
+        return _bind$11;
+      }
+      const _bind$12 = _M0FP211localreview3tcl11list__index(_M0MPC15array5Array2atGRPB4JsonE(args, 2), values$3.length);
+      let _tmp$8;
+      if (_bind$12.$tag === 1) {
+        const _ok = _bind$12;
+        _tmp$8 = _ok._0;
+      } else {
+        return _bind$12;
+      }
+      const first = _M0MPC13int3Int3max(_tmp$8, 0);
+      const _bind$13 = _M0FP211localreview3tcl11list__index(_M0MPC15array5Array2atGRPB4JsonE(args, 3), values$3.length);
+      let _tmp$9;
+      if (_bind$13.$tag === 1) {
+        const _ok = _bind$13;
+        _tmp$9 = _ok._0;
+      } else {
+        return _bind$13;
+      }
+      const last = _M0MPC13int3Int3min(_tmp$9, values$3.length - 1 | 0);
+      if (first > last) {
+        text = "";
+      } else {
+        const _bind$14 = _M0FP211localreview3tcl11list__value(_M0MPC15array9ArrayView9to__ownedGRP211localreview3tcl8TclValueE(_M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(values$3, first, last + 1 | 0)));
+        let _tmp$10;
+        if (_bind$14.$tag === 1) {
+          const _ok = _bind$14;
+          _tmp$10 = _ok._0;
+        } else {
+          return _bind$14;
+        }
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$10);
+      }
       break;
     }
-    case "xdigit": {
-      bit = 4096;
-      break;
+    case "lreverse": {
+      if (n !== 2) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lreverse arity"));
+      }
+      const _bind$14 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, 1));
+      let values$4;
+      if (_bind$14.$tag === 1) {
+        const _ok = _bind$14;
+        values$4 = _ok._0;
+      } else {
+        return _bind$14;
+      }
+      _M0MPC15array5Array14rev__in__placeGRP211localreview3tcl8TclValueE(values$4);
+      const _bind$15 = _M0FP211localreview3tcl11list__value(values$4);
+      let _tmp$10;
+      if (_bind$15.$tag === 1) {
+        const _ok = _bind$15;
+        _tmp$10 = _ok._0;
+      } else {
+        return _bind$15;
+      }
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$10);
+    }
+    case "lrepeat": {
+      if (n < 3) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lrepeat arity"));
+      }
+      const _bind$16 = _M0FP211localreview3tcl7integer(_M0MPC15array5Array2atGRPB4JsonE(args, 1));
+      let count;
+      if (_bind$16.$tag === 1) {
+        const _ok = _bind$16;
+        count = _ok._0;
+      } else {
+        return _bind$16;
+      }
+      let _tmp$11;
+      if (count < 0) {
+        _tmp$11 = true;
+      } else {
+        const _tmp$12 = n - 2 | 0;
+        if (_tmp$12 === 0) {
+          $panic();
+        }
+        _tmp$11 = count > (100000 / _tmp$12 | 0);
+      }
+      if (_tmp$11) {
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lrepeat count limit"));
+      }
+      const values$5 = [];
+      const _bind$17 = 0;
+      let _tmp$12 = _bind$17;
+      while (true) {
+        const _ = _tmp$12;
+        if (_ < count) {
+          const _bind$18 = _M0MPC15array5Array12view_2einnerGRP211localreview3tcl8TclValueE(input, 2, undefined);
+          const _bind$19 = _bind$18.end - _bind$18.start | 0;
+          let _tmp$13 = 0;
+          while (true) {
+            const _$2 = _tmp$13;
+            if (_$2 < _bind$19) {
+              const value$2 = _bind$18.buf[_bind$18.start + _$2 | 0];
+              _M0MPC15array5Array4pushGRPC14json10WriteFrameE(values$5, value$2);
+              _tmp$13 = _$2 + 1 | 0;
+              continue;
+            } else {
+              break;
+            }
+          }
+          _tmp$12 = _ + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+      const _bind$18 = _M0FP211localreview3tcl11list__value(values$5);
+      let _tmp$13;
+      if (_bind$18.$tag === 1) {
+        const _ok = _bind$18;
+        _tmp$13 = _ok._0;
+      } else {
+        return _bind$18;
+      }
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$13);
     }
     default: {
-      bit = 0;
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("list command not implemented"));
     }
   }
-  const mask = _M0FP211localreview3tcl13unicode__mask(cp);
-  return nocase && (name === "lower" || name === "upper") ? (mask & 1) !== 0 : (mask & bit) !== 0;
+  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(text));
+}
+function _M0FP211localreview3tcl18re__capture__value(text, span, indices, delta) {
+  if (indices) {
+    if (span._0 < 0) {
+      const _bind$2 = _M0FP211localreview3tcl11list__value([_M0FP211localreview3tcl11text__value("-1"), _M0FP211localreview3tcl11text__value("-1")]);
+      let _tmp;
+      if (_bind$2.$tag === 1) {
+        const _ok = _bind$2;
+        _tmp = _ok._0;
+      } else {
+        return _bind$2;
+      }
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp);
+    }
+    const _bind$2 = _M0FP211localreview3tcl11list__value([_M0FP211localreview3tcl11text__value(_M0MPC13int3Int18to__string_2einner(span._0 + delta | 0, 10)), _M0FP211localreview3tcl11text__value(_M0MPC13int3Int18to__string_2einner((span._1 + delta | 0) - 1 | 0, 10))]);
+    let _tmp;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp);
+  }
+  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(span._0 < 0 || span._1 <= span._0 ? "" : _M0FP211localreview3tcl11unit__slice(text, span._0, span._1)));
 }
 function _M0FP211localreview3tcl12re__category(cp) {
   return cp === 10 ? 1 : _M0FP211localreview3tcl9re__class("word", cp, false) ? 2 : 3;
@@ -22813,599 +24735,6 @@ function _M0MP211localreview3tcl11Interpreter14re__set__value(self, name, value)
     return _M0FP211localreview3tcl13switch__error(_tmp, _tmp$2);
   }
   return new _M0DTPC16result6ResultGuRP211localreview3tcl8TclErrorE3Err(error);
-}
-function _M0FP211localreview3tcl19re__clear__captures(node, captures) {
-  let _tmp = node;
-  let _tmp$2 = captures;
-  _L: while (true) {
-    const node$2 = _tmp;
-    const captures$2 = _tmp$2;
-    let child;
-    _L$2: {
-      let nodes;
-      _L$3: {
-        let group;
-        let child$2;
-        _L$4: {
-          const _bind$2 = node$2.kind;
-          switch (_bind$2.$tag) {
-            case 8: {
-              const _Capture = _bind$2;
-              const _group = _Capture._0;
-              const _child = _Capture._1;
-              group = _group;
-              child$2 = _child;
-              break _L$4;
-            }
-            case 5: {
-              const _Sequence = _bind$2;
-              const _nodes = _Sequence._0;
-              nodes = _nodes;
-              break _L$3;
-            }
-            case 6: {
-              const _Alternate = _bind$2;
-              const _nodes$2 = _Alternate._0;
-              nodes = _nodes$2;
-              break _L$3;
-            }
-            case 7: {
-              const _Repeat = _bind$2;
-              const _child$2 = _Repeat._0;
-              child = _child$2;
-              break _L$2;
-            }
-            case 11: {
-              const _Look = _bind$2;
-              const _child$3 = _Look._0;
-              child = _child$3;
-              break _L$2;
-            }
-            default: {
-              return;
-            }
-          }
-        }
-        _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(captures$2, group, { _0: -1, _1: -1 });
-        _tmp = child$2;
-        continue;
-      }
-      const _bind$2 = nodes.length;
-      let _tmp$3 = 0;
-      while (true) {
-        const _ = _tmp$3;
-        if (_ < _bind$2) {
-          const child$2 = nodes[_];
-          _M0FP211localreview3tcl19re__clear__captures(child$2, captures$2);
-          _tmp$3 = _ + 1 | 0;
-          continue;
-        } else {
-          return;
-        }
-      }
-    }
-    _tmp = child;
-    continue;
-  }
-}
-function _M0FP211localreview3tcl9re__order(states, preference) {
-  const indexed = _M0MPC15array5Array5makeiGUiRP211localreview3tcl7ReStateEE(states.length, (i) => ({ _0: i, _1: _M0MPC15array5Array2atGRPB4JsonE(states, i) }));
-  _M0MPC15array5Array8sort__byGUiiEE(indexed, (a, b) => {
-    const order = preference < 0 ? $compare_int(a._1.pos, b._1.pos) : $compare_int(b._1.pos, a._1.pos);
-    return order === 0 ? $compare_int(a._0, b._0) : order;
-  });
-  return _M0MPC15array5Array3mapGUiRP211localreview3tcl7ReStateERP211localreview3tcl7ReStateE(indexed, (p) => p._1);
-}
-function _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, node, text, state, depth) {
-  const _bind$2 = _M0MP211localreview3tcl11Interpreter4tick(self);
-  if (_bind$2.$tag === 1) {
-    const _ok = _bind$2;
-    _ok._0;
-  } else {
-    return _bind$2;
-  }
-  if (depth > 128) {
-    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp execution nesting limit"));
-  }
-  const at = state.pos;
-  const n = text.length;
-  let result;
-  let min;
-  let child;
-  let max;
-  _L: {
-    _L$2: {
-      let child$2;
-      let positive;
-      _L$3: {
-        _L$4: {
-          let group;
-          _L$5: {
-            _L$6: {
-              let child$3;
-              _L$7: {
-                _L$8: {
-                  let group$2;
-                  let child$4;
-                  _L$9: {
-                    _L$10: {
-                      let nodes;
-                      _L$11: {
-                        _L$12: {
-                          let nodes$2;
-                          _L$13: {
-                            _L$14: {
-                              let kind;
-                              _L$15: {
-                                _L$16: {
-                                  let set;
-                                  _L$17: {
-                                    _L$18: {
-                                      let cp;
-                                      _L$19: {
-                                        _L$20: {
-                                          const _bind$3 = node.kind;
-                                          switch (_bind$3.$tag) {
-                                            case 0: {
-                                              result = [state];
-                                              break;
-                                            }
-                                            case 1: {
-                                              const _Literal = _bind$3;
-                                              const _cp = _Literal._0;
-                                              cp = _cp;
-                                              break _L$20;
-                                            }
-                                            case 2: {
-                                              result = at < n && (!pattern.line_stop || (at >>> 0 < text.length ? text.charCodeAt(at) : $oob()) !== 10) ? [new _M0TP211localreview3tcl7ReState(at + 1 | 0, state.captures)] : [];
-                                              break;
-                                            }
-                                            case 3: {
-                                              const _Set = _bind$3;
-                                              const _set = _Set._0;
-                                              set = _set;
-                                              break _L$18;
-                                            }
-                                            case 4: {
-                                              const _Anchor = _bind$3;
-                                              const _kind = _Anchor._0;
-                                              kind = _kind;
-                                              break _L$16;
-                                            }
-                                            case 5: {
-                                              const _Sequence = _bind$3;
-                                              const _nodes = _Sequence._0;
-                                              nodes$2 = _nodes;
-                                              break _L$14;
-                                            }
-                                            case 6: {
-                                              const _Alternate = _bind$3;
-                                              const _nodes$2 = _Alternate._0;
-                                              nodes = _nodes$2;
-                                              break _L$12;
-                                            }
-                                            case 8: {
-                                              const _Capture = _bind$3;
-                                              const _group = _Capture._0;
-                                              const _child = _Capture._1;
-                                              group$2 = _group;
-                                              child$4 = _child;
-                                              break _L$10;
-                                            }
-                                            case 9: {
-                                              const _Uncaptured = _bind$3;
-                                              const _child$2 = _Uncaptured._0;
-                                              child$3 = _child$2;
-                                              break _L$8;
-                                            }
-                                            case 10: {
-                                              const _Backref = _bind$3;
-                                              const _group$2 = _Backref._0;
-                                              group = _group$2;
-                                              break _L$6;
-                                            }
-                                            case 11: {
-                                              const _Look = _bind$3;
-                                              const _child$3 = _Look._0;
-                                              const _positive = _Look._1;
-                                              child$2 = _child$3;
-                                              positive = _positive;
-                                              break _L$4;
-                                            }
-                                            default: {
-                                              const _Repeat = _bind$3;
-                                              const _child$4 = _Repeat._0;
-                                              const _min = _Repeat._1;
-                                              const _max = _Repeat._2;
-                                              min = _min;
-                                              child = _child$4;
-                                              max = _max;
-                                              break _L$2;
-                                            }
-                                          }
-                                          break _L$19;
-                                        }
-                                        const equal = at < n && (pattern.nocase ? _M0FP211localreview3tcl19unicode__case__unit(at >>> 0 < text.length ? text.charCodeAt(at) : $oob(), 0) === _M0FP211localreview3tcl19unicode__case__unit(cp, 0) : (at >>> 0 < text.length ? text.charCodeAt(at) : $oob()) === cp);
-                                        result = equal ? [new _M0TP211localreview3tcl7ReState(at + 1 | 0, state.captures)] : [];
-                                      }
-                                      break _L$17;
-                                    }
-                                    if (at >= n) {
-                                      return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok([]);
-                                    }
-                                    const raw = at >>> 0 < text.length ? text.charCodeAt(at) : $oob();
-                                    const cp = raw;
-                                    const included = _M0MPB4Iter3anyGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(_M0MPC15array5Array4iterGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(set.ranges), (r) => cp >= r._0 && cp <= r._1) || _M0MPB4Iter3anyGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(_M0MPC15array5Array4iterGURP211localreview3tcl8TclValueRP211localreview3tcl8TclValueEE(set.classes), (c) => _M0FP211localreview3tcl9re__class(c, cp, pattern.nocase));
-                                    result = _M0IP016_24default__implPB2Eq10not__equalGbE(included, set.negated) && !(set.negated && (pattern.line_stop && raw === 10)) ? [new _M0TP211localreview3tcl7ReState(at + 1 | 0, state.captures)] : [];
-                                  }
-                                  break _L$15;
-                                }
-                                let previous;
-                                if (at > pattern.origin) {
-                                  const _tmp = at - 1 | 0;
-                                  previous = _M0FP211localreview3tcl9re__class("word", _tmp >>> 0 < text.length ? text.charCodeAt(_tmp) : $oob(), false);
-                                } else {
-                                  previous = false;
-                                }
-                                const next = at < n && _M0FP211localreview3tcl9re__class("word", at >>> 0 < text.length ? text.charCodeAt(at) : $oob(), false);
-                                let valid;
-                                switch (kind) {
-                                  case 0: {
-                                    if (at === pattern.origin && !pattern.not_bol) {
-                                      valid = true;
-                                    } else {
-                                      let _tmp;
-                                      if (pattern.line_anchor) {
-                                        let _tmp$2;
-                                        if (at > pattern.origin) {
-                                          const _tmp$3 = at - 1 | 0;
-                                          _tmp$2 = (_tmp$3 >>> 0 < text.length ? text.charCodeAt(_tmp$3) : $oob()) === 10;
-                                        } else {
-                                          _tmp$2 = false;
-                                        }
-                                        _tmp = _tmp$2;
-                                      } else {
-                                        _tmp = false;
-                                      }
-                                      valid = _tmp;
-                                    }
-                                    break;
-                                  }
-                                  case 1: {
-                                    valid = at === n || pattern.line_anchor && (at < n && (at >>> 0 < text.length ? text.charCodeAt(at) : $oob()) === 10);
-                                    break;
-                                  }
-                                  case 2: {
-                                    valid = at === pattern.origin;
-                                    break;
-                                  }
-                                  case 3: {
-                                    valid = at === n;
-                                    break;
-                                  }
-                                  case 4: {
-                                    valid = !previous && next;
-                                    break;
-                                  }
-                                  case 5: {
-                                    valid = previous && !next;
-                                    break;
-                                  }
-                                  case 6: {
-                                    valid = _M0IP016_24default__implPB2Eq10not__equalGbE(previous, next);
-                                    break;
-                                  }
-                                  default: {
-                                    valid = previous === next;
-                                  }
-                                }
-                                result = valid ? [state] : [];
-                              }
-                              break _L$13;
-                            }
-                            const current = new _M0TPB8MutLocalGRPB5ArrayGRP211localreview3tcl7ReStateEE([state]);
-                            const _bind$3 = nodes$2.length;
-                            let _tmp = 0;
-                            while (true) {
-                              const _ = _tmp;
-                              if (_ < _bind$3) {
-                                const child$5 = nodes$2[_];
-                                const next = [];
-                                const _bind$4 = current.val;
-                                const _bind$5 = _bind$4.length;
-                                let _tmp$2 = 0;
-                                while (true) {
-                                  const _$2 = _tmp$2;
-                                  if (_$2 < _bind$5) {
-                                    const candidate = _bind$4[_$2];
-                                    const _bind$6 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child$5, text, candidate, depth + 1 | 0);
-                                    let _bind$7;
-                                    if (_bind$6.$tag === 1) {
-                                      const _ok = _bind$6;
-                                      _bind$7 = _ok._0;
-                                    } else {
-                                      return _bind$6;
-                                    }
-                                    const _bind$8 = _bind$7.length;
-                                    let _tmp$3 = 0;
-                                    while (true) {
-                                      const _$3 = _tmp$3;
-                                      if (_$3 < _bind$8) {
-                                        const matched = _bind$7[_$3];
-                                        _M0MPC15array5Array4pushGRPC14json10WriteFrameE(next, matched);
-                                        if (next.length > 16384) {
-                                          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp state limit"));
-                                        }
-                                        _tmp$3 = _$3 + 1 | 0;
-                                        continue;
-                                      } else {
-                                        break;
-                                      }
-                                    }
-                                    _tmp$2 = _$2 + 1 | 0;
-                                    continue;
-                                  } else {
-                                    break;
-                                  }
-                                }
-                                current.val = next;
-                                if (_M0MPC15array5Array9is__emptyGRPB4JsonE(current.val)) {
-                                  break;
-                                }
-                                _tmp = _ + 1 | 0;
-                                continue;
-                              } else {
-                                break;
-                              }
-                            }
-                            result = current.val;
-                          }
-                          break _L$11;
-                        }
-                        const result$2 = [];
-                        const _bind$3 = nodes.length;
-                        let _tmp = 0;
-                        while (true) {
-                          const _ = _tmp;
-                          if (_ < _bind$3) {
-                            const child$5 = nodes[_];
-                            const _bind$4 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child$5, text, state, depth + 1 | 0);
-                            let _bind$5;
-                            if (_bind$4.$tag === 1) {
-                              const _ok = _bind$4;
-                              _bind$5 = _ok._0;
-                            } else {
-                              return _bind$4;
-                            }
-                            const _bind$6 = _bind$5.length;
-                            let _tmp$2 = 0;
-                            while (true) {
-                              const _$2 = _tmp$2;
-                              if (_$2 < _bind$6) {
-                                const matched = _bind$5[_$2];
-                                _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result$2, matched);
-                                if (result$2.length > 16384) {
-                                  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp state limit"));
-                                }
-                                _tmp$2 = _$2 + 1 | 0;
-                                continue;
-                              } else {
-                                break;
-                              }
-                            }
-                            _tmp = _ + 1 | 0;
-                            continue;
-                          } else {
-                            break;
-                          }
-                        }
-                        result = result$2;
-                      }
-                      break _L$9;
-                    }
-                    const cleared = _M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(state.captures);
-                    _M0FP211localreview3tcl19re__clear__captures(node, cleared);
-                    const _bind$3 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child$4, text, new _M0TP211localreview3tcl7ReState(state.pos, cleared), depth + 1 | 0);
-                    let _tmp;
-                    if (_bind$3.$tag === 1) {
-                      const _ok = _bind$3;
-                      _tmp = _ok._0;
-                    } else {
-                      return _bind$3;
-                    }
-                    result = _M0MPC15array5Array3mapGRP211localreview3tcl7ReStateRP211localreview3tcl7ReStateE(_tmp, (matched) => {
-                      const captures = _M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(matched.captures);
-                      _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(captures, group$2, { _0: at, _1: matched.pos });
-                      return new _M0TP211localreview3tcl7ReState(matched.pos, captures);
-                    });
-                  }
-                  break _L$7;
-                }
-                const _bind$3 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child$3, text, state, depth + 1 | 0);
-                let _tmp;
-                if (_bind$3.$tag === 1) {
-                  const _ok = _bind$3;
-                  _tmp = _ok._0;
-                } else {
-                  return _bind$3;
-                }
-                result = _M0MPC15array5Array3mapGRP211localreview3tcl7ReStateRP211localreview3tcl7ReStateE(_tmp, (matched) => new _M0TP211localreview3tcl7ReState(matched.pos, state.captures));
-              }
-              break _L$5;
-            }
-            let start;
-            let end;
-            _L$7: {
-              const _bind$3 = _M0MPC15array5Array2atGRPB4JsonE(state.captures, group);
-              const _start = _bind$3._0;
-              const _end = _bind$3._1;
-              start = _start;
-              end = _end;
-              break _L$7;
-            }
-            if (start < 0 || (end - start | 0) > (n - at | 0)) {
-              return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok([]);
-            }
-            const equal = new _M0TPB8MutLocalGbE(true);
-            const _bind$3 = 0;
-            const _bind$4 = end - start | 0;
-            let _tmp = _bind$3;
-            while (true) {
-              const i = _tmp;
-              if (i < _bind$4) {
-                const _tmp$2 = start + i | 0;
-                const a = _tmp$2 >>> 0 < text.length ? text.charCodeAt(_tmp$2) : $oob();
-                const _tmp$3 = at + i | 0;
-                const b = _tmp$3 >>> 0 < text.length ? text.charCodeAt(_tmp$3) : $oob();
-                if (pattern.nocase ? _M0FP211localreview3tcl19unicode__case__unit(a, 0) !== _M0FP211localreview3tcl19unicode__case__unit(b, 0) : a !== b) {
-                  equal.val = false;
-                  break;
-                }
-                _tmp = i + 1 | 0;
-                continue;
-              } else {
-                break;
-              }
-            }
-            result = equal.val ? [new _M0TP211localreview3tcl7ReState((at + end | 0) - start | 0, state.captures)] : [];
-          }
-          break _L$3;
-        }
-        const _bind$3 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child$2, text, state, depth + 1 | 0);
-        let _tmp;
-        if (_bind$3.$tag === 1) {
-          const _ok = _bind$3;
-          _tmp = _ok._0;
-        } else {
-          return _bind$3;
-        }
-        const found = !_M0MPC15array5Array9is__emptyGRPB4JsonE(_tmp);
-        result = found === positive ? [state] : [];
-      }
-      break _L;
-    }
-    let group;
-    _L$3: {
-      _L$4: {
-        const _bind$3 = child.kind;
-        if (_bind$3.$tag === 10) {
-          const _Backref = _bind$3;
-          const _group = _Backref._0;
-          group = _group;
-          break _L$4;
-        }
-        break _L$3;
-      }
-      if (max !== 0) {
-        if (_M0MPC15array5Array2atGRPB4JsonE(state.captures, group)._0 < 0) {
-          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok([]);
-        }
-      }
-    }
-    const result$2 = [];
-    const pending = [{ _0: state, _1: 0 }];
-    while (true) {
-      if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(pending)) {
-        let candidate;
-        let count;
-        _L$4: {
-          const _bind$3 = _M0MPC16option6Option6unwrapGRPB5EntryGiRP211localreview3tcl11InterpreterEE(_M0MPC15array5Array3popGRPC14json10WriteFrameE(pending));
-          const _candidate = _bind$3._0;
-          const _count = _bind$3._1;
-          candidate = _candidate;
-          count = _count;
-          break _L$4;
-        }
-        if (count >= min) {
-          _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result$2, candidate);
-        }
-        if (result$2.length > 16384) {
-          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp state limit"));
-        }
-        if (max >= 0 && count >= max) {
-          continue;
-        }
-        const captures = _M0MPC15array5Array4copyGUsRP211localreview3tcl8TclValueEE(candidate.captures);
-        _M0FP211localreview3tcl19re__clear__captures(child, captures);
-        const _bind$3 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, child, text, new _M0TP211localreview3tcl7ReState(candidate.pos, captures), depth + 1 | 0);
-        let matches;
-        if (_bind$3.$tag === 1) {
-          const _ok = _bind$3;
-          matches = _ok._0;
-        } else {
-          return _bind$3;
-        }
-        let _tmp = matches.length - 1 | 0;
-        while (true) {
-          const i = _tmp;
-          if (i >= 0) {
-            const matched = _M0MPC15array5Array2atGRPB4JsonE(matches, i);
-            if (matched.pos !== candidate.pos || count < min) {
-              _M0MPC15array5Array4pushGRPC14json10WriteFrameE(pending, { _0: matched, _1: count + 1 | 0 });
-            }
-            _tmp = i - 1 | 0;
-            continue;
-          } else {
-            break;
-          }
-        }
-        if (pending.length > 16384) {
-          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp state limit"));
-        }
-        continue;
-      } else {
-        break;
-      }
-    }
-    result = result$2;
-  }
-  if (result.length > 16384) {
-    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("regexp state limit"));
-  }
-  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview3tcl7ReStateERP211localreview3tcl8TclErrorE2Ok(result.length > 1 ? _M0FP211localreview3tcl9re__order(result, node.preference) : result);
-}
-function _M0MP211localreview3tcl11Interpreter12regexp__find(self, compiled, text, offset) {
-  const origin = _M0MPC13int3Int3min(offset, text.length);
-  let not_bol;
-  if (offset > 0) {
-    let _tmp;
-    if (offset > text.length) {
-      _tmp = true;
-    } else {
-      const _tmp$2 = offset - 1 | 0;
-      _tmp = (_tmp$2 >>> 0 < text.length ? text.charCodeAt(_tmp$2) : $oob()) !== 10;
-    }
-    not_bol = _tmp;
-  } else {
-    not_bol = false;
-  }
-  const pattern = new _M0TP211localreview3tcl9RePattern(compiled.node, compiled.groups, compiled.nocase, compiled.line_stop, compiled.line_anchor, origin, not_bol, compiled.notes);
-  const _bind$2 = text.length;
-  let _tmp = origin;
-  while (true) {
-    const start = _tmp;
-    if (start <= _bind$2) {
-      const state = new _M0TP211localreview3tcl7ReState(start, _M0MPC15array5Array4makeGUiiEE(pattern.groups + 1 | 0, { _0: -1, _1: -1 }));
-      const _bind$3 = _M0MP211localreview3tcl11Interpreter10re__states(self, pattern, pattern.node, text, state, 0);
-      let matches;
-      if (_bind$3.$tag === 1) {
-        const _ok = _bind$3;
-        matches = _ok._0;
-      } else {
-        return _bind$3;
-      }
-      if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(matches)) {
-        const found = _M0MPC15array5Array2atGRPB4JsonE(matches, 0);
-        _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(found.captures, 0, { _0: start, _1: found.pos });
-        return new _M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE2Ok(new _M0DTPC16option6OptionGRPB5ArrayGUiiEEE4Some(found.captures));
-      }
-      _tmp = start + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return new _M0DTPC16result6ResultGORPB5ArrayGUiiEERP211localreview3tcl8TclErrorE2Ok(_M0DTPC16option6OptionGRPB5ArrayGUiiEEE4None__);
 }
 function _M0MP211localreview3tcl8ReOutput6append(self, text) {
   if (text.length > (1000000 - self.size | 0)) {
@@ -24999,7 +26328,7 @@ function _M0MP211localreview3tcl11Interpreter15string__command(self, input) {
                           if (n !== (nocase ? 5 : 4)) {
                             return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("string match arity"));
                           }
-                          const _bind$7 = _M0FP211localreview3tcl11glob__match(_M0MPC15array5Array2atGRPB4JsonE(args, n - 2 | 0), _M0MPC15array5Array2atGRPB4JsonE(args, n - 1 | 0), nocase);
+                          const _bind$7 = _M0FP211localreview3tcl19glob__match_2einner(_M0MPC15array5Array2atGRPB4JsonE(args, n - 2 | 0), _M0MPC15array5Array2atGRPB4JsonE(args, n - 1 | 0), nocase, false);
                           let _tmp$6;
                           if (_bind$7.$tag === 1) {
                             const _ok = _bind$7;
@@ -25437,7 +26766,7 @@ function _M0MP211localreview3tcl11Interpreter17namespace__forget(self, args) {
               }
               let _tmp$3;
               if (!qualified) {
-                const _bind$7 = _M0FP211localreview3tcl11glob__match(tail, _M0FP211localreview3tcl15namespace__tail(command.name), false);
+                const _bind$7 = _M0FP211localreview3tcl19glob__match_2einner(tail, _M0FP211localreview3tcl15namespace__tail(command.name), false, false);
                 let _tmp$4;
                 if (_bind$7.$tag === 1) {
                   const _ok = _bind$7;
@@ -25455,7 +26784,7 @@ function _M0MP211localreview3tcl11Interpreter17namespace__forget(self, args) {
                 if (qualified) {
                   let _tmp$4;
                   if (_M0FP211localreview3tcl15command__parent(cursor.val.name) === space) {
-                    const _bind$7 = _M0FP211localreview3tcl11glob__match(tail, _M0FP211localreview3tcl15namespace__tail(cursor.val.name), false);
+                    const _bind$7 = _M0FP211localreview3tcl19glob__match_2einner(tail, _M0FP211localreview3tcl15namespace__tail(cursor.val.name), false, false);
                     let _tmp$5;
                     if (_bind$7.$tag === 1) {
                       const _ok = _bind$7;
@@ -25837,7 +27166,7 @@ function _M0MP211localreview3tcl11Interpreter18namespace__command(self, input, d
               } else {
                 _tmp$9 = _M0FP211localreview3tcl15qualified__name(target$2, _M0MPC15array5Array2atGRPB4JsonE(args$2, 3));
               }
-              return _M0FP211localreview3tcl11glob__match(_tmp$9, name, false);
+              return _M0FP211localreview3tcl19glob__match_2einner(_tmp$9, name, false, false);
             });
             if (_bind$14.$tag === 1) {
               const _ok = _bind$14;
@@ -29117,7 +30446,7 @@ function _M0MP211localreview3tcl11Interpreter21dict__command_2einner(self, input
                                     const _$2 = _tmp$8;
                                     if (_$2 < _bind$15) {
                                       const pattern = _bind$14.buf[_bind$14.start + _$2 | 0];
-                                      const _bind$16 = _M0FP211localreview3tcl11glob__match(pattern, item.text, false);
+                                      const _bind$16 = _M0FP211localreview3tcl19glob__match_2einner(pattern, item.text, false, false);
                                       let _tmp$9;
                                       if (_bind$16.$tag === 1) {
                                         const _ok = _bind$16;
@@ -29621,7 +30950,7 @@ function _M0MP211localreview3tcl11Interpreter21dict__command_2einner(self, input
                         if (n === 3) {
                           _tmp$2 = true;
                         } else {
-                          const _bind$5 = _M0FP211localreview3tcl11glob__match(_M0MPC15array5Array2atGRPB4JsonE(args, 3), item.text, false);
+                          const _bind$5 = _M0FP211localreview3tcl19glob__match_2einner(_M0MPC15array5Array2atGRPB4JsonE(args, 3), item.text, false, false);
                           let _tmp$3;
                           if (_bind$5.$tag === 1) {
                             const _ok = _bind$5;
@@ -30188,7 +31517,6 @@ function _M0MP211localreview3tcl11Interpreter23extended__list__command(self, inp
   const args = _M0MPC15array5Array3mapGRP211localreview3tcl8TclValuesE(input, (v) => v.text);
   const n = args.length;
   const _bind$2 = _M0MPC15array5Array2atGRPB4JsonE(args, 0);
-  let text;
   switch (_bind$2) {
     case "lset": {
       if (n < 3) {
@@ -30303,145 +31631,37 @@ function _M0MP211localreview3tcl11Interpreter23extended__list__command(self, inp
       return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$6);
     }
     case "lsearch": {
-      const i = new _M0TPB8MutLocalGiE(1);
-      const exact = new _M0TPB8MutLocalGbE(false);
-      const nocase = new _M0TPB8MutLocalGbE(false);
-      const all = new _M0TPB8MutLocalGbE(false);
-      const inline = new _M0TPB8MutLocalGbE(false);
-      const negate = new _M0TPB8MutLocalGbE(false);
-      const start = new _M0TPB8MutLocalGiE(0);
-      while (true) {
-        if (i.val < (n - 2 | 0)) {
-          const _bind$13 = _M0MPC15array5Array2atGRPB4JsonE(args, i.val);
-          switch (_bind$13) {
-            case "-exact": {
-              exact.val = true;
-              break;
-            }
-            case "-glob": {
-              exact.val = false;
-              break;
-            }
-            case "-nocase": {
-              nocase.val = true;
-              break;
-            }
-            case "-all": {
-              all.val = true;
-              break;
-            }
-            case "-inline": {
-              inline.val = true;
-              break;
-            }
-            case "-not": {
-              negate.val = true;
-              break;
-            }
-            case "-start": {
-              i.val = i.val + 1 | 0;
-              if (i.val >= (n - 2 | 0)) {
-                return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lsearch start"));
-              }
-              const _bind$14 = _M0FP211localreview3tcl7integer(_M0MPC15array5Array2atGRPB4JsonE(args, i.val));
-              let _tmp$7;
-              if (_bind$14.$tag === 1) {
-                const _ok = _bind$14;
-                _tmp$7 = _ok._0;
-              } else {
-                return _bind$14;
-              }
-              start.val = _M0MPC13int3Int3max(_tmp$7, 0);
-              break;
-            }
-            default: {
-              return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported lsearch option"));
-            }
-          }
-          i.val = i.val + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-      if (i.val !== (n - 2 | 0)) {
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lsearch arity"));
-      }
-      const _bind$13 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, i.val));
-      let values$3;
+      const _bind$13 = _M0MP211localreview3tcl11Interpreter16lsearch__command(self, input);
+      let _tmp$7;
       if (_bind$13.$tag === 1) {
         const _ok = _bind$13;
-        values$3 = _ok._0;
+        _tmp$7 = _ok._0;
       } else {
         return _bind$13;
       }
-      const pattern = nocase.val ? _M0FP211localreview3tcl21unicode__case_2einner(_M0MPC15array5Array2atGRPB4JsonE(args, i.val + 1 | 0), 0, false) : _M0MPC15array5Array2atGRPB4JsonE(args, i.val + 1 | 0);
-      const result$2 = [];
-      const _bind$14 = start.val;
-      const _bind$15 = values$3.length;
-      let _tmp$7 = _bind$14;
-      while (true) {
-        const j = _tmp$7;
-        if (j < _bind$15) {
-          const value = nocase.val ? _M0FP211localreview3tcl21unicode__case_2einner(_M0MPC15array5Array2atGRPB4JsonE(values$3, j).text, 0, false) : _M0MPC15array5Array2atGRPB4JsonE(values$3, j).text;
-          let matched;
-          if (exact.val) {
-            matched = value === pattern && (!nocase.val || _M0FP211localreview3tcl17tcl__utf8__length(_M0MPC15array5Array2atGRPB4JsonE(values$3, j).text) === _M0FP211localreview3tcl17tcl__utf8__length(_M0MPC15array5Array2atGRPB4JsonE(args, i.val + 1 | 0)));
-          } else {
-            const _bind$16 = _M0FP211localreview3tcl11glob__match(pattern, value, false);
-            if (_bind$16.$tag === 1) {
-              const _ok = _bind$16;
-              matched = _ok._0;
-            } else {
-              return _bind$16;
-            }
-          }
-          if (_M0IP016_24default__implPB2Eq10not__equalGbE(matched, negate.val)) {
-            const item = inline.val ? _M0MPC15array5Array2atGRPB4JsonE(values$3, j) : _M0FP211localreview3tcl11text__value(_M0MPC13int3Int18to__string_2einner(j, 10));
-            if (!all.val) {
-              return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(item);
-            }
-            _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result$2, item);
-          }
-          _tmp$7 = j + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-      if (all.val) {
-        const _bind$16 = _M0FP211localreview3tcl11list__value(result$2);
-        let _tmp$8;
-        if (_bind$16.$tag === 1) {
-          const _ok = _bind$16;
-          _tmp$8 = _ok._0;
-        } else {
-          return _bind$16;
-        }
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$8);
-      } else {
-        text = inline.val ? "" : "-1";
-      }
-      break;
+      return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$7);
     }
     case "lsort": {
       if (n < 2) {
         return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lsort arity"));
       }
-      const i$2 = new _M0TPB8MutLocalGiE(1);
+      const i = new _M0TPB8MutLocalGiE(1);
       const mode = new _M0TPB8MutLocalGsE("-ascii");
       const reverse = new _M0TPB8MutLocalGbE(false);
-      const nocase$2 = new _M0TPB8MutLocalGbE(false);
+      const nocase = new _M0TPB8MutLocalGbE(false);
       const unique = new _M0TPB8MutLocalGbE(false);
       const index$2 = new _M0TPB8MutLocalGOsE(undefined);
       const command = new _M0TPB8MutLocalGOsE(undefined);
       while (true) {
-        if (i$2.val < (n - 1 | 0)) {
+        if (i.val < (n - 1 | 0)) {
           _L: {
             _L$2: {
-              const _bind$16 = _M0MPC15array5Array2atGRPB4JsonE(args, i$2.val);
-              switch (_bind$16) {
+              const _bind$14 = _M0MPC15array5Array2atGRPB4JsonE(args, i.val);
+              switch (_bind$14) {
                 case "-ascii": {
+                  break _L$2;
+                }
+                case "-dictionary": {
                   break _L$2;
                 }
                 case "-integer": {
@@ -30459,7 +31679,7 @@ function _M0MP211localreview3tcl11Interpreter23extended__list__command(self, inp
                   break;
                 }
                 case "-nocase": {
-                  nocase$2.val = true;
+                  nocase.val = true;
                   break;
                 }
                 case "-unique": {
@@ -30467,19 +31687,19 @@ function _M0MP211localreview3tcl11Interpreter23extended__list__command(self, inp
                   break;
                 }
                 case "-index": {
-                  i$2.val = i$2.val + 1 | 0;
-                  if (i$2.val >= (n - 1 | 0)) {
+                  i.val = i.val + 1 | 0;
+                  if (i.val >= (n - 1 | 0)) {
                     return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lsort index"));
                   }
-                  index$2.val = _M0MPC15array5Array2atGRPB4JsonE(args, i$2.val);
+                  index$2.val = _M0MPC15array5Array2atGRPB4JsonE(args, i.val);
                   break;
                 }
                 case "-command": {
-                  i$2.val = i$2.val + 1 | 0;
-                  if (i$2.val >= (n - 1 | 0)) {
+                  i.val = i.val + 1 | 0;
+                  if (i.val >= (n - 1 | 0)) {
                     return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lsort command"));
                   }
-                  command.val = _M0MPC15array5Array2atGRPB4JsonE(args, i$2.val);
+                  command.val = _M0MPC15array5Array2atGRPB4JsonE(args, i.val);
                   break;
                 }
                 default: {
@@ -30488,120 +31708,120 @@ function _M0MP211localreview3tcl11Interpreter23extended__list__command(self, inp
               }
               break _L;
             }
-            mode.val = _M0MPC15array5Array2atGRPB4JsonE(args, i$2.val);
+            mode.val = _M0MPC15array5Array2atGRPB4JsonE(args, i.val);
           }
-          i$2.val = i$2.val + 1 | 0;
+          i.val = i.val + 1 | 0;
           continue;
         } else {
           break;
         }
       }
-      const _bind$16 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, n - 1 | 0));
-      let values$4;
-      if (_bind$16.$tag === 1) {
-        const _ok = _bind$16;
-        values$4 = _ok._0;
+      const _bind$14 = _M0MP211localreview3tcl8TclValue8as__list(_M0MPC15array5Array2atGRPB4JsonE(input, n - 1 | 0));
+      let values$3;
+      if (_bind$14.$tag === 1) {
+        const _ok = _bind$14;
+        values$3 = _ok._0;
       } else {
-        return _bind$16;
+        return _bind$14;
       }
       const key = (value) => {
         let raw;
         let index$3;
         _L: {
           _L$2: {
-            const _bind$17 = index$2.val;
-            if (_bind$17 === undefined) {
+            const _bind$15 = index$2.val;
+            if (_bind$15 === undefined) {
               raw = value;
             } else {
-              const _Some = _bind$17;
+              const _Some = _bind$15;
               const _index = _Some;
               index$3 = _index;
               break _L$2;
             }
             break _L;
           }
-          const _bind$17 = _M0MP211localreview3tcl8TclValue8as__list(value);
-          let values$5;
-          if (_bind$17.$tag === 1) {
-            const _ok = _bind$17;
-            values$5 = _ok._0;
+          const _bind$15 = _M0MP211localreview3tcl8TclValue8as__list(value);
+          let values$4;
+          if (_bind$15.$tag === 1) {
+            const _ok = _bind$15;
+            values$4 = _ok._0;
           } else {
-            return _bind$17;
+            return _bind$15;
           }
-          const _bind$18 = _M0FP211localreview3tcl11list__index(index$3, values$5.length);
+          const _bind$16 = _M0FP211localreview3tcl11list__index(index$3, values$4.length);
           let at;
-          if (_bind$18.$tag === 1) {
-            const _ok = _bind$18;
+          if (_bind$16.$tag === 1) {
+            const _ok = _bind$16;
             at = _ok._0;
           } else {
-            return _bind$18;
+            return _bind$16;
           }
-          if (at < 0 || at >= values$5.length) {
+          if (at < 0 || at >= values$4.length) {
             return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("lsort index range"));
           }
-          raw = _M0MPC15array5Array2atGRPB4JsonE(values$5, at);
+          raw = _M0MPC15array5Array2atGRPB4JsonE(values$4, at);
         }
-        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(nocase$2.val ? _M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl21unicode__case_2einner(raw.text, 0, false)) : raw);
+        return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(nocase.val && _M0IP016_24default__implPB2Eq10not__equalGsE(mode.val, "-dictionary") ? _M0FP211localreview3tcl11text__value(_M0FP211localreview3tcl21unicode__case_2einner(raw.text, 0, false)) : raw);
       };
       const compare = (a, b) => {
-        const _bind$17 = _M0MP211localreview3tcl11Interpreter4tick(self);
+        const _bind$15 = _M0MP211localreview3tcl11Interpreter4tick(self);
+        if (_bind$15.$tag === 1) {
+          const _ok = _bind$15;
+          _ok._0;
+        } else {
+          return _bind$15;
+        }
+        const _bind$16 = key(a);
+        let a$2;
+        if (_bind$16.$tag === 1) {
+          const _ok = _bind$16;
+          a$2 = _ok._0;
+        } else {
+          return _bind$16;
+        }
+        const _bind$17 = key(b);
+        let b$2;
         if (_bind$17.$tag === 1) {
           const _ok = _bind$17;
-          _ok._0;
+          b$2 = _ok._0;
         } else {
           return _bind$17;
         }
-        const _bind$18 = key(a);
-        let a$2;
-        if (_bind$18.$tag === 1) {
-          const _ok = _bind$18;
-          a$2 = _ok._0;
-        } else {
-          return _bind$18;
-        }
-        const _bind$19 = key(b);
-        let b$2;
-        if (_bind$19.$tag === 1) {
-          const _ok = _bind$19;
-          b$2 = _ok._0;
-        } else {
-          return _bind$19;
-        }
-        let result$3;
+        let result$2;
         let script;
         _L: {
           _L$2: {
-            const _bind$20 = command.val;
-            if (_bind$20 === undefined) {
+            const _bind$18 = command.val;
+            if (_bind$18 === undefined) {
               if (mode.val === "-integer") {
-                const _bind$21 = _M0MP211localreview3tcl8TclValue9as__whole(a$2);
+                const _bind$19 = _M0MP211localreview3tcl8TclValue9as__whole(a$2);
                 let _tmp$8;
-                if (_bind$21.$tag === 1) {
-                  const _ok = _bind$21;
+                if (_bind$19.$tag === 1) {
+                  const _ok = _bind$19;
                   _tmp$8 = _ok._0;
                 } else {
-                  return _bind$21;
+                  return _bind$19;
                 }
                 const _tmp$9 = _tmp$8;
-                const _bind$22 = _M0MP211localreview3tcl8TclValue9as__whole(b$2);
+                const _bind$20 = _M0MP211localreview3tcl8TclValue9as__whole(b$2);
                 let _tmp$10;
-                if (_bind$22.$tag === 1) {
-                  const _ok = _bind$22;
+                if (_bind$20.$tag === 1) {
+                  const _ok = _bind$20;
                   _tmp$10 = _ok._0;
                 } else {
-                  return _bind$22;
+                  return _bind$20;
                 }
-                result$3 = _M0IPC16bigint6BigIntPB7Compare7compare(_tmp$9, _tmp$10);
+                result$2 = _M0IPC16bigint6BigIntPB7Compare7compare(_tmp$9, _tmp$10);
               } else {
                 if (mode.val === "-real") {
                   let a$3;
                   let n$2;
                   _L$3: {
-                    const _bind$21 = _M0MP211localreview3tcl8TclValue10as__number(a$2);
-                    if (_bind$21 === undefined) {
+                    const _bind$19 = _M0MP211localreview3tcl8TclValue10as__number(a$2);
+                    if (_bind$19 === undefined) {
                       return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expected real"));
                     } else {
-                      const _Some = _bind$21;
+                      const _Some = _bind$19;
                       const _n = _Some;
                       n$2 = _n;
                       break _L$3;
@@ -30611,11 +31831,11 @@ function _M0MP211localreview3tcl11Interpreter23extended__list__command(self, inp
                   let b$3;
                   let n$3;
                   _L$4: {
-                    const _bind$21 = _M0MP211localreview3tcl8TclValue10as__number(b$2);
-                    if (_bind$21 === undefined) {
+                    const _bind$19 = _M0MP211localreview3tcl8TclValue10as__number(b$2);
+                    if (_bind$19 === undefined) {
                       return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("expected real"));
                     } else {
-                      const _Some = _bind$21;
+                      const _Some = _bind$19;
                       const _n = _Some;
                       n$3 = _n;
                       break _L$4;
@@ -30625,79 +31845,120 @@ function _M0MP211localreview3tcl11Interpreter23extended__list__command(self, inp
                   if (_M0MPC16double6Double7is__nan(a$3) || _M0MPC16double6Double7is__nan(b$3)) {
                     return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("cannot sort NaN"));
                   }
-                  result$3 = a$3 < b$3 ? -1 : a$3 > b$3 ? 1 : 0;
+                  result$2 = a$3 < b$3 ? -1 : a$3 > b$3 ? 1 : 0;
                 } else {
-                  result$3 = _M0FP211localreview3tcl20tcl__string__compare(a$2.text, b$2.text);
+                  result$2 = mode.val === "-dictionary" ? _M0FP211localreview3tcl19dictionary__compare(a$2.text, b$2.text) : nocase.val ? _M0FP211localreview3tcl20tcl__string__compare(a$2.text, b$2.text) : _M0FP211localreview3tcl26collection__ascii__compare(a$2.text, b$2.text);
                 }
               }
             } else {
-              const _Some = _bind$20;
+              const _Some = _bind$18;
               const _script = _Some;
               script = _script;
               break _L$2;
             }
             break _L;
           }
-          const _bind$20 = _M0FP211localreview3tcl11parse__list(script);
+          const _bind$18 = _M0FP211localreview3tcl11parse__list(script);
           let _tmp$8;
+          if (_bind$18.$tag === 1) {
+            const _ok = _bind$18;
+            _tmp$8 = _ok._0;
+          } else {
+            return _bind$18;
+          }
+          const _bind$19 = _M0MP211localreview3tcl11Interpreter22command__value_2einner(self, _M0IPC15array5ArrayPB3Add3addGRP211localreview3tcl8TclValueE(_M0MPC15array5Array3mapGsRP211localreview3tcl8TclValueE(_tmp$8, _M0FP211localreview3tcl11text__value), [a$2, b$2]), depth + 1 | 0, false);
+          let _tmp$9;
+          if (_bind$19.$tag === 1) {
+            const _ok = _bind$19;
+            _tmp$9 = _ok._0;
+          } else {
+            return _bind$19;
+          }
+          const _bind$20 = _M0FP211localreview3tcl7integer(_tmp$9.text);
           if (_bind$20.$tag === 1) {
             const _ok = _bind$20;
-            _tmp$8 = _ok._0;
+            result$2 = _ok._0;
           } else {
             return _bind$20;
           }
-          const _bind$21 = _M0MP211localreview3tcl11Interpreter22command__value_2einner(self, _M0IPC15array5ArrayPB3Add3addGRP211localreview3tcl8TclValueE(_M0MPC15array5Array3mapGsRP211localreview3tcl8TclValueE(_tmp$8, _M0FP211localreview3tcl11text__value), [a$2, b$2]), depth + 1 | 0, false);
-          let _tmp$9;
-          if (_bind$21.$tag === 1) {
-            const _ok = _bind$21;
-            _tmp$9 = _ok._0;
-          } else {
-            return _bind$21;
-          }
-          const _bind$22 = _M0FP211localreview3tcl7integer(_tmp$9.text);
-          if (_bind$22.$tag === 1) {
-            const _ok = _bind$22;
-            result$3 = _ok._0;
-          } else {
-            return _bind$22;
-          }
         }
-        const sign = result$3 < 0 ? -1 : result$3 > 0 ? 1 : 0;
+        const sign = result$2 < 0 ? -1 : result$2 > 0 ? 1 : 0;
         return new _M0DTPC16result6ResultGiRP211localreview3tcl8TclErrorE2Ok(reverse.val ? -sign | 0 : sign);
       };
-      const _bind$17 = _M0FP211localreview3tcl12sort__values(values$4, compare);
-      if (_bind$17.$tag === 1) {
-        const _ok = _bind$17;
+      if (mode.val === "-dictionary") {
+        const _bind$15 = command.val;
+        if (_bind$15 === undefined) {
+          const _bind$16 = values$3.length;
+          let _tmp$8 = 0;
+          while (true) {
+            const _ = _tmp$8;
+            if (_ < _bind$16) {
+              const value = values$3[_];
+              const _bind$17 = key(value);
+              if (_bind$17.$tag === 1) {
+                const _ok = _bind$17;
+                _ok._0;
+              } else {
+                return _bind$17;
+              }
+              _tmp$8 = _ + 1 | 0;
+              continue;
+            } else {
+              break;
+            }
+          }
+          const _bind$17 = _M0FP211localreview3tcl16dictionary__sort(values$3, compare, unique.val);
+          let _tmp$9;
+          if (_bind$17.$tag === 1) {
+            const _ok = _bind$17;
+            _tmp$9 = _ok._0;
+          } else {
+            return _bind$17;
+          }
+          const _bind$18 = _M0FP211localreview3tcl11list__value(_tmp$9);
+          let _tmp$10;
+          if (_bind$18.$tag === 1) {
+            const _ok = _bind$18;
+            _tmp$10 = _ok._0;
+          } else {
+            return _bind$18;
+          }
+          return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$10);
+        }
+      }
+      const _bind$15 = _M0FP211localreview3tcl12sort__values(values$3, compare);
+      if (_bind$15.$tag === 1) {
+        const _ok = _bind$15;
         _ok._0;
       } else {
-        return _bind$17;
+        return _bind$15;
       }
       if (unique.val) {
-        const result$3 = [];
-        const _bind$18 = values$4.length;
+        const result$2 = [];
+        const _bind$16 = values$3.length;
         let _tmp$8 = 0;
         while (true) {
           const _ = _tmp$8;
-          if (_ < _bind$18) {
-            const value = values$4[_];
+          if (_ < _bind$16) {
+            const value = values$3[_];
             let _tmp$9;
-            if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(result$3)) {
-              const _bind$19 = compare(_M0MPC15array5Array2atGRPB4JsonE(result$3, result$3.length - 1 | 0), value);
+            if (!_M0MPC15array5Array9is__emptyGRPB4JsonE(result$2)) {
+              const _bind$17 = compare(_M0MPC15array5Array2atGRPB4JsonE(result$2, result$2.length - 1 | 0), value);
               let _tmp$10;
-              if (_bind$19.$tag === 1) {
-                const _ok = _bind$19;
+              if (_bind$17.$tag === 1) {
+                const _ok = _bind$17;
                 _tmp$10 = _ok._0;
               } else {
-                return _bind$19;
+                return _bind$17;
               }
               _tmp$9 = _tmp$10 === 0;
             } else {
               _tmp$9 = false;
             }
             if (_tmp$9) {
-              _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(result$3, result$3.length - 1 | 0, value);
+              _M0MPC15array5Array3setGRP211localreview3tcl8TclValueE(result$2, result$2.length - 1 | 0, value);
             } else {
-              _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result$3, value);
+              _M0MPC15array5Array4pushGRPC14json10WriteFrameE(result$2, value);
             }
             _tmp$8 = _ + 1 | 0;
             continue;
@@ -30705,23 +31966,23 @@ function _M0MP211localreview3tcl11Interpreter23extended__list__command(self, inp
             break;
           }
         }
-        const _bind$19 = _M0FP211localreview3tcl11list__value(result$3);
+        const _bind$17 = _M0FP211localreview3tcl11list__value(result$2);
         let _tmp$9;
-        if (_bind$19.$tag === 1) {
-          const _ok = _bind$19;
+        if (_bind$17.$tag === 1) {
+          const _ok = _bind$17;
           _tmp$9 = _ok._0;
         } else {
-          return _bind$19;
+          return _bind$17;
         }
         return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$9);
       } else {
-        const _bind$18 = _M0FP211localreview3tcl11list__value(values$4);
+        const _bind$16 = _M0FP211localreview3tcl11list__value(values$3);
         let _tmp$8;
-        if (_bind$18.$tag === 1) {
-          const _ok = _bind$18;
+        if (_bind$16.$tag === 1) {
+          const _ok = _bind$16;
           _tmp$8 = _ok._0;
         } else {
-          return _bind$18;
+          return _bind$16;
         }
         return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_tmp$8);
       }
@@ -30730,7 +31991,6 @@ function _M0MP211localreview3tcl11Interpreter23extended__list__command(self, inp
       return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE3Err(new _M0DTPC15error5Error38localreview_2ftcl_2eTclError_2eInvalid("unsupported list command"));
     }
   }
-  return new _M0DTPC16result6ResultGRP211localreview3tcl8TclValueRP211localreview3tcl8TclErrorE2Ok(_M0FP211localreview3tcl11text__value(text));
 }
 function _M0MP211localreview3tcl11Interpreter24invoke__ensemble_2einner(self, command, ensemble, input, depth, discard_result) {
   const index = new _M0TPB8MutLocalGiE(1 + ensemble.parameters.length | 0);
@@ -31841,7 +33101,7 @@ function _M0MP211localreview3tcl11Interpreter23switch__command_2einner(self, val
           }
         } else {
           if (mode.val === "-glob") {
-            const _bind$3 = _M0FP211localreview3tcl11glob__match(pattern, subject.text, nocase.val);
+            const _bind$3 = _M0FP211localreview3tcl19glob__match_2einner(pattern, subject.text, nocase.val, false);
             if (_bind$3.$tag === 1) {
               const _ok = _bind$3;
               matched = _ok._0;
@@ -32059,7 +33319,7 @@ function _M0MP211localreview3tcl11Interpreter17namespace__import(self, args, dep
             } else {
               return _bind$8;
             }
-            const _bind$9 = _M0FP211localreview3tcl11glob__match(tail, _M0FP211localreview3tcl15namespace__tail(command.name), false);
+            const _bind$9 = _M0FP211localreview3tcl19glob__match_2einner(tail, _M0FP211localreview3tcl15namespace__tail(command.name), false, false);
             let _tmp$3;
             if (_bind$9.$tag === 1) {
               const _ok = _bind$9;

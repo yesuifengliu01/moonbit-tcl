@@ -1,0 +1,288 @@
+{
+  "baselineCommit": "23cb65e860b9e45af6d03765a048d001cf282bf6",
+  "baselineEngineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+  "currentEngineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+  "referenceName": "search-legacy-workloads.json",
+  "referenceSHA256": "0bcce30893b0a8e2f623010cd7aa0d6eaaff7cbd2f3a95857cbe842db799cd27",
+  "runtime": "v24.11.0",
+  "cpu": "Intel(R) Core(TM) i7-14700HX",
+  "warmups": 20,
+  "measurements": 30,
+  "independentProcesses": 5,
+  "rows": [
+    {
+      "name": "search-exact-500",
+      "currentOverBaselineMedian": 1.1283210853590502,
+      "currentOverBaselineRange": [
+        0.9669467787115814,
+        1.1915011037526813
+      ],
+      "baselineMedianMs": 0.17849999999999966,
+      "currentMedianMs": 0.19904999999999973,
+      "systemTclRatio": 60.318181818181735,
+      "allResultsMatched": true
+    },
+    {
+      "name": "search-glob-300",
+      "currentOverBaselineMedian": 1.133897773596823,
+      "currentOverBaselineRange": [
+        0.9878183831674434,
+        1.2973819009675525
+      ],
+      "baselineMedianMs": 0.16729999999999734,
+      "currentMedianMs": 0.185450000000003,
+      "systemTclRatio": 50.12162162162243,
+      "allResultsMatched": true
+    },
+    {
+      "name": "sort-ascii-200",
+      "currentOverBaselineMedian": 1.0419580419580419,
+      "currentOverBaselineRange": [
+        0.9159078311821989,
+        1.0582255083178804
+      ],
+      "baselineMedianMs": 0.5951000000000022,
+      "currentMedianMs": 0.5854999999999961,
+      "systemTclRatio": 5.036559139784913,
+      "allResultsMatched": true
+    }
+  ],
+  "rounds": [
+    {
+      "baselineCommit": "23cb65e860b9e45af6d03765a048d001cf282bf6",
+      "baselineEngineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+      "currentEngineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+      "referenceName": "search-legacy-workloads.json",
+      "referenceSHA256": "0bcce30893b0a8e2f623010cd7aa0d6eaaff7cbd2f3a95857cbe842db799cd27",
+      "runtime": "v24.11.0",
+      "cpu": "Intel(R) Core(TM) i7-14700HX",
+      "warmups": 20,
+      "measurements": 30,
+      "rows": [
+        {
+          "name": "search-exact-500",
+          "baselineMedianMs": 0.18090000000000828,
+          "currentMedianMs": 0.19904999999999973,
+          "baselineP95Ms": 0.4375,
+          "currentP95Ms": 0.38709999999997535,
+          "speedup": 0.9088168801809019,
+          "systemTclMedianMs": 0.0033,
+          "systemTclRatio": 60.318181818181735,
+          "resultMatched": true
+        },
+        {
+          "name": "search-glob-300",
+          "baselineMedianMs": 0.16220000000001278,
+          "currentMedianMs": 0.18994999999998186,
+          "baselineP95Ms": 0.5824000000000069,
+          "currentP95Ms": 0.4881000000000313,
+          "speedup": 0.8539089234010439,
+          "systemTclMedianMs": 0.0037,
+          "systemTclRatio": 51.33783783783293,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-ascii-200",
+          "baselineMedianMs": 0.5866000000000042,
+          "currentMedianMs": 0.5854999999999961,
+          "baselineP95Ms": 1.0586000000000126,
+          "currentP95Ms": 1.087699999999984,
+          "speedup": 1.0018787361229857,
+          "systemTclMedianMs": 0.11624999999999999,
+          "systemTclRatio": 5.036559139784913,
+          "resultMatched": true
+        }
+      ],
+      "scope": "Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim."
+    },
+    {
+      "baselineCommit": "23cb65e860b9e45af6d03765a048d001cf282bf6",
+      "baselineEngineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+      "currentEngineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+      "referenceName": "search-legacy-workloads.json",
+      "referenceSHA256": "0bcce30893b0a8e2f623010cd7aa0d6eaaff7cbd2f3a95857cbe842db799cd27",
+      "runtime": "v24.11.0",
+      "cpu": "Intel(R) Core(TM) i7-14700HX",
+      "warmups": 20,
+      "measurements": 30,
+      "rows": [
+        {
+          "name": "search-exact-500",
+          "baselineMedianMs": 0.17849999999999966,
+          "currentMedianMs": 0.17260000000001696,
+          "baselineP95Ms": 0.4093000000000018,
+          "currentP95Ms": 0.4099999999999966,
+          "speedup": 1.0341830822710436,
+          "systemTclMedianMs": 0.0033,
+          "systemTclRatio": 52.30303030303544,
+          "resultMatched": true
+        },
+        {
+          "name": "search-glob-300",
+          "baselineMedianMs": 0.17570000000000618,
+          "currentMedianMs": 0.22795000000000698,
+          "baselineP95Ms": 0.36250000000001137,
+          "currentP95Ms": 0.4147000000000105,
+          "speedup": 0.7707830664619469,
+          "systemTclMedianMs": 0.0037,
+          "systemTclRatio": 61.608108108109995,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-ascii-200",
+          "baselineMedianMs": 0.5951000000000022,
+          "currentMedianMs": 0.6297499999999729,
+          "baselineP95Ms": 0.8735000000000355,
+          "currentP95Ms": 0.8874999999999886,
+          "speedup": 0.9449781659389087,
+          "systemTclMedianMs": 0.11624999999999999,
+          "systemTclRatio": 5.417204301075037,
+          "resultMatched": true
+        }
+      ],
+      "scope": "Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim."
+    },
+    {
+      "baselineCommit": "23cb65e860b9e45af6d03765a048d001cf282bf6",
+      "baselineEngineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+      "currentEngineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+      "referenceName": "search-legacy-workloads.json",
+      "referenceSHA256": "0bcce30893b0a8e2f623010cd7aa0d6eaaff7cbd2f3a95857cbe842db799cd27",
+      "runtime": "v24.11.0",
+      "cpu": "Intel(R) Core(TM) i7-14700HX",
+      "warmups": 20,
+      "measurements": 30,
+      "rows": [
+        {
+          "name": "search-exact-500",
+          "baselineMedianMs": 0.17295000000001437,
+          "currentMedianMs": 0.19879999999999143,
+          "baselineP95Ms": 0.37019999999998277,
+          "currentP95Ms": 0.44839999999999236,
+          "speedup": 0.8699698189135907,
+          "systemTclMedianMs": 0.0033,
+          "systemTclRatio": 60.24242424242165,
+          "resultMatched": true
+        },
+        {
+          "name": "search-glob-300",
+          "baselineMedianMs": 0.1805999999999699,
+          "currentMedianMs": 0.17840000000001055,
+          "baselineP95Ms": 0.5977000000000317,
+          "currentP95Ms": 0.33349999999995816,
+          "speedup": 1.012331838564794,
+          "systemTclMedianMs": 0.0037,
+          "systemTclRatio": 48.21621621621907,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-ascii-200",
+          "baselineMedianMs": 0.6086999999999989,
+          "currentMedianMs": 0.6386500000000126,
+          "baselineP95Ms": 0.8894999999999982,
+          "currentP95Ms": 0.8417999999999779,
+          "speedup": 0.9531042041806731,
+          "systemTclMedianMs": 0.11624999999999999,
+          "systemTclRatio": 5.493763440860324,
+          "resultMatched": true
+        }
+      ],
+      "scope": "Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim."
+    },
+    {
+      "baselineCommit": "23cb65e860b9e45af6d03765a048d001cf282bf6",
+      "baselineEngineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+      "currentEngineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+      "referenceName": "search-legacy-workloads.json",
+      "referenceSHA256": "0bcce30893b0a8e2f623010cd7aa0d6eaaff7cbd2f3a95857cbe842db799cd27",
+      "runtime": "v24.11.0",
+      "cpu": "Intel(R) Core(TM) i7-14700HX",
+      "warmups": 20,
+      "measurements": 30,
+      "rows": [
+        {
+          "name": "search-exact-500",
+          "baselineMedianMs": 0.18120000000000402,
+          "currentMedianMs": 0.21589999999999065,
+          "baselineP95Ms": 0.3692000000000064,
+          "currentP95Ms": 0.5441999999999894,
+          "speedup": 0.8392774432608239,
+          "systemTclMedianMs": 0.0033,
+          "systemTclRatio": 65.4242424242396,
+          "resultMatched": true
+        },
+        {
+          "name": "search-glob-300",
+          "baselineMedianMs": 0.16729999999999734,
+          "currentMedianMs": 0.185450000000003,
+          "baselineP95Ms": 0.33579999999997767,
+          "currentP95Ms": 0.43590000000000373,
+          "speedup": 0.9021299541655143,
+          "systemTclMedianMs": 0.0037,
+          "systemTclRatio": 50.12162162162243,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-ascii-200",
+          "baselineMedianMs": 0.550549999999987,
+          "currentMedianMs": 0.5736499999999864,
+          "baselineP95Ms": 0.7850999999999999,
+          "currentP95Ms": 0.9578999999999951,
+          "speedup": 0.959731543624161,
+          "systemTclMedianMs": 0.11624999999999999,
+          "systemTclRatio": 4.934623655913862,
+          "resultMatched": true
+        }
+      ],
+      "scope": "Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim."
+    },
+    {
+      "baselineCommit": "23cb65e860b9e45af6d03765a048d001cf282bf6",
+      "baselineEngineSHA256": "964225c78dda87a9b781dbed277471b1deef849a2620add79171f1a847783ffa",
+      "currentEngineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+      "referenceName": "search-legacy-workloads.json",
+      "referenceSHA256": "0bcce30893b0a8e2f623010cd7aa0d6eaaff7cbd2f3a95857cbe842db799cd27",
+      "runtime": "v24.11.0",
+      "cpu": "Intel(R) Core(TM) i7-14700HX",
+      "warmups": 20,
+      "measurements": 30,
+      "rows": [
+        {
+          "name": "search-exact-500",
+          "baselineMedianMs": 0.17689999999998918,
+          "currentMedianMs": 0.19960000000000377,
+          "baselineP95Ms": 0.39099999999999113,
+          "currentP95Ms": 0.5334000000000003,
+          "speedup": 0.8862725450901093,
+          "systemTclMedianMs": 0.0033,
+          "systemTclRatio": 60.48484848484963,
+          "resultMatched": true
+        },
+        {
+          "name": "search-glob-300",
+          "baselineMedianMs": 0.15944999999999254,
+          "currentMedianMs": 0.18080000000000496,
+          "baselineP95Ms": 0.4330999999999676,
+          "currentP95Ms": 0.3242999999999938,
+          "speedup": 0.8819137168140939,
+          "systemTclMedianMs": 0.0037,
+          "systemTclRatio": 48.8648648648662,
+          "resultMatched": true
+        },
+        {
+          "name": "sort-ascii-200",
+          "baselineMedianMs": 0.631450000000001,
+          "currentMedianMs": 0.5783500000000004,
+          "baselineP95Ms": 0.9677999999999543,
+          "currentP95Ms": 0.807899999999961,
+          "speedup": 1.0918129160542933,
+          "systemTclMedianMs": 0.11624999999999999,
+          "systemTclRatio": 4.975053763440863,
+          "resultMatched": true
+        }
+      ],
+      "scope": "Same-process interleaved version comparison using independent Tcl outputs. System Tcl is timed separately on the same host. Warm interpreter sessions; no full upstream or cross-platform performance claim."
+    }
+  ],
+  "scope": "Five preselected sequential fresh Node processes, each with 20 warmups and 30 interleaved measurements per workload. Every run retained. Aggregate medians and min/max of run ratios; no significance test, application or cross-platform claim."
+}

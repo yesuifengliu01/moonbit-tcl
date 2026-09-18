@@ -1,0 +1,40 @@
+{
+  "runtime": "v24.11.0",
+  "rows": [
+    {
+      "name": "search-exact-500",
+      "source": "set v [lrepeat 499 tea];lappend v coffee;lsearch -exact $v coffee",
+      "result": "499",
+      "nativeMedianMs": 0.0033,
+      "currentMedianMs": 0.26030000000000086,
+      "currentP95Ms": 0.6124999999999972,
+      "systemTclRatio": 78.87878787878815,
+      "resultMatched": true
+    },
+    {
+      "name": "search-glob-300",
+      "source": "set v [lrepeat 299 tea];lappend v coffee;lsearch -glob $v cof*",
+      "result": "299",
+      "nativeMedianMs": 0.0037,
+      "currentMedianMs": 0.27445000000000164,
+      "currentP95Ms": 0.6089999999999947,
+      "systemTclRatio": 74.17567567567612,
+      "resultMatched": true
+    },
+    {
+      "name": "sort-ascii-200",
+      "source": "set v {};for {set i 200} {$i>0} {incr i -1} {lappend v rack$i};lindex [lsort $v] end",
+      "result": "rack99",
+      "nativeMedianMs": 0.11624999999999999,
+      "currentMedianMs": 0.6819500000000005,
+      "currentP95Ms": 1.0264000000000095,
+      "systemTclRatio": 5.866236559139789,
+      "resultMatched": true
+    }
+  ],
+  "reference": "Windows Tcl 8.6.15",
+  "warmups": 10,
+  "measurements": 30,
+  "engineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+  "scope": "Three existing collection workloads selected from the new workload measurement for baseline comparison."
+}

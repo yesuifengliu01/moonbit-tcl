@@ -1,0 +1,90 @@
+{
+  "runtime": "v24.11.0",
+  "rows": [
+    {
+      "name": "search-exact-500",
+      "source": "set v [lrepeat 499 tea];lappend v coffee;lsearch -exact $v coffee",
+      "result": "499",
+      "nativeMedianMs": 0.0033,
+      "currentMedianMs": 0.26030000000000086,
+      "currentP95Ms": 0.6124999999999972,
+      "systemTclRatio": 78.87878787878815,
+      "resultMatched": true
+    },
+    {
+      "name": "search-glob-300",
+      "source": "set v [lrepeat 299 tea];lappend v coffee;lsearch -glob $v cof*",
+      "result": "299",
+      "nativeMedianMs": 0.0037,
+      "currentMedianMs": 0.27445000000000164,
+      "currentP95Ms": 0.6089999999999947,
+      "systemTclRatio": 74.17567567567612,
+      "resultMatched": true
+    },
+    {
+      "name": "sort-ascii-200",
+      "source": "set v {};for {set i 200} {$i>0} {incr i -1} {lappend v rack$i};lindex [lsort $v] end",
+      "result": "rack99",
+      "nativeMedianMs": 0.11624999999999999,
+      "currentMedianMs": 0.6819500000000005,
+      "currentP95Ms": 1.0264000000000095,
+      "systemTclRatio": 5.866236559139789,
+      "resultMatched": true
+    },
+    {
+      "name": "search-sorted-500",
+      "source": "set v {};for {set i 0} {$i<500} {incr i} {lappend v $i};set total 0;for {set i 0} {$i<50} {incr i} {incr total [lsearch -sorted -integer $v 499]};set total",
+      "result": "24950",
+      "nativeMedianMs": 0.2619,
+      "currentMedianMs": 1.2663499999999885,
+      "currentP95Ms": 1.8411999999999864,
+      "systemTclRatio": 4.835242458953755,
+      "resultMatched": true
+    },
+    {
+      "name": "search-regexp-100",
+      "source": "set v [lrepeat 100 {tea=12}];llength [lsearch -all -regexp $v {^([a-z]+)=([0-9]+)$}]",
+      "result": "100",
+      "nativeMedianMs": 0.02355,
+      "currentMedianMs": 0.5444999999999993,
+      "currentP95Ms": 0.9840999999999838,
+      "systemTclRatio": 23.121019108280226,
+      "resultMatched": true
+    },
+    {
+      "name": "array-regexp-100",
+      "source": "array set a {};for {set i 0} {$i<100} {incr i} {set a(rack$i) $i};llength [array names a -regexp {^rack[0-9]+$}]",
+      "result": "100",
+      "nativeMedianMs": 0.08174999999999999,
+      "currentMedianMs": 0.44274999999997533,
+      "currentP95Ms": 0.6793999999999869,
+      "systemTclRatio": 5.415902140672482,
+      "resultMatched": true
+    },
+    {
+      "name": "sort-dictionary-200",
+      "source": "set v {};for {set i 200} {$i>0} {incr i -1} {lappend v rack$i};lindex [lsort -dictionary $v] end",
+      "result": "rack200",
+      "nativeMedianMs": 0.19335000000000002,
+      "currentMedianMs": 0.7349000000000103,
+      "currentP95Ms": 1.1030999999999835,
+      "systemTclRatio": 3.8008792345487987,
+      "resultMatched": true
+    },
+    {
+      "name": "search-nested-100",
+      "source": "set v [lrepeat 100 {rack1 tea 12}];llength [lsearch -all -index 1 -inline -subindices $v tea]",
+      "result": "100",
+      "nativeMedianMs": 0.0063,
+      "currentMedianMs": 0.12135000000000673,
+      "currentP95Ms": 0.26310000000000855,
+      "systemTclRatio": 19.26190476190583,
+      "resultMatched": true
+    }
+  ],
+  "reference": "Windows Tcl 8.6.15",
+  "warmups": 10,
+  "measurements": 30,
+  "engineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+  "scope": "Eight small warm-session collection workloads, native and Node measured separately on one host; exact results verified. Different host adapters; no full application, peak memory or cross-platform acceptance."
+}

@@ -11,9 +11,11 @@ fn glob_match(
   pattern : String,
   value : String,
   nocase : Bool,
+  codepoints? : Bool = false,
 ) -> Bool raise TclError {
-  let p = utf16_units(if nocase { unicode_case(pattern, 0) } else { pattern })
-  let s = utf16_units(if nocase { unicode_case(value, 0) } else { value })
+  let units = if codepoints { collection_codepoints } else { utf16_units }
+  let p = units(if nocase { unicode_case(pattern, 0) } else { pattern })
+  let s = units(if nocase { unicode_case(value, 0) } else { value })
   if p.length() > 4096 ||
     s.length() > 100000 ||
     p.length() > 1000000 / (s.length() + 1) {

@@ -1,0 +1,6 @@
+{
+  "checks": 44,
+  "passed": 44,
+  "engineSHA256": "c9cf211bbe2e9cf470b8af24a9a7080a5d68ed16343bae26323c3e3d551bf0f2",
+  "scope": "Persistent module sessions, real JSONL CLI and actual web Worker through a Node message adapter. Collection regexps, nested indices, binary boundaries, dictionary ordering, numeric representation, Unicode, failure recovery and reset. Browser checks are separate."
+}

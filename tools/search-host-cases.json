@@ -1,0 +1,74 @@
+[
+  [
+    "set v {{rack2 tea 12} {rack10 coffee 34} {rack1 tea 7}};lsort -dictionary -index 0 $v",
+    "{rack1 tea 7} {rack2 tea 12} {rack10 coffee 34}"
+  ],
+  [
+    "lsearch -regexp -all -inline -index 1 $v {^tea$}",
+    "{rack2 tea 12} {rack1 tea 7}"
+  ],
+  [
+    "lsearch -all -subindices -index 1 $v tea",
+    "{0 1} {2 1}"
+  ],
+  [
+    "lsearch -all -inline -subindices -index 1 $v tea",
+    "tea tea"
+  ],
+  [
+    "lsearch -all -index end -subindices {{x a} {y z a}} a",
+    "{0 2} {1 2}"
+  ],
+  [
+    "lsearch -sorted {a b b d} b",
+    "1"
+  ],
+  [
+    "lsearch -bisect {a b b d} b",
+    "2"
+  ],
+  [
+    "lsearch -bisect -start 1 {b d f} a",
+    "0"
+  ],
+  [
+    "lsearch -exact -integer {18446744073709551615} -1",
+    "0"
+  ],
+  [
+    "array set stock {rack2 12 rack10 34 rack1 7 other 0};lsort -dictionary [array names stock -reg {^rack}]",
+    "rack1 rack2 rack10"
+  ],
+  [
+    "array set empty {};array names empty -regexp {(}",
+    ""
+  ],
+  [
+    "catch {lsearch -regexp {} {(}} r;set r",
+    "couldn't compile regular expression pattern: parentheses () not balanced"
+  ],
+  [
+    "lsearch -nocase -all -regexp {Tea coffee TEA} {^tea$}",
+    "0 2"
+  ],
+  [
+    "lsort -dictionary -decreasing -unique {Ǆ ǅ ǆ}",
+    "ǆ"
+  ],
+  [
+    "list [lsearch -glob [list 😀] ?] [lsearch -regexp [list 😀] {^.$}] [lsearch -regexp [list [list 😀]] {^.$}]",
+    "0 -1 0"
+  ],
+  [
+    "scan 18446744073709551616 %f n;lsearch -regexp [list $n] .*;format %.17g $n",
+    "1.8446744073709552e+19"
+  ],
+  [
+    "lsearch -regexp [list $n] {(1)};format %.17g $n",
+    "1.844674407370955e+19"
+  ],
+  [
+    "lsearch -start end {a b a} a",
+    "2"
+  ]
+]
