@@ -1,5 +1,5 @@
 import {
-  "localreview/tcl" @lib,
+  "guolei-dev/tcl" @lib,
 }
 
 pkgtype(kind: "executable")

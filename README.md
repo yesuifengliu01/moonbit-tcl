@@ -1,5 +1,7 @@
 # MoonBit Tcl
 
+> 2026-09-21 本地构建修复：命令包 import 已同步到当前 moon.mod 模块名；moon info/check、JS 构建、MoonBit 示例和 Node 引擎示例通过。算法未改，本轮未重跑历史全部行为/性能套件。当前提交指纹见 evidence/module-import-fix.json。
+
 Tcl 8.6 脚本解释器，0.16.0。本地独立实现，仍在追平成熟项目的完整行为。
 
 ## 0.16.0 数组游标、哈希统计与变量生命周期
