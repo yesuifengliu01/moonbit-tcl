@@ -48,6 +48,11 @@ struct State {
   return_options : Ref[Array[(String, TclValue)]]
   error_stack : Ref[String]
   cache : ParseCache
+  host_io : HostIO
+  script_name : Ref[String]
+  packages : Map[String, String]
+  package_scripts : Map[String, Map[String, String]]
+  package_loading : Array[String]
 } derive(Debug)
 
 ///|

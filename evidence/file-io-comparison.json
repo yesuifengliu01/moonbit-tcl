@@ -1,0 +1,679 @@
+{
+  "utc": "2026-09-20T17:01:27.844Z",
+  "reference": "Unmodified local Tcl 8.6.15 via Python tkinter",
+  "cases": 41,
+  "matched": 41,
+  "hostChecks": 6,
+  "sources": {
+    "io.mbt": "5531905565c84f7807df585299a66d94cb1144c82d35ef3c5f96da36c666d41a",
+    "packages.mbt": "4d04936a7c025755c0fcf71b538477bcf2557dcef32c87fc61939cb492364344",
+    "runtime.mbt": "19c8cfba4c6a58f18a3f997cc80b05cce88d5ceb2ae9bea77e03283f324da26f",
+    "variables.mbt": "0e2d9b11122c6c2f10434b86c745a12a1a970d699afbf68b8565103ff3baace1",
+    "strings.mbt": "3f870003509fef84cf463c7086acb47055d04db0ab526d9c676bf8733eb494c4",
+    "cmd/web/main.mbt": "f386832a885186fbcf712c1ccc63990b6315d61d77ae11d09f94975365565b4a",
+    "cmd/web/moon.pkg": "9f9b15ac8f42b6de4f125436b320cf8469d697f2751788f056090b8e259df0cf",
+    "web/engine.mjs": "0849ff4166194bc5cf43f65a845327bcb602afe1ad1dcb4d82621e144c8495e6",
+    "tools/file-session.mjs": "d5fd93ec17f1bec8738ca09cf36fc248d3a05808f63691a15ee9fa46affb2f4a",
+    "tools/cli.mjs": "733ce87fe3aaef35d0ab22d0abdcaff7c588a2749d9c0a249df23915961e9868",
+    "tools/file-io-cases.mjs": "e459a9b3e00e921bcfcf2769c6b072cb0866cc113c145453f5f7c02c38de8f89",
+    "tools/test-file-io.mjs": "795f315dc66ea81a1619f5a667fde75b8cdb60ccf23c247f4520d397bc0b811a"
+  },
+  "rows": [
+    {
+      "name": "write-read",
+      "source": "set f [open sample.txt w+]; fconfigure $f -translation lf; puts $f hello; seek $f 0; set s [read $f]; close $f; set s",
+      "reference": {
+        "name": "write-read",
+        "ok": true,
+        "result": "hello\n",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "hello\n",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "unicode-lines",
+      "source": "set f [open sample.txt w+]; fconfigure $f -translation lf; puts $f 中文; puts $f second; seek $f 0; set n [gets $f a]; set m [gets $f b]; set e [gets $f c]; close $f; list $n $a $m $b $e $c",
+      "reference": {
+        "name": "unicode-lines",
+        "ok": true,
+        "result": "2 中文 6 second -1 {}",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "2 中文 6 second -1 {}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "append",
+      "source": "set f [open sample.txt a]; fconfigure $f -translation lf; puts $f next; close $f; set f [open sample.txt]; set s [read $f]; close $f; set s",
+      "reference": {
+        "name": "append",
+        "ok": true,
+        "result": "first\nnext\n",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "first\nnext\n",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "partial-read",
+      "source": "set f [open sample.txt]; set a [read $f 2]; set p [tell $f]; set b [read $f 2]; close $f; list $a $p $b",
+      "reference": {
+        "name": "partial-read",
+        "ok": true,
+        "result": "ab 2 cd",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "ab 2 cd",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "read-zero",
+      "source": "set f [open sample.txt]; set s [read $f 0]; set p [tell $f]; close $f; list $s $p",
+      "reference": {
+        "name": "read-zero",
+        "ok": true,
+        "result": "{} 0",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "{} 0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "eof",
+      "source": "set f [open sample.txt]; set a [eof $f]; read $f 3; set b [eof $f]; read $f 1; set c [eof $f]; seek $f 0; set d [eof $f]; close $f; list $a $b $c $d",
+      "reference": {
+        "name": "eof",
+        "ok": true,
+        "result": "0 0 1 0",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "0 0 1 0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "nonewline",
+      "source": "set f [open sample.txt]; set s [read -nonewline $f]; close $f; set s",
+      "reference": {
+        "name": "nonewline",
+        "ok": true,
+        "result": "hello",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "hello",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "empty",
+      "source": "set f [open sample.txt]; set n [gets $f line]; set e [eof $f]; close $f; list $n $line $e",
+      "reference": {
+        "name": "empty",
+        "ok": true,
+        "result": "-1 {} 1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "-1 {} 1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "crlf",
+      "source": "set f [open sample.txt]; set a [gets $f]; set b [gets $f]; close $f; list $a $b",
+      "reference": {
+        "name": "crlf",
+        "ok": true,
+        "result": "one two",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "one two",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "lf-translation",
+      "source": "set f [open sample.txt]; fconfigure $f -translation lf; set s [read $f]; close $f; set s",
+      "reference": {
+        "name": "lf-translation",
+        "ok": true,
+        "result": "one\r\ntwo\r\n",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "one\r\ntwo\r\n",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "seek-relative",
+      "source": "set f [open sample.txt]; seek $f -2 end; set a [read $f 1]; seek $f -2 current; set b [read $f 1]; close $f; list $a $b",
+      "reference": {
+        "name": "seek-relative",
+        "ok": true,
+        "result": "e d",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "e d",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "flush",
+      "source": "set f [open sample.txt w]; fconfigure $f -translation lf; puts -nonewline $f abc; flush $f; set n [file size sample.txt]; close $f; set n",
+      "reference": {
+        "name": "flush",
+        "ok": true,
+        "result": "3",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "3",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "rplus",
+      "source": "set f [open sample.txt r+]; fconfigure $f -translation lf; seek $f 2; puts -nonewline $f XY; seek $f 0; set s [read $f]; close $f; set s",
+      "reference": {
+        "name": "rplus",
+        "ok": true,
+        "result": "abXYef",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "abXYef",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "source-return",
+      "source": "set result [source part.tcl]; list $result $x",
+      "reference": {
+        "name": "source-return",
+        "ok": true,
+        "result": "done 7",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "done 7",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "source-local",
+      "source": "proc p {} {set x 1; set result [source part.tcl]; list $result $x}; p",
+      "reference": {
+        "name": "source-local",
+        "ok": true,
+        "result": "done 7",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "done 7",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "source-script-name",
+      "source": "set result [source part.tcl]; list $result [info script]",
+      "reference": {
+        "name": "source-script-name",
+        "ok": true,
+        "result": "part.tcl {}",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "part.tcl {}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "source-error-restores",
+      "source": "list [catch {source part.tcl}] [info script]",
+      "reference": {
+        "name": "source-error-restores",
+        "ok": true,
+        "result": "1 {}",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1 {}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "source-nested",
+      "source": "source part.tcl",
+      "reference": {
+        "name": "source-nested",
+        "ok": true,
+        "result": "inner.tcl part.tcl",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "inner.tcl part.tcl",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "file-paths",
+      "source": "list [file tail dir/a.txt] [file dirname dir/a.txt] [file extension dir/a.txt] [file rootname dir/a.txt] [file join dir sub a.txt]",
+      "reference": {
+        "name": "file-paths",
+        "ok": true,
+        "result": "a.txt dir .txt dir/a dir/sub/a.txt",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "a.txt dir .txt dir/a dir/sub/a.txt",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "mkdir-cd",
+      "source": "file mkdir sub; cd sub; set f [open data.txt w]; close $f; list [file tail [pwd]] [file exists data.txt] [file isfile data.txt] [file isdirectory .]",
+      "reference": {
+        "name": "mkdir-cd",
+        "ok": true,
+        "result": "sub 1 1 1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "sub 1 1 1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "copy-rename-delete",
+      "source": "file copy a.txt b.txt; file rename b.txt c.txt; file delete c.txt; list [file exists a.txt] [file exists b.txt] [file exists c.txt]",
+      "reference": {
+        "name": "copy-rename-delete",
+        "ok": true,
+        "result": "1 0 0",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1 0 0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "missing-file",
+      "source": "catch {open missing.txt r}",
+      "reference": {
+        "name": "missing-file",
+        "ok": true,
+        "result": "1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "closed-channel",
+      "source": "set f [open a.txt w]; close $f; catch {puts $f broken}",
+      "reference": {
+        "name": "closed-channel",
+        "ok": true,
+        "result": "1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "readonly",
+      "source": "set f [open a.txt r]; set result [catch {puts $f bad}]; close $f; set result",
+      "reference": {
+        "name": "readonly",
+        "ok": true,
+        "result": "1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-provide",
+      "source": "package provide demo 1.2; list [package provide demo] [package require demo 1.0] [package present -exact demo 1.2]",
+      "reference": {
+        "name": "package-provide",
+        "ok": true,
+        "result": "1.2 1.2 1.2",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1.2 1.2 1.2",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-version",
+      "source": "list [package vcompare 1.2 1.2.0] [package vcompare 1.2 1.10] [package vsatisfies 1.3 1.2] [package vsatisfies 2.0 1.0]",
+      "reference": {
+        "name": "package-version",
+        "ok": true,
+        "result": "0 -1 1 0",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "0 -1 1 0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-load",
+      "source": "package ifneeded demo 1.2 {source demo.tcl}; list [package require demo 1.0] [greet]",
+      "reference": {
+        "name": "package-load",
+        "ok": true,
+        "result": "1.2 hello",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1.2 hello",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-global-scope",
+      "source": "package ifneeded demo 1.0 {set loaded global; package provide demo 1.0}; proc p {} {package require demo; info exists loaded}; list [p] $loaded",
+      "reference": {
+        "name": "package-global-scope",
+        "ok": true,
+        "result": "0 global",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "0 global",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-best-version",
+      "source": "package ifneeded demo 1.0 {package provide demo 1.0}; package ifneeded demo 1.5 {package provide demo 1.5}; package ifneeded demo 2.0 {package provide demo 2.0}; package require demo 1.1",
+      "reference": {
+        "name": "package-best-version",
+        "ok": true,
+        "result": "1.5",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1.5",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-exact",
+      "source": "package ifneeded demo 1.0 {package provide demo 1.0}; package ifneeded demo 1.5 {package provide demo 1.5}; package require -exact demo 1.0",
+      "reference": {
+        "name": "package-exact",
+        "ok": true,
+        "result": "1.0",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1.0",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-load-once",
+      "source": "set n 0; package ifneeded demo 1.0 {incr n; package provide demo 1.0}; package require demo; package require demo; set n",
+      "reference": {
+        "name": "package-load-once",
+        "ok": true,
+        "result": "1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-conflict",
+      "source": "package provide demo 1.2; catch {package require demo 2.0}",
+      "reference": {
+        "name": "package-conflict",
+        "ok": true,
+        "result": "1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-present-does-not-load",
+      "source": "package ifneeded demo 1.0 {package provide demo 1.0}; list [catch {package present demo}] [package provide demo]",
+      "reference": {
+        "name": "package-present-does-not-load",
+        "ok": true,
+        "result": "1 {}",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1 {}",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-forget",
+      "source": "package provide demo 1.0; package forget demo; package provide demo",
+      "reference": {
+        "name": "package-forget",
+        "ok": true,
+        "result": "",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-missing-provide",
+      "source": "package ifneeded demo 1.0 {set x 1}; catch {package require demo}",
+      "reference": {
+        "name": "package-missing-provide",
+        "ok": true,
+        "result": "1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "package-cycle",
+      "source": "package ifneeded demo 1.0 {package require demo}; catch {package require demo}",
+      "reference": {
+        "name": "package-cycle",
+        "ok": true,
+        "result": "1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "source-return-level",
+      "source": "proc p {} {source part.tcl; return wrong}; p",
+      "reference": {
+        "name": "source-return-level",
+        "ok": true,
+        "result": "done",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "done",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "source-error-code",
+      "source": "catch {source part.tcl}",
+      "reference": {
+        "name": "source-error-code",
+        "ok": true,
+        "result": "1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "source-break",
+      "source": "set n 0; foreach x {1 2 3} {incr n; source part.tcl}; set n",
+      "reference": {
+        "name": "source-break",
+        "ok": true,
+        "result": "1",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "1",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "binary-roundtrip",
+      "source": "set f [open bytes.dat w+]; fconfigure $f -translation binary; set data {}; for {set i 0} {$i<256} {incr i} {append data [format %c $i]}; puts -nonewline $f $data; seek $f 0; set read [read $f]; close $f; list [string length $read] [expr {$read eq $data}] [file size bytes.dat]",
+      "reference": {
+        "name": "binary-roundtrip",
+        "ok": true,
+        "result": "256 1 256",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "256 1 256",
+        "output": ""
+      },
+      "matched": true
+    },
+    {
+      "name": "source-utf8",
+      "source": "source -encoding utf-8 part.tcl",
+      "reference": {
+        "name": "source-utf8",
+        "ok": true,
+        "result": "中文",
+        "version": "8.6.15"
+      },
+      "actual": {
+        "ok": true,
+        "result": "中文",
+        "output": ""
+      },
+      "matched": true
+    }
+  ]
+}

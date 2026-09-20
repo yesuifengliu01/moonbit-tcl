@@ -35,6 +35,11 @@ pub fn Interpreter::new() -> Interpreter {
       cache: ParseCache::new(),
       return_options: Ref([]),
       error_stack: Ref(""),
+      host_io: { invoke: None, },
+      script_name: Ref(""),
+      packages: Map([]),
+      package_scripts: Map([]),
+      package_loading: [],
     },
     frame: {
       vars: Map([]),
@@ -89,7 +94,9 @@ fn builtin_names() -> Array[String] {
     "lrepeat", "lset", "linsert", "lreplace", "lsearch", "lsort", "while", "for",
     "foreach", "lmap", "break", "continue", "catch", "error", "namespace", "global",
     "variable", "upvar", "uplevel", "array", "dict", "string", "info", "eval", "subst",
-    "rename", "try", "throw", "format", "scan", "switch", "regexp", "regsub",
+    "rename", "try", "throw", "format", "scan", "switch", "regexp", "regsub", "source",
+    "open", "close", "read", "gets", "seek", "tell", "eof", "flush", "fconfigure",
+    "file", "pwd", "cd", "package",
   ]
 }
 
@@ -159,6 +166,20 @@ fn Interpreter::command_value(
   }
   let n = values.length()
   let text = match name {
+    "package" => return self.package_command(values, depth)
+    "source"
+    | "open"
+    | "close"
+    | "read"
+    | "gets"
+    | "seek"
+    | "tell"
+    | "eof"
+    | "flush"
+    | "fconfigure"
+    | "file"
+    | "pwd"
+    | "cd" => return self.io_command(values, depth)
     "list"
     | "llength"
     | "lindex"
@@ -270,6 +291,9 @@ fn Interpreter::command_value(
     "puts" => {
       let nonewline = n >= 2 && values[1].text == "-nonewline"
       let start = if nonewline { 2 } else { 1 }
+      if n == start + 2 && values[start].text != "stdout" {
+        return text_value(self.host_call("puts", values[1:].map(v => v.text)))
+      }
       let value = if n == start + 1 {
         values[start].text
       } else if n == start + 2 && values[start].text == "stdout" {

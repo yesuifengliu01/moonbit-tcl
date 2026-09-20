@@ -1,5 +1,6 @@
 import {
   "guolei-dev/tcl" @lib,
+  "moonbitlang/core/json",
 }
 
 supported_targets = "js"
@@ -16,6 +17,7 @@ options(
         "session_eval",
         "reset_session",
         "close_session",
+        "session_io",
       ],
       "format": "esm",
     },

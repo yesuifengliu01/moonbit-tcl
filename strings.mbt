@@ -412,6 +412,14 @@ fn Interpreter::info_command(
     raise Invalid("info arity")
   }
   match args[1] {
+    "script" => {
+      if n == 3 {
+        self.state.script_name.val = args[2]
+      } else if n != 2 {
+        raise Invalid("info script ?filename?")
+      }
+      self.state.script_name.val
+    }
     "complete" => {
       if n != 3 {
         raise Invalid("info complete arity")

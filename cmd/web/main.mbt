@@ -86,6 +86,26 @@ pub fn close_session(id : Int) -> Unit {
 }
 
 ///|
+pub fn session_io(id : Int, callback : (String) -> String) -> Bool {
+  guard sessions.get(id) is Some(t) else { return false }
+  t.set_io(fn(name, args) {
+    let request = Json::object({
+      "command": name.to_json(),
+      "args": args.to_json(),
+    }).stringify()
+    let response = @json.parse(callback(request)) catch {
+      _ => return Err("invalid host response")
+    }
+    match response {
+      { "ok": True, "value": String(value), .. } => Ok(value)
+      { "ok": False, "error": String(message), .. } => Err(message)
+      _ => Err("invalid host response")
+    }
+  })
+  true
+}
+
+///|
 fn main {
 
 }

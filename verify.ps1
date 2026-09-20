@@ -1,4 +1,4 @@
-param([string]$MoonPath)
+param([string]$MoonPath, [switch]$WithFileOracle)
 $ErrorActionPreference='Stop'
 if (-not $MoonPath) {
   $available=Get-Command moon -ErrorAction SilentlyContinue
@@ -80,6 +80,10 @@ try {
   if ($LASTEXITCODE -ne 0) {throw 'Tcl completion hosts failed'}
   node tools/test-namespaces.mjs
   if ($LASTEXITCODE -ne 0) {throw 'Tcl namespace hosts failed'}
+  if ($WithFileOracle) {
+    node tools/test-file-io.mjs
+    if ($LASTEXITCODE -ne 0) {throw 'Native Tcl file/package comparison failed'}
+  }
   node tools/test-sessions.mjs
   if ($LASTEXITCODE -ne 0) {throw 'Persistent session host tests failed'}
   python tools/test-http.py

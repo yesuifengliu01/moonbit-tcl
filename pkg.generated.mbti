@@ -74,6 +74,7 @@ pub fn Interpreter::eval_catch(Self, String, budget? : Int) -> Evaluation raise 
 pub fn Interpreter::new() -> Self
 pub fn Interpreter::output_text(Self) -> String
 pub fn Interpreter::printed(Self) -> String
+pub fn Interpreter::set_io(Self, (String, Array[String]) -> Result[String, String]) -> Unit
 
 type ListObject derive(@debug.Debug)
 

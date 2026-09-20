@@ -1,3 +1,5 @@
+> 0.17：已补真实文件会话、source 与常用 package 工作流，详见 [使用方法与范围](FILE-IO.md)。下文旧版本验证保留原日期。
+
 # MoonBit Tcl
 
 > 2026-09-21 本地构建修复：命令包 import 已同步到当前 moon.mod 模块名；moon info/check、JS 构建、MoonBit 示例和 Node 引擎示例通过。算法未改，本轮未重跑历史全部行为/性能套件。当前提交指纹见 evidence/module-import-fix.json。
