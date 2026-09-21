@@ -1,5 +1,13 @@
 > 0.17：已补真实文件会话、source 与常用 package 工作流，详见 [使用方法与范围](FILE-IO.md)。下文旧版本验证保留原日期。
 
+## 获取与验证入口
+
+公开源码：[github.com/yesuifengliu01/moonbit-tcl](https://github.com/yesuifengliu01/moonbit-tcl)；MoonBit 模块名为 `yesuifengliu01/tcl`。
+
+从源码运行：`git clone https://github.com/yesuifengliu01/moonbit-tcl.git` 后进入该目录，按下文和 [TESTING.md](TESTING.md) 安装所需工具。仓库公开不等于已在 Mooncakes 发布，不承诺 `moon add` 当前可用。
+
+查看 [GitHub Actions](https://github.com/yesuifengliu01/moonbit-tcl/actions) 时请核对 run 的 commit SHA；历史 evidence、旧 ZIP 与本地测试不能替代当前提交的 CI 结果。下文保留各版本的验证范围和兼容性限制。
+
 # MoonBit Tcl
 
 > 2026-09-21 本地构建修复：命令包 import 已同步到当前 moon.mod 模块名；moon info/check、JS 构建、MoonBit 示例和 Node 引擎示例通过。算法未改，本轮未重跑历史全部行为/性能套件。当前提交指纹见 evidence/module-import-fix.json。
@@ -392,7 +400,7 @@ moon fmt
 ./verify.ps1
 ```
 
-语义 oracle 再生严格要求 Python tkinter 链接 Tcl 8.6.15。仓库保存预期值，普通 verify 不依赖 tkinter；其它 Tcl 补丁版本不会静默覆盖本轮语义基准。CI 使用已提交预期值，远端 CI 未运行。
+> 历史开发记录（以下发布/归档状态不代表当前仓库；当前入口见文首）：语义 oracle 再生严格要求 Python tkinter 链接 Tcl 8.6.15。仓库保存预期值，普通 verify 不依赖 tkinter；其它 Tcl 补丁版本不会静默覆盖本轮语义基准。CI 使用已提交预期值，远端 CI 未运行。
 
 ## 边界
 
@@ -400,4 +408,4 @@ moon fmt
 
 脚本最多 100000 UTF-16 单元；解析/执行嵌套 64 层；命令及替换共享预算，API 最大 1000000，网页/新会话接口使用 100000。字符串、变量值、列表结果及单次输出限 1000000 单元；整数 16384 位；命令表最多 10000 项（含内置命令）；数组 10000 哈希条目及 10000 活动游标；glob 动态规划最多 1000000 单元。网页 Worker 另有 5 秒终止机制。持久会话的累计内存尚无统一配额，因此不适合作为不可信多租户沙箱。
 
-根据 [Tcl subst](https://www.tcl-lang.org/man/tcl8.6/TclCmd/subst.htm)、[info](https://www.tcl-lang.org/man/tcl8.6/TclCmd/info.htm)、[return](https://www.tcl-lang.org/man/tcl8.6/TclCmd/return.htm)、[try](https://www.tcl-lang.org/man/tcl8.6/TclCmd/try.htm)、[catch](https://www.tcl-lang.org/man/tcl8.6/TclCmd/catch.htm)、[expr](https://www.tcl-lang.org/man/tcl8.6/TclCmd/expr.htm)、[namespace](https://www.tcl-lang.org/man/tcl8.6/TclCmd/namespace.htm)、[dict](https://www.tcl-lang.org/man/tcl8.6/TclCmd/dict.htm) 文档和系统解释器行为原创实现，没有复制 Tcl 上游实现代码；原创实现采用 MIT 许可。Unicode 属性/映射来自官方 UnicodeData 16.0.0，按 vendor/ucd-16.0.0/LICENSE.txt 的 Unicode 许可分发；原始来源与 SHA256 见同目录 SOURCE.json，生成器为 tools/generate-unicode.py。详见 FEATURES.md、TESTING.md 与 evidence/unicode-upgrade.json。独立 Git 仓库，无 remote，未上传、发布或提交比赛。
+> 历史开发记录（以下发布/归档状态不代表当前仓库；当前入口见文首）：根据 [Tcl subst](https://www.tcl-lang.org/man/tcl8.6/TclCmd/subst.htm)、[info](https://www.tcl-lang.org/man/tcl8.6/TclCmd/info.htm)、[return](https://www.tcl-lang.org/man/tcl8.6/TclCmd/return.htm)、[try](https://www.tcl-lang.org/man/tcl8.6/TclCmd/try.htm)、[catch](https://www.tcl-lang.org/man/tcl8.6/TclCmd/catch.htm)、[expr](https://www.tcl-lang.org/man/tcl8.6/TclCmd/expr.htm)、[namespace](https://www.tcl-lang.org/man/tcl8.6/TclCmd/namespace.htm)、[dict](https://www.tcl-lang.org/man/tcl8.6/TclCmd/dict.htm) 文档和系统解释器行为原创实现，没有复制 Tcl 上游实现代码；原创实现采用 MIT 许可。Unicode 属性/映射来自官方 UnicodeData 16.0.0，按 vendor/ucd-16.0.0/LICENSE.txt 的 Unicode 许可分发；原始来源与 SHA256 见同目录 SOURCE.json，生成器为 tools/generate-unicode.py。详见 FEATURES.md、TESTING.md 与 evidence/unicode-upgrade.json。独立 Git 仓库，无 remote，未上传、发布或提交比赛。
