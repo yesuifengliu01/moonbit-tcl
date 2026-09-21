@@ -1,6 +1,7 @@
 import config from './config.mjs';
 const $=id=>document.getElementById(id);
 $('title').textContent=config.title;
+$('version').textContent='MOONBIT TCL · '+config.version;
 $('scope').textContent=config.scope;
 $('limits').textContent=config.limitations;
 $('input').value=config.example;
