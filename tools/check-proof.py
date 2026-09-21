@@ -3,7 +3,7 @@ from pathlib import Path
 import subprocess,hashlib,json,sys
 root=Path(__file__).resolve().parents[1]
 def git(*args):return subprocess.check_output(['git',*args],cwd=root)
-manifest_name=next(name for name in ['file-io-upgrade.json','module-import-fix.json','array-upgrade.json','sort-upgrade.json','search-upgrade.json','regexp-upgrade.json','switch-upgrade.json','dispatch-upgrade.json','value-upgrade.json','number-dispatch-upgrade.json','conversion-upgrade.json','unicode-upgrade.json','syntax-upgrade.json','completion-upgrade.json','namespace-upgrade.json','performance-upgrade.json','semantic-upgrade.json'] if (root/'evidence'/name).exists())
+manifest_name=next(name for name in ['oracle-determinism-upgrade.json','file-io-upgrade.json','module-import-fix.json','array-upgrade.json','sort-upgrade.json','search-upgrade.json','regexp-upgrade.json','switch-upgrade.json','dispatch-upgrade.json','value-upgrade.json','number-dispatch-upgrade.json','conversion-upgrade.json','unicode-upgrade.json','syntax-upgrade.json','completion-upgrade.json','namespace-upgrade.json','performance-upgrade.json','semantic-upgrade.json'] if (root/'evidence'/name).exists())
 manifest=json.loads((root/'evidence'/manifest_name).read_text(encoding='utf-8'))
 revision='' if '--index' in sys.argv else 'HEAD'
 count=0

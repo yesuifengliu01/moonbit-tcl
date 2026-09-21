@@ -1,0 +1,33 @@
+{
+  "project": "moonbit-tcl",
+  "issue": "Python tkinter can truncate NUL/BEL values while transporting list fixtures on some hosts.",
+  "fix": {
+    "generator": "tools/generate_list_oracle.py",
+    "randomPool": "NUL and BEL removed only from the tkinter-fed random pool",
+    "selfCheck": "Each Tcl list result is split with tkinter.splitlist and compared with the original values before emission.",
+    "directRegression": "list_limits_test.mbt checks NUL and BEL at leading, middle and trailing positions without tkinter."
+  },
+  "windows": {
+    "python": "3.14.4",
+    "tcl": "8.6.15",
+    "fixtures": 248,
+    "generatedSha256": "ac3889827ad77cd5d202fb560fbbba2bb4c5a6ae80b72267922519f26fe4d04",
+    "repeatGenerationBytesEqual": true,
+    "moonTests": {
+      "wasm-gc": {
+        "list_oracle_test.mbt": "248/248",
+        "list_limits_test.mbt": "4/4"
+      },
+      "js": {
+        "list_oracle_test.mbt": "248/248",
+        "list_limits_test.mbt": "4/4"
+      }
+    }
+  },
+  "linux": {
+    "localStatus": "not run",
+    "reason": "Ubuntu-D WSL has no tkinter; Docker Desktop daemon was unavailable.",
+    "ciStatus": "not run"
+  },
+  "scope": "This evidence covers generator determinism and the direct list control-character contract; it does not claim full Tcl or cross-platform CI parity."
+}
