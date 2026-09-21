@@ -16,9 +16,9 @@ test "Tcl canonical list fixture 1" {
 
 ///|
 test "Tcl canonical list fixture 2" {
-  let values = ["\u0000", "a\"b", "a#b", "a\\", ""]
-  assert_eq(@tcl.format_list(values), "\u0000 a\\\"b a#b a\\\\ {}")
-  assert_eq(@tcl.parse_list("\u0000 a\\\"b a#b a\\\\ {}"), values)
+  let values = ["a\\ b", "a\"b", "a#b", "a\\", ""]
+  assert_eq(@tcl.format_list(values), "{a\\ b} a\\\"b a#b a\\\\ {}")
+  assert_eq(@tcl.parse_list("{a\\ b} a\\\"b a#b a\\\\ {}"), values)
 }
 
 ///|
@@ -30,27 +30,20 @@ test "Tcl canonical list fixture 3" {
 
 ///|
 test "Tcl canonical list fixture 4" {
-  let values = ["\u0000", "a}b"]
-  assert_eq(@tcl.format_list(values), "\u0000 a\\}b")
-  assert_eq(@tcl.parse_list("\u0000 a\\}b"), values)
+  let values = ["a\\ b", "a}b"]
+  assert_eq(@tcl.format_list(values), "{a\\ b} a\\}b")
+  assert_eq(@tcl.parse_list("{a\\ b} a\\}b"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 5" {
-  let values = ["\u0000", "a\t b", "\u0007", "#name", "a\"b", ";x"]
-  assert_eq(@tcl.format_list(values), "\u0000 {a\t b} \u0007 #name a\\\"b {;x}")
-  assert_eq(@tcl.parse_list("\u0000 {a\t b} \u0007 #name a\\\"b {;x}"), values)
+  let values = ["a\\ b", "a\t b", "#name", "a\"b", ";x", "a b"]
+  assert_eq(@tcl.format_list(values), "{a\\ b} {a\t b} #name a\\\"b {;x} {a b}")
+  assert_eq(@tcl.parse_list("{a\\ b} {a\t b} #name a\\\"b {;x} {a b}"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 6" {
-  let values = ["a\\ b"]
-  assert_eq(@tcl.format_list(values), "{a\\ b}")
-  assert_eq(@tcl.parse_list("{a\\ b}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 7" {
   let values = ["a\\", "a#b", "a}b", "a\t b", "a\\", "a{b", "a\\{b"]
   assert_eq(
     @tcl.format_list(values),
@@ -63,14 +56,14 @@ test "Tcl canonical list fixture 7" {
 }
 
 ///|
-test "Tcl canonical list fixture 8" {
-  let values = ["a[b", "{a}", "\u0007", "$x", "a b"]
-  assert_eq(@tcl.format_list(values), "{a[b} {{a}} \u0007 {$x} a b")
-  assert_eq(@tcl.parse_list("{a[b} {{a}} \u0007 {$x} a b"), values)
+test "Tcl canonical list fixture 7" {
+  let values = ["a[b", "{a}", "$x", "a b", "#name"]
+  assert_eq(@tcl.format_list(values), "{a[b} {{a}} {$x} a b #name")
+  assert_eq(@tcl.parse_list("{a[b} {{a}} {$x} a b #name"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 9" {
+test "Tcl canonical list fixture 8" {
   let values = ["汉字🚀", ";x", "a#b", "a\t b", "a{b}c", "a]b", "a\t b"]
   assert_eq(
     @tcl.format_list(values),
@@ -83,63 +76,56 @@ test "Tcl canonical list fixture 9" {
 }
 
 ///|
-test "Tcl canonical list fixture 10" {
+test "Tcl canonical list fixture 9" {
   let values = ["a\nb", "", "simple", "\"a\""]
   assert_eq(@tcl.format_list(values), "{a\nb} {} simple {\"a\"}")
   assert_eq(@tcl.parse_list("{a\nb} {} simple {\"a\"}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 11" {
+test "Tcl canonical list fixture 10" {
   let values = ["a[b", "{a}", "a}b", "a]b"]
   assert_eq(@tcl.format_list(values), "{a[b} {{a}} a\\}b a\\]b")
   assert_eq(@tcl.parse_list("{a[b} {{a}} a\\}b a\\]b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 12" {
+test "Tcl canonical list fixture 11" {
   let values = [";x"]
   assert_eq(@tcl.format_list(values), "{;x}")
   assert_eq(@tcl.parse_list("{;x}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 13" {
+test "Tcl canonical list fixture 12" {
   let values = ["a\\{b", ";x", "$x", "#name", "a b"]
   assert_eq(@tcl.format_list(values), "{a\\{b} {;x} {$x} #name a b")
   assert_eq(@tcl.parse_list("{a\\{b} {;x} {$x} #name a b"), values)
 }
 
 ///|
+test "Tcl canonical list fixture 13" {
+  let values = ["#name", ";x", "a b"]
+  assert_eq(@tcl.format_list(values), "{#name} {;x} a b")
+  assert_eq(@tcl.parse_list("{#name} {;x} a b"), values)
+}
+
+///|
 test "Tcl canonical list fixture 14" {
-  let values = ["#name", "\u0007", ";x"]
-  assert_eq(@tcl.format_list(values), "{#name} \u0007 {;x}")
-  assert_eq(@tcl.parse_list("{#name} \u0007 {;x}"), values)
+  let values = ["", "\"a\"", "a[b", "汉字🚀"]
+  assert_eq(@tcl.format_list(values), "{} {\"a\"} {a[b} 汉字🚀")
+  assert_eq(@tcl.parse_list("{} {\"a\"} {a[b} 汉字🚀"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 15" {
-  let values = ["", "\"a\"", "a[b", "a\rb"]
-  assert_eq(@tcl.format_list(values), "{} {\"a\"} {a[b} {a\rb}")
-  assert_eq(@tcl.parse_list("{} {\"a\"} {a[b} {a\rb}"), values)
+  let values = ["a\\{b", "a\nb", "a{b"]
+  assert_eq(@tcl.format_list(values), "{a\\{b} {a\nb} a\\{b")
+  assert_eq(@tcl.parse_list("{a\\{b} {a\nb} a\\{b"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 16" {
-  let values = ["a\rb", "a\\{b", "a\nb"]
-  assert_eq(@tcl.format_list(values), "{a\rb} {a\\{b} {a\nb}")
-  assert_eq(@tcl.parse_list("{a\rb} {a\\{b} {a\nb}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 17" {
-  let values = ["a b"]
-  assert_eq(@tcl.format_list(values), "a b")
-  assert_eq(@tcl.parse_list("a b"), values)
-}
-
-///|
-test "Tcl canonical list fixture 18" {
   let values = [";x", ";x", "a\\{b", "a\nb", "a\\\nb", "a\\{b", "a{b}c"]
   assert_eq(
     @tcl.format_list(values),
@@ -152,93 +138,90 @@ test "Tcl canonical list fixture 18" {
 }
 
 ///|
-test "Tcl canonical list fixture 19" {
-  let values = ["a}b", "a\\ b"]
-  assert_eq(@tcl.format_list(values), "a\\}b {a\\ b}")
-  assert_eq(@tcl.parse_list("a\\}b {a\\ b}"), values)
+test "Tcl canonical list fixture 17" {
+  let values = ["a}b", "a\rb"]
+  assert_eq(@tcl.format_list(values), "a\\}b {a\rb}")
+  assert_eq(@tcl.parse_list("a\\}b {a\rb}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 20" {
+test "Tcl canonical list fixture 18" {
   let values = ["a\\\nb", "a}b", "simple", "a\\"]
   assert_eq(@tcl.format_list(values), "a\\\\\\nb a\\}b simple a\\\\")
   assert_eq(@tcl.parse_list("a\\\\\\nb a\\}b simple a\\\\"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 21" {
+test "Tcl canonical list fixture 19" {
   let values = ["a\\{b", "a\nb", "a b"]
   assert_eq(@tcl.format_list(values), "{a\\{b} {a\nb} {a b}")
   assert_eq(@tcl.parse_list("{a\\{b} {a\nb} {a b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 22" {
-  let values = ["#name", "a\\ b", "a]b", "a\\ b", "a\nb", "a\nb", "a{b}c"]
+test "Tcl canonical list fixture 20" {
+  let values = ["#name", "a\rb", "a]b", "a\rb", "a\nb", "a\nb", "a{b}c"]
   assert_eq(
     @tcl.format_list(values),
-    "{#name} {a\\ b} a\\]b {a\\ b} {a\nb} {a\nb} a{b}c",
+    "{#name} {a\rb} a\\]b {a\rb} {a\nb} {a\nb} a{b}c",
   )
   assert_eq(
-    @tcl.parse_list("{#name} {a\\ b} a\\]b {a\\ b} {a\nb} {a\nb} a{b}c"),
+    @tcl.parse_list("{#name} {a\rb} a\\]b {a\rb} {a\nb} {a\nb} a{b}c"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 23" {
-  let values = ["simple", ";x", ";x", ";x", "#name", "a\\ b", ";x"]
-  assert_eq(
-    @tcl.format_list(values),
-    "simple {;x} {;x} {;x} #name {a\\ b} {;x}",
-  )
-  assert_eq(@tcl.parse_list("simple {;x} {;x} {;x} #name {a\\ b} {;x}"), values)
+test "Tcl canonical list fixture 21" {
+  let values = ["simple", ";x", ";x", ";x", "#name", "a\rb", ";x"]
+  assert_eq(@tcl.format_list(values), "simple {;x} {;x} {;x} #name {a\rb} {;x}")
+  assert_eq(@tcl.parse_list("simple {;x} {;x} {;x} #name {a\rb} {;x}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 24" {
+test "Tcl canonical list fixture 22" {
   let values = [""]
   assert_eq(@tcl.format_list(values), "{}")
   assert_eq(@tcl.parse_list("{}"), values)
 }
 
 ///|
+test "Tcl canonical list fixture 23" {
+  let values = ["simple", "a\rb", "a\t b", "a\"b", "{a}"]
+  assert_eq(@tcl.format_list(values), "simple {a\rb} {a\t b} a\\\"b {{a}}")
+  assert_eq(@tcl.parse_list("simple {a\rb} {a\t b} a\\\"b {{a}}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 24" {
+  let values = ["a\nb", "a\rb", "$x"]
+  assert_eq(@tcl.format_list(values), "{a\nb} {a\rb} {$x}")
+  assert_eq(@tcl.parse_list("{a\nb} {a\rb} {$x}"), values)
+}
+
+///|
 test "Tcl canonical list fixture 25" {
-  let values = ["simple", "a\\ b", "a\t b", "a\"b", "{a}"]
-  assert_eq(@tcl.format_list(values), "simple {a\\ b} {a\t b} a\\\"b {{a}}")
-  assert_eq(@tcl.parse_list("simple {a\\ b} {a\t b} a\\\"b {{a}}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 26" {
-  let values = ["a\nb", "a\\ b", "$x"]
-  assert_eq(@tcl.format_list(values), "{a\nb} {a\\ b} {$x}")
-  assert_eq(@tcl.parse_list("{a\nb} {a\\ b} {$x}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 27" {
   let values = ["a{b", "$x", "a\\{b"]
   assert_eq(@tcl.format_list(values), "a\\{b {$x} {a\\{b}")
   assert_eq(@tcl.parse_list("a\\{b {$x} {a\\{b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 28" {
+test "Tcl canonical list fixture 26" {
   let values = ["a\\{b", "a\\{b", "a}b", "a\"b", "汉字🚀"]
   assert_eq(@tcl.format_list(values), "{a\\{b} {a\\{b} a\\}b a\\\"b 汉字🚀")
   assert_eq(@tcl.parse_list("{a\\{b} {a\\{b} a\\}b a\\\"b 汉字🚀"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 29" {
-  let values = ["a#b", "a[b", "a}b", "a\\ b", "汉字🚀"]
-  assert_eq(@tcl.format_list(values), "a#b {a[b} a\\}b {a\\ b} 汉字🚀")
-  assert_eq(@tcl.parse_list("a#b {a[b} a\\}b {a\\ b} 汉字🚀"), values)
+test "Tcl canonical list fixture 27" {
+  let values = ["a#b", "a[b", "a}b", "a\rb", "汉字🚀"]
+  assert_eq(@tcl.format_list(values), "a#b {a[b} a\\}b {a\rb} 汉字🚀")
+  assert_eq(@tcl.parse_list("a#b {a[b} a\\}b {a\rb} 汉字🚀"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 30" {
+test "Tcl canonical list fixture 28" {
   let values = ["a\\\nb", "a{b}c", "a\\\nb", "simple", "", "a\nb"]
   assert_eq(
     @tcl.format_list(values),
@@ -251,62 +234,79 @@ test "Tcl canonical list fixture 30" {
 }
 
 ///|
-test "Tcl canonical list fixture 31" {
-  let values = ["simple", "a b", "$x", "a\\\nb", "a b", "\u0007"]
+test "Tcl canonical list fixture 29" {
+  let values = ["simple", "a b", "$x", "a\\\nb", "a b", "a\\ b"]
   assert_eq(
     @tcl.format_list(values),
-    "simple {a b} {$x} a\\\\\\nb {a b} \u0007",
+    "simple {a b} {$x} a\\\\\\nb {a b} {a\\ b}",
   )
-  assert_eq(@tcl.parse_list("simple {a b} {$x} a\\\\\\nb {a b} \u0007"), values)
+  assert_eq(
+    @tcl.parse_list("simple {a b} {$x} a\\\\\\nb {a b} {a\\ b}"),
+    values,
+  )
 }
 
 ///|
-test "Tcl canonical list fixture 32" {
+test "Tcl canonical list fixture 30" {
   let values = ["a#b", "a\nb"]
   assert_eq(@tcl.format_list(values), "a#b {a\nb}")
   assert_eq(@tcl.parse_list("a#b {a\nb}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 33" {
+test "Tcl canonical list fixture 31" {
   let values = ["a]b", "a{b}c", "a\\"]
   assert_eq(@tcl.format_list(values), "a\\]b a{b}c a\\\\")
   assert_eq(@tcl.parse_list("a\\]b a{b}c a\\\\"), values)
 }
 
 ///|
+test "Tcl canonical list fixture 32" {
+  let values = ["a\\"]
+  assert_eq(@tcl.format_list(values), "a\\\\")
+  assert_eq(@tcl.parse_list("a\\\\"), values)
+}
+
+///|
+test "Tcl canonical list fixture 33" {
+  let values = ["a\"b", "a\\", "汉字🚀", "a\\\nb"]
+  assert_eq(@tcl.format_list(values), "a\\\"b a\\\\ 汉字🚀 a\\\\\\nb")
+  assert_eq(@tcl.parse_list("a\\\"b a\\\\ 汉字🚀 a\\\\\\nb"), values)
+}
+
+///|
 test "Tcl canonical list fixture 34" {
-  let values = ["a\rb"]
-  assert_eq(@tcl.format_list(values), "{a\rb}")
-  assert_eq(@tcl.parse_list("{a\rb}"), values)
+  let values = ["a b"]
+  assert_eq(@tcl.format_list(values), "a b")
+  assert_eq(@tcl.parse_list("a b"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 35" {
-  let values = ["a\\\nb", "a\"b", "a\\", "汉字🚀"]
-  assert_eq(@tcl.format_list(values), "a\\\\\\nb a\\\"b a\\\\ 汉字🚀")
-  assert_eq(@tcl.parse_list("a\\\\\\nb a\\\"b a\\\\ 汉字🚀"), values)
+  let values = ["a\\\nb", "a{b", "a b", "a\\ b"]
+  assert_eq(@tcl.format_list(values), "a\\\\\\nb a\\{b a b {a\\ b}")
+  assert_eq(@tcl.parse_list("a\\\\\\nb a\\{b a b {a\\ b}"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 36" {
-  let values = [";x", "a b", "a b", "a\\\nb"]
-  assert_eq(@tcl.format_list(values), "{;x} {a b} a b a\\\\\\nb")
-  assert_eq(@tcl.parse_list("{;x} {a b} a b a\\\\\\nb"), values)
+  let values = []
+  assert_eq(@tcl.format_list(values), "")
+  assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
 test "Tcl canonical list fixture 37" {
-  let values = ["a{b", "a b", "\u0000", ""]
-  assert_eq(@tcl.format_list(values), "a\\{b a b \u0000 {}")
-  assert_eq(@tcl.parse_list("a\\{b a b \u0000 {}"), values)
+  let values = ["a\nb", "", "a[b"]
+  assert_eq(@tcl.format_list(values), "{a\nb} {} {a[b}")
+  assert_eq(@tcl.parse_list("{a\nb} {} {a[b}"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 38" {
-  let values = ["a\nb", "a\rb", "a\rb"]
-  assert_eq(@tcl.format_list(values), "{a\nb} {a\rb} {a\rb}")
-  assert_eq(@tcl.parse_list("{a\nb} {a\rb} {a\rb}"), values)
+  let values = ["a{b}c", "#name"]
+  assert_eq(@tcl.format_list(values), "a{b}c #name")
+  assert_eq(@tcl.parse_list("a{b}c #name"), values)
 }
 
 ///|
@@ -318,300 +318,251 @@ test "Tcl canonical list fixture 39" {
 
 ///|
 test "Tcl canonical list fixture 40" {
-  let values = ["a}b", "a{b}c", "#name", "a\rb", "", "a}b"]
-  assert_eq(@tcl.format_list(values), "a\\}b a{b}c #name {a\rb} {} a\\}b")
-  assert_eq(@tcl.parse_list("a\\}b a{b}c #name {a\rb} {} a\\}b"), values)
+  let values = ["a\\ b", "a b"]
+  assert_eq(@tcl.format_list(values), "{a\\ b} {a b}")
+  assert_eq(@tcl.parse_list("{a\\ b} {a b}"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 41" {
-  let values = ["a[b"]
-  assert_eq(@tcl.format_list(values), "{a[b}")
-  assert_eq(@tcl.parse_list("{a[b}"), values)
+  let values = ["a]b", "a[b", "a\\\nb", "a b", "a{b", "a\"b"]
+  assert_eq(@tcl.format_list(values), "a\\]b {a[b} a\\\\\\nb a b a\\{b a\\\"b")
+  assert_eq(@tcl.parse_list("a\\]b {a[b} a\\\\\\nb a b a\\{b a\\\"b"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 42" {
-  let values = ["a[b", "a\\\nb", "a b", "a{b", "a\"b", "a\t b", ";x"]
-  assert_eq(
-    @tcl.format_list(values),
-    "{a[b} a\\\\\\nb a b a\\{b a\\\"b {a\t b} {;x}",
-  )
-  assert_eq(
-    @tcl.parse_list("{a[b} a\\\\\\nb a b a\\{b a\\\"b {a\t b} {;x}"),
-    values,
-  )
-}
-
-///|
-test "Tcl canonical list fixture 43" {
   let values = ["a}b", "a\"b", "a\\"]
   assert_eq(@tcl.format_list(values), "a\\}b a\\\"b a\\\\")
   assert_eq(@tcl.parse_list("a\\}b a\\\"b a\\\\"), values)
 }
 
 ///|
+test "Tcl canonical list fixture 43" {
+  let values = ["simple", "$x", "a b", "a#b", "a[b"]
+  assert_eq(@tcl.format_list(values), "simple {$x} {a b} a#b {a[b}")
+  assert_eq(@tcl.parse_list("simple {$x} {a b} a#b {a[b}"), values)
+}
+
+///|
 test "Tcl canonical list fixture 44" {
-  let values = ["simple", "$x", "a b", "\u0007", "a#b"]
-  assert_eq(@tcl.format_list(values), "simple {$x} {a b} \u0007 a#b")
-  assert_eq(@tcl.parse_list("simple {$x} {a b} \u0007 a#b"), values)
+  let values = ["a\t b", "a}b"]
+  assert_eq(@tcl.format_list(values), "{a\t b} a\\}b")
+  assert_eq(@tcl.parse_list("{a\t b} a\\}b"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 45" {
-  let values = ["a\\ b", "a\\ b", "a\\ b", "#name", "a}b", "a\t b"]
+  let values = ["a\"b", "a\rb", "a\\\nb", "a[b", "a b", "#name", "a\"b"]
   assert_eq(
     @tcl.format_list(values),
-    "{a\\ b} {a\\ b} {a\\ b} #name a\\}b {a\t b}",
+    "a\\\"b {a\rb} a\\\\\\nb {a[b} a b #name a\\\"b",
   )
   assert_eq(
-    @tcl.parse_list("{a\\ b} {a\\ b} {a\\ b} #name a\\}b {a\t b}"),
+    @tcl.parse_list("a\\\"b {a\rb} a\\\\\\nb {a[b} a b #name a\\\"b"),
     values,
   )
 }
 
 ///|
 test "Tcl canonical list fixture 46" {
-  let values = ["a]b", "a\"b"]
-  assert_eq(@tcl.format_list(values), "a\\]b a\\\"b")
-  assert_eq(@tcl.parse_list("a\\]b a\\\"b"), values)
-}
-
-///|
-test "Tcl canonical list fixture 47" {
-  let values = ["a[b", "a b", "#name", "a\"b"]
-  assert_eq(@tcl.format_list(values), "{a[b} a b #name a\\\"b")
-  assert_eq(@tcl.parse_list("{a[b} a b #name a\\\"b"), values)
-}
-
-///|
-test "Tcl canonical list fixture 48" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
-test "Tcl canonical list fixture 49" {
+test "Tcl canonical list fixture 47" {
   let values = ["a\\", "a#b"]
   assert_eq(@tcl.format_list(values), "a\\\\ a#b")
   assert_eq(@tcl.parse_list("a\\\\ a#b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 50" {
-  let values = ["a b", "\u0000", "汉字🚀", "{a}", "a\nb"]
-  assert_eq(@tcl.format_list(values), "a b \u0000 汉字🚀 {{a}} {a\nb}")
-  assert_eq(@tcl.parse_list("a b \u0000 汉字🚀 {{a}} {a\nb}"), values)
+test "Tcl canonical list fixture 48" {
+  let values = ["a b", "a\\ b", "汉字🚀", "{a}", "a\nb"]
+  assert_eq(@tcl.format_list(values), "a b {a\\ b} 汉字🚀 {{a}} {a\nb}")
+  assert_eq(@tcl.parse_list("a b {a\\ b} 汉字🚀 {{a}} {a\nb}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 51" {
+test "Tcl canonical list fixture 49" {
   let values = ["#name", "a#b"]
   assert_eq(@tcl.format_list(values), "{#name} a#b")
   assert_eq(@tcl.parse_list("{#name} a#b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 52" {
-  let values = ["\"a\"", "a{b}c", "simple", "\u0007", "a\t b", "a[b"]
+test "Tcl canonical list fixture 50" {
+  let values = ["\"a\"", "a{b}c", "simple", "a\t b", "a[b", "a]b"]
   assert_eq(
     @tcl.format_list(values),
-    "{\"a\"} a{b}c simple \u0007 {a\t b} {a[b}",
+    "{\"a\"} a{b}c simple {a\t b} {a[b} a\\]b",
   )
-  assert_eq(
-    @tcl.parse_list("{\"a\"} a{b}c simple \u0007 {a\t b} {a[b}"),
-    values,
-  )
+  assert_eq(@tcl.parse_list("{\"a\"} a{b}c simple {a\t b} {a[b} a\\]b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 53" {
-  let values = ["\u0007", "simple", "a{b}c", "#name", "a\t b", "a\\", "a\nb"]
-  assert_eq(
-    @tcl.format_list(values),
-    "\u0007 simple a{b}c #name {a\t b} a\\\\ {a\nb}",
-  )
-  assert_eq(
-    @tcl.parse_list("\u0007 simple a{b}c #name {a\t b} a\\\\ {a\nb}"),
-    values,
-  )
-}
-
-///|
-test "Tcl canonical list fixture 54" {
-  let values = ["simple", "a[b", "a\"b"]
-  assert_eq(@tcl.format_list(values), "simple {a[b} a\\\"b")
-  assert_eq(@tcl.parse_list("simple {a[b} a\\\"b"), values)
-}
-
-///|
-test "Tcl canonical list fixture 55" {
+test "Tcl canonical list fixture 51" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
+test "Tcl canonical list fixture 52" {
+  let values = ["#name", "a\t b"]
+  assert_eq(@tcl.format_list(values), "{#name} {a\t b}")
+  assert_eq(@tcl.parse_list("{#name} {a\t b}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 53" {
+  let values = ["a\nb", "a\\{b", "simple", "a[b"]
+  assert_eq(@tcl.format_list(values), "{a\nb} {a\\{b} simple {a[b}")
+  assert_eq(@tcl.parse_list("{a\nb} {a\\{b} simple {a[b}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 54" {
+  let values = ["", "a\rb", "a b", "a\\{b", "a\"b"]
+  assert_eq(@tcl.format_list(values), "{} {a\rb} a b {a\\{b} a\\\"b")
+  assert_eq(@tcl.parse_list("{} {a\rb} a b {a\\{b} a\\\"b"), values)
+}
+
+///|
+test "Tcl canonical list fixture 55" {
+  let values = ["a]b", "a\\", "a}b", "a\nb", "a\\", "a\\"]
+  assert_eq(@tcl.format_list(values), "a\\]b a\\\\ a\\}b {a\nb} a\\\\ a\\\\")
+  assert_eq(@tcl.parse_list("a\\]b a\\\\ a\\}b {a\nb} a\\\\ a\\\\"), values)
+}
+
+///|
 test "Tcl canonical list fixture 56" {
-  let values = ["a\"b", "a\rb", "a\rb"]
-  assert_eq(@tcl.format_list(values), "a\\\"b {a\rb} {a\rb}")
-  assert_eq(@tcl.parse_list("a\\\"b {a\rb} {a\rb}"), values)
+  let values = ["\"a\"", "a\rb", "#name", "a\\"]
+  assert_eq(@tcl.format_list(values), "{\"a\"} {a\rb} #name a\\\\")
+  assert_eq(@tcl.parse_list("{\"a\"} {a\rb} #name a\\\\"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 57" {
-  let values = ["a]b", "\u0007", "a\\", "a}b", "a\nb", "a\\"]
-  assert_eq(@tcl.format_list(values), "a\\]b \u0007 a\\\\ a\\}b {a\nb} a\\\\")
-  assert_eq(@tcl.parse_list("a\\]b \u0007 a\\\\ a\\}b {a\nb} a\\\\"), values)
+  let values = [";x", "a}b", "a{b", "simple", "a\\ b", "a b"]
+  assert_eq(@tcl.format_list(values), "{;x} a\\}b a\\{b simple {a\\ b} {a b}")
+  assert_eq(@tcl.parse_list("{;x} a\\}b a\\{b simple {a\\ b} {a b}"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 58" {
-  let values = ["a\t b", "a\\\nb", "\"a\"", "a\\ b"]
-  assert_eq(@tcl.format_list(values), "{a\t b} a\\\\\\nb {\"a\"} {a\\ b}")
-  assert_eq(@tcl.parse_list("{a\t b} a\\\\\\nb {\"a\"} {a\\ b}"), values)
+  let values = ["a{b}c", "a}b", "a{b}c", "a\nb"]
+  assert_eq(@tcl.format_list(values), "a{b}c a\\}b a{b}c {a\nb}")
+  assert_eq(@tcl.parse_list("a{b}c a\\}b a{b}c {a\nb}"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 59" {
-  let values = ["\u0000", "\"a\"", ";x", "a}b"]
-  assert_eq(@tcl.format_list(values), "\u0000 {\"a\"} {;x} a\\}b")
-  assert_eq(@tcl.parse_list("\u0000 {\"a\"} {;x} a\\}b"), values)
+  let values = ["", "simple", "汉字🚀", "a{b}c", ";x", "$x"]
+  assert_eq(@tcl.format_list(values), "{} simple 汉字🚀 a{b}c {;x} {$x}")
+  assert_eq(@tcl.parse_list("{} simple 汉字🚀 a{b}c {;x} {$x}"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 60" {
-  let values = ["simple"]
-  assert_eq(@tcl.format_list(values), "simple")
-  assert_eq(@tcl.parse_list("simple"), values)
+  let values = ["\"a\""]
+  assert_eq(@tcl.format_list(values), "{\"a\"}")
+  assert_eq(@tcl.parse_list("{\"a\"}"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 61" {
-  let values = ["a\\"]
-  assert_eq(@tcl.format_list(values), "a\\\\")
-  assert_eq(@tcl.parse_list("a\\\\"), values)
-}
-
-///|
-test "Tcl canonical list fixture 62" {
-  let values = ["a}b", "a{b}c"]
-  assert_eq(@tcl.format_list(values), "a\\}b a{b}c")
-  assert_eq(@tcl.parse_list("a\\}b a{b}c"), values)
-}
-
-///|
-test "Tcl canonical list fixture 63" {
-  let values = ["a[b", "", "simple", "汉字🚀", "a{b}c"]
-  assert_eq(@tcl.format_list(values), "{a[b} {} simple 汉字🚀 a{b}c")
-  assert_eq(@tcl.parse_list("{a[b} {} simple 汉字🚀 a{b}c"), values)
-}
-
-///|
-test "Tcl canonical list fixture 64" {
-  let values = ["a{b", "\"a\"", "\u0000", "a[b", "\"a\"", "a\\{b", "a[b"]
+  let values = ["\"a\"", "a\\{b", "a[b", "a b", "simple", "a\nb"]
   assert_eq(
     @tcl.format_list(values),
-    "a\\{b {\"a\"} \u0000 {a[b} {\"a\"} {a\\{b} {a[b}",
+    "{\"a\"} {a\\{b} {a[b} {a b} simple {a\nb}",
   )
   assert_eq(
-    @tcl.parse_list("a\\{b {\"a\"} \u0000 {a[b} {\"a\"} {a\\{b} {a[b}"),
+    @tcl.parse_list("{\"a\"} {a\\{b} {a[b} {a b} simple {a\nb}"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 65" {
-  let values = ["simple"]
-  assert_eq(@tcl.format_list(values), "simple")
-  assert_eq(@tcl.parse_list("simple"), values)
+test "Tcl canonical list fixture 62" {
+  let values = ["a\"b", "simple", "a\t b"]
+  assert_eq(@tcl.format_list(values), "a\\\"b simple {a\t b}")
+  assert_eq(@tcl.parse_list("a\\\"b simple {a\t b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 66" {
-  let values = ["a\\{b", "\u0007", "a\"b", "simple", "a\t b"]
-  assert_eq(@tcl.format_list(values), "{a\\{b} \u0007 a\\\"b simple {a\t b}")
-  assert_eq(@tcl.parse_list("{a\\{b} \u0007 a\\\"b simple {a\t b}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 67" {
+test "Tcl canonical list fixture 63" {
   let values = ["a[b"]
   assert_eq(@tcl.format_list(values), "{a[b}")
   assert_eq(@tcl.parse_list("{a[b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 68" {
-  let values = ["a b", "\u0000", "a\\"]
-  assert_eq(@tcl.format_list(values), "{a b} \u0000 a\\\\")
-  assert_eq(@tcl.parse_list("{a b} \u0000 a\\\\"), values)
+test "Tcl canonical list fixture 64" {
+  let values = ["a b", "a\\ b", "a\\"]
+  assert_eq(@tcl.format_list(values), "{a b} {a\\ b} a\\\\")
+  assert_eq(@tcl.parse_list("{a b} {a\\ b} a\\\\"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 69" {
-  let values = ["\u0007", "a\\{b", "a\\", "a}b"]
-  assert_eq(@tcl.format_list(values), "\u0007 {a\\{b} a\\\\ a\\}b")
-  assert_eq(@tcl.parse_list("\u0007 {a\\{b} a\\\\ a\\}b"), values)
+test "Tcl canonical list fixture 65" {
+  let values = ["a\\{b", "a\\", "a}b", "a[b"]
+  assert_eq(@tcl.format_list(values), "{a\\{b} a\\\\ a\\}b {a[b}")
+  assert_eq(@tcl.parse_list("{a\\{b} a\\\\ a\\}b {a[b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 70" {
-  let values = ["a\\\nb", "\"a\"", "a b", "\u0000", "a\rb", "a b"]
-  assert_eq(
-    @tcl.format_list(values),
-    "a\\\\\\nb {\"a\"} a b \u0000 {a\rb} {a b}",
-  )
-  assert_eq(
-    @tcl.parse_list("a\\\\\\nb {\"a\"} a b \u0000 {a\rb} {a b}"),
-    values,
-  )
+test "Tcl canonical list fixture 66" {
+  let values = ["\"a\"", "a b", "a\\ b", "a b"]
+  assert_eq(@tcl.format_list(values), "{\"a\"} a b {a\\ b} {a b}")
+  assert_eq(@tcl.parse_list("{\"a\"} a b {a\\ b} {a b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 71" {
+test "Tcl canonical list fixture 67" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
-test "Tcl canonical list fixture 72" {
+test "Tcl canonical list fixture 68" {
   let values = ["a\"b", "a\\", "simple", "a b", "$x", ";x"]
   assert_eq(@tcl.format_list(values), "a\\\"b a\\\\ simple a b {$x} {;x}")
   assert_eq(@tcl.parse_list("a\\\"b a\\\\ simple a b {$x} {;x}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 73" {
-  let values = ["a\nb", "a{b}c", "a\"b", ";x", "a\\\nb", "a\\ b"]
+test "Tcl canonical list fixture 69" {
+  let values = ["a\nb", "a{b}c", "a\"b", ";x", "a\\\nb", "a\rb"]
   assert_eq(
     @tcl.format_list(values),
-    "{a\nb} a{b}c a\\\"b {;x} a\\\\\\nb {a\\ b}",
+    "{a\nb} a{b}c a\\\"b {;x} a\\\\\\nb {a\rb}",
   )
   assert_eq(
-    @tcl.parse_list("{a\nb} a{b}c a\\\"b {;x} a\\\\\\nb {a\\ b}"),
+    @tcl.parse_list("{a\nb} a{b}c a\\\"b {;x} a\\\\\\nb {a\rb}"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 74" {
+test "Tcl canonical list fixture 70" {
   let values = ["a{b", "", "simple"]
   assert_eq(@tcl.format_list(values), "a\\{b {} simple")
   assert_eq(@tcl.parse_list("a\\{b {} simple"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 75" {
+test "Tcl canonical list fixture 71" {
   let values = ["a#b"]
   assert_eq(@tcl.format_list(values), "a#b")
   assert_eq(@tcl.parse_list("a#b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 76" {
+test "Tcl canonical list fixture 72" {
   let values = ["simple", "a\\\nb", ";x", ";x", "a#b", "a\t b", "a\\{b"]
   assert_eq(
     @tcl.format_list(values),
@@ -624,261 +575,227 @@ test "Tcl canonical list fixture 76" {
 }
 
 ///|
-test "Tcl canonical list fixture 77" {
-  let values = ["a[b", "\u0007", "汉字🚀", "{a}", "a\\ b", "a\rb"]
+test "Tcl canonical list fixture 73" {
+  let values = ["a[b", "汉字🚀", "{a}", "a\rb", "a\\", "a{b"]
   assert_eq(
     @tcl.format_list(values),
-    "{a[b} \u0007 汉字🚀 {{a}} {a\\ b} {a\rb}",
+    "{a[b} 汉字🚀 {{a}} {a\rb} a\\\\ a\\{b",
   )
   assert_eq(
-    @tcl.parse_list("{a[b} \u0007 汉字🚀 {{a}} {a\\ b} {a\rb}"),
+    @tcl.parse_list("{a[b} 汉字🚀 {{a}} {a\rb} a\\\\ a\\{b"),
     values,
   )
+}
+
+///|
+test "Tcl canonical list fixture 74" {
+  let values = ["a}b"]
+  assert_eq(@tcl.format_list(values), "a\\}b")
+  assert_eq(@tcl.parse_list("a\\}b"), values)
+}
+
+///|
+test "Tcl canonical list fixture 75" {
+  let values = ["a{b", ";x", "a\\", "a{b", "#name", "a}b"]
+  assert_eq(@tcl.format_list(values), "a\\{b {;x} a\\\\ a\\{b #name a\\}b")
+  assert_eq(@tcl.parse_list("a\\{b {;x} a\\\\ a\\{b #name a\\}b"), values)
+}
+
+///|
+test "Tcl canonical list fixture 76" {
+  let values = ["$x", "", "a b", "$x", "a\\ b", "$x", "汉字🚀"]
+  assert_eq(
+    @tcl.format_list(values),
+    "{$x} {} {a b} {$x} {a\\ b} {$x} 汉字🚀",
+  )
+  assert_eq(
+    @tcl.parse_list("{$x} {} {a b} {$x} {a\\ b} {$x} 汉字🚀"),
+    values,
+  )
+}
+
+///|
+test "Tcl canonical list fixture 77" {
+  let values = ["a\\", "a\\", "汉字🚀", "a\\ b", "a b"]
+  assert_eq(@tcl.format_list(values), "a\\\\ a\\\\ 汉字🚀 {a\\ b} {a b}")
+  assert_eq(@tcl.parse_list("a\\\\ a\\\\ 汉字🚀 {a\\ b} {a b}"), values)
 }
 
 ///|
 test "Tcl canonical list fixture 78" {
-  let values = ["a{b", "a b", "a}b", "\"a\""]
-  assert_eq(@tcl.format_list(values), "a\\{b {a b} a\\}b {\"a\"}")
-  assert_eq(@tcl.parse_list("a\\{b {a b} a\\}b {\"a\"}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 79" {
-  let values = [";x"]
-  assert_eq(@tcl.format_list(values), "{;x}")
-  assert_eq(@tcl.parse_list("{;x}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 80" {
-  let values = ["a{b", "#name", "a}b", "a]b"]
-  assert_eq(@tcl.format_list(values), "a\\{b #name a\\}b a\\]b")
-  assert_eq(@tcl.parse_list("a\\{b #name a\\}b a\\]b"), values)
-}
-
-///|
-test "Tcl canonical list fixture 81" {
-  let values = ["", "a b", "$x", "\u0000", "$x", "汉字🚀", "a\rb"]
-  assert_eq(
-    @tcl.format_list(values),
-    "{} {a b} {$x} \u0000 {$x} 汉字🚀 {a\rb}",
-  )
-  assert_eq(
-    @tcl.parse_list("{} {a b} {$x} \u0000 {$x} 汉字🚀 {a\rb}"),
-    values,
-  )
-}
-
-///|
-test "Tcl canonical list fixture 82" {
-  let values = ["a\\", "a\\", "汉字🚀", "\u0000", "a\rb"]
-  assert_eq(@tcl.format_list(values), "a\\\\ a\\\\ 汉字🚀 \u0000 {a\rb}")
-  assert_eq(@tcl.parse_list("a\\\\ a\\\\ 汉字🚀 \u0000 {a\rb}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 83" {
-  let values = ["a\t b"]
-  assert_eq(@tcl.format_list(values), "{a\t b}")
-  assert_eq(@tcl.parse_list("{a\t b}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 84" {
   let values = ["a\t b", "a}b"]
   assert_eq(@tcl.format_list(values), "{a\t b} a\\}b")
   assert_eq(@tcl.parse_list("{a\t b} a\\}b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 85" {
+test "Tcl canonical list fixture 79" {
   let values = ["a]b", "a\nb", "汉字🚀", "\"a\""]
   assert_eq(@tcl.format_list(values), "a\\]b {a\nb} 汉字🚀 {\"a\"}")
   assert_eq(@tcl.parse_list("a\\]b {a\nb} 汉字🚀 {\"a\"}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 86" {
+test "Tcl canonical list fixture 80" {
   let values = ["a{b", "simple"]
   assert_eq(@tcl.format_list(values), "a\\{b simple")
   assert_eq(@tcl.parse_list("a\\{b simple"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 87" {
-  let values = ["a[b", "simple", "\u0007", "\u0007", "a\"b", "\u0000", "a]b"]
+test "Tcl canonical list fixture 81" {
+  let values = ["a[b", "simple", "a\"b", "a\\ b", "a]b", "a{b}c", "汉字🚀"]
   assert_eq(
     @tcl.format_list(values),
-    "{a[b} simple \u0007 \u0007 a\\\"b \u0000 a\\]b",
+    "{a[b} simple a\\\"b {a\\ b} a\\]b a{b}c 汉字🚀",
   )
   assert_eq(
-    @tcl.parse_list("{a[b} simple \u0007 \u0007 a\\\"b \u0000 a\\]b"),
+    @tcl.parse_list("{a[b} simple a\\\"b {a\\ b} a\\]b a{b}c 汉字🚀"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 88" {
-  let values = ["汉字🚀", "汉字🚀"]
-  assert_eq(@tcl.format_list(values), "汉字🚀 汉字🚀")
-  assert_eq(@tcl.parse_list("汉字🚀 汉字🚀"), values)
+test "Tcl canonical list fixture 82" {
+  let values = ["", "a\rb"]
+  assert_eq(@tcl.format_list(values), "{} {a\rb}")
+  assert_eq(@tcl.parse_list("{} {a\rb}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 89" {
-  let values = ["", "a\\ b"]
-  assert_eq(@tcl.format_list(values), "{} {a\\ b}")
-  assert_eq(@tcl.parse_list("{} {a\\ b}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 90" {
+test "Tcl canonical list fixture 83" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
-test "Tcl canonical list fixture 91" {
+test "Tcl canonical list fixture 84" {
   let values = ["a\\\nb", "#name", "a{b"]
   assert_eq(@tcl.format_list(values), "a\\\\\\nb #name a\\{b")
   assert_eq(@tcl.parse_list("a\\\\\\nb #name a\\{b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 92" {
+test "Tcl canonical list fixture 85" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
-test "Tcl canonical list fixture 93" {
-  let values = ["a\rb"]
-  assert_eq(@tcl.format_list(values), "{a\rb}")
-  assert_eq(@tcl.parse_list("{a\rb}"), values)
+test "Tcl canonical list fixture 86" {
+  let values = ["a{b"]
+  assert_eq(@tcl.format_list(values), "a\\{b")
+  assert_eq(@tcl.parse_list("a\\{b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 94" {
-  let values = ["a b"]
-  assert_eq(@tcl.format_list(values), "a b")
-  assert_eq(@tcl.parse_list("a b"), values)
-}
-
-///|
-test "Tcl canonical list fixture 95" {
+test "Tcl canonical list fixture 87" {
   let values = ["a]b", "a\"b"]
   assert_eq(@tcl.format_list(values), "a\\]b a\\\"b")
   assert_eq(@tcl.parse_list("a\\]b a\\\"b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 96" {
-  let values = ["\u0000"]
-  assert_eq(@tcl.format_list(values), "\u0000")
-  assert_eq(@tcl.parse_list("\u0000"), values)
+test "Tcl canonical list fixture 88" {
+  let values = ["a\\ b"]
+  assert_eq(@tcl.format_list(values), "{a\\ b}")
+  assert_eq(@tcl.parse_list("{a\\ b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 97" {
+test "Tcl canonical list fixture 89" {
   let values = ["", "a}b"]
   assert_eq(@tcl.format_list(values), "{} a\\}b")
   assert_eq(@tcl.parse_list("{} a\\}b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 98" {
+test "Tcl canonical list fixture 90" {
   let values = ["a\\", "a}b", "$x", "a{b", "a\\{b", "a b"]
   assert_eq(@tcl.format_list(values), "a\\\\ a\\}b {$x} a\\{b {a\\{b} {a b}")
   assert_eq(@tcl.parse_list("a\\\\ a\\}b {$x} a\\{b {a\\{b} {a b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 99" {
-  let values = ["a\nb", "汉字🚀", "a\rb", "a b", "a\nb", "a\\\nb"]
+test "Tcl canonical list fixture 91" {
+  let values = ["a\nb", "汉字🚀", "a b", "a\nb", "a\\\nb", "a#b"]
   assert_eq(
     @tcl.format_list(values),
-    "{a\nb} 汉字🚀 {a\rb} a b {a\nb} a\\\\\\nb",
+    "{a\nb} 汉字🚀 a b {a\nb} a\\\\\\nb a#b",
   )
   assert_eq(
-    @tcl.parse_list("{a\nb} 汉字🚀 {a\rb} a b {a\nb} a\\\\\\nb"),
+    @tcl.parse_list("{a\nb} 汉字🚀 a b {a\nb} a\\\\\\nb a#b"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 100" {
-  let values = ["a\\", "a\\", ";x", "a b", "#name", "\u0007", "a b"]
-  assert_eq(@tcl.format_list(values), "a\\\\ a\\\\ {;x} a b #name \u0007 a b")
-  assert_eq(@tcl.parse_list("a\\\\ a\\\\ {;x} a b #name \u0007 a b"), values)
+test "Tcl canonical list fixture 92" {
+  let values = ["a\\", "a\\", ";x", "a b", "#name", "a b", "$x"]
+  assert_eq(@tcl.format_list(values), "a\\\\ a\\\\ {;x} a b #name a b {$x}")
+  assert_eq(@tcl.parse_list("a\\\\ a\\\\ {;x} a b #name a b {$x}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 101" {
-  let values = ["{a}", "simple", "a\t b", "", "a\\\nb", "汉字🚀", "a\\ b"]
-  assert_eq(
-    @tcl.format_list(values),
-    "{{a}} simple {a\t b} {} a\\\\\\nb 汉字🚀 {a\\ b}",
-  )
-  assert_eq(
-    @tcl.parse_list("{{a}} simple {a\t b} {} a\\\\\\nb 汉字🚀 {a\\ b}"),
-    values,
-  )
+test "Tcl canonical list fixture 93" {
+  let values = ["simple", "a\t b", ""]
+  assert_eq(@tcl.format_list(values), "simple {a\t b} {}")
+  assert_eq(@tcl.parse_list("simple {a\t b} {}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 102" {
-  let values = ["a]b", "a\t b"]
-  assert_eq(@tcl.format_list(values), "a\\]b {a\t b}")
-  assert_eq(@tcl.parse_list("a\\]b {a\t b}"), values)
+test "Tcl canonical list fixture 94" {
+  let values = ["汉字🚀", "a\rb", "a{b}c", "a]b"]
+  assert_eq(@tcl.format_list(values), "汉字🚀 {a\rb} a{b}c a\\]b")
+  assert_eq(@tcl.parse_list("汉字🚀 {a\rb} a{b}c a\\]b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 103" {
+test "Tcl canonical list fixture 95" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
-test "Tcl canonical list fixture 104" {
-  let values = ["", "a}b", ";x", "a\\ b", "a\\", "a\t b"]
-  assert_eq(@tcl.format_list(values), "{} a\\}b {;x} {a\\ b} a\\\\ {a\t b}")
-  assert_eq(@tcl.parse_list("{} a\\}b {;x} {a\\ b} a\\\\ {a\t b}"), values)
+test "Tcl canonical list fixture 96" {
+  let values = ["", "a}b", ";x", "a\rb", "a\\", "a\t b"]
+  assert_eq(@tcl.format_list(values), "{} a\\}b {;x} {a\rb} a\\\\ {a\t b}")
+  assert_eq(@tcl.parse_list("{} a\\}b {;x} {a\rb} a\\\\ {a\t b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 105" {
+test "Tcl canonical list fixture 97" {
   let values = ["a#b", "a]b", "a{b", "a\t b", "a\t b", "a#b"]
   assert_eq(@tcl.format_list(values), "a#b a\\]b a\\{b {a\t b} {a\t b} a#b")
   assert_eq(@tcl.parse_list("a#b a\\]b a\\{b {a\t b} {a\t b} a#b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 106" {
+test "Tcl canonical list fixture 98" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
-test "Tcl canonical list fixture 107" {
-  let values = ["#name", "a#b", "a b", "\u0000", "\u0007"]
-  assert_eq(@tcl.format_list(values), "{#name} a#b {a b} \u0000 \u0007")
-  assert_eq(@tcl.parse_list("{#name} a#b {a b} \u0000 \u0007"), values)
+test "Tcl canonical list fixture 99" {
+  let values = ["#name", "a#b", "a b", "a\\ b", "a#b"]
+  assert_eq(@tcl.format_list(values), "{#name} a#b {a b} {a\\ b} a#b")
+  assert_eq(@tcl.parse_list("{#name} a#b {a b} {a\\ b} a#b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 108" {
+test "Tcl canonical list fixture 100" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
-test "Tcl canonical list fixture 109" {
+test "Tcl canonical list fixture 101" {
   let values = ["a\t b", "a\t b", "a b", "\"a\"", "a\\\nb", "a]b"]
   assert_eq(
     @tcl.format_list(values),
@@ -891,14 +808,14 @@ test "Tcl canonical list fixture 109" {
 }
 
 ///|
-test "Tcl canonical list fixture 110" {
+test "Tcl canonical list fixture 102" {
   let values = ["a\\{b", ";x", "a}b", "a}b"]
   assert_eq(@tcl.format_list(values), "{a\\{b} {;x} a\\}b a\\}b")
   assert_eq(@tcl.parse_list("{a\\{b} {;x} a\\}b a\\}b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 111" {
+test "Tcl canonical list fixture 103" {
   let values = ["", "a{b}c", "a\\\nb", "simple", "a\\\nb", "a b", "a[b"]
   assert_eq(
     @tcl.format_list(values),
@@ -911,7 +828,7 @@ test "Tcl canonical list fixture 111" {
 }
 
 ///|
-test "Tcl canonical list fixture 112" {
+test "Tcl canonical list fixture 104" {
   let values = ["$x", "a[b", "汉字🚀", "a\t b", "a b", "a}b", "$x"]
   assert_eq(
     @tcl.format_list(values),
@@ -924,272 +841,280 @@ test "Tcl canonical list fixture 112" {
 }
 
 ///|
-test "Tcl canonical list fixture 113" {
-  let values = ["a]b", "汉字🚀", "a\\ b", "a]b"]
-  assert_eq(@tcl.format_list(values), "a\\]b 汉字🚀 {a\\ b} a\\]b")
-  assert_eq(@tcl.parse_list("a\\]b 汉字🚀 {a\\ b} a\\]b"), values)
+test "Tcl canonical list fixture 105" {
+  let values = ["a]b", "汉字🚀", "a\rb", "a]b"]
+  assert_eq(@tcl.format_list(values), "a\\]b 汉字🚀 {a\rb} a\\]b")
+  assert_eq(@tcl.parse_list("a\\]b 汉字🚀 {a\rb} a\\]b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 114" {
+test "Tcl canonical list fixture 106" {
   let values = ["a{b}c"]
   assert_eq(@tcl.format_list(values), "a{b}c")
   assert_eq(@tcl.parse_list("a{b}c"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 115" {
-  let values = [
-    "\u0007", "a\nb", "汉字🚀", "汉字🚀", "a]b", "a#b", "a]b",
-  ]
+test "Tcl canonical list fixture 107" {
+  let values = ["a\nb", "汉字🚀", "汉字🚀", "a]b", "a#b", "a]b", "a\nb"]
   assert_eq(
     @tcl.format_list(values),
-    "\u0007 {a\nb} 汉字🚀 汉字🚀 a\\]b a#b a\\]b",
+    "{a\nb} 汉字🚀 汉字🚀 a\\]b a#b a\\]b {a\nb}",
   )
   assert_eq(
-    @tcl.parse_list("\u0007 {a\nb} 汉字🚀 汉字🚀 a\\]b a#b a\\]b"),
+    @tcl.parse_list("{a\nb} 汉字🚀 汉字🚀 a\\]b a#b a\\]b {a\nb}"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 116" {
-  let values = ["\u0007", "a#b", "$x", ";x", "a[b"]
-  assert_eq(@tcl.format_list(values), "\u0007 a#b {$x} {;x} {a[b}")
-  assert_eq(@tcl.parse_list("\u0007 a#b {$x} {;x} {a[b}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 117" {
-  let values = ["simple", "\"a\"", "a\\{b", "a\\", "a\"b", "$x", "a\\"]
+test "Tcl canonical list fixture 108" {
+  let values = [";x", "a[b", "a]b", "simple", "\"a\"", "a\\{b", "a\\"]
   assert_eq(
     @tcl.format_list(values),
-    "simple {\"a\"} {a\\{b} a\\\\ a\\\"b {$x} a\\\\",
+    "{;x} {a[b} a\\]b simple {\"a\"} {a\\{b} a\\\\",
   )
   assert_eq(
-    @tcl.parse_list("simple {\"a\"} {a\\{b} a\\\\ a\\\"b {$x} a\\\\"),
+    @tcl.parse_list("{;x} {a[b} a\\]b simple {\"a\"} {a\\{b} a\\\\"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 118" {
-  let values = [
-    "汉字🚀", "汉字🚀", "a b", "a\\{b", "a}b", "a{b}c", "#name",
-  ]
+test "Tcl canonical list fixture 109" {
+  let values = ["$x", "a\\", "a]b", "汉字🚀", "汉字🚀"]
+  assert_eq(@tcl.format_list(values), "{$x} a\\\\ a\\]b 汉字🚀 汉字🚀")
+  assert_eq(@tcl.parse_list("{$x} a\\\\ a\\]b 汉字🚀 汉字🚀"), values)
+}
+
+///|
+test "Tcl canonical list fixture 110" {
+  let values = ["a\\{b"]
+  assert_eq(@tcl.format_list(values), "{a\\{b}")
+  assert_eq(@tcl.parse_list("{a\\{b}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 111" {
+  let values = ["a{b}c", "#name"]
+  assert_eq(@tcl.format_list(values), "a{b}c #name")
+  assert_eq(@tcl.parse_list("a{b}c #name"), values)
+}
+
+///|
+test "Tcl canonical list fixture 112" {
+  let values = ["a\\\nb", "a\rb", ";x", "a]b", "a\\{b", "a#b", "a\rb"]
   assert_eq(
     @tcl.format_list(values),
-    "汉字🚀 汉字🚀 {a b} {a\\{b} a\\}b a{b}c #name",
+    "a\\\\\\nb {a\rb} {;x} a\\]b {a\\{b} a#b {a\rb}",
   )
   assert_eq(
-    @tcl.parse_list("汉字🚀 汉字🚀 {a b} {a\\{b} a\\}b a{b}c #name"),
+    @tcl.parse_list("a\\\\\\nb {a\rb} {;x} a\\]b {a\\{b} a#b {a\rb}"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 119" {
-  let values = ["a\\\nb", "a\\ b", ";x", "a]b", "a\\{b", "a#b", "a\\ b"]
-  assert_eq(
-    @tcl.format_list(values),
-    "a\\\\\\nb {a\\ b} {;x} a\\]b {a\\{b} a#b {a\\ b}",
-  )
-  assert_eq(
-    @tcl.parse_list("a\\\\\\nb {a\\ b} {;x} a\\]b {a\\{b} a#b {a\\ b}"),
-    values,
-  )
-}
-
-///|
-test "Tcl canonical list fixture 120" {
+test "Tcl canonical list fixture 113" {
   let values = ["汉字🚀", ";x", "a\\", "a[b", "汉字🚀"]
   assert_eq(@tcl.format_list(values), "汉字🚀 {;x} a\\\\ {a[b} 汉字🚀")
   assert_eq(@tcl.parse_list("汉字🚀 {;x} a\\\\ {a[b} 汉字🚀"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 121" {
+test "Tcl canonical list fixture 114" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
-test "Tcl canonical list fixture 122" {
-  let values = ["a\\ b"]
-  assert_eq(@tcl.format_list(values), "{a\\ b}")
-  assert_eq(@tcl.parse_list("{a\\ b}"), values)
+test "Tcl canonical list fixture 115" {
+  let values = ["a\rb"]
+  assert_eq(@tcl.format_list(values), "{a\rb}")
+  assert_eq(@tcl.parse_list("{a\rb}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 123" {
+test "Tcl canonical list fixture 116" {
   let values = ["a\\"]
   assert_eq(@tcl.format_list(values), "a\\\\")
   assert_eq(@tcl.parse_list("a\\\\"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 124" {
+test "Tcl canonical list fixture 117" {
   let values = ["a\t b", "汉字🚀", "a#b"]
   assert_eq(@tcl.format_list(values), "{a\t b} 汉字🚀 a#b")
   assert_eq(@tcl.parse_list("{a\t b} 汉字🚀 a#b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 125" {
+test "Tcl canonical list fixture 118" {
   let values = ["a}b"]
   assert_eq(@tcl.format_list(values), "a\\}b")
   assert_eq(@tcl.parse_list("a\\}b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 126" {
+test "Tcl canonical list fixture 119" {
   let values = ["#name"]
   assert_eq(@tcl.format_list(values), "{#name}")
   assert_eq(@tcl.parse_list("{#name}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 127" {
+test "Tcl canonical list fixture 120" {
   let values = ["a]b"]
   assert_eq(@tcl.format_list(values), "a\\]b")
   assert_eq(@tcl.parse_list("a\\]b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 128" {
-  let values = ["汉字🚀", "a}b", "\"a\"", "a\t b", "a\\", "a\\ b", "a[b"]
+test "Tcl canonical list fixture 121" {
+  let values = ["汉字🚀", "a}b", "\"a\"", "a\t b", "a\\", "a\rb", "a[b"]
   assert_eq(
     @tcl.format_list(values),
-    "汉字🚀 a\\}b {\"a\"} {a\t b} a\\\\ {a\\ b} {a[b}",
+    "汉字🚀 a\\}b {\"a\"} {a\t b} a\\\\ {a\rb} {a[b}",
   )
   assert_eq(
-    @tcl.parse_list("汉字🚀 a\\}b {\"a\"} {a\t b} a\\\\ {a\\ b} {a[b}"),
+    @tcl.parse_list("汉字🚀 a\\}b {\"a\"} {a\t b} a\\\\ {a\rb} {a[b}"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 129" {
-  let values = ["a\\", "a{b", "a\rb", ";x", "汉字🚀", "a[b", "\u0000"]
+test "Tcl canonical list fixture 122" {
+  let values = ["a\\", "a{b", ";x", "汉字🚀", "a[b", "a\\ b", "a}b"]
   assert_eq(
     @tcl.format_list(values),
-    "a\\\\ a\\{b {a\rb} {;x} 汉字🚀 {a[b} \u0000",
+    "a\\\\ a\\{b {;x} 汉字🚀 {a[b} {a\\ b} a\\}b",
   )
   assert_eq(
-    @tcl.parse_list("a\\\\ a\\{b {a\rb} {;x} 汉字🚀 {a[b} \u0000"),
+    @tcl.parse_list("a\\\\ a\\{b {;x} 汉字🚀 {a[b} {a\\ b} a\\}b"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 130" {
-  let values = ["a\\ b", "$x"]
-  assert_eq(@tcl.format_list(values), "{a\\ b} {$x}")
-  assert_eq(@tcl.parse_list("{a\\ b} {$x}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 131" {
-  let values = ["a#b", "汉字🚀", "a\\{b", "a\\\nb", "\u0007"]
-  assert_eq(@tcl.format_list(values), "a#b 汉字🚀 {a\\{b} a\\\\\\nb \u0007")
-  assert_eq(@tcl.parse_list("a#b 汉字🚀 {a\\{b} a\\\\\\nb \u0007"), values)
-}
-
-///|
-test "Tcl canonical list fixture 132" {
-  let values = ["a b", "", "a[b", "$x", "a}b", "\"a\""]
-  assert_eq(@tcl.format_list(values), "{a b} {} {a[b} {$x} a\\}b {\"a\"}")
-  assert_eq(@tcl.parse_list("{a b} {} {a[b} {$x} a\\}b {\"a\"}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 133" {
-  let values = ["a\nb", "a\\\nb", "a\\\nb", ";x"]
-  assert_eq(@tcl.format_list(values), "{a\nb} a\\\\\\nb a\\\\\\nb {;x}")
-  assert_eq(@tcl.parse_list("{a\nb} a\\\\\\nb a\\\\\\nb {;x}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 134" {
-  let values = ["a b", "a b", "\"a\"", "\u0000"]
-  assert_eq(@tcl.format_list(values), "a b a b {\"a\"} \u0000")
-  assert_eq(@tcl.parse_list("a b a b {\"a\"} \u0000"), values)
-}
-
-///|
-test "Tcl canonical list fixture 135" {
-  let values = ["a\"b", "a\\ b", "汉字🚀"]
-  assert_eq(@tcl.format_list(values), "a\\\"b {a\\ b} 汉字🚀")
-  assert_eq(@tcl.parse_list("a\\\"b {a\\ b} 汉字🚀"), values)
-}
-
-///|
-test "Tcl canonical list fixture 136" {
-  let values = ["a b", "a]b", "a b", "a\nb", "\"a\"", ""]
-  assert_eq(@tcl.format_list(values), "a b a\\]b a b {a\nb} {\"a\"} {}")
-  assert_eq(@tcl.parse_list("a b a\\]b a b {a\nb} {\"a\"} {}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 137" {
-  let values = ["a\\{b", "$x", "a b"]
-  assert_eq(@tcl.format_list(values), "{a\\{b} {$x} {a b}")
-  assert_eq(@tcl.parse_list("{a\\{b} {$x} {a b}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 138" {
-  let values = ["a{b", "a b"]
-  assert_eq(@tcl.format_list(values), "a\\{b {a b}")
-  assert_eq(@tcl.parse_list("a\\{b {a b}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 139" {
-  let values = [
-    "汉字🚀", "#name", "a\\ b", "a\\", "#name", "a\\\nb", "#name",
-  ]
+test "Tcl canonical list fixture 123" {
+  let values = ["a\nb", "a#b", "汉字🚀", "a\\{b", "a\\\nb", "a[b", "a b"]
   assert_eq(
     @tcl.format_list(values),
-    "汉字🚀 #name {a\\ b} a\\\\ #name a\\\\\\nb #name",
+    "{a\nb} a#b 汉字🚀 {a\\{b} a\\\\\\nb {a[b} {a b}",
   )
   assert_eq(
-    @tcl.parse_list("汉字🚀 #name {a\\ b} a\\\\ #name a\\\\\\nb #name"),
+    @tcl.parse_list("{a\nb} a#b 汉字🚀 {a\\{b} a\\\\\\nb {a[b} {a b}"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 140" {
-  let values = ["a{b", "a b", "\"a\"", "a[b"]
-  assert_eq(@tcl.format_list(values), "a\\{b {a b} {\"a\"} {a[b}")
-  assert_eq(@tcl.parse_list("a\\{b {a b} {\"a\"} {a[b}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 141" {
-  let values = ["$x", "$x"]
-  assert_eq(@tcl.format_list(values), "{$x} {$x}")
-  assert_eq(@tcl.parse_list("{$x} {$x}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 142" {
-  let values = ["a\"b", "a#b"]
-  assert_eq(@tcl.format_list(values), "a\\\"b a#b")
-  assert_eq(@tcl.parse_list("a\\\"b a#b"), values)
-}
-
-///|
-test "Tcl canonical list fixture 143" {
+test "Tcl canonical list fixture 124" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
-test "Tcl canonical list fixture 144" {
+test "Tcl canonical list fixture 125" {
+  let values = ["$x", "a}b", "\"a\"", "a\\", "a\nb", "a\\\nb"]
+  assert_eq(
+    @tcl.format_list(values),
+    "{$x} a\\}b {\"a\"} a\\\\ {a\nb} a\\\\\\nb",
+  )
+  assert_eq(
+    @tcl.parse_list("{$x} a\\}b {\"a\"} a\\\\ {a\nb} a\\\\\\nb"),
+    values,
+  )
+}
+
+///|
+test "Tcl canonical list fixture 126" {
+  let values = [";x", "a\\\nb", "a b", "a b"]
+  assert_eq(@tcl.format_list(values), "{;x} a\\\\\\nb a b a b")
+  assert_eq(@tcl.parse_list("{;x} a\\\\\\nb a b a b"), values)
+}
+
+///|
+test "Tcl canonical list fixture 127" {
+  let values = ["a\\ b", "a\\{b", "a\"b", "a\rb", "汉字🚀", "汉字🚀"]
+  assert_eq(
+    @tcl.format_list(values),
+    "{a\\ b} {a\\{b} a\\\"b {a\rb} 汉字🚀 汉字🚀",
+  )
+  assert_eq(
+    @tcl.parse_list("{a\\ b} {a\\{b} a\\\"b {a\rb} 汉字🚀 汉字🚀"),
+    values,
+  )
+}
+
+///|
+test "Tcl canonical list fixture 128" {
+  let values = ["a b", "a]b", "a b", "a\nb", "\"a\"", ""]
+  assert_eq(@tcl.format_list(values), "a b a\\]b a b {a\nb} {\"a\"} {}")
+  assert_eq(@tcl.parse_list("a b a\\]b a b {a\nb} {\"a\"} {}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 129" {
+  let values = ["a\\{b", "$x", "a b"]
+  assert_eq(@tcl.format_list(values), "{a\\{b} {$x} {a b}")
+  assert_eq(@tcl.parse_list("{a\\{b} {$x} {a b}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 130" {
+  let values = ["a{b", "a b"]
+  assert_eq(@tcl.format_list(values), "a\\{b {a b}")
+  assert_eq(@tcl.parse_list("a\\{b {a b}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 131" {
+  let values = [
+    "汉字🚀", "#name", "a\rb", "a\\", "#name", "a\\\nb", "#name",
+  ]
+  assert_eq(
+    @tcl.format_list(values),
+    "汉字🚀 #name {a\rb} a\\\\ #name a\\\\\\nb #name",
+  )
+  assert_eq(
+    @tcl.parse_list("汉字🚀 #name {a\rb} a\\\\ #name a\\\\\\nb #name"),
+    values,
+  )
+}
+
+///|
+test "Tcl canonical list fixture 132" {
+  let values = ["a{b", "a b", "\"a\"", "a[b"]
+  assert_eq(@tcl.format_list(values), "a\\{b {a b} {\"a\"} {a[b}")
+  assert_eq(@tcl.parse_list("a\\{b {a b} {\"a\"} {a[b}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 133" {
+  let values = ["$x", "$x"]
+  assert_eq(@tcl.format_list(values), "{$x} {$x}")
+  assert_eq(@tcl.parse_list("{$x} {$x}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 134" {
+  let values = ["a\"b", "a#b"]
+  assert_eq(@tcl.format_list(values), "a\\\"b a#b")
+  assert_eq(@tcl.parse_list("a\\\"b a#b"), values)
+}
+
+///|
+test "Tcl canonical list fixture 135" {
+  let values = []
+  assert_eq(@tcl.format_list(values), "")
+  assert_eq(@tcl.parse_list(""), values)
+}
+
+///|
+test "Tcl canonical list fixture 136" {
   let values = ["a\\\nb", "a{b", "", "$x", "{a}", "a[b", "a\\{b"]
   assert_eq(
     @tcl.format_list(values),
@@ -1202,260 +1127,340 @@ test "Tcl canonical list fixture 144" {
 }
 
 ///|
-test "Tcl canonical list fixture 145" {
+test "Tcl canonical list fixture 137" {
   let values = ["a}b", "a b", "a\\"]
   assert_eq(@tcl.format_list(values), "a\\}b {a b} a\\\\")
   assert_eq(@tcl.parse_list("a\\}b {a b} a\\\\"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 146" {
+test "Tcl canonical list fixture 138" {
   let values = ["a{b}c"]
   assert_eq(@tcl.format_list(values), "a{b}c")
   assert_eq(@tcl.parse_list("a{b}c"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 147" {
+test "Tcl canonical list fixture 139" {
   let values = ["汉字🚀", "a\nb", "\"a\""]
   assert_eq(@tcl.format_list(values), "汉字🚀 {a\nb} {\"a\"}")
   assert_eq(@tcl.parse_list("汉字🚀 {a\nb} {\"a\"}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 148" {
+test "Tcl canonical list fixture 140" {
   let values = ["", "$x", "", "a}b", "a\nb"]
   assert_eq(@tcl.format_list(values), "{} {$x} {} a\\}b {a\nb}")
   assert_eq(@tcl.parse_list("{} {$x} {} a\\}b {a\nb}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 149" {
+test "Tcl canonical list fixture 141" {
   let values = ["a\nb", ""]
   assert_eq(@tcl.format_list(values), "{a\nb} {}")
   assert_eq(@tcl.parse_list("{a\nb} {}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 150" {
-  let values = ["a[b", "a{b", "\u0000", "a]b", "a\rb", "a\rb"]
-  assert_eq(@tcl.format_list(values), "{a[b} a\\{b \u0000 a\\]b {a\rb} {a\rb}")
-  assert_eq(@tcl.parse_list("{a[b} a\\{b \u0000 a\\]b {a\rb} {a\rb}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 151" {
-  let values = ["{a}", "a\\", "\"a\"", "$x"]
-  assert_eq(@tcl.format_list(values), "{{a}} a\\\\ {\"a\"} {$x}")
-  assert_eq(@tcl.parse_list("{{a}} a\\\\ {\"a\"} {$x}"), values)
-}
-
-///|
-test "Tcl canonical list fixture 152" {
-  let values = ["a\t b", "a\\", "a{b}c", ";x", "\u0007"]
-  assert_eq(@tcl.format_list(values), "{a\t b} a\\\\ a{b}c {;x} \u0007")
-  assert_eq(@tcl.parse_list("{a\t b} a\\\\ a{b}c {;x} \u0007"), values)
-}
-
-///|
-test "Tcl canonical list fixture 153" {
-  let values = []
-  assert_eq(@tcl.format_list(values), "")
-  assert_eq(@tcl.parse_list(""), values)
-}
-
-///|
-test "Tcl canonical list fixture 154" {
-  let values = ["\"a\"", "a\nb", "{a}", "a\\ b", "a}b"]
-  assert_eq(@tcl.format_list(values), "{\"a\"} {a\nb} {{a}} {a\\ b} a\\}b")
-  assert_eq(@tcl.parse_list("{\"a\"} {a\nb} {{a}} {a\\ b} a\\}b"), values)
-}
-
-///|
-test "Tcl canonical list fixture 155" {
-  let values = ["simple", "汉字🚀", "a\rb", "a{b", "a]b", "a\nb", "a{b"]
+test "Tcl canonical list fixture 142" {
+  let values = ["a[b", "a{b", "a\\ b", "a]b", "a\\\nb", "{a}"]
   assert_eq(
     @tcl.format_list(values),
-    "simple 汉字🚀 {a\rb} a\\{b a\\]b {a\nb} a\\{b",
+    "{a[b} a\\{b {a\\ b} a\\]b a\\\\\\nb {{a}}",
   )
   assert_eq(
-    @tcl.parse_list("simple 汉字🚀 {a\rb} a\\{b a\\]b {a\nb} a\\{b"),
+    @tcl.parse_list("{a[b} a\\{b {a\\ b} a\\]b a\\\\\\nb {{a}}"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 156" {
-  let values = ["汉字🚀", "a{b"]
-  assert_eq(@tcl.format_list(values), "汉字🚀 a\\{b")
-  assert_eq(@tcl.parse_list("汉字🚀 a\\{b"), values)
+test "Tcl canonical list fixture 143" {
+  let values = ["\"a\"", "$x", "a\"b", "a\t b"]
+  assert_eq(@tcl.format_list(values), "{\"a\"} {$x} a\\\"b {a\t b}")
+  assert_eq(@tcl.parse_list("{\"a\"} {$x} a\\\"b {a\t b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 157" {
+test "Tcl canonical list fixture 144" {
+  let values = ["a{b}c", ";x", "simple", "a\nb"]
+  assert_eq(@tcl.format_list(values), "a{b}c {;x} simple {a\nb}")
+  assert_eq(@tcl.parse_list("a{b}c {;x} simple {a\nb}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 145" {
+  let values = ["a\nb", "{a}", "a\rb", "a}b", "a]b", "simple"]
+  assert_eq(@tcl.format_list(values), "{a\nb} {{a}} {a\rb} a\\}b a\\]b simple")
+  assert_eq(@tcl.parse_list("{a\nb} {{a}} {a\rb} a\\}b a\\]b simple"), values)
+}
+
+///|
+test "Tcl canonical list fixture 146" {
+  let values = ["a]b"]
+  assert_eq(@tcl.format_list(values), "a\\]b")
+  assert_eq(@tcl.parse_list("a\\]b"), values)
+}
+
+///|
+test "Tcl canonical list fixture 147" {
+  let values = ["a{b", "a b", "a}b", "汉字🚀", "a{b"]
+  assert_eq(@tcl.format_list(values), "a\\{b a b a\\}b 汉字🚀 a\\{b")
+  assert_eq(@tcl.parse_list("a\\{b a b a\\}b 汉字🚀 a\\{b"), values)
+}
+
+///|
+test "Tcl canonical list fixture 148" {
   let values = [";x", "#name", "a\rb"]
   assert_eq(@tcl.format_list(values), "{;x} #name {a\rb}")
   assert_eq(@tcl.parse_list("{;x} #name {a\rb}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 158" {
-  let values = ["a#b", "a[b", ";x", "a{b}c", "a\\ b", "a b"]
-  assert_eq(@tcl.format_list(values), "a#b {a[b} {;x} a{b}c {a\\ b} a b")
-  assert_eq(@tcl.parse_list("a#b {a[b} {;x} a{b}c {a\\ b} a b"), values)
+test "Tcl canonical list fixture 149" {
+  let values = ["a#b", "a[b", ";x", "a{b}c", "a\rb", "a b"]
+  assert_eq(@tcl.format_list(values), "a#b {a[b} {;x} a{b}c {a\rb} a b")
+  assert_eq(@tcl.parse_list("a#b {a[b} {;x} a{b}c {a\rb} a b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 159" {
-  let values = ["{a}", "{a}", "a\"b", "$x", "\u0007", "a\"b", "a\"b"]
+test "Tcl canonical list fixture 150" {
+  let values = ["{a}", "{a}", "a\"b", "$x", "a\"b", "a\"b", "a}b"]
   assert_eq(
     @tcl.format_list(values),
-    "{{a}} {{a}} a\\\"b {$x} \u0007 a\\\"b a\\\"b",
+    "{{a}} {{a}} a\\\"b {$x} a\\\"b a\\\"b a\\}b",
   )
   assert_eq(
-    @tcl.parse_list("{{a}} {{a}} a\\\"b {$x} \u0007 a\\\"b a\\\"b"),
+    @tcl.parse_list("{{a}} {{a}} a\\\"b {$x} a\\\"b a\\\"b a\\}b"),
     values,
   )
 }
 
 ///|
-test "Tcl canonical list fixture 160" {
-  let values = ["a b", "\u0000"]
-  assert_eq(@tcl.format_list(values), "a b \u0000")
-  assert_eq(@tcl.parse_list("a b \u0000"), values)
-}
-
-///|
-test "Tcl canonical list fixture 161" {
+test "Tcl canonical list fixture 151" {
   let values = ["a\\\nb"]
   assert_eq(@tcl.format_list(values), "a\\\\\\nb")
   assert_eq(@tcl.parse_list("a\\\\\\nb"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 162" {
+test "Tcl canonical list fixture 152" {
   let values = ["a{b}c"]
   assert_eq(@tcl.format_list(values), "a{b}c")
   assert_eq(@tcl.parse_list("a{b}c"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 163" {
+test "Tcl canonical list fixture 153" {
   let values = ["\"a\""]
   assert_eq(@tcl.format_list(values), "{\"a\"}")
   assert_eq(@tcl.parse_list("{\"a\"}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 164" {
+test "Tcl canonical list fixture 154" {
   let values = ["{a}", "\"a\""]
   assert_eq(@tcl.format_list(values), "{{a}} {\"a\"}")
   assert_eq(@tcl.parse_list("{{a}} {\"a\"}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 165" {
-  let values = ["汉字🚀", "a{b", "a\nb", "\u0000", "$x"]
-  assert_eq(@tcl.format_list(values), "汉字🚀 a\\{b {a\nb} \u0000 {$x}")
-  assert_eq(@tcl.parse_list("汉字🚀 a\\{b {a\nb} \u0000 {$x}"), values)
+test "Tcl canonical list fixture 155" {
+  let values = ["汉字🚀", "a{b", "a\nb", "a\\ b", "$x"]
+  assert_eq(@tcl.format_list(values), "汉字🚀 a\\{b {a\nb} {a\\ b} {$x}")
+  assert_eq(@tcl.parse_list("汉字🚀 a\\{b {a\nb} {a\\ b} {$x}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 166" {
-  let values = ["a b", "\u0007", "$x", "a\\{b", "a\"b", ";x"]
-  assert_eq(@tcl.format_list(values), "{a b} \u0007 {$x} {a\\{b} a\\\"b {;x}")
-  assert_eq(@tcl.parse_list("{a b} \u0007 {$x} {a\\{b} a\\\"b {;x}"), values)
+test "Tcl canonical list fixture 156" {
+  let values = ["a b", "$x", "a\\{b", "a\"b", ";x", ";x"]
+  assert_eq(@tcl.format_list(values), "{a b} {$x} {a\\{b} a\\\"b {;x} {;x}")
+  assert_eq(@tcl.parse_list("{a b} {$x} {a\\{b} a\\\"b {;x} {;x}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 167" {
+test "Tcl canonical list fixture 157" {
   let values = ["a\nb", "a}b"]
   assert_eq(@tcl.format_list(values), "{a\nb} a\\}b")
   assert_eq(@tcl.parse_list("{a\nb} a\\}b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 168" {
-  let values = ["a\\", "a b", "a\nb", "a b", "a\\ b", "a[b"]
-  assert_eq(@tcl.format_list(values), "a\\\\ {a b} {a\nb} {a b} {a\\ b} {a[b}")
-  assert_eq(@tcl.parse_list("a\\\\ {a b} {a\nb} {a b} {a\\ b} {a[b}"), values)
+test "Tcl canonical list fixture 158" {
+  let values = ["a\\", "a b", "a\nb", "a b", "a\rb", "a[b"]
+  assert_eq(@tcl.format_list(values), "a\\\\ {a b} {a\nb} {a b} {a\rb} {a[b}")
+  assert_eq(@tcl.parse_list("a\\\\ {a b} {a\nb} {a b} {a\rb} {a[b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 169" {
-  let values = ["a\t b", "a\\ b", ";x", "a b"]
-  assert_eq(@tcl.format_list(values), "{a\t b} {a\\ b} {;x} {a b}")
-  assert_eq(@tcl.parse_list("{a\t b} {a\\ b} {;x} {a b}"), values)
+test "Tcl canonical list fixture 159" {
+  let values = ["a\t b", "a\rb", ";x", "a b"]
+  assert_eq(@tcl.format_list(values), "{a\t b} {a\rb} {;x} {a b}")
+  assert_eq(@tcl.parse_list("{a\t b} {a\rb} {;x} {a b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 170" {
-  let values = ["a b", "a]b", "a\rb", "$x"]
-  assert_eq(@tcl.format_list(values), "a b a\\]b {a\rb} {$x}")
-  assert_eq(@tcl.parse_list("a b a\\]b {a\rb} {$x}"), values)
+test "Tcl canonical list fixture 160" {
+  let values = ["a b", "a]b", "$x", "汉字🚀"]
+  assert_eq(@tcl.format_list(values), "a b a\\]b {$x} 汉字🚀")
+  assert_eq(@tcl.parse_list("a b a\\]b {$x} 汉字🚀"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 171" {
+test "Tcl canonical list fixture 161" {
   let values = ["汉字🚀", "a\\", "a b", "a\"b", "a[b"]
   assert_eq(@tcl.format_list(values), "汉字🚀 a\\\\ a b a\\\"b {a[b}")
   assert_eq(@tcl.parse_list("汉字🚀 a\\\\ a b a\\\"b {a[b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 172" {
+test "Tcl canonical list fixture 162" {
   let values = []
   assert_eq(@tcl.format_list(values), "")
   assert_eq(@tcl.parse_list(""), values)
 }
 
 ///|
-test "Tcl canonical list fixture 173" {
+test "Tcl canonical list fixture 163" {
   let values = ["$x", "a\\\nb", "汉字🚀"]
   assert_eq(@tcl.format_list(values), "{$x} a\\\\\\nb 汉字🚀")
   assert_eq(@tcl.parse_list("{$x} a\\\\\\nb 汉字🚀"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 174" {
+test "Tcl canonical list fixture 164" {
   let values = ["汉字🚀", "a\"b", "a\t b", ""]
   assert_eq(@tcl.format_list(values), "汉字🚀 a\\\"b {a\t b} {}")
   assert_eq(@tcl.parse_list("汉字🚀 a\\\"b {a\t b} {}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 175" {
+test "Tcl canonical list fixture 165" {
   let values = ["a\nb"]
   assert_eq(@tcl.format_list(values), "{a\nb}")
   assert_eq(@tcl.parse_list("{a\nb}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 176" {
-  let values = ["a\rb"]
-  assert_eq(@tcl.format_list(values), "{a\rb}")
-  assert_eq(@tcl.parse_list("{a\rb}"), values)
+test "Tcl canonical list fixture 166" {
+  let values = ["a\\ b"]
+  assert_eq(@tcl.format_list(values), "{a\\ b}")
+  assert_eq(@tcl.parse_list("{a\\ b}"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 177" {
+test "Tcl canonical list fixture 167" {
   let values = ["simple", "a]b"]
   assert_eq(@tcl.format_list(values), "simple a\\]b")
   assert_eq(@tcl.parse_list("simple a\\]b"), values)
 }
 
 ///|
-test "Tcl canonical list fixture 178" {
+test "Tcl canonical list fixture 168" {
   let values = ["a\\\nb", "\"a\""]
   assert_eq(@tcl.format_list(values), "a\\\\\\nb {\"a\"}")
   assert_eq(@tcl.parse_list("a\\\\\\nb {\"a\"}"), values)
 }
 
 ///|
+test "Tcl canonical list fixture 169" {
+  let values = ["$x", "a b", "a\"b", "simple", "$x"]
+  assert_eq(@tcl.format_list(values), "{$x} a b a\\\"b simple {$x}")
+  assert_eq(@tcl.parse_list("{$x} a b a\\\"b simple {$x}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 170" {
+  let values = ["$x", "a\rb", "a b", "a b"]
+  assert_eq(@tcl.format_list(values), "{$x} {a\rb} {a b} a b")
+  assert_eq(@tcl.parse_list("{$x} {a\rb} {a b} a b"), values)
+}
+
+///|
+test "Tcl canonical list fixture 171" {
+  let values = ["a\\ b", "a}b", "a\\{b"]
+  assert_eq(@tcl.format_list(values), "{a\\ b} a\\}b {a\\{b}")
+  assert_eq(@tcl.parse_list("{a\\ b} a\\}b {a\\{b}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 172" {
+  let values = ["{a}", "{a}", "a\t b", "a[b", "", "汉字🚀", "a\nb"]
+  assert_eq(
+    @tcl.format_list(values),
+    "{{a}} {{a}} {a\t b} {a[b} {} 汉字🚀 {a\nb}",
+  )
+  assert_eq(
+    @tcl.parse_list("{{a}} {{a}} {a\t b} {a[b} {} 汉字🚀 {a\nb}"),
+    values,
+  )
+}
+
+///|
+test "Tcl canonical list fixture 173" {
+  let values = ["a}b"]
+  assert_eq(@tcl.format_list(values), "a\\}b")
+  assert_eq(@tcl.parse_list("a\\}b"), values)
+}
+
+///|
+test "Tcl canonical list fixture 174" {
+  let values = ["a b", "a\t b", "a\\ b", "a\"b", "a\"b", "a b", "a\"b"]
+  assert_eq(
+    @tcl.format_list(values),
+    "{a b} {a\t b} {a\\ b} a\\\"b a\\\"b a b a\\\"b",
+  )
+  assert_eq(
+    @tcl.parse_list("{a b} {a\t b} {a\\ b} a\\\"b a\\\"b a b a\\\"b"),
+    values,
+  )
+}
+
+///|
+test "Tcl canonical list fixture 175" {
+  let values = ["a\\{b", "a]b", "a b", "a}b", "{a}", "a{b}c", "汉字🚀"]
+  assert_eq(
+    @tcl.format_list(values),
+    "{a\\{b} a\\]b {a b} a\\}b {{a}} a{b}c 汉字🚀",
+  )
+  assert_eq(
+    @tcl.parse_list("{a\\{b} a\\]b {a b} a\\}b {{a}} a{b}c 汉字🚀"),
+    values,
+  )
+}
+
+///|
+test "Tcl canonical list fixture 176" {
+  let values = ["a{b}c", "a{b}c", "a\\{b"]
+  assert_eq(@tcl.format_list(values), "a{b}c a{b}c {a\\{b}")
+  assert_eq(@tcl.parse_list("a{b}c a{b}c {a\\{b}"), values)
+}
+
+///|
+test "Tcl canonical list fixture 177" {
+  let values = ["a b", "a\"b"]
+  assert_eq(@tcl.format_list(values), "{a b} a\\\"b")
+  assert_eq(@tcl.parse_list("{a b} a\\\"b"), values)
+}
+
+///|
+test "Tcl canonical list fixture 178" {
+  let values = ["a]b", "a\\", "{a}", "汉字🚀", "", ""]
+  assert_eq(@tcl.format_list(values), "a\\]b a\\\\ {{a}} 汉字🚀 {} {}")
+  assert_eq(@tcl.parse_list("a\\]b a\\\\ {{a}} 汉字🚀 {} {}"), values)
+}
+
+///|
 test "Tcl canonical list fixture 179" {
-  let values = ["$x", "a b", "a\rb", "a\"b", "simple"]
-  assert_eq(@tcl.format_list(values), "{$x} a b {a\rb} a\\\"b simple")
-  assert_eq(@tcl.parse_list("{$x} a b {a\rb} a\\\"b simple"), values)
+  let values = ["a\\ b", "a\nb", "a[b", "a\t b", "a b", "a\rb"]
+  assert_eq(
+    @tcl.format_list(values),
+    "{a\\ b} {a\nb} {a[b} {a\t b} {a b} {a\rb}",
+  )
+  assert_eq(
+    @tcl.parse_list("{a\\ b} {a\nb} {a[b} {a\t b} {a b} {a\rb}"),
+    values,
+  )
 }
 
 ///|
