@@ -7,12 +7,18 @@ root=Path(__file__).resolve().parents[1];tcl=tkinter.Tcl();assert tcl.eval('info
 rng=random.Random(20260910)
 def lit(s):return json.dumps(s,ensure_ascii=False)
 lines=['// Original scenarios; independent oracle: Tcl 8.6.']
-pool=['','simple','a b','a{b','a}b','a{b}c','{a}','a\\{b','a\\','a\\\nb','a\nb','a"b','"a"','a[b','a]b','$x',';x','#name','a#b','汉字🚀','a\t b','a\u00a0b','\x00','a\\ b','a\rb','\x07']
+# tkinter's Tcl bridge truncates strings containing NUL/BEL on some hosts.
+# Keep those controls in direct MoonBit regressions; do not claim Tcl itself
+# rejects them.
+pool=['','simple','a b','a{b','a}b','a{b}c','{a}','a\\{b','a\\','a\\\nb','a\nb','a"b','"a"','a[b','a]b','$x',';x','#name','a#b','汉字🚀','a\t b','a\u00a0b','a\\ b','a\rb']
 for i in range(180):
  values=[rng.choice(pool) for _ in range(rng.randrange(8))]
  # setvar avoids treating original values as script fragments.
  for j,value in enumerate(values):tcl.setvar('v'+str(j),value)
  result=tcl.eval('list '+' '.join('$v'+str(j) for j in range(len(values))))
+ parsed=list(tcl.splitlist(result))
+ if parsed != values:
+  raise RuntimeError(f'fixture {i} Tcl list round-trip mismatch: {values!r} != {parsed!r}')
  array='['+','.join(lit(v) for v in values)+']'
  lines+=['///|',f'test "Tcl canonical list fixture {i}" {{',f' let values={array}',f' assert_eq(@tcl.format_list(values),{lit(result)})',f' assert_eq(@tcl.parse_list({lit(result)}),values)','}']
 inputs=['{a\\\n b}','"a\\\n b"','a\\\n b','a\\',r'\x41 \u20ac \U0001f680 \777 \400',r'{a\{b} "quoted word" simple',r'{} "" { {nested} }',r'a"b a{b',r'{unterminated',r'"unterminated',r'{a}b',r'"a"b']

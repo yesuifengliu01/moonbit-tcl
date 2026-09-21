@@ -1,4 +1,19 @@
 ///|
+test "list format preserves NUL and BEL controls" {
+  let leading = ["\u0000", "\u0007", "after"]
+  assert_eq(@tcl.format_list(leading), "\u0000 \u0007 after")
+  assert_eq(@tcl.parse_list("\u0000 \u0007 after"), leading)
+
+  let middle = ["before", "\u0000", "\u0007", "after"]
+  assert_eq(@tcl.format_list(middle), "before \u0000 \u0007 after")
+  assert_eq(@tcl.parse_list("before \u0000 \u0007 after"), middle)
+
+  let trailing = ["before", "\u0007", "\u0000"]
+  assert_eq(@tcl.format_list(trailing), "before \u0007 \u0000")
+  assert_eq(@tcl.parse_list("before \u0007 \u0000"), trailing)
+}
+
+///|
 test "large list element and bounded list growth" {
   let text = Array::make(100000, "汉").join("")
   assert_eq(@tcl.parse_list("{" + text + "}"), [text])

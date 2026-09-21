@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "guolei-dev/tcl"
+package "yesuifengliu01/tcl"
 
 import {
   "moonbitlang/core/debug",
