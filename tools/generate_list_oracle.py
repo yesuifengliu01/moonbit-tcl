@@ -7,9 +7,9 @@ root=Path(__file__).resolve().parents[1];tcl=tkinter.Tcl();assert tcl.eval('info
 rng=random.Random(20260910)
 def lit(s):return json.dumps(s,ensure_ascii=False)
 lines=['// Original scenarios; independent oracle: Tcl 8.6.']
-# tkinter's Tcl bridge truncates strings containing NUL/BEL on some hosts.
-# Keep those controls in direct MoonBit regressions; do not claim Tcl itself
-# rejects them.
+# Some tkinter/Tcl bridges truncate embedded NULs. Keep NUL and BEL out of
+# the cross-host random transport pool; direct MoonBit regressions cover both.
+# This exclusion does not mean Tcl itself rejects these controls.
 pool=['','simple','a b','a{b','a}b','a{b}c','{a}','a\\{b','a\\','a\\\nb','a\nb','a"b','"a"','a[b','a]b','$x',';x','#name','a#b','汉字🚀','a\t b','a\u00a0b','a\\ b','a\rb']
 for i in range(180):
  values=[rng.choice(pool) for _ in range(rng.randrange(8))]

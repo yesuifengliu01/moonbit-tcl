@@ -11,6 +11,14 @@ test "list format preserves NUL and BEL controls" {
   let trailing = ["before", "\u0007", "\u0000"]
   assert_eq(@tcl.format_list(trailing), "before \u0007 \u0000")
   assert_eq(@tcl.parse_list("before \u0007 \u0000"), trailing)
+  // Controls inside an element must not truncate its suffix or later items.
+  for
+    value in [
+      "\u0000abc", "a\u0000bc", "abc\u0000", "\u0007abc", "a\u0007bc", "abc\u0007",
+    ] {
+    assert_eq(@tcl.format_list([value, "after"]), value + " after")
+    assert_eq(@tcl.parse_list(value + " after"), [value, "after"])
+  }
 }
 
 ///|

@@ -1,33 +1,46 @@
 {
-  "project": "moonbit-tcl",
-  "issue": "Python tkinter can truncate NUL/BEL values while transporting list fixtures on some hosts.",
-  "fix": {
-    "generator": "tools/generate_list_oracle.py",
-    "randomPool": "NUL and BEL removed only from the tkinter-fed random pool",
-    "selfCheck": "Each Tcl list result is split with tkinter.splitlist and compared with the original values before emission.",
-    "directRegression": "list_limits_test.mbt checks NUL and BEL at leading, middle and trailing positions without tkinter."
-  },
+  "recordedUtc": "2026-09-21T14:03:36.364725+00:00",
+  "scope": "Legacy list fixture generation, NUL/BEL direct contract and module-rename build repair. Interpreter runtime unchanged.",
   "windows": {
     "python": "3.14.4",
-    "tcl": "8.6.15",
-    "fixtures": 248,
-    "generatedSha256": "ac3889827ad77cd5d202fb560fbbba2bb4c5a6ae80b72267922519f26fe4d04",
-    "repeatGenerationBytesEqual": true,
-    "moonTests": {
-      "wasm-gc": {
-        "list_oracle_test.mbt": "248/248",
-        "list_limits_test.mbt": "4/4"
-      },
-      "js": {
-        "list_oracle_test.mbt": "248/248",
-        "list_limits_test.mbt": "4/4"
-      }
-    }
+    "tcl": "8.6.15"
   },
   "linux": {
-    "localStatus": "not run",
-    "reason": "Ubuntu-D WSL has no tkinter; Docker Desktop daemon was unavailable.",
-    "ciStatus": "not run"
+    "distribution": "WSL Ubuntu-D (Ubuntu 26.04)",
+    "python": "3.14.4",
+    "tcl": "8.6.17"
   },
-  "scope": "This evidence covers generator determinism and the direct list control-character contract; it does not claim full Tcl or cross-platform CI parity."
+  "rawWindowsSHA256": "ac3889827ad77cd5d202fb560fbbbaa2bb4c5a6ae80b72267922519f26fe4d04",
+  "rawLinuxSHA256": "ac3889827ad77cd5d202fb560fbbbaa2bb4c5a6ae80b72267922519f26fe4d04",
+  "rawGeneratedSHA256": "ac3889827ad77cd5d202fb560fbbbaa2bb4c5a6ae80b72267922519f26fe4d04",
+  "formattedGoldenSHA256": "168199356ce8c859db955b32f91735f62540c782b00098370436be548770c113",
+  "rawCrossHostBytesEqual": true,
+  "formattedRegenerationUnchanged": true,
+  "legacyOracleTestsPerBackend": 248,
+  "legacyOracleTestsPreviouslyPassed": [
+    "js",
+    "wasm-gc"
+  ],
+  "listLimitsTestsPerBackend": 4,
+  "newControlRegressionTestGroups": 1,
+  "oldGeneratorIssueReproducedOnThisLinux": false,
+  "remoteCIRun": false,
+  "checks": [
+    {
+      "previousInvocation": "fmt, regenerate, fmt and hash equality; info; check +unnecessary_annotation; 4/4 list-limit tests on JS and WasmGC; git diff --check all passed. Only printing Linux metadata failed with UnicodeEncodeError."
+    },
+    {
+      "command": [
+        "wsl",
+        "-d",
+        "Ubuntu-D",
+        "--exec",
+        "python3",
+        "-c",
+        "import platform,tkinter,json; print(json.dumps(dict(python=platform.python_version(),tcl=tkinter.Tcl().eval('info patchlevel'))))"
+      ],
+      "exitCode": 0,
+      "output": "{\"python\": \"3.14.4\", \"tcl\": \"8.6.17\"}\nw\u0000s\u0000l\u0000:\u0000 \u0000�hKm0R \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006tM�n\f�FO*g\\��P0R \u0000W\u0000S\u0000L\u0000\u00020N\u0000A\u0000T\u0000 \u0000!j\u000f_\u000bN�v \u0000W\u0000S\u0000L\u0000 \u0000\rN/e\u0001c \u0000l\u0000o\u0000c\u0000a\u0000l\u0000h\u0000o\u0000s\u0000t\u0000 \u0000�N\u0006t\u00020\r\u0000\n\u0000"
+    }
+  ]
 }
