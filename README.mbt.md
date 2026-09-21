@@ -59,7 +59,7 @@ test "procedure errors and depth budgets" {
 }
 ```
 
-限制：namespace 导入/导出、完整列表/字符串命令与外部 I/O 尚未完成；整数运算限 16384 位。详见 FEATURES.md。
+已实现 `namespace export/import/forget/origin/path/upvar/unknown` 和 ensemble 的部分能力；完整 Tcl 兼容、网络/进程/事件 I/O 与扩展生态仍未完成。各命令的覆盖范围和资源限制见 [README.md](README.md) 与 [FEATURES.md](FEATURES.md)。
 
 ## 过程、列表和通用循环
 
