@@ -1,7 +1,7 @@
 # Tcl 列表脚本与文件/包兼容层 · 修订申报草稿
 
 本项目仓库：https://github.com/yesuifengliu01/moonbit-tcl
-模块 / 本地版本：`yesuifengliu01/tcl` / `0.17.0`；许可证：MIT。
+模块 / 本地版本：`yesuifengliu01/tcl` / `0.17.0`；许可证：MIT AND Unicode-3.0。
 修订状态：条件复审；本轮仅本地修订，未推送或提交表单。
 
 ## 任务与选择依据
