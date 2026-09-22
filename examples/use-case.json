@@ -1,0 +1,15 @@
+{
+  "title": "按 Tcl 列表语义处理含空格文件清单",
+  "scope": "原创 Tcl 脚本；解释器的选择依据限 Tcl 兼容，不假设现存 EDA 用户。",
+  "steps": [
+    {
+      "args": [
+        "tools/cli.mjs",
+        "--file",
+        "examples/use-case/manifest.tcl",
+        "--eval-json"
+      ]
+    }
+  ],
+  "expected": "结果包含 2 个 .mbt 路径，src/main file.mbt 保持为一个列表元素。"
+}

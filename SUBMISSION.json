@@ -1,0 +1,17 @@
+{
+  "project": "tcl",
+  "title": "Tcl 列表脚本与文件/包兼容层",
+  "module": "yesuifengliu01/tcl",
+  "version": "0.17.0",
+  "repository": "https://github.com/yesuifengliu01/moonbit-tcl",
+  "status": "条件复审",
+  "remainingRisk": "团队报告过 oracle 维护问题，但没有确认的厂商/EDA 脚本；仍存在与 Forth 相同的必要性审查风险。",
+  "actualUsersClaimed": false,
+  "anonymousCloneVerified": true,
+  "publicHead": "cfc178dddf7c11cf7879ccfcbec9e0b1ff4325f5",
+  "defaultBranch": "origin/main",
+  "localChangesPublished": false,
+  "proposalLines": 25,
+  "useCase": "按 Tcl 列表语义处理含空格文件清单",
+  "diff": "本轮未找到直接同范围 Tcl 包，但已有多种解释器。选 Tcl 的依据只能是 Tcl 脚本兼容；不能把可嵌入本身包装成所有脚本场景的必要选择。没有已确认厂商脚本或 EDA 命令集。"
+}
