@@ -1,0 +1,14 @@
+{
+  "base": "c0869a961a87a507dbc9dc90135ed7aa92b90777",
+  "probe": {
+    "platform": "win32",
+    "root": "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\tcl-root-probe-mzDnle\\RootCase",
+    "alias": "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\tcl-root-probe-mzDnle\\ROOTCASE",
+    "result": {
+      "ok": true,
+      "result": "",
+      "output": ""
+    },
+    "rootStillExists": false
+  }
+}

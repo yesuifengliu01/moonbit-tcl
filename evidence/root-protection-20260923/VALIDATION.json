@@ -1,0 +1,90 @@
+{
+  "date": "2026-09-23",
+  "version": "0.17.1",
+  "base": "c0869a961a87a507dbc9dc90135ed7aa92b90777",
+  "checks": [
+    {
+      "name": "fmt",
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "fmt"
+      ],
+      "exit": 0,
+      "log": "fmt.log"
+    },
+    {
+      "name": "info",
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "info"
+      ],
+      "exit": 0,
+      "log": "info.log"
+    },
+    {
+      "name": "check",
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "check",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "log": "check.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "build",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "log": "build.log"
+    },
+    {
+      "name": "root-protection",
+      "command": [
+        "node",
+        "--test",
+        "tools/test-root-protection.mjs"
+      ],
+      "exit": 0,
+      "log": "root-protection.log"
+    },
+    {
+      "name": "file-reference",
+      "command": [
+        "node",
+        "tools/test-file-io.mjs"
+      ],
+      "exit": 0,
+      "log": "file-reference.log"
+    },
+    {
+      "name": "cli",
+      "command": [
+        "node",
+        "tools/test-cli.mjs"
+      ],
+      "exit": 0,
+      "log": "cli.log"
+    }
+  ],
+  "rootGroupsWindows": 4,
+  "referenceCases": 41,
+  "oldHostChecks": 6,
+  "coreMoonbitUnchanged": true,
+  "listOracleUnchanged": true,
+  "freshBuildIdenticalToBaseEngine": true,
+  "sourceSha256": {
+    "tools/file-session.mjs": "2710877a0674cea46e11bdd9011f1b4a8d433e699d55c4a8ef992e80f1391256",
+    "tools/test-root-protection.mjs": "adb526d1244effa58a62ff1bf3b356d8edefb5153f879f964f41b4dfb1f628c4",
+    "tools/test-file-io.mjs": "795f315dc66ea81a1619f5a667fde75b8cdb60ccf23c247f4520d397bc0b811a",
+    "tools/generate_list_oracle.py": "8bd54a1e918b724518885dceb1f4e21e132dbf1814aca09dbdde1d0d5c9189c8",
+    "web/engine.mjs": "06256800a4b651e41e6f08e1544f821f61e5971436dc9e577bba189e79df5afb"
+  },
+  "remoteWrites": false,
+  "remoteCiRun": false
+}

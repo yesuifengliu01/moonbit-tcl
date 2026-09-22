@@ -2,7 +2,7 @@
   "project": "tcl",
   "title": "Tcl 列表脚本与文件/包兼容层",
   "module": "yesuifengliu01/tcl",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "repository": "https://github.com/yesuifengliu01/moonbit-tcl",
   "status": "条件复审",
   "remainingRisk": "团队报告过 oracle 维护问题，但没有确认的厂商/EDA 脚本；仍存在与 Forth 相同的必要性审查风险。",

@@ -1,3 +1,7 @@
+# 0.17.1 文件根目录保护增量
+
+仅Node宿主修复，Windows4组根目录保护、原Tcl独立文件场景及CLI回归的命令和结果见 evidence/root-protection-20260923/VALIDATION.json。MoonBit核心未改，本轮未重跑其全部历史语义套件。具体边界见 ROOT-PROTECTION.md。以下为原版本历史记录。
+
 # Validation contract
 
 The legacy 248-case list/procedure/control generator accepts Tcl 8.6.x. Its random tkinter transport pool excludes NUL and BEL; embedded NUL truncation was reported on the GitHub runner, not a Tcl-language rejection. Each canonical `list` result is checked with `splitlist` against the original elements before any file is written. One new direct MoonBit regression group covers NUL/BEL as separate elements and inside elements at prefix/middle/suffix positions, including later list items. The other three groups in `list_limits_test.mbt` predate this fix.

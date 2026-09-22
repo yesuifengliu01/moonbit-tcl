@@ -2,7 +2,7 @@
 
 **本项目仓库：[https://github.com/yesuifengliu01/moonbit-tcl](https://github.com/yesuifengliu01/moonbit-tcl)**
 
-模块 `yesuifengliu01/tcl`，本地版本 **0.17.0**，MIT AND Unicode-3.0。当前评审状态：**条件复审**。本文件是当前入口，旧轮次说明与详细用法保存在 [历史/完整使用说明](README-BEFORE-VALUE-REWORK.md)。
+模块 `yesuifengliu01/tcl`，本地版本 **0.17.1**，MIT AND Unicode-3.0。当前评审状态：**条件复审**。本文件是当前入口，旧轮次说明与详细用法保存在 [历史/完整使用说明](README-BEFORE-VALUE-REWORK.md)。
 
 ## 解决什么任务
 
@@ -61,3 +61,5 @@ node tools/test-file-io.mjs
 2026-09-22 匿名新克隆成功；默认分支 `main`，核验公开提交 `cfc178dddf7c11cf7879ccfcbec9e0b1ff4325f5`。本轮源码修订仅在本地，尚未推送；此记录不证明当时报名表中的地址正确，也不证明新修订已上线。
 
 [申报草稿](PROPOSAL.md) 已压缩为 30 行以内，并单独标明本项目仓库；[复核说明](REVIEW-RESPONSE.md) 区分材料错误、功能变化及尚未解决的问题。没有编造用户、设备接入、生产部署或评审认可。
+
+0.17.1 修复 Windows 大小写别名绕过文件根目录删除保护的问题，并在遇到失效链接时拒绝继续向父目录寻找边界。4组真实目录回归及原Tcl文件互通通过；具体范围见 [ROOT-PROTECTION.md](ROOT-PROTECTION.md)。原NUL/BEL oracle确定性修复保持不变。

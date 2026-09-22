@@ -25,9 +25,14 @@ export class FileSession {
  #resolve(value,mutating=false){
   if(typeof value!=='string'||value.includes('\0')||value.startsWith('|'))throw Error('invalid file path');
   const resolved=path.resolve(this.#cwd,value);
-  if(!this.#inside(resolved)||(mutating&&resolved===this.#root))throw Error('path leaves the configured filesystem root');
+  if(!this.#inside(resolved)||(mutating&&path.relative(this.#root,resolved)===''))throw Error('path leaves the configured filesystem root');
   let parent=resolved;
-  while(!fs.existsSync(parent)){const next=path.dirname(parent);if(next===parent)throw Error('missing filesystem root');parent=next;}
+  // A dangling link exists as a directory entry. realpath must reject it before
+  // open/mkdir can follow it, rather than treating its parent as the boundary.
+  while(true){
+   try{fs.lstatSync(parent);break;}catch(error){if(error.code!=='ENOENT')throw error;}
+   const next=path.dirname(parent);if(next===parent)throw Error('missing filesystem root');parent=next;
+  }
   if(!this.#inside(fs.realpathSync(parent)))throw Error('symbolic link leaves the configured filesystem root');
   return resolved;
  }

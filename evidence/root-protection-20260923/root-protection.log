@@ -1,0 +1,12 @@
+✔ configured root remains protected for dot absolute and Windows case aliases (29.6341ms)
+✔ parent traversal and an outside directory link are rejected before mutation (30.5292ms)
+✔ dangling links do not become missing-path ancestors (14.7113ms)
+✔ ordinary in-root nested creation and deletion remain available (26.3715ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 288.4958
