@@ -1,5 +1,5 @@
 {
-  "utc": "2026-09-20T17:01:27.844Z",
+  "utc": "2026-09-22T13:14:52.645Z",
   "reference": "Unmodified local Tcl 8.6.15 via Python tkinter",
   "cases": 41,
   "matched": 41,
@@ -11,8 +11,8 @@
     "variables.mbt": "0e2d9b11122c6c2f10434b86c745a12a1a970d699afbf68b8565103ff3baace1",
     "strings.mbt": "3f870003509fef84cf463c7086acb47055d04db0ab526d9c676bf8733eb494c4",
     "cmd/web/main.mbt": "f386832a885186fbcf712c1ccc63990b6315d61d77ae11d09f94975365565b4a",
-    "cmd/web/moon.pkg": "9f9b15ac8f42b6de4f125436b320cf8469d697f2751788f056090b8e259df0cf",
-    "web/engine.mjs": "0849ff4166194bc5cf43f65a845327bcb602afe1ad1dcb4d82621e144c8495e6",
+    "cmd/web/moon.pkg": "7429002997f5ae2ac5252948087af7094f9a323d9a32bf05057b907100b38368",
+    "web/engine.mjs": "06256800a4b651e41e6f08e1544f821f61e5971436dc9e577bba189e79df5afb",
     "tools/file-session.mjs": "d5fd93ec17f1bec8738ca09cf36fc248d3a05808f63691a15ee9fa46affb2f4a",
     "tools/cli.mjs": "733ce87fe3aaef35d0ab22d0abdcaff7c588a2749d9c0a249df23915961e9868",
     "tools/file-io-cases.mjs": "e459a9b3e00e921bcfcf2769c6b072cb0866cc113c145453f5f7c02c38de8f89",

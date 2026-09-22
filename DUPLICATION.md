@@ -1,7 +1,17 @@
-# 查重范围与结论
+# tcl 查重与定位 · 2026-09-22
 
-2026-09-10 对关键词 `tcl` 查询 Mooncakes 官方包索引及 GitHub `tcl language:MoonBit`；后者返回 0 个仓库。
+本轮未找到直接同范围 Tcl 包，但已有多种解释器。选 Tcl 的依据只能是 Tcl 脚本兼容；不能把可嵌入本身包装成所有脚本场景的必要选择。没有已确认厂商脚本或 EDA 命令集。 检索原始响应在总交付包的创新性复核目录保存。
 
-在此公开检索范围内未发现同范围直接实现。**这不是全网无重复证明**，未覆盖全代码搜索、私有仓库、别名及完整比赛报名表。原始 URL 与返回摘要见 [证据](evidence/duplication.json)。
 
-规格参考：[https://www.tcl-lang.org/man/tcl8.6/TclCmd/Tcl.htm](https://www.tcl-lang.org/man/tcl8.6/TclCmd/Tcl.htm)。
+
+本轮材料采用定位：**Tcl 列表脚本与文件/包兼容层**。
+
+MoonBit 与宿主分工：MoonBit 实现 Tcl 解析、值、作用域、异常/返回与包加载；Node FileSession 提供限定根目录的文件 I/O。
+
+本轮证据：本轮 41 个场景与本机 Tcl8.6.15 实时比较一致，6 个宿主检查通过。已修复 NUL/BEL 经过 tkinter 导致跨环境 golden 不稳定的池输入；这不表示 Tcl 自身不支持控制字符。 具体输入、脚本、已执行与历史对照分开记录在 [PROPOSAL.md](PROPOSAL.md) 和 evidence/innovation-review-20260922/。
+
+边界：无任意 EDA/厂商扩展；没有网络/进程/事件通道、完整 auto_path 自动加载或所有编码。不要让潜在用途超出已验证脚本。
+
+检索覆盖 Mooncakes 官方关键词/别名、GitHub 仓库查询、GitLink 公开索引、直接来源文档；没有完整赛事报名表、私有仓库、未公开分支或 GitHub 全代码索引。GitLink 索引也不完整。未找到同范围项目不等于生态空白；已有相关项目不自动等于无独立贡献。完整查询和固定提交快照在总交付目录 innovation-review-20260922/。
+
+初次复核风险为“中”。本次补足差异和可复现工作流，没有自行将重叠归零，也不替评委作创新性认定。最终公开代码与表单附件须使用一致版本。

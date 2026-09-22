@@ -1,10 +1,12 @@
+> 2026-09-22 当前本地版 0.17.0：申报定位为“Tcl 列表脚本与文件/包兼容层”。已更新[现有项目对照](DUPLICATION.md)、[申报草稿](PROPOSAL.md)及[本轮验证](evidence/innovation-review-20260922/results.json)。下面带日期的旧轮次描述保留历史范围；团队已有公开仓库，本次本地修订尚未由本任务推送。
+
 > 0.17：已补真实文件会话、source 与常用 package 工作流，详见 [使用方法与范围](FILE-IO.md)。下文旧版本验证保留原日期。
 
 # MoonBit Tcl
 
 > 2026-09-21 本地构建修复：命令包 import 已同步到当前 moon.mod 模块名；moon info/check、JS 构建、MoonBit 示例和 Node 引擎示例通过。算法未改，本轮未重跑历史全部行为/性能套件。当前提交指纹见 evidence/module-import-fix.json。
 
-Tcl 8.6 脚本解释器，0.16.0。本地独立实现，仍在追平成熟项目的完整行为。
+Tcl 8.6 脚本解释器，当前 0.17.0；文件与包增量见 FILE-IO.md。本地独立实现，仍在追平成熟项目的完整行为。
 
 ## 0.16.0 数组游标、哈希统计与变量生命周期
 

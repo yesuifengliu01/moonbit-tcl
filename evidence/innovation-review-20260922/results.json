@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-22",
+  "project": "tcl",
+  "package": "yesuifengliu01/tcl",
+  "version": "0.17.0",
+  "code_base_commit_before_materials": "9c893fac5a5c74e26db599d388b84b687899234c",
+  "core_checks": [
+    {
+      "command": [
+        "moon",
+        "test",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "seconds": 22.14,
+      "log": "tcl-test---target-js.log"
+    },
+    {
+      "command": [
+        "moon",
+        "test",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit": 0,
+      "seconds": 13.96,
+      "log": "tcl-test---target-wasm-gc.log"
+    },
+    {
+      "command": [
+        "moon",
+        "build",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "seconds": 1.71,
+      "log": "tcl-build---target-js.log"
+    }
+  ],
+  "workflow_checks": [
+    {
+      "command": [
+        "node",
+        "tools/test-file-io.mjs"
+      ],
+      "exit": 0,
+      "seconds": 3.52,
+      "log": "tcl-workflow-0.log"
+    }
+  ],
+  "interpretation": "本轮 41 个场景与本机 Tcl8.6.15 实时比较一致，6 个宿主检查通过。已修复 NUL/BEL 经过 tkinter 导致跨环境 golden 不稳定的池输入；这不表示 Tcl 自身不支持控制字符。",
+  "limit": "无任意 EDA/厂商扩展；没有网络/进程/事件通道、完整 auto_path 自动加载或所有编码。不要让潜在用途超出已验证脚本。",
+  "remote_push_performed": false
+}
