@@ -1,12 +1,12 @@
-# Tcl 列表脚本与文件/包兼容层
+# MoonBit Tcl 8.6 脚本子集：列表、过程与受限文件
 
 **本项目仓库：[https://github.com/yesuifengliu01/moonbit-tcl](https://github.com/yesuifengliu01/moonbit-tcl)**
 
-模块 `yesuifengliu01/tcl`，本地版本 **0.17.1**，MIT AND Unicode-3.0。当前评审状态：**条件复审**。本文件是当前入口，旧轮次说明与详细用法保存在 [历史/完整使用说明](README-BEFORE-VALUE-REWORK.md)。
+模块 `yesuifengliu01/tcl`，本地版本 **0.17.1**，MIT AND Unicode-3.0。当前评审状态：**按新驳回意见整改**。本文件是当前入口，旧轮次说明与详细用法保存在 [历史/完整使用说明](README-BEFORE-VALUE-REWORK.md)。
 
 ## 解决什么任务
 
-执行明确受支持的 Tcl8.6 列表处理、source 和 package ifneeded 脚本，让 MoonBit 应用可承接这类脚本语义。团队使用中发现过 oracle 生成器的跨环境问题，这证明维护需求，但不能据此宣称已有 EDA 用户。
+执行明确受支持的 Tcl8.6 列表、过程及文件/包脚本。初始内置 65 个命令名，但只支持各命令的已列子集；[兼容边界表](COMPATIBILITY-BOUNDARY.md)按命令组列出支持内容和明确缺失。团队使用中发现过 oracle 生成器的跨环境问题，不能据此宣称已有 EDA 用户。
 
 只有 Tcl 脚本兼容需求能支撑选择；含空格列表、source 和 package 是具体语义，不等于任意嵌入场景都需要 Tcl。
 
@@ -32,7 +32,7 @@ node examples/run-use-case.mjs
 
 MoonBit 实现 Tcl 解析、值、作用域、异常/返回与包加载；Node FileSession 提供限定根目录的文件 I/O。
 
-本轮未找到直接同范围 Tcl 包，但已有多种解释器。选 Tcl 的依据只能是 Tcl 脚本兼容；不能把可嵌入本身包装成所有脚本场景的必要选择。没有已确认厂商脚本或 EDA 命令集。
+选 Tcl 的依据是已有 Tcl 脚本需要兼容限定子集；不能把“完整 Tcl 8.6”作为本项目的已完成范围。没有已确认厂商脚本或 EDA 命令集；具体能力、限制与证据见 [兼容边界表](COMPATIBILITY-BOUNDARY.md)。
 
 同类项目和检索边界见 [DUPLICATION](DUPLICATION.md)。查重用于避免错误的首创表述；关键词零结果不能证明生态空白，Node 宿主能力也不计为 MoonBit 原生 I/O。
 

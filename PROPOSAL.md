@@ -1,25 +1,15 @@
-# Tcl 列表脚本与文件/包兼容层 · 修订申报草稿
+# MoonBit Tcl 8.6 脚本子集：列表、过程与受限文件 · 复审草稿
 
 本项目仓库：https://github.com/yesuifengliu01/moonbit-tcl
-模块 / 本地版本：`yesuifengliu01/tcl` / `0.17.1`；许可证：MIT AND Unicode-3.0。
-修订状态：条件复审；本轮仅本地修订，未推送或提交表单。
+模块 / 本地版本：`yesuifengliu01/tcl` / `0.17.1`；许可证：MIT AND Unicode-3.0。仅本地修改，尚未推送或重交表单。
 
-## 任务与选择依据
-执行明确受支持的 Tcl8.6 列表处理、source 和 package ifneeded 脚本，让 MoonBit 应用可承接这类脚本语义。团队使用中发现过 oracle 生成器的跨环境问题，这证明维护需求，但不能据此宣称已有 EDA 用户。
-只有 Tcl 脚本兼容需求能支撑选择；含空格列表、source 和 package 是具体语义，不等于任意嵌入场景都需要 Tcl。
+## 修正标题与范围
+原标题“实现 Tcl 8.6 解释器”容易被理解为完整兼容，现明确定位为 **Tcl 8.6 脚本子集**。初始内置 65 个命令名，但选项与边界只按 [COMPATIBILITY-BOUNDARY.md](COMPATIBILITY-BOUNDARY.md) 的表格支持；内置名称数不能充当完整兼容率。
+实现脚本/变量/过程及常见控制命令；列表包括 `list/llength/lindex/lappend/lrange/lset/lsearch/lsort/lmap` 等；集合与文本包括 `array/dict/string/namespace/regexp/regsub/format/scan` 的已列子集。Node FileSession 在显式根目录内提供 `source`、常用文件通道和数字版本 package 流程。
 
-## 已实现内容
-MoonBit 实现 Tcl 解析、值、作用域、异常/返回与包加载；Node FileSession 提供限定根目录的文件 I/O。
-可复现任务：按 Tcl 列表语义处理含空格文件清单；按 README 构建后运行 `node examples/run-use-case.mjs`，输入与输出见 USE-CASE.md。
-前一轮工程验证 41 个场景与本机 Tcl8.6.15 实时比较一致，6 个宿主检查通过。已修复 NUL/BEL 经过 tkinter 导致跨环境 golden 不稳定的池输入；这不表示 Tcl 自身不支持控制字符。
+## 可运行任务及证据
+按 README 构建后，`node examples/run-use-case.mjs` 处理含空格文件名；`node tools/cli.mjs --input 'list [lsort {b a}] [lsearch {a b} b]' --eval-json` 返回 `{a b} 1`。`catch {exec foo}` 明确报告命令不存在。文件/包 41 个场景与 Tcl 8.6.15 独立比较，6 个宿主检查；原列表/过程/数组等兼容证据按 TESTING 与 FEATURES 的历史日期保留，不称整套官方测试通过。
 
-## 原创、复用与差异
-原创实现/参考来源/第三方材料许可按 README、DUPLICATION 与仓库来源说明披露；不将既有协议、算法、词库或规范发明归于本项目。
-本轮未找到直接同范围 Tcl 包，但已有多种解释器。选 Tcl 的依据只能是 Tcl 脚本兼容；不能把可嵌入本身包装成所有脚本场景的必要选择。没有已确认厂商脚本或 EDA 命令集。
-比较项目链接单列于 DUPLICATION.md，不作为本项目提交地址。检索范围不含完整未公开报名表，不能保证无重叠。
-
-## 边界与剩余计划
-无任意 EDA/厂商扩展；没有网络/进程/事件通道、完整 auto_path 自动加载或所有编码。不要让潜在用途超出已验证脚本。
-团队报告过 oracle 维护问题，但没有确认的厂商/EDA 脚本；仍存在与 Forth 相同的必要性审查风险。
-剩余计划：由对接团队核对真实表单链接、公开本轮对应提交及确认选题/换题流程；按实际接入输入补验证，避免以更多规则、测试数量或改名替代用途证据。
-交付：MoonBit 库、限定宿主入口、可运行任务、源码/来源说明及分层验证证据；不承诺自动通过初审。
+## 明确不支持
+不提供 `exec/socket/trace`、事件循环、完整 auto_path/pkgIndex、二进制扩展、全部编码/文件子命令、完整错误码或 Tcl 对象/字节码系统。正则、排序及转换仍有已记录差异；文件会话有资源和根目录约束，不是恶意脚本沙箱。没有确认的 EDA/厂商脚本用户，不能把潜在厂商兼容说成现有成果。
+需求仅限已有 Tcl 脚本需要在 MoonBit 中执行明确子集；普通脚本任务不必选择 Tcl。初审结论仍由组委会决定，团队同步源码后再核对表单标题及链接。

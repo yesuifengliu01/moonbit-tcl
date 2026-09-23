@@ -1,17 +1,17 @@
 {
   "project": "tcl",
-  "title": "Tcl 列表脚本与文件/包兼容层",
+  "title": "MoonBit Tcl 8.6 脚本子集：列表、过程与受限文件",
   "module": "yesuifengliu01/tcl",
   "version": "0.17.1",
   "repository": "https://github.com/yesuifengliu01/moonbit-tcl",
-  "status": "条件复审",
+  "status": "按新驳回意见整改",
   "remainingRisk": "团队报告过 oracle 维护问题，但没有确认的厂商/EDA 脚本；仍存在与 Forth 相同的必要性审查风险。",
   "actualUsersClaimed": false,
   "anonymousCloneVerified": true,
   "publicHead": "cfc178dddf7c11cf7879ccfcbec9e0b1ff4325f5",
   "defaultBranch": "origin/main",
   "localChangesPublished": false,
-  "proposalLines": 25,
+  "proposalLines": 15,
   "useCase": "按 Tcl 列表语义处理含空格文件清单",
-  "diff": "本轮未找到直接同范围 Tcl 包，但已有多种解释器。选 Tcl 的依据只能是 Tcl 脚本兼容；不能把可嵌入本身包装成所有脚本场景的必要选择。没有已确认厂商脚本或 EDA 命令集。"
+  "diff": "原标题暗示 Tcl 8.6 完整解释器，现明确为 65 个初始命令名中的已列子集；逐组说明支持的选项、文件宿主和缺失能力，不宣称全量兼容或厂商脚本接入。"
 }
