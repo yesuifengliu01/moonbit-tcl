@@ -63,3 +63,5 @@ node tools/test-file-io.mjs
 [申报草稿](PROPOSAL.md) 已压缩为 30 行以内，并单独标明本项目仓库；[复核说明](REVIEW-RESPONSE.md) 区分材料错误、功能变化及尚未解决的问题。没有编造用户、设备接入、生产部署或评审认可。
 
 0.17.1 修复 Windows 大小写别名绕过文件根目录删除保护的问题，并在遇到失效链接时拒绝继续向父目录寻找边界。4组真实目录回归及原Tcl文件互通通过；具体范围见 [ROOT-PROTECTION.md](ROOT-PROTECTION.md)。原NUL/BEL oracle确定性修复保持不变。
+
+CI固定的编译器与标准库版本见 [TOOLCHAIN.md](TOOLCHAIN.md)；升级时需同时核对生成产物。
