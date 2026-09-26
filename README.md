@@ -65,3 +65,5 @@ node tools/test-file-io.mjs
 0.17.1 修复 Windows 大小写别名绕过文件根目录删除保护的问题，并在遇到失效链接时拒绝继续向父目录寻找边界。4组真实目录回归及原Tcl文件互通通过；具体范围见 [ROOT-PROTECTION.md](ROOT-PROTECTION.md)。原NUL/BEL oracle确定性修复保持不变。
 
 CI固定的编译器与标准库版本见 [TOOLCHAIN.md](TOOLCHAIN.md)；升级时需同时核对生成产物。
+
+2026-09-27复核：包元数据与子集标题已同步，当前运行时与既有验证指纹相符；具体查核范围见 [REASSESSMENT.md](REASSESSMENT.md)。

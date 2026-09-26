@@ -1,0 +1,52 @@
+{
+  "utc": "2026-09-26T21:06:58.435960+00:00",
+  "version": "0.17.1",
+  "changes": "scope metadata and evidence traceability only",
+  "priorValidation": "evidence/root-protection-20260923/VALIDATION.json",
+  "unchangedRuntimeEvidence": [
+    {
+      "file": "tools/file-session.mjs",
+      "previousSha256": "2710877a0674cea46e11bdd9011f1b4a8d433e699d55c4a8ef992e80f1391256",
+      "currentRawSha256": "2710877a0674cea46e11bdd9011f1b4a8d433e699d55c4a8ef992e80f1391256",
+      "currentLfSha256": "2710877a0674cea46e11bdd9011f1b4a8d433e699d55c4a8ef992e80f1391256",
+      "matched": true
+    },
+    {
+      "file": "tools/test-root-protection.mjs",
+      "previousSha256": "adb526d1244effa58a62ff1bf3b356d8edefb5153f879f964f41b4dfb1f628c4",
+      "currentRawSha256": "adb526d1244effa58a62ff1bf3b356d8edefb5153f879f964f41b4dfb1f628c4",
+      "currentLfSha256": "adb526d1244effa58a62ff1bf3b356d8edefb5153f879f964f41b4dfb1f628c4",
+      "matched": true
+    },
+    {
+      "file": "tools/test-file-io.mjs",
+      "previousSha256": "795f315dc66ea81a1619f5a667fde75b8cdb60ccf23c247f4520d397bc0b811a",
+      "currentRawSha256": "795f315dc66ea81a1619f5a667fde75b8cdb60ccf23c247f4520d397bc0b811a",
+      "currentLfSha256": "795f315dc66ea81a1619f5a667fde75b8cdb60ccf23c247f4520d397bc0b811a",
+      "matched": true
+    },
+    {
+      "file": "tools/generate_list_oracle.py",
+      "previousSha256": "8bd54a1e918b724518885dceb1f4e21e132dbf1814aca09dbdde1d0d5c9189c8",
+      "currentRawSha256": "8bd54a1e918b724518885dceb1f4e21e132dbf1814aca09dbdde1d0d5c9189c8",
+      "currentLfSha256": "8bd54a1e918b724518885dceb1f4e21e132dbf1814aca09dbdde1d0d5c9189c8",
+      "matched": true
+    },
+    {
+      "file": "web/engine.mjs",
+      "previousSha256": "06256800a4b651e41e6f08e1544f821f61e5971436dc9e577bba189e79df5afb",
+      "currentRawSha256": "06256800a4b651e41e6f08e1544f821f61e5971436dc9e577bba189e79df5afb",
+      "currentLfSha256": "06256800a4b651e41e6f08e1544f821f61e5971436dc9e577bba189e79df5afb",
+      "matched": true
+    }
+  ],
+  "testsRerun": false,
+  "reason": "no runtime or oracle implementation changed; preserve existing verified results",
+  "limits": [
+    "not full Tcl8.6",
+    "65 initial command names, not compatibility percentage",
+    "not a hostile-code sandbox",
+    "no confirmed EDA/vendor adoption",
+    "local only"
+  ]
+}

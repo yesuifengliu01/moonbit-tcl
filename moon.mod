@@ -8,4 +8,4 @@ readme = "README.md"
 
 repository = "https://github.com/yesuifengliu01/moonbit-tcl"
 
-description = "Tcl 脚本解释器本地候选"
+description = "Bounded Tcl 8.6 script subset with explicit command and host IO limits"
