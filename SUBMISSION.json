@@ -5,13 +5,13 @@
   "version": "0.17.1",
   "repository": "https://github.com/yesuifengliu01/moonbit-tcl",
   "status": "原申报已驳回；本地修订待团队同步复审",
-  "remainingRisk": "团队报告过 oracle 维护问题，但没有确认的厂商/EDA 脚本；仍存在与 Forth 相同的必要性审查风险。",
+  "remainingRisk": "65个初始命令名不是兼容率；非EDA认证、恶意脚本沙箱或全扩展实现；未复现原Ubuntu报告不隐瞒",
   "actualUsersClaimed": false,
   "defaultBranch": "origin/main",
   "localChangesPublished": false,
   "proposalLines": 15,
-  "useCase": "按 Tcl 列表语义处理含空格文件清单",
-  "diff": "原标题暗示 Tcl 8.6 完整解释器，现明确为 65 个初始命令名中的已列子集；逐组说明支持的选项、文件宿主和缺失能力，不宣称全量兼容或厂商脚本接入。",
+  "useCase": "在MoonBit内执行声明范围内的列表、过程与受限文件脚本",
+  "diff": "Tcl和Jim Tcl已有成熟语义；只申报MoonBit可移植子集，不称完整Tcl8.6或生态首个脚本语言",
   "historicalAnonymousClone": {
     "publicHead": "cfc178dddf7c11cf7879ccfcbec9e0b1ff4325f5",
     "anonymousCloneVerified": true,
@@ -24,5 +24,6 @@
   "currentValidation": "evidence/scope-20260927/REVIEW.json",
   "currentEvidence": "evidence/scope-20260927/REVIEW.json",
   "metadataReviewedOn": "2026-09-27",
-  "currentEvidenceScope": "Module metadata aligned with explicit Tcl8.6 subset; runtime/host/oracle/engine hashes match existing evidence; no unnecessary runtime rewrite"
+  "currentEvidenceScope": "Module metadata aligned with explicit Tcl8.6 subset; runtime/host/oracle/engine hashes match existing evidence; no unnecessary runtime rewrite",
+  "reviewDecision": "保留明确子集移植"
 }
