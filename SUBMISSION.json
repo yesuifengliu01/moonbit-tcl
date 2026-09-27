@@ -5,11 +5,11 @@
   "version": "0.17.1",
   "repository": "https://github.com/yesuifengliu01/moonbit-tcl",
   "status": "原申报已驳回；本地修订待团队同步复审",
-  "remainingRisk": "65个初始命令名不是兼容率；非EDA认证、恶意脚本沙箱或全扩展实现；未复现原Ubuntu报告不隐瞒",
+  "remainingRisk": "明确Tcl8.6子集；65个初始命令名不是兼容率；非EDA认证/恶意脚本沙箱；未运行GitHub runner",
   "actualUsersClaimed": false,
   "defaultBranch": "origin/main",
   "localChangesPublished": false,
-  "proposalLines": 15,
+  "proposalLines": 17,
   "useCase": "在MoonBit内执行声明范围内的列表、过程与受限文件脚本",
   "diff": "Tcl和Jim Tcl已有成熟语义；只申报MoonBit可移植子集，不称完整Tcl8.6或生态首个脚本语言",
   "historicalAnonymousClone": {
@@ -21,9 +21,12 @@
   "license": "MIT AND Unicode-3.0",
   "acceptance": "not established",
   "remoteCIRunByThisTask": false,
-  "currentValidation": "evidence/scope-20260927/REVIEW.json",
-  "currentEvidence": "evidence/scope-20260927/REVIEW.json",
+  "currentValidation": "evidence/noble-20260927/LOCAL-CHECKS.json",
+  "currentEvidence": "evidence/noble-20260927/LOCAL-CHECKS.json",
   "metadataReviewedOn": "2026-09-27",
-  "currentEvidenceScope": "Module metadata aligned with explicit Tcl8.6 subset; runtime/host/oracle/engine hashes match existing evidence; no unnecessary runtime rewrite",
-  "reviewDecision": "保留明确子集移植"
+  "currentEvidenceScope": "Ubuntu24.04/Python3.12.3/Tcl8.6.14 original NUL empty string reproduced; fixed248-case generator raw hash matches Windows, formatted file equals committed golden; runtime/generator unchanged",
+  "reviewDecision": "保留明确子集移植",
+  "historicalEvidencePointers": {
+    "beforeUbuntu24Continuation": "evidence/scope-20260927/REVIEW.json"
+  }
 }

@@ -1,0 +1,20 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "tcl": "8.6.14",
+  "platform": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "osRelease": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "packages": "libtcl8.6:amd64\t8.6.14+dfsg-1build1\npython3\t3.12.3-0ubuntu2.1\npython3-tk:amd64\t3.12.3-0ubuntu1\ntcl8.6\t\n",
+  "nulProbe": {
+    "values": [
+      "\u0000",
+      "a\"b",
+      "a#b",
+      "a\\",
+      ""
+    ],
+    "result": "",
+    "parsed": [],
+    "error": null,
+    "roundTrip": false
+  }
+}

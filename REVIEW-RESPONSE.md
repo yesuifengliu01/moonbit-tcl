@@ -9,3 +9,5 @@
 团队曾报告 tkinter oracle 的跨环境问题，但没有确认的 EDA/厂商脚本接入。当前仅本地改动；对接团队核对公开代码与报名表标题后才可复申，组委会仍可继续评价实际必要性。
 
 2026-09-27复核：包元数据与子集标题已同步，当前运行时与既有验证指纹相符；具体查核范围见 [REASSESSMENT.md](REASSESSMENT.md)。
+
+2026-09-27后续核验：在隔离Ubuntu24.04/Python3.12.3/Tcl8.6.14复现了原含NUL列表返回空串；现有修复版生成248条夹具，原始hash与此前Windows一致，格式化后逐字节等于当前Git提交。证据见 [ORACLE-NOBLE](ORACLE-NOBLE.md)。这不是远端GitHub CI成功声明。

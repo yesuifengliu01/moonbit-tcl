@@ -1,0 +1,11 @@
+{
+  "officialSource": "docker.io/library/ubuntu:24.04",
+  "platform": "linux/amd64",
+  "manifestDigest": "sha256:496754492fb28b4d3049432f2ca787449331e23fb14f0dd3fffea86bf5a93eb4",
+  "configDigest": "sha256:6232b38791000e3818b58d8847b5a8f5612d606929e01156dd8febc423e0f2ef",
+  "layerDigests": [
+    "sha256:edd1ed89f0d443580bd42e5a10cd8736aba5a3438b2a0645c2ebb50119bb0eba"
+  ],
+  "localTag": "moonbit-reference/ubuntu-noble:20260927",
+  "allBlobsAndUncompressedLayersVerified": true
+}

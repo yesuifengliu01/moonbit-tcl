@@ -67,3 +67,5 @@ node tools/test-file-io.mjs
 CI固定的编译器与标准库版本见 [TOOLCHAIN.md](TOOLCHAIN.md)；升级时需同时核对生成产物。
 
 2026-09-27复核：包元数据与子集标题已同步，当前运行时与既有验证指纹相符；具体查核范围见 [REASSESSMENT.md](REASSESSMENT.md)。
+
+2026-09-27后续核验：在隔离Ubuntu24.04/Python3.12.3/Tcl8.6.14复现了原含NUL列表返回空串；现有修复版生成248条夹具，原始hash与此前Windows一致，格式化后逐字节等于当前Git提交。证据见 [ORACLE-NOBLE](ORACLE-NOBLE.md)。这不是远端GitHub CI成功声明。
