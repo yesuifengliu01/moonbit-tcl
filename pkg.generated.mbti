@@ -21,11 +21,14 @@ pub suberror TclError {
   Continue
   Signal(Completion)
 } derive(@debug.Debug)
+pub fn TclError::to_repr(Self) -> @debug.Repr
 
 // Types and methods
 type ArrayObject derive(@debug.Debug)
+pub fn ArrayObject::to_repr(Self) -> @debug.Repr
 
 type Binding derive(@debug.Debug)
+pub fn Binding::to_repr(Self) -> @debug.Repr
 
 pub struct CacheStats {
   scripts : Int
@@ -34,30 +37,41 @@ pub struct CacheStats {
   script_hits : Int
   expression_hits : Int
 } derive(@debug.Debug)
+pub fn CacheStats::to_repr(Self) -> @debug.Repr
 
 type Cell derive(@debug.Debug)
+pub fn Cell::to_repr(Self) -> @debug.Repr
 
 type Command derive(@debug.Debug)
+pub fn Command::to_repr(Self) -> @debug.Repr
 
 type CommandBody derive(@debug.Debug)
+pub fn CommandBody::to_repr(Self) -> @debug.Repr
 
 type Completion derive(@debug.Debug)
+pub fn Completion::to_repr(Self) -> @debug.Repr
 
 type DictObject derive(@debug.Debug)
+pub fn DictObject::to_repr(Self) -> @debug.Repr
 
 type Ensemble derive(@debug.Debug)
+pub fn Ensemble::to_repr(Self) -> @debug.Repr
 
 pub struct Evaluation {
   code : Int
   result : String
   options : String
 } derive(@debug.Debug)
+pub fn Evaluation::to_repr(Self) -> @debug.Repr
 
 type Expr derive(@debug.Debug)
+pub fn Expr::to_repr(Self) -> @debug.Repr
 
 type Frame derive(@debug.Debug)
+pub fn Frame::to_repr(Self) -> @debug.Repr
 
 type Handler derive(@debug.Debug)
+pub fn Handler::to_repr(Self) -> @debug.Repr
 
 pub struct Interpreter {
   state : State
@@ -75,30 +89,43 @@ pub fn Interpreter::new() -> Self
 pub fn Interpreter::output_text(Self) -> String
 pub fn Interpreter::printed(Self) -> String
 pub fn Interpreter::set_io(Self, (String, Array[String]) -> Result[String, String]) -> Unit
+pub fn Interpreter::to_repr(Self) -> @debug.Repr
 
 type ListObject derive(@debug.Debug)
+pub fn ListObject::to_repr(Self) -> @debug.Repr
 
 type ParseCache derive(@debug.Debug)
+pub fn ParseCache::to_repr(Self) -> @debug.Repr
 
 type ParsedCommand derive(@debug.Debug)
+pub fn ParsedCommand::to_repr(Self) -> @debug.Repr
 
 type Part derive(@debug.Debug)
+pub fn Part::to_repr(Self) -> @debug.Repr
 
 type Procedure derive(@debug.Debug)
+pub fn Procedure::to_repr(Self) -> @debug.Repr
 
 type ScriptParser derive(@debug.Debug)
+pub fn ScriptParser::to_repr(Self) -> @debug.Repr
 
 type ScriptProgram derive(@debug.Debug)
+pub fn ScriptProgram::to_repr(Self) -> @debug.Repr
 
 type State derive(@debug.Debug)
+pub fn State::to_repr(Self) -> @debug.Repr
 
 type TclValue derive(@debug.Debug)
+pub fn TclValue::to_repr(Self) -> @debug.Repr
 
 type ValuePayload derive(@debug.Debug)
+pub fn ValuePayload::to_repr(Self) -> @debug.Repr
 
 type VariableValue derive(@debug.Debug)
+pub fn VariableValue::to_repr(Self) -> @debug.Repr
 
 type Word derive(@debug.Debug)
+pub fn Word::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
