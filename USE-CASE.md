@@ -2,7 +2,7 @@
 
 该样例仅覆盖 [COMPATIBILITY-BOUNDARY.md](COMPATIBILITY-BOUNDARY.md) 所列脚本子集；“Tcl 8.6”指语义参考版本，不表示完整解释器兼容。
 
-执行明确受支持的 Tcl8.6 列表处理、source 和 package ifneeded 脚本，让 MoonBit 应用可承接这类脚本语义。团队使用中发现过 oracle 生成器的跨环境问题，这证明维护需求，但不能据此宣称已有 EDA 用户。
+执行明确受支持的 Tcl8.6 列表处理、source 和 package ifneeded 脚本，让 MoonBit 应用可承接这类脚本语义。先前使用中发现过 oracle 生成器的跨环境问题，这证明维护需求，但不能据此宣称已有 EDA 用户。
 
 ## 输入、操作、输出
 

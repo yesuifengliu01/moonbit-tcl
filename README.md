@@ -6,7 +6,7 @@
 
 ## 解决什么任务
 
-执行明确受支持的 Tcl8.6 列表、过程及文件/包脚本。初始内置 65 个命令名，但只支持各命令的已列子集；[兼容边界表](COMPATIBILITY-BOUNDARY.md)按命令组列出支持内容和明确缺失。团队使用中发现过 oracle 生成器的跨环境问题，不能据此宣称已有 EDA 用户。
+执行明确受支持的 Tcl8.6 列表、过程及文件/包脚本。初始内置 65 个命令名，但只支持各命令的已列子集；[兼容边界表](COMPATIBILITY-BOUNDARY.md)按命令组列出支持内容和明确缺失。先前使用中发现过 oracle 生成器的跨环境问题，不能据此宣称已有 EDA 用户。
 
 只有 Tcl 脚本兼容需求能支撑选择；含空格列表、source 和 package 是具体语义，不等于任意嵌入场景都需要 Tcl。
 
@@ -56,7 +56,7 @@ node tools/test-file-io.mjs
 
 ## 复审材料状态
 
-团队报告过 oracle 维护问题，但没有确认的厂商/EDA 脚本；仍存在与 Forth 相同的必要性审查风险。
+先前反馈过 oracle 维护问题，但没有确认的厂商/EDA 脚本；仍存在与 Forth 相同的必要性审查风险。
 
 2026-09-22 匿名新克隆成功；默认分支 `main`，核验公开提交 `cfc178dddf7c11cf7879ccfcbec9e0b1ff4325f5`。本轮源码修订仅在本地，尚未推送；此记录不证明当时报名表中的地址正确，也不证明新修订已上线。
 
@@ -86,4 +86,4 @@ moon package
 
 本地核验：JS/Wasm-GC 测试通过；248 条 Tcl oracle 夹具重生成、格式化后与仓库版本无差异。 `moon package` 已完成离线打包预检，它不等于已发布到 Mooncakes。
 
-公开交付（2026-09-28 核对）：当日 [https://github.com/yesuifengliu01/moonbit-tcl](https://github.com/yesuifengliu01/moonbit-tcl) 可匿名读取 Git HEAD，Mooncakes 在线版本为 `0.17.0`；此处源码版本 `0.17.1` 仍需由团队同步到公开仓库，检查新提交的 GitHub Actions，再由对应账号发布 Mooncakes 新版。相关远端 CI 与赛事结果仍需以实际记录核对。项目许可见 [LICENSE](LICENSE)；如使用第三方材料，其来源和许可见仓内相应说明。
+公开交付（2026-09-28 核对）：当日 [https://github.com/yesuifengliu01/moonbit-tcl](https://github.com/yesuifengliu01/moonbit-tcl) 可匿名读取 Git HEAD，Mooncakes 在线版本为 `0.17.0`；此处源码版本 `0.17.1` 仍需由申报人同步到公开仓库，检查新提交的 GitHub Actions，再由对应账号发布 Mooncakes 新版。相关远端 CI 与赛事结果仍需以实际记录核对。项目许可见 [LICENSE](LICENSE)；如使用第三方材料，其来源和许可见仓内相应说明。
