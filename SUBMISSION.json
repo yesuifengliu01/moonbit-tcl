@@ -1,15 +1,15 @@
 {
   "project": "tcl",
-  "title": "MoonBit Tcl 8.6 脚本子集：列表、过程与受限文件",
+  "title": "MoonBit Tcl 8.6 脚本子集：列表、过程与受限文件会话",
   "module": "yesuifengliu01/tcl",
   "version": "0.17.1",
   "repository": "https://github.com/yesuifengliu01/moonbit-tcl",
-  "status": "原申报已驳回；本地修订待团队同步复审",
+  "status": "已公开对应版号及成功 CI；本轮材料仅本地修订，赛事审核结果待核实；换题是否批准待核实",
   "remainingRisk": "明确Tcl8.6子集；65个初始命令名不是兼容率；非EDA认证/恶意脚本沙箱；未运行GitHub runner",
   "actualUsersClaimed": false,
   "defaultBranch": "origin/main",
   "localChangesPublished": false,
-  "proposalLines": 19,
+  "proposalLines": 23,
   "useCase": "在MoonBit内执行声明范围内的列表、过程与受限文件脚本",
   "diff": "Tcl和Jim Tcl已有成熟语义；只申报MoonBit可移植子集，不称完整Tcl8.6或生态首个脚本语言",
   "historicalAnonymousClone": {
@@ -23,10 +23,19 @@
   "remoteCIRunByThisTask": false,
   "currentValidation": "evidence/noble-20260927/LOCAL-CHECKS.json",
   "currentEvidence": "evidence/noble-20260927/LOCAL-CHECKS.json",
-  "metadataReviewedOn": "2026-09-28",
+  "metadataReviewedOn": "2026-09-29",
   "currentEvidenceScope": "Ubuntu24.04/Python3.12.3/Tcl8.6.14 original NUL empty string reproduced; fixed248-case generator raw hash matches Windows, formatted file equals committed golden; runtime/generator unchanged",
   "reviewDecision": "保留明确子集移植",
   "historicalEvidencePointers": {
     "beforeUbuntu24Continuation": "evidence/scope-20260927/REVIEW.json"
-  }
+  },
+  "publicRepositoryCreated": true,
+  "publicStatusCheckedOn": "2026-09-29",
+  "publishedVersion": "0.17.1",
+  "observedRemoteCiCommit": "02e7c535d3938662a237e5b24044e0dfdc27b377",
+  "observedRemoteCiUrl": "https://github.com/yesuifengliu01/moonbit-tcl/actions/runs/36436197901",
+  "observedRemoteCiConclusion": "success",
+  "currentCoreDiffersFromObservedCi": false,
+  "publishedCoreSourceComparedOn": "2026-09-29",
+  "publishedCoreSourceMatchesLocal": true
 }

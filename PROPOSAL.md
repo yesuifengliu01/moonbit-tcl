@@ -1,19 +1,23 @@
-# MoonBit Tcl 8.6 脚本子集：列表、过程与受限文件 · 复审草稿
+# MoonBit Tcl 8.6 脚本子集：列表、过程与受限文件会话
 
-本项目仓库：https://github.com/yesuifengliu01/moonbit-tcl
-模块 / 本地版本：`yesuifengliu01/tcl` / `0.17.1`；许可证：MIT AND Unicode-3.0。Mooncakes 已出现 0.17.1 版号；本次文档仍在本地，尚未重交表单。
+项目仓库：https://github.com/yesuifengliu01/moonbit-tcl。模块 `yesuifengliu01/tcl@0.17.1`；MIT AND Unicode-3.0。本次撤回容易被理解为完整兼容的旧标题，按实际命令子域申请复审。
 
-## 修正标题与范围
-原标题“实现 Tcl 8.6 解释器”容易被理解为完整兼容，现明确定位为 **Tcl 8.6 脚本子集**。初始内置 65 个命令名，但选项与边界只按 [COMPATIBILITY-BOUNDARY.md](COMPATIBILITY-BOUNDARY.md) 的表格支持；内置名称数不能充当完整兼容率。
-实现脚本/变量/过程及常见控制命令；列表包括 `list/llength/lindex/lappend/lrange/lset/lsearch/lsort/lmap` 等；集合与文本包括 `array/dict/string/namespace/regexp/regsub/format/scan` 的已列子集。Node FileSession 在显式根目录内提供 `source`、常用文件通道和数字版本 package 流程。
+## 适用任务与实现
 
-## 可运行任务及证据
-按 README 构建后，`node examples/run-use-case.mjs` 处理含空格文件名；`node tools/cli.mjs --input 'list [lsort {b a}] [lsearch {a b} b]' --eval-json` 返回 `{a b} 1`。`catch {exec foo}` 明确报告命令不存在。文件/包 41 个场景与 Tcl 8.6.15 独立比较，6 个宿主检查；原列表/过程/数组等兼容证据按 TESTING 与 FEATURES 的历史日期保留，不称整套官方测试通过。
+需要在 MoonBit 应用中执行既有 Tcl 列表、过程、集合或文本处理片段时，可以复用本库的脚本语义，并由宿主提供明确允许的文件入口。普通新脚本任务无需选择 Tcl；适用前提是输入确实依赖已支持的 Tcl 语义，而非仅因为“可以写一个解释器”。
 
-## 明确不支持
-不提供 `exec/socket/trace`、事件循环、完整 auto_path/pkgIndex、二进制扩展、全部编码/文件子命令、完整错误码或 Tcl 对象/字节码系统。正则、排序及转换仍有已记录差异；文件会话有资源和根目录约束，不是恶意脚本沙箱。没有确认的 EDA/厂商脚本用户，不能把潜在厂商兼容说成现有成果。
-需求仅限已有 Tcl 脚本需要在 MoonBit 中执行明确子集；普通脚本任务不必选择 Tcl。初审结论仍由组委会决定，申报人同步源码后再核对表单标题及链接。
+MoonBit 实现词法/求值、变量、过程、控制流，以及列表和 array/dict/string 等命令的已列子集。初始内置 65 个命令名，选项和兼容范围逐项列在 [COMPATIBILITY-BOUNDARY](COMPATIBILITY-BOUNDARY.md)，名称数量不充当兼容率。Node FileSession 在指定根目录内提供受限 source、文件通道与数字版本 package 流程。
 
-2026-09-27后续核验：在隔离Ubuntu24.04/Python3.12.3/Tcl8.6.14复现了原含NUL列表返回空串；现有修复版生成248条夹具，原始hash与此前Windows一致，格式化后逐字节等于当前Git提交。证据见 [ORACLE-NOBLE](ORACLE-NOBLE.md)。这不是远端GitHub CI成功声明。
+## 可直接运行的任务
 
-**验收复现与交付状态（2026-09-28 本地）**：以 moonc 0.10.14+7d59c7ec9 通过 `--deny-warn` 检查、JS/Wasm-GC 测试和构建、最小样例和离线 `moon package`；同一代码在 Ubuntu-D 26.04 WSL2 全新解包后通过格式、接口生成、严格双后端检查及 Node 24.21.0 最小宿主入口；截至 2026-09-29，公开 Git HEAD 为本地提交祖先；Mooncakes 最新版号 `0.17.1` 与本地版号相同；本次文档、包内容与远端 CI 尚需核对。命令与能力边界见 [README](README.md)，自动检查见 [CI](.github/workflows/ci.yml)；本地通过不代表赛事审核通过。
+按 README 构建后，`node examples/run-use-case.mjs` 处理含空格文件名的文本；`node tools/cli.mjs --input 'list [lsort {b a}] [lsearch {a b} b]' --eval-json` 返回 `{a b} 1`。文件/包 41 个场景与独立 Tcl 8.6.15 对比，宿主约束及其余列表/过程等历史证据分别在 TESTING 和 FEATURES 标注，未声称通过完整 Tcl 官方测试集。
+
+原有 oracle 的 NUL 跨环境问题已在隔离 Ubuntu 24.04、Python 3.12.3/Tcl 8.6.14 复现并验证修复；生成 248 条夹具与 Windows 相同，格式化后逐字节吻合提交文件，见 [ORACLE-NOBLE](ORACLE-NOBLE.md)。这一工程改进保证被声明的生成检查可复现，不扩张语言支持范围。
+
+## 已有工作与明确边界
+
+[Tcl](https://www.tcl-lang.org/) 已有成熟解释器，本项目不发明 Tcl 或声称 MoonBit 此前没有脚本语言。交付价值是可嵌入 MoonBit 的明确子集、确定输入输出与受限宿主契约；AI 生成脚本也需按同一边界核对，不能以生成成功代替执行正确。
+
+不提供 exec/socket/trace、事件循环、全部编码、完整 auto_path/pkgIndex、二进制扩展或完整错误体系；不是恶意脚本沙箱。当前无确认的 EDA/厂商脚本使用方，不将潜在兼容场景写成已有采用。完整交付包括核心、文件适配、可运行例子、兼容表、测试与来源许可，复审以这些可检查内容为依据。
+
+**公开状态（2026-09-29 核对）**：GitHub [公开仓库](https://github.com/yesuifengliu01/moonbit-tcl)、[Mooncakes 0.17.1](https://mooncakes.io/docs/yesuifengliu01/tcl@0.17.1) 已可访问；[CI 成功记录](https://github.com/yesuifengliu01/moonbit-tcl/actions/runs/36436197901) 对应 `02e7c535d393`。本次材料更新尚未推送；该远端 CI 对应所列公开提交。报名表一致性及赛事审核结果尚未核实。
