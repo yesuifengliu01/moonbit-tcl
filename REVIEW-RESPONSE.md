@@ -1,13 +1,19 @@
-# Tcl 初审意见回复草稿 · 2026-09-23
+# Tcl 初审意见回复 · 2026-09-30
 
-“实现 Tcl 8.6 解释器”的旧标题暗示完整兼容，组委会指出的标题/正文落差成立。现改为“**MoonBit Tcl 8.6 脚本子集：列表、过程与受限文件**”，不再把已实现的几条命令推成 Tcl 8.6 全量。
+原题名“实现 Tcl 8.6 解释器”超出了已验证范围，现统一为“MoonBit Tcl 脚本子集：直接重用既有 Tcllib 数据处理代码”。申请范围与 [申报书](PROPOSAL.md)、[README](README.md) 和模块元数据一致。
 
-[COMPATIBILITY-BOUNDARY.md](COMPATIBILITY-BOUNDARY.md) 从 `runtime.mbt` 的注册表列出 65 个初始命令名，按五组区分脚本/过程、列表、控制、集合/文本和受限文件/包，并明确每组只覆盖已列的选项。`exec/socket/trace`、事件循环、自动包扫描、二进制扩展、完整编码及字节码未实现；浏览器会话没有真实文件宿主。Node FileSession 需配置根目录且有限额，不能作为任意 Tcl 脚本的沙箱。
+## 对兼容边界的修正
 
-可复现的正例：CLI 中 `lsort` 与 `lsearch` 返回 `{a b} 1`；反例：`catch {exec foo}` 返回找不到命令。真实 `source`、文件/包流程与 Tcl 8.6.15 的 41 个独立场景比较及 6 项宿主检查仍按原日期保存。已有正则、排序、转换差异和超时样本在 FEATURES/TESTING 中继续列明，不用“已通过官方全部套件”概括。
+[兼容边界表](COMPATIBILITY-BOUNDARY.md) 列出 65 个初始命令名及各命令组选项范围。命令数量不是兼容率；未实现的 exec/socket/trace、事件循环、完整包索引、二进制扩展和完整编码仍逐项列出。Node FileSession 的根目录与资源预算是宿主约束，不是恶意 Tcl 脚本隔离保证。
 
-此前收到关于 tkinter oracle 的跨环境问题，但没有确认的 EDA/厂商脚本接入。当前仅本地改动；申报人核对公开代码与报名表标题后才可复申，组委会仍可继续评价实际必要性。
+## 已实现的使用依据
 
-2026-09-27复核：包元数据与子集标题已同步，当前运行时与既有验证指纹相符；具体查核范围见 [REASSESSMENT.md](REASSESSMENT.md)。
+0.18.0 直接加载固定提交的 Tcllib csv 0.10 原始源码，读取含逗号、双引号和跨行字段的文件，按第三列筛选后调用原 csv::joinlist 导出。MoonBit 负责脚本执行、作用域、列表及数字版本包选择，Node 负责文件；CSV 算法归属 Tcllib。源文件、SHA-256、许可及复现命令见 [TCLLIB-CSV](TCLLIB-CSV.md)。
 
-2026-09-27后续核验：在隔离Ubuntu24.04/Python3.12.3/Tcl8.6.14复现了原含NUL列表返回空串；现有修复版生成248条夹具，原始hash与此前Windows一致，格式化后逐字节等于当前Git提交。证据见 [ORACLE-NOBLE](ORACLE-NOBLE.md)。这不是远端GitHub CI成功声明。
+该消费者的 17 项行为与 Windows Tcl 8.6.15、Ubuntu Tcl 8.6.17 对照一致；实际文件流程在两平台运行，核心 JS/Wasm-GC 各 11217 项通过，回执见 [tcllib-csv.json](evidence/tcllib-csv.json)。只验证 csv::split/join/joinlist/iscomplete，不扩大为全部 Tcllib、matrix/queue 或厂商 EDA 脚本兼容，也不声称上游采用。
+
+## 确定性与当前交付
+
+原 tkinter/NUL 问题的修复独立保留：Ubuntu 24.04/Python 3.12.3/Tcl 8.6.14 中已复现旧问题，修复后 248 条夹具与 Windows 及仓内格式化结果逐字节一致，见 [ORACLE-NOBLE](ORACLE-NOBLE.md)。较早的 41 个文件/包场景、已知正则/排序差异及超时记录仍按日期保存在 TESTING/FEATURES 中。
+
+最后核对的公开包为 0.17.1；本地候选 0.18.0 尚未推送或发布，新增消费者没有已观察到的同版公开 CI。复申需同步当前题名、完整仓库链接、代码和证据；现有材料支持明确子集的工程评估，最终审核由组委会决定。

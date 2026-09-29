@@ -1,4 +1,4 @@
-# MoonBit Tcl 8.6 脚本子集：列表、过程与受限文件
+# MoonBit Tcl 脚本子集：直接重用既有 Tcllib 数据处理代码
 
 **本项目仓库：[https://github.com/yesuifengliu01/moonbit-tcl](https://github.com/yesuifengliu01/moonbit-tcl)**
 

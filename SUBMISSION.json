@@ -1,6 +1,6 @@
 {
   "project": "tcl",
-  "title": "MoonBit Tcl 脚本子集：重用既有 Tcllib 数据处理代码",
+  "title": "MoonBit Tcl 脚本子集：直接重用既有 Tcllib 数据处理代码",
   "module": "yesuifengliu01/tcl",
   "version": "0.18.0",
   "repository": "https://github.com/yesuifengliu01/moonbit-tcl",
@@ -23,7 +23,7 @@
   "remoteCIRunByThisTask": false,
   "currentValidation": "evidence/tcllib-csv.json",
   "currentEvidence": "evidence/tcllib-csv.json",
-  "metadataReviewedOn": "2026-09-29",
+  "metadataReviewedOn": "2026-09-30",
   "currentEvidenceScope": "Original pinned Tcllib CSV; 17 live Tcl 8.6.15 and 8.6.17 comparisons; real file adapter on Windows/Linux; 11217 tests per backend",
   "reviewDecision": "保留明确子集移植",
   "historicalEvidencePointers": {
