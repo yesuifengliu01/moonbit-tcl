@@ -1,0 +1,95 @@
+{
+  "utc": "2026-09-29T12:26:19.715Z",
+  "upstream": {
+    "repository": "tcltk/tcllib",
+    "commit": "29bce268ae8d21a688d1a1efb256acc0e030a6a6",
+    "files": {
+      "csv.tcl": "0747b76dcc049d2ac0c2d5c1ac6ce598b59c36c24a63ead6b680950b8cd1a676",
+      "license.terms": "38e1f556213f4008cfd280457af57c76a1fe043dc026ece1c704c09b5f6e865c"
+    },
+    "scope": "Unmodified Tcllib csv 0.10 source; tested split/join/joinlist/iscomplete subset, not queue or matrix APIs"
+  },
+  "referenceVersion": "8.6.15",
+  "results": [
+    {
+      "name": "plain",
+      "matched": true
+    },
+    {
+      "name": "quoted separators",
+      "matched": true
+    },
+    {
+      "name": "empty fields",
+      "matched": true
+    },
+    {
+      "name": "unicode",
+      "matched": true
+    },
+    {
+      "name": "multiline field",
+      "matched": true
+    },
+    {
+      "name": "semicolon",
+      "matched": true
+    },
+    {
+      "name": "alternate",
+      "matched": true
+    },
+    {
+      "name": "custom delimiter",
+      "matched": true
+    },
+    {
+      "name": "join",
+      "matched": true
+    },
+    {
+      "name": "always quote",
+      "matched": true
+    },
+    {
+      "name": "roundtrip",
+      "matched": true
+    },
+    {
+      "name": "joinlist",
+      "matched": true
+    },
+    {
+      "name": "incomplete record",
+      "matched": true
+    },
+    {
+      "name": "invalid separator",
+      "matched": true
+    },
+    {
+      "name": "invalid delimiter",
+      "matched": true
+    },
+    {
+      "name": "alternative package selection",
+      "matched": true
+    },
+    {
+      "name": "invalid later requirement",
+      "matched": true
+    }
+  ],
+  "consumer": {
+    "rows": 2,
+    "outputSha256": "59cbbef6c10320951b7b8d19658283bbe679594cc0195d84912fa777afcbdcdd",
+    "retainsQuotedSeparator": true,
+    "retainsMultiline": true
+  },
+  "engineSha256": "5c022602241407b201c8c29ba995d66798fee55117db1e1e24b3294d2fba39ca",
+  "limits": [
+    "application explicitly opts into tested Tcl 8.6 package profile",
+    "not all Tcllib csv APIs; matrix/queue adapters untested",
+    "no Tcl/EDA completeness or customer adoption claim"
+  ]
+}

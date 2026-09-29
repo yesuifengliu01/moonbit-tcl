@@ -1,0 +1,5 @@
+name,path,action
+"part,one","src/a b.mbt",keep
+skip,temporary,drop
+"line
+two","a""b",keep

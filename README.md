@@ -2,13 +2,19 @@
 
 **本项目仓库：[https://github.com/yesuifengliu01/moonbit-tcl](https://github.com/yesuifengliu01/moonbit-tcl)**
 
-模块 `yesuifengliu01/tcl`，本地版本 **0.17.1**，MIT AND Unicode-3.0。当前评审状态：**按新驳回意见整改**。本文件是当前入口，旧轮次说明与详细用法保存在 [历史/完整使用说明](README-BEFORE-VALUE-REWORK.md)。
+模块 `yesuifengliu01/tcl`，本地版本 **0.18.0**，MIT AND Unicode-3.0。当前评审状态：**按新驳回意见整改**。本文件是当前入口，旧轮次说明与详细用法保存在 [历史/完整使用说明](README-BEFORE-VALUE-REWORK.md)。
 
 ## 解决什么任务
 
 执行明确受支持的 Tcl8.6 列表、过程及文件/包脚本。初始内置 65 个命令名，但只支持各命令的已列子集；[兼容边界表](COMPATIBILITY-BOUNDARY.md)按命令组列出支持内容和明确缺失。先前使用中发现过 oracle 生成器的跨环境问题，不能据此宣称已有 EDA 用户。
 
 只有 Tcl 脚本兼容需求能支撑选择；含空格列表、source 和 package 是具体语义，不等于任意嵌入场景都需要 Tcl。
+
+## 原始 Tcllib 脚本消费
+
+0.18.0 新增数字版本多候选 `package require/present` 支持，可加载固定提交的**未改写 Tcllib csv 0.10** 源码。消费示例用它筛选 CSV 文件，保留带逗号、引号及跨行字段；完整脚本、来源哈希、许可、适配和范围见 [TCLLIB-CSV](TCLLIB-CSV.md)。CSV 算法属于 Tcllib，本项目验证的是 MoonBit 解释器重用既有 Tcl 代码，不把它包装成自创 CSV 库。
+
+应用适配层显式声明经过验证的 Tcl 8.6 语言 profile；默认解释器不宣称完整 Tcl 8.6。17 项实际执行与 Windows Tcl 8.6.15、Ubuntu Tcl 8.6.17 对照一致；文件消费路径两平台通过，MoonBit JS/Wasm-GC 各 11217 项通过。0.18.0 仅本地，未推送、未发布，旧 CI 不覆盖该更新。
 
 ## 直接复现
 
@@ -36,7 +42,7 @@ MoonBit 实现 Tcl 解析、值、作用域、异常/返回与包加载；Node F
 
 同类项目和检索边界见 [DUPLICATION](DUPLICATION.md)。查重用于避免错误的首创表述；关键词零结果不能证明生态空白，Node 宿主能力也不计为 MoonBit 原生 I/O。
 
-库使用从 [公共 API](pkg.generated.mbti) 和根包源码开始；可在本 checkout 的消费包中导入 `"yesuifengliu01/tcl"`。源码中的网络/文件宿主入口及完整参数仍见 [完整使用说明](README-BEFORE-VALUE-REWORK.md)。是否已发布到 Mooncakes 需另核实，本文不把 `moon add` 的下载成功作为已完成事项。
+库使用从 [公共 API](pkg.generated.mbti) 和根包源码开始；可在本 checkout 的消费包中导入 `"yesuifengliu01/tcl"`。源码中的网络/文件宿主入口及完整参数仍见 [完整使用说明](README-BEFORE-VALUE-REWORK.md)。已发布版本为 0.17.1；本地 0.18.0 的新增消费路径尚待发布。
 
 ## 验证与边界
 
@@ -56,7 +62,7 @@ node tools/test-file-io.mjs
 
 ## 复审材料状态
 
-先前反馈过 oracle 维护问题，但没有确认的厂商/EDA 脚本；仍存在与 Forth 相同的必要性审查风险。
+先前反馈过 oracle 维护问题，但没有确认的厂商/EDA 脚本；现在已有原始 Tcllib CSV 脚本的直接消费证据，仍不声称存在外部采用方。
 
 2026-09-22 匿名新克隆成功；默认分支 `main`，核验公开提交 `cfc178dddf7c11cf7879ccfcbec9e0b1ff4325f5`。这条历史记录只证明当日状态；2026-09-29 公开 HEAD 仍早于本次本地文档提交，报名表地址须另核。
 
@@ -87,4 +93,4 @@ moon package
 本地核验：JS/Wasm-GC 测试通过；248 条 Tcl oracle 夹具重生成、格式化后与仓库版本无差异。 `moon package` 已完成离线打包预检，它不等于已发布到 Mooncakes。
 
 
-**公开状态（2026-09-29 核对）**：GitHub [公开仓库](https://github.com/yesuifengliu01/moonbit-tcl)、[Mooncakes 0.17.1](https://mooncakes.io/docs/yesuifengliu01/tcl@0.17.1) 已可访问；[CI 成功记录](https://github.com/yesuifengliu01/moonbit-tcl/actions/runs/36436197901) 对应 `02e7c535d393`。本次材料更新尚未推送；该远端 CI 对应所列公开提交。报名表一致性及赛事审核结果尚未核实。
+**公开状态（2026-09-29 核对）**：GitHub [公开仓库](https://github.com/yesuifengliu01/moonbit-tcl)、[Mooncakes 0.17.1](https://mooncakes.io/docs/yesuifengliu01/tcl@0.17.1) 已可访问；[CI 成功记录](https://github.com/yesuifengliu01/moonbit-tcl/actions/runs/36436197901) 对应 `02e7c535d393`。本地 0.18.0 尚未推送或发布；该远端 CI 只对应旧公开提交。报名表一致性及赛事审核结果尚未核实。

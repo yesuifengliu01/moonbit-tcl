@@ -130,23 +130,31 @@ fn Interpreter::package_command(
     "require" | "present" => {
       let exact = n > 2 && values[2] == "-exact"
       let start = if exact { 3 } else { 2 }
-      if n < start + 1 || n > start + 2 || (exact && n != start + 2) {
-        raise Invalid("package require ?-exact? name ?version?")
+      if n < start + 1 || (exact && n != start + 2) {
+        raise Invalid(
+          "package require name ?requirement ...? or -exact name version",
+        )
       }
       let name = values[start]
-      let requested = values.get(start + 1)
-      if requested is Some(version) {
+      let requested = values[start + 1:].to_owned()
+      // Validate every alternative, including ones after a successful match.
+      // This profile supports released numeric min-bounded requirements.
+      for version in requested {
         ignore(package_version(version))
       }
       let compatible = fn(version) raise TclError {
-        match requested {
-          None => true
-          Some(required) =>
-            if exact {
-              compare_versions(version, required) == 0
-            } else {
-              package_satisfies(version, required)
+        if requested.is_empty() {
+          true
+        } else if exact {
+          compare_versions(version, requested[0]) == 0
+        } else {
+          let mut matched = false
+          for required in requested {
+            if package_satisfies(version, required) {
+              matched = true
             }
+          }
+          matched
         }
       }
       if self.state.packages.get(name) is Some(version) {

@@ -38,6 +38,7 @@ jobs:
       - run: node tools/test-completions.mjs
       - run: node tools/test-namespaces.mjs
       - run: node tools/test-sessions.mjs
+      - run: node tools/test-tcllib-csv.mjs
       - run: node --test tools/test-root-protection.mjs
       - run: python3 tools/test-http.py
       - run: node tools/semantic-stress.mjs

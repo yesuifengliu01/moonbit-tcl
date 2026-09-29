@@ -15038,62 +15038,62 @@ function _M0FPC14math3exp(_tmp) {
 function _M0FPC14math5hypot(_tmp, _tmp$2) {
   return Math.hypot(_tmp, _tmp$2);
 }
-function _M0IP214yesuifengliu013tcl8TclValuePC15debug5Debug8to__repr(_x_2600) {
-  const _bind$2 = [{ _0: "text", _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_x_2600.text) }, { _0: "payload", _1: _M0IP214yesuifengliu013tcl12ValuePayloadPC15debug5Debug8to__repr(_x_2600.payload) }];
+function _M0IP214yesuifengliu013tcl8TclValuePC15debug5Debug8to__repr(_x_2601) {
+  const _bind$2 = [{ _0: "text", _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_x_2601.text) }, { _0: "payload", _1: _M0IP214yesuifengliu013tcl12ValuePayloadPC15debug5Debug8to__repr(_x_2601.payload) }];
   return _M0MPC15debug4Repr6record(_M0MPB3Map3MapGsRPC15debug4ReprE(new _M0TPB9ArrayViewGUsRPC15debug4ReprEE(_bind$2, 0, 2), undefined));
 }
-function _M0IP214yesuifengliu013tcl6NumberPC15debug5Debug8to__repr(_x_2536) {
-  let _arg_2539;
+function _M0IP214yesuifengliu013tcl6NumberPC15debug5Debug8to__repr(_x_2537) {
+  let _arg_2540;
   _L: {
-    let _arg_2538;
+    let _arg_2539;
     _L$2: {
-      let _arg_2537;
+      let _arg_2538;
       _L$3: {
-        switch (_x_2536.$tag) {
+        switch (_x_2537.$tag) {
           case 0: {
-            const _Small = _x_2536;
-            const _$42$arg_2537 = _Small._0;
-            _arg_2537 = _$42$arg_2537;
+            const _Small = _x_2537;
+            const _$42$arg_2538 = _Small._0;
+            _arg_2538 = _$42$arg_2538;
             break _L$3;
           }
           case 1: {
-            const _Whole = _x_2536;
-            const _$42$arg_2538 = _Whole._0;
-            _arg_2538 = _$42$arg_2538;
+            const _Whole = _x_2537;
+            const _$42$arg_2539 = _Whole._0;
+            _arg_2539 = _$42$arg_2539;
             break _L$2;
           }
           default: {
-            const _Real = _x_2536;
-            const _$42$arg_2539 = _Real._0;
-            _arg_2539 = _$42$arg_2539;
+            const _Real = _x_2537;
+            const _$42$arg_2540 = _Real._0;
+            _arg_2540 = _$42$arg_2540;
             break _L;
           }
         }
       }
-      return _M0MPC15debug4Repr4ctor("Small", [{ _0: undefined, _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_arg_2537) }]);
+      return _M0MPC15debug4Repr4ctor("Small", [{ _0: undefined, _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_arg_2538) }]);
     }
-    return _M0MPC15debug4Repr4ctor("Whole", [{ _0: undefined, _1: _M0IPC16bigint6BigIntPC15debug5Debug8to__repr(_arg_2538) }]);
+    return _M0MPC15debug4Repr4ctor("Whole", [{ _0: undefined, _1: _M0IPC16bigint6BigIntPC15debug5Debug8to__repr(_arg_2539) }]);
   }
-  return _M0MPC15debug4Repr4ctor("Real", [{ _0: undefined, _1: _M0IPC16double6DoublePC15debug5Debug8to__repr(_arg_2539) }]);
+  return _M0MPC15debug4Repr4ctor("Real", [{ _0: undefined, _1: _M0IPC16double6DoublePC15debug5Debug8to__repr(_arg_2540) }]);
 }
-function _M0IP214yesuifengliu013tcl8TclErrorPC15debug5Debug8to__repr(_x_2504) {
-  let _arg_2507;
+function _M0IP214yesuifengliu013tcl8TclErrorPC15debug5Debug8to__repr(_x_2505) {
+  let _arg_2508;
   _L: {
-    let _arg_2506;
+    let _arg_2507;
     _L$2: {
-      let _arg_2505;
+      let _arg_2506;
       _L$3: {
-        switch (_x_2504.$tag) {
+        switch (_x_2505.$tag) {
           case 4: {
-            const _Invalid = _x_2504;
-            const _$42$arg_2505 = _Invalid._0;
-            _arg_2505 = _$42$arg_2505;
+            const _Invalid = _x_2505;
+            const _$42$arg_2506 = _Invalid._0;
+            _arg_2506 = _$42$arg_2506;
             break _L$3;
           }
           case 3: {
-            const _Return = _x_2504;
-            const _$42$arg_2506 = _Return._0;
-            _arg_2506 = _$42$arg_2506;
+            const _Return = _x_2505;
+            const _$42$arg_2507 = _Return._0;
+            _arg_2507 = _$42$arg_2507;
             break _L$2;
           }
           case 2: {
@@ -15103,59 +15103,59 @@ function _M0IP214yesuifengliu013tcl8TclErrorPC15debug5Debug8to__repr(_x_2504) {
             return _M0MPC15debug4Repr4ctor("Continue", []);
           }
           default: {
-            const _Signal = _x_2504;
-            const _$42$arg_2507 = _Signal._0;
-            _arg_2507 = _$42$arg_2507;
+            const _Signal = _x_2505;
+            const _$42$arg_2508 = _Signal._0;
+            _arg_2508 = _$42$arg_2508;
             break _L;
           }
         }
       }
-      return _M0MPC15debug4Repr4ctor("Invalid", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_2505) }]);
+      return _M0MPC15debug4Repr4ctor("Invalid", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_2506) }]);
     }
-    return _M0MPC15debug4Repr4ctor("Return", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_2506) }]);
+    return _M0MPC15debug4Repr4ctor("Return", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_2507) }]);
   }
-  return _M0MPC15debug4Repr4ctor("Signal", [{ _0: undefined, _1: _M0IP214yesuifengliu013tcl10CompletionPC15debug5Debug8to__repr(_arg_2507) }]);
+  return _M0MPC15debug4Repr4ctor("Signal", [{ _0: undefined, _1: _M0IP214yesuifengliu013tcl10CompletionPC15debug5Debug8to__repr(_arg_2508) }]);
 }
-function _M0IP214yesuifengliu013tcl10CompletionPC15debug5Debug8to__repr(_x_2502) {
-  const _bind$2 = [{ _0: "code", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_2502.code) }, { _0: "level", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_2502.level) }, { _0: "value", _1: _M0IP214yesuifengliu013tcl8TclValuePC15debug5Debug8to__repr(_x_2502.value) }, { _0: "options", _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGUsRP214yesuifengliu013tcl8TclValueEE(_x_2502.options) }, { _0: "skip_trace", _1: _M0IPC14bool4BoolPC15debug5Debug8to__repr(_x_2502.skip_trace) }];
+function _M0IP214yesuifengliu013tcl10CompletionPC15debug5Debug8to__repr(_x_2503) {
+  const _bind$2 = [{ _0: "code", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_2503.code) }, { _0: "level", _1: _M0IPC13int3IntPC15debug5Debug8to__repr(_x_2503.level) }, { _0: "value", _1: _M0IP214yesuifengliu013tcl8TclValuePC15debug5Debug8to__repr(_x_2503.value) }, { _0: "options", _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGUsRP214yesuifengliu013tcl8TclValueEE(_x_2503.options) }, { _0: "skip_trace", _1: _M0IPC14bool4BoolPC15debug5Debug8to__repr(_x_2503.skip_trace) }];
   return _M0MPC15debug4Repr6record(_M0MPB3Map3MapGsRPC15debug4ReprE(new _M0TPB9ArrayViewGUsRPC15debug4ReprEE(_bind$2, 0, 5), undefined));
 }
-function _M0IP214yesuifengliu013tcl12ValuePayloadPC15debug5Debug8to__repr(_x_2494) {
-  let _arg_2497;
+function _M0IP214yesuifengliu013tcl12ValuePayloadPC15debug5Debug8to__repr(_x_2495) {
+  let _arg_2498;
   _L: {
-    let _arg_2496;
+    let _arg_2497;
     _L$2: {
-      let _arg_2495;
+      let _arg_2496;
       _L$3: {
-        switch (_x_2494.$tag) {
+        switch (_x_2495.$tag) {
           case 0: {
             return _M0MPC15debug4Repr4ctor("Plain", []);
           }
           case 1: {
-            const _Numeric = _x_2494;
-            const _$42$arg_2495 = _Numeric._0;
-            _arg_2495 = _$42$arg_2495;
+            const _Numeric = _x_2495;
+            const _$42$arg_2496 = _Numeric._0;
+            _arg_2496 = _$42$arg_2496;
             break _L$3;
           }
           case 2: {
-            const _Items = _x_2494;
-            const _$42$arg_2496 = _Items._0;
-            _arg_2496 = _$42$arg_2496;
+            const _Items = _x_2495;
+            const _$42$arg_2497 = _Items._0;
+            _arg_2497 = _$42$arg_2497;
             break _L$2;
           }
           default: {
-            const _Pairs = _x_2494;
-            const _$42$arg_2497 = _Pairs._0;
-            _arg_2497 = _$42$arg_2497;
+            const _Pairs = _x_2495;
+            const _$42$arg_2498 = _Pairs._0;
+            _arg_2498 = _$42$arg_2498;
             break _L;
           }
         }
       }
-      return _M0MPC15debug4Repr4ctor("Numeric", [{ _0: undefined, _1: _M0IP214yesuifengliu013tcl6NumberPC15debug5Debug8to__repr(_arg_2495) }]);
+      return _M0MPC15debug4Repr4ctor("Numeric", [{ _0: undefined, _1: _M0IP214yesuifengliu013tcl6NumberPC15debug5Debug8to__repr(_arg_2496) }]);
     }
-    return _M0MPC15debug4Repr4ctor("Items", [{ _0: undefined, _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGRP214yesuifengliu013tcl8TclValueE(_arg_2496) }]);
+    return _M0MPC15debug4Repr4ctor("Items", [{ _0: undefined, _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGRP214yesuifengliu013tcl8TclValueE(_arg_2497) }]);
   }
-  return _M0MPC15debug4Repr4ctor("Pairs", [{ _0: undefined, _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGURP214yesuifengliu013tcl8TclValueRP214yesuifengliu013tcl8TclValueEE(_arg_2497) }]);
+  return _M0MPC15debug4Repr4ctor("Pairs", [{ _0: undefined, _1: _M0IPC15array5ArrayPC15debug5Debug8to__reprGURP214yesuifengliu013tcl8TclValueRP214yesuifengliu013tcl8TclValueEE(_arg_2498) }]);
 }
 function _M0FP214yesuifengliu013tcl15qualified__name(prefix, name) {
   let _tmp;
@@ -36710,82 +36710,100 @@ function _M0MP214yesuifengliu013tcl11Interpreter16package__command(self, args, d
     }
     const exact = n > 2 && _M0MPC15array5Array2atGRPB4JsonE(values, 2) === "-exact";
     const start = exact ? 3 : 2;
-    if (n < (start + 1 | 0) || (n > (start + 2 | 0) || exact && n !== (start + 2 | 0))) {
-      return new _M0DTPC16result6ResultGRP214yesuifengliu013tcl8TclValueRP214yesuifengliu013tcl8TclErrorE3Err(new _M0DTPC15error5Error41yesuifengliu01_2ftcl_2eTclError_2eInvalid("package require ?-exact? name ?version?"));
+    if (n < (start + 1 | 0) || exact && n !== (start + 2 | 0)) {
+      return new _M0DTPC16result6ResultGRP214yesuifengliu013tcl8TclValueRP214yesuifengliu013tcl8TclErrorE3Err(new _M0DTPC15error5Error41yesuifengliu01_2ftcl_2eTclError_2eInvalid("package require name ?requirement ...? or -exact name version"));
     }
     const name = _M0MPC15array5Array2atGRPB4JsonE(values, start);
-    const requested = _M0MPC15array5Array3getGUiiEE(values, start + 1 | 0);
+    const requested = _M0MPC15array9ArrayView9to__ownedGRP214yesuifengliu013tcl8TclValueE(_M0MPC15array5Array21clamped__view_2einnerGRP214yesuifengliu013tcl8TclValueE(values, start + 1 | 0, undefined));
+    const _bind$2 = requested.length;
+    let _tmp = 0;
+    while (true) {
+      const _ = _tmp;
+      if (_ < _bind$2) {
+        const version = requested[_];
+        const _bind$3 = _M0FP214yesuifengliu013tcl16package__version(version);
+        if (_bind$3.$tag === 1) {
+          const _ok = _bind$3;
+          _ok._0;
+        } else {
+          return _bind$3;
+        }
+        _tmp = _ + 1 | 0;
+        continue;
+      } else {
+        break;
+      }
+    }
+    const compatible = (version) => {
+      let _tmp$2;
+      if (_M0MPC15array5Array9is__emptyGRPB4JsonE(requested)) {
+        _tmp$2 = true;
+      } else {
+        if (exact) {
+          const _bind$3 = _M0FP214yesuifengliu013tcl17compare__versions(version, _M0MPC15array5Array2atGRPB4JsonE(requested, 0));
+          let _tmp$3;
+          if (_bind$3.$tag === 1) {
+            const _ok = _bind$3;
+            _tmp$3 = _ok._0;
+          } else {
+            return _bind$3;
+          }
+          _tmp$2 = _tmp$3 === 0;
+        } else {
+          const matched = new _M0TPB8MutLocalGbE(false);
+          const _bind$3 = requested.length;
+          let _tmp$3 = 0;
+          while (true) {
+            const _ = _tmp$3;
+            if (_ < _bind$3) {
+              const required = requested[_];
+              const _bind$4 = _M0FP214yesuifengliu013tcl18package__satisfies(version, required);
+              let _tmp$4;
+              if (_bind$4.$tag === 1) {
+                const _ok = _bind$4;
+                _tmp$4 = _ok._0;
+              } else {
+                return _bind$4;
+              }
+              if (_tmp$4) {
+                matched.val = true;
+              }
+              _tmp$3 = _ + 1 | 0;
+              continue;
+            } else {
+              break;
+            }
+          }
+          _tmp$2 = matched.val;
+        }
+      }
+      return new _M0DTPC16result6ResultGbRP214yesuifengliu013tcl8TclErrorE2Ok(_tmp$2);
+    };
     let version;
     _L$3: {
       _L$4: {
-        if (requested === undefined) {
+        const _bind$3 = _M0MPB3Map3getGssE(self.state.packages, name);
+        if (_bind$3 === undefined) {
         } else {
-          const _Some = requested;
+          const _Some = _bind$3;
           const _version = _Some;
           version = _version;
           break _L$4;
         }
         break _L$3;
       }
-      const _bind$2 = _M0FP214yesuifengliu013tcl16package__version(version);
-      if (_bind$2.$tag === 1) {
-        const _ok = _bind$2;
-        _ok._0;
+      const _bind$3 = compatible(version);
+      let _tmp$2;
+      if (_bind$3.$tag === 1) {
+        const _ok = _bind$3;
+        _tmp$2 = _ok._0;
       } else {
-        return _bind$2;
+        return _bind$3;
       }
-    }
-    const compatible = (version$2) => {
-      let required;
-      _L$4: {
-        if (requested === undefined) {
-          return new _M0DTPC16result6ResultGbRP214yesuifengliu013tcl8TclErrorE2Ok(true);
-        } else {
-          const _Some = requested;
-          const _required = _Some;
-          required = _required;
-          break _L$4;
-        }
-      }
-      if (exact) {
-        const _bind$2 = _M0FP214yesuifengliu013tcl17compare__versions(version$2, required);
-        let _tmp;
-        if (_bind$2.$tag === 1) {
-          const _ok = _bind$2;
-          _tmp = _ok._0;
-        } else {
-          return _bind$2;
-        }
-        return new _M0DTPC16result6ResultGbRP214yesuifengliu013tcl8TclErrorE2Ok(_tmp === 0);
-      } else {
-        return _M0FP214yesuifengliu013tcl18package__satisfies(version$2, required);
-      }
-    };
-    let version$2;
-    _L$4: {
-      _L$5: {
-        const _bind$2 = _M0MPB3Map3getGssE(self.state.packages, name);
-        if (_bind$2 === undefined) {
-        } else {
-          const _Some = _bind$2;
-          const _version = _Some;
-          version$2 = _version;
-          break _L$5;
-        }
-        break _L$4;
-      }
-      const _bind$2 = compatible(version$2);
-      let _tmp;
-      if (_bind$2.$tag === 1) {
-        const _ok = _bind$2;
-        _tmp = _ok._0;
-      } else {
-        return _bind$2;
-      }
-      if (!_tmp) {
+      if (!_tmp$2) {
         return new _M0DTPC16result6ResultGRP214yesuifengliu013tcl8TclValueRP214yesuifengliu013tcl8TclErrorE3Err(new _M0DTPC15error5Error41yesuifengliu01_2ftcl_2eTclError_2eInvalid("package version conflict"));
       }
-      return new _M0DTPC16result6ResultGRP214yesuifengliu013tcl8TclValueRP214yesuifengliu013tcl8TclErrorE2Ok(_M0FP214yesuifengliu013tcl11text__value(version$2));
+      return new _M0DTPC16result6ResultGRP214yesuifengliu013tcl8TclValueRP214yesuifengliu013tcl8TclErrorE2Ok(_M0FP214yesuifengliu013tcl11text__value(version));
     }
     if (_M0MPC15array5Array2atGRPB4JsonE(values, 1) === "present") {
       return new _M0DTPC16result6ResultGRP214yesuifengliu013tcl8TclValueRP214yesuifengliu013tcl8TclErrorE3Err(new _M0DTPC15error5Error41yesuifengliu01_2ftcl_2eTclError_2eInvalid("package is not present"));
@@ -36795,100 +36813,100 @@ function _M0MP214yesuifengliu013tcl11Interpreter16package__command(self, args, d
     }
     const selected = new _M0TPB8MutLocalGOUssEE(undefined);
     let versions;
-    _L$5: {
-      _L$6: {
-        const _bind$2 = _M0MPB3Map3getGsRPB3MapGssEE(self.state.package_scripts, name);
-        if (_bind$2 === undefined) {
+    _L$4: {
+      _L$5: {
+        const _bind$3 = _M0MPB3Map3getGsRPB3MapGssEE(self.state.package_scripts, name);
+        if (_bind$3 === undefined) {
         } else {
-          const _Some = _bind$2;
+          const _Some = _bind$3;
           const _versions = _Some;
           versions = _versions;
-          break _L$6;
+          break _L$5;
         }
-        break _L$5;
+        break _L$4;
       }
       const _it = _M0MPB3Map5iter2GsRPC15debug4ReprE(versions);
       while (true) {
-        let version$3;
+        let version$2;
         let script;
-        _L$7: {
-          const _bind$2 = _M0MPB5Iter24nextGsRPC15debug4ReprE(_it);
-          if (_bind$2 === undefined) {
+        _L$6: {
+          const _bind$3 = _M0MPB5Iter24nextGsRPC15debug4ReprE(_it);
+          if (_bind$3 === undefined) {
             break;
           } else {
-            const _Some = _bind$2;
+            const _Some = _bind$3;
             const _x = _Some;
             const _version = _x._0;
             const _script = _x._1;
-            version$3 = _version;
+            version$2 = _version;
             script = _script;
-            break _L$7;
+            break _L$6;
           }
         }
-        const _bind$2 = compatible(version$3);
-        let _tmp;
-        if (_bind$2.$tag === 1) {
-          const _ok = _bind$2;
-          _tmp = _ok._0;
+        const _bind$3 = compatible(version$2);
+        let _tmp$2;
+        if (_bind$3.$tag === 1) {
+          const _ok = _bind$3;
+          _tmp$2 = _ok._0;
         } else {
-          return _bind$2;
+          return _bind$3;
         }
-        if (_tmp) {
-          _L$8: {
-            _L$9: {
-              const _bind$3 = selected.val;
-              if (_bind$3 === undefined) {
-                break _L$9;
+        if (_tmp$2) {
+          _L$7: {
+            _L$8: {
+              const _bind$4 = selected.val;
+              if (_bind$4 === undefined) {
+                break _L$8;
               } else {
                 let old;
-                _L$10: {
-                  _L$11: {
-                    const _bind$4 = selected.val;
-                    if (_bind$4 === undefined) {
+                _L$9: {
+                  _L$10: {
+                    const _bind$5 = selected.val;
+                    if (_bind$5 === undefined) {
                     } else {
-                      const _Some = _bind$4;
+                      const _Some = _bind$5;
                       const _x = _Some;
                       const _old = _x._0;
                       old = _old;
-                      break _L$11;
+                      break _L$10;
                     }
-                    break _L$10;
-                  }
-                  const _bind$4 = _M0FP214yesuifengliu013tcl17compare__versions(version$3, old);
-                  let _tmp$2;
-                  if (_bind$4.$tag === 1) {
-                    const _ok = _bind$4;
-                    _tmp$2 = _ok._0;
-                  } else {
-                    return _bind$4;
-                  }
-                  if (_tmp$2 > 0) {
                     break _L$9;
+                  }
+                  const _bind$5 = _M0FP214yesuifengliu013tcl17compare__versions(version$2, old);
+                  let _tmp$3;
+                  if (_bind$5.$tag === 1) {
+                    const _ok = _bind$5;
+                    _tmp$3 = _ok._0;
+                  } else {
+                    return _bind$5;
+                  }
+                  if (_tmp$3 > 0) {
+                    break _L$8;
                   }
                 }
               }
-              break _L$8;
+              break _L$7;
             }
-            selected.val = { _0: version$3, _1: script };
+            selected.val = { _0: version$2, _1: script };
           }
         }
         continue;
       }
     }
-    let version$3;
+    let version$2;
     let script;
-    _L$6: {
-      const _bind$2 = selected.val;
-      if (_bind$2 === undefined) {
+    _L$5: {
+      const _bind$3 = selected.val;
+      if (_bind$3 === undefined) {
         return new _M0DTPC16result6ResultGRP214yesuifengliu013tcl8TclValueRP214yesuifengliu013tcl8TclErrorE3Err(new _M0DTPC15error5Error41yesuifengliu01_2ftcl_2eTclError_2eInvalid(`cannot find package ${name}`));
       } else {
-        const _Some = _bind$2;
+        const _Some = _bind$3;
         const _x = _Some;
         const _version = _x._0;
         const _script = _x._1;
-        version$3 = _version;
+        version$2 = _version;
         script = _script;
-        break _L$6;
+        break _L$5;
       }
     }
     _M0MPC15array5Array4pushGRPC14json10WriteFrameE(self.state.package_loading, name);
@@ -36896,68 +36914,68 @@ function _M0MP214yesuifengliu013tcl11Interpreter16package__command(self, args, d
       _M0MPC15array5Array3popGRPC14json10WriteFrameE(self.state.package_loading);
     };
     let _err;
-    _L$7: {
-      _L$8: {
-        const _tmp = self.state;
-        const _bind$2 = [];
-        const global = new _M0TP214yesuifengliu013tcl11Interpreter(_tmp, new _M0TP214yesuifengliu013tcl5Frame(_M0MPB3Map3MapGsRP214yesuifengliu013tcl7BindingE(new _M0TPB9ArrayViewGUsRP214yesuifengliu013tcl7BindingEE(_bind$2, 0, 0), undefined), "::", false, undefined), self.output, self.output_size, self.budget);
-        const _bind$3 = _M0MP214yesuifengliu013tcl11Interpreter16propagate__value(global, _M0MP214yesuifengliu013tcl11Interpreter7capture(global, script, depth + 1 | 0));
-        if (_bind$3.$tag === 1) {
-          const _ok = _bind$3;
-          _ok._0;
-        } else {
-          const _err$2 = _bind$3;
-          _err = _err$2._0;
-          break _L$8;
-        }
-        let _defer_result;
-        let provided;
-        _L$9: {
-          const _bind$4 = _M0MPB3Map3getGssE(self.state.packages, name);
-          if (_bind$4 === undefined) {
-            _err = new _M0DTPC15error5Error41yesuifengliu01_2ftcl_2eTclError_2eInvalid(`package script did not provide ${name}`);
-            break _L$8;
-          } else {
-            const _Some = _bind$4;
-            const _provided = _Some;
-            provided = _provided;
-            break _L$9;
-          }
-        }
-        let _tmp$2;
-        const _bind$4 = _M0FP214yesuifengliu013tcl17compare__versions(provided, version$3);
-        let _tmp$3;
+    _L$6: {
+      _L$7: {
+        const _tmp$2 = self.state;
+        const _bind$3 = [];
+        const global = new _M0TP214yesuifengliu013tcl11Interpreter(_tmp$2, new _M0TP214yesuifengliu013tcl5Frame(_M0MPB3Map3MapGsRP214yesuifengliu013tcl7BindingE(new _M0TPB9ArrayViewGUsRP214yesuifengliu013tcl7BindingEE(_bind$3, 0, 0), undefined), "::", false, undefined), self.output, self.output_size, self.budget);
+        const _bind$4 = _M0MP214yesuifengliu013tcl11Interpreter16propagate__value(global, _M0MP214yesuifengliu013tcl11Interpreter7capture(global, script, depth + 1 | 0));
         if (_bind$4.$tag === 1) {
           const _ok = _bind$4;
-          _tmp$3 = _ok._0;
+          _ok._0;
         } else {
           const _err$2 = _bind$4;
           _err = _err$2._0;
-          break _L$8;
+          break _L$7;
         }
-        if (_tmp$3 !== 0) {
-          _tmp$2 = true;
-        } else {
-          const _bind$5 = compatible(provided);
-          let _tmp$4;
-          if (_bind$5.$tag === 1) {
-            const _ok = _bind$5;
-            _tmp$4 = _ok._0;
+        let _defer_result;
+        let provided;
+        _L$8: {
+          const _bind$5 = _M0MPB3Map3getGssE(self.state.packages, name);
+          if (_bind$5 === undefined) {
+            _err = new _M0DTPC15error5Error41yesuifengliu01_2ftcl_2eTclError_2eInvalid(`package script did not provide ${name}`);
+            break _L$7;
           } else {
-            const _err$2 = _bind$5;
-            _err = _err$2._0;
+            const _Some = _bind$5;
+            const _provided = _Some;
+            provided = _provided;
             break _L$8;
           }
-          _tmp$2 = !_tmp$4;
         }
-        if (_tmp$2) {
+        let _tmp$3;
+        const _bind$5 = _M0FP214yesuifengliu013tcl17compare__versions(provided, version$2);
+        let _tmp$4;
+        if (_bind$5.$tag === 1) {
+          const _ok = _bind$5;
+          _tmp$4 = _ok._0;
+        } else {
+          const _err$2 = _bind$5;
+          _err = _err$2._0;
+          break _L$7;
+        }
+        if (_tmp$4 !== 0) {
+          _tmp$3 = true;
+        } else {
+          const _bind$6 = compatible(provided);
+          let _tmp$5;
+          if (_bind$6.$tag === 1) {
+            const _ok = _bind$6;
+            _tmp$5 = _ok._0;
+          } else {
+            const _err$2 = _bind$6;
+            _err = _err$2._0;
+            break _L$7;
+          }
+          _tmp$3 = !_tmp$5;
+        }
+        if (_tmp$3) {
           _err = new _M0DTPC15error5Error41yesuifengliu01_2ftcl_2eTclError_2eInvalid("package script provided a different version");
-          break _L$8;
+          break _L$7;
         }
         _defer_result = provided;
         _defer();
         value = _defer_result;
-        break _L$7;
+        break _L$6;
       }
       _defer();
       return new _M0DTPC16result6ResultGRP214yesuifengliu013tcl8TclValueRP214yesuifengliu013tcl8TclErrorE3Err(_err);

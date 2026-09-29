@@ -1,23 +1,27 @@
-# MoonBit Tcl 8.6 脚本子集：列表、过程与受限文件会话
+# MoonBit Tcl 脚本子集：直接重用既有 Tcllib 数据处理代码
 
-项目仓库：https://github.com/yesuifengliu01/moonbit-tcl。模块 `yesuifengliu01/tcl@0.17.1`；MIT AND Unicode-3.0。本次撤回容易被理解为完整兼容的旧标题，按实际命令子域申请复审。
+项目仓库：https://github.com/yesuifengliu01/moonbit-tcl；模块 `yesuifengliu01/tcl`，本地 0.18.0，MIT AND Unicode-3.0；个人项目。第三方 Tcllib 样例另保留原许可与署名。
 
-## 适用任务与实现
+## 选题依据
 
-需要在 MoonBit 应用中执行既有 Tcl 列表、过程、集合或文本处理片段时，可以复用本库的脚本语义，并由宿主提供明确允许的文件入口。普通新脚本任务无需选择 Tcl；适用前提是输入确实依赖已支持的 Tcl 语义，而非仅因为“可以写一个解释器”。
+需要重用既有 Tcl 脚本时，逐行翻译到另一门语言可能改变列表、引用、命名空间或文件行为。本项目把明确范围的 Tcl 执行带入 MoonBit，保留脚本源文件，使用系统 Tcl 作独立参考。范围限可复現脚本子集，不再申报“完整 Tcl 8.6 解释器”，也不假设 EDA 厂商扩展可运行。
 
-MoonBit 实现词法/求值、变量、过程、控制流，以及列表和 array/dict/string 等命令的已列子集。初始内置 65 个命令名，选项和兼容范围逐项列在 [COMPATIBILITY-BOUNDARY](COMPATIBILITY-BOUNDARY.md)，名称数量不充当兼容率。Node FileSession 在指定根目录内提供受限 source、文件通道与数字版本 package 流程。
+## 可见的使用任务
 
-## 可直接运行的任务
+仓库固定并保留 Tcllib csv 0.10 的未经改写源码、提交与 SHA-256。可运行文件示例直接 source 该脚本，读取 CSV，按第三列筛选记录，再用原始 csv::joinlist 导出；包含带逗号、双引号及跨行字段。CSV 算法来自 Tcllib；这里的价值是 MoonBit 运行时重用这份现有脚本，而非重写一个 CSV 库或虚构客户需求。
 
-按 README 构建后，`node examples/run-use-case.mjs` 处理含空格文件名的文本；`node tools/cli.mjs --input 'list [lsort {b a}] [lsearch {a b} b]' --eval-json` 返回 `{a b} 1`。文件/包 41 个场景与独立 Tcl 8.6.15 对比，宿主约束及其余列表/过程等历史证据分别在 TESTING 和 FEATURES 标注，未声称通过完整 Tcl 官方测试集。
+## 本次实现
 
-原有 oracle 的 NUL 跨环境问题已在隔离 Ubuntu 24.04、Python 3.12.3/Tcl 8.6.14 复现并验证修复；生成 248 条夹具与 Windows 相同，格式化后逐字节吻合提交文件，见 [ORACLE-NOBLE](ORACLE-NOBLE.md)。这一工程改进保证被声明的生成检查可复现，不扩张语言支持范围。
+MoonBit 核心提供脚本解析、列表、变量与过程作用域、命名空间、返回/异常传播及有预算的执行。由实际脚本发现并补齐数字版本的多候选 package require/present：按候选逻辑选择最高兼容版本，不重复加载，非法后续要求仍拒绝。公开版本比较仍限已发布数字版本，不扩大到 alpha/beta、版本区间或完整自动加载。
 
-## 已有工作与明确边界
+应用适配显式声明“已验证的 Tcl 8.6 profile”后加载 csv.tcl；默认解释器不自动声称支持整个 Tcl 8.6。Node FileSession 承担文件 I/O 与根目录约束，解释和 CSV 脚本执行在 MoonBit 内完成。资源预算和路径限制不是恶意代码隔离保证。
 
-[Tcl](https://www.tcl-lang.org/) 已有成熟解释器，本项目不发明 Tcl 或声称 MoonBit 此前没有脚本语言。交付价值是可嵌入 MoonBit 的明确子集、确定输入输出与受限宿主契约；AI 生成脚本也需按同一边界核对，不能以生成成功代替执行正确。
+## 证据与独立关系
 
-不提供 exec/socket/trace、事件循环、全部编码、完整 auto_path/pkgIndex、二进制扩展或完整错误体系；不是恶意脚本沙箱。当前无确认的 EDA/厂商脚本使用方，不将潜在兼容场景写成已有采用。完整交付包括核心、文件适配、可运行例子、兼容表、测试与来源许可，复审以这些可检查内容为依据。
+2026-09-29，17 项 csv/版本选择用例与 Windows Tcl 8.6.15、Ubuntu Tcl 8.6.17 实时对照一致，文件消费例两平台通过；核心 JS/Wasm-GC 各 11217 项通过。测试读取原始脚本并先验 SHA，结果不是自行生成的 golden。源码、许可与复现见 TCLLIB-CSV.md，回执见 evidence/tcllib-csv.json。
 
-**公开状态（2026-09-29 核对）**：GitHub [公开仓库](https://github.com/yesuifengliu01/moonbit-tcl)、[Mooncakes 0.17.1](https://mooncakes.io/docs/yesuifengliu01/tcl@0.17.1) 已可访问；[CI 成功记录](https://github.com/yesuifengliu01/moonbit-tcl/actions/runs/36436197901) 对应 `02e7c535d393`。本次材料更新尚未推送；该远端 CI 对应所列公开提交。报名表一致性及赛事审核结果尚未核实。
+Tcl/Tcllib 已有成熟实现，本项目不主张语言、CSV 算法或“生态首个脚本语言”原创。AI 辅助翻译不能替代既有脚本的执行语义检查；保留源码、明确失败和独立对照能减少手工移植中不易发现的差异。尚无确认的外部采用方。
+
+## 交付边界
+
+65 个初始命令名不代表全部选项兼容；验证覆盖 csv::split/join/joinlist/iscomplete，不包含 matrix/queue API、所有 Tcllib 包或完整 Tcl 8.6。无任意 EDA 命令、网络进程/事件循环、完整包索引。原 NUL oracle 确定性修复与文件根目录保护保留。0.17.1 已公开；新增 0.18.0 仅本地，未推送或发布，旧 CI 不能为新代码背书。
